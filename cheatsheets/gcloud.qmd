@@ -1,0 +1,11 @@
+---
+title: "GCP: gcloud CLI"
+format: html
+---
+
+
+SSH connection| 
+-----|-----
+setup new ssh connection to compute instance | `gcloud compute config-ssh`
+
+

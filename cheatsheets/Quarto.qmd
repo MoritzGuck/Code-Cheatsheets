@@ -1,0 +1,41 @@
+---
+title: "Quarto"
+format: html
+---
+
+## Blocks
+
+Collapsable callout block 
+: ```md
+::: {.callout-warning collapse=true appearance="simple"}  
+### Title 
+:::
+```
+
+Panels
+: ```md
+::: {.panel-tabset}
+### Panel heading 1
+### Panel heading 2
+:::
+```
+
+## Tables
+
+Markdown table
+: ```md
+Header col 1 | header col 2 
+-----|-----
+content col 1 | content col 2
+```
+
+## Formatting
+
+Font-color
+: ```html
+<font color="grey">
+</font>
+```
+
+
+

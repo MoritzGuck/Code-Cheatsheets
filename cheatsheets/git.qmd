@@ -1,0 +1,96 @@
+---
+title: "Git"
+format: html
+---
+
+## Configuration
+
+Set username (for your commits)
+: ```bash
+git config --global user.name "myname"
+```
+
+Set email (for your commits)
+: ```bash
+git config --global user.email "my@email.com"
+```
+
+## New repositories
+
+Download git repo from server
+: ```bash
+git clone url.com
+```
+
+## Managing changes
+
+1. Get changes from remote repository
+: ```bash
+git fetch
+```
+
+2. Check differences to branch you want merge into yours
+: ```bash
+git diff feature1..dev
+```
+
+3. Merge changes from remote branch into your branch
+: ```bash
+git merge origin master
+```
+
+4. Check what files are(n't) staged for commit
+: ```bash
+git status
+```
+
+5. Stage all files that are tracked (not in .gitignore)
+: ```bash
+git add .
+```
+
+    If necessary: Unstage all files (or a specific file) that are staged
+    : ```bash
+    git reset [specific-file]
+    ```
+
+6. Commit all staged files (add to versioning history)
+: ```bash
+git commit -m "[ticket-id + what you changed]"
+```
+
+7. Load commits into remote git repository
+: ```bash
+git push
+```
+
+## Pull changes into dev/test/master branch (and add your changes at the end)
+
+```bash
+git fetch
+git checkout dev
+git pull --rebase feature1branch 
+```
+
+## Branches
+
+List all branches and show which one you are on
+: ```bash
+git branch
+```
+
+Create new branch
+: ```bash
+git branch [branch-name]
+```
+
+Change to a specific branch
+: ```bash
+git branch [specific-branch]
+```
+
+Delete a specific branch
+: ```bash
+git branch -d [specific-branch]
+```
+
