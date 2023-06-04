@@ -22,6 +22,9 @@ jobs:
           
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
+        with:
+          to: html
+          path: '.'
     
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -31,4 +34,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           protocol: ftps
-          directory: '_site'
+          local-dir: './_site'
