@@ -1,0 +1,15 @@
+---
+title: "Azure ML"
+format: html
+---
+## Experiments
+
+Delete Experiments without jobs
+: ```python
+from azureml.core import Workspace, Experiment
+
+aml_workspace = Workspace.from_config()
+experiment_id = Experiment(aml_workspace, '<experiment_name>').id
+
+Experiment.delete(aml_workspace, experiment_id)
+```
