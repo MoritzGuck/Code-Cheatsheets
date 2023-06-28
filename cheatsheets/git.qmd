@@ -86,7 +86,7 @@ git branch [branch-name]
 
 Change to a specific branch
 : ```bash
-git branch [specific-branch]
+git checkout [specific-branch]
 ```
 
 Delete a specific branch
