@@ -72,6 +72,13 @@ git checkout dev
 git pull --rebase feature1branch 
 ```
 
+## Undo and Rollback
+
+Rollback the last commit
+: ```
+git reset head~1
+```
+
 ## Branches
 
 List all branches and show which one you are on
