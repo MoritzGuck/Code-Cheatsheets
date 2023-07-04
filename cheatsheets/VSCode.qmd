@@ -4,6 +4,8 @@ Workspace Commands       | 
 -------------------------|-----
 **Command Palette**      | ctrl shift p
 
+: table {tbl-colwidths="[66,33]"}
+
 Edit code                | 
 -------------------------|-----
 **Outdent line**         | ctrl '
@@ -11,6 +13,10 @@ Edit code                | 
 **Move line up or down** | alt &uarr; / alt &darr;
 **Copy line up or down** | alt shift &uarr; / alt shift &darr;
 
+: table {tbl-colwidths="[66,33]"}
+
 Code selection           | 
 -------------------------|-----
 **Expand selection**     | shift alt &rarr;
+
+: table {tbl-colwidths="[66,33]"}
