@@ -1,0 +1,12 @@
+# Visual Studio Code
+
+## Workspace Commands
+
+*Command Palette:* `ctrl shift p`
+
+## Edit code
+
+*Outdent line:* `ctrl '`
+
+*Toggle comment line:* `ctrl §`
+
