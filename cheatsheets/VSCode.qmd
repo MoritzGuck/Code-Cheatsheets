@@ -1,19 +1,16 @@
 # Visual Studio Code
+ 
+Workspace Commands | 
+-----|-----
+**Command Palette** |  ctrl shift p
 
-## Workspace Commands
+Edit code | 
+-----|-----
+**Outdent line**  |  ctrl '
+**Toggle comment line** | ctrl §
+**Move line up or down** |  alt &uarr; / alt &darr;
+**Copy line up or down** | alt shift &uarr; / alt shift &darr;
 
-**Command Palette:** ctrl shift p
-
-## Edit code
-
-**Outdent line:** ctrl '
-
-**Toggle comment line:** ctrl §
-
-**Move line up or down:** alt &uarr; / alt &darr;
-
-**Copy line up or down:** alt shift &uarr; / alt shift &darr;
-
-## Code selection
-
-**Expand selection:** shift alt %rarr;
+Code selection | 
+-----|-----
+**Expand selection** |   shift alt %rarr;
