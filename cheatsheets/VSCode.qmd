@@ -10,3 +10,10 @@
 
 *Toggle comment line:* `ctrl §`
 
+*Move line up or down:* `alt &uarr;` / `alt &darr;`
+
+*Copy line up or down:* `alt shift &uarr;` / `alt shift &darr;`
+
+## Code selection
+
+*Expand selection:* `shift alt %rarr;`
