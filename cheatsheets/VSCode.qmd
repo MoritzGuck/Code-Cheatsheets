@@ -2,18 +2,18 @@
 
 ## Workspace Commands
 
-*Command Palette:* `ctrl shift p`
+**Command Palette:** `ctrl shift p`
 
 ## Edit code
 
-*Outdent line:* `ctrl '`
+**Outdent line:** `ctrl '`
 
-*Toggle comment line:* `ctrl §`
+**Toggle comment line:** `ctrl §`
 
-*Move line up or down:* `alt &uarr;` / `alt &darr;`
+**Move line up or down:** `alt &uarr;` / `alt &darr;`
 
-*Copy line up or down:* `alt shift &uarr;` / `alt shift &darr;`
+**Copy line up or down:** `alt shift &uarr;` / `alt shift &darr;`
 
 ## Code selection
 
-*Expand selection:* `shift alt %rarr;`
+**Expand selection:** `shift alt %rarr;`
