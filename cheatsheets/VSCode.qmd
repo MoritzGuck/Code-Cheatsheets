@@ -3,6 +3,7 @@
 Workspace Commands       | 
 -------------------------|-----
 **Command Palette**      | ctrl shift p
+**Search & open file**   | ctrl p
 
 :  {tbl-colwidths="[50,50]"}
 
