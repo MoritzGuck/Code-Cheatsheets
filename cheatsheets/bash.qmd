@@ -3,12 +3,23 @@ title: "Bash"
 format: html
 ---
 
-Get running processes ordered by resource consumption
+## List files
+
+Running processes ordered by resource consumption
 : ```bash
 top
 ```
 
+Number of files in a provided directory
+: ```bash
+ls [myDirectory] | wc -l 
+```
+
+## Manipulate Files
+
 Remove directory tree with all its contents
 : ```bash
-rm -rf [directory]
+rm -rf [myDirectory]
 ```
+
+
