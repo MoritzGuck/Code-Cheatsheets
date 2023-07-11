@@ -1,0 +1,14 @@
+---
+title: "Bash"
+format: html
+---
+
+Get running processes ordered by resource consumption
+: ```bash
+top
+```
+
+Remove directory tree with all its contents
+: ```bash
+rm -rf [directory]
+```
