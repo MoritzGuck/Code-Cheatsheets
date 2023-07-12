@@ -64,12 +64,18 @@ git commit -m "[ticket-id + what you changed]"
 git push
 ```
 
-## Pull changes into dev/test/master branch (and add your changes at the end)
+## Pull changes into dev/test/master branch 
 
-```bash
+Pull changes into dev branch (and add your changes at the end) 
+: ```bash
 git fetch
 git checkout dev
 git pull --rebase feature1branch 
+```
+
+Pull only specific commits into your branch
+: ```bash
+git cherry-pick [commit-SHA]
 ```
 
 ## Undo and Rollback
