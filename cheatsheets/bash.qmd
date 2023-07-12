@@ -22,4 +22,31 @@ Remove directory tree with all its contents
 rm -rf [myDirectory]
 ```
 
+## Control structures
+
+Use commandline arguments
+: ```bash
+while getopts :c:t flag
+do
+    case "${flag}" in
+        c) 
+            config=${OPTARG}
+            python3 file_to_be_called.py -c $config
+            ;;
+        t)
+            python3 file_to_be_called.py -t
+            ;;
+        :) 
+            echo "No arguments passed"
+            exit 1
+            ;;
+        ?) 
+          echo "Please call the script like this: bash_script.sh [-c config_file]"
+          exit 1
+          ;;
+    esac
+done
+```
+The `:` before the flag-character `c` lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed).
+The `:` after the flag-character `c` indicates that a value is required after the flag. 
 
