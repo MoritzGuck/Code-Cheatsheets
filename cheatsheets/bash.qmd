@@ -22,6 +22,19 @@ Remove directory tree with all its contents
 rm -rf [myDirectory]
 ```
 
+## File Permissions
+
+Show access permissions of file in directory
+: ```bash
+ls -l [myDirectory]
+``` 
+
+Change permissions of file
+: ```bash
+chmod u=rwx,g=rwx,o=rwx [myFile]
+```
+[Explanation](https://phoenixnap.com/kb/linux-file-permissions)
+
 ## Control structures
 
 Use commandline arguments
