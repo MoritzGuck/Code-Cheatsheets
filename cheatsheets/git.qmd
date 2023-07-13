@@ -94,9 +94,9 @@ List all branches and show which one you are on
 git branch
 ```
 
-Create new branch
+Create new branch and check it out
 : ```bash
-git branch [branch-name]
+git checkout -b [branch-name]
 ```
 
 Change to a specific branch
@@ -109,3 +109,7 @@ Delete a specific branch
 git branch -d [specific-branch]
 ```
 
+Rename the current branch
+: ```bash
+git branch -m myNewBranch
+``` 
