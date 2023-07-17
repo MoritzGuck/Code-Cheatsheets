@@ -89,7 +89,9 @@ Rollback to a specific commit
 : ```bash
 git reset [commit-SHA]
 ```
-To create a new commit to undo earlier commits, use `git revert`
+Since you are now several commits behind the remote, you have to force push the changes: `git push -f origin [myBranchyBranch]`.
+
+To create a new commit to undo earlier commits, use `git revert`.
 
 Travel back to a specific commit
 : ```bash
