@@ -84,7 +84,13 @@ Rollback the last commit
 : ```bash
 git reset head~1
 ```
-Delete sensitive data from history
+
+Rollback to a specific commit
+: ```bash
+git reset [commit-SHA]
+``` 
+
+*Delete sensitive data from history:*
 : [docs.github.com](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#using-git-filter-repo)
 
 ## Branches
