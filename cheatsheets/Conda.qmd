@@ -53,6 +53,10 @@ python --version
 conda update python
 ```
 
+Update whole environment according to your yaml-file:
+```bash
+conda env update -f my_env.yml
+```
 
 Switch back to base environment
 : ```bash
