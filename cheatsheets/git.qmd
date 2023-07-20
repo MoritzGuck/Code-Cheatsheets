@@ -105,7 +105,7 @@ git checkout [commit-SHA]
 
 List all branches and show which one you are on
 : ```bash
-git branch
+git branch -a
 ```
 
 Create new branch and check it out
@@ -126,4 +126,11 @@ git branch -d [specific-branch]
 Rename the current branch
 : ```bash
 git branch -m myNewBranch
+``` 
+
+## History
+
+Show commit history with branch dependencies 
+: ```bash
+git log --graph --oneline
 ``` 
