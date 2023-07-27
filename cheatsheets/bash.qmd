@@ -3,7 +3,9 @@ title: "Bash"
 format: html
 ---
 
-## List files
+## Files
+
+### List files
 
 Running processes ordered by resource consumption
 : ```bash
@@ -15,14 +17,14 @@ Number of files in a provided directory
 ls [myDirectory] | wc -l 
 ```
 
-## Manipulate Files
+### Manipulate Files
 
 Remove directory tree with all its contents
 : ```bash
 rm -rf [myDirectory]
 ```
 
-## File Permissions
+### File Permissions
 
 Show access permissions of file in directory
 : ```bash
@@ -35,7 +37,7 @@ chmod u=rwx,g=rwx,o=rwx [myFile]
 ```
 [Explanation](https://phoenixnap.com/kb/linux-file-permissions)
 
-## Control structures
+### Control structures
 
 Use commandline arguments
 : ```bash
@@ -63,3 +65,17 @@ done
 The `:` before the flag-character `c` lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed).
 The `:` after the flag-character `c` indicates that a value is required after the flag. 
 
+## Processes
+
+List running processes
+: ```bash
+htop
+```
+
+- To kill process: type k
+- To order processes by memory consumption: type ctrl + m
+
+Kill process
+: ```bash
+kill -9 [process-PID]
+```
