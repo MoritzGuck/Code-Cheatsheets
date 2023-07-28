@@ -5,11 +5,9 @@ website:
   title: "Cheatsheets"
   sidebar:
     contents: auto
-    toos:
+    tools:
       - icon: github
-        menu:
-          - text: Source Code
-            url:  https://code.com
+        href: https://github.com/MoritzGuck/Code-Cheatsheets
 
 format:
   html:
