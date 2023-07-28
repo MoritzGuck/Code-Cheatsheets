@@ -37,5 +37,17 @@ Font-color
 </font>
 ```
 
+## Keyboard shortcuts
+
+For different operating systems
+: ```html
+{{< kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L >}}
+```
+
+simple
+: ```html
+{{< kbd Shift-Ctrl-P >}}
+```
+
 
 
