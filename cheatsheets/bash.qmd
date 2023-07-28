@@ -72,7 +72,7 @@ List running processes
 htop
 ```
 
-- To kill process: type k
+- To kill process: <kbd>k</kbd>
 - To order processes by memory consumption: type ctrl + m
 
 Kill process
