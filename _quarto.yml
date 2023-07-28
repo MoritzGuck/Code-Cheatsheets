@@ -5,8 +5,11 @@ website:
   title: "Cheatsheets"
   sidebar:
     contents: auto
-    
-
+    toos:
+      - icon: github
+        menu:
+          - text: Source Code
+            url:  https://code.com
 
 format:
   html:
