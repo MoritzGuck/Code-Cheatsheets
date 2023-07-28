@@ -73,7 +73,7 @@ htop
 ```
 
 - To kill process: <kbd>k</kbd>
-- To order processes by memory consumption: type <kbd>ctrl-m</kbd>
+- To order processes by memory consumption: type {{< kbd Ctrl-M >}}
 
 Kill process
 : ```bash
