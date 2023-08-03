@@ -16,8 +16,15 @@ Edit code                | 
 
 :  {tbl-colwidths="[50,50]"}
 
+Code Navigation          | 
+-------------------------|-----
+**Go to line**           | {{< kbd Ctrl-G >}} / {{< kbd Ctrl-P :>}}
+
+:  {tbl-colwidths="[50,50]"}
+
 Code selection           | 
 -------------------------|-----
-**Expand selection**     | shift alt &rarr;
+**Select line**          | {{< kbd Ctrl-L >}}
+**Expand selection**     | {{< shift-alt-&rarr; >}}
 
 :  {tbl-colwidths="[50,50]"}
