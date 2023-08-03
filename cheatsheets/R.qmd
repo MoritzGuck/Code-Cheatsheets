@@ -1,0 +1,24 @@
+---
+title: "R"
+format: html
+---
+
+## Using R
+
+1. Use R in console
+: ```bash
+R
+```
+
+2. Type your code
+
+3. Quit R in console
+:```bash
+q()
+```
+
+Get help with functions and features
+: ```R
+?functionName
+```
+
