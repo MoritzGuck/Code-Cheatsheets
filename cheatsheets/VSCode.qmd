@@ -18,13 +18,13 @@ Edit code                | 
 
 Code Navigation          | 
 -------------------------|-----
-**Go to line**           | {{< kbd Ctrl-G >}} / {{< kbd Ctrl-P :>}}
+**Go to line**           | {{< kbd Ctrl-G >}} / {{< kbd Ctrl-P-:>}}
 
 :  {tbl-colwidths="[50,50]"}
 
 Code selection           | 
 -------------------------|-----
 **Select line**          | {{< kbd Ctrl-L >}}
-**Expand selection**     | {{< shift-alt-&rarr; >}}
+**Expand selection**     | {{< shift-alt-→ >}}
 
 :  {tbl-colwidths="[50,50]"}
