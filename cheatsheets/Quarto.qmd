@@ -42,29 +42,27 @@ Font-color
 Format keyboard keys for different operating systems
 : 
 
-```html
-    {{< kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L >}}
+```md
+{{{< kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L >}}}
 ```
+{{< kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L >}}
 
 simple
 : 
 
-```html
-    {{< kbd Shift-Ctrl-P >}}
+```md
+{{{< kbd Shift-Ctrl-P >}}}
 ```
 
 Format arrow keys
 : 
 
-```html
-    {{<kbd &uarr; >}}
-    {{<kbd &darr; >}}
-    {{<kbd &larr; >}}
-    {{<kbd &rarr; >}}
+```md
+{{{<kbd &uarr; >}}}
+{{{<kbd &darr; >}}}
+{{{<kbd &larr; >}}}
+{{{<kbd &rarr; >}}}
 ```
 
-{{<kbd &uarr; >}}
-{{<kbd &darr; >}}
-{{<kbd &larr; >}}
-{{<kbd &rarr; >}}
+{{< kbd &uarr; >}} {{< kbd &darr; >}} {{< kbd &larr; >}} {{< kbd &rarr; >}}
 

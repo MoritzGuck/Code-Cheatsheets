@@ -10,7 +10,8 @@ format: html
 R
 ```
 
-2. Type your code
+2. **Type your code**
+
 
 3. Quit R in console
 : ```bash

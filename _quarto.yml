@@ -19,6 +19,7 @@ format:
     toc-location: left
     code-fold: true
     code-summary: "Show the code"
+    code-overflow: wrap
     linestretch: 1.0
 
 
