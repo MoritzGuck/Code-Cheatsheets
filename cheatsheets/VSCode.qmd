@@ -2,29 +2,29 @@
  
 Workspace Commands       | 
 -------------------------|-----
-**Command Palette**      | ctrl shift p
-**Search & open file**   | ctrl p
+Command Palette      | ctrl shift p
+Search & open file   | ctrl p
 
 :  {tbl-colwidths="[50,50]"}
 
 Edit code                | 
 -------------------------|-----
-**Outdent line**         | ctrl '
-**Toggle comment line**  | ctrl §
-**Move line up or down** | alt &uarr; / alt &darr;
-**Copy line up or down** | alt shift &uarr; / alt shift &darr;
+Outdent line         | ctrl '
+Toggle comment line  | ctrl §
+Move line up or down | alt &uarr; / alt &darr;
+Copy line up or down | alt shift &uarr; / alt shift &darr;
 
 :  {tbl-colwidths="[50,50]"}
 
 Code Navigation          | 
 -------------------------|-----
-**Go to line**           | {{< kbd Ctrl-G >}} / {{< kbd Ctrl-P-:>}}
+Go to line           | {{< kbd Ctrl-G >}} / {{< kbd Ctrl-P-:>}}
 
 :  {tbl-colwidths="[50,50]"}
 
 Code selection           | 
 -------------------------|-----
-**Select line**          | {{< kbd Ctrl-L >}}
-**Expand selection**     | {{< shift-alt-→ >}}
+Select line          | {{< kbd Ctrl-L >}}
+Expand selection     | {{< shift-alt-→ >}}
 
 :  {tbl-colwidths="[50,50]"}
