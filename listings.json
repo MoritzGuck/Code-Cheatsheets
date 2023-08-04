@@ -1,0 +1,15 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/cheatsheets/azure_ml.html",
+      "/cheatsheets/bash.html",
+      "/cheatsheets/Conda.html",
+      "/cheatsheets/gcloud.html",
+      "/cheatsheets/git.html",
+      "/cheatsheets/Quarto.html",
+      "/cheatsheets/R.html",
+      "/cheatsheets/VSCode.html"
+    ]
+  }
+]
