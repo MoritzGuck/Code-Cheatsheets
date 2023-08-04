@@ -1,7 +1,9 @@
 ---
 title: "R"
+description: "R is a programming language that is specialized in statistical analysis."
 format: html
 ---
+
 
 ## Using R
 

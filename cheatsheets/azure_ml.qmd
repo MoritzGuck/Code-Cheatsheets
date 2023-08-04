@@ -2,6 +2,9 @@
 title: "Azure ML"
 format: html
 ---
+
+Azure ML is the machine learning service of the Azure Cloud Platform.
+
 ## Experiments
 
 Delete Experiments without jobs

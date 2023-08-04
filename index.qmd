@@ -1,5 +1,10 @@
 ---
 title: "Cheatsheets"
+listing:
+  contents: cheatsheets
+  type: grid
+  image-placeholder: "assets/document.png"
+
 ---
 
 This is a collection of my cheatsheets. Feel free to use them.

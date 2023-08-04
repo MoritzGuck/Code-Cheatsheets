@@ -1,7 +1,10 @@
 ---
 title: "Git"
+description: "Git is a version control system mostly used for code."
 format: html
 ---
+
+
 
 ## Configuration
 

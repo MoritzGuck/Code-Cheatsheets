@@ -1,7 +1,10 @@
 ---
 title: "Bash"
+description: "Bash is a command line tool and language."
 format: html
 ---
+
+
 
 ## Files
 

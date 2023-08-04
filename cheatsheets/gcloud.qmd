@@ -1,5 +1,6 @@
 ---
 title: "GCP: gcloud CLI"
+description: "Gcloud CLI is the command line interface of the Google Cloud Platform."
 format: html
 ---
 
