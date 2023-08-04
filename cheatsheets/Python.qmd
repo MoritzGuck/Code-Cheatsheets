@@ -1,5 +1,5 @@
 ---
-title: "Pythopn"
+title: "Python"
 description: "Python is one of the most popular programming languages."
 format: html
 ---
