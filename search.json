@@ -1,0 +1,177 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Cheatsheets",
+    "section": "",
+    "text": "This is a collection of my cheatsheets. Feel free to use them. If you want to edit them, to your own needs: Pleae visit my Github-Repo, give it a star and clone it."
+  },
+  {
+    "objectID": "cheatsheets/bash.html",
+    "href": "cheatsheets/bash.html",
+    "title": "Bash",
+    "section": "",
+    "text": "Running processes ordered by resource consumption\n\nhtop\n\nNumber of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag."
+  },
+  {
+    "objectID": "cheatsheets/bash.html#files",
+    "href": "cheatsheets/bash.html#files",
+    "title": "Bash",
+    "section": "",
+    "text": "Running processes ordered by resource consumption\n\nhtop\n\nNumber of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag."
+  },
+  {
+    "objectID": "cheatsheets/bash.html#processes",
+    "href": "cheatsheets/bash.html#processes",
+    "title": "Bash",
+    "section": "Processes",
+    "text": "Processes\n\nList running processes\n\nhtop\n\n\n\nTo kill process: k\nTo order processes by memory consumption: type Ctrl-M\n\n\nKill process\n\nkill -9 [process-PID]"
+  },
+  {
+    "objectID": "cheatsheets/gcloud.html",
+    "href": "cheatsheets/gcloud.html",
+    "title": "GCP: gcloud CLI",
+    "section": "",
+    "text": "SSH connection\n \n\n\n\n\nsetup new ssh connection to compute instance\ngcloud compute config-ssh"
+  },
+  {
+    "objectID": "cheatsheets/VSCode.html",
+    "href": "cheatsheets/VSCode.html",
+    "title": "Visual Studio Code",
+    "section": "",
+    "text": "Visual Studio Code\n\n\n\n\n\n\n\nWorkspace Commands\n \n\n\n\n\nCommand Palette\nctrl shift p\n\n\nSearch & open file\nctrl p\n\n\n\n\n\n\n\n\n\n\nEdit code\n \n\n\n\n\nOutdent line\nctrl ’\n\n\nToggle comment line\nctrl §\n\n\nMove line up or down\nalt ↑ / alt ↓\n\n\nCopy line up or down\nalt shift ↑ / alt shift ↓\n\n\n\n\n\n\n\n\n\n\nCode Navigation\n \n\n\n\n\nGo to line\nCtrl-G / \n\n\n\n\n\n\n\n\n\n\nCode selection\n \n\n\n\n\nSelect line\nCtrl-L\n\n\nExpand selection"
+  },
+  {
+    "objectID": "cheatsheets/azure_ml.html",
+    "href": "cheatsheets/azure_ml.html",
+    "title": "Azure ML",
+    "section": "",
+    "text": "Delete Experiments without jobs\n\nfrom azureml.core import Workspace, Experiment\naml_workspace = Workspace.from_config()\nexperiment_id = Experiment(aml_workspace, '&lt;experiment_name&gt;').id\nExperiment.delete(aml_workspace, experiment_id)"
+  },
+  {
+    "objectID": "cheatsheets/azure_ml.html#experiments",
+    "href": "cheatsheets/azure_ml.html#experiments",
+    "title": "Azure ML",
+    "section": "",
+    "text": "Delete Experiments without jobs\n\nfrom azureml.core import Workspace, Experiment\naml_workspace = Workspace.from_config()\nexperiment_id = Experiment(aml_workspace, '&lt;experiment_name&gt;').id\nExperiment.delete(aml_workspace, experiment_id)"
+  },
+  {
+    "objectID": "cheatsheets/git.html",
+    "href": "cheatsheets/git.html",
+    "title": "Git",
+    "section": "",
+    "text": "Set username (for your commits)\n\ngit config --global user.name \"myname\"\n\nSet email (for your commits)\n\ngit config --global user.email \"my@email.com\""
+  },
+  {
+    "objectID": "cheatsheets/git.html#configuration",
+    "href": "cheatsheets/git.html#configuration",
+    "title": "Git",
+    "section": "",
+    "text": "Set username (for your commits)\n\ngit config --global user.name \"myname\"\n\nSet email (for your commits)\n\ngit config --global user.email \"my@email.com\""
+  },
+  {
+    "objectID": "cheatsheets/git.html#new-repositories",
+    "href": "cheatsheets/git.html#new-repositories",
+    "title": "Git",
+    "section": "New repositories",
+    "text": "New repositories\n\nDownload git repo from server\n\ngit clone url.com"
+  },
+  {
+    "objectID": "cheatsheets/git.html#managing-changes",
+    "href": "cheatsheets/git.html#managing-changes",
+    "title": "Git",
+    "section": "Managing changes",
+    "text": "Managing changes\n\n\nGet changes from remote repository\n\ngit fetch\n\n\n\nCheck differences to branch you want merge into yours\n\ngit diff feature1..dev\n\n\n\nMerge changes from remote branch into your branch\n\ngit merge origin master\n\n\n\nCheck what files are(n’t) staged for commit\n\ngit status\n\n\n\nStage all files that are tracked (not in .gitignore)\n\ngit add .\n\nIf necessary: Unstage all files (or a specific file) that are staged\n\n git reset [specific-file]\n\n\n\nCommit all staged files (add to versioning history)\n\ngit commit -m \"[ticket-id + what you changed]\"\n\n\n\nLoad commits into remote git repository\n\ngit push"
+  },
+  {
+    "objectID": "cheatsheets/git.html#pull-changes-into-devtestmaster-branch",
+    "href": "cheatsheets/git.html#pull-changes-into-devtestmaster-branch",
+    "title": "Git",
+    "section": "Pull changes into dev/test/master branch",
+    "text": "Pull changes into dev/test/master branch\n\nPull changes into dev branch (and add your changes at the end)\n\ngit fetch\ngit checkout dev\ngit pull --rebase feature1branch \n\nPull only specific commits into your branch\n\ngit cherry-pick [commit-SHA]"
+  },
+  {
+    "objectID": "cheatsheets/git.html#undo-and-rollback",
+    "href": "cheatsheets/git.html#undo-and-rollback",
+    "title": "Git",
+    "section": "Undo and Rollback",
+    "text": "Undo and Rollback\n\nRollback the last commit\n\ngit reset head~1\n\nRollback to a specific commit\n\ngit reset [commit-SHA]\nSince you are now several commits behind the remote, you have to force push the changes: git push -f origin [myBranchyBranch].\n\n\nTo create a new commit to undo earlier commits, use git revert.\n\nTravel back to a specific commit\n\ngit checkout [commit-SHA]\n\nDelete sensitive data from history:\n\ndocs.github.com"
+  },
+  {
+    "objectID": "cheatsheets/git.html#branches",
+    "href": "cheatsheets/git.html#branches",
+    "title": "Git",
+    "section": "Branches",
+    "text": "Branches\n\nList all branches and show which one you are on\n\ngit branch -a\n\nCreate new branch and check it out\n\ngit checkout -b [branch-name]\n\nChange to a specific branch\n\ngit checkout [specific-branch]\n\nDelete a specific branch\n\ngit branch -d [specific-branch]\n\nRename the current branch\n\ngit branch -m myNewBranch"
+  },
+  {
+    "objectID": "cheatsheets/git.html#history",
+    "href": "cheatsheets/git.html#history",
+    "title": "Git",
+    "section": "History",
+    "text": "History\n\nShow commit history with branch dependencies\n\ngit log --graph --oneline"
+  },
+  {
+    "objectID": "cheatsheets/Quarto.html",
+    "href": "cheatsheets/Quarto.html",
+    "title": "Quarto",
+    "section": "",
+    "text": "Collapsable callout block\n\n::: {.callout-warning collapse=true appearance=\"simple\"}  \n### Title \n:::\n\nPanels\n\n::: {.panel-tabset}\n### Panel heading 1\n### Panel heading 2\n:::"
+  },
+  {
+    "objectID": "cheatsheets/Quarto.html#blocks",
+    "href": "cheatsheets/Quarto.html#blocks",
+    "title": "Quarto",
+    "section": "",
+    "text": "Collapsable callout block\n\n::: {.callout-warning collapse=true appearance=\"simple\"}  \n### Title \n:::\n\nPanels\n\n::: {.panel-tabset}\n### Panel heading 1\n### Panel heading 2\n:::"
+  },
+  {
+    "objectID": "cheatsheets/Quarto.html#tables",
+    "href": "cheatsheets/Quarto.html#tables",
+    "title": "Quarto",
+    "section": "Tables",
+    "text": "Tables\n\nMarkdown table\n\nHeader col 1 | header col 2 \n-----|-----\ncontent col 1 | content col 2"
+  },
+  {
+    "objectID": "cheatsheets/Quarto.html#formatting",
+    "href": "cheatsheets/Quarto.html#formatting",
+    "title": "Quarto",
+    "section": "Formatting",
+    "text": "Formatting\n\nFont-color\n\n&lt;font color=\"grey\"&gt;\n&lt;/font&gt;"
+  },
+  {
+    "objectID": "cheatsheets/Quarto.html#keyboard-shortcuts",
+    "href": "cheatsheets/Quarto.html#keyboard-shortcuts",
+    "title": "Quarto",
+    "section": "Keyboard shortcuts",
+    "text": "Keyboard shortcuts\n\nFor different operating systems\n\n```html\n\n\n\n\nsimple\n: ```html"
+  },
+  {
+    "objectID": "cheatsheets/Conda.html",
+    "href": "cheatsheets/Conda.html",
+    "title": "Conda",
+    "section": "",
+    "text": "Conda is a package and virtual environment manager. It resolves dependencies of your python and non-python packages."
+  },
+  {
+    "objectID": "cheatsheets/Conda.html#installation",
+    "href": "cheatsheets/Conda.html#installation",
+    "title": "Conda",
+    "section": "Installation",
+    "text": "Installation\nconda docs - Installation\n\n\n\n\n\n\nInstallation via UNIX CLI\n\n\n\n\n\nmkdir -p ~/miniconda3\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh\nbash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3\nrm -rf ~/miniconda3/miniconda.sh\n~/miniconda3/bin/conda init bash\n~/miniconda3/bin/conda init zsh\n\n\n\n\nList, create and delete environments\n\nList your existing environments\n\nconda env list\n\nCreate environment\n\nconda create --name env-name\n\nCreate a conda env from a file:\n\nconda env create -f environment.yml\n\nRemoving environment\n\nconda env remove -n env-name\n\n\nMore info: Intro to Conda virtual environments\n\n\nUse and manipulate environment\n\nUse environment\n\nconda activate env-name\n\nCheck and update package versions. After activating an env:\n\npython --version\n\n\nconda update python\n\nUpdate whole environment according to your yaml-file:\n\nconda env update -f my_env.yml\n\nSwitch back to base environment\n\nconda deactivate env-name\n\nInstall package: Latest version\n\nconda install pandas \n\nInstall package: Specific version\n\nconda install pandas==2.0.0\n\nInstall package: From different channel\n\nconda install pandas -c conda-forge -y\n\nList packages in environment\n\nconda list\n\nExport environment to yml\n\nconda env export &gt; environment.yml"
+  },
+  {
+    "objectID": "cheatsheets/R.html",
+    "href": "cheatsheets/R.html",
+    "title": "R",
+    "section": "",
+    "text": "Use R in console\n\nR\n\n\nType your code\nQuit R in console :bash q()\n\n\nGet help with functions and features\n\n?functionName"
+  },
+  {
+    "objectID": "cheatsheets/R.html#using-r",
+    "href": "cheatsheets/R.html#using-r",
+    "title": "R",
+    "section": "",
+    "text": "Use R in console\n\nR\n\n\nType your code\nQuit R in console :bash q()\n\n\nGet help with functions and features\n\n?functionName"
+  }
+]
