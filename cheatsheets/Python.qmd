@@ -1,0 +1,22 @@
+---
+title: "Pythopn"
+description: "Python is one of the most popular programming languages."
+format: html
+---
+
+
+## Design Patterns
+
+### Factory Pattern
+Use case
+: You have different classes that create objects that do the same kind of work (e.g. Logistic company has trucks, ships, planes that all transport goods).
+Explanation: [refactoring.guru](https://refactoring.guru/design-patterns/factory-method)
+
+What it does for you
+: Create objects and methods without having to specify the class or name of method (This is handled by factory object).
+
+Blueprint
+: 
+- [Github.com/ArjanCodes](https://github.com/ArjanCodes/2021-factory-pattern/blob/main/after.py)
+- [refactoring.guru](https://refactoring.guru/design-patterns/factory-method/python/example#example-0)
+
