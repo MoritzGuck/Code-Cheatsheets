@@ -144,7 +144,7 @@
     "href": "cheatsheets/Quarto.html#keyboard-shortcuts",
     "title": "Quarto",
     "section": "Keyboard shortcuts",
-    "text": "Keyboard shortcuts\n\nFor different operating systems\n\n```html\n\n\n\n\nsimple\n: ```html"
+    "text": "Keyboard shortcuts\n\nFormat keyboard keys for different operating systems\n\n\n\nsimple\n\n\n\nFormat arrow keys\n\n{{&lt;kbd ↑ &gt;}}\n{{&lt;kbd ↓ &gt;}}\n{{&lt;kbd ← &gt;}}\n{{&lt;kbd → &gt;}}\n{{&lt;kbd ↑ &gt;}} {{&lt;kbd ↓ &gt;}} {{&lt;kbd ← &gt;}} {{&lt;kbd → &gt;}}"
   },
   {
     "objectID": "cheatsheets/Conda.html",
@@ -165,13 +165,13 @@
     "href": "cheatsheets/R.html",
     "title": "R",
     "section": "",
-    "text": "Use R in console\n\nR\n\n\nType your code\nQuit R in console :bash q()\n\n\nGet help with functions and features\n\n?functionName"
+    "text": "Use R in console\n\nR\n\n\nType your code\n\nQuit R in console\n\nq()\n\n\n\n\nGet help with functions and features\n\n?functionName"
   },
   {
     "objectID": "cheatsheets/R.html#using-r",
     "href": "cheatsheets/R.html#using-r",
     "title": "R",
     "section": "",
-    "text": "Use R in console\n\nR\n\n\nType your code\nQuit R in console :bash q()\n\n\nGet help with functions and features\n\n?functionName"
+    "text": "Use R in console\n\nR\n\n\nType your code\n\nQuit R in console\n\nq()\n\n\n\n\nGet help with functions and features\n\n?functionName"
   }
 ]
