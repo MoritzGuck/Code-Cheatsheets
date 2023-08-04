@@ -137,7 +137,7 @@
     "href": "cheatsheets/Quarto.html#keyboard-shortcuts",
     "title": "Quarto",
     "section": "Keyboard shortcuts",
-    "text": "Keyboard shortcuts\n\nFormat keyboard keys for different operating systems\n\n\n\n\n    \n\nsimple\n\n\n\n\n    \n\nFormat arrow keys\n\n\n\n\n    {{&lt;kbd ↑ &gt;}}\n    {{&lt;kbd ↓ &gt;}}\n    {{&lt;kbd ← &gt;}}\n    {{&lt;kbd → &gt;}}\n{{&lt;kbd ↑ &gt;}} {{&lt;kbd ↓ &gt;}} {{&lt;kbd ← &gt;}} {{&lt;kbd → &gt;}}"
+    "text": "Keyboard shortcuts\n\nFormat keyboard keys for different operating systems\n\n\n\n\n{{&lt; kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L &gt;}}\n\n\nsimple\n\n\n\n\n{{&lt; kbd Shift-Ctrl-P &gt;}}\n\nFormat arrow keys\n\n\n\n\n{{&lt;kbd &uarr; &gt;}}\n{{&lt;kbd &darr; &gt;}}\n{{&lt;kbd &larr; &gt;}}\n{{&lt;kbd &rarr; &gt;}}\n↑ ↓ ← →"
   },
   {
     "objectID": "cheatsheets/bash.html",
