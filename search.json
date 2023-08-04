@@ -137,7 +137,7 @@
     "href": "cheatsheets/Quarto.html#keyboard-shortcuts",
     "title": "Quarto",
     "section": "Keyboard shortcuts",
-    "text": "Keyboard shortcuts\n\nFormat keyboard keys for different operating systems\n\n\n\nsimple\n\n\n\nFormat arrow keys\n\n{{&lt;kbd ↑ &gt;}}\n{{&lt;kbd ↓ &gt;}}\n{{&lt;kbd ← &gt;}}\n{{&lt;kbd → &gt;}}\n{{&lt;kbd ↑ &gt;}} {{&lt;kbd ↓ &gt;}} {{&lt;kbd ← &gt;}} {{&lt;kbd → &gt;}}"
+    "text": "Keyboard shortcuts\n\nFormat keyboard keys for different operating systems\n\n\n\nsimple\n\n\n\n\n\n\nFormat arrow keys\n\n\n\n\n{{&lt;kbd ↑ &gt;}}\n{{&lt;kbd ↓ &gt;}}\n{{&lt;kbd ← &gt;}}\n{{&lt;kbd → &gt;}}\n{{&lt;kbd ↑ &gt;}} {{&lt;kbd ↓ &gt;}} {{&lt;kbd ← &gt;}} {{&lt;kbd → &gt;}}"
   },
   {
     "objectID": "cheatsheets/bash.html",
