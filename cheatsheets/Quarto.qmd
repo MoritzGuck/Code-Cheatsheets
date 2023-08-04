@@ -39,15 +39,28 @@ Font-color
 
 ## Keyboard shortcuts
 
-For different operating systems
-: ```html
+Format keyboard keys for different operating systems
+: 
+```html
 {{< kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L >}}
 ```
 
 simple
-: ```html
+: 
+```html
 {{< kbd Shift-Ctrl-P >}}
 ```
 
-
+Format arrow keys
+: 
+```
+{{<kbd &uarr; >}}
+{{<kbd &darr; >}}
+{{<kbd &larr; >}}
+{{<kbd &rarr; >}}
+```
+{{<kbd &uarr; >}}
+{{<kbd &darr; >}}
+{{<kbd &larr; >}}
+{{<kbd &rarr; >}}
 
