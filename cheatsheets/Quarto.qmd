@@ -47,18 +47,21 @@ Format keyboard keys for different operating systems
 
 simple
 : 
+
 ```html
 {{< kbd Shift-Ctrl-P >}}
 ```
 
 Format arrow keys
 : 
+
 ```
 {{<kbd &uarr; >}}
 {{<kbd &darr; >}}
 {{<kbd &larr; >}}
 {{<kbd &rarr; >}}
 ```
+
 {{<kbd &uarr; >}}
 {{<kbd &darr; >}}
 {{<kbd &larr; >}}
