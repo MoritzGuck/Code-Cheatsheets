@@ -2,6 +2,7 @@
 title: "R"
 description: "R is a programming language that is specialized in statistical analysis."
 format: html
+from: markdown+emoji
 ---
 
 
@@ -66,7 +67,7 @@ x <- c(10, 4.5, 12, 5)
 ```
 **!**: If you integrate vectors in your vector ( `c(10, c(11, 12), 13)` ) it will get flattened (like `c(10, 11, 12, 13)` ).
 
-Elementwise adding, subtracting, deviding, multiplying vectors
+Elementwise adding, subtracting, deviding, multiplying, ... vectors
 : ```R
 x <- c(1, 2)
 y <- c(10, 11, 12, 13)
