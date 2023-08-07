@@ -48,6 +48,11 @@ Send all standard output to a file
 sink("output.txt")
 ```
 
+Print to standard output
+: ```R
+print("my Output")
+```
+
 ## Operations, numbers, vectors
 
 Assign values to a variable
@@ -60,4 +65,14 @@ Create a vector
 x <- c(10, 4.5, 12, 5)
 ```
 **!**: If you integrate vectors in your vector ( `c(10, c(11, 12), 13)` ) it will get flattened (like `c(10, 11, 12, 13)` ).
+
+Elementwise adding, subtracting, deviding, multiplying vectors
+: ```R
+x <- c(1, 2)
+y <- c(10, 11, 12, 13)
+z <- x + y
+```
+::: {.callout-warning}
+You can make elementwise operations with vectors of different lengths, as long as the longer one is a multiple of the shorter one. **The shorter vector is repeated**. :anguished:
+:::
 
