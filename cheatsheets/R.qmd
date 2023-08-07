@@ -25,3 +25,29 @@ Get help with functions and features
 ?functionName
 ```
 
+Find functions and features matching a term of interest
+: ```R
+??TermOfInterest
+``` 
+
+Execute R-script from terminal
+: ```bash
+Rscript myScript.R
+```
+
+## Import, Input, Output
+
+Importing other scripts
+: ```R
+source("otherScript.R")
+``` 
+Executes the contents of the script.
+
+Send all standard output to a file
+: ```R
+sink("output.txt")
+```
+
+## Operations, numbers, vectors
+
+
