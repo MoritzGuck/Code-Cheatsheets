@@ -113,6 +113,23 @@ x <- c(1,2,3)
 y <- rep(x, each = 2) # 1, 1, 2, 2, 3, 3
 ```
 
+### Selecting elements in vectors
+
+Selecting first 10 elements in vector
+: ```R
+x[1:10]
+```
+
+Selecting non-missing elements in vector
+: ```R
+x[!is.na(x)]
+```
+
+Selecting all elements, except the first 10
+: ```R
+x[-(1:5)]
+```
+
 Boolean operations     | 
 -----------------------|----
 create boolean vector  | `y <- c(10, 12, 15) < 13` # [True, True, False]
@@ -123,3 +140,22 @@ not                    | `!cond`
 
 If logical vectors are used in arithmetic operations, `False` becomes `0`, `True` becomes `1`.
 
+Missing values
+: `NA` or `NaN`
+**!**: Operations with missing values return missing values.
+
+Checking for missing values: `is.na(x)` or `is.nan(x)` (`NaN` = Not a number)
+
+Assign value only to elements where condition is true:
+```R 
+x[is.na(x)] <- 0
+```
+
+Characters           |
+---------------------|----
+Character string     | `"..."` 
+Escape character     | `\`
+New line             | `\n`
+Tab                  | `\t`
+
+Concatenate arguments 1 by 1 as characters: `paste(c("X", "Y", "Z"), 1:3, sep="_")`
