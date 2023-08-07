@@ -102,7 +102,7 @@
     "href": "cheatsheets/R.html#operations-numbers-vectors",
     "title": "R",
     "section": "Operations, numbers, vectors",
-    "text": "Operations, numbers, vectors"
+    "text": "Operations, numbers, vectors\n\nAssign values to a variable\n\nx &lt;- 4.5\n\nCreate a vector\n\nx &lt;- c(10, 4.5, 12, 5)\n!: If you integrate vectors in your vector ( c(10, c(11, 12), 13) ) it will get flattened (like c(10, 11, 12, 13) )."
   },
   {
     "objectID": "index.html",
