@@ -90,6 +90,8 @@ Mean of the elements      | `mean(x)`
 Variance of the elements  | `var(x)`
 Sort elements ascending   | `sort(x)`
 
+:  {tbl-colwidths="[50,50]"}
+
 
 **!**: If x is a n-by-p matrix, then `var(x)` will return a p-by-p covariance matrix.
 
@@ -138,6 +140,9 @@ and                    | `cond1 & cond2`
 or                     | `cond1 | cond2`
 not                    | `!cond`
 
+:  {tbl-colwidths="[50,50]"}
+
+
 If logical vectors are used in arithmetic operations, `False` becomes `0`, `True` becomes `1`.
 
 Missing values
@@ -157,6 +162,9 @@ Character string     | `"..."`
 Escape character     | `\`
 New line             | `\n`
 Tab                  | `\t`
+
+:  {tbl-colwidths="[50,50]"}
+
 
 Concatenate arguments 1 by 1 as characters: `paste(c("X", "Y", "Z"), 1:3, sep="_")`
 
