@@ -305,7 +305,19 @@ Executes the contents of the script.
 <dt>Create a vector</dt>
 <dd>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="fl">4.5</span>, <span class="dv">12</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<strong>!</strong>: If you integrate vectors in your vector ( <code>c(10, c(11, 12), 13)</code> ) it will get flattened (like <code>c(10, 11, 12, 13)</code> ).
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>!</strong>: If you integrate vectors in your vector ( <code>c(10, c(11, 12), 13)</code> ) it will get <strong>flattened</strong> (like <code>c(10, 11, 12, 13)</code> ).</p>
+</div>
+</div>
 </dd>
 <dt>Elementwise adding, subtracting, deviding, multiplying, … vectors</dt>
 <dd>
@@ -327,6 +339,99 @@ Warning
 </div>
 </dd>
 </dl>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Common operators</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>maximum, minimum</td>
+<td><code>max(x)</code> <code>min(x)</code></td>
+</tr>
+<tr class="even">
+<td>Vector of min and max</td>
+<td><code>range(x)</code></td>
+</tr>
+<tr class="odd">
+<td>Number of elements</td>
+<td><code>length(x)</code></td>
+</tr>
+<tr class="even">
+<td>Sum of the elements</td>
+<td><code>sum(x)</code></td>
+</tr>
+<tr class="odd">
+<td>Product of the elements</td>
+<td><code>prod(x)</code></td>
+</tr>
+<tr class="even">
+<td>Mean of the elements</td>
+<td><code>mean(x)</code></td>
+</tr>
+<tr class="odd">
+<td>Variance of the elements</td>
+<td><code>var(x)</code></td>
+</tr>
+<tr class="even">
+<td>Sort elements ascending</td>
+<td><code>sort(x)</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>!</strong>: If x is a n-by-p matrix, then <code>var(x)</code> will return a p-by-p covariance matrix.</p>
+<dl>
+<dt>Generate sequences</dt>
+<dd>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="co"># Integers from 1 to 10</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Or</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>, <span class="fl">0.5</span>) <span class="co"># 1.0, 1.5, 2.0, 2.5, ... </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<code>c(10, 1)</code> generates a descending sequence.
+</dd>
+</dl>
+<p>Repeat vector:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rep</span>(x, <span class="at">times =</span> <span class="dv">5</span>) <span class="co"># 1, 2, 3, 1, 2, 3, 1, ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Repeat elements in vector:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rep</span>(x, <span class="at">each =</span> <span class="dv">2</span>) <span class="co"># 1, 1, 2, 2, 3, 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<colgroup>
+<col style="width: 85%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Boolean operations</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>create boolean vector</td>
+<td><code>y &lt;- c(10, 12, 15) &lt; 13</code> # [True, True, False]</td>
+</tr>
+<tr class="even">
+<td>Boolean operators</td>
+<td><code>&lt;, &lt;=, &gt;, &gt;=, ==, !=</code></td>
+</tr>
+<tr class="odd">
+<td>and</td>
+<td><code>cond1 &amp; cond2</code></td>
+</tr>
+<tr class="even">
+<td>or</td>
+<td><code>cond1 | cond2</code></td>
+</tr>
+<tr class="odd">
+<td>not</td>
+<td><code>!cond</code></td>
+</tr>
+</tbody>
+</table>
+<p>If logical vectors are used in arithmetic operations, <code>False</code> becomes <code>0</code>, <code>True</code> becomes <code>1</code>.</p>
 
 
 </section>
