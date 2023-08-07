@@ -11,21 +11,21 @@ Workspace Commands       | 
 Command Palette          | {{< kbd win=Ctrl-shift-p mac=Command-Shift-P >}}
 Search & open file       | {{< kbd win=Ctrl-p mac=Command-P >}}
 Toggle Sidebar           | {{< kbd win=Ctrl-B mac=Command-B >}}
-Split editor             | {{< kbd mac=Shift-Ctrl-Option-Command-7 >}}
-Switch to editor split   | {{< kbd mac=Command-1 >}} / {{< kbd mac=Command-2 >}} / {{< kbd mac=Command-3 >}}
-Switch to tab            | {{< kbd mac=Ctrl-1 >}} / {{< kbd mac=Ctrl-2 >}}
-Close tab                | {{< kbd mac=Command-W >}}
-Reopen closed tab        | {{< kbd mac=Command-Shift-T >}}
+Split editor             | {{< kbd win=Ctrl-ä mac=Shift-Ctrl-Option-Command-7 >}}
+Switch to editor split   | {{< kbd win=Ctrl-1 mac=Command-1 >}} / {{< win=Ctrl-2 kbd mac=Command-2 >}} / {{< win=Ctrl-3 kbd mac=Command-3 >}}
+Switch to tab            | {{< kbd win=alt-1 mac=Ctrl-1 >}} / {{< kbd win=alt-2 mac=Ctrl-2 >}}
+Close tab                | {{< kbd win=Ctrl-W mac=Command-W >}}
+Reopen closed tab        | {{< kbd win=Ctrl-Shift-T mac=Command-Shift-T >}}
 
 :  {tbl-colwidths="[50,50]"}
 
 Switch between Views     |
 -------------------------|-----
-Show File explorer       | {{< kbd mac=Command-Shift-E >}}
-Show Debug View          | {{< kbd mac=Command-Shift-D >}}
-Show Find View           | {{< kbd mac=Command-Shift-F >}}
-Show Git View            | {{< kbd mac=Ctrl-Shift-G >}}
-
+Show File explorer       | {{< kbd win=Ctrl-Shift-E mac=Command-Shift-E >}}
+Show Debug View          | {{< kbd win=Ctrl-Shift-D mac=Command-Shift-D >}}
+Show Find View           | {{< kbd win=Ctrl-Shift-F mac=Command-Shift-F >}}
+Show Git View            | {{< kbd win=Ctrl-Shift-G mac=Ctrl-Shift-G >}} {{< kbd win=G>}}
+ 
 :  {tbl-colwidths="[50,50]"}
 
 Code Navigation                | 
@@ -33,22 +33,22 @@ Code Navigation                | 
 Go to line                     | {{< kbd Ctrl-G >}} / {{< kbd win=Ctrl-P Mac=Command-P >}} {{< kbd : >}}
 Go to beginning / end of line  | {{< kbd mac=Command&larr; win=Home >}} {{< kbd mac=Command&rarr; win=End >}}
 Go to beginning / end of word  | {{< kbd mac=Option&larr; win=Alt-&larr; >}} {{< kbd mac=Option&rarr; win=Alt-&rarr; >}}
-Go to matching bracket         | {{< kbd mac=Ctrl-Option-Command-7 >}}
-Go to symbol/function          | {{< kbd mac=Command-Shift-o >}}
+Go to matching bracket         | {{< kbd win=Ctrl-Shift-ä mac=Ctrl-Option-Command-7 >}}
+Go to symbol/function          | {{< kbd win=Ctrl-Shift-o mac=Command-Shift-o >}}
     
 :  {tbl-colwidths="[50,50]"}
 
 Code Editing             | 
 -------------------------|-----
-Copy line                | {{< kbd mac=Command-C  >}}
-Cut line                 | {{< kbd mac=Command-X  >}}
-Delete line              | {{< kbd mac=Command-Shift-K  >}}
+Copy line                | {{< kbd win=Ctrl-C mac=Command-C  >}}
+Cut line                 | {{< kbd win=Ctrl-X mac=Command-X  >}}
+Delete line              | {{< kbd win=Ctrl-Shift-K mac=Command-Shift-K  >}}
 Outdent line             | {{< kbd win=Ctrl-' mac=Ctrl-Option-Command-5  >}}
 Toggle comment line      | {{< kbd win=Ctrl-§ mac=Command-Shift-7 >}}
 Move line up or down     | {{< kbd Option&uarr; >}} / {{< kbd Option&darr; >}}
 Copy line up or down     | {{< kbd Option-shift&uarr; >}} / {{< kbd Option-Shift&darr; >}}
-Add cursor below/above   | {{< kbd mac=Option-Command&uarr; >}} / {{< kbd mac=Option-Command&darr; >}}
-Find and replace         | {{< kbd mac=Command-Option-F >}}
+Add cursor below/above   | {{< kbd win=Ctrl-Alt&uarr; mac=Option-Command&uarr; >}} / {{< win=Ctrl-Alt&darr; kbd mac=Option-Command&darr; >}}
+Find and replace         | {{< kbd win=Ctrl-H mac=Command-Option-F >}}
 
 :  {tbl-colwidths="[50,50]"}
 
