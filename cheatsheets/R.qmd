@@ -50,4 +50,14 @@ sink("output.txt")
 
 ## Operations, numbers, vectors
 
+Assign values to a variable
+: ```R
+x <- 4.5
+```
+
+Create a vector
+: ```R
+x <- c(10, 4.5, 12, 5)
+```
+**!**: If you integrate vectors in your vector ( `c(10, c(11, 12), 13)` ) it will get flattened (like `c(10, 11, 12, 13)` ).
 
