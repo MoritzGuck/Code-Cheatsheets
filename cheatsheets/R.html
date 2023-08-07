@@ -211,6 +211,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#using-r" id="toc-using-r" class="nav-link active" data-scroll-target="#using-r">Using R</a></li>
+  <li><a href="#import-input-output" id="toc-import-input-output" class="nav-link" data-scroll-target="#import-input-output">Import, Input, Output</a></li>
+  <li><a href="#operations-numbers-vectors" id="toc-operations-numbers-vectors" class="nav-link" data-scroll-target="#operations-numbers-vectors">Operations, numbers, vectors</a></li>
   </ul>
 </nav>
 </nav>
@@ -265,7 +267,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dd>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>?functionName</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </dd>
+<dt>Find functions and features matching a term of interest</dt>
+<dd>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>??TermOfInterest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Execute R-script from terminal</dt>
+<dd>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> myScript.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
 </dl>
+</section>
+<section id="import-input-output" class="level2">
+<h2 class="anchored" data-anchor-id="import-input-output">Import, Input, Output</h2>
+<dl>
+<dt>Importing other scripts</dt>
+<dd>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"otherScript.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+Executes the contents of the script.
+</dd>
+<dt>Send all standard output to a file</dt>
+<dd>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>(<span class="st">"output.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+</dl>
+</section>
+<section id="operations-numbers-vectors" class="level2">
+<h2 class="anchored" data-anchor-id="operations-numbers-vectors">Operations, numbers, vectors</h2>
 
 
 </section>

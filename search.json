@@ -81,14 +81,28 @@
     "href": "cheatsheets/R.html",
     "title": "R",
     "section": "",
-    "text": "Use R in console\n\nR\n\n\nType your code\n\nQuit R in console\n\nq()\n\n\n\n\nGet help with functions and features\n\n?functionName"
+    "text": "Use R in console\n\nR\n\n\nType your code\n\nQuit R in console\n\nq()\n\n\n\n\nGet help with functions and features\n\n?functionName\n\nFind functions and features matching a term of interest\n\n??TermOfInterest\n\nExecute R-script from terminal\n\nRscript myScript.R"
   },
   {
     "objectID": "cheatsheets/R.html#using-r",
     "href": "cheatsheets/R.html#using-r",
     "title": "R",
     "section": "",
-    "text": "Use R in console\n\nR\n\n\nType your code\n\nQuit R in console\n\nq()\n\n\n\n\nGet help with functions and features\n\n?functionName"
+    "text": "Use R in console\n\nR\n\n\nType your code\n\nQuit R in console\n\nq()\n\n\n\n\nGet help with functions and features\n\n?functionName\n\nFind functions and features matching a term of interest\n\n??TermOfInterest\n\nExecute R-script from terminal\n\nRscript myScript.R"
+  },
+  {
+    "objectID": "cheatsheets/R.html#import-input-output",
+    "href": "cheatsheets/R.html#import-input-output",
+    "title": "R",
+    "section": "Import, Input, Output",
+    "text": "Import, Input, Output\n\nImporting other scripts\n\nsource(\"otherScript.R\")\nExecutes the contents of the script.\n\nSend all standard output to a file\n\nsink(\"output.txt\")"
+  },
+  {
+    "objectID": "cheatsheets/R.html#operations-numbers-vectors",
+    "href": "cheatsheets/R.html#operations-numbers-vectors",
+    "title": "R",
+    "section": "Operations, numbers, vectors",
+    "text": "Operations, numbers, vectors"
   },
   {
     "objectID": "index.html",
