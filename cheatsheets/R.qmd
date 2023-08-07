@@ -65,7 +65,9 @@ Create a vector
 : ```R
 x <- c(10, 4.5, 12, 5)
 ```
-**!**: If you integrate vectors in your vector ( `c(10, c(11, 12), 13)` ) it will get flattened (like `c(10, 11, 12, 13)` ).
+::: {.callout-warning} 
+**!**: If you integrate vectors in your vector ( `c(10, c(11, 12), 13)` ) it will get **flattened** (like `c(10, 11, 12, 13)` ).
+:::
 
 Elementwise adding, subtracting, deviding, multiplying, ... vectors
 : ```R
@@ -76,4 +78,48 @@ z <- x + y
 ::: {.callout-warning}
 You can make elementwise operations with vectors of different lengths, as long as the longer one is a multiple of the shorter one. **The shorter vector is repeated**. :anguished:
 :::
+
+Common operators          |
+--------------------------|-----
+maximum, minimum          | `max(x)` `min(x)`
+Vector of min and max     | `range(x)`
+Number of elements        | `length(x)`
+Sum of the elements       | `sum(x)`
+Product of the elements   | `prod(x)`
+Mean of the elements      | `mean(x)`
+Variance of the elements  | `var(x)`
+Sort elements ascending   | `sort(x)`
+
+
+**!**: If x is a n-by-p matrix, then `var(x)` will return a p-by-p covariance matrix.
+
+Generate sequences
+: ```R
+x <- c(1:10) # Integers from 1 to 10
+# Or
+x <- seq(1,10, 0.5) # 1.0, 1.5, 2.0, 2.5, ... 
+```
+`c(10, 1)` generates a descending sequence.
+
+Repeat vector:
+```R
+x <- c(1,2,3)
+y <- rep(x, times = 5) # 1, 2, 3, 1, 2, 3, 1, ...
+```
+
+Repeat elements in vector:
+```R
+x <- c(1,2,3)
+y <- rep(x, each = 2) # 1, 1, 2, 2, 3, 3
+```
+
+Boolean operations     | 
+-----------------------|----
+create boolean vector  | `y <- c(10, 12, 15) < 13` # [True, True, False]
+Boolean operators      | `<, <=, >, >=, ==, !=`
+and                    | `cond1 & cond2`
+or                     | `cond1 | cond2`
+not                    | `!cond`
+
+If logical vectors are used in arithmetic operations, `False` becomes `0`, `True` becomes `1`.
 
