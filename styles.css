@@ -1,4 +1,6 @@
 kbd {
-  border-radius: 2px;
-  padding: 2px;
+  border-radius: 2px; 
+  padding: 4px; 
+  box-shadow: 1px 1px 2px;
 }/* css styles */
+
