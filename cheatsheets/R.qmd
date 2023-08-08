@@ -1,5 +1,5 @@
 ---
-title: "R"
+title: "R language"
 description: "R is a programming language that is specialized in statistical analysis."
 format: html
 from: markdown+emoji
