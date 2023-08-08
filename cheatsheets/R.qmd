@@ -219,7 +219,7 @@ Boolean operators      | `<, <=, >, >=, ==, !=`
 and                    | `cond1 & cond2`
 or                     | `cond1 | cond2`
 not                    | `!cond`
-element in vector?     | 2 %in% c(1,2,3,4)
+element in vector?     | `2 %in% c(1,2,3,4)`
 
 :  {tbl-colwidths="[50,50]"}
 
@@ -243,9 +243,9 @@ Character string           | `"..."`
 Escape character           | `\`
 New line                   | `\n`
 Tab                        | `\t`
-length of string           | nchar(str)
-Is seq of chars in string? | grepl("Hello")
-combine two strings        | paste("Hello", "world")
+length of string           | `nchar(str)`
+Is seq of chars in string? | `grepl("Hello")`
+combine two strings        | `paste("Hello", "world")`
 
 :  {tbl-colwidths="[50,50]"}
 
@@ -257,8 +257,8 @@ Absolute value         | `abs(x)`
 round up to next int   | `ceiling(x)`
 round down to next int | `floor(x)`
 Exponent               | `^`
-Modulus / remainder    | `10 %% 3` # 1
-Integer division       | `10 %/% 3` # 3
+Modulus / remainder    | `10 %% 3 # 1`
+Integer division       | `10 %/% 3 # 3`
 
 
 
@@ -279,7 +279,7 @@ y <- as.complex(x)
 Get type of variable
 : ```R
 x <- 10.5
-class(x) # numberic
+class(x) # numeric
 ```
 
 
