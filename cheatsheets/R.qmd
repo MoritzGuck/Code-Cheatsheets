@@ -5,8 +5,9 @@ format: html
 from: markdown+emoji
 ---
 
+### Basics
 
-## Using R
+### Using R
 
 1. Use R in console
 : ```bash
@@ -36,7 +37,8 @@ Execute R-script from terminal
 Rscript myScript.R
 ```
 
-## Import, Input, Output
+
+### Import, Input, Output
 
 Importing other scripts
 : ```R
@@ -54,12 +56,22 @@ Print to standard output
 print("my Output")
 ```
 
-## Operations, numbers, vectors
+### Operations, numbers, vectors
 
 Assign values to a variable
 : ```R
 x <- 4.5
 ```
+
+Assigning value to multiple variables also possible:
+```R
+x <- y <- z <- 4.5
+```
+
+Assign / change value to variable in global scope (eventhough being in function)
+```R
+x <<- "global value"
+``` 
 
 Create a vector
 : ```R
@@ -79,16 +91,17 @@ z <- x + y
 You can make elementwise operations with vectors of different lengths, as long as the longer one is a multiple of the shorter one. **The shorter vector is repeated**. :anguished:
 :::
 
-Common operators          |
---------------------------|-----
-maximum, minimum          | `max(x)` `min(x)`
-Vector of min and max     | `range(x)`
-Number of elements        | `length(x)`
-Sum of the elements       | `sum(x)`
-Product of the elements   | `prod(x)`
-Mean of the elements      | `mean(x)`
-Variance of the elements  | `var(x)`
-Sort elements ascending   | `sort(x)`
+Common operators on vectors |
+----------------------------|-----
+maximum, minimum            | `max(x)` `min(x)`
+Vector of min and max       | `range(x)`
+Number of elements          | `length(x)`
+Sum of the elements         | `sum(x)`
+Product of the elements     | `prod(x)`
+Mean of the elements        | `mean(x)`
+Variance of the elements    | `var(x)`
+Sort elements ascending     | `sort(x)`
+Matrix multiplicatoin       | `mat1 %*% mat2`
 
 :  {tbl-colwidths="[50,50]"}
 
@@ -117,6 +130,11 @@ y <- rep(x, each = 2) # 1, 1, 2, 2, 3, 3
 
 ### Selecting elements in vectors
 
+Select first element in sequence
+: ```R
+x[1] # ! not x[0] !
+``` 
+
 Selecting first 10 elements in vector
 : ```R
 x[1:10]
@@ -132,6 +150,30 @@ Selecting all elements, except the first 10
 x[-(1:5)]
 ```
 
+Append element
+: ```R
+append(fruits, "apple")
+```
+
+Insert element
+: ```R
+append(fruits, "apple", after = 1)
+```
+
+Delete element
+: ```R
+fruits <- fruits[-1] # deletes first element
+```
+
+Create matrix
+: ```R
+matrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)
+#      [,1] [,2]
+# [1,]    1    4
+# [2,]    2    5
+# [3,]    3    6
+```
+
 Boolean operations     | 
 -----------------------|----
 create boolean vector  | `y <- c(10, 12, 15) < 13 # [True, True, False]`
@@ -139,6 +181,7 @@ Boolean operators      | `<, <=, >, >=, ==, !=`
 and                    | `cond1 & cond2`
 or                     | `cond1 | cond2`
 not                    | `!cond`
+element in vector?     | 2 %in% c(1,2,3,4)
 
 :  {tbl-colwidths="[50,50]"}
 
@@ -156,16 +199,94 @@ Assign value only to elements where condition is true:
 x[is.na(x)] <- 0
 ```
 
-Characters           |
----------------------|----
-Character string     | `"..."` 
-Escape character     | `\`
-New line             | `\n`
-Tab                  | `\t`
+Characters                 |
+---------------------------|----
+Character string           | `"..."` 
+Escape character           | `\`
+New line                   | `\n`
+Tab                        | `\t`
+length of string           | nchar(str)
+Is seq of chars in string? | grepl("Hello")
+combine two strings        | paste("Hello", "world")
 
 :  {tbl-colwidths="[50,50]"}
 
+Concatenate arguments 1 by 1 as characters: `paste(c("X", "Y", "Z"), 1:3, sep="_")`
 
-Concatenate arguments 1 by 1 as characters: `paste(c("X", "Y", "Z"), 1:3, sep="_")` or `paste("Hello", "World")`
+Operations on number   | 
+-----------------------|----
+Absolute value         | `abs(x)`
+round up to next int   | `ceiling(x)`
+round down to next int | `floor(x)`
+Exponent               | `^`
+Modulus / remainder    | `10 %% 3` # 1
+Integer division       | `10 %/% 3` # 3
 
 
+
+### Types 
+
+Force integer creation
+: ```R
+x <- 100L # must end with L
+```
+
+Convert types
+: ```R
+a <- as.numeric(b)
+n <- as.integer(m)
+y <- as.complex(x)
+```
+
+Get type of variable
+: ```R
+x <- 10.5
+class(x) # numberic
+```
+
+
+### Control structures
+
+If ... else ...
+: ```R
+if (b > a) {
+  ...
+} else if {
+  ... 
+} else {
+  ... 
+} 
+```
+
+While loops
+: ```R
+while(i < n+1){
+  i <- i+1
+  if (x < 0) {
+    break # exit loop prematurely
+  } else if (x == 0) {
+    next # skip to next iteration
+  }
+  ...
+}
+```
+
+For loops
+: ```R
+fruits <- c("banana", "apples", "cucumbers")
+for (fruit in fruits) {
+    print(fruit)
+}
+```
+
+### Functions 
+
+Create function
+: ```R 
+my_func <- function(first_name, last_name = "") {
+  print(paste("Hello", first_name, last_name))
+  return(paste(first_name, last_name))
+}
+```
+
+Call function: ```R my_func("gustav") ```
