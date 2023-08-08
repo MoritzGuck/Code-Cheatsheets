@@ -69,14 +69,16 @@ List running processes
 : ```bash
 htop
 ```
+Commands                                      | 
+----------------------------------------------|---
+Help                                          | {{< kbd h >}}
+Kill process                                  | <kbd>k</kbd>
+Order processes by memory consumption         | {{< kbd Shift-M >}}
+Filter processes by user                      | {{< kbd U >}}
+Display files used by the selected process    | {{< kbd L >}}
+Display user threads                          | {{< kbd Shift-H >}}
 
-- Help: {{ kbd h >}}
-- Kill process: <kbd>k</kbd>
-- Order processes by memory consumption:  {{< kbd Shift-M >}}
-- Filter processes by user: {{< kbd U >}}
-- Display files used by the selected process: {{< kbd L >}}
-- Display user threads: {{< kbd Shift-H >}}
-
+:  {tbl-colwidths="[50,50]"}
 Kill process
 : ```bash
 kill -9 [process-PID]
