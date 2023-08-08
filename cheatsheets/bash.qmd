@@ -79,6 +79,7 @@ Display files used by the selected process    | {{< kbd L >}}
 Display user threads                          | {{< kbd Shift-H >}}
 
 :  {tbl-colwidths="[50,50]"}
+
 Kill process
 : ```bash
 kill -9 [process-PID]
