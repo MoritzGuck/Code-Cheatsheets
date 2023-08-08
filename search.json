@@ -25,21 +25,21 @@
     "href": "cheatsheets/bash.html",
     "title": "Bash",
     "section": "",
-    "text": "Running processes ordered by resource consumption\n\nhtop\n\nNumber of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag."
+    "text": "Number of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag."
   },
   {
     "objectID": "cheatsheets/bash.html#files",
     "href": "cheatsheets/bash.html#files",
     "title": "Bash",
     "section": "",
-    "text": "Running processes ordered by resource consumption\n\nhtop\n\nNumber of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag."
+    "text": "Number of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag."
   },
   {
     "objectID": "cheatsheets/bash.html#processes",
     "href": "cheatsheets/bash.html#processes",
     "title": "Bash",
     "section": "Processes",
-    "text": "Processes\n\nList running processes\n\nhtop\n\n\n\nTo kill process: k\nTo order processes by memory consumption: type Ctrl-M\n\n\nKill process\n\nkill -9 [process-PID]"
+    "text": "Processes\n\nList running processes\n\nhtop\n\n\n\nHelp: {{ kbd h &gt;}}\nKill process: k\nOrder processes by memory consumption: Shift-M\nFilter processes by user: U\nDisplay files used by the selected process: L\nDisplay user threads: Shift-H\n\n\nKill process\n\nkill -9 [process-PID]"
   },
   {
     "objectID": "cheatsheets/Quarto.html",
