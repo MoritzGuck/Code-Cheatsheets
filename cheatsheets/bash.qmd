@@ -69,6 +69,7 @@ List running processes
 : ```bash
 htop
 ```
+
 Commands                                      | 
 ----------------------------------------------|---
 Help                                          | {{< kbd h >}}
