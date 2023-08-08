@@ -102,6 +102,10 @@ Mean of the elements        | `mean(x)`
 Variance of the elements    | `var(x)`
 Sort elements ascending     | `sort(x)`
 Matrix multiplicatoin       | `mat1 %*% mat2`
+Dimension of matrix         | `dim(mat1)`
+Number of rows              | `nrow(mat1)`
+Number of cols              | `ncol(mat2)`
+
 
 :  {tbl-colwidths="[50,50]"}
 
@@ -172,6 +176,40 @@ matrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)
 # [1,]    1    4
 # [2,]    2    5
 # [3,]    3    6
+```
+
+Access matrix element
+: ```R
+my_matrix[1,1]
+```
+
+Access matrix column(s)
+: ```R
+my_matrix[,2]
+my_matrix[, c(1,2)]
+```
+
+Add rows and columns
+: ```R
+my_matrix <- rbind(my_matrix, c(7,8)) # add row
+my_matrix <- cbind(my_matrix, c(10, 11, 12, 13)) # add column
+```
+You can also use these functions to concatenate matrices
+
+Create array
+: ```R
+array(c(1:8), dim = c(2,2,2))
+# , , 1
+#
+#      [,1] [,2]
+# [1,]    1    3
+# [2,]    2    4
+# 
+# , , 2
+# 
+#      [,1] [,2]
+# [1,]    5    7
+# [2,]    6    8
 ```
 
 Boolean operations     | 
