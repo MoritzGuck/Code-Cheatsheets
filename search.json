@@ -39,7 +39,7 @@
     "href": "cheatsheets/bash.html#processes",
     "title": "Bash",
     "section": "Processes",
-    "text": "Processes\n\nList running processes\n\nhtop\n\n\n\nCommands\n\n\n\n\n\nHelp\nh\n\n\nKill process\nk\n\n\nOrder processes by memory consumption\nShift-M\n\n\nFilter processes by user\nU\n\n\nDisplay files used by the selected process\nL\n\n\nDisplay user threads\nShift-H\n\n\n\n\n\n{tbl-colwidths=“[50,50]”}\n\nKill process\n\nkill -9 [process-PID]"
+    "text": "Processes\n\nList running processes\n\nhtop\n\n\n\n\n\n\n\n\n\nCommands\n\n\n\n\n\nHelp\nh\n\n\nKill process\nk\n\n\nOrder processes by memory consumption\nShift-M\n\n\nFilter processes by user\nU\n\n\nDisplay files used by the selected process\nL\n\n\nDisplay user threads\nShift-H\n\n\n\n\nKill process\n\nkill -9 [process-PID]"
   },
   {
     "objectID": "cheatsheets/Quarto.html",
