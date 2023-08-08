@@ -10,11 +10,6 @@ format: html
 
 ### List files
 
-Running processes ordered by resource consumption
-: ```bash
-htop
-```
-
 Number of files in a provided directory
 : ```bash
 ls [myDirectory] | wc -l 
@@ -75,8 +70,12 @@ List running processes
 htop
 ```
 
-- To kill process: <kbd>k</kbd>
-- To order processes by memory consumption: type {{< kbd Ctrl-M >}}
+- Help: {{ kbd h >}}
+- Kill process: <kbd>k</kbd>
+- Order processes by memory consumption:  {{< kbd Shift-M >}}
+- Filter processes by user: {{< kbd U >}}
+- Display files used by the selected process: {{< kbd L >}}
+- Display user threads: {{< kbd Shift-H >}}
 
 Kill process
 : ```bash
