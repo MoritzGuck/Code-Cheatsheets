@@ -85,3 +85,9 @@ Kill process
 : ```bash
 kill -9 [process-PID]
 ```
+
+Info on resource usage & processes on NVidia graphic cards
+: ```bash
+nvidia-smi
+```
+
