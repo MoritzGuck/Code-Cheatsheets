@@ -42,7 +42,7 @@ Create a conda env from a file:
 conda env create -f environment.yml
 ```
 
-Removing environment
+Removing / Deleting environment
 : ```bash
 conda env remove -n env-name
 ```
