@@ -2,12 +2,12 @@
   {
     "listing": "/index.html",
     "items": [
-      "/cheatsheets/azure_ml.html",
-      "/cheatsheets/bash.html",
-      "/cheatsheets/Conda.html",
-      "/cheatsheets/gcloud.html",
-      "/cheatsheets/git.html",
-      "/cheatsheets/pip.html",
+      "/cheatsheets/Cloud/azure_ml.html",
+      "/cheatsheets/CLI Tools/bash.html",
+      "/cheatsheets/CLI Tools/Conda.html",
+      "/cheatsheets/Cloud/gcloud.html",
+      "/cheatsheets/CLI Tools/git.html",
+      "/cheatsheets/CLI Tools/pip.html",
       "/cheatsheets/Languages/Python.html",
       "/cheatsheets/Quarto.html",
       "/cheatsheets/Languages/R.html",
