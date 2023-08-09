@@ -78,3 +78,7 @@ Istall packages in your environment
 pipenv install -r requirements.txt
 ```
 
+Run script in your environment
+: ```bash
+pipenv run python python_script.py
+```
