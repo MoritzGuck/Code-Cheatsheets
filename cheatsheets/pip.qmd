@@ -64,7 +64,17 @@ Install packages from local wheels directory
 pip install --no-index --find-links=/local/wheels -r requirements.txt
 ```
 
+### Pipenv
 
+Pipenv is the environment manager for pip.
 
+Install pipenv
+: ```bash
+pip install --user --upgrade pipenv
+```
 
+Istall packages in your environment
+: ```bash
+pipenv install -r requirements.txt
+```
 
