@@ -217,6 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#wheels" id="toc-wheels" class="nav-link active" data-scroll-target="#wheels">Wheels</a></li>
+  <li><a href="#pipenv" id="toc-pipenv" class="nav-link" data-scroll-target="#pipenv">Pipenv</a></li>
   </ul>
 </nav>
 </nav>
@@ -300,6 +301,20 @@ Usually pip is installed with python automatically.
 <dt>Install packages from local wheels directory</dt>
 <dd>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--no-index</span> <span class="at">--find-links</span><span class="op">=</span>/local/wheels <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+</dl>
+</section>
+<section id="pipenv" class="level3">
+<h3 class="anchored" data-anchor-id="pipenv">Pipenv</h3>
+<p>Pipenv is the environment manager for pip.</p>
+<dl>
+<dt>Install pipenv</dt>
+<dd>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--user</span> <span class="at">--upgrade</span> pipenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Istall packages in your environment</dt>
+<dd>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pipenv</span> install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </dd>
 </dl>
 
