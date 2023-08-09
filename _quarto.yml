@@ -21,7 +21,6 @@ format:
     code-summary: "Show the code"
     code-overflow: wrap
     linestretch: 1.0
-    css: styles.css
 
 
 
