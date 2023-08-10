@@ -8,6 +8,8 @@ website:
     tools:
       - icon: github
         href: https://github.com/MoritzGuck/Code-Cheatsheets
+    collapse-level: 3
+
 
 format:
   html:
@@ -21,6 +23,7 @@ format:
     code-summary: "Show the code"
     code-overflow: wrap
     linestretch: 1.0
-
+    link-external-icon: true
+    link-external-newwindow: true
 
 
