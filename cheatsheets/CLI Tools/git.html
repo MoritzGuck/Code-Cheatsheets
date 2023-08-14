@@ -386,9 +386,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dt>Rollback to a specific commit</dt>
 <dd>
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="pp">[</span><span class="ss">commit</span><span class="pp">-</span><span class="ss">SHA</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-Since you are now several commits behind the remote, you have to force push the changes: <code>git push -f origin [myBranchyBranch]</code>.
+You can still see the changes from your HEAD in your files. To make the reset materialize, you need to discard these unstaged changes in git.
 </dd>
 </dl>
+<p>Since you are now several commits behind the remote, you have to force push the changes: <code>git push -f origin [myBranchyBranch]</code>.</p>
 <p>To create a new commit to undo earlier commits, use <code>git revert</code>.</p>
 <dl>
 <dt>Travel back to a specific commit</dt>

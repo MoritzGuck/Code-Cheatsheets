@@ -81,7 +81,7 @@
     "href": "cheatsheets/CLI Tools/git.html#undo-and-rollback",
     "title": "Git",
     "section": "Undo and Rollback",
-    "text": "Undo and Rollback\n\nRollback the last commit\n\ngit reset head~1\n\nRollback to a specific commit\n\ngit reset [commit-SHA]\nSince you are now several commits behind the remote, you have to force push the changes: git push -f origin [myBranchyBranch].\n\n\nTo create a new commit to undo earlier commits, use git revert.\n\nTravel back to a specific commit\n\ngit checkout [commit-SHA]\n\nDelete sensitive data from history:\n\ndocs.github.com"
+    "text": "Undo and Rollback\n\nRollback the last commit\n\ngit reset head~1\n\nRollback to a specific commit\n\ngit reset [commit-SHA]\nYou can still see the changes from your HEAD in your files. To make the reset materialize, you need to discard these unstaged changes in git.\n\n\nSince you are now several commits behind the remote, you have to force push the changes: git push -f origin [myBranchyBranch].\nTo create a new commit to undo earlier commits, use git revert.\n\nTravel back to a specific commit\n\ngit checkout [commit-SHA]\n\nDelete sensitive data from history:\n\ndocs.github.com"
   },
   {
     "objectID": "cheatsheets/CLI Tools/git.html#branches",
