@@ -92,6 +92,8 @@ Rollback to a specific commit
 : ```bash
 git reset [commit-SHA]
 ```
+You can still see the changes from your HEAD in your files. To make the reset materialize, you need to discard these unstaged changes in git. 
+
 Since you are now several commits behind the remote, you have to force push the changes: `git push -f origin [myBranchyBranch]`.
 
 To create a new commit to undo earlier commits, use `git revert`.
