@@ -25,5 +25,7 @@ format:
     linestretch: 1.0
     link-external-icon: true
     link-external-newwindow: true
+    link-external-filter: ^(?:http:|https:)\/\/moritzguck\.github\.io
+
 
 
