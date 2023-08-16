@@ -22,20 +22,13 @@ R
 q()
 ```
 
-Get help with functions and features
-: ```R
-?functionName       # Help section on function
-??TermOfInterest    # Find functions and features matching a term of interest
-args(functionName)  # List arguments that the function accepts
-``` 
-
 Get help with functions and features      | 
 ------------------------------------------|------
-Help section on function                  | ?functionName 
-Find functions / features matching a term | ??TermOfInterest
-List arguments that the function accepts  | args(functionName)
+Help section on function                  | `?functionName`
+Find functions / features matching a term | `??TermOfInterest`
+List arguments that the function accepts  | `args(functionName)`
 
-:  {.borderless .sm tbl-colwidths="[50,50]" }
+:  {.borderless tbl-colwidths="[50,50]" }
 
 Execute R-script from terminal
 : ```bash
@@ -45,11 +38,13 @@ Rscript myScript.R
 
 ### File system, Import, Input, Output
 
-Use file system
-: ```R
-getwd()   # print working directory
-dir()     # List files in working directory
-```
+Use file system                           | 
+------------------------------------------|------
+print working directory                   | `getwd()`
+List files in working directory           | `dir()`
+Create directory                          | `dir.create("path/to/dir")`
+
+:  {.borderless tbl-colwidths="[50,50]" }
 
 Importing other scripts
 : ```R
