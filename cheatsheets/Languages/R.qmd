@@ -24,12 +24,9 @@ q()
 
 Get help with functions and features
 : ```R
-?functionName
-```
-
-Find functions and features matching a term of interest
-: ```R
-??TermOfInterest
+?functionName       # Help section on function
+??TermOfInterest    # Find functions and features matching a term of interest
+args(functionName)  # List arguments that the function accepts
 ``` 
 
 Execute R-script from terminal
@@ -38,7 +35,13 @@ Rscript myScript.R
 ```
 
 
-### Import, Input, Output
+### File system, Import, Input, Output
+
+Use file system
+: ```R
+getwd()   # print working directory
+dir()     # List files in working directory
+```
 
 Importing other scripts
 : ```R
@@ -61,17 +64,9 @@ print("my Output")
 Assign values to a variable
 : ```R
 x <- 4.5
+x <- y <- z <- 4.5     # Assign to multiple variables
+x <<- "global value"   # Assign/change value of variable in global scope 
 ```
-
-Assigning value to multiple variables also possible:
-```R
-x <- y <- z <- 4.5
-```
-
-Assign / change value to variable in global scope (eventhough being in function)
-```R
-x <<- "global value"
-``` 
 
 Create a vector
 : ```R
