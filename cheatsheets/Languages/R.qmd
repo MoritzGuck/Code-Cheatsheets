@@ -28,7 +28,7 @@ Help section on function                  | `?functionName`
 Find functions / features matching a term | `??TermOfInterest`
 List arguments that the function accepts  | `args(functionName)`
 
-:  {.borderless tbl-colwidths="[50,50]" }
+:  {tbl-colwidths="[50,50]" }
 
 Execute R-script from terminal
 : ```bash
@@ -41,10 +41,16 @@ Rscript myScript.R
 Use file system                           | 
 ------------------------------------------|------
 print working directory                   | `getwd()`
+Change working directory                  | `setwd("path/to/dir")`
 List files in working directory           | `dir()`
 Create directory                          | `dir.create("path/to/dir")`
+Create file                               | `file.create("myfile.R")`
+Check if file exists                      | `file.exists("myfile.R")`
+Get info on file (size, time of creation) | `file.info("mytest.R")`
+Rename file                               | 
 
-:  {.borderless tbl-colwidths="[50,50]" }
+
+:  {tbl-colwidths="[50,50]" }
 
 Importing other scripts
 : ```R
