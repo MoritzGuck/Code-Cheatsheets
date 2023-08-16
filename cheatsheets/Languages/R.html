@@ -310,8 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl></li>
 </ol>
-<table class="table-borderless table">
-<caption></caption>
+<table class="table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -346,8 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="file-system-import-input-output" class="level3">
 <h3 class="anchored" data-anchor-id="file-system-import-input-output">File system, Import, Input, Output</h3>
-<table class="table-borderless table">
-<caption></caption>
+<table class="table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -364,12 +362,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><code>getwd()</code></td>
 </tr>
 <tr class="even">
+<td>Change working directory</td>
+<td><code>setwd("path/to/dir")</code></td>
+</tr>
+<tr class="odd">
 <td>List files in working directory</td>
 <td><code>dir()</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Create directory</td>
 <td><code>dir.create("path/to/dir")</code></td>
+</tr>
+<tr class="odd">
+<td>Create file</td>
+<td><code>file.create("myfile.R")</code></td>
+</tr>
+<tr class="even">
+<td>Check if file exists</td>
+<td><code>file.exists("myfile.R")</code></td>
+</tr>
+<tr class="odd">
+<td>Get info on file (size, time of creation)</td>
+<td><code>file.info("mytest.R")</code></td>
+</tr>
+<tr class="even">
+<td>Rename file</td>
+<td></td>
 </tr>
 </tbody>
 </table>
