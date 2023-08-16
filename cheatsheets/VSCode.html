@@ -32,6 +32,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../assets/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -65,6 +67,22 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -339,11 +357,11 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>Go to beginning / end of line</td>
-<td><kbd data-mac="Command←" data-windows="Home"></kbd> <kbd data-mac="Command→" data-windows="End"></kbd></td>
+<td><kbd data-windows="Home" data-mac="Command←"></kbd> <kbd data-windows="End" data-mac="Command→"></kbd></td>
 </tr>
 <tr class="odd">
 <td>Go to beginning / end of word</td>
-<td><kbd data-mac="Option←" data-windows="Alt-←"></kbd> <kbd data-mac="Option→" data-windows="Alt-→"></kbd></td>
+<td><kbd data-windows="Alt-←" data-mac="Option←"></kbd> <kbd data-windows="Alt-→" data-mac="Option→"></kbd></td>
 </tr>
 <tr class="even">
 <td>Go to matching bracket</td>
@@ -419,7 +437,7 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>Select line</td>
-<td><p><kbd data-mac="Command-L" data-windows="Ctrl-L" data-nil="Ctrl-L"></kbd></p></td>
+<td><p><kbd data-nil="Ctrl-L" data-windows="Ctrl-L" data-mac="Command-L"></kbd></p></td>
 </tr>
 <tr class="even">
 <td>Expand selection</td>
@@ -796,6 +814,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 
