@@ -10,6 +10,7 @@ website:
         href: https://github.com/MoritzGuck/Code-Cheatsheets
     collapse-level: 3
   favicon: assets/favicon.png
+  cookie-consent: true
 
 
 format:
