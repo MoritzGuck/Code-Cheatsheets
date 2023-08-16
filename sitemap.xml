@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud/azure_ml.html</loc>
-    <lastmod>2023-08-16T09:09:21.179Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/VSCode.html</loc>
-    <lastmod>2023-08-16T09:09:20.423Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/R.html</loc>
-    <lastmod>2023-08-16T09:09:19.459Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/Conda.html</loc>
-    <lastmod>2023-08-16T09:09:18.087Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/git.html</loc>
-    <lastmod>2023-08-16T09:09:17.219Z</lastmod>
-  </url>
-  <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/index.html</loc>
-    <lastmod>2023-08-16T09:09:15.303Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Quarto.html</loc>
-    <lastmod>2023-08-16T09:09:16.731Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/pip.html</loc>
-    <lastmod>2023-08-16T09:09:17.635Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/bash.html</loc>
-    <lastmod>2023-08-16T09:09:18.535Z</lastmod>
+    <lastmod>2023-08-16T09:13:05.829Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Python.html</loc>
-    <lastmod>2023-08-16T09:09:19.835Z</lastmod>
+    <lastmod>2023-08-16T09:13:04.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud/azure_ml.html</loc>
+    <lastmod>2023-08-16T09:13:02.601Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/VSCode.html</loc>
+    <lastmod>2023-08-16T09:13:01.761Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/git.html</loc>
+    <lastmod>2023-08-16T09:13:00.672Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/pip.html</loc>
+    <lastmod>2023-08-16T09:12:58.896Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/Conda.html</loc>
+    <lastmod>2023-08-16T09:13:00.156Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/bash.html</loc>
+    <lastmod>2023-08-16T09:13:01.180Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud/gcloud.html</loc>
-    <lastmod>2023-08-16T09:09:20.811Z</lastmod>
+    <lastmod>2023-08-16T09:13:02.165Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/R.html</loc>
+    <lastmod>2023-08-16T09:13:03.609Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Quarto.html</loc>
+    <lastmod>2023-08-16T09:13:04.881Z</lastmod>
   </url>
 </urlset>
