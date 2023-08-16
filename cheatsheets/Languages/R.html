@@ -389,6 +389,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Rename file</td>
 <td><code>file.rename("mytest.R", "mytest2.R")</code></td>
 </tr>
+<tr class="odd">
+<td>Copy file</td>
+<td><code>R &lt;br&gt; file.copy("mytest2.R", "mytest3.R")</code></td>
+</tr>
+<tr class="even">
+<td>Construct file path from directory list</td>
+<td><code>file.path("folder", "subfolder", "file") # "folder/subfolder/file</code></td>
+</tr>
 </tbody>
 </table>
 <dl>
@@ -424,7 +432,7 @@ Executes the contents of the script.
 <tbody>
 <tr class="odd">
 <td>Assign value to varialbe</td>
-<td><code>R x &lt;- 4.5</code></td>
+<td><code>x &lt;- 4.5</code></td>
 </tr>
 <tr class="even">
 <td>Assign to multiple variables</td>
