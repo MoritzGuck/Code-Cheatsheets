@@ -29,6 +29,14 @@ Get help with functions and features
 args(functionName)  # List arguments that the function accepts
 ``` 
 
+Get help with functions and features      | 
+------------------------------------------|------
+Help section on function                  | ?functionName 
+Find functions / features matching a term | ??TermOfInterest
+List arguments that the function accepts  | args(functionName)
+
+:  {.borderless .sm tbl-colwidths="[50,50]" }
+
 Execute R-script from terminal
 : ```bash
 Rscript myScript.R
@@ -102,7 +110,7 @@ Number of rows              | `nrow(mat1)`
 Number of cols              | `ncol(mat2)`
 
 
-:  {tbl-colwidths="[50,50]" .borderless}
+:  {.borderless tbl-colwidths="[50,50]"}
 
 
 **!**: If x is a n-by-p matrix, then `var(x)` will return a p-by-p covariance matrix.
