@@ -72,9 +72,12 @@ print("my Output")
 
 Assign values to a variable                       | 
 --------------------------------------------------|-----
-Assign value to varialbe                          | ``` x <- 4.5 ```
+Assign value to varialbe                          | ```R x <- 4.5 ```
 Assign to multiple variables                      | `x <- y <- z <- 4.5`
 Assign/change value of variable in global scope   | `x <<- "global value"`
+
+:  {.borderless tbl-colwidths="[50,50]"}
+
 
 Create a vector
 : ```R
@@ -263,6 +266,7 @@ Exponent               | `^`
 Modulus / remainder    | `10 %% 3 # 1`
 Integer division       | `10 %/% 3 # 3`
 
+:  {.borderless tbl-colwidths="[50,50]"}
 
 
 ### Types 
