@@ -396,7 +396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td>Construct file path from directory list</td>
-<td></td>
+<td><code>pre file.path("folder", "subfolder", "file") # "folder/subfolder/file</code></td>
 </tr>
 </tbody>
 </table>
@@ -801,6 +801,40 @@ You can also use these functions to concatenate matrices
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </dd>
 </dl>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Functions on dataframes</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rename columns</td>
+<td><code>colnames(my_data) &lt;- c("col1", "col2", "col3")</code></td>
+</tr>
+<tr class="even">
+<td>Get summary statistics on columns</td>
+<td><code>summary(my_df)</code></td>
+</tr>
+<tr class="odd">
+<td>Access column</td>
+<td><code>my_df[1]</code> or <code>my_df[["col1_name"]]</code> or <code>my_df$col1_name</code></td>
+</tr>
+<tr class="even">
+<td>Add row, column</td>
+<td><code>rbind(my_df, c(7,8))</code>, <code>cbind(my_df, c(10, 11))</code></td>
+</tr>
+<tr class="odd">
+<td>Remove first row, column</td>
+<td><code>my_df[-c(1), ]</code>, <code>my_df[ ,-c(1)]</code></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="control-structures" class="level3">
 <h3 class="anchored" data-anchor-id="control-structures">Control structures</h3>
