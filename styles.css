@@ -6,6 +6,6 @@ kbd {
   font-size: 0.85em;
 }/* css styles */
 
-table, tr, td, th{
+th{
   border: none;
 }
