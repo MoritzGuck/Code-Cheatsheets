@@ -49,7 +49,7 @@ Check if file exists                      | `file.exists("myfile.R")`
 Get info on file (size, time of creation) | `file.info("mytest.R")`
 Rename file                               | `file.rename("mytest.R", "mytest2.R")`
 Copy file                                 | `file.copy("mytest2.R", "mytest3.R") `
-Construct file path from directory list   | {{<pre file.path("folder", "subfolder", "file") # "folder/subfolder/file >}}
+Construct file path from directory list   | {{< pre file.path("folder", "subfolder", "file") # "folder/subfolder/file >}}
 
 
 
@@ -297,6 +297,16 @@ class(x) # numeric
 
 ### Dataframes
 
+Contrary to matrices, the different columns of data frames can contain different data types.
+
+Construct data frame
+: ```R
+Data_Frame <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45)
+)
+```
 
 
 ### Control structures
