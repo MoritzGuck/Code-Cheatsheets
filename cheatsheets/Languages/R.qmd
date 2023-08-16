@@ -43,13 +43,13 @@ Use file system                           |
 print working directory                   | `getwd()`
 Change working directory                  | `setwd("path/to/dir")`
 List files in working directory           | `dir()`
-Create directory                          | `dir.create("path/to/dir")`
+Create directory                          | `dir.create("path/to/dir", recursive=TRUE)`
 Create file                               | `file.create("myfile.R")`
 Check if file exists                      | `file.exists("myfile.R")`
 Get info on file (size, time of creation) | `file.info("mytest.R")`
 Rename file                               | `file.rename("mytest.R", "mytest2.R")`
-Copy file                                 | ```R <br> file.copy("mytest2.R", "mytest3.R") ```
-Construct file path from directory list   | `file.path("folder", "subfolder", "file") # "folder/subfolder/file`
+Copy file                                 | `file.copy("mytest2.R", "mytest3.R") `
+Construct file path from directory list   | <pre> file.path("folder", "subfolder", "file") # "folder/subfolder/file </pre>
 
 
 
