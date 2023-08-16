@@ -47,7 +47,7 @@ Create directory                          | `dir.create("path/to/dir")`
 Create file                               | `file.create("myfile.R")`
 Check if file exists                      | `file.exists("myfile.R")`
 Get info on file (size, time of creation) | `file.info("mytest.R")`
-Rename file                               | 
+Rename file                               | `file.rename("mytest.R", "mytest2.R")`
 
 
 :  {tbl-colwidths="[50,50]" }
