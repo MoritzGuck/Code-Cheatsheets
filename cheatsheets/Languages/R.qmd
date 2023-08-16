@@ -49,9 +49,7 @@ Check if file exists                      | `file.exists("myfile.R")`
 Get info on file (size, time of creation) | `file.info("mytest.R")`
 Rename file                               | `file.rename("mytest.R", "mytest2.R")`
 Copy file                                 | `file.copy("mytest2.R", "mytest3.R") `
-Construct file path from directory list   | {{< pre file.path("folder", "subfolder", "file") # "folder/subfolder/file >}}
-
-
+Construct file path from directory list   | `pre file.path("folder", "subfolder", "file") # "folder/subfolder/file`
 
 :  {tbl-colwidths="[50,50]" }
 
@@ -307,6 +305,18 @@ Data_Frame <- data.frame (
   Duration = c(60, 30, 45)
 )
 ```
+
+Functions on dataframes             |
+------------------------------------|----
+Rename columns                      | `colnames(my_data) <- c("col1", "col2", "col3")`
+Get summary statistics on columns   | `summary(my_df)`
+Access column                       | `my_df[1]` or `my_df[["col1_name"]]` or `my_df$col1_name`
+Add row, column                     | `rbind(my_df, c(7,8))`, `cbind(my_df, c(10, 11))`
+Remove first row, column            | `my_df[-c(1), ]`, `my_df[ ,-c(1)]`
+
+
+:  {tbl-colwidths="[50,50]" }
+
 
 
 ### Control structures
