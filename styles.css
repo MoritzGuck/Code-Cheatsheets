@@ -9,3 +9,8 @@ kbd {
 table, th{
   border: none;
 }
+
+code {
+  background: lightgrey;
+  color: black;
+}
