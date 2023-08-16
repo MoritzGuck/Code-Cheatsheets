@@ -102,7 +102,7 @@ Number of rows              | `nrow(mat1)`
 Number of cols              | `ncol(mat2)`
 
 
-:  {tbl-colwidths="[50,50]"}
+:  {tbl-colwidths="[50,50]" .borderless}
 
 
 **!**: If x is a n-by-p matrix, then `var(x)` will return a p-by-p covariance matrix.
