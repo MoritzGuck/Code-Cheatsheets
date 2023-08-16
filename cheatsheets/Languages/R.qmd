@@ -70,12 +70,11 @@ print("my Output")
 
 ### Operations, numbers, vectors
 
-Assign values to a variable
-: ```R
-x <- 4.5
-x <- y <- z <- 4.5     # Assign to multiple variables
-x <<- "global value"   # Assign/change value of variable in global scope 
-```
+Assign values to a variable                       | 
+--------------------------------------------------|-----
+Assign value to varialbe                          | ``` x <- 4.5 ```
+Assign to multiple variables                      | `x <- y <- z <- 4.5`
+Assign/change value of variable in global scope   | `x <<- "global value"`
 
 Create a vector
 : ```R
