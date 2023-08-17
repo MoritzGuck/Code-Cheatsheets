@@ -6,9 +6,12 @@ kbd {
   font-size: 0.85em;
 }/* css styles */
 
- th {
+th {
   border: none !important;
-  border-collapse: collapse !important;
+}
+
+table, .table {
+  border-bottom-width: 0px;
 }
 
 code {
