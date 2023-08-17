@@ -15,7 +15,15 @@ table, .table {
 }
 
 code {
-  background: #f7f7f7 !important;
+  background: #eceff1 !important;
   color: black;
 }
+
+table.quarto-listing-table th a.desc:after {
+ width: 0px !important;
+}
+
+table.quarto-listing-table th a.asc:after {
+  width: 0px !important;
+ }
 
