@@ -16,7 +16,7 @@ table, .table {
 
 code {
   background: #eceff1 !important;
-  color: black;
+  color: rgb(10, 10, 10);
 }
 
 table.quarto-listing-table th a.desc:after {
