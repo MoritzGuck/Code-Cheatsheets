@@ -19,6 +19,10 @@ code {
   color: rgb(10, 10, 10);
 }
 
+div.sourceCode {
+  background-color: #eceff1 !important;
+}
+
 table.quarto-listing-table th a.desc:after {
  width: 0px !important;
 }
