@@ -9,7 +9,8 @@ from: markdown+emoji
 
 ### Using R
 
-#### In console
+In console
+:
 
 1. Use R in console / terminal: `R`
 
@@ -17,9 +18,8 @@ from: markdown+emoji
 
 3. Quit R in console: `q()`
 
-#### Run R scripts
-
-In console / terminal: `Rscript myScript.R`
+Run R scripts
+: In console / terminal: `Rscript myScript.R`
 
 
 Get help with functions and features      | 
@@ -49,7 +49,7 @@ Check if file exists                      | `file.exists("myfile.R")`
 Get info on file (size, time of creation) | `file.info("mytest.R")`
 Rename file                               | `file.rename("mytest.R", "mytest2.R")`
 Copy file                                 | `file.copy("mytest2.R", "mytest3.R") `
-Construct file path from directory list   | `pre file.path("folder", "subfolder", "file") # "folder/subfolder/file`
+Construct file path from directory list   | `file.path("folder", "subfolder", "file") # "folder/subfolder/file`
 
 :  {tbl-colwidths="[50,50]" }
 
