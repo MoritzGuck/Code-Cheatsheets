@@ -6,11 +6,11 @@ kbd {
   font-size: 0.85em;
 }/* css styles */
 
-td, th {
+td, th, tr {
   border: none;
 }
 
 code {
-  background: rgba(211, 211, 211, 0.85);
+  background: rgba(211, 211, 211, 0.9);
   color: black;
 }

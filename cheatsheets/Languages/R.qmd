@@ -9,18 +9,18 @@ from: markdown+emoji
 
 ### Using R
 
-1. Use R in console
-: ```bash
-R
-```
+#### In console
 
-2. **Type your code**
+1. Use R in console / terminal: `R`
 
+2. Type your code
 
-3. Quit R in console
-: ```bash
-q()
-```
+3. Quit R in console: `q()`
+
+#### Run R scripts
+
+In console / terminal: `Rscript myScript.R`
+
 
 Get help with functions and features      | 
 ------------------------------------------|------
