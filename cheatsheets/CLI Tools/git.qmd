@@ -25,7 +25,9 @@ Download git repo from server
 git clone url.com
 ```
 
-## Managing changes
+## Changes
+
+### Code change workflow
 
 1. Get changes from remote repository
 : ```bash
@@ -65,6 +67,13 @@ git commit -m "[ticket-id + what you changed]"
 7. Load commits into remote git repository
 : ```bash
 git push
+```
+
+### Managing changes
+
+See changes due to last pull request
+: ```bash
+git log -p -2
 ```
 
 ## Pull changes into dev/test/master branch 
