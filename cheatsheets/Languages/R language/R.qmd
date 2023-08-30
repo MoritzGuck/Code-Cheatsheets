@@ -1,5 +1,5 @@
 ---
-title: "R language"
+title: "R basics"
 description: "R is a programming language that is specialized in statistical analysis."
 format: html
 from: markdown+emoji
@@ -317,6 +317,26 @@ Remove first row, column            | `my_df[-c(1), ]`, `my_df[ ,-c(1)]`
 
 :  {tbl-colwidths="[50,50]" }
 
+
+### Factors
+
+Factors are used to store categorical data. I.e. every data point is assigned a category or level.
+
+Create factor
+: ```R
+sports <- factor(c("football", "tennis", "football", "swimming", "swimming"))
+
+Access the categories/levels
+: ```R
+sports_cats <- levels(sports)
+```
+
+Hardcoding / predefining levels
+: ```R
+sports <- factor(c("football", "tennis", "football", "swimming"), levels = c("football", "tennis", "swimming"))
+```
+
+Now you cannot assign a value to the factor anymore that is not in levels.
 
 
 ### Control structures

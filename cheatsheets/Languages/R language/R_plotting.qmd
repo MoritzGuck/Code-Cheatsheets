@@ -1,0 +1,8 @@
+---
+title: "R plotting"
+description: "R has powerful builtin plotting capabilities"
+format: html
+from: markdown+emoji
+---
+
+## dot charts
