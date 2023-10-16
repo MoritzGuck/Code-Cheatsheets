@@ -5,4 +5,52 @@ format: html
 from: markdown+emoji
 ---
 
-## dot charts
+This cheatsheet uses ggplot2. 
+For more info on the R-built-in graphics-package see: [rdocumentation.org](https://www.rdocumentation.org/packages/graphics/versions/3.6.2)
+
+## dot & line charts
+
+Using dataframes:
+
+```R
+library(ggplot2)
+my_plot = ggplot(myDataframe, aes(x = col1, y = col2)) + geom_point()
+print(my_plot)
+```
+
+Using vectors:
+
+```R
+ggplot(data = NULL, aes(x = c(1,2,3,4,5), y = c(25,16,9,4,1))) + geom_point()
+```
+
+Styles of plot | 
+----------------|-----
+points          | `... + geom_point()`
+line            | `... + geom_line()`
+
+:  {tbl-colwidths="[50,50]"}
+
+
+## Column charts
+
+plot the values as columns:
+
+```R
+ggplot(df, aes(x = factor(cat_col), y = value_col)) + geom_col()
+```
+
+plot the counts as columns: 
+
+```R
+ggplot(df, aes(x = factor(value_col))) + geom_bar()
+```
+
+### Histogram
+
+Plot distribution of values:
+
+```R
+ggplot(df, aes(x = value_col)) + geom_histogram(binwidth=3)
+```
+
