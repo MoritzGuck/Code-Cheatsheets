@@ -31,8 +31,12 @@ Header col 1  | header col 2 
 --------------|-----
 content col 1 | content col 2
 
-:  {tbl-colwidths="[50,50]"}
 ```
+
+<!---
+:  {tbl-colwidths="[50,50]"}
+
+-->
 
 ## Formatting
 

@@ -35,13 +35,11 @@ line            | `... + geom_line()`
 ## Column charts
 
 plot the values as columns:
-
 ```R
 ggplot(df, aes(x = factor(cat_col), y = value_col)) + geom_col()
 ```
 
 plot the counts as columns: 
-
 ```R
 ggplot(df, aes(x = factor(value_col))) + geom_bar()
 ```
@@ -49,8 +47,24 @@ ggplot(df, aes(x = factor(value_col))) + geom_bar()
 ### Histogram
 
 Plot distribution of values:
-
 ```R
 ggplot(df, aes(x = value_col)) + geom_histogram(binwidth=3)
 ```
 
+## Box Plot
+
+Compare different distributions:
+```R
+ggplot(df, aes(x = cat_col, y = value_col)) +  geom_boxplot()
+```
+
+## Plot functions
+
+To smoothly plot a curved function: 
+```R 
+my_func <- function(x) sqrt(x) # - x**2
+x_val_df = data.frame(x_val = c(0, 10))
+ggplot(x_val_df, aes(x = x_val)) + stat_function(fun = my_func, geom = "line")
+```
+
+More info in this e-book: [https://r-graphics.org/]
