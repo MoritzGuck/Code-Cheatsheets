@@ -123,7 +123,7 @@
     "href": "cheatsheets/Quarto.html#tables",
     "title": "Quarto",
     "section": "Tables",
-    "text": "Tables\n\nMarkdown table\n\nHeader col 1  | header col 2 \n--------------|-----\ncontent col 1 | content col 2\n\n&lt;!—\n\n{tbl-colwidths=“[50,50]”} –&gt;"
+    "text": "Tables\n\nMarkdown table\n\n```md Header col 1 | header col 2  ————–|—– content col 1 | content col 2\n\n\n{tbl-colwidths=“[50,50]”} ```"
   },
   {
     "objectID": "cheatsheets/Quarto.html#formatting",
