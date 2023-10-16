@@ -123,7 +123,14 @@
     "href": "cheatsheets/Quarto.html#tables",
     "title": "Quarto",
     "section": "Tables",
-    "text": "Tables\n\nMarkdown table\n\n```md Header col 1 | header col 2  ————–|—– content col 1 | content col 2\n\n\n\n&lt;!---\n:  {tbl-colwidths=\"[50,50]\"}\n\n--&gt;\n\n## Formatting\n\nFont-color\n: ```html\n&lt;font color=\"grey\"&gt;\n&lt;/font&gt;"
+    "text": "Tables\n\nMarkdown table\n\nHeader col 1  | header col 2 \n--------------|-----\ncontent col 1 | content col 2\n\n&lt;!—\n\n{tbl-colwidths=“[50,50]”} –&gt;"
+  },
+  {
+    "objectID": "cheatsheets/Quarto.html#formatting",
+    "href": "cheatsheets/Quarto.html#formatting",
+    "title": "Quarto",
+    "section": "Formatting",
+    "text": "Formatting\n\nFont-color\n\n&lt;font color=\"grey\"&gt;\n&lt;/font&gt;"
   },
   {
     "objectID": "cheatsheets/Quarto.html#keyboard-shortcuts",
