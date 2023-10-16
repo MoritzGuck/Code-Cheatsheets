@@ -277,7 +277,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#blocks" id="toc-blocks" class="nav-link active" data-scroll-target="#blocks">Blocks</a></li>
   <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables">Tables</a></li>
-  <li><a href="#formatting" id="toc-formatting" class="nav-link" data-scroll-target="#formatting">Formatting</a></li>
   <li><a href="#keyboard-shortcuts" id="toc-keyboard-shortcuts" class="nav-link" data-scroll-target="#keyboard-shortcuts">Keyboard shortcuts</a></li>
   </ul>
 </nav>
@@ -336,20 +335,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dd>
 ```md Header col 1 | header col 2&nbsp; ————–|—– content col 1 | content col 2
 </dd>
-<dd>
-<p>{tbl-colwidths=“[50,50]”} ```</p>
-</dd>
 </dl>
-</section>
-<section id="formatting" class="level2">
-<h2 class="anchored" data-anchor-id="formatting">Formatting</h2>
-<dl>
-<dt>Font-color</dt>
-<dd>
-<div class="sourceCode" id="cb3"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;font</span> <span class="er">color</span><span class="ot">=</span><span class="st">"grey"</span><span class="kw">&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/font&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl>
+<pre><code>
+&lt;!---
+:  {tbl-colwidths="[50,50]"}
+
+--&gt;
+
+## Formatting
+
+Font-color
+: ```html
+&lt;font color="grey"&gt;
+&lt;/font&gt;</code></pre>
 </section>
 <section id="keyboard-shortcuts" class="level2">
 <h2 class="anchored" data-anchor-id="keyboard-shortcuts">Keyboard shortcuts</h2>
@@ -360,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 <div class="sourceCode" id="cb4"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>{{&lt; kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L &gt;}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><kbd data-windows="Shift-Control-O" data-linux="Shift-Ctrl-L" data-mac="Shift-Command-O"></kbd></p>
+<p><kbd data-linux="Shift-Ctrl-L" data-mac="Shift-Command-O" data-windows="Shift-Control-O"></kbd></p>
 <dl>
 <dt>simple</dt>
 <dd>

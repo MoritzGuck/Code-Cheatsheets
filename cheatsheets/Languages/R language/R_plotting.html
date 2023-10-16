@@ -278,6 +278,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram">Histogram</a></li>
   </ul></li>
+  <li><a href="#box-plot" id="toc-box-plot" class="nav-link" data-scroll-target="#box-plot">Box Plot</a></li>
+  <li><a href="#plot-functions" id="toc-plot-functions" class="nav-link" data-scroll-target="#plot-functions">Plot functions</a></li>
   </ul>
 </nav>
 </nav>
@@ -352,9 +354,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="histogram">Histogram</h3>
 <p>Plot distribution of values:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> value_col)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
 </section>
+</section>
+<section id="box-plot" class="level2">
+<h2 class="anchored" data-anchor-id="box-plot">Box Plot</h2>
+<p>Compare different distributions:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> cat_col, <span class="at">y =</span> value_col)) <span class="sc">+</span>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="plot-functions" class="level2">
+<h2 class="anchored" data-anchor-id="plot-functions">Plot functions</h2>
+<p>To smoothly plot a curved function:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>my_func <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sqrt</span>(x) <span class="co"># - x**2</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x_val_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x_val =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(x_val_df, <span class="fu">aes</span>(<span class="at">x =</span> x_val)) <span class="sc">+</span> <span class="fu">stat_function</span>(<span class="at">fun =</span> my_func, <span class="at">geom =</span> <span class="st">"line"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>More info in this e-book: [https://r-graphics.org/]</p>
+
+
 </section>
 
 </main> <!-- /main -->

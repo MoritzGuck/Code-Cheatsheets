@@ -91,6 +91,20 @@
     "text": "Column charts\nplot the values as columns:\nggplot(df, aes(x = factor(cat_col), y = value_col)) + geom_col()\nplot the counts as columns:\nggplot(df, aes(x = factor(value_col))) + geom_bar()\n\nHistogram\nPlot distribution of values:\nggplot(df, aes(x = value_col)) + geom_histogram(binwidth=3)"
   },
   {
+    "objectID": "cheatsheets/Languages/R language/R_plotting.html#box-plot",
+    "href": "cheatsheets/Languages/R language/R_plotting.html#box-plot",
+    "title": "R plotting",
+    "section": "Box Plot",
+    "text": "Box Plot\nCompare different distributions:\nggplot(df, aes(x = cat_col, y = value_col)) +  geom_boxplot()"
+  },
+  {
+    "objectID": "cheatsheets/Languages/R language/R_plotting.html#plot-functions",
+    "href": "cheatsheets/Languages/R language/R_plotting.html#plot-functions",
+    "title": "R plotting",
+    "section": "Plot functions",
+    "text": "Plot functions\nTo smoothly plot a curved function:\nmy_func &lt;- function(x) sqrt(x) # - x**2\nx_val_df = data.frame(x_val = c(0, 10))\nggplot(x_val_df, aes(x = x_val)) + stat_function(fun = my_func, geom = \"line\")\nMore info in this e-book: [https://r-graphics.org/]"
+  },
+  {
     "objectID": "cheatsheets/Quarto.html",
     "href": "cheatsheets/Quarto.html",
     "title": "Quarto",
@@ -109,14 +123,7 @@
     "href": "cheatsheets/Quarto.html#tables",
     "title": "Quarto",
     "section": "Tables",
-    "text": "Tables\n\nMarkdown table\n\n```md Header col 1 | header col 2  ————–|—– content col 1 | content col 2\n\n\n{tbl-colwidths=“[50,50]”} ```"
-  },
-  {
-    "objectID": "cheatsheets/Quarto.html#formatting",
-    "href": "cheatsheets/Quarto.html#formatting",
-    "title": "Quarto",
-    "section": "Formatting",
-    "text": "Formatting\n\nFont-color\n\n&lt;font color=\"grey\"&gt;\n&lt;/font&gt;"
+    "text": "Tables\n\nMarkdown table\n\n```md Header col 1 | header col 2  ————–|—– content col 1 | content col 2\n\n\n\n&lt;!---\n:  {tbl-colwidths=\"[50,50]\"}\n\n--&gt;\n\n## Formatting\n\nFont-color\n: ```html\n&lt;font color=\"grey\"&gt;\n&lt;/font&gt;"
   },
   {
     "objectID": "cheatsheets/Quarto.html#keyboard-shortcuts",
