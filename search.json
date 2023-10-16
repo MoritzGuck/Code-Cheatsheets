@@ -102,7 +102,7 @@
     "href": "cheatsheets/Languages/R language/R_plotting.html#plot-functions",
     "title": "R plotting",
     "section": "Plot functions",
-    "text": "Plot functions\nTo smoothly plot a curved function:\nmy_func &lt;- function(x) sqrt(x) # - x**2\nx_val_df = data.frame(x_val = c(0, 10))\nggplot(x_val_df, aes(x = x_val)) + stat_function(fun = my_func, geom = \"line\")\nMore info in this e-book: [https://r-graphics.org/]"
+    "text": "Plot functions\nTo smoothly plot a curved function:\nmy_func &lt;- function(x) sqrt(x) # - x**2\nx_val_df = data.frame(x_val = c(0, 10))\nggplot(x_val_df, aes(x = x_val)) + stat_function(fun = my_func, geom = \"line\")\nMore info in this e-book: r-graphics.org/"
   },
   {
     "objectID": "cheatsheets/Quarto.html",
