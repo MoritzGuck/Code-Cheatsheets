@@ -67,4 +67,4 @@ x_val_df = data.frame(x_val = c(0, 10))
 ggplot(x_val_df, aes(x = x_val)) + stat_function(fun = my_func, geom = "line")
 ```
 
-More info in this e-book: [https://r-graphics.org/]
+More info in this e-book: [r-graphics.org/](https://r-graphics.org/)
