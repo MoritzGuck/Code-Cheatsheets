@@ -1,7 +1,0 @@
----
-title: "R statistics"
-description: "The standard statistics components of R"
-format: html
-from: markdown+emoji
----
-
