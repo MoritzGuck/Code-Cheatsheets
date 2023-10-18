@@ -261,6 +261,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">R plotting</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../cheatsheets/Languages/R language/R_statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R statistics</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -565,6 +571,14 @@ Warning
 <td>Number of cols</td>
 <td><code>ncol(mat2)</code></td>
 </tr>
+<tr class="odd">
+<td>mode (highest count of val)</td>
+<td><code>names(sort(-table(df$col1)))[1]</code></td>
+</tr>
+<tr class="even">
+<td>Percentile</td>
+<td><code>quantile(df$col1, c(0.75))</code></td>
+</tr>
 </tbody>
 </table>
 <p><strong>!</strong>: If x is a n-by-p matrix, then <code>var(x)</code> will return a p-by-p covariance matrix.</p>
@@ -853,6 +867,10 @@ You can also use these functions to concatenate matrices
 <tr class="odd">
 <td>Remove first row, column</td>
 <td><code>my_df[-c(1), ]</code>, <code>my_df[ ,-c(1)]</code></td>
+</tr>
+<tr class="even">
+<td>Select row with max value of col1</td>
+<td><code>rownames(df)[which.max(df$col1)]</code></td>
 </tr>
 </tbody>
 </table>

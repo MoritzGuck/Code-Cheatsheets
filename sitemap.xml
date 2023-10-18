@@ -2,54 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/index.html</loc>
-    <lastmod>2023-10-16T14:08:34.673Z</lastmod>
+    <lastmod>2023-10-18T10:17:46.709Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/Conda.html</loc>
-    <lastmod>2023-10-16T14:08:32.937Z</lastmod>
+    <lastmod>2023-10-18T10:17:45.709Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/pip.html</loc>
-    <lastmod>2023-10-16T14:08:31.913Z</lastmod>
+    <lastmod>2023-10-18T10:17:44.893Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/VSCode.html</loc>
-    <lastmod>2023-10-16T14:08:30.789Z</lastmod>
+    <lastmod>2023-10-18T10:17:44.093Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud/azure_ml.html</loc>
-    <lastmod>2023-10-16T14:08:29.673Z</lastmod>
+    <lastmod>2023-10-18T10:17:43.197Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/R language/R.html</loc>
-    <lastmod>2023-10-16T14:08:28.373Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Python.html</loc>
-    <lastmod>2023-10-16T14:08:25.505Z</lastmod>
+    <lastmod>2023-10-18T10:17:42.213Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/R language/R_plotting.html</loc>
-    <lastmod>2023-10-16T14:08:27.197Z</lastmod>
+    <lastmod>2023-10-18T10:17:40.929Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Python.html</loc>
+    <lastmod>2023-10-18T10:17:39.637Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/R language/R_statistics.html</loc>
+    <lastmod>2023-10-18T10:17:41.277Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Quarto.html</loc>
-    <lastmod>2023-10-16T14:08:29.225Z</lastmod>
+    <lastmod>2023-10-18T10:17:42.845Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud/gcloud.html</loc>
-    <lastmod>2023-10-16T14:08:30.141Z</lastmod>
+    <lastmod>2023-10-18T10:17:43.549Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/git.html</loc>
-    <lastmod>2023-10-16T14:08:31.345Z</lastmod>
+    <lastmod>2023-10-18T10:17:44.517Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/bash.html</loc>
-    <lastmod>2023-10-16T14:08:32.457Z</lastmod>
+    <lastmod>2023-10-18T10:17:45.309Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/ruff.html</loc>
-    <lastmod>2023-10-16T14:08:33.445Z</lastmod>
+    <lastmod>2023-10-18T10:17:46.157Z</lastmod>
   </url>
 </urlset>

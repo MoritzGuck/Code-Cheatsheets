@@ -74,9 +74,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -261,6 +261,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">R plotting</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cheatsheets/Languages/R language/R_statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R statistics</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -300,273 +306,184 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1697465286505" data-listing-reading-time-sort="1">
-<a href="./cheatsheets/Cloud/azure_ml.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="assets/placeholder_cheatseet.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Azure ML
-</h5>
-<div class="card-text listing-description">
-Azure ML is the machine learning service of the Azure Cloud Platform.
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title-sort" data-direction="asc">
+          Title
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
 </div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
 
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1697465286505" data-listing-reading-time-sort="3">
-<a href="./cheatsheets/CLI Tools/bash.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="assets/placeholder_cheatseet.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Bash
-</h5>
-<div class="card-text listing-description">
-Bash is a command line tool and language.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+</th>
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
+</th>
+<th>
+Description
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-file-modified-sort="1697624246141" data-listing-reading-time-sort="1" data-listing-title-sort="Azure ML" data-listing-filename-sort="azure_ml.qmd">
+<td>
+<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./cheatsheets/Cloud/azure_ml.html" class="title listing-title">Azure ML</a>
+</td>
+<td>
+<span class="listing-description">Azure ML is the machine learning service of the Azure Cloud Platform.</span>
+</td>
+</tr>
+<tr data-index="1" data-listing-file-modified-sort="1697624246141" data-listing-reading-time-sort="3" data-listing-title-sort="Bash" data-listing-filename-sort="bash.qmd">
+<td>
+<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./cheatsheets/CLI Tools/bash.html" class="title listing-title">Bash</a>
+</td>
+<td>
+<span class="listing-description">Bash is a command line tool and language.</span>
+</td>
+</tr>
+<tr data-index="2" data-listing-file-modified-sort="1697624246141" data-listing-reading-time-sort="1" data-listing-title-sort="Conda" data-listing-filename-sort="Conda.qmd">
+<td>
+<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./cheatsheets/CLI Tools/Conda.html" class="title listing-title">Conda</a>
+</td>
+<td>
+<span class="listing-description">Conda is a package and virtual environment manager.</span>
+</td>
+</tr>
+<tr data-index="3" data-listing-file-modified-sort="1697624246141" data-listing-reading-time-sort="1" data-listing-title-sort="GCP: gcloud CLI" data-listing-filename-sort="gcloud.qmd">
+<td>
+<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./cheatsheets/Cloud/gcloud.html" class="title listing-title">GCP: gcloud CLI</a>
+</td>
+<td>
+<span class="listing-description">Gcloud CLI is the command line interface of the Google Cloud Platform.</span>
+</td>
+</tr>
+<tr data-index="4" data-listing-file-modified-sort="1697624246141" data-listing-reading-time-sort="2" data-listing-title-sort="Git" data-listing-filename-sort="git.qmd">
+<td>
+<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./cheatsheets/CLI Tools/git.html" class="title listing-title">Git</a>
+</td>
+<td>
+<span class="listing-description">Git is a version control system mostly used for code.</span>
+</td>
+</tr>
+<tr data-index="5" data-listing-file-modified-sort="1697624246141" data-listing-reading-time-sort="1" data-listing-title-sort="Pip" data-listing-filename-sort="pip.qmd">
+<td>
+<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./cheatsheets/CLI Tools/pip.html" class="title listing-title">Pip</a>
+</td>
+<td>
+<span class="listing-description">Pip is the official python package manager</span>
+</td>
+</tr>
+<tr data-index="6" data-listing-file-modified-sort="1697624246141" data-listing-reading-time-sort="1" data-listing-title-sort="Python" data-listing-filename-sort="Python.qmd">
+<td>
+<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./cheatsheets/Languages/Python.html" class="title listing-title">Python</a>
+</td>
+<td>
+<span class="listing-description">Python is one of the most popular programming languages.</span>
+</td>
+</tr>
+<tr data-index="7" data-listing-file-modified-sort="1697624246141" data-listing-reading-time-sort="1" data-listing-title-sort="Quarto" data-listing-filename-sort="Quarto.qmd">
+<td>
+<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./cheatsheets/Quarto.html" class="title listing-title">Quarto</a>
+</td>
+<td>
+<span class="listing-description">Quarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations. </span>
+</td>
+</tr>
+<tr data-index="8" data-listing-file-modified-sort="1697624246141" data-listing-reading-time-sort="9" data-listing-title-sort="R basics" data-listing-filename-sort="R.qmd">
+<td>
+<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./cheatsheets/Languages/R language/R.html" class="title listing-title">R basics</a>
+</td>
+<td>
+<span class="listing-description">R is a programming language that is specialized in statistical analysis.</span>
+</td>
+</tr>
+<tr data-index="9" data-listing-file-modified-sort="1697624246141" data-listing-reading-time-sort="1" data-listing-title-sort="R plotting" data-listing-filename-sort="R_plotting.qmd">
+<td>
+<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./cheatsheets/Languages/R language/R_plotting.html" class="title listing-title">R plotting</a>
+</td>
+<td>
+<span class="listing-description">R has powerful builtin plotting capabilities</span>
+</td>
+</tr>
+<tr data-index="10" data-listing-file-modified-sort="1697624246141" data-listing-reading-time-sort="1" data-listing-title-sort="R statistics" data-listing-filename-sort="R_statistics.qmd">
+<td>
+<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./cheatsheets/Languages/R language/R_statistics.html" class="title listing-title">R statistics</a>
+</td>
+<td>
+<span class="listing-description">The standard statistics components of R</span>
+</td>
+</tr>
+<tr data-index="11" data-listing-file-modified-sort="1697624246141" data-listing-reading-time-sort="3" data-listing-title-sort="VS Code" data-listing-filename-sort="VSCode.qmd">
+<td>
+<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./cheatsheets/VSCode.html" class="title listing-title">VS Code</a>
+</td>
+<td>
+<span class="listing-description">Visual studio code is one of the most popular code editors.</span>
+</td>
+</tr>
+<tr data-index="12" data-listing-file-modified-sort="1697624246141" data-listing-reading-time-sort="2" data-listing-title-sort="ruff" data-listing-filename-sort="ruff.qmd">
+<td>
+<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
+</td>
+<td>
+<a href="./cheatsheets/CLI Tools/ruff.html" class="title listing-title">ruff</a>
+</td>
+<td>
+<span class="listing-description">A fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black</span>
+</td>
+</tr>
+</tbody>
 
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1697465286505" data-listing-reading-time-sort="1">
-<a href="./cheatsheets/CLI Tools/Conda.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="assets/placeholder_cheatseet.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Conda
-</h5>
-<div class="card-text listing-description">
-Conda is a package and virtual environment manager.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1697465286505" data-listing-reading-time-sort="1">
-<a href="./cheatsheets/Cloud/gcloud.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="assets/placeholder_cheatseet.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-GCP: gcloud CLI
-</h5>
-<div class="card-text listing-description">
-Gcloud CLI is the command line interface of the Google Cloud Platform.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1697465286505" data-listing-reading-time-sort="2">
-<a href="./cheatsheets/CLI Tools/git.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="assets/placeholder_cheatseet.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Git
-</h5>
-<div class="card-text listing-description">
-Git is a version control system mostly used for code.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1697465286505" data-listing-reading-time-sort="1">
-<a href="./cheatsheets/CLI Tools/pip.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="assets/placeholder_cheatseet.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Pip
-</h5>
-<div class="card-text listing-description">
-Pip is the official python package manager
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1697465286505" data-listing-reading-time-sort="1">
-<a href="./cheatsheets/Languages/Python.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="assets/placeholder_cheatseet.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Python
-</h5>
-<div class="card-text listing-description">
-Python is one of the most popular programming languages.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="7" data-listing-file-modified-sort="1697465286509" data-listing-reading-time-sort="1">
-<a href="./cheatsheets/Quarto.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="assets/placeholder_cheatseet.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Quarto
-</h5>
-<div class="card-text listing-description">
-Quarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="8" data-listing-file-modified-sort="1697465286509" data-listing-reading-time-sort="9">
-<a href="./cheatsheets/Languages/R language/R.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="assets/placeholder_cheatseet.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-R basics
-</h5>
-<div class="card-text listing-description">
-R is a programming language that is specialized in statistical analysis.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="9" data-listing-file-modified-sort="1697465286509" data-listing-reading-time-sort="1">
-<a href="./cheatsheets/Languages/R language/R_plotting.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="assets/placeholder_cheatseet.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-R plotting
-</h5>
-<div class="card-text listing-description">
-R has powerful builtin plotting capabilities
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="10" data-listing-file-modified-sort="1697465286509" data-listing-reading-time-sort="3">
-<a href="./cheatsheets/VSCode.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="assets/placeholder_cheatseet.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-VS Code
-</h5>
-<div class="card-text listing-description">
-Visual studio code is one of the most popular code editors.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="11" data-listing-file-modified-sort="1697465286505" data-listing-reading-time-sort="2">
-<a href="./cheatsheets/CLI Tools/ruff.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="assets/placeholder_cheatseet.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-ruff
-</h5>
-<div class="card-text listing-description">
-A fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
+</table>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
