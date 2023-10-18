@@ -2,8 +2,10 @@
 title: "Cheatsheets"
 listing:
   contents: cheatsheets
-  type: grid
+  type: table
   image-placeholder: "assets/placeholder_cheatseet.png"
+  sort: "title asc"
+  fields: [image, title, description]
 
 ---
 
