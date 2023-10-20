@@ -1,38 +1,66 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Cheatsheets",
-    "section": "",
-    "text": "This is a collection of my cheatsheets. Feel free to use them. If you want to edit them, to your own needs: Pleae visit my Github-Repo, give it a star and clone it.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\n\n\n\nAzure ML\n\n\n\n\n\n\n\n\n\n\nBash\n\n\nBash is a command line tool and language.\n\n\n\n\n\n\n\nConda\n\n\nConda is a package and virtual environment manager.\n\n\n\n\n\n\n\nGCP: gcloud CLI\n\n\nGcloud CLI is the command line interface of the Google Cloud Platform.\n\n\n\n\n\n\n\nGit\n\n\nGit is a version control system mostly used for code.\n\n\n\n\n\n\n\nPip\n\n\nPip is the official python package manager\n\n\n\n\n\n\n\nPython\n\n\nPython is one of the most popular programming languages.\n\n\n\n\n\n\n\nQuarto\n\n\nQuarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations. \n\n\n\n\n\n\n\nR basics\n\n\nR is a programming language that is specialized in statistical analysis.\n\n\n\n\n\n\n\nR plotting\n\n\nR has powerful builtin plotting capabilities\n\n\n\n\n\n\n\nVS Code\n\n\nVisual studio code is one of the most popular code editors.\n\n\n\n\n\n\n\nruff\n\n\nA fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/Conda.html",
-    "href": "cheatsheets/CLI Tools/Conda.html",
-    "title": "Conda",
-    "section": "",
-    "text": "conda docs - Installation\n\n\n\n\n\n\nInstallation via UNIX CLI\n\n\n\n\n\nmkdir -p ~/miniconda3\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh\nbash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3\nrm -rf ~/miniconda3/miniconda.sh\n~/miniconda3/bin/conda init bash\n~/miniconda3/bin/conda init zsh\n\n\n\n\n\n\nList your existing environments\n\nconda env list\n\nCreate environment\n\nconda create --name env-name\n\nCreate a conda env from a file:\n\nconda env create -f environment.yml\n\nRemoving / Deleting environment\n\nconda env remove -n env-name\n\n\nMore info: Intro to Conda virtual environments\n\n\n\n\nUse environment\n\nconda activate env-name\n\nCheck and update package versions. After activating an env:\n\npython --version\n\n\nconda update python\n\nUpdate whole environment according to your yaml-file:\n\nconda env update -f my_env.yml\n\nSwitch back to base environment\n\nconda deactivate env-name\n\nInstall package: Latest version\n\nconda install pandas \n\nInstall package: Specific version\n\nconda install pandas==2.0.0\n\nInstall package: From different channel\n\nconda install pandas -c conda-forge -y\n\nList packages in environment\n\nconda list\n\nExport environment to yml\n\nconda env export &gt; environment.yml"
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/Conda.html#installation",
-    "href": "cheatsheets/CLI Tools/Conda.html#installation",
-    "title": "Conda",
-    "section": "",
-    "text": "conda docs - Installation\n\n\n\n\n\n\nInstallation via UNIX CLI\n\n\n\n\n\nmkdir -p ~/miniconda3\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh\nbash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3\nrm -rf ~/miniconda3/miniconda.sh\n~/miniconda3/bin/conda init bash\n~/miniconda3/bin/conda init zsh\n\n\n\n\n\n\nList your existing environments\n\nconda env list\n\nCreate environment\n\nconda create --name env-name\n\nCreate a conda env from a file:\n\nconda env create -f environment.yml\n\nRemoving / Deleting environment\n\nconda env remove -n env-name\n\n\nMore info: Intro to Conda virtual environments\n\n\n\n\nUse environment\n\nconda activate env-name\n\nCheck and update package versions. After activating an env:\n\npython --version\n\n\nconda update python\n\nUpdate whole environment according to your yaml-file:\n\nconda env update -f my_env.yml\n\nSwitch back to base environment\n\nconda deactivate env-name\n\nInstall package: Latest version\n\nconda install pandas \n\nInstall package: Specific version\n\nconda install pandas==2.0.0\n\nInstall package: From different channel\n\nconda install pandas -c conda-forge -y\n\nList packages in environment\n\nconda list\n\nExport environment to yml\n\nconda env export &gt; environment.yml"
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/pip.html",
-    "href": "cheatsheets/CLI Tools/pip.html",
-    "title": "Pip",
-    "section": "",
-    "text": "Installation\n\nUsually pip is installed with python automatically.\n\nUpgrade pip\n\npython -m pip install --upgrade pip\n\nInstall packages\n\npip install SomePackage            # latest version\npip install SomePackage==1.0.4     # specific version\npip install 'SomePackage&gt;=1.0.4'   # minimum version\n\nInstall from requirements file\n\npip install -r requirements.txt\n\nGenerate requirements file from installed packages\n\npip freeze &gt; requirements.txt\n\nList installed packages\n\npip list\n\nList outdated installed packages\n\npip list --outdated\n\nGet info on package\n\npip show SomePackage\n\n\n\nWheels\nWheel files (binaries) make the installation of pip packages faster.\n\nInstall wheel\n\npip install wheel\n\nCreate pip wheel file from requirements\n\npip wheel --wheel-dir=/local/wheels -r requirements.txt\n\nInstall packages from local wheels directory\n\npip install --no-index --find-links=/local/wheels -r requirements.txt\n\n\n\n\nPipenv\nPipenv is the environment manager for pip.\n\nInstall pipenv\n\npip install --user --upgrade pipenv\n\nIstall packages in your environment\n\npipenv install -r requirements.txt\n\nRun script in your environment\n\npipenv run python python_script.py"
-  },
-  {
     "objectID": "cheatsheets/VSCode.html",
     "href": "cheatsheets/VSCode.html",
     "title": "VS Code",
     "section": "",
     "text": "Workspace Commands\n \n\n\n\n\nCommand Palette\n\n\n\nSearch & open file\n\n\n\nToggle Sidebar\n\n\n\nSplit editor\n\n\n\nSwitch to editor split\n / / \n\n\nSwitch to tab\n / \n\n\nClose tab\n\n\n\nReopen closed tab\n\n\n\n\n\n\n\n\n\n\n\nSwitch between Views\n\n\n\n\n\nShow File explorer\n\n\n\nShow Debug View\n\n\n\nShow Find View\n\n\n\nShow Git View\n \n\n\n\n\n\n\n\n\n\n\nCode Navigation\n \n\n\n\n\nGo to line\nCtrl-G /  :\n\n\nGo to beginning / end of line\n \n\n\nGo to beginning / end of word\n \n\n\nGo to matching bracket\n\n\n\nGo to symbol/function\n\n\n\n\n\n\n\n\n\n\n\nCode Editing\n \n\n\n\n\nCopy line\n\n\n\nCut line\n\n\n\nDelete line\n\n\n\nOutdent line\n\n\n\nToggle comment line\n\n\n\nMove line up or down\nOption↑ / Option↓\n\n\nCopy line up or down\nOption-shift↑ / Option-Shift↓\n\n\nAdd cursor below/above\n / \n\n\nFind and replace\n\n\n\n\n\n\n\n\n\n\n\nCode selection\n \n\n\n\n\nSelect line\n\n\n\nExpand selection\nShift-Option→"
+  },
+  {
+    "objectID": "cheatsheets/Languages/Dart_summary.html",
+    "href": "cheatsheets/Languages/Dart_summary.html",
+    "title": "Dart",
+    "section": "",
+    "text": "Here is a short intro to Dart."
+  },
+  {
+    "objectID": "cheatsheets/Languages/Dart_summary.html#classes",
+    "href": "cheatsheets/Languages/Dart_summary.html#classes",
+    "title": "Dart",
+    "section": "Classes",
+    "text": "Classes\nclass MyClass {\n    // define some class variables / properties:\n    String myString;\n\n    // define a constructor:\n    MyClass({String myText}) { // name must be the same as class name\n        this.myString = myText; // this references object properties\n    }\n\n    void do_something() {\n        ...\n    }\n}\nYou can use syntactic sugar to make your constructor more concise:\n...\nString myString;\nMyClas(this.myString);\n...\n\nInheritance\nto inherit properties and functions from other classes, we use extends:\nclass JetPlane extends Plane{\n    ...\n}\n\n\nPolymorphism\nIf you want to use some methods/properties of a class but override others, you use @override:\nclass UFO extends Plane{\n    @override \n    void fly(){\n        print(\"hover around\");\n    }\n}\nyou can also add onto the methods of the other class using super:\nclass UFO extends Plane{\n    @override\n    void accelerate(){\n        super.accelerate();\n        speed= speed+500;\n    }\n}"
+  },
+  {
+    "objectID": "cheatsheets/Languages/Dart_summary.html#enums",
+    "href": "cheatsheets/Languages/Dart_summary.html#enums",
+    "title": "Dart",
+    "section": "Enums",
+    "text": "Enums\nEnums are like booleans with more options. Your variable can be in one of multiple states:\nenum myEnum = {forward, parked, reverse};\nmyEnum.forward\nBeware: You cannot create enums within classes."
+  },
+  {
+    "objectID": "cheatsheets/Languages/R language/R.html",
+    "href": "cheatsheets/Languages/R language/R.html",
+    "title": "R basics",
+    "section": "",
+    "text": "Basics\n\n\nUsing R\nIn console :\n\nUse R in console / terminal: R\nType your code\nQuit R in console: q()\n\n\nRun R scripts\n\nIn console / terminal: Rscript myScript.R\n\n\n\n\n\n\n\n\n\nGet help with functions and features\n\n\n\n\n\nHelp section on function\n?functionName\n\n\nFind functions / features matching a term\n??TermOfInterest\n\n\nList arguments that the function accepts\nargs(functionName)\n\n\n\n\nExecute R-script from terminal\n\nRscript myScript.R\n\n\n\n\nFile system, Import, Input, Output\n\n\n\n\n\n\n\nUse file system\n\n\n\n\n\nprint working directory\ngetwd()\n\n\nChange working directory\nsetwd(\"path/to/dir\")\n\n\nList files in working directory\ndir()\n\n\nCreate directory\ndir.create(\"path/to/dir\", recursive=TRUE)\n\n\nCreate file\nfile.create(\"myfile.R\")\n\n\nCheck if file exists\nfile.exists(\"myfile.R\")\n\n\nGet info on file (size, time of creation)\nfile.info(\"mytest.R\")\n\n\nRename file\nfile.rename(\"mytest.R\", \"mytest2.R\")\n\n\nCopy file\nfile.copy(\"mytest2.R\", \"mytest3.R\")\n\n\nConstruct file path from directory list\nfile.path(\"folder\", \"subfolder\", \"file\") # \"folder/subfolder/file\n\n\n\n\nImporting other scripts\n\nsource(\"otherScript.R\")\nExecutes the contents of the script.\n\nSend all standard output to a file\n\nsink(\"output.txt\")\n\nPrint to standard output\n\nprint(\"my Output\")\n\n\n\n\nOperations, numbers, vectors, matrices\n\n\n\n\n\n\n\n\nAssign values to a variable\n\n\n\n\n\nAssign value to varialbe\nx &lt;- 4.5\n\n\nAssign to multiple variables\nx &lt;- y &lt;- z &lt;- 4.5\n\n\nAssign/change value of variable in global scope\nx &lt;&lt;- \"global value\"\n\n\n\n\nCreate a vector\n\nx &lt;- c(10, 4.5, 12, 5)\n\n\n\n\n\n\nWarning\n\n\n\n!: If you integrate vectors in your vector ( c(10, c(11, 12), 13) ) it will get flattened (like c(10, 11, 12, 13) ).\n\n\n\nElementwise adding, subtracting, deviding, multiplying, … vectors\n\nx &lt;- c(1, 2)\ny &lt;- c(10, 11, 12, 13)\nz &lt;- x + y\n\n\n\n\n\n\nWarning\n\n\n\nYou can make elementwise operations with vectors of different lengths, as long as the longer one is a multiple of the shorter one. The shorter vector is repeated. 😧\n\n\n\n\n\n\n\n\n\n\n\n\nCommon operators on vectors\n\n\n\n\n\nmaximum, minimum\nmax(x) min(x)\n\n\nVector of min and max\nrange(x)\n\n\nNumber of elements\nlength(x)\n\n\nSum of the elements\nsum(x)\n\n\nProduct of the elements\nprod(x)\n\n\nMean of the elements\nmean(x)\n\n\nVariance of the elements\nvar(x)\n\n\nSort elements ascending\nsort(x)\n\n\nMatrix multiplicatoin\nmat1 %*% mat2\n\n\nDimension of matrix\ndim(mat1)\n\n\nNumber of rows\nnrow(mat1)\n\n\nNumber of cols\nncol(mat2)\n\n\nmode (highest count of val)\nnames(sort(-table(df$col1)))[1]\n\n\nPercentile\nquantile(df$col1, c(0.75))\n\n\n\n!: If x is a n-by-p matrix, then var(x) will return a p-by-p covariance matrix.\n\nGenerate sequences\n\nx &lt;- c(1:10) # Integers from 1 to 10\n# Or\nx &lt;- seq(1,10, 0.5) # 1.0, 1.5, 2.0, 2.5, ... \nc(10, 1) generates a descending sequence.\n\n\nRepeat vector:\nx &lt;- c(1,2,3)\ny &lt;- rep(x, times = 5) # 1, 2, 3, 1, 2, 3, 1, ...\nRepeat elements in vector:\nx &lt;- c(1,2,3)\ny &lt;- rep(x, each = 2) # 1, 1, 2, 2, 3, 3\n\n\nSelecting elements in vectors\n\nSelect first element in sequence\n\nx[1] # ! not x[0] !\n\nSelecting first 10 elements in vector\n\nx[1:10]\n\nSelecting non-missing elements in vector\n\nx[!is.na(x)]\n\nSelecting all elements, except the first 10\n\nx[-(1:5)]\n\nAppend element\n\nappend(fruits, \"apple\")\n\nInsert element\n\nappend(fruits, \"apple\", after = 1)\n\nDelete element\n\nfruits &lt;- fruits[-1] # deletes first element\n\nCreate matrix\n\nmatrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)\n#      [,1] [,2]\n# [1,]    1    4\n# [2,]    2    5\n# [3,]    3    6\n\nAccess matrix element\n\nmy_matrix[1,1]\n\nAccess matrix column(s)\n\nmy_matrix[,2]\nmy_matrix[, c(1,2)]\n\nAdd rows and columns\n\nmy_matrix &lt;- rbind(my_matrix, c(7,8)) # add row\nmy_matrix &lt;- cbind(my_matrix, c(10, 11, 12, 13)) # add column\nYou can also use these functions to concatenate matrices\n\nCreate array\n\narray(c(1:8), dim = c(2,2,2))\n# , , 1\n#\n#      [,1] [,2]\n# [1,]    1    3\n# [2,]    2    4\n# \n# , , 2\n# \n#      [,1] [,2]\n# [1,]    5    7\n# [2,]    6    8\n\n\n\n\n\n\n\n\n\nBoolean operations\n\n\n\n\n\ncreate boolean vector\ny &lt;- c(10, 12, 15) &lt; 13 # [True, True, False]\n\n\nBoolean operators\n&lt;, &lt;=, &gt;, &gt;=, ==, !=\n\n\nand\ncond1 & cond2\n\n\nor\ncond1 | cond2\n\n\nnot\n!cond\n\n\nelement in vector?\n2 %in% c(1,2,3,4)\n\n\nidentical\nidentical(my_matrix, my_matrix2)\n\n\n\nIf logical vectors are used in arithmetic operations, False becomes 0, True becomes 1.\n\nMissing values\n\nNA or NaN !: Operations with missing values return missing values.\n\n\nChecking for missing values: is.na(x) or is.nan(x) (NaN = Not a number)\nAssign value only to elements where condition is true:\nx[is.na(x)] &lt;- 0\n\n\n\n\n\n\n\nCharacters\n\n\n\n\n\nCharacter string\n\"...\"\n\n\nEscape character\n\\\n\n\nNew line\n\\n\n\n\nTab\n\\t\n\n\nlength of string\nnchar(str)\n\n\nIs seq of chars in string?\ngrepl(\"Hello\")\n\n\ncombine two strings\npaste(\"Hello\", \"world\")\n\n\n\nConcatenate arguments 1 by 1 as characters: paste(c(\"X\", \"Y\", \"Z\"), 1:3, sep=\"_\")\n\n\n\n\n\n\n\n\nOperations on number\n\n\n\n\n\nAbsolute value\nabs(x)\n\n\nround up to next int\nceiling(x)\n\n\nround down to next int\nfloor(x)\n\n\nExponent\n^\n\n\nModulus / remainder\n10 %% 3 # 1\n\n\nInteger division\n10 %/% 3 # 3\n\n\n\n\n\nTypes\n\nForce integer creation\n\nx &lt;- 100L # must end with L\n\nConvert types\n\na &lt;- as.numeric(b)\nn &lt;- as.integer(m)\ny &lt;- as.complex(x)\n\nGet type of variable\n\nx &lt;- 10.5\nclass(x) # numeric\n\n\n\n\nDataframes\nContrary to matrices, the different columns of data frames can contain different data types.\n\nConstruct data frame\n\nData_Frame &lt;- data.frame (\n  Training = c(\"Strength\", \"Stamina\", \"Other\"),\n  Pulse = c(100, 150, 120),\n  Duration = c(60, 30, 45)\n)\n\n\n\n\n\n\n\n\n\nFunctions on dataframes\n\n\n\n\n\nRename columns\ncolnames(my_data) &lt;- c(\"col1\", \"col2\", \"col3\")\n\n\nGet summary statistics on columns\nsummary(my_df)\n\n\nAccess column\nmy_df[1] or my_df[[\"col1_name\"]] or my_df$col1_name\n\n\nAdd row, column\nrbind(my_df, c(7,8)), cbind(my_df, c(10, 11))\n\n\nRemove first row, column\nmy_df[-c(1), ], my_df[ ,-c(1)]\n\n\nSelect row with max value of col1\nrownames(df)[which.max(df$col1)]\n\n\n\n\n\nFactors\nFactors are used to store categorical data. I.e. every data point is assigned a category or level.\n\nCreate factor\n\n```R sports &lt;- factor(c(“football”, “tennis”, “football”, “swimming”, “swimming”))\n\nAccess the categories/levels\n\nsports_cats &lt;- levels(sports)\n\nHardcoding / predefining levels\n\nsports &lt;- factor(c(\"football\", \"tennis\", \"football\", \"swimming\"), levels = c(\"football\", \"tennis\", \"swimming\"))\n\n\nNow you cannot assign a value to the factor anymore that is not in levels.\n\n\nControl structures\n\nIf … else …\n\nif (b &gt; a) {\n  ...\n} else if {\n  ... \n} else {\n  ... \n} \n\nWhile loops\n\nwhile(i &lt; n+1){\n  i &lt;- i+1\n  if (x &lt; 0) {\nbreak # exit loop prematurely\n  } else if (x == 0) {\nnext # skip to next iteration\n  }\n  ...\n}\n\nFor loops\n\nfruits &lt;- c(\"banana\", \"apples\", \"cucumbers\")\nfor (fruit in fruits) {\nprint(fruit)\n}\n\n\n\n\nFunctions\n\nCreate function\n\nmy_func &lt;- function(first_name, last_name = \"\") {\n  print(paste(\"Hello\", first_name, last_name))\n  return(paste(first_name, last_name))\n}\n\nCall function:\n\nmy_func(\"gustav\")"
+  },
+  {
+    "objectID": "cheatsheets/frameworks/flutter_summary.html",
+    "href": "cheatsheets/frameworks/flutter_summary.html",
+    "title": "Flutter",
+    "section": "",
+    "text": "A comprehensive installation guide can be found on the flutter website.\n\n\n\nOpen Visual Studio Code and choose the “Flutter: New Project” command.\nTo start the iPhone simulator, type the following command into your terminal:\nopen -a Simulator\nTo run your app in an iPhone Simulator, start your app using the play button on the top right of the text editor.\n\n\n\nThe Dart & Flutter extensions of VS Code offer some neat features:\n\nUsing cmd+shift+p and using the “Quick fix…”-command you can encapsulate your widget in a new widget, swap it with its parent-widget…"
+  },
+  {
+    "objectID": "cheatsheets/frameworks/flutter_summary.html#introduction",
+    "href": "cheatsheets/frameworks/flutter_summary.html#introduction",
+    "title": "Flutter",
+    "section": "",
+    "text": "A comprehensive installation guide can be found on the flutter website.\n\n\n\nOpen Visual Studio Code and choose the “Flutter: New Project” command.\nTo start the iPhone simulator, type the following command into your terminal:\nopen -a Simulator\nTo run your app in an iPhone Simulator, start your app using the play button on the top right of the text editor.\n\n\n\nThe Dart & Flutter extensions of VS Code offer some neat features:\n\nUsing cmd+shift+p and using the “Quick fix…”-command you can encapsulate your widget in a new widget, swap it with its parent-widget…"
+  },
+  {
+    "objectID": "cheatsheets/frameworks/flutter_summary.html#flutter",
+    "href": "cheatsheets/frameworks/flutter_summary.html#flutter",
+    "title": "Flutter",
+    "section": "Flutter",
+    "text": "Flutter\n\nArchitecture of a Flutter app\nEverything in Flutter is a widget and you build widgets upon widgets like lego-blocks. In a new app you create a Scaffold. Within the Scaffold you can create e.g. an AppBar and a Container for the body of your app. This Container can contain a Column that contains widgets that stack vertically or a Row that contains widgets that get aligned horizontally. This creates a widget tree.\n                Scaffold\n                /      \\\n          AppBar        Container\n                            \\\n                            Column\n                                \\\n                             other widget\n\nThe boilerplate stuff\nFirst you import the packages i.e. for the style sheets:\nimport 'package:flutter/material.dart';\nThen you define the main function (the starting point of your app):\nvoid main() {\n  runApp( // starts your app\n    MaterialApp( // defines the style sheets that you can use\n      home: Scaffold( // organizes layout of your app\n        body: Text(\"Hello World\"),\n      ),\n    ),\n  );\n}\n\n\nScaffold\nThe Scaffold is used to organize the layout of your (material) app and contains the widgets. These are the common components\nhome: Scaffold(\n        appBar: AppBar(...),\n        body: Text(\"Hello World\"),\n        floatingActionButton: FloatingActionButton(...),\n        drawer: Drawer(...), //menu that you can pull in from the side\n        bottomNavigationBar: BottomNavigationBar(...)\n      )\n\n&lt;img src=“/img/Scaffold.png”, height=500px&gt;\n\n\n\n\nAppBar\nAppBars are usually title bars in your app that also contain iconButtons.\nAppBar(\n       title: const Text('test'),\n       backgroundColor: Colors.blueGrey[900],\n       actions: &lt;Widget&gt;[ // action that happens when you click on the button\n          IconButton(icon: const Icon(Icons.add_alert),\n                     onPressed: () {...}\n       )\n\n\nImage\nYou can integrate Images from different sources by using different image objects from different parent classes.\nImage( // displays content from image class\n    image:NetworkImage('https://api.flutter.dev/flutter/widgets/Image-class.html'), // displays image from network\n)\nIf you load images from your image assets folder, you need to change the pubspec.yaml file in your project’s root directory. Under assets you need to add the relative location of your image:\nflutter:\n  uses-material-design: true\n  assets:\n    - images/\n\n\nContainer\nA container is a layout box that you can position and fill with content.\nContainer(\n    color: Colors.white,\n    child: Text(\"Hallo\"), \n    width: 50, \n    height: 50,\n    margin: EdgeInsets.all(20), // the margin on all 4 sides to your container\n    padding: EdgeInsets.fromLTRB(5, 5, 10, 10) // the padding of the content in your container\nTo add a background image, you can use the decoration parameter:\nContainer(\n    decoration: BoxDecoration(\n      image: DecorationImage(\n        image: AssetImage(\"images/background.png\"), \n        fit: BoxFit.cover),\n      ),\n    ...)\n\n\nSafeArea\nThe SafeArea widget constraints its children to the area of the screen that is easily visible (not below the notch of the selfie-camera).\nSafeArea(\n    child: ...\n)\n\nColumn and Row\nColumn and Row widgets organize their children vertically and horizontally respectively.\nColumn(\n    children &lt;Widget&gt;: [\n        Container(...),\n        SizedBox(height:10), // This provides some spacing between the elements\n        Container(...)\n    ],\n    mainAxisSize: MainAxisSize.min, // if you don't want it to spread across the whole height\n    verticalDirection: VerticalDirection.up, // if the children should be ordered reversely\n    mainAxisAlignment: MainAxisAlignment.end, // if you want the children to stack up from the bottom\n    crossAxisAlignment: CrossAxisAlignment.stretch,  // this stretches the children to the width of the screen\n)\n\n\nExpanded\nThe expanded widget must be contained in a Column or a Row widget. If fills out the available space in its parent container.\nRow(\n  children: &lt;Widget&gt;[\n    Expanded(\n       child: Image(...)\n    )\n)\n\n\nPadding\nTo add padding around another widget (e.g. that does not have a padding-attribute), you can use the padding widget:\nPadding(\n    child\n    padding:\n)\n\n\nButton\nIf you use FlatButton, you can use an image as the child. This converts the image into a button. Buttons have an onPressed argument, which require a VoidCallback objects. These are functions without inputs and outputs.\nFlatButton(\n  onPressed: (){...} // The () contain the arguments (none) and the {} contain the body of the function\n  child: ...\n)\n\n\nSlider\nIf you use a slider, you need to set its starting value, min and max. To be able to drag the slider around, you need to update the state of the slider:\ndouble sliderVal = 20.0;\nSlider(\n  value: sliderVal,\n  min: 10,\n  max: 30,\n  onChanged: (double newVal) {\n    setState(() {\n      sliderVal = mewVal;\n    });\n  }  \n)\n\n\nVisibility\nYou can conditionally show your buttons or contents using the Visibility widget:\nVisibility(\n  child: FlatButton(...),\n  visible: true\n)\n\n\nIcons\nIcons are accessible like this (check mark as example):\nIcon(\n  Icons.check\n)\n\n\n\nCustom widgets\nThe basic idea of widgets in flutter is composition: The widgets are composed of several simpler widgets that depend on one another (not inhereted). This is also how you’d make custom widgets.\nclass myOwnButton extends StatelessWidget {\n  @override\n  Widget build(BuildContext context) {\n    return RawMaterialButton(\n     ... // here you combine/define what you want  \n    );\n  }\n}\n\n\nGesture Detector\nYou can check if an widget got tapped, forcedPressed, doubletapped… with a Gesture Detector as a parent:\nGestureDetector(\n    onTap: () {\n      setState(() {...});\n    },\n    child: ...\n\n\nTheme\nThe coloring, fonts, styles throughout the app are defined in the ThemeData widget. You can switch themes\nMaterialApp(\n  theme:ThemeData.dark() //uses the standard dart theme\n)\nYou can adapt the default themes\nMaterialApp(\n  theme.ThemeData.dark().copyWith(\n    primaryColor: ...\n  )\n)\nor you can define your own ones.\nMaterialApp(\n  theme: ThemeData(\n    primaryColor: Colors.lightBlue,\n    textTheme: textTheme(...) //Text has its own theme\n    ...\n  )\n)\nYou can also use very detailed themes for other widgets. You do it by wrapping the widget in its theme:\nSliderTheme(\n  data: SliderTheme.of(context).copyWith(\n    ... // adapt theme to your liking\n  ),\n  child: Slider(\n    ... // define Slider min, max, onChanged...\n  )\n)\n\n\nCreating App Icons\nTo create an app icon from an image file, go to www.appicon.co and have it transformed to different resolutions. For Android, you use the newly created “mipmap-…”-folders and replace the respecitve folders in “/android/app/src/main/res” with them. For iOS, you use the newly created folder “Assets.xcassets” and replace the folder “/ios/Runner/Assets.xcassets” with it.\n\n\nRun the app on a physical device\nTo run your app on a physical iPhone or Android device, you can follow the steps on this flutter-webpage."
+  },
+  {
+    "objectID": "cheatsheets/frameworks/flutter_summary.html#stateful-and-stateless-widgets",
+    "href": "cheatsheets/frameworks/flutter_summary.html#stateful-and-stateless-widgets",
+    "title": "Flutter",
+    "section": "Stateful and Stateless widgets",
+    "text": "Stateful and Stateless widgets\nThe state of your app can be imagined as the “state of ahffairs” in your app during runtime. There are two categories of widgets if it comes to state:\n\nStateless widgets: These are not meant to change their state during runtime -&gt; The text, images aso. stay the same. Like in a museum.\nStateful widgets: These are supposed to change their state during runtime -&gt; menues that appear, values that change upon user input. Like in a workshop.\n\nStateless widgets have a build function:\nclass myClass extends StatelessWidget {\n  @override\n  Widget build(BuildContext context) {\n    return Container(\n      \n    );\n  }\n}\nStateful widgets have a State on top of the widget itself:\nclass myWidget extends StatefulWidget {\n  @override\n  _myWidgetState createState() =&gt; _myWidgetState();\n}\n\nclass _myWidgetState extends State&lt;myWidget&gt; { // The State-part tracks and updates the screen as the state changes. This is where you'd put the stuff normally in a stateless widget.\n  @override\n  Widget build(BuildContext context) {\n    return Container(\n      \n    );\n  }\n}\n\nChange the state\nIf you want to change the State of your app, you need to call setState():\nFlatButton(\n           onPressed: () {\n           setState(() {\n           ... // The new state you want to have\n           });\n           },\n           ...)\nThe variables that you changed are marked and the widgets that use them, are redrawn on the screen.\n\n\nMulti-Screen Apps\nMulti-screen apps contain different pages that are accessible by different routes. The screens are organized in a stack. You push and pop pages/screens on and off your stack. You need to specify a context (where you are -&gt; BuildContext) and a route (where we want to go).\nchild: FloatingActionButton(\n  onPressed: () {\n    Navigator.push(\n      context,\n      MaterialPageRoute(\n        builder: (context) {\n          return Screen2();\n      }));\n  }),\nIf you have several buttons, it’s easier to use named routes. You define these routes in the main build function of your app:\nMaterialApp(\n  initialRoute: '/zero',\n  routes: {\n    '/zero': (context) =&gt; Screen0(),\n    '/first': (context) =&gt; Screen1(),\n    '/second': (context) =&gt; Screen2(),\n  },\n)"
   },
   {
     "objectID": "cheatsheets/Cloud/azure_ml.html",
@@ -49,102 +77,60 @@
     "text": "Experiments\n\nDelete Experiments without jobs\n\nfrom azureml.core import Workspace, Experiment\naml_workspace = Workspace.from_config()\nexperiment_id = Experiment(aml_workspace, '&lt;experiment_name&gt;').id\nExperiment.delete(aml_workspace, experiment_id)"
   },
   {
-    "objectID": "cheatsheets/Languages/R language/R.html",
-    "href": "cheatsheets/Languages/R language/R.html",
-    "title": "R basics",
+    "objectID": "cheatsheets/CLI Tools/bash.html",
+    "href": "cheatsheets/CLI Tools/bash.html",
+    "title": "Bash",
     "section": "",
-    "text": "Basics\n\n\nUsing R\nIn console :\n\nUse R in console / terminal: R\nType your code\nQuit R in console: q()\n\n\nRun R scripts\n\nIn console / terminal: Rscript myScript.R\n\n\n\n\n\n\n\n\n\nGet help with functions and features\n\n\n\n\n\nHelp section on function\n?functionName\n\n\nFind functions / features matching a term\n??TermOfInterest\n\n\nList arguments that the function accepts\nargs(functionName)\n\n\n\n\nExecute R-script from terminal\n\nRscript myScript.R\n\n\n\n\nFile system, Import, Input, Output\n\n\n\n\n\n\n\nUse file system\n\n\n\n\n\nprint working directory\ngetwd()\n\n\nChange working directory\nsetwd(\"path/to/dir\")\n\n\nList files in working directory\ndir()\n\n\nCreate directory\ndir.create(\"path/to/dir\", recursive=TRUE)\n\n\nCreate file\nfile.create(\"myfile.R\")\n\n\nCheck if file exists\nfile.exists(\"myfile.R\")\n\n\nGet info on file (size, time of creation)\nfile.info(\"mytest.R\")\n\n\nRename file\nfile.rename(\"mytest.R\", \"mytest2.R\")\n\n\nCopy file\nfile.copy(\"mytest2.R\", \"mytest3.R\")\n\n\nConstruct file path from directory list\nfile.path(\"folder\", \"subfolder\", \"file\") # \"folder/subfolder/file\n\n\n\n\nImporting other scripts\n\nsource(\"otherScript.R\")\nExecutes the contents of the script.\n\nSend all standard output to a file\n\nsink(\"output.txt\")\n\nPrint to standard output\n\nprint(\"my Output\")\n\n\n\n\nOperations, numbers, vectors, matrices\n\n\n\n\n\n\n\n\nAssign values to a variable\n\n\n\n\n\nAssign value to varialbe\nx &lt;- 4.5\n\n\nAssign to multiple variables\nx &lt;- y &lt;- z &lt;- 4.5\n\n\nAssign/change value of variable in global scope\nx &lt;&lt;- \"global value\"\n\n\n\n\nCreate a vector\n\nx &lt;- c(10, 4.5, 12, 5)\n\n\n\n\n\n\nWarning\n\n\n\n!: If you integrate vectors in your vector ( c(10, c(11, 12), 13) ) it will get flattened (like c(10, 11, 12, 13) ).\n\n\n\nElementwise adding, subtracting, deviding, multiplying, … vectors\n\nx &lt;- c(1, 2)\ny &lt;- c(10, 11, 12, 13)\nz &lt;- x + y\n\n\n\n\n\n\nWarning\n\n\n\nYou can make elementwise operations with vectors of different lengths, as long as the longer one is a multiple of the shorter one. The shorter vector is repeated. 😧\n\n\n\n\n\n\n\n\n\n\n\n\nCommon operators on vectors\n\n\n\n\n\nmaximum, minimum\nmax(x) min(x)\n\n\nVector of min and max\nrange(x)\n\n\nNumber of elements\nlength(x)\n\n\nSum of the elements\nsum(x)\n\n\nProduct of the elements\nprod(x)\n\n\nMean of the elements\nmean(x)\n\n\nVariance of the elements\nvar(x)\n\n\nSort elements ascending\nsort(x)\n\n\nMatrix multiplicatoin\nmat1 %*% mat2\n\n\nDimension of matrix\ndim(mat1)\n\n\nNumber of rows\nnrow(mat1)\n\n\nNumber of cols\nncol(mat2)\n\n\nmode (highest count of val)\nnames(sort(-table(df$col1)))[1]\n\n\nPercentile\nquantile(df$col1, c(0.75))\n\n\n\n!: If x is a n-by-p matrix, then var(x) will return a p-by-p covariance matrix.\n\nGenerate sequences\n\nx &lt;- c(1:10) # Integers from 1 to 10\n# Or\nx &lt;- seq(1,10, 0.5) # 1.0, 1.5, 2.0, 2.5, ... \nc(10, 1) generates a descending sequence.\n\n\nRepeat vector:\nx &lt;- c(1,2,3)\ny &lt;- rep(x, times = 5) # 1, 2, 3, 1, 2, 3, 1, ...\nRepeat elements in vector:\nx &lt;- c(1,2,3)\ny &lt;- rep(x, each = 2) # 1, 1, 2, 2, 3, 3\n\n\nSelecting elements in vectors\n\nSelect first element in sequence\n\nx[1] # ! not x[0] !\n\nSelecting first 10 elements in vector\n\nx[1:10]\n\nSelecting non-missing elements in vector\n\nx[!is.na(x)]\n\nSelecting all elements, except the first 10\n\nx[-(1:5)]\n\nAppend element\n\nappend(fruits, \"apple\")\n\nInsert element\n\nappend(fruits, \"apple\", after = 1)\n\nDelete element\n\nfruits &lt;- fruits[-1] # deletes first element\n\nCreate matrix\n\nmatrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)\n#      [,1] [,2]\n# [1,]    1    4\n# [2,]    2    5\n# [3,]    3    6\n\nAccess matrix element\n\nmy_matrix[1,1]\n\nAccess matrix column(s)\n\nmy_matrix[,2]\nmy_matrix[, c(1,2)]\n\nAdd rows and columns\n\nmy_matrix &lt;- rbind(my_matrix, c(7,8)) # add row\nmy_matrix &lt;- cbind(my_matrix, c(10, 11, 12, 13)) # add column\nYou can also use these functions to concatenate matrices\n\nCreate array\n\narray(c(1:8), dim = c(2,2,2))\n# , , 1\n#\n#      [,1] [,2]\n# [1,]    1    3\n# [2,]    2    4\n# \n# , , 2\n# \n#      [,1] [,2]\n# [1,]    5    7\n# [2,]    6    8\n\n\n\n\n\n\n\n\n\nBoolean operations\n\n\n\n\n\ncreate boolean vector\ny &lt;- c(10, 12, 15) &lt; 13 # [True, True, False]\n\n\nBoolean operators\n&lt;, &lt;=, &gt;, &gt;=, ==, !=\n\n\nand\ncond1 & cond2\n\n\nor\ncond1 | cond2\n\n\nnot\n!cond\n\n\nelement in vector?\n2 %in% c(1,2,3,4)\n\n\nidentical\nidentical(my_matrix, my_matrix2)\n\n\n\nIf logical vectors are used in arithmetic operations, False becomes 0, True becomes 1.\n\nMissing values\n\nNA or NaN !: Operations with missing values return missing values.\n\n\nChecking for missing values: is.na(x) or is.nan(x) (NaN = Not a number)\nAssign value only to elements where condition is true:\nx[is.na(x)] &lt;- 0\n\n\n\n\n\n\n\nCharacters\n\n\n\n\n\nCharacter string\n\"...\"\n\n\nEscape character\n\\\n\n\nNew line\n\\n\n\n\nTab\n\\t\n\n\nlength of string\nnchar(str)\n\n\nIs seq of chars in string?\ngrepl(\"Hello\")\n\n\ncombine two strings\npaste(\"Hello\", \"world\")\n\n\n\nConcatenate arguments 1 by 1 as characters: paste(c(\"X\", \"Y\", \"Z\"), 1:3, sep=\"_\")\n\n\n\n\n\n\n\n\nOperations on number\n\n\n\n\n\nAbsolute value\nabs(x)\n\n\nround up to next int\nceiling(x)\n\n\nround down to next int\nfloor(x)\n\n\nExponent\n^\n\n\nModulus / remainder\n10 %% 3 # 1\n\n\nInteger division\n10 %/% 3 # 3\n\n\n\n\n\nTypes\n\nForce integer creation\n\nx &lt;- 100L # must end with L\n\nConvert types\n\na &lt;- as.numeric(b)\nn &lt;- as.integer(m)\ny &lt;- as.complex(x)\n\nGet type of variable\n\nx &lt;- 10.5\nclass(x) # numeric\n\n\n\n\nDataframes\nContrary to matrices, the different columns of data frames can contain different data types.\n\nConstruct data frame\n\nData_Frame &lt;- data.frame (\n  Training = c(\"Strength\", \"Stamina\", \"Other\"),\n  Pulse = c(100, 150, 120),\n  Duration = c(60, 30, 45)\n)\n\n\n\n\n\n\n\n\n\nFunctions on dataframes\n\n\n\n\n\nRename columns\ncolnames(my_data) &lt;- c(\"col1\", \"col2\", \"col3\")\n\n\nGet summary statistics on columns\nsummary(my_df)\n\n\nAccess column\nmy_df[1] or my_df[[\"col1_name\"]] or my_df$col1_name\n\n\nAdd row, column\nrbind(my_df, c(7,8)), cbind(my_df, c(10, 11))\n\n\nRemove first row, column\nmy_df[-c(1), ], my_df[ ,-c(1)]\n\n\nSelect row with max value of col1\nrownames(df)[which.max(df$col1)]\n\n\n\n\n\nFactors\nFactors are used to store categorical data. I.e. every data point is assigned a category or level.\n\nCreate factor\n\n```R sports &lt;- factor(c(“football”, “tennis”, “football”, “swimming”, “swimming”))\n\nAccess the categories/levels\n\nsports_cats &lt;- levels(sports)\n\nHardcoding / predefining levels\n\nsports &lt;- factor(c(\"football\", \"tennis\", \"football\", \"swimming\"), levels = c(\"football\", \"tennis\", \"swimming\"))\n\n\nNow you cannot assign a value to the factor anymore that is not in levels.\n\n\nControl structures\n\nIf … else …\n\nif (b &gt; a) {\n  ...\n} else if {\n  ... \n} else {\n  ... \n} \n\nWhile loops\n\nwhile(i &lt; n+1){\n  i &lt;- i+1\n  if (x &lt; 0) {\nbreak # exit loop prematurely\n  } else if (x == 0) {\nnext # skip to next iteration\n  }\n  ...\n}\n\nFor loops\n\nfruits &lt;- c(\"banana\", \"apples\", \"cucumbers\")\nfor (fruit in fruits) {\nprint(fruit)\n}\n\n\n\n\nFunctions\n\nCreate function\n\nmy_func &lt;- function(first_name, last_name = \"\") {\n  print(paste(\"Hello\", first_name, last_name))\n  return(paste(first_name, last_name))\n}\n\nCall function:\n\nmy_func(\"gustav\")"
+    "text": "Number of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag."
   },
   {
-    "objectID": "cheatsheets/Languages/Python.html",
-    "href": "cheatsheets/Languages/Python.html",
-    "title": "Python",
+    "objectID": "cheatsheets/CLI Tools/bash.html#files",
+    "href": "cheatsheets/CLI Tools/bash.html#files",
+    "title": "Bash",
     "section": "",
-    "text": "Use case\n\nYou have different classes that create objects that do the same kind of work (e.g. Logistic company has trucks, ships, planes that all transport goods). Explanation: refactoring.guru\n\nWhat it does for you\n\nCreate objects and methods without having to specify the class or name of method (This is handled by factory object).\n\nBlueprint\n\n\nGithub.com/ArjanCodes\nrefactoring.guru"
+    "text": "Number of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag."
   },
   {
-    "objectID": "cheatsheets/Languages/Python.html#design-patterns",
-    "href": "cheatsheets/Languages/Python.html#design-patterns",
-    "title": "Python",
+    "objectID": "cheatsheets/CLI Tools/bash.html#processes",
+    "href": "cheatsheets/CLI Tools/bash.html#processes",
+    "title": "Bash",
+    "section": "Processes",
+    "text": "Processes\n\nList running processes\n\nhtop\n\n\n\n\n\n\n\n\n\nCommands\n\n\n\n\n\nHelp\nh\n\n\nKill process\nk\n\n\nOrder processes by memory consumption\nShift-M\n\n\nFilter processes by user\nU\n\n\nDisplay files used by the selected process\nL\n\n\nDisplay user threads\nShift-H\n\n\n\n\nKill process\n\nkill -9 [process-PID]\n\nInfo on resource usage & processes on NVidia graphic cards\n\nnvidia-smi"
+  },
+  {
+    "objectID": "cheatsheets/CLI Tools/ruff.html",
+    "href": "cheatsheets/CLI Tools/ruff.html",
+    "title": "ruff",
     "section": "",
-    "text": "Use case\n\nYou have different classes that create objects that do the same kind of work (e.g. Logistic company has trucks, ships, planes that all transport goods). Explanation: refactoring.guru\n\nWhat it does for you\n\nCreate objects and methods without having to specify the class or name of method (This is handled by factory object).\n\nBlueprint\n\n\nGithub.com/ArjanCodes\nrefactoring.guru"
+    "text": "pip install ruff"
   },
   {
-    "objectID": "cheatsheets/Languages/R language/R_plotting.html",
-    "href": "cheatsheets/Languages/R language/R_plotting.html",
-    "title": "R plotting",
+    "objectID": "cheatsheets/CLI Tools/ruff.html#install",
+    "href": "cheatsheets/CLI Tools/ruff.html#install",
+    "title": "ruff",
     "section": "",
-    "text": "This cheatsheet uses ggplot2. For more info on the R-built-in graphics-package see: rdocumentation.org"
+    "text": "pip install ruff"
   },
   {
-    "objectID": "cheatsheets/Languages/R language/R_plotting.html#dot-line-charts",
-    "href": "cheatsheets/Languages/R language/R_plotting.html#dot-line-charts",
-    "title": "R plotting",
-    "section": "dot & line charts",
-    "text": "dot & line charts\nUsing dataframes:\nlibrary(ggplot2)\nmy_plot = ggplot(myDataframe, aes(x = col1, y = col2)) + geom_point()\nprint(my_plot)\nUsing vectors:\nggplot(data = NULL, aes(x = c(1,2,3,4,5), y = c(25,16,9,4,1))) + geom_point()\n\n\n\n\n\n\n\nStyles of plot\n\n\n\n\n\npoints\n... + geom_point()\n\n\nline\n... + geom_line()"
+    "objectID": "cheatsheets/CLI Tools/ruff.html#configuration",
+    "href": "cheatsheets/CLI Tools/ruff.html#configuration",
+    "title": "ruff",
+    "section": "Configuration",
+    "text": "Configuration\nCreate a file named pyproject.toml with the following content. You can find the relevant rules here.\n[tool.ruff]\ntarget-version = \"py39\"\n\n# Select relevant rules\nselect = [\n    \"ANN\", # type annotations\n    \"ARG\", # falke8 unused arguments\n    \"B\",  # flake8-bugbear\n    \"COM\", # flake8-commas (specifically trailing commas)\n    \"C4\", # flake8-comprehensions\n    \"D\",  # pydocstyle\n    \"E\",  # Error\n    \"ERA\", # eradicate commented out code\n    \"F\",  # pyflakes\n    \"FIX\", # flake8 fixme\n    \"I\",  # isort\n    \"ISC\", # flake8-implicit-str-concat\n    \"N\",  # pep8-naming\n    \"NPY\", # NumPy specific rules\n    \"PERF\", # Perflint: performance\n    \"PIE\", # flake8-pie \n    \"PGH\",  # pygrep-hooks\n    \"PTH\", # flake8-use-pathlib \n    \"Q\",  # flake8-quotes\n    \"RUF\", # Ruff specific rules\n    \"S\",  # bandit security checks \n    \"SIM\",  # flake8-simplify\n    \"UP\",  # pyupgrade\n    \"W\",  # Warning\n    \"YTT\", # flake8-2020 \n]\n\n\n# Ignore the following rules\nignore = [\n    \"ANN101\", # missing-type-self\n    \"ANN401\", # any-type type hint\n    \"D100\", # undocumented-public-module\n    \"D101\", # undocumented-public-class -&gt; We document inits\n    \"D104\", # Missing docstring in public package\n    \"E402\", # (import violation)\n]\n\nline-length = 88  # Must agree with Black\n\n[tool.ruff.per-file-ignores]\n\"path/to/python-file.py\" = [\"E501\"] # line too long \n\"path/to_test_folder/*\" = [\n    \"ANN201\", # Missing return type -&gt; Tests commonly return None (overkill)\n    \"ANN202\", # Missing return type -&gt; Tests commonly return None (overkill)\n    \"D102\", # No docstrings -&gt; not necessary in tests\n] \n\n# Doc-String format\n[tool.ruff.pydocstyle]\nconvention = \"google\"  # Accepts: \"google\", \"numpy\", or \"pep257\"."
   },
   {
-    "objectID": "cheatsheets/Languages/R language/R_plotting.html#column-charts",
-    "href": "cheatsheets/Languages/R language/R_plotting.html#column-charts",
-    "title": "R plotting",
-    "section": "Column charts",
-    "text": "Column charts\nplot the values as columns:\nggplot(df, aes(x = factor(cat_col), y = value_col)) + geom_col()\nplot the counts as columns:\nggplot(df, aes(x = factor(value_col))) + geom_bar()\n\nHistogram\nPlot distribution of values:\nggplot(df, aes(x = value_col)) + geom_histogram(binwidth=3)"
+    "objectID": "cheatsheets/CLI Tools/ruff.html#run",
+    "href": "cheatsheets/CLI Tools/ruff.html#run",
+    "title": "ruff",
+    "section": "Run",
+    "text": "Run\n\nCheck for rule violations and fix the ones that can be fixed without danger\n\nruff check . --fix\n. checks in the current directory. --fix enables the autofix feature."
   },
   {
-    "objectID": "cheatsheets/Languages/R language/R_plotting.html#box-plot",
-    "href": "cheatsheets/Languages/R language/R_plotting.html#box-plot",
-    "title": "R plotting",
-    "section": "Box Plot",
-    "text": "Box Plot\nCompare different distributions:\nggplot(df, aes(x = cat_col, y = value_col)) +  geom_boxplot()"
-  },
-  {
-    "objectID": "cheatsheets/Languages/R language/R_plotting.html#plot-functions",
-    "href": "cheatsheets/Languages/R language/R_plotting.html#plot-functions",
-    "title": "R plotting",
-    "section": "Plot functions",
-    "text": "Plot functions\nTo smoothly plot a curved function:\nmy_func &lt;- function(x) sqrt(x) # - x**2\nx_val_df = data.frame(x_val = c(0, 10))\nggplot(x_val_df, aes(x = x_val)) + stat_function(fun = my_func, geom = \"line\")\nMore info in this e-book: r-graphics.org/"
-  },
-  {
-    "objectID": "cheatsheets/Quarto.html",
-    "href": "cheatsheets/Quarto.html",
-    "title": "Quarto",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Cheatsheets",
     "section": "",
-    "text": "Collapsable callout block\n\n::: {.callout-warning collapse=true appearance=\"simple\"}  \n### Title \n:::\n\nPanels\n\n::: {.panel-tabset}\n### Panel heading 1\n### Panel heading 2\n:::"
-  },
-  {
-    "objectID": "cheatsheets/Quarto.html#blocks",
-    "href": "cheatsheets/Quarto.html#blocks",
-    "title": "Quarto",
-    "section": "",
-    "text": "Collapsable callout block\n\n::: {.callout-warning collapse=true appearance=\"simple\"}  \n### Title \n:::\n\nPanels\n\n::: {.panel-tabset}\n### Panel heading 1\n### Panel heading 2\n:::"
-  },
-  {
-    "objectID": "cheatsheets/Quarto.html#tables",
-    "href": "cheatsheets/Quarto.html#tables",
-    "title": "Quarto",
-    "section": "Tables",
-    "text": "Tables\n\nMarkdown table\n\nHeader col 1  | header col 2\n--------------|-----\ncontent col 1 | content col 2\n\n:  {tbl-colwidths=\"[50,50]\"}"
-  },
-  {
-    "objectID": "cheatsheets/Quarto.html#formatting",
-    "href": "cheatsheets/Quarto.html#formatting",
-    "title": "Quarto",
-    "section": "Formatting",
-    "text": "Formatting\n\nFont-color\n\n&lt;font color=\"grey\"&gt;\n&lt;/font&gt;"
-  },
-  {
-    "objectID": "cheatsheets/Quarto.html#keyboard-shortcuts",
-    "href": "cheatsheets/Quarto.html#keyboard-shortcuts",
-    "title": "Quarto",
-    "section": "Keyboard shortcuts",
-    "text": "Keyboard shortcuts\n\nFormat keyboard keys for different operating systems\n\n\n\n\n{{&lt; kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L &gt;}}\n\n\nsimple\n\n\n\n\n{{&lt; kbd Shift-Ctrl-P &gt;}}\n\nFormat arrow keys\n\n\n\n\n{{&lt;kbd &uarr; &gt;}}\n{{&lt;kbd &darr; &gt;}}\n{{&lt;kbd &larr; &gt;}}\n{{&lt;kbd &rarr; &gt;}}\n↑ ↓ ← →"
-  },
-  {
-    "objectID": "cheatsheets/Cloud/gcloud.html",
-    "href": "cheatsheets/Cloud/gcloud.html",
-    "title": "GCP: gcloud CLI",
-    "section": "",
-    "text": "SSH connection\n \n\n\n\n\nsetup new ssh connection to compute instance\ngcloud compute config-ssh"
+    "text": "This is a collection of my cheatsheets. Feel free to use them. If you want to edit them, to your own needs: Pleae visit my Github-Repo, give it a star and clone it.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\n\n\n\nAzure ML\n\n\n\n\n\n\n\n\n\n\nBash\n\n\nBash is a command line tool and language.\n\n\n\n\n\n\n\nConda\n\n\nConda is a package and virtual environment manager.\n\n\n\n\n\n\n\nDart\n\n\nDart is a new programming language by Google, mainly used for app development.\n\n\n\n\n\n\n\nFlutter\n\n\nFlutter is a cross-plattform app-development framework based on dart.\n\n\n\n\n\n\n\nGCP: gcloud CLI\n\n\nGcloud CLI is the command line interface of the Google Cloud Platform.\n\n\n\n\n\n\n\nGit\n\n\nGit is a version control system mostly used for code.\n\n\n\n\n\n\n\nPip\n\n\nPip is the official python package manager\n\n\n\n\n\n\n\nPython\n\n\nPython is one of the most popular programming languages.\n\n\n\n\n\n\n\nQuarto\n\n\nQuarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations. \n\n\n\n\n\n\n\nR basics\n\n\nR is a programming language that is specialized in statistical analysis.\n\n\n\n\n\n\n\nR plotting\n\n\nR has powerful builtin plotting capabilities\n\n\n\n\n\n\n\nVS Code\n\n\nVisual studio code is one of the most popular code editors.\n\n\n\n\n\n\n\nruff\n\n\nA fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "cheatsheets/CLI Tools/git.html",
@@ -203,52 +189,115 @@
     "text": "History\n\nShow commit history with branch dependencies\n\ngit log --graph --oneline"
   },
   {
-    "objectID": "cheatsheets/CLI Tools/bash.html",
-    "href": "cheatsheets/CLI Tools/bash.html",
-    "title": "Bash",
+    "objectID": "cheatsheets/CLI Tools/pip.html",
+    "href": "cheatsheets/CLI Tools/pip.html",
+    "title": "Pip",
     "section": "",
-    "text": "Number of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag."
+    "text": "Installation\n\nUsually pip is installed with python automatically.\n\nUpgrade pip\n\npython -m pip install --upgrade pip\n\nInstall packages\n\npip install SomePackage            # latest version\npip install SomePackage==1.0.4     # specific version\npip install 'SomePackage&gt;=1.0.4'   # minimum version\n\nInstall from requirements file\n\npip install -r requirements.txt\n\nGenerate requirements file from installed packages\n\npip freeze &gt; requirements.txt\n\nList installed packages\n\npip list\n\nList outdated installed packages\n\npip list --outdated\n\nGet info on package\n\npip show SomePackage\n\n\n\nWheels\nWheel files (binaries) make the installation of pip packages faster.\n\nInstall wheel\n\npip install wheel\n\nCreate pip wheel file from requirements\n\npip wheel --wheel-dir=/local/wheels -r requirements.txt\n\nInstall packages from local wheels directory\n\npip install --no-index --find-links=/local/wheels -r requirements.txt\n\n\n\n\nPipenv\nPipenv is the environment manager for pip.\n\nInstall pipenv\n\npip install --user --upgrade pipenv\n\nIstall packages in your environment\n\npipenv install -r requirements.txt\n\nRun script in your environment\n\npipenv run python python_script.py"
   },
   {
-    "objectID": "cheatsheets/CLI Tools/bash.html#files",
-    "href": "cheatsheets/CLI Tools/bash.html#files",
-    "title": "Bash",
+    "objectID": "cheatsheets/CLI Tools/Conda.html",
+    "href": "cheatsheets/CLI Tools/Conda.html",
+    "title": "Conda",
     "section": "",
-    "text": "Number of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag."
+    "text": "conda docs - Installation\n\n\n\n\n\n\nInstallation via UNIX CLI\n\n\n\n\n\nmkdir -p ~/miniconda3\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh\nbash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3\nrm -rf ~/miniconda3/miniconda.sh\n~/miniconda3/bin/conda init bash\n~/miniconda3/bin/conda init zsh\n\n\n\n\n\n\nList your existing environments\n\nconda env list\n\nCreate environment\n\nconda create --name env-name\n\nCreate a conda env from a file:\n\nconda env create -f environment.yml\n\nRemoving / Deleting environment\n\nconda env remove -n env-name\n\n\nMore info: Intro to Conda virtual environments\n\n\n\n\nUse environment\n\nconda activate env-name\n\nCheck and update package versions. After activating an env:\n\npython --version\n\n\nconda update python\n\nUpdate whole environment according to your yaml-file:\n\nconda env update -f my_env.yml\n\nSwitch back to base environment\n\nconda deactivate env-name\n\nInstall package: Latest version\n\nconda install pandas \n\nInstall package: Specific version\n\nconda install pandas==2.0.0\n\nInstall package: From different channel\n\nconda install pandas -c conda-forge -y\n\nList packages in environment\n\nconda list\n\nExport environment to yml\n\nconda env export &gt; environment.yml"
   },
   {
-    "objectID": "cheatsheets/CLI Tools/bash.html#processes",
-    "href": "cheatsheets/CLI Tools/bash.html#processes",
-    "title": "Bash",
-    "section": "Processes",
-    "text": "Processes\n\nList running processes\n\nhtop\n\n\n\n\n\n\n\n\n\nCommands\n\n\n\n\n\nHelp\nh\n\n\nKill process\nk\n\n\nOrder processes by memory consumption\nShift-M\n\n\nFilter processes by user\nU\n\n\nDisplay files used by the selected process\nL\n\n\nDisplay user threads\nShift-H\n\n\n\n\nKill process\n\nkill -9 [process-PID]\n\nInfo on resource usage & processes on NVidia graphic cards\n\nnvidia-smi"
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/ruff.html",
-    "href": "cheatsheets/CLI Tools/ruff.html",
-    "title": "ruff",
+    "objectID": "cheatsheets/CLI Tools/Conda.html#installation",
+    "href": "cheatsheets/CLI Tools/Conda.html#installation",
+    "title": "Conda",
     "section": "",
-    "text": "pip install ruff"
+    "text": "conda docs - Installation\n\n\n\n\n\n\nInstallation via UNIX CLI\n\n\n\n\n\nmkdir -p ~/miniconda3\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh\nbash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3\nrm -rf ~/miniconda3/miniconda.sh\n~/miniconda3/bin/conda init bash\n~/miniconda3/bin/conda init zsh\n\n\n\n\n\n\nList your existing environments\n\nconda env list\n\nCreate environment\n\nconda create --name env-name\n\nCreate a conda env from a file:\n\nconda env create -f environment.yml\n\nRemoving / Deleting environment\n\nconda env remove -n env-name\n\n\nMore info: Intro to Conda virtual environments\n\n\n\n\nUse environment\n\nconda activate env-name\n\nCheck and update package versions. After activating an env:\n\npython --version\n\n\nconda update python\n\nUpdate whole environment according to your yaml-file:\n\nconda env update -f my_env.yml\n\nSwitch back to base environment\n\nconda deactivate env-name\n\nInstall package: Latest version\n\nconda install pandas \n\nInstall package: Specific version\n\nconda install pandas==2.0.0\n\nInstall package: From different channel\n\nconda install pandas -c conda-forge -y\n\nList packages in environment\n\nconda list\n\nExport environment to yml\n\nconda env export &gt; environment.yml"
   },
   {
-    "objectID": "cheatsheets/CLI Tools/ruff.html#install",
-    "href": "cheatsheets/CLI Tools/ruff.html#install",
-    "title": "ruff",
+    "objectID": "cheatsheets/Cloud/gcloud.html",
+    "href": "cheatsheets/Cloud/gcloud.html",
+    "title": "GCP: gcloud CLI",
     "section": "",
-    "text": "pip install ruff"
+    "text": "SSH connection\n \n\n\n\n\nsetup new ssh connection to compute instance\ngcloud compute config-ssh"
   },
   {
-    "objectID": "cheatsheets/CLI Tools/ruff.html#configuration",
-    "href": "cheatsheets/CLI Tools/ruff.html#configuration",
-    "title": "ruff",
-    "section": "Configuration",
-    "text": "Configuration\nCreate a file named pyproject.toml with the following content. You can find the relevant rules here.\n[tool.ruff]\ntarget-version = \"py39\"\n\n# Select relevant rules\nselect = [\n    \"ANN\", # type annotations\n    \"ARG\", # falke8 unused arguments\n    \"B\",  # flake8-bugbear\n    \"COM\", # flake8-commas (specifically trailing commas)\n    \"C4\", # flake8-comprehensions\n    \"D\",  # pydocstyle\n    \"E\",  # Error\n    \"ERA\", # eradicate commented out code\n    \"F\",  # pyflakes\n    \"FIX\", # flake8 fixme\n    \"I\",  # isort\n    \"ISC\", # flake8-implicit-str-concat\n    \"N\",  # pep8-naming\n    \"NPY\", # NumPy specific rules\n    \"PERF\", # Perflint: performance\n    \"PIE\", # flake8-pie \n    \"PGH\",  # pygrep-hooks\n    \"PTH\", # flake8-use-pathlib \n    \"Q\",  # flake8-quotes\n    \"RUF\", # Ruff specific rules\n    \"S\",  # bandit security checks \n    \"SIM\",  # flake8-simplify\n    \"UP\",  # pyupgrade\n    \"W\",  # Warning\n    \"YTT\", # flake8-2020 \n]\n\n\n# Ignore the following rules\nignore = [\n    \"ANN101\", # missing-type-self\n    \"ANN401\", # any-type type hint\n    \"D100\", # undocumented-public-module\n    \"D101\", # undocumented-public-class -&gt; We document inits\n    \"D104\", # Missing docstring in public package\n    \"E402\", # (import violation)\n]\n\nline-length = 88  # Must agree with Black\n\n[tool.ruff.per-file-ignores]\n\"path/to/python-file.py\" = [\"E501\"] # line too long \n\"path/to_test_folder/*\" = [\n    \"ANN201\", # Missing return type -&gt; Tests commonly return None (overkill)\n    \"ANN202\", # Missing return type -&gt; Tests commonly return None (overkill)\n    \"D102\", # No docstrings -&gt; not necessary in tests\n] \n\n# Doc-String format\n[tool.ruff.pydocstyle]\nconvention = \"google\"  # Accepts: \"google\", \"numpy\", or \"pep257\"."
+    "objectID": "cheatsheets/Languages/R language/R_plotting.html",
+    "href": "cheatsheets/Languages/R language/R_plotting.html",
+    "title": "R plotting",
+    "section": "",
+    "text": "This cheatsheet uses ggplot2. For more info on the R-built-in graphics-package see: rdocumentation.org"
   },
   {
-    "objectID": "cheatsheets/CLI Tools/ruff.html#run",
-    "href": "cheatsheets/CLI Tools/ruff.html#run",
-    "title": "ruff",
-    "section": "Run",
-    "text": "Run\n\nCheck for rule violations and fix the ones that can be fixed without danger\n\nruff check . --fix\n. checks in the current directory. --fix enables the autofix feature."
+    "objectID": "cheatsheets/Languages/R language/R_plotting.html#dot-line-charts",
+    "href": "cheatsheets/Languages/R language/R_plotting.html#dot-line-charts",
+    "title": "R plotting",
+    "section": "dot & line charts",
+    "text": "dot & line charts\nUsing dataframes:\nlibrary(ggplot2)\nmy_plot = ggplot(myDataframe, aes(x = col1, y = col2)) + geom_point()\nprint(my_plot)\nUsing vectors:\nggplot(data = NULL, aes(x = c(1,2,3,4,5), y = c(25,16,9,4,1))) + geom_point()\n\n\n\n\n\n\n\nStyles of plot\n\n\n\n\n\npoints\n... + geom_point()\n\n\nline\n... + geom_line()"
+  },
+  {
+    "objectID": "cheatsheets/Languages/R language/R_plotting.html#column-charts",
+    "href": "cheatsheets/Languages/R language/R_plotting.html#column-charts",
+    "title": "R plotting",
+    "section": "Column charts",
+    "text": "Column charts\nplot the values as columns:\nggplot(df, aes(x = factor(cat_col), y = value_col)) + geom_col()\nplot the counts as columns:\nggplot(df, aes(x = factor(value_col))) + geom_bar()\n\nHistogram\nPlot distribution of values:\nggplot(df, aes(x = value_col)) + geom_histogram(binwidth=3)"
+  },
+  {
+    "objectID": "cheatsheets/Languages/R language/R_plotting.html#box-plot",
+    "href": "cheatsheets/Languages/R language/R_plotting.html#box-plot",
+    "title": "R plotting",
+    "section": "Box Plot",
+    "text": "Box Plot\nCompare different distributions:\nggplot(df, aes(x = cat_col, y = value_col)) +  geom_boxplot()"
+  },
+  {
+    "objectID": "cheatsheets/Languages/R language/R_plotting.html#plot-functions",
+    "href": "cheatsheets/Languages/R language/R_plotting.html#plot-functions",
+    "title": "R plotting",
+    "section": "Plot functions",
+    "text": "Plot functions\nTo smoothly plot a curved function:\nmy_func &lt;- function(x) sqrt(x) # - x**2\nx_val_df = data.frame(x_val = c(0, 10))\nggplot(x_val_df, aes(x = x_val)) + stat_function(fun = my_func, geom = \"line\")\nMore info in this e-book: r-graphics.org/"
+  },
+  {
+    "objectID": "cheatsheets/Languages/Python.html",
+    "href": "cheatsheets/Languages/Python.html",
+    "title": "Python",
+    "section": "",
+    "text": "Use case\n\nYou have different classes that create objects that do the same kind of work (e.g. Logistic company has trucks, ships, planes that all transport goods). Explanation: refactoring.guru\n\nWhat it does for you\n\nCreate objects and methods without having to specify the class or name of method (This is handled by factory object).\n\nBlueprint\n\n\nGithub.com/ArjanCodes\nrefactoring.guru"
+  },
+  {
+    "objectID": "cheatsheets/Languages/Python.html#design-patterns",
+    "href": "cheatsheets/Languages/Python.html#design-patterns",
+    "title": "Python",
+    "section": "",
+    "text": "Use case\n\nYou have different classes that create objects that do the same kind of work (e.g. Logistic company has trucks, ships, planes that all transport goods). Explanation: refactoring.guru\n\nWhat it does for you\n\nCreate objects and methods without having to specify the class or name of method (This is handled by factory object).\n\nBlueprint\n\n\nGithub.com/ArjanCodes\nrefactoring.guru"
+  },
+  {
+    "objectID": "cheatsheets/Quarto.html",
+    "href": "cheatsheets/Quarto.html",
+    "title": "Quarto",
+    "section": "",
+    "text": "Collapsable callout block\n\n::: {.callout-warning collapse=true appearance=\"simple\"}  \n### Title \n:::\n\nPanels\n\n::: {.panel-tabset}\n### Panel heading 1\n### Panel heading 2\n:::"
+  },
+  {
+    "objectID": "cheatsheets/Quarto.html#blocks",
+    "href": "cheatsheets/Quarto.html#blocks",
+    "title": "Quarto",
+    "section": "",
+    "text": "Collapsable callout block\n\n::: {.callout-warning collapse=true appearance=\"simple\"}  \n### Title \n:::\n\nPanels\n\n::: {.panel-tabset}\n### Panel heading 1\n### Panel heading 2\n:::"
+  },
+  {
+    "objectID": "cheatsheets/Quarto.html#tables",
+    "href": "cheatsheets/Quarto.html#tables",
+    "title": "Quarto",
+    "section": "Tables",
+    "text": "Tables\n\nMarkdown table\n\nHeader col 1  | header col 2\n--------------|-----\ncontent col 1 | content col 2\n\n:  {tbl-colwidths=\"[50,50]\"}"
+  },
+  {
+    "objectID": "cheatsheets/Quarto.html#formatting",
+    "href": "cheatsheets/Quarto.html#formatting",
+    "title": "Quarto",
+    "section": "Formatting",
+    "text": "Formatting\n\nFont-color\n\n&lt;font color=\"grey\"&gt;\n&lt;/font&gt;"
+  },
+  {
+    "objectID": "cheatsheets/Quarto.html#keyboard-shortcuts",
+    "href": "cheatsheets/Quarto.html#keyboard-shortcuts",
+    "title": "Quarto",
+    "section": "Keyboard shortcuts",
+    "text": "Keyboard shortcuts\n\nFormat keyboard keys for different operating systems\n\n\n\n\n{{&lt; kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L &gt;}}\n\n\nsimple\n\n\n\n\n{{&lt; kbd Shift-Ctrl-P &gt;}}\n\nFormat arrow keys\n\n\n\n\n{{&lt;kbd &uarr; &gt;}}\n{{&lt;kbd &darr; &gt;}}\n{{&lt;kbd &larr; &gt;}}\n{{&lt;kbd &rarr; &gt;}}\n↑ ↓ ← →"
   }
 ]

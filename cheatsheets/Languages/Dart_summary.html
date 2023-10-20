@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="A fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black">
+<meta name="description" content="Dart is a new programming language by Google, mainly used for app development.">
 
-<title>Cheatsheets - ruff</title>
+<title>Cheatsheets - Dart</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../cheatsheets/Quarto.html">Cheatsheets</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/bash.html">CLI Tools</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/ruff.html">ruff</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../cheatsheets/Quarto.html">Cheatsheets</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Languages/Dart_summary.html">Languages</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Languages/Dart_summary.html">Dart</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -196,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/CLI Tools/ruff.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../cheatsheets/CLI Tools/ruff.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">ruff</span></a>
   </div>
 </li>
@@ -253,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Languages/Dart_summary.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/Languages/Dart_summary.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Dart</span></a>
   </div>
 </li>
@@ -296,9 +296,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#install" id="toc-install" class="nav-link active" data-scroll-target="#install">Install</a></li>
-  <li><a href="#configuration" id="toc-configuration" class="nav-link" data-scroll-target="#configuration">Configuration</a></li>
-  <li><a href="#run" id="toc-run" class="nav-link" data-scroll-target="#run">Run</a></li>
+  <li><a href="#comments" id="toc-comments" class="nav-link active" data-scroll-target="#comments">Comments</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
+  <li><a href="#constants-final" id="toc-constants-final" class="nav-link" data-scroll-target="#constants-final">Constants / Final</a></li>
+  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists">Lists</a></li>
+  <li><a href="#conditionals" id="toc-conditionals" class="nav-link" data-scroll-target="#conditionals">Conditionals</a></li>
+  <li><a href="#ternary-operators" id="toc-ternary-operators" class="nav-link" data-scroll-target="#ternary-operators">Ternary Operators</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  <li><a href="#classes" id="toc-classes" class="nav-link" data-scroll-target="#classes">Classes</a>
+  <ul class="collapse">
+  <li><a href="#inheritance" id="toc-inheritance" class="nav-link" data-scroll-target="#inheritance">Inheritance</a></li>
+  <li><a href="#polymorphism" id="toc-polymorphism" class="nav-link" data-scroll-target="#polymorphism">Polymorphism</a></li>
+  </ul></li>
+  <li><a href="#enums" id="toc-enums" class="nav-link" data-scroll-target="#enums">Enums</a></li>
   </ul>
 </nav>
 </nav>
@@ -311,12 +321,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ruff</h1>
+<h1 class="title">Dart</h1>
 </div>
 
 <div>
   <div class="description">
-    A fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black
+    Dart is a new programming language by Google, mainly used for app development.
   </div>
 </div>
 
@@ -331,79 +341,133 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="install" class="level2">
-<h2 class="anchored" data-anchor-id="install">Install</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install ruff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here is a short intro to Dart.</p>
+<section id="comments" class="level3">
+<h3 class="anchored" data-anchor-id="comments">Comments</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// This is a comment</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="configuration" class="level2">
-<h2 class="anchored" data-anchor-id="configuration">Configuration</h2>
-<p>Create a file named <code>pyproject.toml</code> with the following content. You can find the relevant rules <a href="https://beta.ruff.rs/docs/rules/">here</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>[tool.ruff]</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>target<span class="op">-</span>version <span class="op">=</span> <span class="st">"py39"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Select relevant rules</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>select <span class="op">=</span> [</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ANN"</span>, <span class="co"># type annotations</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ARG"</span>, <span class="co"># falke8 unused arguments</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B"</span>,  <span class="co"># flake8-bugbear</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"COM"</span>, <span class="co"># flake8-commas (specifically trailing commas)</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C4"</span>, <span class="co"># flake8-comprehensions</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D"</span>,  <span class="co"># pydocstyle</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"E"</span>,  <span class="co"># Error</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ERA"</span>, <span class="co"># eradicate commented out code</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"F"</span>,  <span class="co"># pyflakes</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"FIX"</span>, <span class="co"># flake8 fixme</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"I"</span>,  <span class="co"># isort</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ISC"</span>, <span class="co"># flake8-implicit-str-concat</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"N"</span>,  <span class="co"># pep8-naming</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NPY"</span>, <span class="co"># NumPy specific rules</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PERF"</span>, <span class="co"># Perflint: performance</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PIE"</span>, <span class="co"># flake8-pie </span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PGH"</span>,  <span class="co"># pygrep-hooks</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PTH"</span>, <span class="co"># flake8-use-pathlib </span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Q"</span>,  <span class="co"># flake8-quotes</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"RUF"</span>, <span class="co"># Ruff specific rules</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"S"</span>,  <span class="co"># bandit security checks </span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SIM"</span>,  <span class="co"># flake8-simplify</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"UP"</span>,  <span class="co"># pyupgrade</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"W"</span>,  <span class="co"># Warning</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"YTT"</span>, <span class="co"># flake8-2020 </span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore the following rules</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>ignore <span class="op">=</span> [</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ANN101"</span>, <span class="co"># missing-type-self</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ANN401"</span>, <span class="co"># any-type type hint</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D100"</span>, <span class="co"># undocumented-public-module</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D101"</span>, <span class="co"># undocumented-public-class -&gt; We document inits</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D104"</span>, <span class="co"># Missing docstring in public package</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"E402"</span>, <span class="co"># (import violation)</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>line<span class="op">-</span>length <span class="op">=</span> <span class="dv">88</span>  <span class="co"># Must agree with Black</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>[tool.ruff.per<span class="op">-</span><span class="bu">file</span><span class="op">-</span>ignores]</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co">"path/to/python-file.py"</span> <span class="op">=</span> [<span class="st">"E501"</span>] <span class="co"># line too long </span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="co">"path/to_test_folder/*"</span> <span class="op">=</span> [</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ANN201"</span>, <span class="co"># Missing return type -&gt; Tests commonly return None (overkill)</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ANN202"</span>, <span class="co"># Missing return type -&gt; Tests commonly return None (overkill)</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    <span class="st">"D102"</span>, <span class="co"># No docstrings -&gt; not necessary in tests</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>] </span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Doc-String format</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>[tool.ruff.pydocstyle]</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>convention <span class="op">=</span> <span class="st">"google"</span>  <span class="co"># Accepts: "google", "numpy", or "pep257".</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="variables" class="level3">
+<h3 class="anchored" data-anchor-id="variables">Variables</h3>
+<p>Variables are constructed using <code>var</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">var</span> myVariable <span class="op">=</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Dart is statically typed: If you assign a value with a new type to your variable, you need to cast it to that type first. If you create a variable, but don’t initialize it directly, it has the datatype “dynamic”:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">var</span> a;</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">123</span>; <span class="co">// this is fine</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="st">"foo"</span>; <span class="co">// this is fine as well</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can create uninitialized static typed variables, by displaying their type:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">String</span> a;</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> b;</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">dynamic</span> c; <span class="co">// c is of course dynamic and not static</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="run" class="level2">
-<h2 class="anchored" data-anchor-id="run">Run</h2>
-<dl>
-<dt>Check for rule violations and fix the ones that can be fixed without danger</dt>
-<dd>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ruff</span> check . <span class="at">--fix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<code>.</code> checks in the current directory. <code>--fix</code> enables the autofix feature.
-</dd>
-</dl>
+<section id="constants-final" class="level3">
+<h3 class="anchored" data-anchor-id="constants-final">Constants / Final</h3>
+<p>You can set your “variables” in stone during compilation using <code>const</code> keywords:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="at">const</span> <span class="dt">int</span> myConstant <span class="op">=</span> <span class="dv">2</span>; <span class="co">// this can never change again</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you have a “variable” be set in stone only during run-time, you use <code>final</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at">final</span> <span class="dt">int</span> time <span class="op">=</span> currentTime; <span class="co">// you cannot set the current time during compilation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lists" class="level3">
+<h3 class="anchored" data-anchor-id="lists">Lists</h3>
+<p>If you define collections, you can set the type of elements that they contain (e.g.&nbsp;widgets):</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">List</span> <span class="op">&lt;</span>Widget<span class="op">&gt;</span> myWidgetList <span class="op">=</span> [];</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="conditionals" class="level3">
+<h3 class="anchored" data-anchor-id="conditionals">Conditionals</h3>
+<p>… look like this:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="dv">1</span><span class="op">==</span><span class="dv">1</span> <span class="op">&amp;&amp;</span> myAnswer <span class="op">==</span> <span class="cn">true</span> <span class="op">||</span>&nbsp;<span class="op">!</span>(<span class="dv">5</span><span class="op">&lt;</span><span class="dv">2</span>)) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    do_something;</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (myChocolate <span class="op">==</span> <span class="st">"black"</span>){</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    do_something_else;</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    do_whatever;</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ternary-operators" class="level3">
+<h3 class="anchored" data-anchor-id="ternary-operators">Ternary Operators</h3>
+<p>To make your code more concise you can assign one of two possible values to a variable depending on a condition:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> myAge <span class="op">=</span> <span class="dv">17</span>;</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>str answer <span class="op">=</span> myAge <span class="op">&gt;=</span> <span class="dv">18</span> <span class="op">?</span> <span class="st">"here is your booz"</span> <span class="op">:</span> <span class="st">"you are too young"</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>i.e.&nbsp;if the condition in front of the <code>?</code> is true, you use the first value (before <code>:</code>) otherwise the second value.</p>
+</section>
+<section id="functions" class="level3">
+<h3 class="anchored" data-anchor-id="functions">Functions</h3>
+<section id="named-function" class="level4">
+<h4 class="anchored" data-anchor-id="named-function">Named function</h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> myFunction(){<span class="op">...</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>void</code>: The type of the output of the function</p>
+<p><code>myFunction</code>: The function name</p>
+<p><code>()</code>: The input of the function</p>
+<p><code>{...}</code>: The body of the function (the commands)</p>
+<p>If you want to be able to call the parameters of your function by name, you need to define them in curly brackets: void myFunction({int n1, int n2}{}</p>
+</section>
+<section id="anonymous-function" class="level4">
+<h4 class="anchored" data-anchor-id="anonymous-function">Anonymous function</h4>
+<p>This is often used, if you define a function on the fly as an argument for another function. Btw: You can pass functions just like any other variable.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(){<span class="op">...</span>} <span class="co">// lacks a name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="arrow-function" class="level4">
+<h4 class="anchored" data-anchor-id="arrow-function">Arrow function</h4>
+<p>This is a short form of the curly-braces syntax. It returns everything behind the fat arrow:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> multiply(<span class="dt">int</span> n<span class="op">,</span> <span class="dt">int</span> m)<span class="op">=&gt;</span>n<span class="op">*</span>m;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>is the same as</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> multiply(<span class="dt">int</span> n<span class="op">,</span> <span class="dt">int</span> m){</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> n <span class="op">*</span> m;</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can also use this with a void return type.</p>
+</section>
+</section>
+<section id="classes" class="level2">
+<h2 class="anchored" data-anchor-id="classes">Classes</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyClass {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// define some class variables / properties:</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">String</span> myString;</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// define a constructor:</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    MyClass({<span class="dt">String</span> myText}) { <span class="co">// name must be the same as class name</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span>myString <span class="op">=</span> myText; <span class="co">// this references object properties</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> do_something() {</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">...</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can use syntactic sugar to make your constructor more concise:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dt">String</span> myString;</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>MyClas(<span class="kw">this</span><span class="op">.</span>myString);</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="inheritance" class="level3">
+<h3 class="anchored" data-anchor-id="inheritance">Inheritance</h3>
+<p>to inherit properties and functions from other classes, we use <code>extends</code>:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> JetPlane <span class="kw">extends</span> Plane{</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="polymorphism" class="level3">
+<h3 class="anchored" data-anchor-id="polymorphism">Polymorphism</h3>
+<p>If you want to use some methods/properties of a class but override others, you use <code>@override</code>:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> UFO <span class="kw">extends</span> Plane{</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">@override</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> fly(){</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        print(<span class="st">"hover around"</span>);</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>you can also add onto the methods of the other class using <code>super</code>:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> UFO <span class="kw">extends</span> Plane{</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">@override</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> accelerate(){</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span><span class="op">.</span>accelerate();</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        speed<span class="op">=</span> speed<span class="op">+</span><span class="dv">500</span>;</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="enums" class="level2">
+<h2 class="anchored" data-anchor-id="enums">Enums</h2>
+<p>Enums are like booleans with more options. Your variable can be in one of multiple states:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">enum</span> myEnum <span class="op">=</span> {forward<span class="op">,</span> parked<span class="op">,</span> reverse};</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>myEnum<span class="op">.</span>forward</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Beware: You cannot create enums within classes.</p>
 
 
 </section>
