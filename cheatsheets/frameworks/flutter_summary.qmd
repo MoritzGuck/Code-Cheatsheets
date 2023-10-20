@@ -1,0 +1,415 @@
+---
+title: "Flutter"
+description: "Flutter is a cross-plattform app-development framework based on dart."
+
+format: html
+---
+
+## Introduction
+
+### Installing Flutter
+
+A comprehensive installation guide can be found on the [flutter website](https://flutter.dev/docs/get-started/install/macos).
+
+#### Setup a Flutter-project in VS Code
+
+1. Open Visual Studio Code and choose the "Flutter: New Project" command.
+2. To start the iPhone simulator, type the following command into your terminal:
+
+    ```
+    open -a Simulator
+    ```
+
+3. To run your app in an iPhone Simulator, start your app using the play button on the top right of the text editor.
+
+##### Tips for using Dart & Flutter in VS Code
+
+The Dart & Flutter extensions of VS Code offer some neat features:
+
+- Using `cmd+shift+p` and using the "Quick fix..."-command you can encapsulate your widget in a new widget, swap it with its parent-widget...
+
+
+
+## Flutter
+
+### Architecture of a Flutter app
+
+Everything in Flutter is a widget and you build widgets upon widgets like lego-blocks.
+In a new app you create a Scaffold. Within the Scaffold you can create e.g. an AppBar and a Container for the body of your app. This Container can contain a Column that contains widgets that stack vertically or a Row that contains widgets that get aligned horizontally. This creates a widget tree.
+
+```
+                Scaffold
+                /      \
+          AppBar        Container
+                            \
+                            Column
+                                \
+                             other widget
+```
+
+#### The boilerplate stuff
+
+First you import the packages i.e. for the style sheets:
+
+```dart
+import 'package:flutter/material.dart';
+```
+
+Then you define the main function (the starting point of your app):
+
+```dart
+void main() {
+  runApp( // starts your app
+    MaterialApp( // defines the style sheets that you can use
+      home: Scaffold( // organizes layout of your app
+        body: Text("Hello World"),
+      ),
+    ),
+  );
+}
+```
+
+#### Scaffold
+
+The [Scaffold](https://api.flutter.dev/flutter/material/Scaffold-class.html) is used to organize the layout of your (material) app and contains the widgets. These are the common components
+
+```dart
+home: Scaffold(
+        appBar: AppBar(...),
+        body: Text("Hello World"),
+        floatingActionButton: FloatingActionButton(...),
+        drawer: Drawer(...), //menu that you can pull in from the side
+        bottomNavigationBar: BottomNavigationBar(...)
+      )
+```
+
+<p align="center"><img src="/img/Scaffold.png", height=500px></p>
+
+### AppBar
+
+[AppBars](https://api.flutter.dev/flutter/material/AppBar-class.html) are usually title bars in your app that also contain iconButtons.
+
+```dart
+AppBar(
+       title: const Text('test'),
+       backgroundColor: Colors.blueGrey[900],
+       actions: <Widget>[ // action that happens when you click on the button
+          IconButton(icon: const Icon(Icons.add_alert),
+                     onPressed: () {...}
+       )
+```
+
+### Image
+
+You can integrate [Images](https://api.flutter.dev/flutter/widgets/Image-class.html) from different sources by using different image objects from different parent classes.
+
+```dart
+Image( // displays content from image class
+    image:NetworkImage('https://api.flutter.dev/flutter/widgets/Image-class.html'), // displays image from network
+)
+```
+
+If you load images from your image assets folder, you need to change the pubspec.yaml file in your project's root directory. Under ```assets``` you need to add the relative location of your image:
+
+```yaml
+flutter:
+  uses-material-design: true
+  assets:
+    - images/
+```
+
+### Container
+
+A container is a layout box that you can position and fill with content.
+
+```dart
+Container(
+    color: Colors.white,
+    child: Text("Hallo"), 
+    width: 50, 
+    height: 50,
+    margin: EdgeInsets.all(20), // the margin on all 4 sides to your container
+    padding: EdgeInsets.fromLTRB(5, 5, 10, 10) // the padding of the content in your container
+```
+
+To add a background image, you can use the decoration parameter:
+
+```dart
+Container(
+    decoration: BoxDecoration(
+      image: DecorationImage(
+        image: AssetImage("images/background.png"), 
+        fit: BoxFit.cover),
+      ),
+    ...)
+```
+
+### SafeArea
+
+The SafeArea widget constraints its children to the area of the screen that is easily visible (not below the notch of the selfie-camera).
+
+```dart
+SafeArea(
+    child: ...
+)
+```
+
+##### Column and Row
+
+Column and Row widgets organize their children vertically and horizontally respectively.
+
+```dart
+Column(
+    children <Widget>: [
+        Container(...),
+        SizedBox(height:10), // This provides some spacing between the elements
+        Container(...)
+    ],
+    mainAxisSize: MainAxisSize.min, // if you don't want it to spread across the whole height
+    verticalDirection: VerticalDirection.up, // if the children should be ordered reversely
+    mainAxisAlignment: MainAxisAlignment.end, // if you want the children to stack up from the bottom
+    crossAxisAlignment: CrossAxisAlignment.stretch,  // this stretches the children to the width of the screen
+)
+```
+
+##### Expanded
+
+The expanded widget must be contained in a Column or a Row widget. If fills out the available space in its parent container.
+
+```dart
+Row(
+  children: <Widget>[
+    Expanded(
+       child: Image(...)
+    )
+)
+```
+
+##### Padding
+
+To add padding around another widget (e.g. that does not have a padding-attribute), you can use the padding widget:
+
+```dart
+Padding(
+    child
+    padding:
+)
+```
+
+##### Button
+
+If you use FlatButton, you can use an image as the child. This converts the image into a button. 
+Buttons have an onPressed argument, which require a VoidCallback objects. These are functions without inputs and outputs.
+```dart
+FlatButton(
+  onPressed: (){...} // The () contain the arguments (none) and the {} contain the body of the function
+  child: ...
+)
+```
+
+##### Slider
+
+If you use a slider, you need to set its starting value, min and max. To be able to drag the slider around, you need to update the state of the slider:
+
+```dart
+double sliderVal = 20.0;
+Slider(
+  value: sliderVal,
+  min: 10,
+  max: 30,
+  onChanged: (double newVal) {
+    setState(() {
+      sliderVal = mewVal;
+    });
+  }  
+)
+```
+
+##### Visibility
+
+You can conditionally show your buttons or contents using the Visibility widget:
+
+```dart
+Visibility(
+  child: FlatButton(...),
+  visible: true
+)
+```
+
+#### Icons
+
+Icons are accessible like this (check mark as example):
+
+```dart
+Icon(
+  Icons.check
+)
+```
+
+### Custom widgets
+
+The basic idea of widgets in flutter is composition: The widgets are composed of several simpler widgets that depend on one another (not inhereted). This is also how you'd make custom widgets.
+
+```dart
+class myOwnButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+     ... // here you combine/define what you want  
+    );
+  }
+}
+```
+
+### Gesture Detector
+
+You can check if an widget got tapped, forcedPressed, doubletapped... with a Gesture Detector as a parent:
+
+```dart
+GestureDetector(
+    onTap: () {
+      setState(() {...});
+    },
+    child: ...
+```
+
+### Theme
+
+The coloring, fonts, styles throughout the app are defined in the `ThemeData` widget. You can switch themes 
+
+```dart
+MaterialApp(
+  theme:ThemeData.dark() //uses the standard dart theme
+)
+```
+
+You can adapt the default themes
+
+```dart
+MaterialApp(
+  theme.ThemeData.dark().copyWith(
+    primaryColor: ...
+  )
+)
+```
+
+or you can define your own ones.
+
+```dart
+MaterialApp(
+  theme: ThemeData(
+    primaryColor: Colors.lightBlue,
+    textTheme: textTheme(...) //Text has its own theme
+    ...
+  )
+)
+```
+
+You can also use very detailed themes for other widgets. You do it by wrapping the widget in its theme:
+
+```dart
+SliderTheme(
+  data: SliderTheme.of(context).copyWith(
+    ... // adapt theme to your liking
+  ),
+  child: Slider(
+    ... // define Slider min, max, onChanged...
+  )
+)
+```
+
+### Creating App Icons
+
+To create an app icon from an image file, go to www.appicon.co and have it transformed to different resolutions.
+For Android, you use the newly created "mipmap-..."-folders and replace the respecitve folders in "/android/app/src/main/res" with them. 
+For iOS, you use the newly created folder "Assets.xcassets" and replace the folder "/ios/Runner/Assets.xcassets" with it.
+
+### Run the app on a physical device
+
+To run your app on a physical iPhone or Android device, you can follow the steps on this [flutter-webpage](https://flutter.dev/docs/get-started/install/macos#deploy-to-ios-devices).
+
+## Stateful and Stateless widgets
+
+The state of your app can be imagined as the "state of ahffairs" in your app during runtime.
+There are two categories of widgets if it comes to state:
+
+- Stateless widgets: These are not meant to change their state during runtime -> The text, images aso. stay the same. Like in a museum.
+- Stateful widgets: These are supposed to change their state during runtime -> menues that appear, values that change upon user input. Like in a workshop.
+
+Stateless widgets have a build function:
+
+```dart
+class myClass extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      
+    );
+  }
+}
+```
+
+Stateful widgets have a State on top of the widget itself:
+
+```dart
+class myWidget extends StatefulWidget {
+  @override
+  _myWidgetState createState() => _myWidgetState();
+}
+
+class _myWidgetState extends State<myWidget> { // The State-part tracks and updates the screen as the state changes. This is where you'd put the stuff normally in a stateless widget.
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      
+    );
+  }
+}
+```
+
+### Change the state
+
+If you want to change the State of your app, you need to call `setState()`:
+
+```dart
+FlatButton(
+           onPressed: () {
+           setState(() {
+           ... // The new state you want to have
+           });
+           },
+           ...)
+```
+
+The variables that you changed are marked and the widgets that use them, are redrawn on the screen.
+
+
+### Multi-Screen Apps
+
+Multi-screen apps contain different pages that are accessible by different routes. 
+The screens are organized in a stack. You push and pop pages/screens on and off your stack. You need to specify a context (where you are -> `BuildContext`) and a route (where we want to go).
+
+```dart
+child: FloatingActionButton(
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return Screen2();
+      }));
+  }),
+```
+
+If you have several buttons, it's easier to use named routes. You define these routes in the main build function of your app:
+
+```dart
+MaterialApp(
+  initialRoute: '/zero',
+  routes: {
+    '/zero': (context) => Screen0(),
+    '/first': (context) => Screen1(),
+    '/second': (context) => Screen2(),
+  },
+)
+```

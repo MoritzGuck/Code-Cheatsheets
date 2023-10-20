@@ -1,0 +1,204 @@
+---
+title: "Dart"
+description: "Dart is a new programming language by Google, mainly used for app development."
+
+format: html
+---
+
+Here is a short intro to Dart.
+
+### Comments
+
+```dart
+// This is a comment
+```
+
+### Variables
+
+Variables are constructed using `var`:
+
+```dart
+var myVariable = 4
+```
+
+Dart is statically typed: If you assign a value with a new type to your variable, you need to cast it to that type first.
+If you create a variable, but don't initialize it directly, it has the datatype "dynamic":
+
+```dart
+var a;
+a = 123; // this is fine
+a = "foo"; // this is fine as well
+```
+
+You can create uninitialized static typed variables, by displaying their type:
+
+```dart
+String a;
+int b;
+dynamic c; // c is of course dynamic and not static
+```
+
+### Constants / Final
+
+You can set your "variables" in stone during compilation using `const` keywords:
+
+```dart
+const int myConstant = 2; // this can never change again
+```
+
+If you have a "variable" be set in stone only during run-time, you use `final`:
+
+```dart
+final int time = currentTime; // you cannot set the current time during compilation
+```
+
+### Lists
+
+If you define collections, you can set the type of elements that they contain (e.g. widgets):
+
+```dart
+List <Widget> myWidgetList = [];
+```
+
+### Conditionals
+
+... look like this:
+
+```dart
+if (1==1 && myAnswer == true || !(5<2)) {
+    do_something;
+} else if (myChocolate == "black"){
+    do_something_else;
+} else {
+    do_whatever;
+}
+```
+
+### Ternary Operators
+
+To make your code more concise you can assign one of two possible values to a variable depending on a condition: 
+
+```dart
+int myAge = 17;
+str answer = myAge >= 18 ? "here is your booz" : "you are too young";
+```
+
+i.e. if the condition in front of the `?` is true, you use the first value (before `:`) otherwise the second value.
+
+### Functions
+
+#### Named function
+
+```dart
+void myFunction(){...}
+```
+
+`void`: The type of the output of the function 
+
+`myFunction`: The function name
+
+`()`: The input of the function
+
+`{...}`: The body of the function (the commands)
+
+If you want to be able to call the parameters of your function by name, you need to define them in curly brackets:
+void myFunction({int n1, int n2}{}
+
+#### Anonymous function
+
+This is often used, if you define a function on the fly as an argument for another function. Btw: You can pass functions just like any other variable.
+
+```dart
+(){...} // lacks a name
+```
+
+#### Arrow function
+
+This is a short form of the curly-braces syntax. It returns everything behind the fat arrow:
+
+```dart
+int multiply(int n, int m)=>n*m;
+```
+
+is the same as
+
+```dart
+int multiply(int n, int m){
+    return n * m;
+}
+```
+
+You can also use this with a void return type.
+
+## Classes
+
+```dart
+class MyClass {
+    // define some class variables / properties:
+    String myString;
+
+    // define a constructor:
+    MyClass({String myText}) { // name must be the same as class name
+        this.myString = myText; // this references object properties
+    }
+
+    void do_something() {
+        ...
+    }
+}
+```
+
+You can use syntactic sugar to make your constructor more concise:
+
+```dart
+...
+String myString;
+MyClas(this.myString);
+...
+```
+
+### Inheritance
+
+to inherit properties and functions from other classes, we use `extends`:
+
+```dart
+class JetPlane extends Plane{
+    ...
+}
+```
+
+### Polymorphism
+
+If you want to use some methods/properties of a class but override others, you use `@override`:
+
+```dart
+class UFO extends Plane{
+    @override 
+    void fly(){
+        print("hover around");
+    }
+}
+```
+
+you can also add onto the methods of the other class using `super`:
+
+```dart
+class UFO extends Plane{
+    @override
+    void accelerate(){
+        super.accelerate();
+        speed= speed+500;
+    }
+}
+```
+
+## Enums
+
+Enums are like booleans with more options. Your variable can be in one of multiple states:
+
+```dart
+enum myEnum = {forward, parked, reverse};
+myEnum.forward
+```
+
+Beware: You cannot create enums within classes.
