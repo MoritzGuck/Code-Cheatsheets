@@ -266,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">R language</span></a>
+ <span class="menu-text">R</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -274,13 +274,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Languages/R language/R.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/Languages/R/R.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Languages/R language/R_plotting.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/Languages/R/R_plotting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R plotting</span></a>
   </div>
 </li>
@@ -331,7 +331,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Flutter</h1>
-</div>
+  <div class="quarto-categories">
+    <div class="quarto-category">App development</div>
+    <div class="quarto-category">Web development</div>
+  </div>
+  </div>
 
 <div>
   <div class="description">
@@ -377,7 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="flutter">Flutter</h2>
 <section id="architecture-of-a-flutter-app" class="level3">
 <h3 class="anchored" data-anchor-id="architecture-of-a-flutter-app">Architecture of a Flutter app</h3>
-<p>Everything in Flutter is a widget and you build widgets upon widgets like lego-blocks. In a new app you create a Scaffold. Within the Scaffold you can create e.g.&nbsp;an AppBar and a Container for the body of your app. This Container can contain a Column that contains widgets that stack vertically or a Row that contains widgets that get aligned horizontally. This creates a widget tree.</p>
+<p>Everything in Flutter is a widget and you build widgets upon widgets like lego-blocks. In a new app you create a Scaffold. Within the Scaffold you can create e.g.&nbsp;an AppBar and a Container for the body of your app. This Container can contain a Column that contains widgets that stack vertically or a Row that contains widgets that get aligned horizontally. This creates a <em>widget tree</em>.</p>
 <pre><code>                Scaffold
                 /      \
           AppBar        Container
@@ -385,6 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                             Column
                                 \
                              other widget</code></pre>
+<p>The information, where your widget is located in the widget tree is saved in the <em>BuildContext</em>. Every build function needs a BuildContext, to save where the widget goes.</p>
 <section id="the-boilerplate-stuff" class="level4">
 <h4 class="anchored" data-anchor-id="the-boilerplate-stuff">The boilerplate stuff</h4>
 <p>First you import the packages i.e.&nbsp;for the style sheets:</p>
@@ -639,7 +644,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="multi-screen-apps" class="level3">
 <h3 class="anchored" data-anchor-id="multi-screen-apps">Multi-Screen Apps</h3>
-<p>Multi-screen apps contain different pages that are accessible by different routes. The screens are organized in a stack. You push and pop pages/screens on and off your stack. You need to specify a context (where you are -&gt; <code>BuildContext</code>) and a route (where we want to go).</p>
+<p>Multi-screen apps contain different pages that are accessible by different routes. The screens are organized in a stack. You push and pop pages/screens on and off your stack. You need to specify the context you are coming from (where you are in the app -&gt; <code>BuildContext</code>) and a route (where we want to go).</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>child<span class="op">:</span> FloatingActionButton(</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  onPressed<span class="op">:</span> () {</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    Navigator<span class="op">.</span>push(</span>

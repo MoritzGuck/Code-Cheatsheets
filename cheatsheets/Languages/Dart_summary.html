@@ -266,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">R language</span></a>
+ <span class="menu-text">R</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -274,13 +274,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Languages/R language/R.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/Languages/R/R.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Languages/R language/R_plotting.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/Languages/R/R_plotting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R plotting</span></a>
   </div>
 </li>
@@ -303,6 +303,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#conditionals" id="toc-conditionals" class="nav-link" data-scroll-target="#conditionals">Conditionals</a></li>
   <li><a href="#ternary-operators" id="toc-ternary-operators" class="nav-link" data-scroll-target="#ternary-operators">Ternary Operators</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  <li><a href="#asynchronous-code" id="toc-asynchronous-code" class="nav-link" data-scroll-target="#asynchronous-code">Asynchronous code</a></li>
+  <li><a href="#isolates" id="toc-isolates" class="nav-link" data-scroll-target="#isolates">Isolates</a></li>
   <li><a href="#classes" id="toc-classes" class="nav-link" data-scroll-target="#classes">Classes</a>
   <ul class="collapse">
   <li><a href="#inheritance" id="toc-inheritance" class="nav-link" data-scroll-target="#inheritance">Inheritance</a></li>
@@ -322,7 +324,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Dart</h1>
-</div>
+  <div class="quarto-categories">
+    <div class="quarto-category">language</div>
+    <div class="quarto-category">app development</div>
+  </div>
+  </div>
 
 <div>
   <div class="description">
@@ -358,115 +364,180 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb4"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">String</span> a;</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> b;</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">dynamic</span> c; <span class="co">// c is of course dynamic and not static</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="null-safety" class="level4">
+<h4 class="anchored" data-anchor-id="null-safety">Null safety</h4>
+<p>Since common variables can be of a certain type <strong>and</strong> null, you can run into trouble at runtime e.g.&nbsp;if a color for your app-background is not a hex-code but <em>null</em>. This will crash your app.</p>
+<p>If you want to allow null-values, you deinfe a variable with a <code>?</code>: <code>Color? myColor;</code></p>
+<p>If you did not explicitly tell dart that your variable can be null, dart will warn you if you use it e.g.&nbsp;as an argument. It will also tell you to add null checks(<code>if (myColor == null) doSomething();</code>) or catch errors. A nullable variable cannot be given as an argument to a function that takes non-nullable types.</p>
+<p>Forcing a nullable value (similar to writing a null-check and throwing an exception if it fails). Only to be done if you are 100% sure the variable is not null eventhough the type is nullable:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> setBackground(Color color){</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">/// ...</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>Color<span class="op">?</span> myColor <span class="op">=</span> getColor();  </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (colorInCataloge <span class="op">==</span> <span class="cn">true</span>) { <span class="co">// you have other way of checking that the type is not null</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    setBackground(myColor<span class="op">!</span>);</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you declare a non-nullable variable but initialize it later, the type-checke would assume that it could be none. Using the keyword <code>late</code>, you can tell the type-checker that you will initalize it with a non-null value later: <code>late myVariable myType;</code></p>
+</section>
 </section>
 <section id="constants-final" class="level3">
 <h3 class="anchored" data-anchor-id="constants-final">Constants / Final</h3>
 <p>You can set your “variables” in stone during compilation using <code>const</code> keywords:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="at">const</span> <span class="dt">int</span> myConstant <span class="op">=</span> <span class="dv">2</span>; <span class="co">// this can never change again</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at">const</span> <span class="dt">int</span> myConstant <span class="op">=</span> <span class="dv">2</span>; <span class="co">// this can never change again</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you have a “variable” be set in stone only during run-time, you use <code>final</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at">final</span> <span class="dt">int</span> time <span class="op">=</span> currentTime; <span class="co">// you cannot set the current time during compilation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="at">final</span> <span class="dt">int</span> time <span class="op">=</span> currentTime; <span class="co">// you cannot set the current time during compilation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="lists" class="level3">
 <h3 class="anchored" data-anchor-id="lists">Lists</h3>
 <p>If you define collections, you can set the type of elements that they contain (e.g.&nbsp;widgets):</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">List</span> <span class="op">&lt;</span>Widget<span class="op">&gt;</span> myWidgetList <span class="op">=</span> [];</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">List</span> <span class="op">&lt;</span>Widget<span class="op">&gt;</span> myWidgetList <span class="op">=</span> [];</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="conditionals" class="level3">
 <h3 class="anchored" data-anchor-id="conditionals">Conditionals</h3>
 <p>… look like this:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="dv">1</span><span class="op">==</span><span class="dv">1</span> <span class="op">&amp;&amp;</span> myAnswer <span class="op">==</span> <span class="cn">true</span> <span class="op">||</span>&nbsp;<span class="op">!</span>(<span class="dv">5</span><span class="op">&lt;</span><span class="dv">2</span>)) {</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    do_something;</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (myChocolate <span class="op">==</span> <span class="st">"black"</span>){</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    do_something_else;</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    do_whatever;</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="dv">1</span><span class="op">==</span><span class="dv">1</span> <span class="op">&amp;&amp;</span> myAnswer <span class="op">==</span> <span class="cn">true</span> <span class="op">||</span>&nbsp;<span class="op">!</span>(<span class="dv">5</span><span class="op">&lt;</span><span class="dv">2</span>)) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    do_something;</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (myChocolate <span class="op">==</span> <span class="st">"black"</span>){</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    do_something_else;</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    do_whatever;</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="ternary-operators" class="level3">
 <h3 class="anchored" data-anchor-id="ternary-operators">Ternary Operators</h3>
 <p>To make your code more concise you can assign one of two possible values to a variable depending on a condition:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> myAge <span class="op">=</span> <span class="dv">17</span>;</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>str answer <span class="op">=</span> myAge <span class="op">&gt;=</span> <span class="dv">18</span> <span class="op">?</span> <span class="st">"here is your booz"</span> <span class="op">:</span> <span class="st">"you are too young"</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> myAge <span class="op">=</span> <span class="dv">17</span>;</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>str answer <span class="op">=</span> myAge <span class="op">&gt;=</span> <span class="dv">18</span> <span class="op">?</span> <span class="st">"here is your booz"</span> <span class="op">:</span> <span class="st">"you are too young"</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>i.e.&nbsp;if the condition in front of the <code>?</code> is true, you use the first value (before <code>:</code>) otherwise the second value.</p>
 </section>
 <section id="functions" class="level3">
 <h3 class="anchored" data-anchor-id="functions">Functions</h3>
 <section id="named-function" class="level4">
 <h4 class="anchored" data-anchor-id="named-function">Named function</h4>
-<div class="sourceCode" id="cb10"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> myFunction(){<span class="op">...</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> myFunction(){<span class="op">...</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>void</code>: The type of the output of the function</p>
 <p><code>myFunction</code>: The function name</p>
 <p><code>()</code>: The input of the function</p>
 <p><code>{...}</code>: The body of the function (the commands)</p>
-<p>If you want to be able to call the parameters of your function by name, you need to define them in curly brackets: void myFunction({int n1, int n2}{}</p>
+<p>If you want to be able to call the parameters of your function by name, you need to define them in curly brackets: <code>void myFunction({int n1, int n2}{}</code></p>
 </section>
 <section id="anonymous-function" class="level4">
 <h4 class="anchored" data-anchor-id="anonymous-function">Anonymous function</h4>
 <p>This is often used, if you define a function on the fly as an argument for another function. Btw: You can pass functions just like any other variable.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(){<span class="op">...</span>} <span class="co">// lacks a name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(){<span class="op">...</span>} <span class="co">// lacks a name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="arrow-function" class="level4">
 <h4 class="anchored" data-anchor-id="arrow-function">Arrow function</h4>
 <p>This is a short form of the curly-braces syntax. It returns everything behind the fat arrow:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> multiply(<span class="dt">int</span> n<span class="op">,</span> <span class="dt">int</span> m)<span class="op">=&gt;</span>n<span class="op">*</span>m;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> multiply(<span class="dt">int</span> n<span class="op">,</span> <span class="dt">int</span> m)<span class="op">=&gt;</span>n<span class="op">*</span>m;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>is the same as</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> multiply(<span class="dt">int</span> n<span class="op">,</span> <span class="dt">int</span> m){</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> n <span class="op">*</span> m;</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> multiply(<span class="dt">int</span> n<span class="op">,</span> <span class="dt">int</span> m){</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> n <span class="op">*</span> m;</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can also use this with a void return type.</p>
 </section>
 </section>
+<section id="asynchronous-code" class="level3">
+<h3 class="anchored" data-anchor-id="asynchronous-code">Asynchronous code</h3>
+<p>Asynchronous code contains parts, where the process has to wait (e.g.&nbsp;for a response from REST-API) to continue.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> myfunction() <span class="at">async</span> {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">var</span> response <span class="op">=</span> <span class="at">await</span> http<span class="op">.</span><span class="kw">get</span>(<span class="st">"htttp//example.com/params"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>while it <em>await</em>s, other parts of the program can run. You need to mark functions with asynchronous code as <code>async</code>.</p>
+</section>
+<section id="isolates" class="level3">
+<h3 class="anchored" data-anchor-id="isolates">Isolates</h3>
+<p>If you have computation-heavy code, it can make your app lag. To avoid this, you can use multi-processing: You run the computatin-heavy parts and the rest on different threads.</p>
+<p>###&nbsp;Futures</p>
+<p>If you have to wait for async code, you can also use Futures in your function:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Future</span><span class="op">&lt;</span><span class="dt">String</span><span class="op">&gt;</span> getVerificationURL() {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> <span class="dt">Future</span><span class="op">.</span>value(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'https://example.com'</span>); </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The type of the return value will be at first uncompleted (<code>Future</code>) and later completed with data or completed with error. You handle these three phases like this:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="at">final</span> myFutureResult <span class="op">=</span> getVerificationURL();</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>myFutureResult<span class="op">.</span>then((response){ <span class="co">// this will be executed, once the process behind the future variable is complete</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    print(response)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>})<span class="op">.</span>catchError((error) {<span class="co">// you need this in case the response is an error.</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    print(<span class="st">'You have an $error'</span>);</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>{</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">final</span> myFutureResult <span class="op">=</span> <span class="at">await</span> getVerificationURL();</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span>(error){</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    print(<span class="st">'You have an $error'</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>###&nbsp;Streams</p>
+<p>A stream can generate more than one method. You use a listener to catch the results of the stream.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Create stream</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="at">final</span> myStream <span class="op">=</span> NumberCreator()<span class="op">.</span>stream;</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Subscribe to stream</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="at">final</span> subscription <span class="op">=</span> myStream<span class="op">.</span>listen(</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    (result) <span class="op">=&gt;</span> print(<span class="st">'single stream response: $result'</span>)<span class="op">,</span> </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    onError<span class="op">:</span> (error) <span class="op">=&gt;</span> print(<span class="st">'You have an $error'</span>)<span class="op">,</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    onDone<span class="op">:</span> () <span class="op">=&gt;</span> print(<span class="st">'stream is done'</span>)<span class="op">,</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">// control flow of data</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>subscription<span class="op">.</span>pause()</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>subscription<span class="op">.</span>resume()</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>subscription<span class="op">.</span>cancel()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Every time a new value is emitted by the stream, the listen-function is called. Normal streams are set up for single subscription. If you want to use multiple subscriptions, you use <code>StreamingObject().stream.asBroadcastStream;</code>.</p>
+</section>
 <section id="classes" class="level2">
 <h2 class="anchored" data-anchor-id="classes">Classes</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyClass {</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// define some class variables / properties:</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">String</span> myString;</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// define a constructor:</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    MyClass({<span class="dt">String</span> myText}) { <span class="co">// name must be the same as class name</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span>myString <span class="op">=</span> myText; <span class="co">// this references object properties</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> do_something() {</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">...</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyClass {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// define some class variables / properties:</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">String</span> myString;</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// define a constructor:</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    MyClass({<span class="dt">String</span> myText}) { <span class="co">// name must be the same as class name</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span>myString <span class="op">=</span> myText; <span class="co">// this references object properties</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> do_something() {</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">...</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can use syntactic sugar to make your constructor more concise:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dt">String</span> myString;</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>MyClas(<span class="kw">this</span><span class="op">.</span>myString);</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="dt">String</span> myString;</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>MyClas(<span class="kw">this</span><span class="op">.</span>myString);</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="inheritance" class="level3">
 <h3 class="anchored" data-anchor-id="inheritance">Inheritance</h3>
 <p>to inherit properties and functions from other classes, we use <code>extends</code>:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> JetPlane <span class="kw">extends</span> Plane{</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> JetPlane <span class="kw">extends</span> Plane{</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="polymorphism" class="level3">
 <h3 class="anchored" data-anchor-id="polymorphism">Polymorphism</h3>
 <p>If you want to use some methods/properties of a class but override others, you use <code>@override</code>:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> UFO <span class="kw">extends</span> Plane{</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">@override</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> fly(){</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        print(<span class="st">"hover around"</span>);</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> UFO <span class="kw">extends</span> Plane{</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">@override</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> fly(){</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        print(<span class="st">"hover around"</span>);</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>you can also add onto the methods of the other class using <code>super</code>:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> UFO <span class="kw">extends</span> Plane{</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">@override</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> accelerate(){</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span><span class="op">.</span>accelerate();</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        speed<span class="op">=</span> speed<span class="op">+</span><span class="dv">500</span>;</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> UFO <span class="kw">extends</span> Plane{</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">@override</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> accelerate(){</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span><span class="op">.</span>accelerate();</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        speed<span class="op">=</span> speed<span class="op">+</span><span class="dv">500</span>;</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="enums" class="level2">
 <h2 class="anchored" data-anchor-id="enums">Enums</h2>
 <p>Enums are like booleans with more options. Your variable can be in one of multiple states:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">enum</span> myEnum <span class="op">=</span> {forward<span class="op">,</span> parked<span class="op">,</span> reverse};</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>myEnum<span class="op">.</span>forward</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode dart code-with-copy"><code class="sourceCode dart"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">enum</span> myEnum <span class="op">=</span> {forward<span class="op">,</span> parked<span class="op">,</span> reverse};</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>myEnum<span class="op">.</span>forward</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Beware: You cannot create enums within classes.</p>
 
 
