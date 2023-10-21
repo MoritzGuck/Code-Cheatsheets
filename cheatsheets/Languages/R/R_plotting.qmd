@@ -3,6 +3,9 @@ title: "R plotting"
 description: "R has powerful builtin plotting capabilities"
 format: html
 from: markdown+emoji
+categories:
+  - language
+  - data science
 ---
 
 This cheatsheet uses ggplot2. 

@@ -2,6 +2,9 @@
 title: "VS Code"
 description: "Visual studio code is one of the most popular code editors."
 format: html
+categories:
+    - IDE
+    - short-cuts
 ---
 
 

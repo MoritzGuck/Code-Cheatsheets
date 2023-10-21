@@ -3,6 +3,10 @@ title: "Conda"
 description: "Conda is a package and virtual environment manager."
 
 format: html
+categories:
+    - tool
+    - package manager
+    - virtual environments
 ---
  
 

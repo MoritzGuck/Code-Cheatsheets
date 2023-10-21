@@ -3,6 +3,9 @@ title: "Pip"
 description: "Pip is the official python package manager"
 
 format: html
+categories:
+    - tool
+    - package-manager
 ---
 
 Installation
