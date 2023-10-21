@@ -3,6 +3,7 @@ title: "Git"
 description: "Git is a version control system mostly used for code."
 format: html
 categories:
+    - CLI
     - tool
     - versioning
 ---

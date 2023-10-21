@@ -5,6 +5,7 @@ description: "Conda is a package and virtual environment manager."
 format: html
 categories:
     - tool
+    - CLI
     - package manager
     - virtual environments
 ---

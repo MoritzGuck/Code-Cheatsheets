@@ -3,8 +3,8 @@ title: "Quarto"
 description: "Quarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations. "
 format: html
 categories:
-    - Tool
-    - Web development
+    - tool
+    - web development
 ---
 
 

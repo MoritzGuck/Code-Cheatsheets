@@ -4,8 +4,8 @@ description: "Flutter is a cross-plattform app-development framework based on da
 
 format: html
 categories:
-  - App development
-  - Web development
+  - app development
+  - web development
 ---
 
 ## Introduction

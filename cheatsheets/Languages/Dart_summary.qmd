@@ -5,7 +5,6 @@ description: "Dart is a new programming language by Google, mainly used for app 
 format: html
 categories:
     - language
-    - app development
 ---
 
 Here is a short intro to Dart.
