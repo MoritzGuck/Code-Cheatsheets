@@ -3,6 +3,9 @@ title: "Dart"
 description: "Dart is a new programming language by Google, mainly used for app development."
 
 format: html
+categories:
+    - language
+    - app development
 ---
 
 Here is a short intro to Dart.
@@ -37,6 +40,27 @@ String a;
 int b;
 dynamic c; // c is of course dynamic and not static
 ```
+
+#### Null safety
+
+Since common variables can be of a certain type **and** null, you can run into trouble at runtime e.g. if a color for your app-background is not a hex-code but *null*. This will crash your app. 
+
+If you want to allow null-values, you deinfe a variable with a `?`: `Color? myColor;`
+
+If you did not explicitly tell dart that your variable can be null, dart will warn you if you use it e.g. as an argument. It will also tell you to add null checks(`if (myColor == null) doSomething();`) or catch errors. A nullable variable cannot be given as an argument to a function that takes non-nullable types. 
+
+Forcing a nullable value (similar to writing a null-check and throwing an exception if it fails). Only to be done if you are 100% sure the variable is not null eventhough the type is nullable:
+```dart
+void setBackground(Color color){
+    /// ...
+}
+Color? myColor = getColor();  
+if (colorInCataloge == true) { // you have other way of checking that the type is not null
+    setBackground(myColor!);
+}
+```
+
+If you declare a non-nullable variable but initialize it later, the type-checke would assume that it could be none. Using the keyword `late`, you can tell the type-checker that you will initalize it with a non-null value later: `late myVariable myType;`
 
 ### Constants / Final
 
@@ -102,7 +126,7 @@ void myFunction(){...}
 `{...}`: The body of the function (the commands)
 
 If you want to be able to call the parameters of your function by name, you need to define them in curly brackets:
-void myFunction({int n1, int n2}{}
+`void myFunction({int n1, int n2}{}`
 
 #### Anonymous function
 
@@ -129,6 +153,74 @@ int multiply(int n, int m){
 ```
 
 You can also use this with a void return type.
+
+### Asynchronous code 
+
+Asynchronous code contains parts, where the process has to wait (e.g. for a response from REST-API) to continue. 
+
+```dart
+void myfunction() async {
+    var response = await http.get("htttp//example.com/params")
+}
+```
+while it *await*s, other parts of the program can run. You need to mark functions with asynchronous code as `async`. 
+
+### Isolates
+
+If you have computation-heavy code, it can make your app lag. To avoid this, you can use multi-processing: You run the computatin-heavy parts and the rest on different threads.
+
+### Futures
+
+If you have to wait for async code, you can also use Futures in your function:
+```dart
+  Future<String> getVerificationURL() {
+    return Future.value(
+        'https://example.com'); 
+  }
+```
+The type of the return value will be at first uncompleted (`Future`) and later completed with data or completed with error.
+You handle these three phases like this: 
+
+```dart
+final myFutureResult = getVerificationURL();
+myFutureResult.then((response){ // this will be executed, once the process behind the future variable is complete
+    print(response)
+}).catchError((error) {// you need this in case the response is an error.
+    print('You have an $error');
+    }
+);
+```
+or
+```dart
+try{
+    final myFutureResult = await getVerificationURL();
+}
+catch(error){
+    print('You have an $error')
+}
+```
+
+### Streams
+
+A stream can generate more than one method. You use a listener to catch the results of the stream.
+
+```dart
+// Create stream
+final myStream = NumberCreator().stream;
+
+// Subscribe to stream
+final subscription = myStream.listen(
+    (result) => print('single stream response: $result'), 
+    onError: (error) => print('You have an $error'),
+    onDone: () => print('stream is done'),
+    );
+
+// control flow of data
+subscription.pause()
+subscription.resume()
+subscription.cancel()
+```
+Every time a new value is emitted by the stream, the listen-function is called. Normal streams are set up for single subscription. If you want to use multiple subscriptions, you use `StreamingObject().stream.asBroadcastStream;`. 
 
 ## Classes
 

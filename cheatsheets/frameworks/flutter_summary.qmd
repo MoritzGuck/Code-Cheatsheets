@@ -3,6 +3,9 @@ title: "Flutter"
 description: "Flutter is a cross-plattform app-development framework based on dart."
 
 format: html
+categories:
+  - App development
+  - Web development
 ---
 
 ## Introduction
@@ -35,7 +38,7 @@ The Dart & Flutter extensions of VS Code offer some neat features:
 ### Architecture of a Flutter app
 
 Everything in Flutter is a widget and you build widgets upon widgets like lego-blocks.
-In a new app you create a Scaffold. Within the Scaffold you can create e.g. an AppBar and a Container for the body of your app. This Container can contain a Column that contains widgets that stack vertically or a Row that contains widgets that get aligned horizontally. This creates a widget tree.
+In a new app you create a Scaffold. Within the Scaffold you can create e.g. an AppBar and a Container for the body of your app. This Container can contain a Column that contains widgets that stack vertically or a Row that contains widgets that get aligned horizontally. This creates a *widget tree*. 
 
 ```
                 Scaffold
@@ -46,6 +49,8 @@ In a new app you create a Scaffold. Within the Scaffold you can create e.g. an A
                                 \
                              other widget
 ```
+
+The information, where your widget is located in the widget tree is saved in the *BuildContext*. Every build function needs a BuildContext, to save where the widget goes.
 
 #### The boilerplate stuff
 
@@ -387,7 +392,7 @@ The variables that you changed are marked and the widgets that use them, are red
 ### Multi-Screen Apps
 
 Multi-screen apps contain different pages that are accessible by different routes. 
-The screens are organized in a stack. You push and pop pages/screens on and off your stack. You need to specify a context (where you are -> `BuildContext`) and a route (where we want to go).
+The screens are organized in a stack. You push and pop pages/screens on and off your stack. You need to specify the context you are coming from (where you are in the app -> `BuildContext`) and a route (where we want to go).
 
 ```dart
 child: FloatingActionButton(
