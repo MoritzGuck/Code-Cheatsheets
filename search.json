@@ -63,74 +63,32 @@
     "text": "Stateful and Stateless widgets\nThe state of your app can be imagined as the “state of ahffairs” in your app during runtime. There are two categories of widgets if it comes to state:\n\nStateless widgets: These are not meant to change their state during runtime -&gt; The text, images aso. stay the same. Like in a museum.\nStateful widgets: These are supposed to change their state during runtime -&gt; menues that appear, values that change upon user input. Like in a workshop.\n\nStateless widgets have a build function:\nclass myClass extends StatelessWidget {\n  @override\n  Widget build(BuildContext context) {\n    return Container(\n      \n    );\n  }\n}\nStateful widgets have a State on top of the widget itself:\nclass myWidget extends StatefulWidget {\n  @override\n  _myWidgetState createState() =&gt; _myWidgetState();\n}\n\nclass _myWidgetState extends State&lt;myWidget&gt; { // The State-part tracks and updates the screen as the state changes. This is where you'd put the stuff normally in a stateless widget.\n  @override\n  Widget build(BuildContext context) {\n    return Container(\n      \n    );\n  }\n}\n\nChange the state\nIf you want to change the State of your app, you need to call setState():\nFlatButton(\n           onPressed: () {\n           setState(() {\n           ... // The new state you want to have\n           });\n           },\n           ...)\nThe variables that you changed are marked and the widgets that use them, are redrawn on the screen.\n\n\nMulti-Screen Apps\nMulti-screen apps contain different pages that are accessible by different routes. The screens are organized in a stack. You push and pop pages/screens on and off your stack. You need to specify the context you are coming from (where you are in the app -&gt; BuildContext) and a route (where we want to go).\nchild: FloatingActionButton(\n  onPressed: () {\n    Navigator.push(\n      context,\n      MaterialPageRoute(\n        builder: (context) {\n          return Screen2();\n      }));\n  }),\nIf you have several buttons, it’s easier to use named routes. You define these routes in the main build function of your app:\nMaterialApp(\n  initialRoute: '/zero',\n  routes: {\n    '/zero': (context) =&gt; Screen0(),\n    '/first': (context) =&gt; Screen1(),\n    '/second': (context) =&gt; Screen2(),\n  },\n)"
   },
   {
-    "objectID": "cheatsheets/Cloud/azure_ml.html",
-    "href": "cheatsheets/Cloud/azure_ml.html",
-    "title": "Azure ML",
+    "objectID": "cheatsheets/Cloud & Platform/gcloud.html",
+    "href": "cheatsheets/Cloud & Platform/gcloud.html",
+    "title": "GCP: gcloud CLI",
     "section": "",
-    "text": "Azure ML is the machine learning service of the Azure Cloud Platform."
+    "text": "SSH connection\n \n\n\n\n\nsetup new ssh connection to compute instance\ngcloud compute config-ssh"
   },
   {
-    "objectID": "cheatsheets/Cloud/azure_ml.html#experiments",
-    "href": "cheatsheets/Cloud/azure_ml.html#experiments",
-    "title": "Azure ML",
-    "section": "Experiments",
-    "text": "Experiments\n\nDelete Experiments without jobs\n\nfrom azureml.core import Workspace, Experiment\naml_workspace = Workspace.from_config()\nexperiment_id = Experiment(aml_workspace, '&lt;experiment_name&gt;').id\nExperiment.delete(aml_workspace, experiment_id)"
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/bash.html",
-    "href": "cheatsheets/CLI Tools/bash.html",
-    "title": "Bash",
+    "objectID": "cheatsheets/CLI Tools/Conda.html",
+    "href": "cheatsheets/CLI Tools/Conda.html",
+    "title": "Conda",
     "section": "",
-    "text": "Number of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag."
+    "text": "conda docs - Installation\n\n\n\n\n\n\nInstallation via UNIX CLI\n\n\n\n\n\nmkdir -p ~/miniconda3\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh\nbash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3\nrm -rf ~/miniconda3/miniconda.sh\n~/miniconda3/bin/conda init bash\n~/miniconda3/bin/conda init zsh\n\n\n\n\n\n\nList your existing environments\n\nconda env list\n\nCreate environment\n\nconda create --name env-name\n\nCreate a conda env from a file:\n\nconda env create -f environment.yml\n\nRemoving / Deleting environment\n\nconda env remove -n env-name\n\n\nMore info: Intro to Conda virtual environments\n\n\n\n\nUse environment\n\nconda activate env-name\n\nCheck and update package versions. After activating an env:\n\npython --version\n\n\nconda update python\n\nUpdate whole environment according to your yaml-file:\n\nconda env update -f my_env.yml\n\nSwitch back to base environment\n\nconda deactivate env-name\n\nInstall package: Latest version\n\nconda install pandas \n\nInstall package: Specific version\n\nconda install pandas==2.0.0\n\nInstall package: From different channel\n\nconda install pandas -c conda-forge -y\n\nList packages in environment\n\nconda list\n\nExport environment to yml\n\nconda env export &gt; environment.yml"
   },
   {
-    "objectID": "cheatsheets/CLI Tools/bash.html#files",
-    "href": "cheatsheets/CLI Tools/bash.html#files",
-    "title": "Bash",
+    "objectID": "cheatsheets/CLI Tools/Conda.html#installation",
+    "href": "cheatsheets/CLI Tools/Conda.html#installation",
+    "title": "Conda",
     "section": "",
-    "text": "Number of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag."
+    "text": "conda docs - Installation\n\n\n\n\n\n\nInstallation via UNIX CLI\n\n\n\n\n\nmkdir -p ~/miniconda3\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh\nbash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3\nrm -rf ~/miniconda3/miniconda.sh\n~/miniconda3/bin/conda init bash\n~/miniconda3/bin/conda init zsh\n\n\n\n\n\n\nList your existing environments\n\nconda env list\n\nCreate environment\n\nconda create --name env-name\n\nCreate a conda env from a file:\n\nconda env create -f environment.yml\n\nRemoving / Deleting environment\n\nconda env remove -n env-name\n\n\nMore info: Intro to Conda virtual environments\n\n\n\n\nUse environment\n\nconda activate env-name\n\nCheck and update package versions. After activating an env:\n\npython --version\n\n\nconda update python\n\nUpdate whole environment according to your yaml-file:\n\nconda env update -f my_env.yml\n\nSwitch back to base environment\n\nconda deactivate env-name\n\nInstall package: Latest version\n\nconda install pandas \n\nInstall package: Specific version\n\nconda install pandas==2.0.0\n\nInstall package: From different channel\n\nconda install pandas -c conda-forge -y\n\nList packages in environment\n\nconda list\n\nExport environment to yml\n\nconda env export &gt; environment.yml"
   },
   {
-    "objectID": "cheatsheets/CLI Tools/bash.html#processes",
-    "href": "cheatsheets/CLI Tools/bash.html#processes",
-    "title": "Bash",
-    "section": "Processes",
-    "text": "Processes\n\nList running processes\n\nhtop\n\n\n\n\n\n\n\n\n\nCommands\n\n\n\n\n\nHelp\nh\n\n\nKill process\nk\n\n\nOrder processes by memory consumption\nShift-M\n\n\nFilter processes by user\nU\n\n\nDisplay files used by the selected process\nL\n\n\nDisplay user threads\nShift-H\n\n\n\n\nKill process\n\nkill -9 [process-PID]\n\nInfo on resource usage & processes on NVidia graphic cards\n\nnvidia-smi"
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/ruff.html",
-    "href": "cheatsheets/CLI Tools/ruff.html",
-    "title": "ruff",
+    "objectID": "cheatsheets/CLI Tools/pip.html",
+    "href": "cheatsheets/CLI Tools/pip.html",
+    "title": "Pip",
     "section": "",
-    "text": "pip install ruff"
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/ruff.html#install",
-    "href": "cheatsheets/CLI Tools/ruff.html#install",
-    "title": "ruff",
-    "section": "",
-    "text": "pip install ruff"
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/ruff.html#configuration",
-    "href": "cheatsheets/CLI Tools/ruff.html#configuration",
-    "title": "ruff",
-    "section": "Configuration",
-    "text": "Configuration\nCreate a file named pyproject.toml with the following content. You can find the relevant rules here.\n[tool.ruff]\ntarget-version = \"py39\"\n\n# Select relevant rules\nselect = [\n    \"ANN\", # type annotations\n    \"ARG\", # falke8 unused arguments\n    \"B\",  # flake8-bugbear\n    \"COM\", # flake8-commas (specifically trailing commas)\n    \"C4\", # flake8-comprehensions\n    \"D\",  # pydocstyle\n    \"E\",  # Error\n    \"ERA\", # eradicate commented out code\n    \"F\",  # pyflakes\n    \"FIX\", # flake8 fixme\n    \"I\",  # isort\n    \"ISC\", # flake8-implicit-str-concat\n    \"N\",  # pep8-naming\n    \"NPY\", # NumPy specific rules\n    \"PERF\", # Perflint: performance\n    \"PIE\", # flake8-pie \n    \"PGH\",  # pygrep-hooks\n    \"PTH\", # flake8-use-pathlib \n    \"Q\",  # flake8-quotes\n    \"RUF\", # Ruff specific rules\n    \"S\",  # bandit security checks \n    \"SIM\",  # flake8-simplify\n    \"UP\",  # pyupgrade\n    \"W\",  # Warning\n    \"YTT\", # flake8-2020 \n]\n\n\n# Ignore the following rules\nignore = [\n    \"ANN101\", # missing-type-self\n    \"ANN401\", # any-type type hint\n    \"D100\", # undocumented-public-module\n    \"D101\", # undocumented-public-class -&gt; We document inits\n    \"D104\", # Missing docstring in public package\n    \"E402\", # (import violation)\n]\n\nline-length = 88  # Must agree with Black\n\n[tool.ruff.per-file-ignores]\n\"path/to/python-file.py\" = [\"E501\"] # line too long \n\"path/to_test_folder/*\" = [\n    \"ANN201\", # Missing return type -&gt; Tests commonly return None (overkill)\n    \"ANN202\", # Missing return type -&gt; Tests commonly return None (overkill)\n    \"D102\", # No docstrings -&gt; not necessary in tests\n] \n\n# Doc-String format\n[tool.ruff.pydocstyle]\nconvention = \"google\"  # Accepts: \"google\", \"numpy\", or \"pep257\"."
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/ruff.html#run",
-    "href": "cheatsheets/CLI Tools/ruff.html#run",
-    "title": "ruff",
-    "section": "Run",
-    "text": "Run\n\nCheck for rule violations and fix the ones that can be fixed without danger\n\nruff check . --fix\n. checks in the current directory. --fix enables the autofix feature."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Cheatsheets",
-    "section": "",
-    "text": "This is a collection of my cheatsheets. Feel free to use them. If you want to edit them, to your own needs: Pleae visit my Github-Repo, give it a star and clone it.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\n\n\n\nAzure ML\n\n\n\n\n\n\n\n\n\n\nBash\n\n\nBash is a command line tool and language.\n\n\n\n\n\n\n\nConda\n\n\nConda is a package and virtual environment manager.\n\n\n\n\n\n\n\nDart\n\n\nDart is a new programming language by Google, mainly used for app development.\n\n\n\n\n\n\n\nFlutter\n\n\nFlutter is a cross-plattform app-development framework based on dart.\n\n\n\n\n\n\n\nGCP: gcloud CLI\n\n\nGcloud CLI is the command line interface of the Google Cloud Platform.\n\n\n\n\n\n\n\nGit\n\n\nGit is a version control system mostly used for code.\n\n\n\n\n\n\n\nPip\n\n\nPip is the official python package manager\n\n\n\n\n\n\n\nPython\n\n\nPython is one of the most popular programming languages.\n\n\n\n\n\n\n\nQuarto\n\n\nQuarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations. \n\n\n\n\n\n\n\nR basics\n\n\nR is a programming language that is specialized in statistical analysis.\n\n\n\n\n\n\n\nR plotting\n\n\nR has powerful builtin plotting capabilities\n\n\n\n\n\n\n\nVS Code\n\n\nVisual studio code is one of the most popular code editors.\n\n\n\n\n\n\n\nruff\n\n\nA fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black\n\n\n\n\n\n\nNo matching items"
+    "text": "Installation\n\nUsually pip is installed with python automatically.\n\nUpgrade pip\n\npython -m pip install --upgrade pip\n\nInstall packages\n\npip install SomePackage            # latest version\npip install SomePackage==1.0.4     # specific version\npip install 'SomePackage&gt;=1.0.4'   # minimum version\n\nInstall from requirements file\n\npip install -r requirements.txt\n\nGenerate requirements file from installed packages\n\npip freeze &gt; requirements.txt\n\nList installed packages\n\npip list\n\nList outdated installed packages\n\npip list --outdated\n\nGet info on package\n\npip show SomePackage\n\n\n\nWheels\nWheel files (binaries) make the installation of pip packages faster.\n\nInstall wheel\n\npip install wheel\n\nCreate pip wheel file from requirements\n\npip wheel --wheel-dir=/local/wheels -r requirements.txt\n\nInstall packages from local wheels directory\n\npip install --no-index --find-links=/local/wheels -r requirements.txt\n\n\n\n\nPipenv\nPipenv is the environment manager for pip.\n\nInstall pipenv\n\npip install --user --upgrade pipenv\n\nIstall packages in your environment\n\npipenv install -r requirements.txt\n\nRun script in your environment\n\npipenv run python python_script.py"
   },
   {
     "objectID": "cheatsheets/CLI Tools/git.html",
@@ -189,32 +147,88 @@
     "text": "History\n\nShow commit history with branch dependencies\n\ngit log --graph --oneline"
   },
   {
-    "objectID": "cheatsheets/CLI Tools/pip.html",
-    "href": "cheatsheets/CLI Tools/pip.html",
-    "title": "Pip",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Cheatsheets",
     "section": "",
-    "text": "Installation\n\nUsually pip is installed with python automatically.\n\nUpgrade pip\n\npython -m pip install --upgrade pip\n\nInstall packages\n\npip install SomePackage            # latest version\npip install SomePackage==1.0.4     # specific version\npip install 'SomePackage&gt;=1.0.4'   # minimum version\n\nInstall from requirements file\n\npip install -r requirements.txt\n\nGenerate requirements file from installed packages\n\npip freeze &gt; requirements.txt\n\nList installed packages\n\npip list\n\nList outdated installed packages\n\npip list --outdated\n\nGet info on package\n\npip show SomePackage\n\n\n\nWheels\nWheel files (binaries) make the installation of pip packages faster.\n\nInstall wheel\n\npip install wheel\n\nCreate pip wheel file from requirements\n\npip wheel --wheel-dir=/local/wheels -r requirements.txt\n\nInstall packages from local wheels directory\n\npip install --no-index --find-links=/local/wheels -r requirements.txt\n\n\n\n\nPipenv\nPipenv is the environment manager for pip.\n\nInstall pipenv\n\npip install --user --upgrade pipenv\n\nIstall packages in your environment\n\npipenv install -r requirements.txt\n\nRun script in your environment\n\npipenv run python python_script.py"
+    "text": "This is a collection of my cheatsheets. Feel free to use them. If you want to edit them, to your own needs: Pleae visit my Github-Repo, give it a star and clone it.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\nTitle\n\n\nDescription\n\n\n\n\n\n\n\n\n\nAzure ML\n\n\n\n\n\n\n\n\n\n\nBash\n\n\nBash is a command line tool and language.\n\n\n\n\n\n\n\nConda\n\n\nConda is a package and virtual environment manager.\n\n\n\n\n\n\n\nDart\n\n\nDart is a new programming language by Google, mainly used for app development.\n\n\n\n\n\n\n\nFlutter\n\n\nFlutter is a cross-plattform app-development framework based on dart.\n\n\n\n\n\n\n\nGCP: gcloud CLI\n\n\nGcloud CLI is the command line interface of the Google Cloud Platform.\n\n\n\n\n\n\n\nGit\n\n\nGit is a version control system mostly used for code.\n\n\n\n\n\n\n\nOpenShift\n\n\nOpenShift is a platform based on Kubernetes to host and manage applications in containers.\n\n\n\n\n\n\n\nPip\n\n\nPip is the official python package manager\n\n\n\n\n\n\n\nPython\n\n\nPython is one of the most popular programming languages.\n\n\n\n\n\n\n\nQuarto\n\n\nQuarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations. \n\n\n\n\n\n\n\nR basics\n\n\nR is a programming language that is specialized in statistical analysis.\n\n\n\n\n\n\n\nR plotting\n\n\nR has powerful builtin plotting capabilities\n\n\n\n\n\n\n\nVS Code\n\n\nVisual studio code is one of the most popular code editors.\n\n\n\n\n\n\n\nruff\n\n\nA fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "cheatsheets/CLI Tools/Conda.html",
-    "href": "cheatsheets/CLI Tools/Conda.html",
-    "title": "Conda",
+    "objectID": "cheatsheets/CLI Tools/ruff.html",
+    "href": "cheatsheets/CLI Tools/ruff.html",
+    "title": "ruff",
     "section": "",
-    "text": "conda docs - Installation\n\n\n\n\n\n\nInstallation via UNIX CLI\n\n\n\n\n\nmkdir -p ~/miniconda3\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh\nbash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3\nrm -rf ~/miniconda3/miniconda.sh\n~/miniconda3/bin/conda init bash\n~/miniconda3/bin/conda init zsh\n\n\n\n\n\n\nList your existing environments\n\nconda env list\n\nCreate environment\n\nconda create --name env-name\n\nCreate a conda env from a file:\n\nconda env create -f environment.yml\n\nRemoving / Deleting environment\n\nconda env remove -n env-name\n\n\nMore info: Intro to Conda virtual environments\n\n\n\n\nUse environment\n\nconda activate env-name\n\nCheck and update package versions. After activating an env:\n\npython --version\n\n\nconda update python\n\nUpdate whole environment according to your yaml-file:\n\nconda env update -f my_env.yml\n\nSwitch back to base environment\n\nconda deactivate env-name\n\nInstall package: Latest version\n\nconda install pandas \n\nInstall package: Specific version\n\nconda install pandas==2.0.0\n\nInstall package: From different channel\n\nconda install pandas -c conda-forge -y\n\nList packages in environment\n\nconda list\n\nExport environment to yml\n\nconda env export &gt; environment.yml"
+    "text": "pip install ruff"
   },
   {
-    "objectID": "cheatsheets/CLI Tools/Conda.html#installation",
-    "href": "cheatsheets/CLI Tools/Conda.html#installation",
-    "title": "Conda",
+    "objectID": "cheatsheets/CLI Tools/ruff.html#install",
+    "href": "cheatsheets/CLI Tools/ruff.html#install",
+    "title": "ruff",
     "section": "",
-    "text": "conda docs - Installation\n\n\n\n\n\n\nInstallation via UNIX CLI\n\n\n\n\n\nmkdir -p ~/miniconda3\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh\nbash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3\nrm -rf ~/miniconda3/miniconda.sh\n~/miniconda3/bin/conda init bash\n~/miniconda3/bin/conda init zsh\n\n\n\n\n\n\nList your existing environments\n\nconda env list\n\nCreate environment\n\nconda create --name env-name\n\nCreate a conda env from a file:\n\nconda env create -f environment.yml\n\nRemoving / Deleting environment\n\nconda env remove -n env-name\n\n\nMore info: Intro to Conda virtual environments\n\n\n\n\nUse environment\n\nconda activate env-name\n\nCheck and update package versions. After activating an env:\n\npython --version\n\n\nconda update python\n\nUpdate whole environment according to your yaml-file:\n\nconda env update -f my_env.yml\n\nSwitch back to base environment\n\nconda deactivate env-name\n\nInstall package: Latest version\n\nconda install pandas \n\nInstall package: Specific version\n\nconda install pandas==2.0.0\n\nInstall package: From different channel\n\nconda install pandas -c conda-forge -y\n\nList packages in environment\n\nconda list\n\nExport environment to yml\n\nconda env export &gt; environment.yml"
+    "text": "pip install ruff"
   },
   {
-    "objectID": "cheatsheets/Cloud/gcloud.html",
-    "href": "cheatsheets/Cloud/gcloud.html",
-    "title": "GCP: gcloud CLI",
+    "objectID": "cheatsheets/CLI Tools/ruff.html#configuration",
+    "href": "cheatsheets/CLI Tools/ruff.html#configuration",
+    "title": "ruff",
+    "section": "Configuration",
+    "text": "Configuration\nCreate a file named pyproject.toml with the following content. You can find the relevant rules here.\n[tool.ruff]\ntarget-version = \"py39\"\n\n# Select relevant rules\nselect = [\n    \"ANN\", # type annotations\n    \"ARG\", # falke8 unused arguments\n    \"B\",  # flake8-bugbear\n    \"COM\", # flake8-commas (specifically trailing commas)\n    \"C4\", # flake8-comprehensions\n    \"D\",  # pydocstyle\n    \"E\",  # Error\n    \"ERA\", # eradicate commented out code\n    \"F\",  # pyflakes\n    \"FIX\", # flake8 fixme\n    \"I\",  # isort\n    \"ISC\", # flake8-implicit-str-concat\n    \"N\",  # pep8-naming\n    \"NPY\", # NumPy specific rules\n    \"PERF\", # Perflint: performance\n    \"PIE\", # flake8-pie \n    \"PGH\",  # pygrep-hooks\n    \"PTH\", # flake8-use-pathlib \n    \"Q\",  # flake8-quotes\n    \"RUF\", # Ruff specific rules\n    \"S\",  # bandit security checks \n    \"SIM\",  # flake8-simplify\n    \"UP\",  # pyupgrade\n    \"W\",  # Warning\n    \"YTT\", # flake8-2020 \n]\n\n\n# Ignore the following rules\nignore = [\n    \"ANN101\", # missing-type-self\n    \"ANN401\", # any-type type hint\n    \"D100\", # undocumented-public-module\n    \"D101\", # undocumented-public-class -&gt; We document inits\n    \"D104\", # Missing docstring in public package\n    \"E402\", # (import violation)\n]\n\nline-length = 88  # Must agree with Black\n\n[tool.ruff.per-file-ignores]\n\"path/to/python-file.py\" = [\"E501\"] # line too long \n\"path/to_test_folder/*\" = [\n    \"ANN201\", # Missing return type -&gt; Tests commonly return None (overkill)\n    \"ANN202\", # Missing return type -&gt; Tests commonly return None (overkill)\n    \"D102\", # No docstrings -&gt; not necessary in tests\n] \n\n# Doc-String format\n[tool.ruff.pydocstyle]\nconvention = \"google\"  # Accepts: \"google\", \"numpy\", or \"pep257\"."
+  },
+  {
+    "objectID": "cheatsheets/CLI Tools/ruff.html#run",
+    "href": "cheatsheets/CLI Tools/ruff.html#run",
+    "title": "ruff",
+    "section": "Run",
+    "text": "Run\n\nCheck for rule violations and fix the ones that can be fixed without danger\n\nruff check . --fix\n. checks in the current directory. --fix enables the autofix feature."
+  },
+  {
+    "objectID": "cheatsheets/CLI Tools/bash.html",
+    "href": "cheatsheets/CLI Tools/bash.html",
+    "title": "Bash",
     "section": "",
-    "text": "SSH connection\n \n\n\n\n\nsetup new ssh connection to compute instance\ngcloud compute config-ssh"
+    "text": "Number of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag."
+  },
+  {
+    "objectID": "cheatsheets/CLI Tools/bash.html#files",
+    "href": "cheatsheets/CLI Tools/bash.html#files",
+    "title": "Bash",
+    "section": "",
+    "text": "Number of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag."
+  },
+  {
+    "objectID": "cheatsheets/CLI Tools/bash.html#processes",
+    "href": "cheatsheets/CLI Tools/bash.html#processes",
+    "title": "Bash",
+    "section": "Processes",
+    "text": "Processes\n\nList running processes\n\nhtop\n\n\n\n\n\n\n\n\n\nCommands\n\n\n\n\n\nHelp\nh\n\n\nKill process\nk\n\n\nOrder processes by memory consumption\nShift-M\n\n\nFilter processes by user\nU\n\n\nDisplay files used by the selected process\nL\n\n\nDisplay user threads\nShift-H\n\n\n\n\nKill process\n\nkill -9 [process-PID]\n\nInfo on resource usage & processes on NVidia graphic cards\n\nnvidia-smi"
+  },
+  {
+    "objectID": "cheatsheets/Cloud & Platform/azure_ml.html",
+    "href": "cheatsheets/Cloud & Platform/azure_ml.html",
+    "title": "Azure ML",
+    "section": "",
+    "text": "Azure ML is the machine learning service of the Azure Cloud Platform."
+  },
+  {
+    "objectID": "cheatsheets/Cloud & Platform/azure_ml.html#experiments",
+    "href": "cheatsheets/Cloud & Platform/azure_ml.html#experiments",
+    "title": "Azure ML",
+    "section": "Experiments",
+    "text": "Experiments\n\nDelete Experiments without jobs\n\nfrom azureml.core import Workspace, Experiment\naml_workspace = Workspace.from_config()\nexperiment_id = Experiment(aml_workspace, '&lt;experiment_name&gt;').id\nExperiment.delete(aml_workspace, experiment_id)"
+  },
+  {
+    "objectID": "cheatsheets/Cloud & Platform/Openshift.html",
+    "href": "cheatsheets/Cloud & Platform/Openshift.html",
+    "title": "OpenShift",
+    "section": "",
+    "text": "Docker containers\n\nUnits for running processes. Contain the software code, all dependencies (programming libraries, operating system tools & libraries). Allows to run processes in isolation. Containers usually run single services (e.g. web server, database, …) called micro-services.\n\nImages\n\nBinary file that contains instructions for building a container. Images are commonly based on other images (e.g. you application image is based on an ubuntu image). By creating multiple containers from the same image, you can use load-balancing for your processes.\n\nImage tags\n\nusually contain the version number and potentially other info (e.g. OS, base-image, …). Used to distinguish realted images in the same repository or stream.\n\nImage registries\n\nStores images in image repositories (containing images with different tags) and deploys the images into containers.\n\nPods\n\nCollection of one or more containers. Containers in the same pod share the same compute resources (i.e. same cluster & local network, see below). You define, deploy and manage pods and not containers separately. A pod has an internal IP-adress. Containers within pods share their local storage and networking. You cannot change running pods; you stop them and recreate them with the modification.\n\nRestart Policy\n\nWhen containers in a pod exit (finish application task or failing), the pod can be restarted “always”, “OnFailure” or “Never”. If a pod fails, a new pod is created (possibly losing temporary files, etc.).\n\nServices\n\nLoad balancer that distributes and proxies connections to the pods. Head-less services run without load balancers.\n\nLabels\n\nPods can be given labels and thus organized into groups. Services use these to select groups of pods to proxy to.\n\n\n\n\n\n\nUsers\n\nPeople or roles that can interact with the components of OpenShift. There are regular users (humans), system users (technical accounts: cluster admins, per-node users, …) and service accounts (accounts to that are used by application processes)\n\nKubernets namespaces\n\nLogical groups of resources (nodes & services) to avoid naming collisions, organize authoriy and resource consumption. (e.g. dev-namespace, test-namespace, prod-namespace)\n\nProjects\n\nA project is a kubernetes namespaces with additional features. It defines its objects (pods, services, replication controllers, …), policy rules, resource constraints & service accounts.\n\n\n\n\n\n\nBuilds\n\nA build is the process that transforms the specifications and source code into a runnable image. These are then pushed into the image registry. Openshift uses Source-to-Image (S2I) as the tool that builds the images. Build pipelines can be constructed using Jenkins and defined in jenkins files that are referenced by the build-configuration.\n\nImage streams\n\ngive you an overview of related images like in image repositories. Deployment pipelines can watch streams to trigger new deployments, when new images arrive.\n\nReplication controller\n\nControls the number of replicas of a pod. It makes sure that there is the specified amount of replicas running at all times. It does not autoscale on its own. Used for continuously running pods.\n\nJob\n\ncreates pods like a replication controller does. It is however used for one-time running pods. It tracks if the pods have run successfully.\n\nDeployments\n\nThe process of starting up pods with their respective images. A deployment creates a new replication controller and has it ship the pods as specified. The deploymentConfig defines the replication controller, the triggers for the deployment and lifecycle hooks.\n\n\n\n\n\n\n\nNode\n\nCompute hardware unit. A single machine, where the container runs on.\n\nCluster\n\nGroup of nodes that are orchestrated to share resources and load.\n\nEndpoint\n\nServer that backs a service (see above).\n\n\nMore information: OpenShift: Core Concepts Google Cloud: What are Containers Docker Docs: Docker overview"
+  },
+  {
+    "objectID": "cheatsheets/Cloud & Platform/Openshift.html#core-concepts",
+    "href": "cheatsheets/Cloud & Platform/Openshift.html#core-concepts",
+    "title": "OpenShift",
+    "section": "",
+    "text": "Docker containers\n\nUnits for running processes. Contain the software code, all dependencies (programming libraries, operating system tools & libraries). Allows to run processes in isolation. Containers usually run single services (e.g. web server, database, …) called micro-services.\n\nImages\n\nBinary file that contains instructions for building a container. Images are commonly based on other images (e.g. you application image is based on an ubuntu image). By creating multiple containers from the same image, you can use load-balancing for your processes.\n\nImage tags\n\nusually contain the version number and potentially other info (e.g. OS, base-image, …). Used to distinguish realted images in the same repository or stream.\n\nImage registries\n\nStores images in image repositories (containing images with different tags) and deploys the images into containers.\n\nPods\n\nCollection of one or more containers. Containers in the same pod share the same compute resources (i.e. same cluster & local network, see below). You define, deploy and manage pods and not containers separately. A pod has an internal IP-adress. Containers within pods share their local storage and networking. You cannot change running pods; you stop them and recreate them with the modification.\n\nRestart Policy\n\nWhen containers in a pod exit (finish application task or failing), the pod can be restarted “always”, “OnFailure” or “Never”. If a pod fails, a new pod is created (possibly losing temporary files, etc.).\n\nServices\n\nLoad balancer that distributes and proxies connections to the pods. Head-less services run without load balancers.\n\nLabels\n\nPods can be given labels and thus organized into groups. Services use these to select groups of pods to proxy to.\n\n\n\n\n\n\nUsers\n\nPeople or roles that can interact with the components of OpenShift. There are regular users (humans), system users (technical accounts: cluster admins, per-node users, …) and service accounts (accounts to that are used by application processes)\n\nKubernets namespaces\n\nLogical groups of resources (nodes & services) to avoid naming collisions, organize authoriy and resource consumption. (e.g. dev-namespace, test-namespace, prod-namespace)\n\nProjects\n\nA project is a kubernetes namespaces with additional features. It defines its objects (pods, services, replication controllers, …), policy rules, resource constraints & service accounts.\n\n\n\n\n\n\nBuilds\n\nA build is the process that transforms the specifications and source code into a runnable image. These are then pushed into the image registry. Openshift uses Source-to-Image (S2I) as the tool that builds the images. Build pipelines can be constructed using Jenkins and defined in jenkins files that are referenced by the build-configuration.\n\nImage streams\n\ngive you an overview of related images like in image repositories. Deployment pipelines can watch streams to trigger new deployments, when new images arrive.\n\nReplication controller\n\nControls the number of replicas of a pod. It makes sure that there is the specified amount of replicas running at all times. It does not autoscale on its own. Used for continuously running pods.\n\nJob\n\ncreates pods like a replication controller does. It is however used for one-time running pods. It tracks if the pods have run successfully.\n\nDeployments\n\nThe process of starting up pods with their respective images. A deployment creates a new replication controller and has it ship the pods as specified. The deploymentConfig defines the replication controller, the triggers for the deployment and lifecycle hooks.\n\n\n\n\n\n\n\nNode\n\nCompute hardware unit. A single machine, where the container runs on.\n\nCluster\n\nGroup of nodes that are orchestrated to share resources and load.\n\nEndpoint\n\nServer that backs a service (see above).\n\n\nMore information: OpenShift: Core Concepts Google Cloud: What are Containers Docker Docs: Docker overview"
   },
   {
     "objectID": "cheatsheets/Languages/R/R_plotting.html",

@@ -2,13 +2,14 @@
   {
     "listing": "/index.html",
     "items": [
-      "/cheatsheets/Cloud/azure_ml.html",
+      "/cheatsheets/Cloud & Platform/azure_ml.html",
       "/cheatsheets/CLI Tools/bash.html",
       "/cheatsheets/CLI Tools/Conda.html",
       "/cheatsheets/Languages/Dart_summary.html",
       "/cheatsheets/frameworks/flutter_summary.html",
-      "/cheatsheets/Cloud/gcloud.html",
+      "/cheatsheets/Cloud & Platform/gcloud.html",
       "/cheatsheets/CLI Tools/git.html",
+      "/cheatsheets/Cloud & Platform/Openshift.html",
       "/cheatsheets/CLI Tools/pip.html",
       "/cheatsheets/Languages/Python.html",
       "/cheatsheets/Quarto.html",

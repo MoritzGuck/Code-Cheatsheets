@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Git is a version control system mostly used for code.">
+<meta name="description" content="OpenShift is a platform based on Kubernetes to host and manage applications in containers.">
 
-<title>Cheatsheets - Git</title>
+<title>Cheatsheets - OpenShift</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -111,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../cheatsheets/Quarto.html">Cheatsheets</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/bash.html">CLI Tools</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/git.html">Git</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../cheatsheets/Quarto.html">Cheatsheets</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud &amp; Platform/azure_ml.html">Cloud &amp; Platform</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud &amp; Platform/Openshift.html">OpenShift</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -184,7 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/CLI Tools/git.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../cheatsheets/CLI Tools/git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git</span></a>
   </div>
 </li>
@@ -225,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Cloud &amp; Platform/Openshift.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/Cloud &amp; Platform/Openshift.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">OpenShift</span></a>
   </div>
 </li>
@@ -302,17 +268,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#configuration" id="toc-configuration" class="nav-link active" data-scroll-target="#configuration">Configuration</a></li>
-  <li><a href="#new-repositories" id="toc-new-repositories" class="nav-link" data-scroll-target="#new-repositories">New repositories</a></li>
-  <li><a href="#changes" id="toc-changes" class="nav-link" data-scroll-target="#changes">Changes</a>
+  <li><a href="#core-concepts" id="toc-core-concepts" class="nav-link active" data-scroll-target="#core-concepts">Core concepts</a>
   <ul class="collapse">
-  <li><a href="#code-change-workflow" id="toc-code-change-workflow" class="nav-link" data-scroll-target="#code-change-workflow">Code change workflow</a></li>
-  <li><a href="#managing-changes" id="toc-managing-changes" class="nav-link" data-scroll-target="#managing-changes">Managing changes</a></li>
+  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a></li>
+  <li><a href="#hardware" id="toc-hardware" class="nav-link" data-scroll-target="#hardware">Hardware</a></li>
   </ul></li>
-  <li><a href="#pull-changes-into-devtestmaster-branch" id="toc-pull-changes-into-devtestmaster-branch" class="nav-link" data-scroll-target="#pull-changes-into-devtestmaster-branch">Pull changes into dev/test/master branch</a></li>
-  <li><a href="#undo-and-rollback" id="toc-undo-and-rollback" class="nav-link" data-scroll-target="#undo-and-rollback">Undo and Rollback</a></li>
-  <li><a href="#branches" id="toc-branches" class="nav-link" data-scroll-target="#branches">Branches</a></li>
-  <li><a href="#history" id="toc-history" class="nav-link" data-scroll-target="#history">History</a></li>
   </ul>
 </nav>
 </nav>
@@ -325,17 +285,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Git</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">CLI</div>
-    <div class="quarto-category">tool</div>
-    <div class="quarto-category">versioning</div>
-  </div>
-  </div>
+<h1 class="title">OpenShift</h1>
+</div>
 
 <div>
   <div class="description">
-    Git is a version control system mostly used for code.
+    OpenShift is a platform based on Kubernetes to host and manage applications in containers.
   </div>
 </div>
 
@@ -350,167 +305,110 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="configuration" class="level2">
-<h2 class="anchored" data-anchor-id="configuration">Configuration</h2>
+<section id="core-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="core-concepts">Core concepts</h2>
+<section id="software" class="level3">
+<h3 class="anchored" data-anchor-id="software">Software</h3>
+<section id="containers-pods" class="level4">
+<h4 class="anchored" data-anchor-id="containers-pods">Containers &amp; pods</h4>
 <dl>
-<dt>Set username (for your commits)</dt>
+<dt>Docker containers</dt>
 <dd>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"myname"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+Units for running processes. Contain the software code, all dependencies (programming libraries, operating system tools &amp; libraries). Allows to run processes in isolation. Containers usually run single services (e.g.&nbsp;web server, database, …) called micro-services.
 </dd>
-<dt>Set email (for your commits)</dt>
+<dt>Images</dt>
 <dd>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"my@email.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+Binary file that contains instructions for building a container. Images are commonly based on other images (e.g.&nbsp;you application image is based on an ubuntu image). By creating multiple containers from the same image, you can use load-balancing for your processes.
+</dd>
+<dt>Image tags</dt>
+<dd>
+usually contain the version number and potentially other info (e.g.&nbsp;OS, base-image, …). Used to distinguish realted images in the same repository or stream.
+</dd>
+<dt>Image registries</dt>
+<dd>
+Stores images in image repositories (containing images with different tags) and deploys the images into containers.
+</dd>
+<dt>Pods</dt>
+<dd>
+Collection of one or more containers. Containers in the same pod share the same compute resources (i.e.&nbsp;same cluster &amp; local network, see below). You define, deploy and manage pods and not containers separately. A pod has an internal IP-adress. Containers within pods share their local storage and networking. You cannot change running pods; you stop them and recreate them with the modification.
+</dd>
+<dt>Restart Policy</dt>
+<dd>
+When containers in a pod exit (finish application task or failing), the pod can be restarted “always”, “OnFailure” or “Never”. If a pod fails, a new pod is created (possibly losing temporary files, etc.).
+</dd>
+<dt>Services</dt>
+<dd>
+Load balancer that distributes and proxies connections to the pods. <em>Head-less services</em> run without load balancers.
+</dd>
+<dt>Labels</dt>
+<dd>
+Pods can be given labels and thus organized into groups. Services use these to select groups of pods to proxy to.
 </dd>
 </dl>
 </section>
-<section id="new-repositories" class="level2">
-<h2 class="anchored" data-anchor-id="new-repositories">New repositories</h2>
+<section id="projects-users" class="level4">
+<h4 class="anchored" data-anchor-id="projects-users">Projects &amp; users</h4>
 <dl>
-<dt>Download git repo from server</dt>
+<dt>Users</dt>
 <dd>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone url.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+People or roles that can interact with the components of OpenShift. There are regular users (humans), system users (technical accounts: cluster admins, per-node users, …) and service accounts (accounts to that are used by application processes)
+</dd>
+<dt>Kubernets namespaces</dt>
+<dd>
+Logical groups of resources (nodes &amp; services) to avoid naming collisions, organize authoriy and resource consumption. (e.g.&nbsp;dev-namespace, test-namespace, prod-namespace)
+</dd>
+<dt>Projects</dt>
+<dd>
+A project is a kubernetes namespaces with additional features. It defines its objects (pods, services, replication controllers, …), policy rules, resource constraints &amp; service accounts.
 </dd>
 </dl>
 </section>
-<section id="changes" class="level2">
-<h2 class="anchored" data-anchor-id="changes">Changes</h2>
-<section id="code-change-workflow" class="level3">
-<h3 class="anchored" data-anchor-id="code-change-workflow">Code change workflow</h3>
-<ol type="1">
-<li><dl>
-<dt>Get changes from remote repository</dt>
-<dd>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl></li>
-<li><dl>
-<dt>Check differences to branch you want merge into yours</dt>
-<dd>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff feature1..dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl></li>
-<li><dl>
-<dt>Merge changes from remote branch into your branch</dt>
-<dd>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge origin master</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl></li>
-<li><dl>
-<dt>Check what files are(n’t) staged for commit</dt>
-<dd>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl></li>
-<li><dl>
-<dt>Stage all files that are tracked (not in .gitignore)</dt>
-<dd>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>If necessary: Unstage all files (or a specific file) that are staged</dt>
-<dd>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">git</span> reset <span class="pp">[</span><span class="ss">specific</span><span class="pp">-</span><span class="ss">file</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl></li>
-<li><dl>
-<dt>Commit all staged files (add to versioning history)</dt>
-<dd>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"[ticket-id + what you changed]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl></li>
-<li><dl>
-<dt>Load commits into remote git repository</dt>
-<dd>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl></li>
-</ol>
-</section>
-<section id="managing-changes" class="level3">
-<h3 class="anchored" data-anchor-id="managing-changes">Managing changes</h3>
+<section id="builds-deployments" class="level4">
+<h4 class="anchored" data-anchor-id="builds-deployments">Builds &amp; Deployments</h4>
 <dl>
-<dt>See changes due to last pull request</dt>
+<dt>Builds</dt>
 <dd>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">-p</span> <span class="at">-2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+A build is the process that transforms the specifications and source code into a runnable image. These are then pushed into the image registry. Openshift uses Source-to-Image (S2I) as the tool that builds the images. Build pipelines can be constructed using Jenkins and defined in jenkins files that are referenced by the build-configuration.
+</dd>
+<dt>Image streams</dt>
+<dd>
+give you an overview of related images like in image repositories. Deployment pipelines can watch streams to trigger new deployments, when new images arrive.
+</dd>
+<dt>Replication controller</dt>
+<dd>
+Controls the number of replicas of a pod. It makes sure that there is the specified amount of replicas running at all times. It does not autoscale on its own. Used for continuously running pods.
+</dd>
+<dt>Job</dt>
+<dd>
+creates pods like a replication controller does. It is however used for one-time running pods. It tracks if the pods have run successfully.
+</dd>
+<dt>Deployments</dt>
+<dd>
+The process of starting up pods with their respective images. A deployment creates a new replication controller and has it ship the pods as specified. The deploymentConfig defines the replication controller, the triggers for the deployment and lifecycle hooks.
 </dd>
 </dl>
 </section>
 </section>
-<section id="pull-changes-into-devtestmaster-branch" class="level2">
-<h2 class="anchored" data-anchor-id="pull-changes-into-devtestmaster-branch">Pull changes into dev/test/master branch</h2>
+<section id="hardware" class="level3">
+<h3 class="anchored" data-anchor-id="hardware">Hardware</h3>
 <dl>
-<dt>Pull changes into dev branch (and add your changes at the end)</dt>
+<dt>Node</dt>
 <dd>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout dev</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="at">--rebase</span> feature1branch </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+Compute hardware unit. A single machine, where the container runs on.
 </dd>
-<dt>Pull only specific commits into your branch</dt>
+<dt>Cluster</dt>
 <dd>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> cherry-pick <span class="pp">[</span><span class="ss">commit</span><span class="pp">-</span><span class="ss">SHA</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+Group of nodes that are orchestrated to share resources and load.
+</dd>
+<dt>Endpoint</dt>
+<dd>
+Server that backs a <em>service</em> (see above).
 </dd>
 </dl>
-</section>
-<section id="undo-and-rollback" class="level2">
-<h2 class="anchored" data-anchor-id="undo-and-rollback">Undo and Rollback</h2>
-<dl>
-<dt>Rollback the last commit</dt>
-<dd>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset head~1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Rollback to a specific commit</dt>
-<dd>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="pp">[</span><span class="ss">commit</span><span class="pp">-</span><span class="ss">SHA</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-You can still see the changes from your HEAD in your files. To make the reset materialize, you need to discard these unstaged changes in git.
-</dd>
-</dl>
-<p>Since you are now several commits behind the remote, you have to force push the changes: <code>git push -f origin [myBranchyBranch]</code>.</p>
-<p>To create a new commit to undo earlier commits, use <code>git revert</code>.</p>
-<dl>
-<dt>Travel back to a specific commit</dt>
-<dd>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="pp">[</span><span class="ss">commit</span><span class="pp">-</span><span class="ss">SHA</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt><strong>Delete sensitive data from history:</strong></dt>
-<dd>
-<a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#using-git-filter-repo">docs.github.com</a>
-</dd>
-</dl>
-</section>
-<section id="branches" class="level2">
-<h2 class="anchored" data-anchor-id="branches">Branches</h2>
-<dl>
-<dt>List all branches and show which one you are on</dt>
-<dd>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Create new branch and check it out</dt>
-<dd>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> <span class="pp">[</span><span class="ss">branch</span><span class="pp">-</span><span class="ss">name</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Change to a specific branch</dt>
-<dd>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="pp">[</span><span class="ss">specific</span><span class="pp">-</span><span class="ss">branch</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Delete a specific branch</dt>
-<dd>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> <span class="pp">[</span><span class="ss">specific</span><span class="pp">-</span><span class="ss">branch</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Rename the current branch</dt>
-<dd>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-m</span> myNewBranch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl>
-</section>
-<section id="history" class="level2">
-<h2 class="anchored" data-anchor-id="history">History</h2>
-<dl>
-<dt>Show commit history with branch dependencies</dt>
-<dd>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--graph</span> <span class="at">--oneline</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl>
+<p>More information: <a href="cheatsheets/Cloud/gcloud.qmd">OpenShift: Core Concepts</a> <a href="cheatsheets/Cloud/gcloud.qmd">Google Cloud: What are Containers</a> <a href="cheatsheets/Cloud/gcloud.qmd">Docker Docs: Docker overview</a></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
