@@ -1,0 +1,17 @@
+---
+title: "Splunk processing language (SPL)"
+description: "This is the language you need to use to query splunk logs."
+format: html
+categories:
+    - language
+---
+
+### Basics
+
+You start with an index (domain, where you want to search for the log-events.) and then you add patterns and search terms, you want to find in the search events.
+
+You use pipe-commands (`|`) to hand over the results from the command left of the pipe to the command on the right of the pipe. 
+
+Useful links:
+[Command reference](https://docs.splunk.com/Documentation/SplunkCloud/9.0.2305/SearchReference/ListOfSearchCommands)x
+
