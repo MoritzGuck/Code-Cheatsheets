@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Python is one of the most popular programming languages.">
+<meta name="description" content="This is the language you need to use to query splunk logs.">
 
-<title>Cheatsheets - Python</title>
+<title>Cheatsheets - Splunk processing language (SPL)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../cheatsheets/Quarto.html">Cheatsheets</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Languages/Dart_summary.html">Languages</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Languages/Python.html">Python</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../cheatsheets/Quarto.html">Cheatsheets</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Languages/Dart_summary.html">Languages</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Languages/Splunk_processing_language.html">Splunk processing language (SPL)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -231,13 +231,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Languages/Python.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../cheatsheets/Languages/Python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Languages/Splunk_processing_language.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/Languages/Splunk_processing_language.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Splunk processing language (SPL)</span></a>
   </div>
 </li>
@@ -274,10 +274,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#design-patterns" id="toc-design-patterns" class="nav-link active" data-scroll-target="#design-patterns">Design Patterns</a>
-  <ul class="collapse">
-  <li><a href="#factory-pattern" id="toc-factory-pattern" class="nav-link" data-scroll-target="#factory-pattern">Factory Pattern</a></li>
-  </ul></li>
+  <li><a href="#basics" id="toc-basics" class="nav-link active" data-scroll-target="#basics">Basics</a></li>
   </ul>
 </nav>
 </nav>
@@ -290,7 +287,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python</h1>
+<h1 class="title">Splunk processing language (SPL)</h1>
   <div class="quarto-categories">
     <div class="quarto-category">language</div>
   </div>
@@ -298,7 +295,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    Python is one of the most popular programming languages.
+    This is the language you need to use to query splunk logs.
   </div>
 </div>
 
@@ -313,30 +310,13 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="design-patterns" class="level2">
-<h2 class="anchored" data-anchor-id="design-patterns">Design Patterns</h2>
-<section id="factory-pattern" class="level3">
-<h3 class="anchored" data-anchor-id="factory-pattern">Factory Pattern</h3>
-<dl>
-<dt>Use case</dt>
-<dd>
-You have different classes that create objects that do the same kind of work (e.g.&nbsp;Logistic company has trucks, ships, planes that all transport goods). Explanation: <a href="https://refactoring.guru/design-patterns/factory-method">refactoring.guru</a>
-</dd>
-<dt>What it does for you</dt>
-<dd>
-Create objects and methods without having to specify the class or name of method (This is handled by factory object).
-</dd>
-<dt>Blueprint</dt>
-<dd>
-<ul>
-<li><a href="https://github.com/ArjanCodes/2021-factory-pattern/blob/main/after.py">Github.com/ArjanCodes</a></li>
-<li><a href="https://refactoring.guru/design-patterns/factory-method/python/example#example-0">refactoring.guru</a></li>
-</ul>
-</dd>
-</dl>
+<section id="basics" class="level3">
+<h3 class="anchored" data-anchor-id="basics">Basics</h3>
+<p>You start with an index (domain, where you want to search for the log-events.) and then you add patterns and search terms, you want to find in the search events.</p>
+<p>You use pipe-commands (<code>|</code>) to hand over the results from the command left of the pipe to the command on the right of the pipe.</p>
+<p>Useful links: <a href="https://docs.splunk.com/Documentation/SplunkCloud/9.0.2305/SearchReference/ListOfSearchCommands">Command reference</a>x</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
