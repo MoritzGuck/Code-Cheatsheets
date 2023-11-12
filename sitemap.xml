@@ -1,75 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/Conda.html</loc>
-    <lastmod>2023-11-12T13:54:55.433Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/ruff.html</loc>
-    <lastmod>2023-11-12T13:54:54.801Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/git.html</loc>
-    <lastmod>2023-11-12T13:54:54.173Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Quarto.html</loc>
-    <lastmod>2023-11-12T13:54:53.417Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Splunk_processing_language.html</loc>
-    <lastmod>2023-11-12T13:54:52.397Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Python/Python.html</loc>
-    <lastmod>2023-11-12T13:54:51.793Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/R/R.html</loc>
-    <lastmod>2023-11-12T13:54:51.041Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud & Platform/azure_ml.html</loc>
-    <lastmod>2023-11-12T13:54:49.877Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud & Platform/gcloud.html</loc>
-    <lastmod>2023-11-12T13:54:49.197Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/index.html</loc>
-    <lastmod>2023-11-12T13:54:48.345Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud & Platform/Openshift.html</loc>
-    <lastmod>2023-11-12T13:54:49.589Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Dart_summary.html</loc>
-    <lastmod>2023-11-12T13:54:50.285Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/R/R_plotting.html</loc>
-    <lastmod>2023-11-12T13:54:51.509Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Python/Pandas.html</loc>
-    <lastmod>2023-11-12T13:54:52.109Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/frameworks/flutter_summary.html</loc>
-    <lastmod>2023-11-12T13:54:52.885Z</lastmod>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/bash.html</loc>
+    <lastmod>2023-11-12T15:45:06.005Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/VSCode.html</loc>
-    <lastmod>2023-11-12T13:54:53.833Z</lastmod>
+    <lastmod>2023-11-12T15:45:05.033Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/bash.html</loc>
-    <lastmod>2023-11-12T13:54:54.493Z</lastmod>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/frameworks/flutter_summary.html</loc>
+    <lastmod>2023-11-12T15:45:03.697Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/pip.html</loc>
-    <lastmod>2023-11-12T13:54:55.117Z</lastmod>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Python/Conda.html</loc>
+    <lastmod>2023-11-12T15:45:02.621Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Python/Pandas.html</loc>
+    <lastmod>2023-11-12T15:45:01.717Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Python/ruff.html</loc>
+    <lastmod>2023-11-12T15:45:00.777Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/R/R_plotting.html</loc>
+    <lastmod>2023-11-12T15:44:59.965Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Dart_summary.html</loc>
+    <lastmod>2023-11-12T15:44:58.257Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud & Platform/Openshift.html</loc>
+    <lastmod>2023-11-12T15:44:57.285Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/index.html</loc>
+    <lastmod>2023-11-12T15:44:54.533Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud & Platform/gcloud.html</loc>
+    <lastmod>2023-11-12T15:44:56.737Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud & Platform/azure_ml.html</loc>
+    <lastmod>2023-11-12T15:44:57.657Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/R/R.html</loc>
+    <lastmod>2023-11-12T15:44:59.329Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Python/Python.html</loc>
+    <lastmod>2023-11-12T15:45:00.365Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Python/Poetry.html</loc>
+    <lastmod>2023-11-12T15:45:01.257Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Python/pip.html</loc>
+    <lastmod>2023-11-12T15:45:02.157Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Splunk_processing_language.html</loc>
+    <lastmod>2023-11-12T15:45:03.025Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Quarto.html</loc>
+    <lastmod>2023-11-12T15:45:04.405Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/git.html</loc>
+    <lastmod>2023-11-12T15:45:05.537Z</lastmod>
   </url>
 </urlset>
