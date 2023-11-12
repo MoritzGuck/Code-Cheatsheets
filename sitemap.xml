@@ -1,71 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/index.html</loc>
-    <lastmod>2023-11-01T16:18:44.543Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Quarto.html</loc>
-    <lastmod>2023-11-01T16:18:43.047Z</lastmod>
-  </url>
-  <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/Conda.html</loc>
-    <lastmod>2023-11-01T16:18:41.783Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/bash.html</loc>
-    <lastmod>2023-11-01T16:18:40.771Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/R/R.html</loc>
-    <lastmod>2023-11-01T16:18:39.759Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Splunk_processing_language.html</loc>
-    <lastmod>2023-11-01T16:18:37.831Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Python.html</loc>
-    <lastmod>2023-11-01T16:18:36.767Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud & Platform/gcloud.html</loc>
-    <lastmod>2023-11-01T16:18:35.855Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/VSCode.html</loc>
-    <lastmod>2023-11-01T16:18:32.931Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud & Platform/Openshift.html</loc>
-    <lastmod>2023-11-01T16:18:35.403Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud & Platform/azure_ml.html</loc>
-    <lastmod>2023-11-01T16:18:36.311Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Dart_summary.html</loc>
-    <lastmod>2023-11-01T16:18:37.407Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/R/R_plotting.html</loc>
-    <lastmod>2023-11-01T16:18:38.615Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/pip.html</loc>
-    <lastmod>2023-11-01T16:18:40.231Z</lastmod>
+    <lastmod>2023-11-12T13:54:55.433Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/ruff.html</loc>
-    <lastmod>2023-11-01T16:18:41.275Z</lastmod>
+    <lastmod>2023-11-12T13:54:54.801Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/git.html</loc>
-    <lastmod>2023-11-01T16:18:42.303Z</lastmod>
+    <lastmod>2023-11-12T13:54:54.173Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Quarto.html</loc>
+    <lastmod>2023-11-12T13:54:53.417Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Splunk_processing_language.html</loc>
+    <lastmod>2023-11-12T13:54:52.397Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Python/Python.html</loc>
+    <lastmod>2023-11-12T13:54:51.793Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/R/R.html</loc>
+    <lastmod>2023-11-12T13:54:51.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud & Platform/azure_ml.html</loc>
+    <lastmod>2023-11-12T13:54:49.877Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud & Platform/gcloud.html</loc>
+    <lastmod>2023-11-12T13:54:49.197Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/index.html</loc>
+    <lastmod>2023-11-12T13:54:48.345Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Cloud & Platform/Openshift.html</loc>
+    <lastmod>2023-11-12T13:54:49.589Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Dart_summary.html</loc>
+    <lastmod>2023-11-12T13:54:50.285Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/R/R_plotting.html</loc>
+    <lastmod>2023-11-12T13:54:51.509Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/Languages/Python/Pandas.html</loc>
+    <lastmod>2023-11-12T13:54:52.109Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/frameworks/flutter_summary.html</loc>
-    <lastmod>2023-11-01T16:18:43.839Z</lastmod>
+    <lastmod>2023-11-12T13:54:52.885Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/VSCode.html</loc>
+    <lastmod>2023-11-12T13:54:53.833Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/bash.html</loc>
+    <lastmod>2023-11-12T13:54:54.493Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/MoritzGuck/Code-Cheatsheets/cheatsheets/CLI Tools/pip.html</loc>
+    <lastmod>2023-11-12T13:54:55.117Z</lastmod>
   </url>
 </urlset>

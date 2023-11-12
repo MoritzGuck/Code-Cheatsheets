@@ -74,9 +74,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-image','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-image','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -265,12 +265,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cheatsheets/Languages/Python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Python</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./cheatsheets/Languages/Splunk_processing_language.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Splunk processing language (SPL)</span></a>
   </div>
@@ -278,12 +272,35 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">R</span></a>
+ <span class="menu-text">Python</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cheatsheets/Languages/Python/Pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cheatsheets/Languages/Python/Python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./cheatsheets/Languages/R/R.html" class="sidebar-item-text sidebar-link">
@@ -309,7 +326,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(16)</span></div><div class="category" data-category="CLI">CLI <span class="quarto-category-count">(5)</span></div><div class="category" data-category="IDE">IDE <span class="quarto-category-count">(1)</span></div><div class="category" data-category="app development">app development <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code quality">code quality <span class="quarto-category-count">(1)</span></div><div class="category" data-category="data science">data science <span class="quarto-category-count">(2)</span></div><div class="category" data-category="language">language <span class="quarto-category-count">(5)</span></div><div class="category" data-category="package manager">package manager <span class="quarto-category-count">(2)</span></div><div class="category" data-category="short-cuts">short-cuts <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tool">tool <span class="quarto-category-count">(6)</span></div><div class="category" data-category="versioning">versioning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="virtual environments">virtual environments <span class="quarto-category-count">(1)</span></div><div class="category" data-category="web development">web development <span class="quarto-category-count">(2)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(17)</span></div><div class="category" data-category="CLI">CLI <span class="quarto-category-count">(5)</span></div><div class="category" data-category="IDE">IDE <span class="quarto-category-count">(1)</span></div><div class="category" data-category="app development">app development <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code quality">code quality <span class="quarto-category-count">(1)</span></div><div class="category" data-category="data science">data science <span class="quarto-category-count">(3)</span></div><div class="category" data-category="framework">framework <span class="quarto-category-count">(1)</span></div><div class="category" data-category="language">language <span class="quarto-category-count">(5)</span></div><div class="category" data-category="package manager">package manager <span class="quarto-category-count">(2)</span></div><div class="category" data-category="python">python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="short-cuts">short-cuts <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tool">tool <span class="quarto-category-count">(6)</span></div><div class="category" data-category="versioning">versioning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="virtual environments">virtual environments <span class="quarto-category-count">(1)</span></div><div class="category" data-category="web development">web development <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -335,217 +352,515 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title-sort" data-direction="asc">
-          Title
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./cheatsheets/Cloud &amp; Platform/azure_ml.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
 </div>
+<div class="body">
+<a href="./cheatsheets/Cloud &amp; Platform/azure_ml.html">
+<h3 class="no-anchor listing-title">
+Azure ML
+</h3>
+<div class="listing-subtitle">
 
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-</th>
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-<th>
-Description
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1698855492833" data-listing-reading-time-sort="1" data-listing-title-sort="Azure ML" data-listing-filename-sort="azure_ml.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/Cloud &amp; Platform/azure_ml.html" class="title listing-title">Azure ML</a>
-</td>
-<td>
-<span class="listing-description">Azure ML is the machine learning service of the Azure Cloud Platform.</span>
-</td>
-</tr>
-<tr data-index="1" data-categories="CLI,tool" data-listing-file-modified-sort="1698855492829" data-listing-reading-time-sort="3" data-listing-title-sort="Bash" data-listing-filename-sort="bash.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/CLI Tools/bash.html" class="title listing-title">Bash</a>
-</td>
-<td>
-<span class="listing-description">Bash is a command line tool and language.</span>
-</td>
-</tr>
-<tr data-index="2" data-categories="tool,CLI,package manager,virtual environments" data-listing-file-modified-sort="1698855492829" data-listing-reading-time-sort="1" data-listing-title-sort="Conda" data-listing-filename-sort="Conda.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/CLI Tools/Conda.html" class="title listing-title">Conda</a>
-</td>
-<td>
-<span class="listing-description">Conda is a package and virtual environment manager.</span>
-</td>
-</tr>
-<tr data-index="3" data-categories="language" data-listing-file-modified-sort="1698855492833" data-listing-reading-time-sort="6" data-listing-title-sort="Dart" data-listing-filename-sort="Dart_summary.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/Languages/Dart_summary.html" class="title listing-title">Dart</a>
-</td>
-<td>
-<span class="listing-description">Dart is a new programming language by Google, mainly used for app development.</span>
-</td>
-</tr>
-<tr data-index="4" data-categories="app development,web development" data-listing-file-modified-sort="1698855492833" data-listing-reading-time-sort="10" data-listing-title-sort="Flutter" data-listing-filename-sort="flutter_summary.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/frameworks/flutter_summary.html" class="title listing-title">Flutter</a>
-</td>
-<td>
-<span class="listing-description">Flutter is a cross-plattform app-development framework based on dart.</span>
-</td>
-</tr>
-<tr data-index="5" data-listing-file-modified-sort="1698855492833" data-listing-reading-time-sort="1" data-listing-title-sort="GCP: gcloud CLI" data-listing-filename-sort="gcloud.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/Cloud &amp; Platform/gcloud.html" class="title listing-title">GCP: gcloud CLI</a>
-</td>
-<td>
-<span class="listing-description">Gcloud CLI is the command line interface of the Google Cloud Platform.</span>
-</td>
-</tr>
-<tr data-index="6" data-categories="CLI,tool,versioning" data-listing-file-modified-sort="1698855492829" data-listing-reading-time-sort="2" data-listing-title-sort="Git" data-listing-filename-sort="git.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/CLI Tools/git.html" class="title listing-title">Git</a>
-</td>
-<td>
-<span class="listing-description">Git is a version control system mostly used for code.</span>
-</td>
-</tr>
-<tr data-index="7" data-listing-file-modified-sort="1698855492833" data-listing-reading-time-sort="3" data-listing-title-sort="OpenShift" data-listing-filename-sort="Openshift.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/Cloud &amp; Platform/Openshift.html" class="title listing-title">OpenShift</a>
-</td>
-<td>
-<span class="listing-description">OpenShift is a platform based on Kubernetes to host and manage applications in containers.</span>
-</td>
-</tr>
-<tr data-index="8" data-categories="CLI,tool,package manager" data-listing-file-modified-sort="1698855492829" data-listing-reading-time-sort="1" data-listing-title-sort="Pip" data-listing-filename-sort="pip.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/CLI Tools/pip.html" class="title listing-title">Pip</a>
-</td>
-<td>
-<span class="listing-description">Pip is the official python package manager</span>
-</td>
-</tr>
-<tr data-index="9" data-categories="language" data-listing-file-modified-sort="1698855492833" data-listing-reading-time-sort="1" data-listing-title-sort="Python" data-listing-filename-sort="Python.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/Languages/Python.html" class="title listing-title">Python</a>
-</td>
-<td>
-<span class="listing-description">Python is one of the most popular programming languages.</span>
-</td>
-</tr>
-<tr data-index="10" data-categories="tool,web development" data-listing-file-modified-sort="1698855492833" data-listing-reading-time-sort="1" data-listing-title-sort="Quarto" data-listing-filename-sort="Quarto.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/Quarto.html" class="title listing-title">Quarto</a>
-</td>
-<td>
-<span class="listing-description">Quarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations. </span>
-</td>
-</tr>
-<tr data-index="11" data-categories="language,data science" data-listing-file-modified-sort="1698855492833" data-listing-reading-time-sort="9" data-listing-title-sort="R basics" data-listing-filename-sort="R.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/Languages/R/R.html" class="title listing-title">R basics</a>
-</td>
-<td>
-<span class="listing-description">R is a programming language that is specialized in statistical analysis.</span>
-</td>
-</tr>
-<tr data-index="12" data-categories="language,data science" data-listing-file-modified-sort="1698855492833" data-listing-reading-time-sort="1" data-listing-title-sort="R plotting" data-listing-filename-sort="R_plotting.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/Languages/R/R_plotting.html" class="title listing-title">R plotting</a>
-</td>
-<td>
-<span class="listing-description">R has powerful builtin plotting capabilities</span>
-</td>
-</tr>
-<tr data-index="13" data-categories="language" data-listing-file-modified-sort="1698855492833" data-listing-reading-time-sort="1" data-listing-title-sort="Splunk processing language (SPL)" data-listing-filename-sort="Splunk_processing_language.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/Languages/Splunk_processing_language.html" class="title listing-title">Splunk processing language (SPL)</a>
-</td>
-<td>
-<span class="listing-description">This is the language you need to use to query splunk logs.</span>
-</td>
-</tr>
-<tr data-index="14" data-categories="IDE,short-cuts" data-listing-file-modified-sort="1698855492833" data-listing-reading-time-sort="3" data-listing-title-sort="VS Code" data-listing-filename-sort="VSCode.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/VSCode.html" class="title listing-title">VS Code</a>
-</td>
-<td>
-<span class="listing-description">Visual studio code is one of the most popular code editors.</span>
-</td>
-</tr>
-<tr data-index="15" data-categories="CLI,tool,code quality" data-listing-file-modified-sort="1698855492833" data-listing-reading-time-sort="2" data-listing-title-sort="ruff" data-listing-filename-sort="ruff.qmd">
-<td>
-<span class="listing-image"><img src="assets/placeholder_cheatseet.png" style="height: 40px;"></span>
-</td>
-<td>
-<a href="./cheatsheets/CLI Tools/ruff.html" class="title listing-title">ruff</a>
-</td>
-<td>
-<span class="listing-description">A fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black</span>
-</td>
-</tr>
-</tbody>
+</div>
+<div class="listing-description">
+Azure ML is the machine learning service of the Azure Cloud Platform.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/Cloud &amp; Platform/azure_ml.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="CLI,tool" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="3">
+<div class="thumbnail">
+<p><a href="./cheatsheets/CLI Tools/bash.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/CLI Tools/bash.html">
+<h3 class="no-anchor listing-title">
+Bash
+</h3>
+<div class="listing-subtitle">
 
-</table>
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('CLI'); return false;">
+CLI
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('tool'); return false;">
+tool
+</div>
+</div>
+<a href="./cheatsheets/CLI Tools/bash.html">
+<div class="listing-description">
+<p>Bash is a command line tool and language.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/CLI Tools/bash.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="tool,CLI,package manager,virtual environments" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./cheatsheets/CLI Tools/Conda.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/CLI Tools/Conda.html">
+<h3 class="no-anchor listing-title">
+Conda
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('tool'); return false;">
+tool
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('CLI'); return false;">
+CLI
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('package manager'); return false;">
+package manager
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('virtual environments'); return false;">
+virtual environments
+</div>
+</div>
+<a href="./cheatsheets/CLI Tools/Conda.html">
+<div class="listing-description">
+<p>Conda is a package and virtual environment manager.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/CLI Tools/Conda.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="language" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="6">
+<div class="thumbnail">
+<p><a href="./cheatsheets/Languages/Dart_summary.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/Languages/Dart_summary.html">
+<h3 class="no-anchor listing-title">
+Dart
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('language'); return false;">
+language
+</div>
+</div>
+<a href="./cheatsheets/Languages/Dart_summary.html">
+<div class="listing-description">
+<p>Dart is a new programming language by Google, mainly used for app development.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/Languages/Dart_summary.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="app development,web development" data-listing-file-modified-sort="1699797268609" data-listing-reading-time-sort="10">
+<div class="thumbnail">
+<p><a href="./cheatsheets/frameworks/flutter_summary.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/frameworks/flutter_summary.html">
+<h3 class="no-anchor listing-title">
+Flutter
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('app development'); return false;">
+app development
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('web development'); return false;">
+web development
+</div>
+</div>
+<a href="./cheatsheets/frameworks/flutter_summary.html">
+<div class="listing-description">
+<p>Flutter is a cross-plattform app-development framework based on dart.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/frameworks/flutter_summary.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./cheatsheets/Cloud &amp; Platform/gcloud.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/Cloud &amp; Platform/gcloud.html">
+<h3 class="no-anchor listing-title">
+GCP: gcloud CLI
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>Gcloud CLI is the command line interface of the Google Cloud Platform.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/Cloud &amp; Platform/gcloud.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="CLI,tool,versioning" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="2">
+<div class="thumbnail">
+<p><a href="./cheatsheets/CLI Tools/git.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/CLI Tools/git.html">
+<h3 class="no-anchor listing-title">
+Git
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('CLI'); return false;">
+CLI
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('tool'); return false;">
+tool
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('versioning'); return false;">
+versioning
+</div>
+</div>
+<a href="./cheatsheets/CLI Tools/git.html">
+<div class="listing-description">
+<p>Git is a version control system mostly used for code.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/CLI Tools/git.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="3">
+<div class="thumbnail">
+<p><a href="./cheatsheets/Cloud &amp; Platform/Openshift.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/Cloud &amp; Platform/Openshift.html">
+<h3 class="no-anchor listing-title">
+OpenShift
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>OpenShift is a platform based on Kubernetes to host and manage applications in containers.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/Cloud &amp; Platform/Openshift.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-categories="framework,python,data science" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./cheatsheets/Languages/Python/Pandas.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/Languages/Python/Pandas.html">
+<h3 class="no-anchor listing-title">
+Pandas
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('framework'); return false;">
+framework
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('python'); return false;">
+python
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('data science'); return false;">
+data science
+</div>
+</div>
+<a href="./cheatsheets/Languages/Python/Pandas.html">
+<div class="listing-description">
+<p>Pandas is a python library for data wrangling and data cleaning.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/Languages/Python/Pandas.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-categories="CLI,tool,package manager" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./cheatsheets/CLI Tools/pip.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/CLI Tools/pip.html">
+<h3 class="no-anchor listing-title">
+Pip
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('CLI'); return false;">
+CLI
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('tool'); return false;">
+tool
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('package manager'); return false;">
+package manager
+</div>
+</div>
+<a href="./cheatsheets/CLI Tools/pip.html">
+<div class="listing-description">
+<p>Pip is the official python package manager</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/CLI Tools/pip.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="10" data-categories="language" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./cheatsheets/Languages/Python/Python.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/Languages/Python/Python.html">
+<h3 class="no-anchor listing-title">
+Python
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('language'); return false;">
+language
+</div>
+</div>
+<a href="./cheatsheets/Languages/Python/Python.html">
+<div class="listing-description">
+<p>Python is one of the most popular programming languages.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/Languages/Python/Python.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="11" data-categories="tool,web development" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./cheatsheets/Quarto.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/Quarto.html">
+<h3 class="no-anchor listing-title">
+Quarto
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('tool'); return false;">
+tool
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('web development'); return false;">
+web development
+</div>
+</div>
+<a href="./cheatsheets/Quarto.html">
+<div class="listing-description">
+<p>Quarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/Quarto.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="12" data-categories="language,data science" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="9">
+<div class="thumbnail">
+<p><a href="./cheatsheets/Languages/R/R.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/Languages/R/R.html">
+<h3 class="no-anchor listing-title">
+R basics
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('language'); return false;">
+language
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('data science'); return false;">
+data science
+</div>
+</div>
+<a href="./cheatsheets/Languages/R/R.html">
+<div class="listing-description">
+<p>R is a programming language that is specialized in statistical analysis.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/Languages/R/R.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="13" data-categories="language,data science" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./cheatsheets/Languages/R/R_plotting.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/Languages/R/R_plotting.html">
+<h3 class="no-anchor listing-title">
+R plotting
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('language'); return false;">
+language
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('data science'); return false;">
+data science
+</div>
+</div>
+<a href="./cheatsheets/Languages/R/R_plotting.html">
+<div class="listing-description">
+<p>R has powerful builtin plotting capabilities</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/Languages/R/R_plotting.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="14" data-categories="language" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./cheatsheets/Languages/Splunk_processing_language.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/Languages/Splunk_processing_language.html">
+<h3 class="no-anchor listing-title">
+Splunk processing language (SPL)
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('language'); return false;">
+language
+</div>
+</div>
+<a href="./cheatsheets/Languages/Splunk_processing_language.html">
+<div class="listing-description">
+<p>This is the language you need to use to query splunk logs.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/Languages/Splunk_processing_language.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="15" data-categories="IDE,short-cuts" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="3">
+<div class="thumbnail">
+<p><a href="./cheatsheets/VSCode.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/VSCode.html">
+<h3 class="no-anchor listing-title">
+VS Code
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('IDE'); return false;">
+IDE
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('short-cuts'); return false;">
+short-cuts
+</div>
+</div>
+<a href="./cheatsheets/VSCode.html">
+<div class="listing-description">
+<p>Visual studio code is one of the most popular code editors.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/VSCode.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="16" data-categories="CLI,tool,code quality" data-listing-file-modified-sort="1699797268605" data-listing-reading-time-sort="2">
+<div class="thumbnail">
+<p><a href="./cheatsheets/CLI Tools/ruff.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./cheatsheets/CLI Tools/ruff.html">
+<h3 class="no-anchor listing-title">
+ruff
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('CLI'); return false;">
+CLI
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('tool'); return false;">
+tool
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('code quality'); return false;">
+code quality
+</div>
+</div>
+<a href="./cheatsheets/CLI Tools/ruff.html">
+<div class="listing-description">
+<p>A fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./cheatsheets/CLI Tools/ruff.html"> </a>
+</div>
+</div>
+</div>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
