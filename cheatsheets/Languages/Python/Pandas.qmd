@@ -1,0 +1,118 @@
+---
+title: "Pandas"
+description: "Pandas is a python library for data wrangling and data cleaning."
+format: html
+categories:
+    - framework
+    - python
+    - data science
+---
+
+Basic concept
+: Each observation is in its own row (and preferably has an index-value). Each feature/variable is in its own column and has a unique name. 
+
+Data Frames
+: ```python
+my_df = pd.DataFrame(data=numpy_array, index=[0,1,2], columns=["col1", "col2", "col3"])
+```
+
+## Reshaping data
+
+From multiple columns to two columns 
+: ```python
+pd.melt(my_df)
+```
+Col1 has former column names, col2 has values
+
+Spread rows into columns 
+: ```python
+my_df.pivot(columns='col1', values=
+'col2')
+```
+Col1's values are used as column names, col2's values are used in respective column's values.
+
+Append one dataframe to another
+: ```python
+pd.concat([my_df1, my_df2]) # below / vertically
+pd.concat([my_df1, my_df2], axis=1) # to the right / horizontally
+```
+
+Reset the index to row numbers
+: ```python
+my_df.reset_index()
+```
+
+## Slice DataFrames
+
+First and last rows
+: ```python
+my_df.head(n=10) 
+my_df.tail(n=10)
+```
+
+Sample several rows
+: ```python
+my_df.sample(n=10)
+```
+
+Select specific rows
+: ```python
+my_df.iloc[10:20]
+```
+
+Select specific columns
+: ```python
+my_df["col1"]
+my_df[["col1", "col2"]]
+```
+
+Select rows based on condition
+: ```python 
+my_df[my_df['col1'] > 42]
+```
+
+Select rows based on a list of values in a column
+: ```python
+my_df[my_df['col1'].isin(['value1', 'value2'])]
+```
+
+Remove duplicate rows
+: ```python
+my_df.drop_duplicates()
+```
+
+Select rows excluding certain values in a column 
+: ```python 
+my_df[~my_df['col1'].isin(['value1', 'value2'])]
+```
+
+## Data Manipulation
+
+Replace values in a column
+: ```python
+my_df['col1'] = my_df['col1'].replace(['old_value1', 'old_value2'], ['new_value1', 'new_value2'])
+```
+
+## Data Aggregation
+
+Group by a column and calculate mean of another column 
+: ```python 
+my_df.groupby('col1')['col2'].mean()
+```
+
+## Data Visualization
+
+Plot a histogram of a column
+: ```python
+my_df['col1'].plot.hist()
+```
+
+Plot a scatter plot of two columns 
+: ```python 
+my_df.plot.scatter(x='col1', y='col2')
+```
+
+
+
+
+

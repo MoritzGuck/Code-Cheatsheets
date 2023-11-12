@@ -22,6 +22,11 @@ Set email (for your commits)
 git config --global user.email "my@email.com"
 ```
 
+Enable CLI color codes
+: ```bash
+git config --global color.ui auto
+```
+
 ## New repositories
 
 Download git repo from server
