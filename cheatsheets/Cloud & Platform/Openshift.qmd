@@ -1,0 +1,80 @@
+---
+title: "OpenShift"
+description: "OpenShift is a platform based on Kubernetes to host and manage applications in containers."
+format: html
+---
+
+
+## Core concepts
+
+### Software 
+
+#### Containers & pods
+
+Docker containers
+: Units for running processes. Contain the software code, all dependencies (programming libraries, operating system tools & libraries). Allows to run processes in isolation. Containers usually run single services (e.g. web server, database, ...) called micro-services.
+
+Images
+: Binary file that contains instructions for building a container. Images are commonly based on other images (e.g. you application image is based on an ubuntu image). By creating multiple containers from the same image, you can use load-balancing for your processes.
+
+Image tags
+: usually contain the version number and potentially other info (e.g. OS, base-image, ...). Used to distinguish realted images in the same repository or stream.
+
+Image registries
+: Stores images in image repositories (containing images with different tags) and deploys the images into containers.
+
+Pods
+: Collection of one or more containers. Containers in the same pod share the same compute resources (i.e. same cluster & local network, see below). You define, deploy and manage pods and not containers separately. A pod has an internal IP-adress. Containers within pods share their local storage and networking. You cannot change running pods; you stop them and recreate them with the modification. 
+
+Restart Policy
+: When containers in a pod exit (finish application task or failing), the pod can be restarted "always", "OnFailure" or "Never". If a pod fails, a new pod is created (possibly losing temporary files, etc.).
+
+Services
+: Load balancer that distributes and proxies connections to the pods. *Head-less services* run without load balancers.
+
+Labels
+: Pods can be given labels and thus organized into groups. Services use these to select groups of pods to proxy to. 
+
+#### Projects & users
+
+Users
+: People or roles that can interact with the components of OpenShift. There are regular users (humans), system users (technical accounts: cluster admins, per-node users, ...) and service accounts (accounts to that are used by application processes)
+
+Kubernets namespaces
+: Logical groups of resources (nodes & services) to avoid naming collisions, organize authoriy and resource consumption. (e.g. dev-namespace, test-namespace, prod-namespace)
+
+Projects
+: A project is a kubernetes namespaces with additional features. It defines its objects (pods, services, replication controllers, ...), policy rules, resource constraints & service accounts. 
+
+#### Builds & Deployments
+
+Builds
+: A build is the process that transforms the specifications and source code into a runnable image. These are then pushed into the image registry. Openshift uses Source-to-Image (S2I) as the tool that builds the images. Build pipelines can be constructed using Jenkins and defined in jenkins files that are referenced by the build-configuration. 
+
+Image streams
+: give you an overview of related images like in image repositories. Deployment pipelines can watch streams to trigger new deployments, when new images arrive. 
+
+Replication controller
+: Controls the number of replicas of a pod. It makes sure that there is the specified amount of replicas running at all times. It does not autoscale on its own. Used for continuously running pods.
+
+Job
+: creates pods like a replication controller does. It is however used for one-time running pods. It tracks if the pods have run successfully. 
+
+Deployments
+: The process of starting up pods with their respective images. A deployment creates a new replication controller and has it ship the pods as specified. The deploymentConfig defines the replication controller, the triggers for the deployment and lifecycle hooks. 
+
+### Hardware
+
+Node
+: Compute hardware unit. A single machine, where the container runs on. 
+
+Cluster
+: Group of nodes that are orchestrated to share resources and load.
+
+Endpoint
+: Server that backs a *service* (see above). 
+
+More information: 
+[OpenShift: Core Concepts](cheatsheets/Cloud/gcloud.qmd)
+[Google Cloud: What are Containers](cheatsheets/Cloud/gcloud.qmd)
+[Docker Docs: Docker overview](cheatsheets/Cloud/gcloud.qmd)
