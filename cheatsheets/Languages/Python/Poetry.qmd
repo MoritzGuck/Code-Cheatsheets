@@ -1,0 +1,72 @@
+---
+title: "Poetry"
+description: "Poetry is a package builder, dependency and virtual environment manager for python."
+
+format: html
+categories:
+    - python
+    - tool
+    - CLI
+    - package manager
+    - virtual environments
+---
+ 
+
+## Installation 
+
+```bash
+conda install -c conda-forge poetry
+```
+
+Alternatvie installation instructions: [python-poetry.org](https://python-poetry.org/docs/#installation)
+
+## Basic usage
+
+Set-up project
+: ```bash
+poetry new "my_project_name"
+```
+Installs poetry virtual environment and sets up the required files for poetry to work.
+`pyproject.toml` contains the configuration for poetry and the needed dependencies. The new folder is there for your source code. 
+
+Adding / installing single dependencies
+: ```bash
+poetry add package_name
+```
+Uses pip to install the new package to your virtual environment and adds it to your dependencies list. 
+
+Installing the dependencies from the .toml-file
+: ```bash
+poetry install
+```
+
+## Running code with poetry
+
+There are two options:
+
+A) Using poetry command
+: ```bash
+poetry run python your_script.py
+```
+
+B) Activating the poetry shell
+: ```bash
+poetry shell
+```
+
+
+## Build and publish your package
+
+Build package
+: ```bash
+poetry build
+```
+This will package your file as sdist and wheel format. 
+
+Publish to PyPI
+: ```bash
+poetry publish
+```
+
+
+
