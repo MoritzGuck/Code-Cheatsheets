@@ -333,7 +333,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a></li>
   <li><a href="#basic-usage" id="toc-basic-usage" class="nav-link" data-scroll-target="#basic-usage">Basic usage</a></li>
-  <li><a href="#running-code-with-poetry" id="toc-running-code-with-poetry" class="nav-link" data-scroll-target="#running-code-with-poetry">Running code with poetry</a></li>
+  <li><a href="#running-code-with-poetry" id="toc-running-code-with-poetry" class="nav-link" data-scroll-target="#running-code-with-poetry">Running code with poetry</a>
+  <ul class="collapse">
+  <li><a href="#using-jupyter-notebooks-in-vs-code" id="toc-using-jupyter-notebooks-in-vs-code" class="nav-link" data-scroll-target="#using-jupyter-notebooks-in-vs-code">Using Jupyter-Notebooks in VS-Code</a></li>
+  </ul></li>
   <li><a href="#build-and-publish-your-package" id="toc-build-and-publish-your-package" class="nav-link" data-scroll-target="#build-and-publish-your-package">Build and publish your package</a></li>
   </ul>
 </nav>
@@ -381,12 +384,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="basic-usage" class="level2">
 <h2 class="anchored" data-anchor-id="basic-usage">Basic usage</h2>
-<dl>
-<dt>Set-up project</dt>
-<dd>
+<p><strong>Set-up project</strong></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> new <span class="st">"my_project_name"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-Installs poetry virtual environment and sets up the required files for poetry to work. <code>pyproject.toml</code> contains the configuration for poetry and the needed dependencies. The new folder is there for your source code.
-</dd>
+<p>Installs poetry virtual environment and sets up the required files for poetry to work. <code>pyproject.toml</code> contains the configuration for poetry and the needed dependencies. The new folder is there for your source code.</p>
+<dl>
 <dt>Adding / installing single dependencies</dt>
 <dd>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> add package_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -415,18 +416,39 @@ Uses pip to install the new package to your virtual environment and adds it to y
 </dd>
 </dl></li>
 </ol>
+<section id="using-jupyter-notebooks-in-vs-code" class="level3">
+<h3 class="anchored" data-anchor-id="using-jupyter-notebooks-in-vs-code">Using Jupyter-Notebooks in VS-Code</h3>
+<ol type="1">
+<li>List the directory of your python interpreter:</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> env info <span class="at">--path</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li><p>In python-file,</p>
+<ol type="1">
+<li><p>on bottom right of VS-Code window click on python-version.</p></li>
+<li><p>In new dialogue “Select Interpreter”, click “+ Enter interpreter path”</p></li>
+<li><p>Paste the interpreter path into the text-box.</p></li>
+</ol></li>
+<li><p>In jupyter-notebook,</p>
+<ol type="1">
+<li><p>Select kernel</p></li>
+<li><p>Select Python environment</p></li>
+<li><p>Select the python interpreter that you just listed before.</p></li>
+</ol></li>
+</ol>
+</section>
 </section>
 <section id="build-and-publish-your-package" class="level2">
 <h2 class="anchored" data-anchor-id="build-and-publish-your-package">Build and publish your package</h2>
 <dl>
 <dt>Build package</dt>
 <dd>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 This will package your file as sdist and wheel format.
 </dd>
 <dt>Publish to PyPI</dt>
 <dd>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> publish</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> publish</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </dd>
 </dl>
 
