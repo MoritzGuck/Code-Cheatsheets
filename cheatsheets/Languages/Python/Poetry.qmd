@@ -22,8 +22,8 @@ Alternatvie installation instructions: [python-poetry.org](https://python-poetry
 
 ## Basic usage
 
-Set-up project
-: ```bash
+**Set-up project**
+```bash
 poetry new "my_project_name"
 ```
 Installs poetry virtual environment and sets up the required files for poetry to work.
@@ -54,6 +54,28 @@ B) Activating the poetry shell
 poetry shell
 ```
 
+### Using Jupyter-Notebooks in VS-Code
+
+1. List the directory of your python interpreter:
+```bash
+poetry env info --path
+```
+
+2. In python-file, 
+
+    1. on bottom right of VS-Code window click on python-version.
+
+    2. In new dialogue "Select Interpreter", click "+ Enter interpreter path"
+
+    3. Paste the interpreter path into the text-box.
+
+3. In jupyter-notebook, 
+    
+    1. Select kernel
+
+    2. Select Python environment
+
+    3. Select the python interpreter that you just listed before.
 
 ## Build and publish your package
 
