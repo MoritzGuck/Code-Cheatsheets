@@ -2,13 +2,16 @@ project:
   type: website
 
 website:
+  search: 
+    location: sidebar
+    type: textbox
   title: "Cheatsheets"
   sidebar:
     contents: auto
     tools:
       - icon: github
         href: https://github.com/MoritzGuck/Code-Cheatsheets
-    collapse-level: 3
+    collapse-level: 4
   favicon: assets/favicon.png
 
 

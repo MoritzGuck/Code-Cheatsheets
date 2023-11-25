@@ -106,6 +106,8 @@ Rollback the last commit
 git reset head~1
 ```
 
+To provide the files from the last commit: `git reset --soft HEAD~1`
+
 Rollback to a specific commit
 : ```bash
 git reset [commit-SHA]
