@@ -392,3 +392,14 @@ Call function:
 my_func("gustav") 
 ```
 
+### Installing Packages
+
+Install the package
+: ```R
+install.packages('packageName')
+```
+
+Load the installed package
+: ```R
+library(packageName)
+```
