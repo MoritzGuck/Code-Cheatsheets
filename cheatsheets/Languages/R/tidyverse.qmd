@@ -1,0 +1,40 @@
+---
+title: "Tidyverse"
+description: "Tidyverse is a collection of R packages for data manipulation and machine learning."
+format: html
+from: markdown+emoji
+categories:
+  - language
+  - data science
+---
+
+## Data Wrangling with dplyr
+
+Load dplyr
+: ```R
+library(dplyr)
+``` 
+
+The dplyr package uses the pipe-command to pass the result of one transformation to the next:
+```R
+dataset %>%
+    filter(column1 == "Value") %>%
+    arrange(column2)
+```
+
+Filter
+: ```R
+filter(column1 == "Value")
+```
+
+Order / Sort
+: ```R
+arrange(col1) %>% # ascending
+arrange(desc(col2)) # descending
+``` 
+
+Mutate / Change / Add columns
+: ```R
+mutate(resultCol = col / 1000) 
+```
+
