@@ -21,18 +21,27 @@ my_plot = ggplot(myDataframe, aes(x = col1, y = col2)) + geom_point()
 print(my_plot)
 ```
 
+The logic behind: You define the aesthetics (*aes*) and then add (*+*)  a layer with points (*geom_points*)
+
 Using vectors:
 
 ```R
 ggplot(data = NULL, aes(x = c(1,2,3,4,5), y = c(25,16,9,4,1))) + geom_point()
 ```
 
-Styles of plot | 
+Styles of plot  | 
 ----------------|-----
 points          | `... + geom_point()`
 line            | `... + geom_line()`
+color           | `aes(x = ..., y = ..., color = cat_col)...` different colors for different categories
 
 :  {tbl-colwidths="[50,50]"}
+
+Axis            |
+----------------|-----
+log scale on x  | `... + scale_x_log10()`
+log scale on y  | `... + scale_y_log10()`
+include 0       | `... + expand_limits(y = 0)`
 
 
 ## Column charts
