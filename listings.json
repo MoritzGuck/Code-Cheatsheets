@@ -6,6 +6,7 @@
       "/cheatsheets/CLI Tools/bash.html",
       "/cheatsheets/Languages/Python/Conda.html",
       "/cheatsheets/Languages/Dart_summary.html",
+      "/cheatsheets/Languages/R/dplyr.html",
       "/cheatsheets/frameworks/flutter_summary.html",
       "/cheatsheets/Cloud & Platform/gcloud.html",
       "/cheatsheets/CLI Tools/git.html",
@@ -18,7 +19,6 @@
       "/cheatsheets/Languages/R/R.html",
       "/cheatsheets/Languages/R/R_plotting.html",
       "/cheatsheets/Languages/Splunk_processing_language.html",
-      "/cheatsheets/Languages/R/tidyverse.html",
       "/cheatsheets/VSCode.html",
       "/cheatsheets/Languages/Python/ruff.html"
     ]

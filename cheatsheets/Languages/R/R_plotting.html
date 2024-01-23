@@ -111,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../cheatsheets/Quarto.html">Cheatsheets</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Dart_summary.html">Languages</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/R/R.html">R</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/R/R_plotting.html">R plotting</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../cheatsheets/Quarto.html">Cheatsheets</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Dart_summary.html">Languages</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/R/dplyr.html">R</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/R/R_plotting.html">R plotting</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -309,6 +309,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../cheatsheets/Languages/R/dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dplyr</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../cheatsheets/Languages/R/R.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R basics</span></a>
   </div>
@@ -317,12 +323,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../../cheatsheets/Languages/R/R_plotting.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">R plotting</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../cheatsheets/Languages/R/tidyverse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tidyverse</span></a>
   </div>
 </li>
       </ul>
@@ -387,6 +387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>my_plot <span class="ot">=</span> <span class="fu">ggplot</span>(myDataframe, <span class="fu">aes</span>(<span class="at">x =</span> col1, <span class="at">y =</span> col2)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(my_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The logic behind: You define the aesthetics (<em>aes</em>) and then add (<em>+</em>) a layer with points (<em>geom_points</em>)</p>
 <p>Using vectors:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="cn">NULL</span>, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">16</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">1</span>))) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
@@ -408,6 +409,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td>line</td>
 <td><code>... + geom_line()</code></td>
+</tr>
+<tr class="odd">
+<td>color</td>
+<td><code>aes(x = ..., y = ..., color = cat_col)...</code> different colors for different categories</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Axis</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>log scale on x</td>
+<td><code>... + scale_x_log10()</code></td>
+</tr>
+<tr class="even">
+<td>log scale on y</td>
+<td><code>... + scale_y_log10()</code></td>
+</tr>
+<tr class="odd">
+<td>include 0</td>
+<td><code>... + expand_limits(y = 0)</code></td>
 </tr>
 </tbody>
 </table>
