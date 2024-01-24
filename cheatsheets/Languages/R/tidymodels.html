@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Conda is a package and virtual environment manager.">
+<meta name="description" content="Tidymodels is a collection of packages for machine learning. It is part of the tidyverse.">
 
-<title>Cheatsheets - Conda</title>
+<title>Cheatsheets - Tidymodels</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../cheatsheets/Quarto.html">Cheatsheets</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Dart_summary.html">Languages</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Python/Conda.html">Python</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Python/Conda.html">Conda</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../cheatsheets/Quarto.html">Cheatsheets</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Dart_summary.html">Languages</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/R/dplyr.html">R</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/R/tidymodels.html">Tidymodels</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -262,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../cheatsheets/Languages/Python/Conda.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../cheatsheets/Languages/Python/Conda.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conda</span></a>
   </div>
 </li>
@@ -327,7 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../cheatsheets/Languages/R/tidymodels.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../cheatsheets/Languages/R/tidymodels.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Tidymodels</span></a>
   </div>
 </li>
@@ -343,11 +343,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a>
-  <ul class="collapse">
-  <li><a href="#list-create-and-delete-environments" id="toc-list-create-and-delete-environments" class="nav-link" data-scroll-target="#list-create-and-delete-environments">List, create and delete environments</a></li>
-  <li><a href="#use-and-manipulate-environment" id="toc-use-and-manipulate-environment" class="nav-link" data-scroll-target="#use-and-manipulate-environment">Use and manipulate environment</a></li>
-  </ul></li>
+  <li><a href="#rsample-sampling-splitting" id="toc-rsample-sampling-splitting" class="nav-link active" data-scroll-target="#rsample-sampling-splitting">Rsample (sampling &amp; splitting)</a></li>
+  <li><a href="#recipes-feature-enigneering" id="toc-recipes-feature-enigneering" class="nav-link" data-scroll-target="#recipes-feature-enigneering">Recipes (feature enigneering)</a></li>
+  <li><a href="#parsnip-modeling" id="toc-parsnip-modeling" class="nav-link" data-scroll-target="#parsnip-modeling">Parsnip (modeling)</a></li>
+  <li><a href="#tune-hyper-parameter-optimization" id="toc-tune-hyper-parameter-optimization" class="nav-link" data-scroll-target="#tune-hyper-parameter-optimization">Tune &amp; (hyper-)parameter optimization)</a></li>
+  <li><a href="#yardstick-performance-evaluation" id="toc-yardstick-performance-evaluation" class="nav-link" data-scroll-target="#yardstick-performance-evaluation">Yardstick (performance evaluation)</a></li>
   </ul>
 </nav>
 </nav>
@@ -360,18 +360,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Conda</h1>
+<h1 class="title">Tidymodels</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">tool</div>
-    <div class="quarto-category">CLI</div>
-    <div class="quarto-category">package manager</div>
-    <div class="quarto-category">virtual environments</div>
+    <div class="quarto-category">language</div>
+    <div class="quarto-category">data science</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Conda is a package and virtual environment manager.
+    Tidymodels is a collection of packages for machine learning. It is part of the tidyverse.
   </div>
 </div>
 
@@ -386,98 +384,108 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<p><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html">conda docs - Installation</a></p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Installation via UNIX CLI
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/miniconda3</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh <span class="at">-O</span> ~/miniconda3/miniconda.sh</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> ~/miniconda3/miniconda.sh <span class="at">-b</span> <span class="at">-u</span> <span class="at">-p</span> ~/miniconda3</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> ~/miniconda3/miniconda.sh</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">~/miniconda3/bin/conda</span> init bash</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">~/miniconda3/bin/conda</span> init zsh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-<section id="list-create-and-delete-environments" class="level3">
-<h3 class="anchored" data-anchor-id="list-create-and-delete-environments">List, create and delete environments</h3>
+<p>load packages:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="rsample-sampling-splitting" class="level2">
+<h2 class="anchored" data-anchor-id="rsample-sampling-splitting">Rsample (sampling &amp; splitting)</h2>
 <dl>
-<dt>List your existing environments</dt>
+<dt>training- &amp; test-split</dt>
 <dd>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Create environment</dt>
-<dd>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> env-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Create a conda env from a file:</dt>
-<dd>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Removing / Deleting environment</dt>
-<dd>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env remove <span class="at">-n</span> env-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(dataset, <span class="at">prop=</span><span class="fl">0.75</span>, <span class="at">strata=</span>target_col)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>training_set <span class="ot">&lt;-</span> data_split <span class="sc">%&gt;%</span> <span class="fu">training</span>()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>testing_set <span class="ot">&lt;-</span> data_split <span class="sc">%&gt;%</span> <span class="fu">testing</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </dd>
 </dl>
-<p>More info: <a href="https://towardsdatascience.com/introduction-to-conda-virtual-environments-eaea4ac84e28">Intro to Conda virtual environments</a></p>
+<p><code>strata</code> generates a stratified split with approximately the same fraction of each target class.</p>
 </section>
-<section id="use-and-manipulate-environment" class="level3">
-<h3 class="anchored" data-anchor-id="use-and-manipulate-environment">Use and manipulate environment</h3>
+<section id="recipes-feature-enigneering" class="level2">
+<h2 class="anchored" data-anchor-id="recipes-feature-enigneering">Recipes (feature enigneering)</h2>
+</section>
+<section id="parsnip-modeling" class="level2">
+<h2 class="anchored" data-anchor-id="parsnip-modeling">Parsnip (modeling)</h2>
 <dl>
-<dt>Use environment</dt>
+<dt>General model formula</dt>
 <dd>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate env-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>outcome_variable <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2 <span class="sc">+</span> ... </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>outcome_variable <span class="sc">~</span> . <span class="co"># to use all available predictors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </dd>
-<dt>Check and update package versions. After activating an env:</dt>
+<dt>Create model object</dt>
 <dd>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set_engine</span>(<span class="st">'lm'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set_mode</span>(<span class="st">'regression'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Fit the model</dt>
+<dd>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>model_fit <span class="ot">&lt;-</span> model <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fit</span>(target_col <span class="sc">~</span> ., <span class="at">data=</span>train_set)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Get model summary</dt>
+<dd>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(model_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+Returns parameter estimates, std.errors &amp; p-values
+</dd>
+<dt>Predict on new values</dt>
+<dd>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> model_fit <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">new_data =</span> test_set)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </dd>
 </dl>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update python</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tune-hyper-parameter-optimization" class="level2">
+<h2 class="anchored" data-anchor-id="tune-hyper-parameter-optimization">Tune &amp; (hyper-)parameter optimization)</h2>
+</section>
+<section id="yardstick-performance-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="yardstick-performance-evaluation">Yardstick (performance evaluation)</h2>
+<p>Requires a tibble/datset with the true and predicted outcomes.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>predictions <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rmse</span>(<span class="at">truth =</span> label_col, <span class="at">estimate =</span> .pred) <span class="co"># .pred is the standard name of the prediction col</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Regression quality metrics</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R squared</td>
+<td><code>prediction_set %&gt;% rsq(truth = ..., estimate = ...)</code></td>
+</tr>
+<tr class="even">
+<td>Root mean squared error</td>
+<td><code>... rmse()</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Classification quality metrics</th>
+<th></th>
+</tr>
+</thead>
+
+</table>
 <dl>
-<dt>Update whole environment according to your yaml-file:</dt>
+<dt>Streamlined approach</dt>
 <dd>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env update <span class="at">-f</span> my_env.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Switch back to base environment</dt>
-<dd>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate env-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Install package: Latest version</dt>
-<dd>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install pandas </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Install package: Specific version</dt>
-<dd>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install pandas==2.0.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Install package: From different channel</dt>
-<dd>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install pandas <span class="at">-c</span> conda-forge <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>List packages in environment</dt>
-<dd>
-<pre><code>conda list</code></pre>
-</dd>
-<dt>Export environment to yml</dt>
-<dd>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export <span class="op">&gt;</span> environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```R model_last_fit &lt;- model %&gt;% last_fit(target_col ~ ., split = data_split)
 </dd>
 </dl>
+<p>model_last_fit %&gt;% collect_metrics() # returns standard quality metrics</p>
+<p>model_last_fit %&gt;% collect_predictions() # get tibble with predictions and true target values ```</p>
+<p>: {tbl-colwidths=“[50,50]”}</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

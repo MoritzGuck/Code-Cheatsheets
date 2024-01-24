@@ -315,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../cheatsheets/Languages/R/R.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../cheatsheets/Languages/R/R_basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R basics</span></a>
   </div>
 </li>
@@ -323,6 +323,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../../cheatsheets/Languages/R/R_plotting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R plotting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../cheatsheets/Languages/R/tidymodels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tidymodels</span></a>
   </div>
 </li>
       </ul>
@@ -341,6 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#aggregation" id="toc-aggregation" class="nav-link" data-scroll-target="#aggregation">Aggregation</a></li>
   <li><a href="#group-by" id="toc-group-by" class="nav-link" data-scroll-target="#group-by">Group-by</a></li>
+  <li><a href="#combine-tables" id="toc-combine-tables" class="nav-link" data-scroll-target="#combine-tables">Combine tables</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -459,6 +466,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(year_col, continent_col) <span class="sc">%&gt;%</span> </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="fu">mean</span>(gpd_col))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>aggregates only for the groups defined before</p>
+</section>
+<section id="combine-tables" class="level3">
+<h3 class="anchored" data-anchor-id="combine-tables">Combine tables</h3>
+<p>Stack horizontally (new column) `<code>R dataset %&gt;%     bind_cols(new_dataset)</code></p>
+<dl>
+<dt>Join tables</dt>
+<dd>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dataset_1 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(dataset_2, <span class="at">by =</span> <span class="fu">join_by</span>(col1 <span class="sc">==</span> col2), <span class="at">relationship =</span> <span class="st">"one-to-one"</span>) </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>... <span class="sc">%&gt;%</span> <span class="fu">right_join</span>(...)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>... <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(...) <span class="co"># only keeps matching samples</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>... <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(...) <span class="co"># keeps all samples in both datasets</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+</dl>
+<p>relationships checks can be: <code>"one-to-one"</code>, <code>"one-to-many"</code>, <code>"many-to-one"</code> and <code>"many-to-many"</code> (does not make a check)</p>
 
 
 </section>
