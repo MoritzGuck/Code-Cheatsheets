@@ -478,11 +478,18 @@ Returns parameter estimates, std.errors &amp; p-values
 <dl>
 <dt>Streamlined approach</dt>
 <dd>
-```R model_last_fit &lt;- model %&gt;% last_fit(target_col ~ ., split = data_split)
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit model:</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>model_last_fit <span class="ot">&lt;-</span> model <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">last_fit</span>(target_col <span class="sc">~</span> ., </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">split =</span> data_split)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Return standard quality metrics:</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>model_last_fit <span class="sc">%&gt;%</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_metrics</span>() </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Return tibble with predictions and true target values:</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>model_last_fit <span class="sc">%&gt;%</span> </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">collect_predictions</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </dd>
 </dl>
-<p>model_last_fit %&gt;% collect_metrics() # returns standard quality metrics</p>
-<p>model_last_fit %&gt;% collect_predictions() # get tibble with predictions and true target values ```</p>
 <p>: {tbl-colwidths=“[50,50]”}</p>
 
 
