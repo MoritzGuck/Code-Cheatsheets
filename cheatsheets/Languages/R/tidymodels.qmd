@@ -1,0 +1,32 @@
+---
+title: "Tidymodels"
+description: "Tidymodels is a collection of packages for machine learning. It is part of the tidyverse."
+format: html
+from: markdown+emoji
+categories:
+  - language
+  - data science
+--
+
+load packages:
+```R
+library(tidymodels)
+```
+
+## Rsample (sampling & splitting)
+
+training- & test-split
+: ```R
+data_split <- initial_split(dataset, prop=0.75, strata=target_col)
+training_set <- data_split %>% training()
+```
+
+`strata` generates a stratified split with approximately the same fraction of each target class.
+
+## Recipes (feature enigneering)
+
+## Parsnip (modeling)
+
+## Tune & (hyper-)parameter optimization)
+
+## Yardstick (performance evaluation)
