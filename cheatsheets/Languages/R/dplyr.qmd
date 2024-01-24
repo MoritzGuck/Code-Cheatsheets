@@ -69,7 +69,7 @@ aggregates only for the groups defined before
 ### Combine tables
 
 Stack horizontally (new column)
-````R
+```R
 dataset %>%
     bind_cols(new_dataset)
 ```

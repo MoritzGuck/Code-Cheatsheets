@@ -85,15 +85,16 @@ Classification quality metrics |
 
 Streamlined approach
 : ```R
+# Fit model:
 model_last_fit <- model %>% 
     last_fit(target_col ~ ., 
         split = data_split)
-
+# Return standard quality metrics:
 model_last_fit %>%
-    collect_metrics() # returns standard quality metrics
-
+    collect_metrics() 
+# Return tibble with predictions and true target values:
 model_last_fit %>% 
-    collect_predictions() # get tibble with predictions and true target values
+    collect_predictions() 
 ```
 
 
