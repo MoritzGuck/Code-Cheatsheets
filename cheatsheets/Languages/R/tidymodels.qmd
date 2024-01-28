@@ -26,7 +26,7 @@ testing_set <- data_split %>% testing()
 
 ## Recipes (feature enigneering)
 
-## Parsnip (modeling)
+## Parsnip (model fitting)
 
 General model formula
 : ```R
@@ -59,7 +59,7 @@ predictions <- model_fit %>%
     predict(new_data = test_set)
 ```
 
-## Tune & (hyper-)parameter optimization)
+## Tune & Dials (hyper-)parameter optimization)
 
 ## Yardstick (performance evaluation)
 
