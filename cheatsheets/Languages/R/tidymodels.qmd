@@ -80,8 +80,17 @@ Root mean squared error    | `... rmse()`
 
 Classification quality metrics | 
 -------------------------------|-----
+accuracy                       | `prediction_set %>% accuracy(truth = ..., estimate = ...)`
+balanced accuracy              | `... bal_accuracy()`
+precision                      | `... precision()`
+recall                         | `... recall()`
+sensitivity                    | `... sensitivity()`
+specificity                    | `... specificity()`
+area under the curve           | `... roc_auc()`
 
 :  {tbl-colwidths="[50,50]" }
+
+More metrics [here](https://yardstick.tidymodels.org/articles/metric-types.html).
 
 Streamlined approach
 : ```R
@@ -96,6 +105,3 @@ model_last_fit %>%
 model_last_fit %>% 
     collect_predictions() 
 ```
-
-
-:  {tbl-colwidths="[50,50]"}
