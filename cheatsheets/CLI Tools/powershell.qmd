@@ -1,0 +1,23 @@
+---
+title: "Powershell"
+description: "Powershell is the major command line tool for windows"
+format: html
+categories:
+    - CLI
+    - tool
+---
+
+
+
+## Python
+
+execute python program
+: ```
+py path\to\file.py
+```
+
+install package with pip
+: ```
+py -m pip install pandas
+```
+
