@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -50,7 +50,12 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -59,6 +64,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -97,6 +103,33 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -106,14 +139,14 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
       Cheatsheets
       </li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -123,12 +156,12 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Cheatsheets</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/MoritzGuck/Code-Cheatsheets" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://github.com/MoritzGuck/Code-Cheatsheets" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -180,6 +213,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./cheatsheets/CLI Tools/git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cheatsheets/CLI Tools/powershell.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Powershell</span></a>
   </div>
 </li>
       </ul>
@@ -339,12 +378,12 @@ ul.task-list li input[type="checkbox"] {
   </li>
     </ul>
     </div>
-    
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(20)</span></div><div class="category" data-category="CLI">CLI <span class="quarto-category-count">(6)</span></div><div class="category" data-category="IDE">IDE <span class="quarto-category-count">(1)</span></div><div class="category" data-category="app development">app development <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code quality">code quality <span class="quarto-category-count">(1)</span></div><div class="category" data-category="data science">data science <span class="quarto-category-count">(5)</span></div><div class="category" data-category="framework">framework <span class="quarto-category-count">(1)</span></div><div class="category" data-category="language">language <span class="quarto-category-count">(7)</span></div><div class="category" data-category="package manager">package manager <span class="quarto-category-count">(3)</span></div><div class="category" data-category="python">python <span class="quarto-category-count">(2)</span></div><div class="category" data-category="short-cuts">short-cuts <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tool">tool <span class="quarto-category-count">(7)</span></div><div class="category" data-category="versioning">versioning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="virtual environments">virtual environments <span class="quarto-category-count">(2)</span></div><div class="category" data-category="web development">web development <span class="quarto-category-count">(2)</span></div></div></div>
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(21)</span></div><div class="category" data-category="CLI">CLI <span class="quarto-category-count">(7)</span></div><div class="category" data-category="IDE">IDE <span class="quarto-category-count">(1)</span></div><div class="category" data-category="app development">app development <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code quality">code quality <span class="quarto-category-count">(1)</span></div><div class="category" data-category="data science">data science <span class="quarto-category-count">(5)</span></div><div class="category" data-category="framework">framework <span class="quarto-category-count">(1)</span></div><div class="category" data-category="language">language <span class="quarto-category-count">(7)</span></div><div class="category" data-category="package manager">package manager <span class="quarto-category-count">(3)</span></div><div class="category" data-category="python">python <span class="quarto-category-count">(2)</span></div><div class="category" data-category="short-cuts">short-cuts <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tool">tool <span class="quarto-category-count">(8)</span></div><div class="category" data-category="versioning">versioning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="virtual environments">virtual environments <span class="quarto-category-count">(2)</span></div><div class="category" data-category="web development">web development <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -363,7 +402,9 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <p>This is a collection of my cheatsheets. Feel free to use them. If you want to edit them, to your own needs: Pleae visit my Github-Repo, give it a star and clone it.</p>
 
@@ -372,40 +413,41 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="1" data-listing-word-count-sort="26">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Cloud &amp; Platform/azure_ml.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/Cloud &amp; Platform/azure_ml.html" class="no-external"></a></p><a href="./cheatsheets/Cloud &amp; Platform/azure_ml.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Cloud &amp; Platform/azure_ml.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Cloud &amp; Platform/azure_ml.html">
 <h3 class="no-anchor listing-title">
-Azure ML
+<a href="./cheatsheets/Cloud &amp; Platform/azure_ml.html" class="no-external">Azure ML</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/Cloud &amp; Platform/azure_ml.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-Azure ML is the machine learning service of the Azure Cloud Platform.
+<a href="./cheatsheets/Cloud &amp; Platform/azure_ml.html" class="no-external">Azure ML is the machine learning service of the Azure Cloud Platform.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Cloud &amp; Platform/azure_ml.html"> </a>
+<p><a href="./cheatsheets/Cloud &amp; Platform/azure_ml.html" class="no-external"></a></p><a href="./cheatsheets/Cloud &amp; Platform/azure_ml.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="CLI,tool" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="3">
+<div class="quarto-post image-right" data-index="1" data-categories="CLI,tool" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="3" data-listing-word-count-sort="508">
 <div class="thumbnail">
-<p><a href="./cheatsheets/CLI Tools/bash.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/CLI Tools/bash.html" class="no-external"></a></p><a href="./cheatsheets/CLI Tools/bash.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/CLI Tools/bash.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/CLI Tools/bash.html">
 <h3 class="no-anchor listing-title">
-Bash
+<a href="./cheatsheets/CLI Tools/bash.html" class="no-external">Bash</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/CLI Tools/bash.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('CLI'); return false;">
 CLI
@@ -414,29 +456,28 @@ CLI
 tool
 </div>
 </div>
-<a href="./cheatsheets/CLI Tools/bash.html">
 <div class="listing-description">
-<p>Bash is a command line tool and language.</p>
+<a href="./cheatsheets/CLI Tools/bash.html" class="no-external">Bash is a command line tool and language.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/CLI Tools/bash.html"> </a>
+<p><a href="./cheatsheets/CLI Tools/bash.html" class="no-external"></a></p><a href="./cheatsheets/CLI Tools/bash.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="tool,CLI,package manager,virtual environments" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="2" data-categories="tool,CLI,package manager,virtual environments" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="1" data-listing-word-count-sort="144">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Languages/Python/Conda.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/Languages/Python/Conda.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Python/Conda.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Languages/Python/Conda.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Languages/Python/Conda.html">
 <h3 class="no-anchor listing-title">
-Conda
+<a href="./cheatsheets/Languages/Python/Conda.html" class="no-external">Conda</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/Languages/Python/Conda.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('tool'); return false;">
 tool
@@ -451,57 +492,55 @@ package manager
 virtual environments
 </div>
 </div>
-<a href="./cheatsheets/Languages/Python/Conda.html">
 <div class="listing-description">
-<p>Conda is a package and virtual environment manager.</p>
+<a href="./cheatsheets/Languages/Python/Conda.html" class="no-external">Conda is a package and virtual environment manager.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Languages/Python/Conda.html"> </a>
+<p><a href="./cheatsheets/Languages/Python/Conda.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Python/Conda.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="language" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="6">
+<div class="quarto-post image-right" data-index="3" data-categories="language" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="6" data-listing-word-count-sort="1123">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Languages/Dart_summary.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/Languages/Dart_summary.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Dart_summary.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Languages/Dart_summary.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Languages/Dart_summary.html">
 <h3 class="no-anchor listing-title">
-Dart
+<a href="./cheatsheets/Languages/Dart_summary.html" class="no-external">Dart</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/Languages/Dart_summary.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('language'); return false;">
 language
 </div>
 </div>
-<a href="./cheatsheets/Languages/Dart_summary.html">
 <div class="listing-description">
-<p>Dart is a new programming language by Google, mainly used for app development.</p>
+<a href="./cheatsheets/Languages/Dart_summary.html" class="no-external">Dart is a new programming language by Google, mainly used for app development.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Languages/Dart_summary.html"> </a>
+<p><a href="./cheatsheets/Languages/Dart_summary.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Dart_summary.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="language,data science" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="4" data-categories="language,data science" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="2" data-listing-word-count-sort="246">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Languages/R/dplyr.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/Languages/R/dplyr.html" class="no-external"></a></p><a href="./cheatsheets/Languages/R/dplyr.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Languages/R/dplyr.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Languages/R/dplyr.html">
 <h3 class="no-anchor listing-title">
-Dplyr
+<a href="./cheatsheets/Languages/R/dplyr.html" class="no-external">Dplyr</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/Languages/R/dplyr.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('language'); return false;">
 language
@@ -510,29 +549,28 @@ language
 data science
 </div>
 </div>
-<a href="./cheatsheets/Languages/R/dplyr.html">
 <div class="listing-description">
-<p>Dplyr is a data transformation library in the collection Tidyverse.</p>
+<a href="./cheatsheets/Languages/R/dplyr.html" class="no-external">Dplyr is a data transformation library in the collection Tidyverse.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Languages/R/dplyr.html"> </a>
+<p><a href="./cheatsheets/Languages/R/dplyr.html" class="no-external"></a></p><a href="./cheatsheets/Languages/R/dplyr.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="app development,web development" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="10">
+<div class="quarto-post image-right" data-index="5" data-categories="app development,web development" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="10" data-listing-word-count-sort="1971">
 <div class="thumbnail">
-<p><a href="./cheatsheets/frameworks/flutter_summary.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/frameworks/flutter_summary.html" class="no-external"></a></p><a href="./cheatsheets/frameworks/flutter_summary.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/frameworks/flutter_summary.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/frameworks/flutter_summary.html">
 <h3 class="no-anchor listing-title">
-Flutter
+<a href="./cheatsheets/frameworks/flutter_summary.html" class="no-external">Flutter</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/frameworks/flutter_summary.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('app development'); return false;">
 app development
@@ -541,50 +579,50 @@ app development
 web development
 </div>
 </div>
-<a href="./cheatsheets/frameworks/flutter_summary.html">
 <div class="listing-description">
-<p>Flutter is a cross-plattform app-development framework based on dart.</p>
+<a href="./cheatsheets/frameworks/flutter_summary.html" class="no-external">Flutter is a cross-plattform app-development framework based on dart.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/frameworks/flutter_summary.html"> </a>
+<p><a href="./cheatsheets/frameworks/flutter_summary.html" class="no-external"></a></p><a href="./cheatsheets/frameworks/flutter_summary.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="1" data-listing-word-count-sort="12">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Cloud &amp; Platform/gcloud.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/Cloud &amp; Platform/gcloud.html" class="no-external"></a></p><a href="./cheatsheets/Cloud &amp; Platform/gcloud.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Cloud &amp; Platform/gcloud.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Cloud &amp; Platform/gcloud.html">
 <h3 class="no-anchor listing-title">
-GCP: gcloud CLI
+<a href="./cheatsheets/Cloud &amp; Platform/gcloud.html" class="no-external">GCP: gcloud CLI</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/Cloud &amp; Platform/gcloud.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Gcloud CLI is the command line interface of the Google Cloud Platform.</p>
+<a href="./cheatsheets/Cloud &amp; Platform/gcloud.html" class="no-external">Gcloud CLI is the command line interface of the Google Cloud Platform.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Cloud &amp; Platform/gcloud.html"> </a>
+<p><a href="./cheatsheets/Cloud &amp; Platform/gcloud.html" class="no-external"></a></p><a href="./cheatsheets/Cloud &amp; Platform/gcloud.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="CLI,tool,versioning" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="7" data-categories="CLI,tool,versioning" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="2" data-listing-word-count-sort="347">
 <div class="thumbnail">
-<p><a href="./cheatsheets/CLI Tools/git.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/CLI Tools/git.html" class="no-external"></a></p><a href="./cheatsheets/CLI Tools/git.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/CLI Tools/git.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/CLI Tools/git.html">
 <h3 class="no-anchor listing-title">
-Git
+<a href="./cheatsheets/CLI Tools/git.html" class="no-external">Git</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/CLI Tools/git.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('CLI'); return false;">
 CLI
@@ -596,50 +634,50 @@ tool
 versioning
 </div>
 </div>
-<a href="./cheatsheets/CLI Tools/git.html">
 <div class="listing-description">
-<p>Git is a version control system mostly used for code.</p>
+<a href="./cheatsheets/CLI Tools/git.html" class="no-external">Git is a version control system mostly used for code.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/CLI Tools/git.html"> </a>
+<p><a href="./cheatsheets/CLI Tools/git.html" class="no-external"></a></p><a href="./cheatsheets/CLI Tools/git.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="3">
+<div class="quarto-post image-right" data-index="8" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="3" data-listing-word-count-sort="574">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Cloud &amp; Platform/Openshift.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/Cloud &amp; Platform/Openshift.html" class="no-external"></a></p><a href="./cheatsheets/Cloud &amp; Platform/Openshift.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Cloud &amp; Platform/Openshift.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Cloud &amp; Platform/Openshift.html">
 <h3 class="no-anchor listing-title">
-OpenShift
+<a href="./cheatsheets/Cloud &amp; Platform/Openshift.html" class="no-external">OpenShift</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/Cloud &amp; Platform/Openshift.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>OpenShift is a platform based on Kubernetes to host and manage applications in containers.</p>
+<a href="./cheatsheets/Cloud &amp; Platform/Openshift.html" class="no-external">OpenShift is a platform based on Kubernetes to host and manage applications in containers.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Cloud &amp; Platform/Openshift.html"> </a>
+<p><a href="./cheatsheets/Cloud &amp; Platform/Openshift.html" class="no-external"></a></p><a href="./cheatsheets/Cloud &amp; Platform/Openshift.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="framework,python,data science" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="9" data-categories="framework,python,data science" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="1" data-listing-word-count-sort="188">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Languages/Python/Pandas.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/Languages/Python/Pandas.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Python/Pandas.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Languages/Python/Pandas.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Languages/Python/Pandas.html">
 <h3 class="no-anchor listing-title">
-Pandas
+<a href="./cheatsheets/Languages/Python/Pandas.html" class="no-external">Pandas</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/Languages/Python/Pandas.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('framework'); return false;">
 framework
@@ -651,29 +689,28 @@ python
 data science
 </div>
 </div>
-<a href="./cheatsheets/Languages/Python/Pandas.html">
 <div class="listing-description">
-<p>Pandas is a python library for data wrangling and data cleaning.</p>
+<a href="./cheatsheets/Languages/Python/Pandas.html" class="no-external">Pandas is a python library for data wrangling and data cleaning.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Languages/Python/Pandas.html"> </a>
+<p><a href="./cheatsheets/Languages/Python/Pandas.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Python/Pandas.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="CLI,tool,package manager" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="10" data-categories="CLI,tool,package manager" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="1" data-listing-word-count-sort="158">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Languages/Python/pip.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/Languages/Python/pip.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Python/pip.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Languages/Python/pip.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Languages/Python/pip.html">
 <h3 class="no-anchor listing-title">
-Pip
+<a href="./cheatsheets/Languages/Python/pip.html" class="no-external">Pip</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/Languages/Python/pip.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('CLI'); return false;">
 CLI
@@ -685,29 +722,28 @@ tool
 package manager
 </div>
 </div>
-<a href="./cheatsheets/Languages/Python/pip.html">
 <div class="listing-description">
-<p>Pip is the official python package manager</p>
+<a href="./cheatsheets/Languages/Python/pip.html" class="no-external">Pip is the official python package manager</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Languages/Python/pip.html"> </a>
+<p><a href="./cheatsheets/Languages/Python/pip.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Python/pip.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="python,tool,CLI,package manager,virtual environments" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="11" data-categories="python,tool,CLI,package manager,virtual environments" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="2" data-listing-word-count-sort="208">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Languages/Python/Poetry.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/Languages/Python/Poetry.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Python/Poetry.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Languages/Python/Poetry.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Languages/Python/Poetry.html">
 <h3 class="no-anchor listing-title">
-Poetry
+<a href="./cheatsheets/Languages/Python/Poetry.html" class="no-external">Poetry</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/Languages/Python/Poetry.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('python'); return false;">
 python
@@ -725,57 +761,85 @@ package manager
 virtual environments
 </div>
 </div>
-<a href="./cheatsheets/Languages/Python/Poetry.html">
 <div class="listing-description">
-<p>Poetry is a package builder, dependency and virtual environment manager for python.</p>
+<a href="./cheatsheets/Languages/Python/Poetry.html" class="no-external">Poetry is a package builder, dependency and virtual environment manager for python.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Languages/Python/Poetry.html"> </a>
+<p><a href="./cheatsheets/Languages/Python/Poetry.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Python/Poetry.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="language" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="12" data-categories="CLI,tool" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="1" data-listing-word-count-sort="13">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Languages/Python/Python.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/CLI Tools/powershell.html" class="no-external"></a></p><a href="./cheatsheets/CLI Tools/powershell.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/CLI Tools/powershell.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Languages/Python/Python.html">
 <h3 class="no-anchor listing-title">
-Python
+<a href="./cheatsheets/CLI Tools/powershell.html" class="no-external">Powershell</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/CLI Tools/powershell.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('CLI'); return false;">
+CLI
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('tool'); return false;">
+tool
+</div>
+</div>
+<div class="listing-description">
+<a href="./cheatsheets/CLI Tools/powershell.html" class="no-external">Powershell is the major command line tool for windows</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./cheatsheets/CLI Tools/powershell.html" class="no-external"></a></p><a href="./cheatsheets/CLI Tools/powershell.html" class="no-external">
 </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="13" data-categories="language" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="1" data-listing-word-count-sort="57">
+<div class="thumbnail">
+<p><a href="./cheatsheets/Languages/Python/Python.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Python/Python.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Languages/Python/Python.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./cheatsheets/Languages/Python/Python.html" class="no-external">Python</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./cheatsheets/Languages/Python/Python.html" class="no-external"></a>
+</div>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('language'); return false;">
 language
 </div>
 </div>
-<a href="./cheatsheets/Languages/Python/Python.html">
 <div class="listing-description">
-<p>Python is one of the most popular programming languages.</p>
+<a href="./cheatsheets/Languages/Python/Python.html" class="no-external">Python is one of the most popular programming languages.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Languages/Python/Python.html"> </a>
+<p><a href="./cheatsheets/Languages/Python/Python.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Python/Python.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-categories="tool,web development" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="14" data-categories="tool,web development" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="1" data-listing-word-count-sort="113">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Quarto.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/Quarto.html" class="no-external"></a></p><a href="./cheatsheets/Quarto.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Quarto.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Quarto.html">
 <h3 class="no-anchor listing-title">
-Quarto
+<a href="./cheatsheets/Quarto.html" class="no-external">Quarto</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/Quarto.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('tool'); return false;">
 tool
@@ -784,29 +848,28 @@ tool
 web development
 </div>
 </div>
-<a href="./cheatsheets/Quarto.html">
 <div class="listing-description">
-<p>Quarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations.</p>
+<a href="./cheatsheets/Quarto.html" class="no-external">Quarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations. </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Quarto.html"> </a>
+<p><a href="./cheatsheets/Quarto.html" class="no-external"></a></p><a href="./cheatsheets/Quarto.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="14" data-categories="language,data science" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="9">
+<div class="quarto-post image-right" data-index="15" data-categories="language,data science" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="9" data-listing-word-count-sort="1797">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Languages/R/R_basics.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/Languages/R/R_basics.html" class="no-external"></a></p><a href="./cheatsheets/Languages/R/R_basics.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Languages/R/R_basics.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Languages/R/R_basics.html">
 <h3 class="no-anchor listing-title">
-R basics
+<a href="./cheatsheets/Languages/R/R_basics.html" class="no-external">R basics</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/Languages/R/R_basics.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('language'); return false;">
 language
@@ -815,29 +878,28 @@ language
 data science
 </div>
 </div>
-<a href="./cheatsheets/Languages/R/R_basics.html">
 <div class="listing-description">
-<p>R is a programming language that is specialized in statistical analysis.</p>
+<a href="./cheatsheets/Languages/R/R_basics.html" class="no-external">R is a programming language that is specialized in statistical analysis.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Languages/R/R_basics.html"> </a>
+<p><a href="./cheatsheets/Languages/R/R_basics.html" class="no-external"></a></p><a href="./cheatsheets/Languages/R/R_basics.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="15" data-categories="language,data science" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="16" data-categories="language,data science" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="2" data-listing-word-count-sort="234">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Languages/R/R_plotting.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/Languages/R/R_plotting.html" class="no-external"></a></p><a href="./cheatsheets/Languages/R/R_plotting.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Languages/R/R_plotting.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Languages/R/R_plotting.html">
 <h3 class="no-anchor listing-title">
-R plotting
+<a href="./cheatsheets/Languages/R/R_plotting.html" class="no-external">R plotting</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/Languages/R/R_plotting.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('language'); return false;">
 language
@@ -846,57 +908,55 @@ language
 data science
 </div>
 </div>
-<a href="./cheatsheets/Languages/R/R_plotting.html">
 <div class="listing-description">
-<p>R has powerful builtin plotting capabilities</p>
+<a href="./cheatsheets/Languages/R/R_plotting.html" class="no-external">R has powerful builtin plotting capabilities</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Languages/R/R_plotting.html"> </a>
+<p><a href="./cheatsheets/Languages/R/R_plotting.html" class="no-external"></a></p><a href="./cheatsheets/Languages/R/R_plotting.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="16" data-categories="language" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="17" data-categories="language" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="1" data-listing-word-count-sort="57">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Languages/Splunk_processing_language.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/Languages/Splunk_processing_language.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Splunk_processing_language.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Languages/Splunk_processing_language.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Languages/Splunk_processing_language.html">
 <h3 class="no-anchor listing-title">
-Splunk processing language (SPL)
+<a href="./cheatsheets/Languages/Splunk_processing_language.html" class="no-external">Splunk processing language (SPL)</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/Languages/Splunk_processing_language.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('language'); return false;">
 language
 </div>
 </div>
-<a href="./cheatsheets/Languages/Splunk_processing_language.html">
 <div class="listing-description">
-<p>This is the language you need to use to query splunk logs.</p>
+<a href="./cheatsheets/Languages/Splunk_processing_language.html" class="no-external">This is the language you need to use to query splunk logs.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Languages/Splunk_processing_language.html"> </a>
+<p><a href="./cheatsheets/Languages/Splunk_processing_language.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Splunk_processing_language.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="17" data-categories="language,data science" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="18" data-categories="language,data science" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="3" data-listing-word-count-sort="403">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Languages/R/tidymodels.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/Languages/R/tidymodels.html" class="no-external"></a></p><a href="./cheatsheets/Languages/R/tidymodels.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Languages/R/tidymodels.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Languages/R/tidymodels.html">
 <h3 class="no-anchor listing-title">
-Tidymodels
+<a href="./cheatsheets/Languages/R/tidymodels.html" class="no-external">Tidymodels</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/Languages/R/tidymodels.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('language'); return false;">
 language
@@ -905,29 +965,28 @@ language
 data science
 </div>
 </div>
-<a href="./cheatsheets/Languages/R/tidymodels.html">
 <div class="listing-description">
-<p>Tidymodels is a collection of packages for machine learning. It is part of the tidyverse.</p>
+<a href="./cheatsheets/Languages/R/tidymodels.html" class="no-external">Tidymodels is a collection of packages for machine learning. It is part of the tidyverse.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Languages/R/tidymodels.html"> </a>
+<p><a href="./cheatsheets/Languages/R/tidymodels.html" class="no-external"></a></p><a href="./cheatsheets/Languages/R/tidymodels.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="18" data-categories="IDE,short-cuts" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="3">
+<div class="quarto-post image-right" data-index="19" data-categories="IDE,short-cuts" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="3" data-listing-word-count-sort="600">
 <div class="thumbnail">
-<p><a href="./cheatsheets/VSCode.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/VSCode.html" class="no-external"></a></p><a href="./cheatsheets/VSCode.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/VSCode.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/VSCode.html">
 <h3 class="no-anchor listing-title">
-VS Code
+<a href="./cheatsheets/VSCode.html" class="no-external">VS Code</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/VSCode.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('IDE'); return false;">
 IDE
@@ -936,29 +995,28 @@ IDE
 short-cuts
 </div>
 </div>
-<a href="./cheatsheets/VSCode.html">
 <div class="listing-description">
-<p>Visual studio code is one of the most popular code editors.</p>
+<a href="./cheatsheets/VSCode.html" class="no-external">Visual studio code is one of the most popular code editors.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/VSCode.html"> </a>
+<p><a href="./cheatsheets/VSCode.html" class="no-external"></a></p><a href="./cheatsheets/VSCode.html" class="no-external">
+</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="19" data-categories="CLI,tool,code quality" data-listing-file-modified-sort="1706099466921" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="20" data-categories="CLI,tool,code quality" data-listing-file-modified-sort="1708603699915" data-listing-reading-time-sort="2" data-listing-word-count-sort="358">
 <div class="thumbnail">
-<p><a href="./cheatsheets/Languages/Python/ruff.html"> <img src="assets/placeholder_cheatseet.png" class="thumbnail-image"> </a></p>
+<p><a href="./cheatsheets/Languages/Python/ruff.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Python/ruff.html" class="no-external">
+<p class="card-img-top"><img src="assets/placeholder_cheatseet.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./cheatsheets/Languages/Python/ruff.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./cheatsheets/Languages/Python/ruff.html">
 <h3 class="no-anchor listing-title">
-ruff
+<a href="./cheatsheets/Languages/Python/ruff.html" class="no-external">ruff</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./cheatsheets/Languages/Python/ruff.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('CLI'); return false;">
 CLI
@@ -970,14 +1028,13 @@ tool
 code quality
 </div>
 </div>
-<a href="./cheatsheets/Languages/Python/ruff.html">
 <div class="listing-description">
-<p>A fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black</p>
+<a href="./cheatsheets/Languages/Python/ruff.html" class="no-external">A fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./cheatsheets/Languages/Python/ruff.html"> </a>
+<p><a href="./cheatsheets/Languages/Python/ruff.html" class="no-external"></a></p><a href="./cheatsheets/Languages/Python/ruff.html" class="no-external">
+</a>
 </div>
 </div>
 </div>
@@ -1026,6 +1083,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1094,13 +1178,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1179,10 +1265,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("^(?:http:|https:)\/\/moritzguck\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1192,8 +1297,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1206,6 +1320,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1249,6 +1482,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1274,6 +1508,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1331,25 +1591,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp("^(?:http:|https:)\/\/moritzguck\.github\.io");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          // default icon
-          link.classList.add("external");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

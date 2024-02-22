@@ -1,1 +1,1 @@
-Sitemap: https://github.com/MoritzGuck/Code-Cheatsheets/sitemap.xml
+Sitemap: https://MoritzGuck.github.io/Code-Cheatsheets/sitemap.xml

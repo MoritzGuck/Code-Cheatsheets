@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="description" content="Visual studio code is one of the most popular code editors.">
 
-<title>Cheatsheets - VS Code</title>
+<title>Cheatsheets – VS Code</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,7 +51,12 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -60,6 +65,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -76,12 +82,12 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../cheatsheets/Quarto.html">Cheatsheets</a></li><li class="breadcrumb-item"><a href="../cheatsheets/VSCode.html">VS Code</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../cheatsheets/Quarto.html">Cheatsheets</a></li><li class="breadcrumb-item"><a href="../cheatsheets/VSCode.html">VS Code</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -91,12 +97,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Cheatsheets</a> 
+      <a href="../">
+      Cheatsheets
+      </a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/MoritzGuck/Code-Cheatsheets" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://github.com/MoritzGuck/Code-Cheatsheets" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -148,6 +156,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../cheatsheets/CLI Tools/git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cheatsheets/CLI Tools/powershell.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Powershell</span></a>
   </div>
 </li>
       </ul>
@@ -307,16 +321,16 @@ ul.task-list li input[type="checkbox"] {
   </li>
     </ul>
     </div>
-    
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../cheatsheets/Quarto.html">Cheatsheets</a></li><li class="breadcrumb-item"><a href="../cheatsheets/VSCode.html">VS Code</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">VS Code</h1>
   <div class="quarto-categories">
@@ -340,7 +354,9 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <table class="table">
 <colgroup>
@@ -356,42 +372,42 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>Command Palette</td>
-<td><p><kbd data-mac="Command-Shift-P" data-windows="Ctrl-shift-p"></kbd></p></td>
+<td><p><kbd aria-hidden="true" data-mac="Command-Shift-P" data-windows="Ctrl-shift-p"></kbd><span class="visually-hidden"></span></p></td>
 </tr>
 <tr class="even">
 <td>Search &amp; open file</td>
-<td><p><kbd data-mac="Command-P" data-windows="Ctrl-p"></kbd></p></td>
+<td><p><kbd aria-hidden="true" data-mac="Command-P" data-windows="Ctrl-p"></kbd><span class="visually-hidden"></span></p></td>
 </tr>
 <tr class="odd">
 <td>Toggle Sidebar</td>
-<td><p><kbd data-mac="Command-B" data-windows="Ctrl-B"></kbd></p></td>
+<td><p><kbd aria-hidden="true" data-mac="Command-B" data-windows="Ctrl-B"></kbd><span class="visually-hidden"></span></p></td>
 </tr>
 <tr class="even">
 <td>Split editor</td>
-<td><p><kbd data-mac="Shift-Ctrl-Option-Command-7" data-windows="Ctrl-ä"></kbd></p></td>
+<td><p><kbd aria-hidden="true" data-mac="Shift-Ctrl-Option-Command-7" data-windows="Ctrl-ä"></kbd><span class="visually-hidden"></span></p></td>
 </tr>
 <tr class="odd">
 <td>Switch to editor split</td>
-<td><kbd data-mac="Command-1" data-windows="Ctrl-1"></kbd> / / </td>
+<td><kbd aria-hidden="true" data-mac="Command-1" data-windows="Ctrl-1"></kbd><span class="visually-hidden"></span> / <kbd aria-hidden="true" data-mac="Command-2" data-windows="Ctrl-2"></kbd><span class="visually-hidden"></span> / <kbd aria-hidden="true" data-mac="Command-3" data-windows="Ctrl-3"></kbd><span class="visually-hidden"></span></td>
 </tr>
 <tr class="even">
 <td>Switch to tab</td>
-<td><kbd data-mac="Ctrl-1" data-windows="alt-1"></kbd> / <kbd data-mac="Ctrl-2" data-windows="alt-2"></kbd></td>
+<td><kbd aria-hidden="true" data-mac="Ctrl-1" data-windows="alt-1"></kbd><span class="visually-hidden"></span> / <kbd aria-hidden="true" data-mac="Ctrl-2" data-windows="alt-2"></kbd><span class="visually-hidden"></span></td>
 </tr>
 <tr class="odd">
 <td>Close tab</td>
-<td><p><kbd data-mac="Command-W" data-windows="Ctrl-W"></kbd></p></td>
+<td><p><kbd aria-hidden="true" data-mac="Command-W" data-windows="Ctrl-W"></kbd><span class="visually-hidden"></span></p></td>
 </tr>
 <tr class="even">
 <td>Reopen closed tab</td>
-<td><p><kbd data-mac="Command-Shift-T" data-windows="Ctrl-Shift-T"></kbd></p></td>
+<td><p><kbd aria-hidden="true" data-mac="Command-Shift-T" data-windows="Ctrl-Shift-T"></kbd><span class="visually-hidden"></span></p></td>
 </tr>
 </tbody>
 </table>
 <table class="table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 83%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -402,130 +418,22 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>Show File explorer</td>
-<td><p><kbd data-mac="Command-Shift-E" data-windows="Ctrl-Shift-E"></kbd></p></td>
+<td><p><kbd aria-hidden="true" data-mac="Command-Shift-E" data-windows="Ctrl-Shift-E"></kbd><span class="visually-hidden"></span></p></td>
 </tr>
 <tr class="even">
 <td>Show Debug View</td>
-<td><p><kbd data-mac="Command-Shift-D" data-windows="Ctrl-Shift-D"></kbd></p></td>
+<td><p><kbd aria-hidden="true" data-mac="Command-Shift-D" data-windows="Ctrl-Shift-D"></kbd><span class="visually-hidden"></span></p></td>
 </tr>
 <tr class="odd">
 <td>Show Find View</td>
-<td><p><kbd data-mac="Command-Shift-F" data-windows="Ctrl-Shift-F"></kbd></p></td>
+<td><p><kbd aria-hidden="true" data-mac="Command-Shift-F" data-windows="Ctrl-Shift-F"></kbd><span class="visually-hidden"></span></p></td>
 </tr>
 <tr class="even">
 <td>Show Git View</td>
-<td><kbd data-mac="Ctrl-Shift-G" data-windows="Ctrl-Shift-G"></kbd> </td>
+<td><p><kbd aria-hidden="true" data-mac="Ctrl-Shift-G" data-windows="Ctrl-Shift-G"></kbd><span class="visually-hidden"></span></p></td>
 </tr>
 </tbody>
 </table>
-<table class="table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Code Navigation</th>
-<th>&nbsp;</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Go to line</td>
-<td><kbd>Ctrl-G</kbd> / <kbd data-nil="Command-P" data-windows="Ctrl-P"></kbd> <kbd>:</kbd></td>
-</tr>
-<tr class="even">
-<td>Go to beginning / end of line</td>
-<td><kbd data-windows="Home" data-mac="Command←"></kbd> <kbd data-windows="End" data-mac="Command→"></kbd></td>
-</tr>
-<tr class="odd">
-<td>Go to beginning / end of word</td>
-<td><kbd data-windows="Alt-←" data-mac="Option←"></kbd> <kbd data-windows="Alt-→" data-mac="Option→"></kbd></td>
-</tr>
-<tr class="even">
-<td>Go to matching bracket</td>
-<td><p><kbd data-mac="Ctrl-Option-Command-7" data-windows="Ctrl-Shift-ä"></kbd></p></td>
-</tr>
-<tr class="odd">
-<td>Go to symbol/function</td>
-<td><p><kbd data-mac="Command-Shift-o" data-windows="Ctrl-Shift-o"></kbd></p></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Code Editing</th>
-<th>&nbsp;</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Copy line</td>
-<td><p><kbd data-mac="Command-C" data-windows="Ctrl-C"></kbd></p></td>
-</tr>
-<tr class="even">
-<td>Cut line</td>
-<td><p><kbd data-mac="Command-X" data-windows="Ctrl-X"></kbd></p></td>
-</tr>
-<tr class="odd">
-<td>Delete line</td>
-<td><p><kbd data-mac="Command-Shift-K" data-windows="Ctrl-Shift-K"></kbd></p></td>
-</tr>
-<tr class="even">
-<td>Outdent line</td>
-<td><p><kbd data-mac="Ctrl-Option-Command-5" data-windows="Ctrl-’"></kbd></p></td>
-</tr>
-<tr class="odd">
-<td>Toggle comment line</td>
-<td><p><kbd data-mac="Command-Shift-7" data-windows="Ctrl-§"></kbd></p></td>
-</tr>
-<tr class="even">
-<td>Move line up or down</td>
-<td><kbd>Option↑</kbd> / <kbd>Option↓</kbd></td>
-</tr>
-<tr class="odd">
-<td>Copy line up or down</td>
-<td><kbd>Option-shift↑</kbd> / <kbd>Option-Shift↓</kbd></td>
-</tr>
-<tr class="even">
-<td>Add cursor below/above</td>
-<td><kbd data-mac="Option-Command↑" data-windows="Ctrl-Alt↑"></kbd> / </td>
-</tr>
-<tr class="odd">
-<td>Find and replace</td>
-<td><p><kbd data-mac="Command-Option-F" data-windows="Ctrl-H"></kbd></p></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Code selection</th>
-<th>&nbsp;</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Select line</td>
-<td><p><kbd data-nil="Ctrl-L" data-mac="Command-L" data-windows="Ctrl-L"></kbd></p></td>
-</tr>
-<tr class="even">
-<td>Expand selection</td>
-<td><p><kbd>Shift-Option→</kbd></p></td>
-</tr>
-</tbody>
-</table>
-
-
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -569,6 +477,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -637,13 +572,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -722,10 +659,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("^(?:http:|https:)\/\/moritzguck\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -735,8 +691,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -749,6 +714,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -792,6 +876,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -817,6 +902,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -874,25 +985,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp("^(?:http:|https:)\/\/moritzguck\.github\.io");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          // default icon
-          link.classList.add("external");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
