@@ -194,7 +194,7 @@
     "href": "cheatsheets/Languages/Python/Venv.html",
     "title": "Venv",
     "section": "",
-    "text": "::: Warning :::::: Virtualenv and venv are not the same package. Venv is built into Python, while virtualenv is a third-party package that contains additional options.\n\nCreate and delete environments\n\nCreate environment\n\npython -m venv venv\n\nRemoving / Deleting environment\n\nconda env remove -n env-name\n\n\nMore info: Intro to Conda virtual environments\n\n\nUse environment\n\nUse/activate environment\n\n.\\venv\\Scripts\\activate\n\nDeactive environment\n\ndeactivate\n\n\n\n\nInstall packages\n\nInstall package using pip\n\npip install pandas \n\n\nmore info in Pip\n\nExport packages in env to requirements.txt\n\npip freeze &gt; requirements.txt\n\nInstall packages from requirements.txt\n\npip install -r requirements.txt",
+    "text": "Warning\n\n\n\nVirtualenv and venv are not the same package. Venv is built into Python, while virtualenv is a third-party package that contains additional options.\n\n\n\nCreate and delete environments\n\nCreate environment\n\npython -m venv venv\n\nRemoving / Deleting environment\n\nconda env remove -n env-name\n\n\nMore info: Intro to Conda virtual environments\n\n\nUse environment\n\nUse/activate environment\n\n.\\venv\\Scripts\\activate\n\nDeactive environment\n\ndeactivate\n\n\n\n\nInstall packages\n\nInstall package using pip\n\npip install pandas \n\n\nmore info in Pip\n\nExport packages in env to requirements.txt\n\npip freeze &gt; requirements.txt\n\nInstall packages from requirements.txt\n\npip install -r requirements.txt",
     "crumbs": [
       "Cheatsheets",
       "Languages",
