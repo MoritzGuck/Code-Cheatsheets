@@ -9,9 +9,9 @@ categories:
     - virtual environments
 ---
  
-::: Warning ::::::
+::: {.callout-warning} 
 Virtualenv and venv are not the same package. Venv is built into Python, while virtualenv is a third-party package that contains additional options. 
-
+:::
 
 ### Create and delete environments
 
