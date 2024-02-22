@@ -5,7 +5,7 @@ listing:
   type: default
   image-placeholder: "assets/placeholder_cheatseet.png"
   sort: "title asc"
-  fields: [title, description, categories] <!-- image -->
+  fields: [title, description, categories]
   categories: true
 
 ---
