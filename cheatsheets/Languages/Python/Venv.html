@@ -403,7 +403,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>::: Warning ::: Virtualenv and venv are not the same package. Venv is built into Python, while virtualenv is a third-party package that contains additional options.</p>
+<p>::: Warning :::::: Virtualenv and venv are not the same package. Venv is built into Python, while virtualenv is a third-party package that contains additional options.</p>
 <section id="create-and-delete-environments" class="level3">
 <h3 class="anchored" data-anchor-id="create-and-delete-environments">Create and delete environments</h3>
 <dl>
@@ -411,15 +411,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dd>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv venv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </dd>
-<dt>Create an env from a file:</dt>
+<dt>Removing / Deleting environment</dt>
 <dd>
-```bash
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env remove <span class="at">-n</span> env-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </dd>
 </dl>
-<pre><code>
-Removing / Deleting environment
-: ```bash
-conda env remove -n env-name</code></pre>
 <p>More info: <a href="https://towardsdatascience.com/introduction-to-conda-virtual-environments-eaea4ac84e28">Intro to Conda virtual environments</a></p>
 </section>
 <section id="use-environment" class="level3">
