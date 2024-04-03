@@ -9,6 +9,8 @@ categories:
 
 ## Basics
 
+### Files 
+
 List contents of directory
 : ```Powershell
 dir
@@ -56,6 +58,12 @@ Create variables
 $myVariable = "C:\path\name\whatever"
 ```
 
+### Processes
+
+List all running processes, ordered by cpu-usage
+```powershell
+Get-Process |Sort-Object cpu -Descending
+```
 
 ## Python
 
