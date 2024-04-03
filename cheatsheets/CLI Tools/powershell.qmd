@@ -7,12 +7,60 @@ categories:
     - tool
 ---
 
+## Basics
+
+List contents of directory
+: ```Powershell
+dir
+# or
+ls
+```
+
+Get current working directory
+: ```powershell
+pwd
+```
+
+Change directory
+: ```powershell
+cd
+# or
+chdir
+```
+
+Delete file / folder
+: ```
+del
+# or
+rm
+# or
+rmdir
+```
+
+Copy file
+: ```powershell
+cp
+# or
+copy
+```
+
+Move file 
+: ```powershell
+mv
+# or
+move
+``` 
+
+Create variables
+: ```powershell
+$myVariable = "C:\path\name\whatever"
+```
 
 
 ## Python
 
 execute python program
-: ```
+: ```powershell
 py path\to\file.py
 ```
 
