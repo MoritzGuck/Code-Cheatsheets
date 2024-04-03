@@ -29,7 +29,7 @@ chdir
 ```
 
 Delete file / folder
-: ```
+: ```powershell
 del
 # or
 rm
@@ -65,7 +65,7 @@ py path\to\file.py
 ```
 
 install package with pip
-: ```
+: ```powershell
 py -m pip install pandas
 ```
 
