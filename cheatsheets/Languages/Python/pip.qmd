@@ -49,6 +49,8 @@ Get info on package
 pip show SomePackage
 ```
 
+Returns name, version, summary, home-page, license, dependencies, required-by and location in your file system.
+
 ### Wheels
 
 Wheel files (binaries) make the installation of pip packages faster.

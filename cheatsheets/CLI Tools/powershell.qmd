@@ -1,0 +1,79 @@
+---
+title: "Powershell"
+description: "Powershell is the major command line tool for windows"
+format: html
+categories:
+    - CLI
+    - tool
+---
+
+## Basics
+
+### Files 
+
+List contents of directory
+: ```Powershell
+dir
+# or
+ls
+```
+
+Get current working directory
+: ```powershell
+pwd
+```
+
+Change directory
+: ```powershell
+cd
+# or
+chdir
+```
+
+Delete file / folder
+: ```powershell
+del
+# or
+rm
+# or
+rmdir
+```
+
+Copy file
+: ```powershell
+cp
+# or
+copy
+```
+
+Move file 
+: ```powershell
+mv
+# or
+move
+``` 
+
+Create variables
+: ```powershell
+$myVariable = "C:\path\name\whatever"
+```
+
+### Processes
+
+List all running processes, ordered by cpu-usage
+```powershell
+Get-Process |Sort-Object cpu -Descending
+```
+
+## Python
+
+execute python program
+: ```powershell
+py path\to\file.py
+```
+
+install package with pip
+: ```powershell
+py -m pip install pandas
+```
+

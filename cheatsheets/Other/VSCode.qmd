@@ -15,7 +15,7 @@ Command Palette          | {{< kbd win=Ctrl-shift-p mac=Command-Shift-P >}}
 Search & open file       | {{< kbd win=Ctrl-p mac=Command-P >}}
 Toggle Sidebar           | {{< kbd win=Ctrl-B mac=Command-B >}}
 Split editor             | {{< kbd win=Ctrl-ä mac=Shift-Ctrl-Option-Command-7 >}}
-Switch to editor split   | {{< kbd win=Ctrl-1 mac=Command-1 >}} / {{< win=Ctrl-2 kbd mac=Command-2 >}} / {{< win=Ctrl-3 kbd mac=Command-3 >}}
+Switch to editor split   | {{< kbd win=Ctrl-1 mac=Command-1 >}} / {{< kbd win=Ctrl-2 mac=Command-2 >}} / {{< kbd win=Ctrl-3 mac=Command-3 >}}
 Switch to tab            | {{< kbd win=alt-1 mac=Ctrl-1 >}} / {{< kbd win=alt-2 mac=Ctrl-2 >}}
 Close tab                | {{< kbd win=Ctrl-W mac=Command-W >}}
 Reopen closed tab        | {{< kbd win=Ctrl-Shift-T mac=Command-Shift-T >}}

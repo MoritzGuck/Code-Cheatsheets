@@ -8,7 +8,6 @@ categories:
   - data science
 ---
 
-### Basics
 
 ### Using R
 
@@ -387,3 +386,19 @@ Call function:
 my_func("gustav") 
 ```
 
+### Installing Packages
+
+Install the package
+: ```R
+install.packages('packageName')
+```
+
+Load the installed package
+: ```R
+library(packageName)
+```
+
+### Useful websites
+
+- [Best Coding Practices for R](https://bookdown.org/content/d1e53ac9-28ce-472f-bc2c-f499f18264a3/)
+- [Machine Learning Reference in R & Python](https://www.ml-reference.net/)
