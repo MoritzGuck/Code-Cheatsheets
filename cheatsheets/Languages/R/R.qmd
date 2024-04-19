@@ -21,7 +21,7 @@ In console
 
 3. Quit R in console: `q()`
 
-Run R scripts
+Run R scripts from console/terminal
 : In console / terminal: `Rscript myScript.R`
 
 
@@ -32,11 +32,6 @@ Find functions / features matching a term | `??TermOfInterest`
 List arguments that the function accepts  | `args(functionName)`
 
 :  {tbl-colwidths="[50,50]" }
-
-Execute R-script from terminal
-: ```bash
-Rscript myScript.R
-```
 
 
 ### File system, Import, Input, Output
@@ -77,7 +72,7 @@ print("my Output")
 
 Assign values to a variable                       | 
 --------------------------------------------------|-----
-Assign value to varialbe                          | `x <- 4.5 `
+Assign value to variable                          | `x <- 4.5 `
 Assign to multiple variables                      | `x <- y <- z <- 4.5`
 Assign/change value of variable in global scope   | `x <<- "global value"`
 
@@ -92,14 +87,14 @@ x <- c(10, 4.5, 12, 5)
 **!**: If you integrate vectors in your vector ( `c(10, c(11, 12), 13)` ) it will get **flattened** (like `c(10, 11, 12, 13)` ).
 :::
 
-Elementwise adding, subtracting, deviding, multiplying, ... vectors
+Element-wise adding, subtracting, dividing, multiplying, ... vectors
 : ```R
 x <- c(1, 2)
 y <- c(10, 11, 12, 13)
 z <- x + y
 ```
 ::: {.callout-warning}
-You can make elementwise operations with vectors of different lengths, as long as the longer one is a multiple of the shorter one. **The shorter vector is repeated**. :anguished:
+You can make element-wise operations with vectors of different lengths, as long as the longer one is a multiple of the shorter one. **The shorter vector is repeated**. :anguished:
 :::
 
 Common operators on vectors |
@@ -112,7 +107,7 @@ Product of the elements     | `prod(x)`
 Mean of the elements        | `mean(x)`
 Variance of the elements    | `var(x)`
 Sort elements ascending     | `sort(x)`
-Matrix multiplicatoin       | `mat1 %*% mat2`
+Matrix multiplication       | `mat1 %*% mat2`
 Dimension of matrix         | `dim(mat1)`
 Number of rows              | `nrow(mat1)`
 Number of cols              | `ncol(mat2)`
