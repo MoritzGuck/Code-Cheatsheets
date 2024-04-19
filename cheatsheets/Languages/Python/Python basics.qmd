@@ -36,7 +36,7 @@ Get help with functions and features      |
 ------------------------------------------|------
 Help menu for python                      | `help()`
 Help section on function                  | `help("func")` or `help(package.func)`
-Functions in library                      | `dir("packge")`
+Functions in library                      | `dir("package")`
 
 :  {tbl-colwidths="[50,50]" }
 
@@ -88,7 +88,7 @@ logger.info("foo bar bash")
 
 Assign values to a variable                       | 
 --------------------------------------------------|-----
-Assign value to varialbe                          | `x = 4.5 `
+Assign value to variable                          | `x = 4.5 `
 Assign to multiple variables                      | `x = y = z = 4.5`
 
 :  {.borderless tbl-colwidths="[50,50]"}
@@ -229,8 +229,8 @@ Missing values
 
 Checking for missing values: `np.isnan(x)`  (`NaN` = Not a number)
 
-Assign value only to elements where condition is true:
-```python 
+Assign value only to elements where condition is true
+: ```python 
 x_arr[np.isnan(x_arr)] = 4
 ```
 
