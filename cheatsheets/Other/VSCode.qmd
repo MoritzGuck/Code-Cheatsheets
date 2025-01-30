@@ -27,8 +27,8 @@ Switch between Views     |
 Show File explorer       | {{< kbd win=Ctrl-Shift-E mac=Command-Shift-E >}}
 Show Debug View          | {{< kbd win=Ctrl-Shift-D mac=Command-Shift-D >}}
 Show Find View           | {{< kbd win=Ctrl-Shift-F mac=Command-Shift-F >}}
-Show Git View            | {{< kbd win=Ctrl-Shift-G mac=Ctrl-Shift-G >}} {{< kbd win=G>}}
- 
+Show Git View            | {{< kbd win=Ctrl-Shift-G mac=Command-Shift-G >}}
+
 :  {tbl-colwidths="[50,50]"}
 
 Code Navigation                | 
@@ -50,11 +50,10 @@ Outdent line             | {{< kbd win=Ctrl-' mac=Ctrl-Option-Command-5  >}}
 Toggle comment line      | {{< kbd win=Ctrl-§ mac=Command-Shift-7 >}}
 Move line up or down     | {{< kbd Option&uarr; >}} / {{< kbd Option&darr; >}}
 Copy line up or down     | {{< kbd Option-shift&uarr; >}} / {{< kbd Option-Shift&darr; >}}
-Add cursor below/above   | {{< kbd win=Ctrl-Alt&uarr; mac=Option-Command&uarr; >}} / {{< win=Ctrl-Alt&darr; kbd mac=Option-Command&darr; >}}
+Add cursor below/above   | {{< kbd win=Ctrl-Alt-&uarr; mac=Option-Command&uarr; >}} / {{< kbd win=Ctrl-Alt-&darr; mac=Option-Command&darr; >}}
 Find and replace         | {{< kbd win=Ctrl-H mac=Command-Option-F >}}
 
 :  {tbl-colwidths="[50,50]"}
-
 
 Code selection           | 
 -------------------------|-----
