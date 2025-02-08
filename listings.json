@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/cheatsheets/Cloud & Platform/ansible.html",
       "/cheatsheets/Cloud & Platform/azure_ml.html",
       "/cheatsheets/CLI Tools/bash.html",
       "/cheatsheets/Languages/Python/Conda.html",
