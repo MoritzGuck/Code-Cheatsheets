@@ -1,0 +1,333 @@
+---
+title: "Ansible"
+description: "Ansible is a task and infrastructure automation tool. It is agentless."
+date: last-modified
+format:
+  html
+categories:
+  - Cloud
+  - Infrastructure as Code
+---
+
+Ansible is used to automate tasks and manage infrastructure. It can run the tasks as programs (called modules) on multiple servers with minimal overhead. 
+It is agentless, meaning it does not require any software to be installed on the managed nodes. 
+
+## Basic Concepts
+
+Modules
+: The smallest unit of work in Ansible. They are written in Python and can be used to perform tasks such as installing packages, creating users, and managing services.
+
+Play
+: A single task that is executed in a specific order on a set of hosts.
+
+Playbooks
+: A collection of plays that are executed together. Playbooks are written in YAML and can be used to automate complex workflows. 
+
+Hosts
+: A list of servers on which the tasks will be executed.
+
+Inventory
+: A list of hosts that Ansible will manage. It is written in INI format and can be used to group hosts together.
+
+Roles
+: A way to organize playbooks and modules. Roles can be used to group related tasks together and can be reused across multiple playbooks.
+
+Ansible Tower
+: A web-based interface for managing Ansible. It can be used to schedule playbooks, manage inventory, and monitor the status of tasks.
+
+
+## Installation and Setup
+
+Full installation
+: `pipx install --include-deps ansible`
+
+Minimal installation
+: `pipx install ansible-core`
+
+[Installation Guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+
+## Getting Started
+
+The common folder structure for Ansible is:
+```
+.
+├── ansible.cfg
+├── Inventory
+|   └── hosts
+├── playbooks
+│   └── site.yml
+└── roles
+    └── common
+        ├── tasks
+        │   └── main.yml
+        └── templates
+            └── motd.j2
+requirements.yml
+vault.yml
+```
+
+More info on the concrete files can be found below. 
+
+## Inventory Management
+
+The inventory file (often called `hosts`) is a list of hosts that Ansible will manage. It is written in INI format and can be used to group hosts together.
+
+```ini
+[webservers]
+192.168.1.100
+192.168.1.101
+
+[dbservers]
+192.168.1.102
+192.168.1.103
+
+[reverseproxy]
+192.168.1.104
+```
+You can call them in the playbook using the `hosts` keyword and reference complete groups together.
+
+
+## Writing Playbooks
+
+Playbooks are written in YAML format and are used to define the tasks that Ansible will perform. They are (generally) written in a declarative manner, meaning you define the desired state of the system and Ansible will figure out how to get there.
+They start with the `---` line, followed by the `name` of the playbook and the `hosts` that it will run on and variables that will be used..
+
+```yaml
+---
+- name: "Hello World Playbook"
+  hosts: myserver
+  become: true
+  vars:
+    my_variable: "Hello World"
+  tasks: 
+   - name: "Print my_variable"
+     debug:
+       msg: "{{ my_variable }}"
+    
+   - name: "Install Apache"
+     apt:
+       name: apache2
+       state: present
+     when: ansible_os_family == "Debian"
+```
+
+
+## Roles
+
+Roles are a way to organize playbooks and tasks into reusable units. They are defined in a directory structure and can be included in playbooks using the `roles` keyword.
+
+```yaml
+---
+- name: "Hello World Playbook"
+  hosts: myserver
+  roles:
+    - role: myrole
+```
+
+```yaml
+# roles/myrole/tasks/main.yml
+---
+- name: "Print my_variable"
+  debug:
+    msg: "{{ my_variable }}"
+```
+
+## Ansible Galaxy
+
+Ansible Galaxy is a repository for roles.
+Install roles necessary for the playbooks from ansible galaxy :
+
+```
+ansible-galaxy install -r requirements.yml
+```
+
+## Common Modules
+
+### apt/yum
+
+Used to install packages
+
+```yaml
+- name: "Install Apache"
+  apt:
+    name: apache2
+```
+
+### file
+
+Used to manage files and directories. E.g. create, delete, change permissions, etc.
+
+```yaml
+- name: "Create a directory"
+  file:
+    path: /tmp/mydir
+    state: directory
+    mode: '0755' # optional, defines the permissions of the file
+
+- name: "Create a file"
+  file:
+    path: /tmp/myfile
+    state: touch
+    mode: '0644' 
+```
+
+### copy
+
+Used to copy files from the control machine to the managed nodes.
+
+```yaml
+- name: "Copy a file"
+  copy:
+    src: /tmp/myfile
+    dest: /tmp/myfile
+    mode: '0644' # optional, defines the permissions of the file
+```
+
+### service
+
+Used to manage services. E.g. start, stop, restart, etc.
+
+```yaml
+- name: "Start Apache"
+  service:
+    name: apache2
+    state: started
+    enabled: yes
+
+- name: "Stop Apache"
+  service:
+    name: apache2
+    state: stopped
+    enabled: no
+```
+
+
+## Variables and Facts
+
+You define variables in the playbook or in a separate file. You can also use facts, which are variables that are automatically gathered from the managed nodes.
+The variables are defined in the `vars` section of the playbook and you access them using the `{{ }}` syntax.
+ 
+```yaml
+---
+- name: "Hello World Playbook"
+  hosts: myserver
+  vars:
+    my_variable: "Hello World"
+
+  ...
+
+  tasks:
+    - name: "Print my_variable"
+      debug:
+        msg: "{{ my_variable }}"
+```
+
+Facts are automatically gathered from the managed nodes and you can access them using the `{{ }}` syntax.
+
+## Templates
+Templates are files that contain variables and are processed by Ansible to generate the final file. They are defined in the `templates` directory of the role and are referenced using the `template` module.
+
+```jinja2
+Main_variable {{ my_variable }}
+Port {{ ssh_port }}
+...
+```
+
+Use templates in a playbook:
+```yaml
+tasks:
+  - name: "Copy template"
+    template:
+      src: templates/main.conf.j2
+      dest: /etc/main.conf
+```
+
+## Conditionals and Loops
+
+You can use conditionals and loops to control the flow of your playbook. Conditionals are defined using the `when` keyword and loops are defined using the `with_items` keyword.
+
+```yaml
+tasks:
+  - name: "Install Apache"
+    apt:
+      name: apache2
+      state: present
+    when: ansible_os_family == "Debian"
+    with_items:
+      - apache2
+      - apache2-utils
+```
+
+## Handlers
+
+Handlers are tasks that are triggered by other tasks. They are defined in the `handlers` section of the playbook and are referenced using the `notify` keyword.
+
+```yaml
+tasks:
+  - name: "Install Apache"
+    apt:
+      name: apache2
+      state: present
+    notify:
+      - restart apache
+handlers:
+  - name: "restart apache"
+    service:
+      name: apache2
+      state: restarted
+      enabled: yes
+```
+
+## Best Practices and Tips
+
+### Vaults
+
+Vaults are used to encrypt sensitive data in your playbooks. They are defined using the `ansible-vault` command.
+
+To encrypt a file: 
+```bash
+ansible-vault encrypt secret.yml
+```
+
+To edit a file:
+```bash
+ansible-vault edit secret.yml
+```
+
+To reference a file in a playbook:
+```yaml
+- name
+  ...
+
+  tasks:
+    - name: "include vault variables"
+     include_vars:
+       file: ../secret.yml
+```
+
+## Troubleshooting
+
+### Debugging
+
+To debug a playbook, you can use the `debug` module.
+
+```yaml
+tasks:
+  - name: "Debug"
+    debug:
+      msg: "Hello World"
+```
+
+run a playbook in debug mode:
+```bash
+ansible-playbook playbook.yml -vvv
+```
+
+### Force execution of all tasks
+
+To force execution of all tasks, you can use the `--force-handlers` option.
+
+```bash
+ansible-playbook playbook.yml --force-handlers
+```
+
