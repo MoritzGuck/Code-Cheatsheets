@@ -43,11 +43,11 @@
     ]
   },
   {
-    "objectID": "cheatsheets/CLI Tools/git.html#changes",
-    "href": "cheatsheets/CLI Tools/git.html#changes",
+    "objectID": "cheatsheets/CLI Tools/git.html#getting-started",
+    "href": "cheatsheets/CLI Tools/git.html#getting-started",
     "title": "Git",
-    "section": "Changes",
-    "text": "Changes\n\nCode change workflow\n\n\nGet changes from remote repository\n\ngit fetch\n\n\n\nCheck differences to branch you want merge into yours\n\ngit diff feature1..dev\n\n\n\nMerge changes from remote branch into your branch\n\ngit merge origin master\n\n\n\nCheck what files are(n’t) staged for commit\n\ngit status\n\n\n\nStage all files that are tracked (not in .gitignore)\n\ngit add .\n\nIf necessary: Unstage all files (or a specific file) that are staged\n\n git reset [specific-file]\n\n\n\nCommit all staged files (add to versioning history)\n\ngit commit -m \"[ticket-id + what you changed]\"\n\n\n\nLoad commits into remote git repository\n\ngit push\n\n\n\n\n\nManaging changes\n\nSee changes due to last pull request\n\ngit log -p -2",
+    "section": "Getting started",
+    "text": "Getting started\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nInitialize a new git repository\ngit init my-repo\n\n\nGet the status of changes (staged, unstaged, untracked)\ngit status\n\n\nTrack files to staging\ngit add .\n\n\nRemove files from staging\ngit reset &lt;file&gt;\n\n\nCommit staged files\ngit commit -m \"informative commit message\"\n\n\nDiscard changes in a file (!: Your changes will be lost)\ngit restore &lt;file&gt;\n\n\n\n\n### Working with remote repositories\n\n| Description | Command |\n|-------------|---------|\n| Clone a remote repository | `git clone url.com` |\n| Push changes to remote repository | `git push` |\n| Pull changes from remote repository | `git pull` |\n\n## Changes\n\n### Code change workflow\n\n1. Get changes from remote repository\n: ```bash\ngit fetch\n\n\nCheck differences to branch you want merge into yours\n\ngit diff feature1..dev\n\n\n\nMerge changes from remote branch into your branch\n\ngit merge origin master\n\n\n\nCheck what files are(n’t) staged for commit\n\ngit status\n\n\n\nStage all files that are tracked (not in .gitignore)\n\ngit add .\n\nIf necessary: Unstage all files (or a specific file) that are staged\n\n git reset [specific-file]\n\n\n\nCommit all staged files (add to versioning history)\n\ngit commit -m \"[ticket-id + what you changed]\"\n\n\n\nLoad commits into remote git repository\n\ngit push\n\n\n\n\nManaging changes\n\nSee changes due to last pull request\n\ngit log -p -2",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
@@ -83,19 +83,7 @@
     "href": "cheatsheets/CLI Tools/git.html#branches",
     "title": "Git",
     "section": "Branches",
-    "text": "Branches\n\nList all branches and show which one you are on\n\ngit branch -a\n\nCreate new branch and check it out\n\ngit checkout -b [branch-name]\n\nChange to a specific branch\n\ngit checkout [specific-branch]\n\nDelete a specific branch\n\ngit branch -d [specific-branch]\n\nRename the current branch\n\ngit branch -m myNewBranch",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Git"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/git.html#history",
-    "href": "cheatsheets/CLI Tools/git.html#history",
-    "title": "Git",
-    "section": "History",
-    "text": "History\n\nShow commit history with branch dependencies\n\ngit log --graph --oneline",
+    "text": "Branches\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nList all branches and show which one you are on\ngit branch -a\n\n\nCreate new branch and check it out\ngit checkout -b [branch-name]\n\n\nChange to a specific branch\ngit checkout [specific-branch]\n\n\nDelete a specific branch\ngit branch -d [specific-branch]\n\n\nRename the current branch\ngit branch -m myNewBranch\n\n\nShow commit history with branch dependencies\ngit log --graph --oneline\n\n\n\n```",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
@@ -779,7 +767,7 @@
     "href": "cheatsheets/Cloud & Platform/ansible.html",
     "title": "Ansible",
     "section": "",
-    "text": "Ansible is used to automate tasks and manage infrastructure. It can run the tasks as programs (called modules) on multiple servers with minimal overhead. It is agentless, meaning it does not require any software to be installed on the managed nodes.",
+    "text": "Ansible is used to automate tasks and manage infrastructure. It can run the tasks as programs (called modules) on multiple servers with minimal overhead. It is agentless, meaning it does not require any software to be installed on the managed nodes.\n\nModules\n\nThe smallest unit of work in Ansible. They are written in Python and can be used to perform tasks such as installing packages, creating users, and managing services.\n\nPlay\n\nA single task that is executed in a specific order on a set of hosts.\n\nPlaybooks\n\nA collection of plays that are executed together. Playbooks are written in YAML and can be used to automate complex workflows.\n\nHosts\n\nA list of servers on which the tasks will be executed.\n\nInventory\n\nA list of hosts that Ansible will manage. It is written in INI format and can be used to group hosts together.\n\nRoles\n\nA way to organize playbooks and modules. Roles can be used to group related tasks together and can be reused across multiple playbooks.\n\nAnsible Tower\n\nA web-based interface for managing Ansible. It can be used to schedule playbooks, manage inventory, and monitor the status of tasks.",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",
@@ -790,8 +778,8 @@
     "objectID": "cheatsheets/Cloud & Platform/ansible.html#basic-concepts",
     "href": "cheatsheets/Cloud & Platform/ansible.html#basic-concepts",
     "title": "Ansible",
-    "section": "Basic Concepts",
-    "text": "Basic Concepts\n\nModules\n\nThe smallest unit of work in Ansible. They are written in Python and can be used to perform tasks such as installing packages, creating users, and managing services.\n\nPlay\n\nA single task that is executed in a specific order on a set of hosts.\n\nPlaybooks\n\nA collection of plays that are executed together. Playbooks are written in YAML and can be used to automate complex workflows.\n\nHosts\n\nA list of servers on which the tasks will be executed.\n\nInventory\n\nA list of hosts that Ansible will manage. It is written in INI format and can be used to group hosts together.\n\nRoles\n\nA way to organize playbooks and modules. Roles can be used to group related tasks together and can be reused across multiple playbooks.\n\nAnsible Tower\n\nA web-based interface for managing Ansible. It can be used to schedule playbooks, manage inventory, and monitor the status of tasks.",
+    "section": "",
+    "text": "Ansible is used to automate tasks and manage infrastructure. It can run the tasks as programs (called modules) on multiple servers with minimal overhead. It is agentless, meaning it does not require any software to be installed on the managed nodes.\n\nModules\n\nThe smallest unit of work in Ansible. They are written in Python and can be used to perform tasks such as installing packages, creating users, and managing services.\n\nPlay\n\nA single task that is executed in a specific order on a set of hosts.\n\nPlaybooks\n\nA collection of plays that are executed together. Playbooks are written in YAML and can be used to automate complex workflows.\n\nHosts\n\nA list of servers on which the tasks will be executed.\n\nInventory\n\nA list of hosts that Ansible will manage. It is written in INI format and can be used to group hosts together.\n\nRoles\n\nA way to organize playbooks and modules. Roles can be used to group related tasks together and can be reused across multiple playbooks.\n\nAnsible Tower\n\nA web-based interface for managing Ansible. It can be used to schedule playbooks, manage inventory, and monitor the status of tasks.",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",
@@ -803,7 +791,7 @@
     "href": "cheatsheets/Cloud & Platform/ansible.html#installation-and-setup",
     "title": "Ansible",
     "section": "Installation and Setup",
-    "text": "Installation and Setup\n\nFull installation\n\npipx install --include-deps ansible\n\nMinimal installation\n\npipx install ansible-core\n\n\nInstallation Guide",
+    "text": "Installation and Setup\nFull installation (including dependencies like python packages, ssh, etc.): pipx install --include-deps ansible\nMinimal installation: pipx install ansible-core\nInstallation Guide",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",
@@ -815,7 +803,7 @@
     "href": "cheatsheets/Cloud & Platform/ansible.html#getting-started",
     "title": "Ansible",
     "section": "Getting Started",
-    "text": "Getting Started\nThe common folder structure for Ansible is:\n.\n├── ansible.cfg\n├── Inventory\n|   └── hosts\n├── playbooks\n│   └── site.yml\n└── roles\n    └── common\n        ├── tasks\n        │   └── main.yml\n        └── templates\n            └── motd.j2\nrequirements.yml\nvault.yml\nMore info on the concrete files can be found below.",
+    "text": "Getting Started\nThe common folder structure for Ansible is:\n.\n├── ansible.cfg\n├── Inventory\n|   └── hosts\n├── playbooks\n└── roles\n    └── common\n        ├── tasks\n        └── templates\nrequirements.yml\nvault.yml\nMore info on the concrete files can be found below.",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",
@@ -851,7 +839,7 @@
     "href": "cheatsheets/Cloud & Platform/ansible.html#roles",
     "title": "Ansible",
     "section": "Roles",
-    "text": "Roles\nRoles are a way to organize playbooks and tasks into reusable units. They are defined in a directory structure and can be included in playbooks using the roles keyword.\n---\n- name: \"Hello World Playbook\"\n  hosts: myserver\n  roles:\n    - role: myrole\n# roles/myrole/tasks/main.yml\n---\n- name: \"Print my_variable\"\n  debug:\n    msg: \"{{ my_variable }}\"",
+    "text": "Roles\nRoles are a way to organize playbooks and tasks into reusable units. They are defined in a directory structure and can be included in playbooks using the roles keyword.\nReference a role in a playbook :\n---\n- name: \"Hello World Playbook\"\n  hosts: myserver\n  roles:\n    - role: myrole\nDefine a role:\n# roles/myrole/tasks/main.yml\n---\n- name: \"Print my_variable\"\n  debug:\n    msg: \"{{ my_variable }}\"",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",
@@ -935,7 +923,7 @@
     "href": "cheatsheets/Cloud & Platform/ansible.html#best-practices-and-tips",
     "title": "Ansible",
     "section": "Best Practices and Tips",
-    "text": "Best Practices and Tips\n### Vaults\nVaults are used to encrypt sensitive data in your playbooks. They are defined using the ansible-vault command.\nTo encrypt a file:\nansible-vault encrypt secret.yml\nTo edit a file:\nansible-vault edit secret.yml\nTo reference a file in a playbook:\n- name\n  ...\n\n  tasks:\n    - name: \"include vault variables\"\n     include_vars:\n       file: ../secret.yml",
+    "text": "Best Practices and Tips\n\nVaults\nVaults are used to encrypt sensitive data in your playbooks. They are defined using the ansible-vault command.\nTo encrypt a file:\nansible-vault encrypt secret.yml\nTo edit a file:\nansible-vault edit secret.yml\nTo reference a file in a playbook:\n- name\n  ...\n\n  tasks:\n    - name: \"include vault variables\"\n     include_vars:\n       file: ../secret.yml",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",
@@ -947,7 +935,7 @@
     "href": "cheatsheets/Cloud & Platform/ansible.html#troubleshooting",
     "title": "Ansible",
     "section": "Troubleshooting",
-    "text": "Troubleshooting\n### Debugging\nTo debug a playbook, you can use the debug module.\ntasks:\n  - name: \"Debug\"\n    debug:\n      msg: \"Hello World\"\nrun a playbook in debug mode:\nansible-playbook playbook.yml -vvv\n\nForce execution of all tasks\nTo force execution of all tasks, you can use the --force-handlers option.\nansible-playbook playbook.yml --force-handlers",
+    "text": "Troubleshooting\n\nDebugging\nTo debug a playbook, you can use the debug module.\ntasks:\n  - name: \"Debug\"\n    debug:\n      msg: \"Hello World\"\nrun a playbook in debug mode:\nansible-playbook playbook.yml -vvv\n\n\nForce execution of all tasks\nTo force execution of all tasks, you can use the --force-handlers option.\nansible-playbook playbook.yml --force-handlers",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",

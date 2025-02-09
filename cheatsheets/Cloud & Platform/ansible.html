@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-02-08">
+<meta name="dcterms.date" content="2025-02-09">
 <meta name="description" content="Ansible is a task and infrastructure automation tool. It is agentless.">
 
 <title>Ansible – Cheatsheets</title>
@@ -407,9 +407,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#templates" id="toc-templates" class="nav-link" data-scroll-target="#templates">Templates</a></li>
   <li><a href="#conditionals-and-loops" id="toc-conditionals-and-loops" class="nav-link" data-scroll-target="#conditionals-and-loops">Conditionals and Loops</a></li>
   <li><a href="#handlers" id="toc-handlers" class="nav-link" data-scroll-target="#handlers">Handlers</a></li>
-  <li><a href="#best-practices-and-tips" id="toc-best-practices-and-tips" class="nav-link" data-scroll-target="#best-practices-and-tips">Best Practices and Tips</a></li>
+  <li><a href="#best-practices-and-tips" id="toc-best-practices-and-tips" class="nav-link" data-scroll-target="#best-practices-and-tips">Best Practices and Tips</a>
+  <ul class="collapse">
+  <li><a href="#vaults" id="toc-vaults" class="nav-link" data-scroll-target="#vaults">Vaults</a></li>
+  </ul></li>
   <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
   <ul class="collapse">
+  <li><a href="#debugging" id="toc-debugging" class="nav-link" data-scroll-target="#debugging">Debugging</a></li>
   <li><a href="#force-execution-of-all-tasks" id="toc-force-execution-of-all-tasks" class="nav-link" data-scroll-target="#force-execution-of-all-tasks">Force execution of all tasks</a></li>
   </ul></li>
   </ul>
@@ -440,7 +444,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 8, 2025</p>
+      <p class="date">February 9, 2025</p>
     </div>
   </div>
   
@@ -452,9 +456,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Ansible is used to automate tasks and manage infrastructure. It can run the tasks as programs (called modules) on multiple servers with minimal overhead. It is agentless, meaning it does not require any software to be installed on the managed nodes.</p>
 <section id="basic-concepts" class="level2">
 <h2 class="anchored" data-anchor-id="basic-concepts">Basic Concepts</h2>
+<p>Ansible is used to automate tasks and manage infrastructure. It can run the tasks as programs (called modules) on multiple servers with minimal overhead. It is agentless, meaning it does not require any software to be installed on the managed nodes.</p>
 <dl>
 <dt>Modules</dt>
 <dd>
@@ -488,16 +492,8 @@ A web-based interface for managing Ansible. It can be used to schedule playbooks
 </section>
 <section id="installation-and-setup" class="level2">
 <h2 class="anchored" data-anchor-id="installation-and-setup">Installation and Setup</h2>
-<dl>
-<dt>Full installation</dt>
-<dd>
-<code>pipx install --include-deps ansible</code>
-</dd>
-<dt>Minimal installation</dt>
-<dd>
-<code>pipx install ansible-core</code>
-</dd>
-</dl>
+<p>Full installation (including dependencies like python packages, ssh, etc.): <code>pipx install --include-deps ansible</code></p>
+<p>Minimal installation: <code>pipx install ansible-core</code></p>
 <p><a href="https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html">Installation Guide</a></p>
 </section>
 <section id="getting-started" class="level2">
@@ -508,13 +504,10 @@ A web-based interface for managing Ansible. It can be used to schedule playbooks
 ├── Inventory
 |   └── hosts
 ├── playbooks
-│   └── site.yml
 └── roles
     └── common
         ├── tasks
-        │   └── main.yml
         └── templates
-            └── motd.j2
 requirements.yml
 vault.yml</code></pre>
 <p>More info on the concrete files can be found below.</p>
@@ -557,11 +550,13 @@ vault.yml</code></pre>
 <section id="roles" class="level2">
 <h2 class="anchored" data-anchor-id="roles">Roles</h2>
 <p>Roles are a way to organize playbooks and tasks into reusable units. They are defined in a directory structure and can be included in playbooks using the <code>roles</code> keyword.</p>
+<p>Reference a role in a playbook :</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"Hello World Playbook"</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hosts</span><span class="kw">:</span><span class="at"> myserver</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">roles</span><span class="kw">:</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">role</span><span class="kw">:</span><span class="at"> myrole</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Define a role:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># roles/myrole/tasks/main.yml</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"Print my_variable"</span></span>
@@ -571,7 +566,7 @@ vault.yml</code></pre>
 <section id="ansible-galaxy" class="level2">
 <h2 class="anchored" data-anchor-id="ansible-galaxy">Ansible Galaxy</h2>
 <p>Ansible Galaxy is a repository for roles. Install roles necessary for the playbooks from ansible galaxy :</p>
-<pre><code>ansible-galaxy install -r requirements.yml</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ansible-galaxy</span> install <span class="at">-r</span> requirements.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="common-modules" class="level2">
 <h2 class="anchored" data-anchor-id="common-modules">Common Modules</h2>
@@ -684,7 +679,8 @@ Port {{ ssh_port }}
 </section>
 <section id="best-practices-and-tips" class="level2">
 <h2 class="anchored" data-anchor-id="best-practices-and-tips">Best Practices and Tips</h2>
-<p>###&nbsp;Vaults</p>
+<section id="vaults" class="level3">
+<h3 class="anchored" data-anchor-id="vaults">Vaults</h3>
 <p>Vaults are used to encrypt sensitive data in your playbooks. They are defined using the <code>ansible-vault</code> command.</p>
 <p>To encrypt a file:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ansible-vault</span> encrypt secret.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -699,9 +695,11 @@ Port {{ ssh_port }}
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="fu">include_vars</span><span class="kw">:</span></span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="at">       </span><span class="fu">file</span><span class="kw">:</span><span class="at"> ../secret.yml</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+</section>
 <section id="troubleshooting" class="level2">
 <h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
-<p>###&nbsp;Debugging</p>
+<section id="debugging" class="level3">
+<h3 class="anchored" data-anchor-id="debugging">Debugging</h3>
 <p>To debug a playbook, you can use the <code>debug</code> module.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tasks</span><span class="kw">:</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"Debug"</span></span>
@@ -709,6 +707,7 @@ Port {{ ssh_port }}
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">msg</span><span class="kw">:</span><span class="at"> </span><span class="st">"Hello World"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>run a playbook in debug mode:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ansible-playbook</span> playbook.yml <span class="at">-vvv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="force-execution-of-all-tasks" class="level3">
 <h3 class="anchored" data-anchor-id="force-execution-of-all-tasks">Force execution of all tasks</h3>
 <p>To force execution of all tasks, you can use the <code>--force-handlers</code> option.</p>
