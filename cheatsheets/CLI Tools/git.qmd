@@ -34,6 +34,26 @@ Download git repo from server
 git clone url.com
 ```
 
+## Getting started
+
+| Description | Command |
+|-------------|---------|
+| Initialize a new git repository | `git init my-repo` |
+| Get the status of changes (staged, unstaged, untracked) | `git status` |
+| Track files to staging | `git add .` |
+| Remove files from staging | `git reset <file>` |
+| Commit staged files | `git commit -m "informative commit message"` |
+| Discard changes in a file (**!**: Your changes will be lost) | `git restore <file>` |
+```
+
+### Working with remote repositories
+
+| Description | Command |
+|-------------|---------|
+| Clone a remote repository | `git clone url.com` |
+| Push changes to remote repository | `git push` |
+| Pull changes from remote repository | `git pull` |
+
 ## Changes
 
 ### Code change workflow
@@ -128,34 +148,12 @@ git checkout [commit-SHA]
 
 ## Branches
 
-List all branches and show which one you are on
-: ```bash
-git branch -a
+| Description | Command |
+|-------------|---------|
+| List all branches and show which one you are on | `git branch -a` |
+| Create new branch and check it out | `git checkout -b [branch-name]` |
+| Change to a specific branch | `git checkout [specific-branch]` |
+| Delete a specific branch | `git branch -d [specific-branch]` |
+| Rename the current branch | `git branch -m myNewBranch` |
+| Show commit history with branch dependencies | `git log --graph --oneline` |
 ```
-
-Create new branch and check it out
-: ```bash
-git checkout -b [branch-name]
-```
-
-Change to a specific branch
-: ```bash
-git checkout [specific-branch]
-```
-
-Delete a specific branch
-: ```bash
-git branch -d [specific-branch]
-```
-
-Rename the current branch
-: ```bash
-git branch -m myNewBranch
-``` 
-
-## History
-
-Show commit history with branch dependencies 
-: ```bash
-git log --graph --oneline
-``` 

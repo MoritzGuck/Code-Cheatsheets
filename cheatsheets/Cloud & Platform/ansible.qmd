@@ -9,10 +9,10 @@ categories:
   - Infrastructure as Code
 ---
 
+## Basic Concepts
+
 Ansible is used to automate tasks and manage infrastructure. It can run the tasks as programs (called modules) on multiple servers with minimal overhead. 
 It is agentless, meaning it does not require any software to be installed on the managed nodes. 
-
-## Basic Concepts
 
 Modules
 : The smallest unit of work in Ansible. They are written in Python and can be used to perform tasks such as installing packages, creating users, and managing services.
@@ -38,11 +38,9 @@ Ansible Tower
 
 ## Installation and Setup
 
-Full installation
-: `pipx install --include-deps ansible`
+Full installation (including dependencies like python packages, ssh, etc.): `pipx install --include-deps ansible`
 
-Minimal installation
-: `pipx install ansible-core`
+Minimal installation: `pipx install ansible-core`
 
 [Installation Guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
@@ -55,13 +53,10 @@ The common folder structure for Ansible is:
 ├── Inventory
 |   └── hosts
 ├── playbooks
-│   └── site.yml
 └── roles
     └── common
         ├── tasks
-        │   └── main.yml
         └── templates
-            └── motd.j2
 requirements.yml
 vault.yml
 ```
@@ -116,6 +111,7 @@ They start with the `---` line, followed by the `name` of the playbook and the `
 
 Roles are a way to organize playbooks and tasks into reusable units. They are defined in a directory structure and can be included in playbooks using the `roles` keyword.
 
+Reference a role in a playbook :
 ```yaml
 ---
 - name: "Hello World Playbook"
@@ -124,6 +120,7 @@ Roles are a way to organize playbooks and tasks into reusable units. They are de
     - role: myrole
 ```
 
+Define a role:
 ```yaml
 # roles/myrole/tasks/main.yml
 ---
@@ -137,7 +134,7 @@ Roles are a way to organize playbooks and tasks into reusable units. They are de
 Ansible Galaxy is a repository for roles.
 Install roles necessary for the playbooks from ansible galaxy :
 
-```
+```bash
 ansible-galaxy install -r requirements.yml
 ```
 
@@ -280,7 +277,7 @@ handlers:
 
 ## Best Practices and Tips
 
-### Vaults
+### Vaults
 
 Vaults are used to encrypt sensitive data in your playbooks. They are defined using the `ansible-vault` command.
 
@@ -307,7 +304,7 @@ To reference a file in a playbook:
 
 ## Troubleshooting
 
-### Debugging
+### Debugging
 
 To debug a playbook, you can use the `debug` module.
 
