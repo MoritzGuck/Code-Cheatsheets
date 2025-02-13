@@ -12,20 +12,14 @@ categories:
 
 ## Configuration
 
-Set username (for your commits)
-: ```bash
-git config --global user.name "myname"
-```
+| Description | Command |
+|-------------|---------|
+| Set username (for your commits) | `git config --global user.name "myname"` |
+| Set email (for your commits) | `git config --global user.email "my@email.com"` |
+| Enable CLI color codes | `git config --global color.ui auto`
 
-Set email (for your commits)
-: ```bash
-git config --global user.email "my@email.com"
-```
+:  {tbl-colwidths="[50,50]"}
 
-Enable CLI color codes
-: ```bash
-git config --global color.ui auto
-```
 
 ## New repositories
 
@@ -36,6 +30,7 @@ git clone url.com
 
 ## Getting started
 
+
 | Description | Command |
 |-------------|---------|
 | Initialize a new git repository | `git init my-repo` |
@@ -44,7 +39,9 @@ git clone url.com
 | Remove files from staging | `git reset <file>` |
 | Commit staged files | `git commit -m "informative commit message"` |
 | Discard changes in a file (**!**: Your changes will be lost) | `git restore <file>` |
-```
+
+:  {tbl-colwidths="[50,50]"}
+
 
 ### Working with remote repositories
 
@@ -53,6 +50,8 @@ git clone url.com
 | Clone a remote repository | `git clone url.com` |
 | Push changes to remote repository | `git push` |
 | Pull changes from remote repository | `git pull` |
+:  {tbl-colwidths="[50,50]"}
+
 
 ## Changes
 
@@ -156,4 +155,4 @@ git checkout [commit-SHA]
 | Delete a specific branch | `git branch -d [specific-branch]` |
 | Rename the current branch | `git branch -m myNewBranch` |
 | Show commit history with branch dependencies | `git log --graph --oneline` |
-```
+
