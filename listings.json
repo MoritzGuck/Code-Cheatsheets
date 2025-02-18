@@ -25,7 +25,8 @@
       "/cheatsheets/Languages/R/tidymodels.html",
       "/cheatsheets/Other/VSCode.html",
       "/cheatsheets/Languages/Python/Venv.html",
-      "/cheatsheets/Languages/Python/ruff.html"
+      "/cheatsheets/Languages/Python/ruff.html",
+      "/cheatsheets/Languages/Python/uv.html"
     ]
   }
 ]

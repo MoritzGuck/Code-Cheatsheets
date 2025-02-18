@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Dplyr is a data transformation library in the collection Tidyverse.">
+<meta name="description" content="uv is a Python package manager with additional features for managing Python versions, scripts, projects, and tools.">
 
-<title>Dplyr – Cheatsheets</title>
+<title>uv – Cheatsheets</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Dart_summary.html">Languages</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/R/dplyr.html">R</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/R/dplyr.html">Dplyr</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Dart_summary.html">Languages</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Python/Conda.html">Python</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Python/uv.html">uv</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -310,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../cheatsheets/Languages/Python/uv.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../cheatsheets/Languages/Python/uv.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">uv</span></a>
   </div>
 </li>
@@ -333,7 +333,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../cheatsheets/Languages/R/dplyr.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../cheatsheets/Languages/R/dplyr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dplyr</span></a>
   </div>
 </li>
@@ -394,30 +394,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-wrangling-with-dplyr" id="toc-data-wrangling-with-dplyr" class="nav-link active" data-scroll-target="#data-wrangling-with-dplyr">Data Wrangling with dplyr</a>
-  <ul class="collapse">
-  <li><a href="#aggregation" id="toc-aggregation" class="nav-link" data-scroll-target="#aggregation">Aggregation</a></li>
-  <li><a href="#group-by" id="toc-group-by" class="nav-link" data-scroll-target="#group-by">Group-by</a></li>
-  <li><a href="#combine-tables" id="toc-combine-tables" class="nav-link" data-scroll-target="#combine-tables">Combine tables</a></li>
-  </ul></li>
+  <li><a href="#concepts" id="toc-concepts" class="nav-link active" data-scroll-target="#concepts">Concepts</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#python-versions" id="toc-python-versions" class="nav-link" data-scroll-target="#python-versions">Python Versions</a></li>
+  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts">Scripts</a></li>
+  <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects">Projects</a></li>
+  <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools">Tools</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Dart_summary.html">Languages</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/R/dplyr.html">R</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/R/dplyr.html">Dplyr</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Dart_summary.html">Languages</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Python/Conda.html">Python</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Python/uv.html">uv</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Dplyr</h1>
+<h1 class="title">uv</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">language</div>
-    <div class="quarto-category">data science</div>
+    <div class="quarto-category">CLI</div>
+    <div class="quarto-category">tool</div>
+    <div class="quarto-category">package manager</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Dplyr is a data transformation library in the collection Tidyverse.
+    uv is a Python package manager with additional features for managing Python versions, scripts, projects, and tools.
   </div>
 </div>
 
@@ -434,106 +435,140 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="data-wrangling-with-dplyr" class="level2">
-<h2 class="anchored" data-anchor-id="data-wrangling-with-dplyr">Data Wrangling with dplyr</h2>
-<dl>
-<dt>Load dplyr</dt>
-<dd>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl>
-<p>The dplyr package uses the pipe-command to pass the result of one transformation to the next:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(column1 <span class="sc">==</span> <span class="st">"Value"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(column2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl>
-<dt>Filter</dt>
-<dd>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(column1 <span class="sc">==</span> <span class="st">"Value"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Order / Sort</dt>
-<dd>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(col1) <span class="sc">%&gt;%</span> <span class="co"># ascending</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(<span class="fu">desc</span>(col2)) <span class="co"># descending</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Mutate / Change / Add columns</dt>
-<dd>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">resultCol =</span> col <span class="sc">/</span> <span class="dv">1000</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl>
-<section id="aggregation" class="level3">
-<h3 class="anchored" data-anchor-id="aggregation">Aggregation</h3>
-<dl>
-<dt>Summarize / aggregate</dt>
-<dd>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">medianCol1 =</span> <span class="fu">median</span>(col1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Aggregation functions</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>sum</td>
-<td><code>sum()</code></td>
-</tr>
-<tr class="even">
-<td>mean</td>
-<td><code>mean()</code></td>
-</tr>
-<tr class="odd">
-<td>median</td>
-<td><code>median()</code></td>
-</tr>
-<tr class="even">
-<td>minimum / maximum</td>
-<td><code>min()</code> / <code>max()</code></td>
-</tr>
-<tr class="odd">
-<td>first / last position</td>
-<td><code>first()</code> / <code>last()</code></td>
-</tr>
-<tr class="even">
-<td>counts</td>
-<td><code>n()</code> / <code>n_distinct()</code></td>
-</tr>
-</tbody>
-</table>
+<section id="concepts" class="level3">
+<h3 class="anchored" data-anchor-id="concepts">Concepts</h3>
+<ul>
+<li><strong>Projects</strong>: You can manage packages project-wide using <code>uv</code> commands and the <code>project.toml</code> file.</li>
+<li><strong>Scripts</strong>: You can also manage packages for independent scripts using <code>uv</code> commands using the script-header in a python script.</li>
+<li><strong>Scripts</strong>: You can also manage packages for independent scripts using <code>uv</code> commands using the script-header in a python script.</li>
+<li><strong>Tools</strong>: To run packages as commandline tools, you can use special <code>uv</code> commands.</li>
+</ul>
 </section>
-<section id="group-by" class="level3">
-<h3 class="anchored" data-anchor-id="group-by">Group-by</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(year_col, continent_col) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="fu">mean</span>(gpd_col))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>aggregates only for the groups defined before</p>
-</section>
-<section id="combine-tables" class="level3">
-<h3 class="anchored" data-anchor-id="combine-tables">Combine tables</h3>
-<p>Stack horizontally (new column)</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_cols</span>(new_dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="installation" class="level3">
+<h3 class="anchored" data-anchor-id="installation">Installation</h3>
 <dl>
-<dt>Join tables</dt>
+<dt>Install uv</dt>
 <dd>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dataset_1 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(dataset_2, <span class="at">by =</span> <span class="fu">join_by</span>(col1 <span class="sc">==</span> col2), <span class="at">relationship =</span> <span class="st">"one-to-one"</span>) </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>... <span class="sc">%&gt;%</span> <span class="fu">right_join</span>(...)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>... <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(...) <span class="co"># only keeps matching samples</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>... <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(...) <span class="co"># keeps all samples in both datasets</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pipx</span> install uv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Upgrade uv</dt>
+<dd>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> self update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </dd>
 </dl>
-<p>relationships checks can be: <code>"one-to-one"</code>, <code>"one-to-many"</code>, <code>"many-to-one"</code> and <code>"many-to-many"</code> (does not make a check)</p>
+</section>
+<section id="python-versions" class="level3">
+<h3 class="anchored" data-anchor-id="python-versions">Python Versions</h3>
+<p>Manage Python installations and versions.</p>
+<dl>
+<dt>Install Python versions</dt>
+<dd>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python install 3.9.7</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>List available Python versions</dt>
+<dd>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Find an installed Python version</dt>
+<dd>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python find 3.9</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Pin a project to a specific Python version</dt>
+<dd>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python pin 3.9.7</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Uninstall a Python version</dt>
+<dd>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python uninstall 3.9.7</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+</dl>
+</section>
+<section id="scripts" class="level3">
+<h3 class="anchored" data-anchor-id="scripts">Scripts</h3>
+<p>Execute and manage dependencies in standalone Python scripts. The script needs to contain a script header.</p>
+<dl>
+<dt>script header</dt>
+<dd>
+```python # /// script # dependencies = [ # “requests&lt;3”, # “rich”, # ] # ///
+</dd>
+</dl>
+<p>import requests from rich import print …</p>
+<pre><code>
+Run a script
+: ```bash
+uv run example.py</code></pre>
+<dl>
+<dt>Add a dependency to a script</dt>
+<dd>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add <span class="at">--script</span> SomePackage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Remove a dependency from a script</dt>
+<dd>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> remove <span class="at">--script</span> SomePackage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+</dl>
+</section>
+<section id="projects" class="level3">
+<h3 class="anchored" data-anchor-id="projects">Projects</h3>
+<p>Create and manage depencies of whole projects with a <code>pyproject.toml</code> file.</p>
+<dl>
+<dt>Create a new project with a <code>pyproject.toml</code> file and a virtual environment</dt>
+<dd>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Add a dependency to the project</dt>
+<dd>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add SomePackage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Remove a dependency from the project</dt>
+<dd>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> remove SomePackage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Sync project dependencies with the virtual environment</dt>
+<dd>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Create a lockfile for dependencies</dt>
+<dd>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> lock</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Run a command in the project environment</dt>
+<dd>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>View the dependency tree</dt>
+<dd>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+</dl>
+</section>
+<section id="tools" class="level3">
+<h3 class="anchored" data-anchor-id="tools">Tools</h3>
+<p>Install and manage tools from Python package indexes.</p>
+<dl>
+<dt>Run a tool in a temporary environment</dt>
+<dd>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uvx</span> ruff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Install a tool user-wide</dt>
+<dd>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool install black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Uninstall a tool</dt>
+<dd>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool uninstall black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>List installed tools</dt>
+<dd>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>Update the shell to include tool executables</dt>
+<dd>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool update-shell</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+</dl>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
