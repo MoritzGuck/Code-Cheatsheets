@@ -39,6 +39,9 @@ git clone url.com
 | Remove files from staging | `git reset <file>` |
 | Commit staged files | `git commit -m "informative commit message"` |
 | Discard changes in a file (**!**: Your changes will be lost) | `git restore <file>` |
+| Show commit history | `git log` |
+| Go back to a commit | `git checkout <commit hash>` |
+| Go back to the latest commit | `git checkout my-branch-name` |
 
 :  {tbl-colwidths="[50,50]"}
 
@@ -53,9 +56,37 @@ git clone url.com
 :  {tbl-colwidths="[50,50]"}
 
 
-## Changes
+### Working with Branches
 
-### Code change workflow
+| Description | Command |
+|-------------|---------|
+| Create a new branch | `git branch my-branch-name` |
+| Switch to a branch | `git checkout my-branch-name` |
+| Create and switch to a new branch | `git checkout -b my-branch-name` or `git switch my-branch-name` |
+| Delete a branch | `git branch -d my-branch-name` |
+| List all branches | `git branch` |
+| Merge a branch into the current branch | `git merge my-branch-name` |
+
+## Workflows
+
+### Fetch newest changes of your branch from remote
+
+1. Get changes from remote repository
+: ```
+git fetch
+``` 
+
+2. Check what changed
+: ```
+git diff my-branch-name origin/my-branch-name
+```
+
+3. Merge changes from remote branch into your branch
+: ```
+git pull
+```
+
+### Add changes from different branch to your branch
 
 1. Get changes from remote repository
 : ```bash
@@ -69,7 +100,7 @@ git diff feature1..dev
 
 3. Merge changes from remote branch into your branch
 : ```bash
-git merge origin master
+git merge origin dev
 ```
 
 4. Check what files are(n't) staged for commit
