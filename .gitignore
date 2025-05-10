@@ -403,3 +403,6 @@ FodyWeavers.xsd
 /.quarto/
 _site/*
 .DS_Store
+
+
+uv.lock
