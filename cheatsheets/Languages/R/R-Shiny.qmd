@@ -1,0 +1,94 @@
+---
+title: "R Shiny"
+description: "Shiny is a framework to build web apps to interactively visualize data."
+format: html
+from: markdown+emoji
+categories:
+  - R
+  - data science
+  - visualize
+---
+
+## basics
+
+Shiny apps comprise: 
+- **UI**: Web page that users can interact with.
+- **Server**: A server that runs an R-session that reacts to the user interaction and updates the UI.
+
+### Starting template:
+
+```
+shinyApp(ui = ui, server = server)
+library(shiny)
+ui <- fluidPage()
+server <- function(<inputfunctions>, <outputfunctions>){}
+shinyApp(ui = ui, server = server)
+```
+
+## Inputs
+
+Add the following functions as arguments to the `fluidPage`-function.
+
+- `textInput(inputId, label, icon, ...)`: Creates a text input box where user can type input.
+- `actionButton(inputId, label, icon, ...)`: Creates an action button that triggers an event when clicked.
+- `checkboxGroupInput(inputId, label, choices)`, ` RadioButtons(inputId, label, choices)`, `sliderInput(inputId, label, min, max, value, ...)`, `dateRangeInput(inputId, lable, value, start, end, min, max, )`, ...
+
+## Outputs
+
+Add the following functions as arguments to the `fluidPage`-function.
+
+- `textOutput()`: Displays text output, which can be updated dynamically based on user inputs or server calculations.
+- `plotOutput()`, `imageOutput()`, `verbatimTextOutput()`, etc.: Display different types of outputs, such as plots, images, and raw text.
+
+## Server
+
+- `server` function: Contains the code that runs on the server side, calculates values based on user inputs, and updates output displays.
+
+```R
+server <- function(input, output){
+    output$hist <- renderPlot({hist(rnorm(input$n))})
+}
+```
+
+This takes the input functions and uses the input with `inputId=n` as the input for the `hist`-function. 
+It then produces an output for the output-function with `outputId="hist"`.
+
+## UI (User Interface)
+
+- `fluidPage()`, `navbarPage()`, etc.: Create the layout of the application.
+- `mainPanel()`, `sidebarPanel()`, `tabsetPanel()`, `tabPanel()`, etc.: Define sections and panels within the layout.
+
+## Reactive Expressions
+
+- `reactive()`: Creates a reactive expression that caches its value to reduce computation time.
+- `eventReactive()`: Creates a reactive expression that is triggered by an event, such as a button click or input change.
+
+## Dependencies and Updating Displays
+
+- A reactive expression notifies its dependencies when it needs to be recalculated.
+- To update the display of an output based on a reactive expression, use `renderText()`, `renderPlot()`, etc., and pass the reactive expression as the function argument.
+
+## Modularizing Reactions
+
+- Split complex applications into smaller, more manageable modules using separate `ui` and `server` functions for each module.
+- Use `includeCSS()` or `includeScript()` to include external CSS and JavaScript files in your application.
+
+## Delaying Reactions
+
+- Use the `debounce()` function from the `shinyjs` package to delay reactions, reducing the number of times an event is triggered.
+
+## Navigation
+
+- Use `tabsetPanel()`, `navlistPanel()`, etc., to create tabs and navigate between different sections of your application.
+
+## Images
+
+- Include images in your Shiny app by linking to them using the `img()` function, with the image file located in the www subdirectory.
+
+## Publish
+
+In R-console: 
+```
+rsconnect::deployApp("<path to directory>")
+```
+

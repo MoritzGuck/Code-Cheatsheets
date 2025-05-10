@@ -1,0 +1,171 @@
+---
+title: "Docker"
+description: "Docker is the most popular containerization tool."
+format: html
+categories:
+    - CLI
+    - tool
+    - container
+draft: true
+---
+
+## Dockerfile
+
+Dockerfile example:
+```dockerfile
+FROM rocker/shiny:latest
+RUN apt-get update
+RUN apt-get install -qq -y libpq-dev
+RUN install2.r ggplot2 shiny shinydashboard \
+    shinydashboardPlus \
+    dplyr RPostgres
+```
+
+Explanation:
+
+- `FROM` specifies the base image
+- `RUN` executes a command in the container
+
+## Basic Docker Commands
+
+| Description | Command |
+|-------------|---------|
+| Start application | `docker run` |
+| List containers | `docker ps` |
+| List docker images | `docker images` |
+| Pull images from registry | `docker pull` |
+| Run container based on image | `docker run` |
+| Kill container | `docker kill` |
+| Build image based on Dockerfile | `docker build <dir-with-docker-file>` |
+| Execute command inside container | `docker exec <command> <container>` |
+
+: {tbl-colwidths="[50,50]"}
+
+## Interacting with Containers
+
+Start a container and execute bash:
+```bash
+docker run -d rocker/shiny
+docker exec -it rocker/shiny /bin/bash
+```
+
+Start R directly in a container:
+```bash
+docker exec -it rocker/shiny /usr/local/bin/R
+```
+
+### Container Management
+| Description | Command |
+|-------------|---------|
+| Stop container | `docker stop <container-name/container-id>` |
+| Remove container | `docker rm <container-name/container-id>` |
+| Remove container and its volumes | `docker rm -v <container-name/container-id>` |
+| Restart container | `docker restart <container-name/container-id>` |
+
+: {tbl-colwidths="[50,50]"}
+
+## Docker Compose
+
+Example docker-compose.yml:
+```yaml
+services:
+  postgres:
+    container_name: db_container
+    build: ./postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./pgdata:/var/lib/postgresql/data"
+  
+  shiny:
+    container_name: shiny
+    depends_on:
+      - postgres
+    build: ./shiny
+    volumes:
+      - "./shiny-logs:/var/log/shiny-server"
+      - "./shiny-home:/srv/shiny-server"
+    ports:
+      - "3838:3838"
+```
+
+Run docker-compose:
+```bash
+docker compose up --force-recreate
+```
+
+## Debugging Tips
+
+View container logs:
+```bash
+docker logs <container-name>
+```
+
+Prevent container from crashing for debugging:
+Add to docker-compose.yml:
+```yaml
+command: "sleep infinity"
+```
+
+Container Status:
+| Description | Command |
+|-------------|---------|
+| List running containers (with grep filter) | `docker ps \| grep <container-name>` |
+| Show all containers including stopped ones | `docker ps -a` |
+
+: {tbl-colwidths="[50,50]"}
+
+
+Container Logs:
+| Description | Command |
+|-------------|---------|
+| View container logs | `docker logs <container-name>` |
+| Follow container logs live | `docker logs -f <container-name>` |
+| Show last N lines of logs | `docker logs --tail=100 <container-name>` |
+
+: {tbl-colwidths="[50,50]"}
+
+
+Network Debugging:
+| Description | Command |
+|-------------|---------|
+| Check port mappings | `netstat -tulpn | grep <port-number>` |
+| Test container connectivity | `curl -v http://localhost:<port>` |
+| List all Docker networks | `docker network ls` |
+| Inspect network settings | `docker network inspect <network-name>` |
+
+: {tbl-colwidths="[50,50]"}
+
+
+Container Information:
+| Description | Command |
+|-------------|---------|
+| Show detailed container info | `docker inspect <container-name>` |
+| Show container resource usage | `docker stats <container-name>` |
+| Show processes running in container | `docker top <container-name>` |
+
+: {tbl-colwidths="[50,50]"}
+
+
+Troubleshooting Commands:
+| Description | Command |
+|-------------|---------|
+| Check if container can reach internet | `docker exec <container-name> ping 8.8.8.8` |
+| Get shell access inside container | `docker exec -it <container-name> /bin/bash` |
+| Check container logs since specific time | `docker logs --since 30m <container-name>` |
+| Check container environment variables | `docker exec <container-name> env` |
+
+: {tbl-colwidths="[50,50]"}
+
+Volume Inspection:
+| Description | Command |
+|-------------|---------|
+| List volumes | `docker volume ls` |
+| Inspect volume | `docker volume inspect <volume-name>` |
+| Check volume mount points | `docker inspect -f '{{ .Mounts }}' <container-name>` |
+
+: {tbl-colwidths="[50,50]"}
