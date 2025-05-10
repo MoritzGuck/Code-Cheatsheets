@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Venv is the built-in virtual environment manager for python.">
+<meta name="description" content="Shiny is a framework to build web apps to interactively visualize data.">
 
-<title>Venv – Cheatsheets</title>
+<title>R Shiny – Cheatsheets</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -283,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Dart_summary.html">Languages</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Python/Conda.html">Python</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Python/Venv.html">Venv</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Dart_summary.html">Languages</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/R/dplyr.html">R</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/R/R-Shiny.html">R Shiny</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -488,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../cheatsheets/Languages/Python/Venv.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../cheatsheets/Languages/Python/Venv.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Venv</span></a>
   </div>
 </li>
@@ -523,7 +523,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../cheatsheets/Languages/R/R-Shiny.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../cheatsheets/Languages/R/R-Shiny.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">R Shiny</span></a>
   </div>
 </li>
@@ -578,9 +578,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#create-and-delete-environments" id="toc-create-and-delete-environments" class="nav-link active" data-scroll-target="#create-and-delete-environments">Create and delete environments</a></li>
-  <li><a href="#use-environment" id="toc-use-environment" class="nav-link" data-scroll-target="#use-environment">Use environment</a></li>
-  <li><a href="#install-packages" id="toc-install-packages" class="nav-link" data-scroll-target="#install-packages">Install packages</a></li>
+  <li><a href="#basics" id="toc-basics" class="nav-link active" data-scroll-target="#basics">basics</a>
+  <ul class="collapse">
+  <li><a href="#starting-template" id="toc-starting-template" class="nav-link" data-scroll-target="#starting-template">Starting template:</a></li>
+  </ul></li>
+  <li><a href="#inputs" id="toc-inputs" class="nav-link" data-scroll-target="#inputs">Inputs</a></li>
+  <li><a href="#outputs" id="toc-outputs" class="nav-link" data-scroll-target="#outputs">Outputs</a></li>
+  <li><a href="#server" id="toc-server" class="nav-link" data-scroll-target="#server">Server</a></li>
+  <li><a href="#ui-user-interface" id="toc-ui-user-interface" class="nav-link" data-scroll-target="#ui-user-interface">UI (User Interface)</a></li>
+  <li><a href="#reactive-expressions" id="toc-reactive-expressions" class="nav-link" data-scroll-target="#reactive-expressions">Reactive Expressions</a></li>
+  <li><a href="#dependencies-and-updating-displays" id="toc-dependencies-and-updating-displays" class="nav-link" data-scroll-target="#dependencies-and-updating-displays">Dependencies and Updating Displays</a></li>
+  <li><a href="#modularizing-reactions" id="toc-modularizing-reactions" class="nav-link" data-scroll-target="#modularizing-reactions">Modularizing Reactions</a></li>
+  <li><a href="#delaying-reactions" id="toc-delaying-reactions" class="nav-link" data-scroll-target="#delaying-reactions">Delaying Reactions</a></li>
+  <li><a href="#navigation" id="toc-navigation" class="nav-link" data-scroll-target="#navigation">Navigation</a></li>
+  <li><a href="#images" id="toc-images" class="nav-link" data-scroll-target="#images">Images</a></li>
+  <li><a href="#publish" id="toc-publish" class="nav-link" data-scroll-target="#publish">Publish</a></li>
   </ul>
 </nav>
     </div>
@@ -588,19 +600,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Dart_summary.html">Languages</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Python/Conda.html">Python</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Python/Venv.html">Venv</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/Dart_summary.html">Languages</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/R/dplyr.html">R</a></li><li class="breadcrumb-item"><a href="../../../cheatsheets/Languages/R/R-Shiny.html">R Shiny</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Venv</h1>
+<h1 class="title">R Shiny</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">tool</div>
-    <div class="quarto-category">CLI</div>
-    <div class="quarto-category">virtual environments</div>
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">data science</div>
+    <div class="quarto-category">visualize</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Venv is the built-in virtual environment manager for python.
+    Shiny is a framework to build web apps to interactively visualize data.
   </div>
 </div>
 
@@ -617,65 +629,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Virtualenv and venv are not the same package. Venv is built into Python, while virtualenv is a third-party package that contains additional options.</p>
-</div>
-</div>
-<section id="create-and-delete-environments" class="level3">
-<h3 class="anchored" data-anchor-id="create-and-delete-environments">Create and delete environments</h3>
-<dl>
-<dt>Create environment</dt>
-<dd>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv venv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Removing / Deleting environment</dt>
-<dd>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env remove <span class="at">-n</span> env-name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl>
-<p>More info: <a href="https://towardsdatascience.com/introduction-to-conda-virtual-environments-eaea4ac84e28">Intro to Conda virtual environments</a></p>
+<section id="basics" class="level2">
+<h2 class="anchored" data-anchor-id="basics">basics</h2>
+<p>Shiny apps comprise: - <strong>UI</strong>: Web page that users can interact with. - <strong>Server</strong>: A server that runs an R-session that reacts to the user interaction and updates the UI.</p>
+<section id="starting-template" class="level3">
+<h3 class="anchored" data-anchor-id="starting-template">Starting template:</h3>
+<pre><code>shinyApp(ui = ui, server = server)
+library(shiny)
+ui &lt;- fluidPage()
+server &lt;- function(&lt;inputfunctions&gt;, &lt;outputfunctions&gt;){}
+shinyApp(ui = ui, server = server)</code></pre>
 </section>
-<section id="use-environment" class="level3">
-<h3 class="anchored" data-anchor-id="use-environment">Use environment</h3>
-<dl>
-<dt>Use/activate environment</dt>
-<dd>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span><span class="dt">\v</span>env<span class="dt">\S</span>cripts<span class="dt">\a</span>ctivate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Deactive environment</dt>
-<dd>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl>
 </section>
-<section id="install-packages" class="level3">
-<h3 class="anchored" data-anchor-id="install-packages">Install packages</h3>
-<dl>
-<dt>Install package using pip</dt>
-<dd>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pandas </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl>
-<p>more info in <a href="chatsheets/Languages/Python/pip.qmd">Pip</a></p>
-<dl>
-<dt>Export packages in env to requirements.txt</dt>
-<dd>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Install packages from requirements.txt</dt>
-<dd>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl>
+<section id="inputs" class="level2">
+<h2 class="anchored" data-anchor-id="inputs">Inputs</h2>
+<p>Add the following functions as arguments to the <code>fluidPage</code>-function.</p>
+<ul>
+<li><code>textInput(inputId, label, icon, ...)</code>: Creates a text input box where user can type input.</li>
+<li><code>actionButton(inputId, label, icon, ...)</code>: Creates an action button that triggers an event when clicked.</li>
+<li><code>checkboxGroupInput(inputId, label, choices)</code>, <code>RadioButtons(inputId, label, choices)</code>, <code>sliderInput(inputId, label, min, max, value, ...)</code>, <code>dateRangeInput(inputId, lable, value, start, end, min, max, )</code>, …</li>
+</ul>
+</section>
+<section id="outputs" class="level2">
+<h2 class="anchored" data-anchor-id="outputs">Outputs</h2>
+<p>Add the following functions as arguments to the <code>fluidPage</code>-function.</p>
+<ul>
+<li><code>textOutput()</code>: Displays text output, which can be updated dynamically based on user inputs or server calculations.</li>
+<li><code>plotOutput()</code>, <code>imageOutput()</code>, <code>verbatimTextOutput()</code>, etc.: Display different types of outputs, such as plots, images, and raw text.</li>
+</ul>
+</section>
+<section id="server" class="level2">
+<h2 class="anchored" data-anchor-id="server">Server</h2>
+<ul>
+<li><code>server</code> function: Contains the code that runs on the server side, calculates values based on user inputs, and updates output displays.</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output){</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>hist <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({<span class="fu">hist</span>(<span class="fu">rnorm</span>(input<span class="sc">$</span>n))})</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This takes the input functions and uses the input with <code>inputId=n</code> as the input for the <code>hist</code>-function. It then produces an output for the output-function with <code>outputId="hist"</code>.</p>
+</section>
+<section id="ui-user-interface" class="level2">
+<h2 class="anchored" data-anchor-id="ui-user-interface">UI (User Interface)</h2>
+<ul>
+<li><code>fluidPage()</code>, <code>navbarPage()</code>, etc.: Create the layout of the application.</li>
+<li><code>mainPanel()</code>, <code>sidebarPanel()</code>, <code>tabsetPanel()</code>, <code>tabPanel()</code>, etc.: Define sections and panels within the layout.</li>
+</ul>
+</section>
+<section id="reactive-expressions" class="level2">
+<h2 class="anchored" data-anchor-id="reactive-expressions">Reactive Expressions</h2>
+<ul>
+<li><code>reactive()</code>: Creates a reactive expression that caches its value to reduce computation time.</li>
+<li><code>eventReactive()</code>: Creates a reactive expression that is triggered by an event, such as a button click or input change.</li>
+</ul>
+</section>
+<section id="dependencies-and-updating-displays" class="level2">
+<h2 class="anchored" data-anchor-id="dependencies-and-updating-displays">Dependencies and Updating Displays</h2>
+<ul>
+<li>A reactive expression notifies its dependencies when it needs to be recalculated.</li>
+<li>To update the display of an output based on a reactive expression, use <code>renderText()</code>, <code>renderPlot()</code>, etc., and pass the reactive expression as the function argument.</li>
+</ul>
+</section>
+<section id="modularizing-reactions" class="level2">
+<h2 class="anchored" data-anchor-id="modularizing-reactions">Modularizing Reactions</h2>
+<ul>
+<li>Split complex applications into smaller, more manageable modules using separate <code>ui</code> and <code>server</code> functions for each module.</li>
+<li>Use <code>includeCSS()</code> or <code>includeScript()</code> to include external CSS and JavaScript files in your application.</li>
+</ul>
+</section>
+<section id="delaying-reactions" class="level2">
+<h2 class="anchored" data-anchor-id="delaying-reactions">Delaying Reactions</h2>
+<ul>
+<li>Use the <code>debounce()</code> function from the <code>shinyjs</code> package to delay reactions, reducing the number of times an event is triggered.</li>
+</ul>
+</section>
+<section id="navigation" class="level2">
+<h2 class="anchored" data-anchor-id="navigation">Navigation</h2>
+<ul>
+<li>Use <code>tabsetPanel()</code>, <code>navlistPanel()</code>, etc., to create tabs and navigate between different sections of your application.</li>
+</ul>
+</section>
+<section id="images" class="level2">
+<h2 class="anchored" data-anchor-id="images">Images</h2>
+<ul>
+<li>Include images in your Shiny app by linking to them using the <code>img()</code> function, with the image file located in the www subdirectory.</li>
+</ul>
+</section>
+<section id="publish" class="level2">
+<h2 class="anchored" data-anchor-id="publish">Publish</h2>
+<p>In R-console:</p>
+<pre><code>rsconnect::deployApp("&lt;path to directory&gt;")</code></pre>
 
 
 </section>
