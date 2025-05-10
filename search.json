@@ -4,30 +4,30 @@
     "href": "index.html",
     "title": "Cheatsheets",
     "section": "",
-    "text": "This is a collection of my cheatsheets. Feel free to use them. If you want to edit them, to your own needs: Pleae visit my Github-Repo, give it a star and clone it.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nCategories\n\n\n\n\n\n\n\n\nAnsible\n\n\nAnsible is a task and infrastructure automation tool. It is agentless.\n\n\nCloud, Infrastructure as Code\n\n\n\n\n\n\nAzure CLI\n\n\nAzure/az CLI is the command line interface of Azure.\n\n\n \n\n\n\n\n\n\nAzure ML\n\n\n\n\n\n \n\n\n\n\n\n\nBash\n\n\nBash is a command line tool and language.\n\n\nCLI, tool\n\n\n\n\n\n\nConda\n\n\nConda is a package and virtual environment manager.\n\n\ntool, CLI, package manager, virtual environments\n\n\n\n\n\n\nDart\n\n\nDart is a new programming language by Google, mainly used for app development.\n\n\nlanguage\n\n\n\n\n\n\nDocker\n\n\nDocker is a platform for developing, shipping, and running applications in isolated environments.\n\n\nCLI, tool, container\n\n\n\n\n\n\nDplyr\n\n\nDplyr is a data transformation library in the collection Tidyverse.\n\n\nR, data science\n\n\n\n\n\n\nFlutter\n\n\nFlutter is a cross-plattform app-development framework based on dart.\n\n\napp development, web development\n\n\n\n\n\n\nGCP: gcloud CLI\n\n\nGcloud CLI is the command line interface of the Google Cloud Platform.\n\n\n \n\n\n\n\n\n\nGit\n\n\nGit is a version control system mostly used for code.\n\n\nCLI, tool, versioning\n\n\n\n\n\n\nOpenShift\n\n\nOpenShift is a platform based on Kubernetes to host and manage applications in containers.\n\n\n \n\n\n\n\n\n\nPandas\n\n\nPandas is a python library for data wrangling and data cleaning.\n\n\nframework, python, data science\n\n\n\n\n\n\nPip\n\n\nPip is the official python package manager\n\n\nCLI, tool, package manager\n\n\n\n\n\n\nPoetry\n\n\nPoetry is a package builder, dependency and virtual environment manager for python.\n\n\npython, tool, CLI, package manager, virtual environments\n\n\n\n\n\n\nPowershell\n\n\nPowershell is the major command line tool for windows\n\n\nCLI, tool\n\n\n\n\n\n\nPython Design Patterns\n\n\nPython is one of the most popular programming languages.\n\n\nlanguage\n\n\n\n\n\n\nPython basics\n\n\nPython is one of the most popular programming languages.\n\n\nlanguage\n\n\n\n\n\n\nQuarto\n\n\nQuarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations.\n\n\ntool, web development\n\n\n\n\n\n\nR Shiny\n\n\nShiny is a framework to build web apps to interactively visualize data.\n\n\nR, data science, visualize\n\n\n\n\n\n\nR basics\n\n\nR is a programming language that is specialized in statistical analysis.\n\n\nlanguage, data science\n\n\n\n\n\n\nR plotting\n\n\nR has powerful builtin plotting capabilities\n\n\nR, data science, visualize\n\n\n\n\n\n\nSplunk processing language (SPL)\n\n\nThis is the language you need to use to query splunk logs.\n\n\nlanguage\n\n\n\n\n\n\nTidymodels\n\n\nTidymodels is a collection of packages for machine learning. It is part of the tidyverse.\n\n\nR, data science\n\n\n\n\n\n\nVS Code\n\n\nVisual studio code is one of the most popular code editors.\n\n\nIDE, short-cuts\n\n\n\n\n\n\nVenv\n\n\nVenv is the built-in virtual environment manager for python.\n\n\ntool, CLI, virtual environments\n\n\n\n\n\n\nruff\n\n\nA fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black\n\n\nCLI, tool, code quality\n\n\n\n\n\n\nuv\n\n\nuv is a Python package manager with additional features for managing Python versions, scripts, projects, and tools.\n\n\nCLI, tool, package manager\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n\nNo matching items"
+    "text": "This is a collection of my cheatsheets. Feel free to use them. If you want to edit them, to your own needs: Pleae visit my Github-Repo, give it a star and clone it.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nCategories\n\n\n\n\n\n\n\n\nAnsible\n\n\nAnsible is a task and infrastructure automation tool. It is agentless.\n\n\nCloud, Infrastructure as Code\n\n\n\n\n\n\nAzure CLI \n\n\nAzure/az CLI is the command line interface of Azure.\n\n\n \n\n\n\n\n\n\nAzure ML \n\n\n\n\n\n \n\n\n\n\n\n\nBash \n\n\nBash is a command line tool and language.\n\n\nCLI, tool\n\n\n\n\n\n\nConda \n\n\nConda is a package and virtual environment manager.\n\n\ntool, CLI, package manager, virtual environments\n\n\n\n\n\n\nDart\n\n\nDart is a new programming language by Google, mainly used for app development.\n\n\nlanguage\n\n\n\n\n\n\nDocker \n\n\nDocker is a platform for developing, shipping, and running applications in isolated environments.\n\n\nCLI, tool, container\n\n\n\n\n\n\nDplyr \n\n\nDplyr is a data transformation library in the collection Tidyverse.\n\n\nR, data science\n\n\n\n\n\n\nFlutter\n\n\nFlutter is a cross-plattform app-development framework based on dart.\n\n\napp development, web development\n\n\n\n\n\n\nGCP: gcloud CLI \n\n\nGcloud CLI is the command line interface of the Google Cloud Platform.\n\n\n \n\n\n\n\n\n\nGit \n\n\nGit is a version control system mostly used for code.\n\n\nCLI, tool, versioning\n\n\n\n\n\n\nOpenShift\n\n\nOpenShift is a platform based on Kubernetes to host and manage applications in containers.\n\n\n \n\n\n\n\n\n\nPandas \n\n\nPandas is a python library for data wrangling and data cleaning.\n\n\nframework, python, data science\n\n\n\n\n\n\nPip \n\n\nPip is the official python package manager\n\n\nCLI, tool, package manager\n\n\n\n\n\n\nPoetry \n\n\nPoetry is a package builder, dependency and virtual environment manager for python.\n\n\npython, tool, CLI, package manager, virtual environments\n\n\n\n\n\n\nPowershell \n\n\nPowershell is the major command line tool for windows\n\n\nCLI, tool\n\n\n\n\n\n\nPython Design Patterns \n\n\nPython is one of the most popular programming languages.\n\n\nlanguage\n\n\n\n\n\n\nPython basics \n\n\nPython is one of the most popular programming languages.\n\n\nlanguage\n\n\n\n\n\n\nQuarto\n\n\nQuarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations.\n\n\ntool, web development\n\n\n\n\n\n\nR Shiny \n\n\nShiny is a framework to build web apps to interactively visualize data.\n\n\nR, data science, visualize\n\n\n\n\n\n\nR basics \n\n\nR is a programming language that is specialized in statistical analysis.\n\n\nlanguage, data science\n\n\n\n\n\n\nR plotting \n\n\nR has powerful builtin plotting capabilities\n\n\nR, data science, visualize\n\n\n\n\n\n\nSplunk processing language (SPL)\n\n\nThis is the language you need to use to query splunk logs.\n\n\nlanguage\n\n\n\n\n\n\nTidymodels \n\n\nTidymodels is a collection of packages for machine learning. It is part of the tidyverse.\n\n\nR, data science\n\n\n\n\n\n\nVS Code \n\n\nVisual studio code is one of the most popular code editors.\n\n\nIDE, short-cuts\n\n\n\n\n\n\nVenv \n\n\nVenv is the built-in virtual environment manager for python.\n\n\ntool, CLI, virtual environments\n\n\n\n\n\n\nruff \n\n\nA fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black\n\n\nCLI, tool, code quality\n\n\n\n\n\n\nuv \n\n\nuv is a Python package manager with additional features for managing Python versions, scripts, projects, and tools.\n\n\nCLI, tool, package manager\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "cheatsheets/Cloud & Platform/azure_ml.html",
     "href": "cheatsheets/Cloud & Platform/azure_ml.html",
-    "title": "Azure ML",
+    "title": "Azure ML ",
     "section": "",
     "text": "Azure ML is the machine learning service of the Azure Cloud Platform.",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",
-      "Azure ML"
+      "Azure ML {{< fa brands microsoft >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Cloud & Platform/azure_ml.html#experiments",
     "href": "cheatsheets/Cloud & Platform/azure_ml.html#experiments",
-    "title": "Azure ML",
+    "title": "Azure ML ",
     "section": "Experiments",
     "text": "Experiments\n\nDelete Experiments without jobs\n\nfrom azureml.core import Workspace, Experiment\naml_workspace = Workspace.from_config()\nexperiment_id = Experiment(aml_workspace, '&lt;experiment_name&gt;').id\nExperiment.delete(aml_workspace, experiment_id)",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",
-      "Azure ML"
+      "Azure ML {{< fa brands microsoft >}}"
     ]
   },
   {
@@ -213,170 +213,170 @@
   {
     "objectID": "cheatsheets/Languages/R/dplyr.html",
     "href": "cheatsheets/Languages/R/dplyr.html",
-    "title": "Dplyr",
+    "title": "Dplyr ",
     "section": "",
     "text": "Load dplyr\n\nlibrary(dplyr)\n\n\nThe dplyr package uses the pipe-command to pass the result of one transformation to the next:\ndataset %&gt;%\n    filter(column1 == \"Value\") %&gt;%\n    arrange(column2)\n\nFilter\n\nfilter(column1 == \"Value\")\n\nOrder / Sort\n\narrange(col1) %&gt;% # ascending\narrange(desc(col2)) # descending\n\nMutate / Change / Add columns\n\nmutate(resultCol = col / 1000) \n\n\n\n\n\nSummarize / aggregate\n\ndataset %&gt;%\nsummarize(medianCol1 = median(col1))\n\n\n\n\n\n\n\n\n\nAggregation functions\n\n\n\n\n\nsum\nsum()\n\n\nmean\nmean()\n\n\nmedian\nmedian()\n\n\nminimum / maximum\nmin() / max()\n\n\nfirst / last position\nfirst() / last()\n\n\ncounts\nn() / n_distinct()\n\n\n\n\n\n\ndataset %&gt;%\n    group_by(year_col, continent_col) %&gt;% \n    summarize(mean(gpd_col))\naggregates only for the groups defined before\n\n\n\nStack horizontally (new column)\ndataset %&gt;%\n    bind_cols(new_dataset)\n\nJoin tables\n\ndataset_1 %&gt;% left_join(dataset_2, by = join_by(col1 == col2), relationship = \"one-to-one\") \n... %&gt;% right_join(...)\n... %&gt;% inner_join(...) # only keeps matching samples\n... %&gt;% full_join(...) # keeps all samples in both datasets\n\n\nrelationships checks can be: \"one-to-one\", \"one-to-many\", \"many-to-one\" and \"many-to-many\" (does not make a check)",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "Dplyr"
+      "Dplyr {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/dplyr.html#data-wrangling-with-dplyr",
     "href": "cheatsheets/Languages/R/dplyr.html#data-wrangling-with-dplyr",
-    "title": "Dplyr",
+    "title": "Dplyr ",
     "section": "",
     "text": "Load dplyr\n\nlibrary(dplyr)\n\n\nThe dplyr package uses the pipe-command to pass the result of one transformation to the next:\ndataset %&gt;%\n    filter(column1 == \"Value\") %&gt;%\n    arrange(column2)\n\nFilter\n\nfilter(column1 == \"Value\")\n\nOrder / Sort\n\narrange(col1) %&gt;% # ascending\narrange(desc(col2)) # descending\n\nMutate / Change / Add columns\n\nmutate(resultCol = col / 1000) \n\n\n\n\n\nSummarize / aggregate\n\ndataset %&gt;%\nsummarize(medianCol1 = median(col1))\n\n\n\n\n\n\n\n\n\nAggregation functions\n\n\n\n\n\nsum\nsum()\n\n\nmean\nmean()\n\n\nmedian\nmedian()\n\n\nminimum / maximum\nmin() / max()\n\n\nfirst / last position\nfirst() / last()\n\n\ncounts\nn() / n_distinct()\n\n\n\n\n\n\ndataset %&gt;%\n    group_by(year_col, continent_col) %&gt;% \n    summarize(mean(gpd_col))\naggregates only for the groups defined before\n\n\n\nStack horizontally (new column)\ndataset %&gt;%\n    bind_cols(new_dataset)\n\nJoin tables\n\ndataset_1 %&gt;% left_join(dataset_2, by = join_by(col1 == col2), relationship = \"one-to-one\") \n... %&gt;% right_join(...)\n... %&gt;% inner_join(...) # only keeps matching samples\n... %&gt;% full_join(...) # keeps all samples in both datasets\n\n\nrelationships checks can be: \"one-to-one\", \"one-to-many\", \"many-to-one\" and \"many-to-many\" (does not make a check)",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "Dplyr"
+      "Dplyr {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/tidymodels.html",
     "href": "cheatsheets/Languages/R/tidymodels.html",
-    "title": "Tidymodels",
+    "title": "Tidymodels ",
     "section": "",
     "text": "load packages:",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "Tidymodels"
+      "Tidymodels {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/tidymodels.html#rsample-sampling-splitting",
     "href": "cheatsheets/Languages/R/tidymodels.html#rsample-sampling-splitting",
-    "title": "Tidymodels",
+    "title": "Tidymodels ",
     "section": "Rsample (sampling & splitting)",
     "text": "Rsample (sampling & splitting)\n\ntraining- & test-split\n\ndata_split &lt;- initial_split(dataset, prop=0.75, strata=target_col)\ntraining_set &lt;- data_split %&gt;% training()\ntesting_set &lt;- data_split %&gt;% testing()\n\n\nstrata generates a stratified split with approximately the same fraction of each target class.",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "Tidymodels"
+      "Tidymodels {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/tidymodels.html#recipes-feature-enigneering",
     "href": "cheatsheets/Languages/R/tidymodels.html#recipes-feature-enigneering",
-    "title": "Tidymodels",
+    "title": "Tidymodels ",
     "section": "Recipes (feature enigneering)",
     "text": "Recipes (feature enigneering)",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "Tidymodels"
+      "Tidymodels {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/tidymodels.html#parsnip-model-fitting",
     "href": "cheatsheets/Languages/R/tidymodels.html#parsnip-model-fitting",
-    "title": "Tidymodels",
+    "title": "Tidymodels ",
     "section": "Parsnip (model fitting)",
     "text": "Parsnip (model fitting)\n\nGeneral model formula\n\noutcome_variable ~ predictor_1 + predictor_2 + ... \noutcome_variable ~ . # to use all available predictors\n\nCreate model object\n\nmodel &lt;- linear_reg() %&gt;%\nset_engine('lm') %&gt;% \nset_mode('regression')\n\nFit the model\n\nmodel_fit &lt;- model %&gt;% \nfit(target_col ~ ., data=train_set)\n\nGet model summary\n\ntidy(model_fit)\nReturns parameter estimates, std.errors & p-values\n\nPredict on new values\n\npredictions &lt;- model_fit %&gt;%\npredict(new_data = test_set)",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "Tidymodels"
+      "Tidymodels {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/tidymodels.html#tune-dials-hyper-parameter-optimization",
     "href": "cheatsheets/Languages/R/tidymodels.html#tune-dials-hyper-parameter-optimization",
-    "title": "Tidymodels",
+    "title": "Tidymodels ",
     "section": "Tune & Dials (hyper-)parameter optimization)",
     "text": "Tune & Dials (hyper-)parameter optimization)",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "Tidymodels"
+      "Tidymodels {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/tidymodels.html#yardstick-performance-evaluation",
     "href": "cheatsheets/Languages/R/tidymodels.html#yardstick-performance-evaluation",
-    "title": "Tidymodels",
+    "title": "Tidymodels ",
     "section": "Yardstick (performance evaluation)",
     "text": "Yardstick (performance evaluation)\nRequires a tibble/datset with the true and predicted outcomes.\npredictions %&gt;%\n    rmse(truth = label_col, estimate = .pred) # .pred is the standard name of the prediction col\n\n\n\n\n\n\n\nRegression quality metrics\n\n\n\n\n\nR squared\nprediction_set %&gt;% rsq(truth = ..., estimate = ...)\n\n\nRoot mean squared error\n... rmse()\n\n\n\n\n\n\n\n\n\n\nClassification quality metrics\n\n\n\n\n\naccuracy\nprediction_set %&gt;% accuracy(truth = ..., estimate = ...)\n\n\nbalanced accuracy\n... bal_accuracy()\n\n\nprecision\n... precision()\n\n\nrecall\n... recall()\n\n\nsensitivity\n... sensitivity()\n\n\nspecificity\n... specificity()\n\n\narea under the curve\n... roc_auc()\n\n\n\nMore metrics here.\n\nStreamlined approach\n\n# Fit model:\nmodel_last_fit &lt;- model %&gt;% \nlast_fit(target_col ~ ., \n    split = data_split)\n# Return standard quality metrics:\nmodel_last_fit %&gt;%\ncollect_metrics() \n# Return tibble with predictions and true target values:\nmodel_last_fit %&gt;% \ncollect_predictions()",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "Tidymodels"
+      "Tidymodels {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R_plotting.html",
     "href": "cheatsheets/Languages/R/R_plotting.html",
-    "title": "R plotting",
+    "title": "R plotting ",
     "section": "",
     "text": "This cheatsheet uses ggplot2. For more info on the R-built-in graphics-package see: rdocumentation.org",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R plotting"
+      "R plotting {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R_plotting.html#dot-line-charts",
     "href": "cheatsheets/Languages/R/R_plotting.html#dot-line-charts",
-    "title": "R plotting",
+    "title": "R plotting ",
     "section": "dot & line charts",
     "text": "dot & line charts\nUsing dataframes:\nlibrary(ggplot2)\nmy_plot = ggplot(myDataframe, aes(x = col1, y = col2)) + geom_point()\nprint(my_plot)\nThe logic behind: You define the aesthetics (aes) and then add (+) a layer with points (geom_points)\nUsing vectors:\nggplot(data = NULL, aes(x = c(1,2,3,4,5), y = c(25,16,9,4,1))) + geom_point()\n\n\n\n\n\n\n\nStyles of plot\n\n\n\n\n\npoints\n... + geom_point()\n\n\nline\n... + geom_line()\n\n\ncolor\naes(x = ..., y = ..., color = cat_col)... different colors for different categories\n\n\n\n\n\n\nAxis\n\n\n\n\n\nlog scale on x\n... + scale_x_log10()\n\n\nlog scale on y\n... + scale_y_log10()\n\n\ninclude 0\n... + expand_limits(y = 0)",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R plotting"
+      "R plotting {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R_plotting.html#column-charts",
     "href": "cheatsheets/Languages/R/R_plotting.html#column-charts",
-    "title": "R plotting",
+    "title": "R plotting ",
     "section": "Column charts",
     "text": "Column charts\nplot the values as columns:\nggplot(df, aes(x = factor(cat_col), y = value_col)) + geom_col()\nplot the counts as columns:\nggplot(df, aes(x = factor(value_col))) + geom_bar()\n\nHistogram\nPlot distribution of values:\nggplot(df, aes(x = value_col)) + geom_histogram(binwidth=3)",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R plotting"
+      "R plotting {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R_plotting.html#box-plot",
     "href": "cheatsheets/Languages/R/R_plotting.html#box-plot",
-    "title": "R plotting",
+    "title": "R plotting ",
     "section": "Box Plot",
     "text": "Box Plot\nCompare different distributions:\nggplot(df, aes(x = cat_col, y = value_col)) +  geom_boxplot()",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R plotting"
+      "R plotting {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R_plotting.html#plot-functions",
     "href": "cheatsheets/Languages/R/R_plotting.html#plot-functions",
-    "title": "R plotting",
+    "title": "R plotting ",
     "section": "Plot functions",
     "text": "Plot functions\nTo smoothly plot a curved function:\nmy_func &lt;- function(x) sqrt(x) # - x**2\nx_val_df = data.frame(x_val = c(0, 10))\nggplot(x_val_df, aes(x = x_val)) + stat_function(fun = my_func, geom = \"line\")\nMore info in this e-book: r-graphics.org/",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R plotting"
+      "R plotting {{< fa brands r-project >}}"
     ]
   },
   {
@@ -394,262 +394,262 @@
   {
     "objectID": "cheatsheets/Languages/Python/Poetry.html",
     "href": "cheatsheets/Languages/Python/Poetry.html",
-    "title": "Poetry",
+    "title": "Poetry ",
     "section": "",
     "text": "conda install -c conda-forge poetry\nAlternatvie installation instructions: python-poetry.org",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Poetry"
+      "Poetry {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Poetry.html#installation",
     "href": "cheatsheets/Languages/Python/Poetry.html#installation",
-    "title": "Poetry",
+    "title": "Poetry ",
     "section": "",
     "text": "conda install -c conda-forge poetry\nAlternatvie installation instructions: python-poetry.org",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Poetry"
+      "Poetry {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Poetry.html#basic-usage",
     "href": "cheatsheets/Languages/Python/Poetry.html#basic-usage",
-    "title": "Poetry",
+    "title": "Poetry ",
     "section": "Basic usage",
     "text": "Basic usage\nSet-up project\npoetry new \"my_project_name\"\nInstalls poetry virtual environment and sets up the required files for poetry to work. pyproject.toml contains the configuration for poetry and the needed dependencies. The new folder is there for your source code.\n\nAdding / installing single dependencies\n\npoetry add package_name\nUses pip to install the new package to your virtual environment and adds it to your dependencies list.\n\nInstalling the dependencies from the .toml-file\n\npoetry install",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Poetry"
+      "Poetry {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Poetry.html#running-code-with-poetry",
     "href": "cheatsheets/Languages/Python/Poetry.html#running-code-with-poetry",
-    "title": "Poetry",
+    "title": "Poetry ",
     "section": "Running code with poetry",
     "text": "Running code with poetry\nThere are two options:\n\n\nUsing poetry command\n\npoetry run python your_script.py\n\n\n\nActivating the poetry shell\n\npoetry shell\n\n\n\n\nUsing Jupyter-Notebooks in VS-Code\n\nList the directory of your python interpreter:\n\npoetry env info --path\n\nIn python-file,\n\non bottom right of VS-Code window click on python-version.\nIn new dialogue “Select Interpreter”, click “+ Enter interpreter path”\nPaste the interpreter path into the text-box.\n\nIn jupyter-notebook,\n\nSelect kernel\nSelect Python environment\nSelect the python interpreter that you just listed before.",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Poetry"
+      "Poetry {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Poetry.html#build-and-publish-your-package",
     "href": "cheatsheets/Languages/Python/Poetry.html#build-and-publish-your-package",
-    "title": "Poetry",
+    "title": "Poetry ",
     "section": "Build and publish your package",
     "text": "Build and publish your package\n\nBuild package\n\npoetry build\nThis will package your file as sdist and wheel format.\n\nPublish to PyPI\n\npoetry publish",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Poetry"
+      "Poetry {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/pip.html",
     "href": "cheatsheets/Languages/Python/pip.html",
-    "title": "Pip",
+    "title": "Pip ",
     "section": "",
     "text": "Installation\n\nUsually pip is installed with python automatically.\n\nUpgrade pip\n\npython -m pip install --upgrade pip\n\nInstall packages\n\npip install SomePackage            # latest version\npip install SomePackage==1.0.4     # specific version\npip install 'SomePackage&gt;=1.0.4'   # minimum version\n\nInstall from requirements file\n\npip install -r requirements.txt\n\nGenerate requirements file from installed packages\n\npip freeze &gt; requirements.txt\n\nList installed packages\n\npip list\n\nList outdated installed packages\n\npip list --outdated\n\nGet info on package\n\npip show SomePackage\n\n\nReturns name, version, summary, home-page, license, dependencies, required-by and location in your file system.\n\nWheels\nWheel files (binaries) make the installation of pip packages faster.\n\nInstall wheel\n\npip install wheel\n\nCreate pip wheel file from requirements\n\npip wheel --wheel-dir=/local/wheels -r requirements.txt\n\nInstall packages from local wheels directory\n\npip install --no-index --find-links=/local/wheels -r requirements.txt\n\n\n\n\nPipenv\nPipenv is the environment manager for pip.\n\nInstall pipenv\n\npip install --user --upgrade pipenv\n\nIstall packages in your environment\n\npipenv install -r requirements.txt\n\nRun script in your environment\n\npipenv run python python_script.py",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Pip"
+      "Pip {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Conda.html",
     "href": "cheatsheets/Languages/Python/Conda.html",
-    "title": "Conda",
+    "title": "Conda ",
     "section": "",
     "text": "conda docs - Installation\n\n\n\n\n\n\nInstallation via UNIX CLI\n\n\n\n\n\nmkdir -p ~/miniconda3\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh\nbash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3\nrm -rf ~/miniconda3/miniconda.sh\n~/miniconda3/bin/conda init bash\n~/miniconda3/bin/conda init zsh\n\n\n\n\n\n\nList your existing environments\n\nconda env list\n\nCreate environment\n\nconda create --name env-name\n\nCreate a conda env from a file:\n\nconda env create -f environment.yml\n\nRemoving / Deleting environment\n\nconda env remove -n env-name\n\n\nMore info: Intro to Conda virtual environments\n\n\n\n\nUse environment\n\nconda activate env-name\n\nCheck and update package versions. After activating an env:\n\npython --version\n\n\nconda update python\n\nUpdate whole environment according to your yaml-file:\n\nconda env update -f my_env.yml\n\nSwitch back to base environment\n\nconda deactivate env-name\n\nInstall package: Latest version\n\nconda install pandas \n\nInstall package: Specific version\n\nconda install pandas==2.0.0\n\nInstall package: From different channel\n\nconda install pandas -c conda-forge -y\n\nList packages in environment\n\nconda list\n\nExport environment to yml\n\nconda env export &gt; environment.yml",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Conda"
+      "Conda {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Conda.html#installation",
     "href": "cheatsheets/Languages/Python/Conda.html#installation",
-    "title": "Conda",
+    "title": "Conda ",
     "section": "",
     "text": "conda docs - Installation\n\n\n\n\n\n\nInstallation via UNIX CLI\n\n\n\n\n\nmkdir -p ~/miniconda3\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh\nbash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3\nrm -rf ~/miniconda3/miniconda.sh\n~/miniconda3/bin/conda init bash\n~/miniconda3/bin/conda init zsh\n\n\n\n\n\n\nList your existing environments\n\nconda env list\n\nCreate environment\n\nconda create --name env-name\n\nCreate a conda env from a file:\n\nconda env create -f environment.yml\n\nRemoving / Deleting environment\n\nconda env remove -n env-name\n\n\nMore info: Intro to Conda virtual environments\n\n\n\n\nUse environment\n\nconda activate env-name\n\nCheck and update package versions. After activating an env:\n\npython --version\n\n\nconda update python\n\nUpdate whole environment according to your yaml-file:\n\nconda env update -f my_env.yml\n\nSwitch back to base environment\n\nconda deactivate env-name\n\nInstall package: Latest version\n\nconda install pandas \n\nInstall package: Specific version\n\nconda install pandas==2.0.0\n\nInstall package: From different channel\n\nconda install pandas -c conda-forge -y\n\nList packages in environment\n\nconda list\n\nExport environment to yml\n\nconda env export &gt; environment.yml",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Conda"
+      "Conda {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/uv.html",
     "href": "cheatsheets/Languages/Python/uv.html",
-    "title": "uv",
+    "title": "uv ",
     "section": "",
     "text": "Concepts\n\nProjects: You can manage packages project-wide using uv commands and the project.toml file.\nScripts: You can also manage packages for independent scripts using uv commands using the script-header in a python script.\nScripts: You can also manage packages for independent scripts using uv commands using the script-header in a python script.\nTools: To run packages as commandline tools, you can use special uv commands.\n\n\n\nInstallation\n\nInstall uv\n\npipx install uv\n\nUpgrade uv\n\nuv self update\n\n\n\n\nPython Versions\nManage Python installations and versions.\n\nInstall Python versions\n\nuv python install 3.9.7\n\nList available Python versions\n\nuv python list\n\nFind an installed Python version\n\nuv python find 3.9\n\nPin a project to a specific Python version\n\nuv python pin 3.9.7\n\nUninstall a Python version\n\nuv python uninstall 3.9.7\n\n\n\n\nScripts\nExecute and manage dependencies in standalone Python scripts. The script needs to contain a script header.\n\nscript header\n\n```python # /// script # dependencies = [ # “requests&lt;3”, # “rich”, # ] # ///\n\n\nimport requests from rich import print …\n\nRun a script\n: ```bash\nuv run example.py\n\nAdd a dependency to a script\n\nuv add --script SomePackage\n\nRemove a dependency from a script\n\nuv remove --script SomePackage\n\n\n\n\nProjects\nCreate and manage depencies of whole projects with a pyproject.toml file.\n\nCreate a new project with a pyproject.toml file and a virtual environment\n\nuv init\n\nAdd a dependency to the project\n\nuv add SomePackage\n\nRemove a dependency from the project\n\nuv remove SomePackage\n\nSync project dependencies with the virtual environment\n\nuv sync\n\nCreate a lockfile for dependencies\n\nuv lock\n\nRun a command in the project environment\n\nuv run python script.py\n\nView the dependency tree\n\nuv tree\n\n\n\n\nTools\nInstall and manage tools from Python package indexes.\n\nRun a tool in a temporary environment\n\nuvx ruff\n\nInstall a tool user-wide\n\nuv tool install black\n\nUninstall a tool\n\nuv tool uninstall black\n\nList installed tools\n\nuv tool list\n\nUpdate the shell to include tool executables\n\nuv tool update-shell",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "uv"
+      "uv {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/bash.html",
     "href": "cheatsheets/CLI Tools/bash.html",
-    "title": "Bash",
+    "title": "Bash ",
     "section": "",
     "text": "Number of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag.",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Bash"
+      "Bash {{< fa terminal >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/bash.html#files",
     "href": "cheatsheets/CLI Tools/bash.html#files",
-    "title": "Bash",
+    "title": "Bash ",
     "section": "",
     "text": "Number of files in a provided directory\n\nls [myDirectory] | wc -l \n\n\n\n\n\n\nRemove directory tree with all its contents\n\nrm -rf [myDirectory]\n\n\n\n\n\n\nShow access permissions of file in directory\n\nls -l [myDirectory]\n\nChange permissions of file\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\n\n\nUse commandline arguments\n\nwhile getopts :c:t flag\ndo\ncase \"${flag}\" in\n    c) \n        config=${OPTARG}\n        python3 file_to_be_called.py -c $config\n        ;;\n    t)\n        python3 file_to_be_called.py -t\n        ;;\n    :) \n        echo \"No arguments passed\"\n        exit 1\n        ;;\n    ?) \n      echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n      exit 1\n      ;;\nesac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag.",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Bash"
+      "Bash {{< fa terminal >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/bash.html#processes",
     "href": "cheatsheets/CLI Tools/bash.html#processes",
-    "title": "Bash",
+    "title": "Bash ",
     "section": "Processes",
     "text": "Processes\n\nList running processes\n\nhtop\n\n\n\n\n\n\n\n\n\nCommands\n\n\n\n\n\nHelp\nhh\n\n\nKill process\nk\n\n\nOrder processes by memory consumption\nShift-MShift-M\n\n\nFilter processes by user\nUU\n\n\nDisplay files used by the selected process\nLL\n\n\nDisplay user threads\nShift-HShift-H\n\n\n\n\nKill process\n\nkill -9 [process-PID]\n\nInfo on resource usage & processes on NVidia graphic cards\n\nnvidia-smi",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Bash"
+      "Bash {{< fa terminal >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/git.html",
     "href": "cheatsheets/CLI Tools/git.html",
-    "title": "Git",
+    "title": "Git ",
     "section": "",
     "text": "Description\nCommand\n\n\n\n\nSet username (for your commits)\ngit config --global user.name \"myname\"\n\n\nSet email (for your commits)\ngit config --global user.email \"my@email.com\"\n\n\nEnable CLI color codes\ngit config --global color.ui auto",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Git"
+      "Git {{< fa brands git-alt >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/git.html#configuration",
     "href": "cheatsheets/CLI Tools/git.html#configuration",
-    "title": "Git",
+    "title": "Git ",
     "section": "",
     "text": "Description\nCommand\n\n\n\n\nSet username (for your commits)\ngit config --global user.name \"myname\"\n\n\nSet email (for your commits)\ngit config --global user.email \"my@email.com\"\n\n\nEnable CLI color codes\ngit config --global color.ui auto",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Git"
+      "Git {{< fa brands git-alt >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/git.html#new-repositories",
     "href": "cheatsheets/CLI Tools/git.html#new-repositories",
-    "title": "Git",
+    "title": "Git ",
     "section": "New repositories",
     "text": "New repositories\n\nDownload git repo from server\n\ngit clone url.com",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Git"
+      "Git {{< fa brands git-alt >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/git.html#getting-started",
     "href": "cheatsheets/CLI Tools/git.html#getting-started",
-    "title": "Git",
+    "title": "Git ",
     "section": "Getting started",
     "text": "Getting started\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nInitialize a new git repository\ngit init my-repo\n\n\nGet the status of changes (staged, unstaged, untracked)\ngit status\n\n\nTrack files to staging\ngit add .\n\n\nRemove files from staging\ngit reset &lt;file&gt;\n\n\nCommit staged files\ngit commit -m \"informative commit message\"\n\n\nDiscard changes in a file (!: Your changes will be lost)\ngit restore &lt;file&gt;\n\n\nShow commit history\ngit log\n\n\nGo back to a commit\ngit checkout &lt;commit hash&gt;\n\n\nGo back to the latest commit\ngit checkout my-branch-name\n\n\n\n\nWorking with remote repositories\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nClone a remote repository\ngit clone url.com\n\n\nPush changes to remote repository\ngit push\n\n\nPull changes from remote repository\ngit pull\n\n\n\n\n\nWorking with Branches\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nCreate a new branch\ngit branch my-branch-name\n\n\nSwitch to a branch\ngit checkout my-branch-name\n\n\nCreate and switch to a new branch\ngit checkout -b my-branch-name or git switch my-branch-name\n\n\nDelete a branch\ngit branch -d my-branch-name\n\n\nList all branches\ngit branch\n\n\nMerge a branch into the current branch\ngit merge my-branch-name",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Git"
+      "Git {{< fa brands git-alt >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/git.html#workflows",
     "href": "cheatsheets/CLI Tools/git.html#workflows",
-    "title": "Git",
+    "title": "Git ",
     "section": "Workflows",
     "text": "Workflows\n\nFetch newest changes of your branch from remote\n\n\nGet changes from remote repository\n\ngit fetch\n\n\n\nCheck what changed\n\ngit diff my-branch-name origin/my-branch-name\n\n\n\nMerge changes from remote branch into your branch\n\ngit pull\n\n\n\n\n\nAdd changes from different branch to your branch\n\n\nGet changes from remote repository\n\ngit fetch\n\n\n\nCheck differences to branch you want merge into yours\n\ngit diff feature1..dev\n\n\n\nMerge changes from remote branch into your branch\n\ngit merge origin dev\n\n\n\nCheck what files are(n’t) staged for commit\n\ngit status\n\n\n\nStage all files that are tracked (not in .gitignore)\n\ngit add .\n\nIf necessary: Unstage all files (or a specific file) that are staged\n\n git reset [specific-file]\n\n\n\nCommit all staged files (add to versioning history)\n\ngit commit -m \"[ticket-id + what you changed]\"\n\n\n\nLoad commits into remote git repository\n\ngit push\n\n\n\n\n\nManaging changes\n\nSee changes due to last pull request\n\ngit log -p -2",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Git"
+      "Git {{< fa brands git-alt >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/git.html#pull-changes-into-devtestmaster-branch",
     "href": "cheatsheets/CLI Tools/git.html#pull-changes-into-devtestmaster-branch",
-    "title": "Git",
+    "title": "Git ",
     "section": "Pull changes into dev/test/master branch",
     "text": "Pull changes into dev/test/master branch\n\nPull changes into dev branch (and add your changes at the end)\n\ngit fetch\ngit checkout dev\ngit pull --rebase feature1branch \n\nPull only specific commits into your branch\n\ngit cherry-pick [commit-SHA]",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Git"
+      "Git {{< fa brands git-alt >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/git.html#undo-and-rollback",
     "href": "cheatsheets/CLI Tools/git.html#undo-and-rollback",
-    "title": "Git",
+    "title": "Git ",
     "section": "Undo and Rollback",
     "text": "Undo and Rollback\n\nRollback the last commit\n\ngit reset head~1\n\n\nTo provide the files from the last commit: git reset --soft HEAD~1\n\nRollback to a specific commit\n\ngit reset [commit-SHA]\nYou can still see the changes from your HEAD in your files. To make the reset materialize, you need to discard these unstaged changes in git.\n\n\nSince you are now several commits behind the remote, you have to force push the changes: git push -f origin [myBranchyBranch].\nTo create a new commit to undo earlier commits, use git revert.\n\nTravel back to a specific commit\n\ngit checkout [commit-SHA]\n\nDelete sensitive data from history:\n\ndocs.github.com",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Git"
+      "Git {{< fa brands git-alt >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/git.html#branches",
     "href": "cheatsheets/CLI Tools/git.html#branches",
-    "title": "Git",
+    "title": "Git ",
     "section": "Branches",
     "text": "Branches\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nList all branches and show which one you are on\ngit branch -a\n\n\nCreate new branch and check it out\ngit checkout -b [branch-name]\n\n\nChange to a specific branch\ngit checkout [specific-branch]\n\n\nDelete a specific branch\ngit branch -d [specific-branch]\n\n\nRename the current branch\ngit branch -m myNewBranch\n\n\nShow commit history with branch dependencies\ngit log --graph --oneline",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Git"
+      "Git {{< fa brands git-alt >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Other/VSCode.html",
     "href": "cheatsheets/Other/VSCode.html",
-    "title": "VS Code",
+    "title": "VS Code ",
     "section": "",
     "text": "Workspace Commands\n \n\n\n\n\nCommand Palette\n\n\n\nSearch & open file\n\n\n\nToggle Sidebar\n\n\n\nSplit editor\n\n\n\nSwitch to editor split\n /  / \n\n\nSwitch to tab\n / \n\n\nClose tab\n\n\n\nReopen closed tab\n\n\n\n\n\n\n\n\n\n\n\nSwitch between Views\n\n\n\n\n\nShow File explorer\n\n\n\nShow Debug View\n\n\n\nShow Find View\n\n\n\nShow Git View\n\n\n\n\n\n\n\n\n\n\n\nCode Navigation\n \n\n\n\n\nGo to line\nCtrl-GCtrl-G /  ::\n\n\nGo to beginning / end of line\n \n\n\nGo to beginning / end of word\n \n\n\nGo to matching bracket\n\n\n\nGo to symbol/function\n\n\n\n\n\n\n\n\n\n\n\nCode Editing\n \n\n\n\n\nCopy line\n\n\n\nCut line\n\n\n\nDelete line\n\n\n\nOutdent line\n\n\n\nToggle comment line\n\n\n\nMove line up or down\nOption↑Option↑ / Option↓Option↓\n\n\nCopy line up or down\nOption-shift↑Option-shift↑ / Option-Shift↓Option-Shift↓\n\n\nAdd cursor below/above\n / \n\n\nFind and replace\n\n\n\n\n\n\n\n\n\n\n\nCode selection\n \n\n\n\n\nSelect line\n\n\n\nExpand selection\nShift-Option→Shift-Option→",
     "crumbs": [
       "Cheatsheets",
       "Other",
-      "VS Code"
+      "VS Code {{< fa brands microsoft >}}"
     ]
   },
   {
@@ -763,291 +763,291 @@
   {
     "objectID": "cheatsheets/CLI Tools/powershell.html",
     "href": "cheatsheets/CLI Tools/powershell.html",
-    "title": "Powershell",
+    "title": "Powershell ",
     "section": "",
     "text": "List contents of directory\n\ndir\n# or\nls\n\nGet current working directory\n\npwd\n\nChange directory\n\ncd\n# or\nchdir\n\nDelete file / folder\n\ndel\n# or\nrm\n# or\nrmdir\n\nCopy file\n\ncp\n# or\ncopy\n\nMove file\n\nmv\n# or\nmove\n\nCreate variables\n\n$myVariable = \"C:\\path\\name\\whatever\"\n\n\n\n\n\nList all running processes, ordered by cpu-usage\nGet-Process |Sort-Object cpu -Descending",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Powershell"
+      "Powershell {{< fa brands windows >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/powershell.html#basics",
     "href": "cheatsheets/CLI Tools/powershell.html#basics",
-    "title": "Powershell",
+    "title": "Powershell ",
     "section": "",
     "text": "List contents of directory\n\ndir\n# or\nls\n\nGet current working directory\n\npwd\n\nChange directory\n\ncd\n# or\nchdir\n\nDelete file / folder\n\ndel\n# or\nrm\n# or\nrmdir\n\nCopy file\n\ncp\n# or\ncopy\n\nMove file\n\nmv\n# or\nmove\n\nCreate variables\n\n$myVariable = \"C:\\path\\name\\whatever\"\n\n\n\n\n\nList all running processes, ordered by cpu-usage\nGet-Process |Sort-Object cpu -Descending",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Powershell"
+      "Powershell {{< fa brands windows >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/powershell.html#python",
     "href": "cheatsheets/CLI Tools/powershell.html#python",
-    "title": "Powershell",
+    "title": "Powershell ",
     "section": "Python",
     "text": "Python\n\nexecute python program\n\npy path\\to\\file.py\n\ninstall package with pip\n\npy -m pip install pandas",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Powershell"
+      "Powershell {{< fa brands windows >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/docker.html",
     "href": "cheatsheets/CLI Tools/docker.html",
-    "title": "Docker",
+    "title": "Docker ",
     "section": "",
     "text": "The key components are:",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Docker"
+      "Docker {{< fa brands docker >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/docker.html#dockerfile",
     "href": "cheatsheets/CLI Tools/docker.html#dockerfile",
-    "title": "Docker",
+    "title": "Docker ",
     "section": "Dockerfile",
     "text": "Dockerfile\nDockerfile example:\nFROM rocker/shiny:latest\nRUN apt-get update\nRUN apt-get install -qq -y libpq-dev\nRUN install2.r ggplot2 shiny shinydashboard \\\n    shinydashboardPlus \\\n    dplyr RPostgres\nExplanation:\n\nFROM specifies the base image\nRUN executes a command in the container",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Docker"
+      "Docker {{< fa brands docker >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/docker.html#basic-docker-commands",
     "href": "cheatsheets/CLI Tools/docker.html#basic-docker-commands",
-    "title": "Docker",
+    "title": "Docker ",
     "section": "Basic Docker Commands",
     "text": "Basic Docker Commands\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nStart application\ndocker run  &lt;container-name/container-id&gt;\n\n\nList containers\ndocker ps\n\n\nList docker images\ndocker images\n\n\nPull images from registry\ndocker pull\n\n\nKill container\ndocker kill  &lt;container-name/container-id&gt;\n\n\nBuild image based on Dockerfile\ndocker build &lt;dir-with-docker-file&gt;\n\n\nExecute command inside container\ndocker exec &lt;command&gt; &lt;container&gt;",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Docker"
+      "Docker {{< fa brands docker >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/docker.html#interacting-with-containers",
     "href": "cheatsheets/CLI Tools/docker.html#interacting-with-containers",
-    "title": "Docker",
+    "title": "Docker ",
     "section": "Interacting with Containers",
     "text": "Interacting with Containers\nStart a container and execute bash:\ndocker run -d rocker/shiny\ndocker exec -it rocker/shiny /bin/bash\nStart R directly in a container:\ndocker exec -it rocker/shiny /usr/local/bin/R\n\nContainer Management\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nStop container\ndocker stop &lt;container-name/container-id&gt;\n\n\nRemove container\ndocker rm &lt;container-name/container-id&gt;\n\n\nRemove container and its volumes\ndocker rm -v &lt;container-name/container-id&gt;\n\n\nRestart container\ndocker restart &lt;container-name/container-id&gt;",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Docker"
+      "Docker {{< fa brands docker >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/docker.html#docker-compose",
     "href": "cheatsheets/CLI Tools/docker.html#docker-compose",
-    "title": "Docker",
+    "title": "Docker ",
     "section": "Docker Compose",
     "text": "Docker Compose\nDocker Compose is a tool for defining and running multi-container Docker applications using a YAML file. Example docker-compose.yml:\nservices:\n  postgres:\n    container_name: db_container\n    build: ./postgres\n    restart: always\n    environment:\n      - POSTGRES_USER=postgres\n      - POSTGRES_PASSWORD=postgres\n    ports:\n      - \"5432:5432\"\n    volumes:\n      - \"./pgdata:/var/lib/postgresql/data\"\n  \n  shiny:\n    container_name: shiny\n    depends_on:\n      - postgres\n    build: ./shiny\n    volumes:\n      - \"./shiny-logs:/var/log/shiny-server\"\n      - \"./shiny-home:/srv/shiny-server\"\n    ports:\n      - \"3838:3838\"\nRun docker-compose:\ndocker compose up --force-recreate",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Docker"
+      "Docker {{< fa brands docker >}}"
     ]
   },
   {
     "objectID": "cheatsheets/CLI Tools/docker.html#debugging-tips",
     "href": "cheatsheets/CLI Tools/docker.html#debugging-tips",
-    "title": "Docker",
+    "title": "Docker ",
     "section": "Debugging Tips",
     "text": "Debugging Tips\nView container logs:\ndocker logs &lt;container-name&gt;\nPrevent container from crashing for debugging: Add to docker-compose.yml:\ncommand: \"sleep infinity\"\n\nContainer Status\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nList running containers (with grep filter)\ndocker ps \\| grep &lt;container-name&gt;\n\n\nShow all containers including stopped ones\ndocker ps -a\n\n\n\n\n\nContainer Logs:\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nView container logs\ndocker logs &lt;container-name&gt;\n\n\nFollow container logs live\ndocker logs -f &lt;container-name&gt;\n\n\nShow last N lines of logs\ndocker logs --tail=100 &lt;container-name&gt;\n\n\n\n\n\nNetwork Debugging:\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nCheck port mappings\nnetstat -tulpn | grep &lt;port-number&gt;\n\n\nTest container connectivity\ncurl -v http://localhost:&lt;port&gt;\n\n\nList all Docker networks\ndocker network ls\n\n\nInspect network settings\ndocker network inspect &lt;network-name&gt;\n\n\n\n\n\nContainer Information:\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nShow detailed container info\ndocker inspect &lt;container-name&gt;\n\n\nShow container resource usage\ndocker stats &lt;container-name&gt;\n\n\nShow processes running in container\ndocker top &lt;container-name&gt;\n\n\n\n\n\nTroubleshooting Commands:\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nCheck if container can reach internet\ndocker exec &lt;container-name&gt; ping 8.8.8.8\n\n\nGet shell access inside container\ndocker exec -it &lt;container-name&gt; /bin/bash\n\n\nCheck container logs since specific time\ndocker logs --since 30m &lt;container-name&gt;\n\n\nCheck container environment variables\ndocker exec &lt;container-name&gt; env\n\n\n\n\n\nVolume Inspection:\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nList volumes\ndocker volume ls\n\n\nInspect volume\ndocker volume inspect &lt;volume-name&gt;\n\n\nCheck volume mount points\ndocker inspect -f '{{ .Mounts }}' &lt;container-name&gt;",
     "crumbs": [
       "Cheatsheets",
       "CLI Tools",
-      "Docker"
+      "Docker {{< fa brands docker >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Venv.html",
     "href": "cheatsheets/Languages/Python/Venv.html",
-    "title": "Venv",
+    "title": "Venv ",
     "section": "",
     "text": "Warning\n\n\n\nVirtualenv and venv are not the same package. Venv is built into Python, while virtualenv is a third-party package that contains additional options.\n\n\n\nCreate and delete environments\n\nCreate environment\n\npython -m venv venv\n\nRemoving / Deleting environment\n\nconda env remove -n env-name\n\n\nMore info: Intro to Conda virtual environments\n\n\nUse environment\n\nUse/activate environment\n\n.\\venv\\Scripts\\activate\n\nDeactive environment\n\ndeactivate\n\n\n\n\nInstall packages\n\nInstall package using pip\n\npip install pandas \n\n\nmore info in Pip\n\nExport packages in env to requirements.txt\n\npip freeze &gt; requirements.txt\n\nInstall packages from requirements.txt\n\npip install -r requirements.txt",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Venv"
+      "Venv {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/ruff.html",
     "href": "cheatsheets/Languages/Python/ruff.html",
-    "title": "ruff",
+    "title": "ruff ",
     "section": "",
     "text": "pip install ruff",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "ruff"
+      "ruff {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/ruff.html#install",
     "href": "cheatsheets/Languages/Python/ruff.html#install",
-    "title": "ruff",
+    "title": "ruff ",
     "section": "",
     "text": "pip install ruff",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "ruff"
+      "ruff {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/ruff.html#configuration",
     "href": "cheatsheets/Languages/Python/ruff.html#configuration",
-    "title": "ruff",
+    "title": "ruff ",
     "section": "Configuration",
     "text": "Configuration\nCreate a file named pyproject.toml with the following content. You can find the relevant rules here.\n[tool.ruff]\ntarget-version = \"py39\"\n\n# Select relevant rules\nselect = [\n    \"ANN\", # type annotations\n    \"ARG\", # falke8 unused arguments\n    \"B\",  # flake8-bugbear\n    \"COM\", # flake8-commas (specifically trailing commas)\n    \"C4\", # flake8-comprehensions\n    \"D\",  # pydocstyle\n    \"E\",  # Error\n    \"ERA\", # eradicate commented out code\n    \"F\",  # pyflakes\n    \"FIX\", # flake8 fixme\n    \"I\",  # isort\n    \"ISC\", # flake8-implicit-str-concat\n    \"N\",  # pep8-naming\n    \"NPY\", # NumPy specific rules\n    \"PERF\", # Perflint: performance\n    \"PIE\", # flake8-pie \n    \"PGH\",  # pygrep-hooks\n    \"PTH\", # flake8-use-pathlib \n    \"Q\",  # flake8-quotes\n    \"RUF\", # Ruff specific rules\n    \"S\",  # bandit security checks \n    \"SIM\",  # flake8-simplify\n    \"UP\",  # pyupgrade\n    \"W\",  # Warning\n    \"YTT\", # flake8-2020 \n]\n\n\n# Ignore the following rules\nignore = [\n    \"ANN101\", # missing-type-self\n    \"ANN401\", # any-type type hint\n    \"D100\", # undocumented-public-module\n    \"D101\", # undocumented-public-class -&gt; We document inits\n    \"D104\", # Missing docstring in public package\n    \"E402\", # (import violation)\n]\n\nline-length = 88  # Must agree with Black\n\n[tool.ruff.per-file-ignores]\n\"path/to/python-file.py\" = [\"E501\"] # line too long \n\"path/to_test_folder/*\" = [\n    \"ANN201\", # Missing return type -&gt; Tests commonly return None (overkill)\n    \"ANN202\", # Missing return type -&gt; Tests commonly return None (overkill)\n    \"D102\", # No docstrings -&gt; not necessary in tests\n] \n\n# Doc-String format\n[tool.ruff.pydocstyle]\nconvention = \"google\"  # Accepts: \"google\", \"numpy\", or \"pep257\".",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "ruff"
+      "ruff {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/ruff.html#run",
     "href": "cheatsheets/Languages/Python/ruff.html#run",
-    "title": "ruff",
+    "title": "ruff ",
     "section": "Run",
     "text": "Run\n\nCheck for rule violations and fix the ones that can be fixed without danger\n\nruff check . --fix\n. checks in the current directory. --fix enables the autofix feature.",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "ruff"
+      "ruff {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Python.html",
     "href": "cheatsheets/Languages/Python/Python.html",
-    "title": "Python Design Patterns",
+    "title": "Python Design Patterns ",
     "section": "",
     "text": "Use case\n\nYou have different classes that create objects that do the same kind of work (e.g. Logistic company has trucks, ships, planes that all transport goods). Explanation: refactoring.guru\n\nWhat it does for you\n\nCreate objects and methods without having to specify the class or name of method (This is handled by factory object).\n\nBlueprint\n\n\nGithub.com/ArjanCodes\nrefactoring.guru",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Python Design Patterns"
+      "Python Design Patterns {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Python.html#design-patterns",
     "href": "cheatsheets/Languages/Python/Python.html#design-patterns",
-    "title": "Python Design Patterns",
+    "title": "Python Design Patterns ",
     "section": "",
     "text": "Use case\n\nYou have different classes that create objects that do the same kind of work (e.g. Logistic company has trucks, ships, planes that all transport goods). Explanation: refactoring.guru\n\nWhat it does for you\n\nCreate objects and methods without having to specify the class or name of method (This is handled by factory object).\n\nBlueprint\n\n\nGithub.com/ArjanCodes\nrefactoring.guru",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Python Design Patterns"
+      "Python Design Patterns {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Pandas.html",
     "href": "cheatsheets/Languages/Python/Pandas.html",
-    "title": "Pandas",
+    "title": "Pandas ",
     "section": "",
     "text": "Basic concept\n\nEach observation is in its own row (and preferably has an index-value). Each feature/variable is in its own column and has a unique name.\n\nData Frames\n\nmy_df = pd.DataFrame(data=numpy_array, index=[0,1,2], columns=[\"col1\", \"col2\", \"col3\"])",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Pandas"
+      "Pandas {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Pandas.html#reshaping-data",
     "href": "cheatsheets/Languages/Python/Pandas.html#reshaping-data",
-    "title": "Pandas",
+    "title": "Pandas ",
     "section": "Reshaping data",
     "text": "Reshaping data\n\nFrom multiple columns to two columns\n\npd.melt(my_df)\nCol1 has former column names, col2 has values\n\nSpread rows into columns\n\nmy_df.pivot(columns='col1', values=\n'col2')\nCol1’s values are used as column names, col2’s values are used in respective column’s values.\n\nAppend one dataframe to another\n\npd.concat([my_df1, my_df2]) # below / vertically\npd.concat([my_df1, my_df2], axis=1) # to the right / horizontally\n\nReset the index to row numbers\n\nmy_df.reset_index()",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Pandas"
+      "Pandas {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Pandas.html#slice-dataframes",
     "href": "cheatsheets/Languages/Python/Pandas.html#slice-dataframes",
-    "title": "Pandas",
+    "title": "Pandas ",
     "section": "Slice DataFrames",
     "text": "Slice DataFrames\n\nFirst and last rows\n\nmy_df.head(n=10) \nmy_df.tail(n=10)\n\nSample several rows\n\nmy_df.sample(n=10)\n\nSelect specific rows\n\nmy_df.iloc[10:20]\n\nSelect specific columns\n\nmy_df[\"col1\"]\nmy_df[[\"col1\", \"col2\"]]\n\nSelect rows based on condition\n\nmy_df[my_df['col1'] &gt; 42]\n\nSelect rows based on a list of values in a column\n\nmy_df[my_df['col1'].isin(['value1', 'value2'])]\n\nRemove duplicate rows\n\nmy_df.drop_duplicates()\n\nSelect rows excluding certain values in a column\n\nmy_df[~my_df['col1'].isin(['value1', 'value2'])]",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Pandas"
+      "Pandas {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Pandas.html#data-manipulation",
     "href": "cheatsheets/Languages/Python/Pandas.html#data-manipulation",
-    "title": "Pandas",
+    "title": "Pandas ",
     "section": "Data Manipulation",
     "text": "Data Manipulation\n\nReplace values in a column\n\nmy_df['col1'] = my_df['col1'].replace(['old_value1', 'old_value2'], ['new_value1', 'new_value2'])",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Pandas"
+      "Pandas {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Pandas.html#data-aggregation",
     "href": "cheatsheets/Languages/Python/Pandas.html#data-aggregation",
-    "title": "Pandas",
+    "title": "Pandas ",
     "section": "Data Aggregation",
     "text": "Data Aggregation\n\nGroup by a column and calculate mean of another column\n\nmy_df.groupby('col1')['col2'].mean()",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Pandas"
+      "Pandas {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Pandas.html#data-visualization",
     "href": "cheatsheets/Languages/Python/Pandas.html#data-visualization",
-    "title": "Pandas",
+    "title": "Pandas ",
     "section": "Data Visualization",
     "text": "Data Visualization\n\nPlot a histogram of a column\n\nmy_df['col1'].plot.hist()\n\nPlot a scatter plot of two columns\n\nmy_df.plot.scatter(x='col1', y='col2')",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Pandas"
+      "Pandas {{< fa brands python >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/Python/Python basics.html",
     "href": "cheatsheets/Languages/Python/Python basics.html",
-    "title": "Python basics",
+    "title": "Python basics ",
     "section": "",
     "text": "Basics\n\n\nUsing Python\nIn console:\n\nUse Python in console / terminal: Python\nType your code\nQuit Python in console: quit()\n\nRun Python scripts In console / terminal:\n\nWindowsUnix (Mac / Linux)\n\n\nPy myScript.py\n\n\nPython myScript.py\n\n\n\n\n\n\n\n\n\n\nGet help with functions and features\n\n\n\n\n\nHelp menu for python\nhelp()\n\n\nHelp section on function\nhelp(\"func\") or help(package.func)\n\n\nFunctions in library\ndir(\"package\")\n\n\n\n\n\nFile system, Import, Input, Output\nimport package: import os, shutil\n\n\n\n\n\n\n\nUse file system\n\n\n\n\n\nprint working directory\nos.getcwd()\n\n\nChange working directory\nos.chdir(\"path/to/dir\")\n\n\nList files in working directory\nos.listdir()\n\n\nCreate directory\nos.mkdir(\"dir_name\")\n\n\nremove directory\nos.rmdir(\"dir_name\")\n\n\nCreate file\nwith open(\"./filename\", \"w\"): pass\n\n\nGet info on file (size, time of creation)\nos.path.isfile(\"filename\")\n\n\nRename file\nos.rename()\n\n\nCopy file\nshutil.copy(\"source_filename\", \"dest_filename\")\n\n\nConstruct file path from directory list\nos.path.join(\"path\", \"to\", \"file\")\n\n\n\n\nImporting other scripts\n\nimport path.to.otherScript\nExecutes the contents of the script.\n\nPrint to standard output\n\nprint(f\"my Output includes a {variable_1} and {variable_2}.\")\n\n\n\nLogging\nThe built-in library is logging, however loguru is easier to use: pip install loguru.\n\nSend log-messages to log-file\n\nfrom loguru import logger\nlogger.add(\"logfile.log\")\nlogger.debug(\"blablabla\")\nlogger.info(\"foo bar bash\")\n\n\n\n\n\nOperations, numbers, vectors, matrices\n\n\n\n\n\n\n\nAssign values to a variable\n\n\n\n\n\nAssign value to variable\nx = 4.5\n\n\nAssign to multiple variables\nx = y = z = 4.5\n\n\n\n\nCreate a list\n\nx = [1,2,3]\n\n\n\n\nMatrices & vectors\nimport package: import numpy as np import scipy as sp\n\nCreate array / vector\n\nx_arr = array([1,2,3])\n\nElementwise adding, subtracting, dividing, multiplying, … vectors\n\nx_arr = np.array([1,2,3])\ny_arr = np.array([4,5,6])\nz_arr = x_arr * y_arr # or -, *, /\n\n\n\n\n\n\n\n\n\nCommon operators on vectors\n\n\n\n\n\nmaximum, minimum\nmax(x) min(x)\n\n\nNumber of rows & columns\nx_arr.shape\n\n\nSum of the elements\nx_arr.sum()\n\n\nProduct of the elements\nx_arr.prod()\n\n\nMean of the elements\nx_arr.mean()\n\n\nVariance of the elements\nx_arr.var()\n\n\nSort elements ascending\nnp.sort(x_arr)\n\n\nSort elements descending\nnp.sort(x_arr)[::-1]\n\n\nMatrix multiplication\nnp.matmul(x_arr, y_arr)\n\n\nDimension of matrix\nx_arr.shape\n\n\nmode (highest count of val)\nsp.stats.mode(x_arr)\n\n\nPercentile\nnp.percentile(x_arr, 50)\n\n\n\n\nGenerate sequences\n\nx_arr = np.arange(1,11,1) # Integers from 1 to 10\n# Or\nx_arr = np.arange(1,11,0.5) # 1.0, 1.5, 2.0, 2.5, ... \n\n\nRepeat vector:\nnp.tile(x_arr, reps=2) # 1, 2, 3, 1, 2, 3\nRepeat elements in vector:\nnp.repeat(x_arr, repeats=2) # 1, 1, 2, 2, 3, 3\n\n\nSelecting elements in vectors\n\nSelect first element in sequence\n\nx_arr[0] # ! not x_arr[1] !\n\nSelecting first 10 elements in vector\n\nx_arr[0:10] # ! not x_arr[0:9]\n\nSelecting non-missing elements in vector\n\nx_arr[~np.isnan(x_arr)]\n\nAppend element\n\nnp.append(x_arr, values=[1,2,3])\n\nInsert element\n\nnp.insert(x_arr, obj=2, values=[1,2,3]) # obj=index at which to insert\n\nDelete element\n\nnp.delete(x_arr, obj=-1) # deletes last element\n\nCreate matrix/2D-array\n\nx_arr = np.array([(1,2,3),(4,5,6)]) \n# [[1 2 3]\n#  [4 5 6]]\n\nAccess matrix element\n\nx_arr[1,1]\n\nAccess matrix column(s)\n\nx_arr[:,2] # 3rd column\nx_arr[:, 0:2] # 1st & 2nd column\n\nAdd rows and columns\n\nnp.vstack([x_arr, y_arr]) # add other array as rows\nnp.hstack([x_arr, y_arr]) # add other array as columns\n\n\n\n\n\n\n\n\n\nBoolean operations\n\n\n\n\n\ncreate boolean vector\nx_arr &lt; 3 # [True, True, False]\n\n\nBoolean operators\n&lt;, &lt;=, &gt;, &gt;=, ==, !=\n\n\nand\ncond1 and cond2\n\n\nor\ncond1 or cond2\n\n\nnot\nnot cond\n\n\nelement in vector?\nx in [2,3,4]\n\n\nidentical\nnp.array_equal(x_arr, y_arr, equal_nan=True)\n\n\n\nIf logical vectors are used in arithmetic operations, False becomes 0, True becomes 1.\n\nMissing values\n\nnan !: Operations with missing values return missing values. (nan + 1 is still nan)\n\n\nChecking for missing values: np.isnan(x) (NaN = Not a number)\n\nAssign value only to elements where condition is true\n\nx_arr[np.isnan(x_arr)] = 4\n\n\n\n\n\n\n\n\n\nCharacters\n\n\n\n\n\nCharacter string\n\"...\"\n\n\nEscape character\n\\\n\n\nNew line\n\\n\n\n\nTab\n\\t\n\n\nlength of string\nlen(str)\n\n\nIs seq of chars in string?\n\"Halli Hallo\".find(\"Hallo\") # returns first idx: 6, if not found: -1\n\n\ncombine two strings into 1\n\"Halli \" + \"Hallo\"\n\n\n\nConcatenate arguments 1 by 1 as characters: \" \".join([\"Halli\", \"Hallo\"])\nImport package: import math\n\n\n\n\n\n\n\nOperations on number\n\n\n\n\n\nAbsolute value\nabs(x)\n\n\nround up to next int\nmath.ceil(x)\n\n\nround down to next int\nmath.floor(x)\n\n\nExponent\nx**2\n\n\nModulus / remainder\n10 % 3 # 1\n\n\nInteger division\n10 // 3 # 3\n\n\n\n\n\nTypes\n\nConvert types\n\na = int(b)\nn = float(m)\ny = complex(x)\n\nGet type of variable\n\ntype(x)\n\n\n\n\nDataframes\nContrary to arrays, the different columns of data frames can contain different data types.\nimport package: import pandas as pd\n\nConstruct data frame\n\ndf = pd.DataFrame(\n  {\"col1\" : [1,2,3],\n  \"col2\" : [12.4, 15.6, 16.9],\n  \"col3\" : [\"green\", \"blue\", \"white\"]}\n)\n#    col1  col2   col3\n# 0     1  12.4  green\n# 1     2  15.6   blue\n# 2     3  16.9  white\n\n\n\n\n\n\n\n\n\nFunctions on dataframes\n\n\n\n\n\nRename columns\ndf.columns = [\"rank\", \"result\", \"team\"]\n\n\nGet summary statistics on columns\ndf.describe()\n\n\nAccess column\ndf.iloc[:,1] or df[\"col1_name\"] or df.col1_name\n\n\nAdd row, column\ndf.loc[len(df)] = [4, 12.0, \"black\"], df[\"new_col\"] = [\"val1\", \"val2\", \"val3\"]\n\n\nRemove first row, column\ndf.iloc[1:], df.iloc[:,1:]\n\n\nSelect row with max value of col1\ndf[\"col2\"].idxmax()\n\n\n\n\n\nCategorical values\nYou can store categorical values in pandas:\n\nCreate factor\n\ndf[\"col3\"] = df[\"col3\"].astype(\"category\")\n\n\nThis will save memory and other python libraries will know that they should treat the column as categories.\n\n\nControl structures\n\nIf … else …\n\nif x &lt; 5:\nprint(\"small\")\nelif x &lt; 10:\nprint(\"medium\")\nelse: \nprint(\"big\")\n\nWhile loops\n\nwhile(x &lt; 10):\nx += 1\nprint(x)\n\nFor loops\n\nfor x in x_list:\nprint(x)\n\n\n\n\nFunctions\n\nCreate function\n\ndef my_func(first_name, last_name = \"\"):\ngreeting = \" \".join([\"Hallo\", first_name, last_name])\nprint(greeting)\nreturn greeting\n\nCall function:\n\nmy_func(\"Donald\", \"Duck\")",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Python basics"
+      "Python basics {{< fa brands python >}}"
     ]
   },
   {
@@ -1089,243 +1089,243 @@
   {
     "objectID": "cheatsheets/Languages/R/R_basics.html",
     "href": "cheatsheets/Languages/R/R_basics.html",
-    "title": "R basics",
+    "title": "R basics ",
     "section": "",
     "text": "Using R\nIn console :\n\nUse R in console / terminal: R\nType your code\nQuit R in console: q()\n\n\nRun R scripts from console/terminal\n\nIn console / terminal: Rscript myScript.R\n\n\n\n\n\n\n\n\n\nGet help with functions and features\n\n\n\n\n\nHelp section on function\n?functionName\n\n\nFind functions / features matching a term\n??TermOfInterest\n\n\nList arguments that the function accepts\nargs(functionName)\n\n\n\n\n\nFile system, Import, Input, Output\n\n\n\n\n\n\n\nUse file system\n\n\n\n\n\nprint working directory\ngetwd()\n\n\nChange working directory\nsetwd(\"path/to/dir\")\n\n\nList files in working directory\ndir()\n\n\nCreate directory\ndir.create(\"path/to/dir\", recursive=TRUE)\n\n\nCreate file\nfile.create(\"myfile.R\")\n\n\nCheck if file exists\nfile.exists(\"myfile.R\")\n\n\nGet info on file (size, time of creation)\nfile.info(\"mytest.R\")\n\n\nRename file\nfile.rename(\"mytest.R\", \"mytest2.R\")\n\n\nCopy file\nfile.copy(\"mytest2.R\", \"mytest3.R\")\n\n\nConstruct file path from directory list\nfile.path(\"folder\", \"subfolder\", \"file\") # \"folder/subfolder/file\n\n\n\n\nImporting other scripts\n\nsource(\"otherScript.R\")\nExecutes the contents of the script.\n\nSend all standard output to a file\n\nsink(\"output.txt\")\n\nPrint to standard output\n\nprint(\"my Output\")\n\n\n\n\nOperations, numbers, vectors, matrices\n\n\n\n\n\n\n\nAssign values to a variable\n\n\n\n\n\nAssign value to variable\nx &lt;- 4.5\n\n\nAssign to multiple variables\nx &lt;- y &lt;- z &lt;- 4.5\n\n\nAssign/change value of variable in global scope\nx &lt;&lt;- \"global value\"\n\n\n\n\nCreate a vector\n\nx &lt;- c(10, 4.5, 12, 5)\n\n\n\n\n\n\nWarning\n\n\n\n!: If you integrate vectors in your vector ( c(10, c(11, 12), 13) ) it will get flattened (like c(10, 11, 12, 13) ).\n\n\n\nElement-wise adding, subtracting, dividing, multiplying, … vectors\n\nx &lt;- c(1, 2)\ny &lt;- c(10, 11, 12, 13)\nz &lt;- x + y\n\n\n\n\n\n\nWarning\n\n\n\nYou can make element-wise operations with vectors of different lengths, as long as the longer one is a multiple of the shorter one. The shorter vector is repeated. 😧\n\n\n\n\n\n\n\n\n\n\n\nCommon operators on vectors\n\n\n\n\n\nmaximum, minimum\nmax(x) min(x)\n\n\nVector of min and max\nrange(x)\n\n\nNumber of elements\nlength(x)\n\n\nSum of the elements\nsum(x)\n\n\nProduct of the elements\nprod(x)\n\n\nMean of the elements\nmean(x)\n\n\nVariance of the elements\nvar(x)\n\n\nSort elements ascending\nsort(x)\n\n\nMatrix multiplication\nmat1 %*% mat2\n\n\nDimension of matrix\ndim(mat1)\n\n\nNumber of rows\nnrow(mat1)\n\n\nNumber of cols\nncol(mat2)\n\n\nmode (highest count of val)\nnames(sort(-table(df$col1)))[1]\n\n\nPercentile\nquantile(df$col1, c(0.75))\n\n\n\n!: If x is a n-by-p matrix, then var(x) will return a p-by-p covariance matrix.\n\nGenerate sequences\n\nx &lt;- c(1:10) # Integers from 1 to 10\n# Or\nx &lt;- seq(1,10, 0.5) # 1.0, 1.5, 2.0, 2.5, ... \nc(10, 1) generates a descending sequence.\n\n\nRepeat vector:\nx &lt;- c(1,2,3)\ny &lt;- rep(x, times = 5) # 1, 2, 3, 1, 2, 3, 1, ...\nRepeat elements in vector:\nx &lt;- c(1,2,3)\ny &lt;- rep(x, each = 2) # 1, 1, 2, 2, 3, 3\n\n\nSelecting elements in vectors\n\nSelect first element in sequence\n\nx[1] # ! not x[0] !\n\nSelecting first 10 elements in vector\n\nx[1:10]\n\nSelecting non-missing elements in vector\n\nx[!is.na(x)]\n\nSelecting all elements, except the first 10\n\nx[-(1:5)]\n\nAppend element\n\nappend(fruits, \"apple\")\n\nInsert element\n\nappend(fruits, \"apple\", after = 1)\n\nDelete element\n\nfruits &lt;- fruits[-1] # deletes first element\n\nCreate matrix\n\nmatrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)\n#      [,1] [,2]\n# [1,]    1    4\n# [2,]    2    5\n# [3,]    3    6\n\nAccess matrix element\n\nmy_matrix[1,1]\n\nAccess matrix column(s)\n\nmy_matrix[,2]\nmy_matrix[, c(1,2)]\n\nAdd rows and columns\n\nmy_matrix &lt;- rbind(my_matrix, c(7,8)) # add row\nmy_matrix &lt;- cbind(my_matrix, c(10, 11, 12, 13)) # add column\nYou can also use these functions to concatenate matrices\n\nCreate array\n\narray(c(1:8), dim = c(2,2,2))\n# , , 1\n#\n#      [,1] [,2]\n# [1,]    1    3\n# [2,]    2    4\n# \n# , , 2\n# \n#      [,1] [,2]\n# [1,]    5    7\n# [2,]    6    8\n\n\n\n\n\n\n\n\n\nBoolean operations\n\n\n\n\n\ncreate boolean vector\ny &lt;- c(10, 12, 15) &lt; 13 # [True, True, False]\n\n\nBoolean operators\n&lt;, &lt;=, &gt;, &gt;=, ==, !=\n\n\nand\ncond1 & cond2\n\n\nor\ncond1 | cond2\n\n\nnot\n!cond\n\n\nelement in vector?\n2 %in% c(1,2,3,4)\n\n\nidentical\nidentical(my_matrix, my_matrix2)\n\n\n\nIf logical vectors are used in arithmetic operations, False becomes 0, True becomes 1.\n\nMissing values\n\nNA or NaN !: Operations with missing values return missing values.\n\n\nChecking for missing values: is.na(x) or is.nan(x) (NaN = Not a number)\nAssign value only to elements where condition is true:\nx[is.na(x)] &lt;- 0\n\n\n\n\n\n\n\nCharacters\n\n\n\n\n\nCharacter string\n\"...\"\n\n\nEscape character\n\\\n\n\nNew line\n\\n\n\n\nTab\n\\t\n\n\nlength of string\nnchar(str)\n\n\nIs seq of chars in string?\ngrepl(\"Hello\")\n\n\ncombine two strings\npaste(\"Hello\", \"world\")\n\n\n\nConcatenate arguments 1 by 1 as characters: paste(c(\"X\", \"Y\", \"Z\"), 1:3, sep=\"_\")\n\n\n\n\n\n\n\nOperations on number\n\n\n\n\n\nAbsolute value\nabs(x)\n\n\nround up to next int\nceiling(x)\n\n\nround down to next int\nfloor(x)\n\n\nExponent\n^\n\n\nModulus / remainder\n10 %% 3 # 1\n\n\nInteger division\n10 %/% 3 # 3\n\n\n\n\n\nTypes\n\nForce integer creation\n\nx &lt;- 100L # must end with L\n\nConvert types\n\na &lt;- as.numeric(b)\nn &lt;- as.integer(m)\ny &lt;- as.complex(x)\n\nGet type of variable\n\nx &lt;- 10.5\nclass(x) # numeric\n\n\n\n\nDataframes\nContrary to matrices, the different columns of data frames can contain different data types.\n\nConstruct data frame\n\nData_Frame &lt;- data.frame (\n  Training = c(\"Strength\", \"Stamina\", \"Other\"),\n  Pulse = c(100, 150, 120),\n  Duration = c(60, 30, 45)\n)\n\n\n\n\n\n\n\n\n\nFunctions on dataframes\n\n\n\n\n\nRename columns\ncolnames(my_data) &lt;- c(\"col1\", \"col2\", \"col3\")\n\n\nGet summary statistics on columns\nsummary(my_df)\n\n\nAccess column\nmy_df[1] or my_df[[\"col1_name\"]] or my_df$col1_name\n\n\nAdd row, column\nrbind(my_df, c(7,8)), cbind(my_df, c(10, 11))\n\n\nRemove first row, column\nmy_df[-c(1), ], my_df[ ,-c(1)]\n\n\nSelect row with max value of col1\nrownames(df)[which.max(df$col1)]\n\n\n\n\n\nFactors\nFactors are used to store categorical data. I.e. every data point is assigned a category or level.\n\nCreate factor\n\n```R sports &lt;- factor(c(“football”, “tennis”, “football”, “swimming”, “swimming”))\n\nAccess the categories/levels\n\nsports_cats &lt;- levels(sports)\n\nHardcoding / predefining levels\n\nsports &lt;- factor(c(\"football\", \"tennis\", \"football\", \"swimming\"), levels = c(\"football\", \"tennis\", \"swimming\"))\n\n\nNow you cannot assign a value to the factor anymore that is not in levels.\n\n\nControl structures\n\nIf … else …\n\nif (b &gt; a) {\n  ...\n} else if {\n  ... \n} else {\n  ... \n} \n\nWhile loops\n\nwhile(i &lt; n+1){\n  i &lt;- i+1\n  if (x &lt; 0) {\nbreak # exit loop prematurely\n  } else if (x == 0) {\nnext # skip to next iteration\n  }\n  ...\n}\n\nFor loops\n\nfruits &lt;- c(\"banana\", \"apples\", \"cucumbers\")\nfor (fruit in fruits) {\nprint(fruit)\n}\n\n\n\n\nFunctions\n\nCreate function\n\nmy_func &lt;- function(first_name, last_name = \"\") {\n  print(paste(\"Hello\", first_name, last_name))\n  return(paste(first_name, last_name))\n}\n\nCall function:\n\nmy_func(\"gustav\") \n\n\n\n\nInstalling Packages\n\nInstall the package\n\ninstall.packages('packageName')\n\nLoad the installed package\n\nlibrary(packageName)\n\n\n\n\nUseful websites\n\nBest Coding Practices for R\nMachine Learning Reference in R & Python",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R basics"
+      "R basics {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R-Shiny.html",
     "href": "cheatsheets/Languages/R/R-Shiny.html",
-    "title": "R Shiny",
+    "title": "R Shiny ",
     "section": "",
     "text": "Shiny apps comprise: - UI: Web page that users can interact with. - Server: A server that runs an R-session that reacts to the user interaction and updates the UI.\n\n\nshinyApp(ui = ui, server = server)\nlibrary(shiny)\nui &lt;- fluidPage()\nserver &lt;- function(&lt;inputfunctions&gt;, &lt;outputfunctions&gt;){}\nshinyApp(ui = ui, server = server)",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R Shiny"
+      "R Shiny {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R-Shiny.html#basics",
     "href": "cheatsheets/Languages/R/R-Shiny.html#basics",
-    "title": "R Shiny",
+    "title": "R Shiny ",
     "section": "",
     "text": "Shiny apps comprise: - UI: Web page that users can interact with. - Server: A server that runs an R-session that reacts to the user interaction and updates the UI.\n\n\nshinyApp(ui = ui, server = server)\nlibrary(shiny)\nui &lt;- fluidPage()\nserver &lt;- function(&lt;inputfunctions&gt;, &lt;outputfunctions&gt;){}\nshinyApp(ui = ui, server = server)",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R Shiny"
+      "R Shiny {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R-Shiny.html#inputs",
     "href": "cheatsheets/Languages/R/R-Shiny.html#inputs",
-    "title": "R Shiny",
+    "title": "R Shiny ",
     "section": "Inputs",
     "text": "Inputs\nAdd the following functions as arguments to the fluidPage-function.\n\ntextInput(inputId, label, icon, ...): Creates a text input box where user can type input.\nactionButton(inputId, label, icon, ...): Creates an action button that triggers an event when clicked.\ncheckboxGroupInput(inputId, label, choices), RadioButtons(inputId, label, choices), sliderInput(inputId, label, min, max, value, ...), dateRangeInput(inputId, lable, value, start, end, min, max, ), …",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R Shiny"
+      "R Shiny {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R-Shiny.html#outputs",
     "href": "cheatsheets/Languages/R/R-Shiny.html#outputs",
-    "title": "R Shiny",
+    "title": "R Shiny ",
     "section": "Outputs",
     "text": "Outputs\nAdd the following functions as arguments to the fluidPage-function.\n\ntextOutput(): Displays text output, which can be updated dynamically based on user inputs or server calculations.\nplotOutput(), imageOutput(), verbatimTextOutput(), etc.: Display different types of outputs, such as plots, images, and raw text.",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R Shiny"
+      "R Shiny {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R-Shiny.html#server",
     "href": "cheatsheets/Languages/R/R-Shiny.html#server",
-    "title": "R Shiny",
+    "title": "R Shiny ",
     "section": "Server",
     "text": "Server\n\nserver function: Contains the code that runs on the server side, calculates values based on user inputs, and updates output displays.\n\nserver &lt;- function(input, output){\n    output$hist &lt;- renderPlot({hist(rnorm(input$n))})\n}\nThis takes the input functions and uses the input with inputId=n as the input for the hist-function. It then produces an output for the output-function with outputId=\"hist\".",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R Shiny"
+      "R Shiny {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R-Shiny.html#ui-user-interface",
     "href": "cheatsheets/Languages/R/R-Shiny.html#ui-user-interface",
-    "title": "R Shiny",
+    "title": "R Shiny ",
     "section": "UI (User Interface)",
     "text": "UI (User Interface)\n\nfluidPage(), navbarPage(), etc.: Create the layout of the application.\nmainPanel(), sidebarPanel(), tabsetPanel(), tabPanel(), etc.: Define sections and panels within the layout.",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R Shiny"
+      "R Shiny {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R-Shiny.html#reactive-expressions",
     "href": "cheatsheets/Languages/R/R-Shiny.html#reactive-expressions",
-    "title": "R Shiny",
+    "title": "R Shiny ",
     "section": "Reactive Expressions",
     "text": "Reactive Expressions\n\nreactive(): Creates a reactive expression that caches its value to reduce computation time.\neventReactive(): Creates a reactive expression that is triggered by an event, such as a button click or input change.",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R Shiny"
+      "R Shiny {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R-Shiny.html#dependencies-and-updating-displays",
     "href": "cheatsheets/Languages/R/R-Shiny.html#dependencies-and-updating-displays",
-    "title": "R Shiny",
+    "title": "R Shiny ",
     "section": "Dependencies and Updating Displays",
     "text": "Dependencies and Updating Displays\n\nA reactive expression notifies its dependencies when it needs to be recalculated.\nTo update the display of an output based on a reactive expression, use renderText(), renderPlot(), etc., and pass the reactive expression as the function argument.",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R Shiny"
+      "R Shiny {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R-Shiny.html#modularizing-reactions",
     "href": "cheatsheets/Languages/R/R-Shiny.html#modularizing-reactions",
-    "title": "R Shiny",
+    "title": "R Shiny ",
     "section": "Modularizing Reactions",
     "text": "Modularizing Reactions\n\nSplit complex applications into smaller, more manageable modules using separate ui and server functions for each module.\nUse includeCSS() or includeScript() to include external CSS and JavaScript files in your application.",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R Shiny"
+      "R Shiny {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R-Shiny.html#delaying-reactions",
     "href": "cheatsheets/Languages/R/R-Shiny.html#delaying-reactions",
-    "title": "R Shiny",
+    "title": "R Shiny ",
     "section": "Delaying Reactions",
     "text": "Delaying Reactions\n\nUse the debounce() function from the shinyjs package to delay reactions, reducing the number of times an event is triggered.",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R Shiny"
+      "R Shiny {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R-Shiny.html#navigation",
     "href": "cheatsheets/Languages/R/R-Shiny.html#navigation",
-    "title": "R Shiny",
+    "title": "R Shiny ",
     "section": "Navigation",
     "text": "Navigation\n\nUse tabsetPanel(), navlistPanel(), etc., to create tabs and navigate between different sections of your application.",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R Shiny"
+      "R Shiny {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R-Shiny.html#images",
     "href": "cheatsheets/Languages/R/R-Shiny.html#images",
-    "title": "R Shiny",
+    "title": "R Shiny ",
     "section": "Images",
     "text": "Images\n\nInclude images in your Shiny app by linking to them using the img() function, with the image file located in the www subdirectory.",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R Shiny"
+      "R Shiny {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Languages/R/R-Shiny.html#publish",
     "href": "cheatsheets/Languages/R/R-Shiny.html#publish",
-    "title": "R Shiny",
+    "title": "R Shiny ",
     "section": "Publish",
     "text": "Publish\nIn R-console:\nrsconnect::deployApp(\"&lt;path to directory&gt;\")",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "R",
-      "R Shiny"
+      "R Shiny {{< fa brands r-project >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Cloud & Platform/azure_cli.html",
     "href": "cheatsheets/Cloud & Platform/azure_cli.html",
-    "title": "Azure CLI",
+    "title": "Azure CLI ",
     "section": "",
     "text": "Instrallation instructions can be found here",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",
-      "Azure CLI"
+      "Azure CLI {{< fa brands microsoft >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Cloud & Platform/azure_cli.html#installation-instructions",
     "href": "cheatsheets/Cloud & Platform/azure_cli.html#installation-instructions",
-    "title": "Azure CLI",
+    "title": "Azure CLI ",
     "section": "",
     "text": "Instrallation instructions can be found here",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",
-      "Azure CLI"
+      "Azure CLI {{< fa brands microsoft >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Cloud & Platform/azure_cli.html#general",
     "href": "cheatsheets/Cloud & Platform/azure_cli.html#general",
-    "title": "Azure CLI",
+    "title": "Azure CLI ",
     "section": "General",
     "text": "General\nGeneral format of the commands:\naz {command group} {command subgroup} {command} {--parameters}\n\n\n\nCommon commands\n \n\n\n\n\nGet version of Azure CLI\nazure --version",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",
-      "Azure CLI"
+      "Azure CLI {{< fa brands microsoft >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Cloud & Platform/azure_cli.html#security",
     "href": "cheatsheets/Cloud & Platform/azure_cli.html#security",
-    "title": "Azure CLI",
+    "title": "Azure CLI ",
     "section": "Security",
     "text": "Security\n\n\n\n\n\n\n\nService Principals\n\n\n\n\n\nCreate a service principal\naz ad sp create-for-rbac -n \"api://&lt;spName&gt;\" --role owner --scopes subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroup&gt;\n\n\nGet the object/app ID of your service principal\naz ad sp show --id &lt;appId&gt;\n\n\nAssign access to keyvault secrets to service principal\naz keyvault set-policy -n &lt;keyVaultName&gt; --object-id &lt;objectId&gt; --secret-permissions get list",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",
-      "Azure CLI"
+      "Azure CLI {{< fa brands microsoft >}}"
     ]
   },
   {
     "objectID": "cheatsheets/Cloud & Platform/gcloud.html",
     "href": "cheatsheets/Cloud & Platform/gcloud.html",
-    "title": "GCP: gcloud CLI",
+    "title": "GCP: gcloud CLI ",
     "section": "",
     "text": "SSH connection\n \n\n\n\n\nsetup new ssh connection to compute instance\ngcloud compute config-ssh",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",
-      "GCP: gcloud CLI"
+      "GCP: gcloud CLI {{< fa brands google >}}"
     ]
   },
   {
@@ -1333,7 +1333,7 @@
     "href": "cheatsheets/Cloud & Platform/Openshift.html",
     "title": "OpenShift",
     "section": "",
-    "text": "Docker containers\n\nUnits for running processes. Contain the software code, all dependencies (programming libraries, operating system tools & libraries). Allows to run processes in isolation. Containers usually run single services (e.g. web server, database, …) called micro-services.\n\nImages\n\nBinary file that contains instructions for building a container. Images are commonly based on other images (e.g. you application image is based on an ubuntu image). By creating multiple containers from the same image, you can use load-balancing for your processes.\n\nImage tags\n\nusually contain the version number and potentially other info (e.g. OS, base-image, …). Used to distinguish realted images in the same repository or stream.\n\nImage registries\n\nStores images in image repositories (containing images with different tags) and deploys the images into containers.\n\nPods\n\nCollection of one or more containers. Containers in the same pod share the same compute resources (i.e. same cluster & local network, see below). You define, deploy and manage pods and not containers separately. A pod has an internal IP-adress. Containers within pods share their local storage and networking. You cannot change running pods; you stop them and recreate them with the modification.\n\nRestart Policy\n\nWhen containers in a pod exit (finish application task or failing), the pod can be restarted “always”, “OnFailure” or “Never”. If a pod fails, a new pod is created (possibly losing temporary files, etc.).\n\nServices\n\nLoad balancer that distributes and proxies connections to the pods. Head-less services run without load balancers.\n\nLabels\n\nPods can be given labels and thus organized into groups. Services use these to select groups of pods to proxy to.\n\n\n\n\n\n\nUsers\n\nPeople or roles that can interact with the components of OpenShift. There are regular users (humans), system users (technical accounts: cluster admins, per-node users, …) and service accounts (accounts to that are used by application processes)\n\nKubernets namespaces\n\nLogical groups of resources (nodes & services) to avoid naming collisions, organize authoriy and resource consumption. (e.g. dev-namespace, test-namespace, prod-namespace)\n\nProjects\n\nA project is a kubernetes namespaces with additional features. It defines its objects (pods, services, replication controllers, …), policy rules, resource constraints & service accounts.\n\n\n\n\n\n\nBuilds\n\nA build is the process that transforms the specifications and source code into a runnable image. These are then pushed into the image registry. Openshift uses Source-to-Image (S2I) as the tool that builds the images. Build pipelines can be constructed using Jenkins and defined in jenkins files that are referenced by the build-configuration.\n\nImage streams\n\ngive you an overview of related images like in image repositories. Deployment pipelines can watch streams to trigger new deployments, when new images arrive.\n\nReplication controller\n\nControls the number of replicas of a pod. It makes sure that there is the specified amount of replicas running at all times. It does not autoscale on its own. Used for continuously running pods.\n\nJob\n\ncreates pods like a replication controller does. It is however used for one-time running pods. It tracks if the pods have run successfully.\n\nDeployments\n\nThe process of starting up pods with their respective images. A deployment creates a new replication controller and has it ship the pods as specified. The deploymentConfig defines the replication controller, the triggers for the deployment and lifecycle hooks.\n\n\n\n\n\n\n\nNode\n\nCompute hardware unit. A single machine, where the container runs on.\n\nCluster\n\nGroup of nodes that are orchestrated to share resources and load.\n\nEndpoint\n\nServer that backs a service (see above).\n\n\nMore information: OpenShift: Core Concepts Google Cloud: What are Containers Docker Docs: Docker overview",
+    "text": "Containers\n\nLightweight, standalone executable packages that include everything needed to run an application. Modern containers use the Open Container Initiative (OCI) standard and aren’t limited to Docker. They enable consistent deployment across different environments.\n\nImages\n\nImmutable templates used to create containers. They follow a layered architecture and can be built using various tools like Buildah, Podman, or Docker. Images are defined using Containerfiles or Dockerfiles.\n\nImage tags\n\nMetadata identifiers for image versions, variants, and architectures. Modern practices include using content-addressable digests alongside tags for immutable references.\n\nContainer registries\n\nCentralized repositories that store and distribute container images. Support features like vulnerability scanning, signing, and RBAC. Popular options include Quay.io, Docker Hub, and private registries.\n\nPods\n\nSmallest deployable units in Kubernetes/OpenShift. Can contain multiple containers that share network namespace, storage, and lifecycle. Pods are ephemeral and should be managed through higher-level controllers.\n\nPod lifecycle\n\nManaged through phases including Pending, Running, Succeeded, Failed, and Unknown. Containers within pods can have individual restart policies and health checks.\n\nServices\n\nAbstract way to expose applications running in pods. Types include ClusterIP, NodePort, LoadBalancer, and ExternalName. Support features like service mesh integration.\n\nLabels and annotations\n\nKey-value pairs for organizing and selecting Kubernetes resources. Annotations provide non-identifying metadata for automation and tooling.\n\n\n\n\n\n\nUsers\n\nIdentity management integrated with enterprise systems (LDAP, OAuth, etc.). Supports Role-Based Access Control (RBAC) with custom roles and bindings.\n\nKubernetes namespaces\n\nVirtual clusters within a physical cluster. Support resource quotas, network policies, and service isolation. Enable multi-tenancy and environment separation.\n\nProjects\n\nOpenShift’s extension of namespaces with additional security controls, routing, and monitoring features. Support for project templates and operator integration.\n\n\n\n\n\n\nBuilds\n\nPipeline-based image creation process. Supports multiple build strategies including Source-to-Image (S2I), Containerfile, and custom builds. Integration with modern CI/CD tools like Tekton.\n\nImage streams\n\nOpenShift abstraction for managing container images. Support automatic updates, rollbacks, and deployment triggers. Enable image promotion across environments.\n\nDeployments\n\nDeclarative updates to applications. Use ReplicaSets (replacing older ReplicationControllers) for maintaining desired pod state. Support advanced deployment strategies like rolling, blue-green, and canary.\n\nJobs and CronJobs\n\nManage pods that run to completion. Support for parallel processing, retry policies, and scheduled execution. Integration with cluster autoscaling.\n\nOperators\n\nSoftware extensions to Kubernetes that use custom resources to manage applications and their components. Automate operational tasks and complex deployments.\n\n\n\n\n\n\n\nNodes\n\nPhysical or virtual machines running containerized workloads. Support various runtime classes and compute profiles. Can be managed through machine sets and autoscaling.\n\nClusters\n\nDistributed systems for container orchestration. Support hybrid and multi-cloud deployments, federation, and advanced networking models.\n\nService mesh\n\nInfrastructure layer for service-to-service communication. Provides traffic management, security, and observability features.\n\n\nMore information:\n\nOpenShift: Core Concepts\nGoogle Cloud: What are Containers\nDocker Docs: Docker overview",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",
@@ -1345,7 +1345,7 @@
     "href": "cheatsheets/Cloud & Platform/Openshift.html#core-concepts",
     "title": "OpenShift",
     "section": "",
-    "text": "Docker containers\n\nUnits for running processes. Contain the software code, all dependencies (programming libraries, operating system tools & libraries). Allows to run processes in isolation. Containers usually run single services (e.g. web server, database, …) called micro-services.\n\nImages\n\nBinary file that contains instructions for building a container. Images are commonly based on other images (e.g. you application image is based on an ubuntu image). By creating multiple containers from the same image, you can use load-balancing for your processes.\n\nImage tags\n\nusually contain the version number and potentially other info (e.g. OS, base-image, …). Used to distinguish realted images in the same repository or stream.\n\nImage registries\n\nStores images in image repositories (containing images with different tags) and deploys the images into containers.\n\nPods\n\nCollection of one or more containers. Containers in the same pod share the same compute resources (i.e. same cluster & local network, see below). You define, deploy and manage pods and not containers separately. A pod has an internal IP-adress. Containers within pods share their local storage and networking. You cannot change running pods; you stop them and recreate them with the modification.\n\nRestart Policy\n\nWhen containers in a pod exit (finish application task or failing), the pod can be restarted “always”, “OnFailure” or “Never”. If a pod fails, a new pod is created (possibly losing temporary files, etc.).\n\nServices\n\nLoad balancer that distributes and proxies connections to the pods. Head-less services run without load balancers.\n\nLabels\n\nPods can be given labels and thus organized into groups. Services use these to select groups of pods to proxy to.\n\n\n\n\n\n\nUsers\n\nPeople or roles that can interact with the components of OpenShift. There are regular users (humans), system users (technical accounts: cluster admins, per-node users, …) and service accounts (accounts to that are used by application processes)\n\nKubernets namespaces\n\nLogical groups of resources (nodes & services) to avoid naming collisions, organize authoriy and resource consumption. (e.g. dev-namespace, test-namespace, prod-namespace)\n\nProjects\n\nA project is a kubernetes namespaces with additional features. It defines its objects (pods, services, replication controllers, …), policy rules, resource constraints & service accounts.\n\n\n\n\n\n\nBuilds\n\nA build is the process that transforms the specifications and source code into a runnable image. These are then pushed into the image registry. Openshift uses Source-to-Image (S2I) as the tool that builds the images. Build pipelines can be constructed using Jenkins and defined in jenkins files that are referenced by the build-configuration.\n\nImage streams\n\ngive you an overview of related images like in image repositories. Deployment pipelines can watch streams to trigger new deployments, when new images arrive.\n\nReplication controller\n\nControls the number of replicas of a pod. It makes sure that there is the specified amount of replicas running at all times. It does not autoscale on its own. Used for continuously running pods.\n\nJob\n\ncreates pods like a replication controller does. It is however used for one-time running pods. It tracks if the pods have run successfully.\n\nDeployments\n\nThe process of starting up pods with their respective images. A deployment creates a new replication controller and has it ship the pods as specified. The deploymentConfig defines the replication controller, the triggers for the deployment and lifecycle hooks.\n\n\n\n\n\n\n\nNode\n\nCompute hardware unit. A single machine, where the container runs on.\n\nCluster\n\nGroup of nodes that are orchestrated to share resources and load.\n\nEndpoint\n\nServer that backs a service (see above).\n\n\nMore information: OpenShift: Core Concepts Google Cloud: What are Containers Docker Docs: Docker overview",
+    "text": "Containers\n\nLightweight, standalone executable packages that include everything needed to run an application. Modern containers use the Open Container Initiative (OCI) standard and aren’t limited to Docker. They enable consistent deployment across different environments.\n\nImages\n\nImmutable templates used to create containers. They follow a layered architecture and can be built using various tools like Buildah, Podman, or Docker. Images are defined using Containerfiles or Dockerfiles.\n\nImage tags\n\nMetadata identifiers for image versions, variants, and architectures. Modern practices include using content-addressable digests alongside tags for immutable references.\n\nContainer registries\n\nCentralized repositories that store and distribute container images. Support features like vulnerability scanning, signing, and RBAC. Popular options include Quay.io, Docker Hub, and private registries.\n\nPods\n\nSmallest deployable units in Kubernetes/OpenShift. Can contain multiple containers that share network namespace, storage, and lifecycle. Pods are ephemeral and should be managed through higher-level controllers.\n\nPod lifecycle\n\nManaged through phases including Pending, Running, Succeeded, Failed, and Unknown. Containers within pods can have individual restart policies and health checks.\n\nServices\n\nAbstract way to expose applications running in pods. Types include ClusterIP, NodePort, LoadBalancer, and ExternalName. Support features like service mesh integration.\n\nLabels and annotations\n\nKey-value pairs for organizing and selecting Kubernetes resources. Annotations provide non-identifying metadata for automation and tooling.\n\n\n\n\n\n\nUsers\n\nIdentity management integrated with enterprise systems (LDAP, OAuth, etc.). Supports Role-Based Access Control (RBAC) with custom roles and bindings.\n\nKubernetes namespaces\n\nVirtual clusters within a physical cluster. Support resource quotas, network policies, and service isolation. Enable multi-tenancy and environment separation.\n\nProjects\n\nOpenShift’s extension of namespaces with additional security controls, routing, and monitoring features. Support for project templates and operator integration.\n\n\n\n\n\n\nBuilds\n\nPipeline-based image creation process. Supports multiple build strategies including Source-to-Image (S2I), Containerfile, and custom builds. Integration with modern CI/CD tools like Tekton.\n\nImage streams\n\nOpenShift abstraction for managing container images. Support automatic updates, rollbacks, and deployment triggers. Enable image promotion across environments.\n\nDeployments\n\nDeclarative updates to applications. Use ReplicaSets (replacing older ReplicationControllers) for maintaining desired pod state. Support advanced deployment strategies like rolling, blue-green, and canary.\n\nJobs and CronJobs\n\nManage pods that run to completion. Support for parallel processing, retry policies, and scheduled execution. Integration with cluster autoscaling.\n\nOperators\n\nSoftware extensions to Kubernetes that use custom resources to manage applications and their components. Automate operational tasks and complex deployments.\n\n\n\n\n\n\n\nNodes\n\nPhysical or virtual machines running containerized workloads. Support various runtime classes and compute profiles. Can be managed through machine sets and autoscaling.\n\nClusters\n\nDistributed systems for container orchestration. Support hybrid and multi-cloud deployments, federation, and advanced networking models.\n\nService mesh\n\nInfrastructure layer for service-to-service communication. Provides traffic management, security, and observability features.\n\n\nMore information:\n\nOpenShift: Core Concepts\nGoogle Cloud: What are Containers\nDocker Docs: Docker overview",
     "crumbs": [
       "Cheatsheets",
       "Cloud & Platform",
