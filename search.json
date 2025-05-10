@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Cheatsheets",
     "section": "",
-    "text": "This is a collection of my cheatsheets. Feel free to use them. If you want to edit them, to your own needs: Pleae visit my Github-Repo, give it a star and clone it.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nCategories\n\n\n\n\n\n\n\n\nAnsible\n\n\nAnsible is a task and infrastructure automation tool. It is agentless.\n\n\nCloud, Infrastructure as Code\n\n\n\n\n\n\nAzure CLI\n\n\nAzure/az CLI is the command line interface of Azure.\n\n\n \n\n\n\n\n\n\nAzure ML\n\n\n\n\n\n \n\n\n\n\n\n\nBash\n\n\nBash is a command line tool and language.\n\n\nCLI, tool\n\n\n\n\n\n\nConda\n\n\nConda is a package and virtual environment manager.\n\n\ntool, CLI, package manager, virtual environments\n\n\n\n\n\n\nDart\n\n\nDart is a new programming language by Google, mainly used for app development.\n\n\nlanguage\n\n\n\n\n\n\nDplyr\n\n\nDplyr is a data transformation library in the collection Tidyverse.\n\n\nR, data science\n\n\n\n\n\n\nFlutter\n\n\nFlutter is a cross-plattform app-development framework based on dart.\n\n\napp development, web development\n\n\n\n\n\n\nGCP: gcloud CLI\n\n\nGcloud CLI is the command line interface of the Google Cloud Platform.\n\n\n \n\n\n\n\n\n\nGit\n\n\nGit is a version control system mostly used for code.\n\n\nCLI, tool, versioning\n\n\n\n\n\n\nOpenShift\n\n\nOpenShift is a platform based on Kubernetes to host and manage applications in containers.\n\n\n \n\n\n\n\n\n\nPandas\n\n\nPandas is a python library for data wrangling and data cleaning.\n\n\nframework, python, data science\n\n\n\n\n\n\nPip\n\n\nPip is the official python package manager\n\n\nCLI, tool, package manager\n\n\n\n\n\n\nPoetry\n\n\nPoetry is a package builder, dependency and virtual environment manager for python.\n\n\npython, tool, CLI, package manager, virtual environments\n\n\n\n\n\n\nPowershell\n\n\nPowershell is the major command line tool for windows\n\n\nCLI, tool\n\n\n\n\n\n\nPython Design Patterns\n\n\nPython is one of the most popular programming languages.\n\n\nlanguage\n\n\n\n\n\n\nPython basics\n\n\nPython is one of the most popular programming languages.\n\n\nlanguage\n\n\n\n\n\n\nQuarto\n\n\nQuarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations.\n\n\ntool, web development\n\n\n\n\n\n\nR Shiny\n\n\nShiny is a framework to build web apps to interactively visualize data.\n\n\nR, data science, visualize\n\n\n\n\n\n\nR basics\n\n\nR is a programming language that is specialized in statistical analysis.\n\n\nlanguage, data science\n\n\n\n\n\n\nR plotting\n\n\nR has powerful builtin plotting capabilities\n\n\nR, data science, visualize\n\n\n\n\n\n\nSplunk processing language (SPL)\n\n\nThis is the language you need to use to query splunk logs.\n\n\nlanguage\n\n\n\n\n\n\nTidymodels\n\n\nTidymodels is a collection of packages for machine learning. It is part of the tidyverse.\n\n\nR, data science\n\n\n\n\n\n\nVS Code\n\n\nVisual studio code is one of the most popular code editors.\n\n\nIDE, short-cuts\n\n\n\n\n\n\nVenv\n\n\nVenv is the built-in virtual environment manager for python.\n\n\ntool, CLI, virtual environments\n\n\n\n\n\n\nruff\n\n\nA fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black\n\n\nCLI, tool, code quality\n\n\n\n\n\n\nuv\n\n\nuv is a Python package manager with additional features for managing Python versions, scripts, projects, and tools.\n\n\nCLI, tool, package manager\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n\nNo matching items"
+    "text": "This is a collection of my cheatsheets. Feel free to use them. If you want to edit them, to your own needs: Pleae visit my Github-Repo, give it a star and clone it.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nCategories\n\n\n\n\n\n\n\n\nAnsible\n\n\nAnsible is a task and infrastructure automation tool. It is agentless.\n\n\nCloud, Infrastructure as Code\n\n\n\n\n\n\nAzure CLI\n\n\nAzure/az CLI is the command line interface of Azure.\n\n\n \n\n\n\n\n\n\nAzure ML\n\n\n\n\n\n \n\n\n\n\n\n\nBash\n\n\nBash is a command line tool and language.\n\n\nCLI, tool\n\n\n\n\n\n\nConda\n\n\nConda is a package and virtual environment manager.\n\n\ntool, CLI, package manager, virtual environments\n\n\n\n\n\n\nDart\n\n\nDart is a new programming language by Google, mainly used for app development.\n\n\nlanguage\n\n\n\n\n\n\nDocker\n\n\nDocker is a platform for developing, shipping, and running applications in isolated environments.\n\n\nCLI, tool, container\n\n\n\n\n\n\nDplyr\n\n\nDplyr is a data transformation library in the collection Tidyverse.\n\n\nR, data science\n\n\n\n\n\n\nFlutter\n\n\nFlutter is a cross-plattform app-development framework based on dart.\n\n\napp development, web development\n\n\n\n\n\n\nGCP: gcloud CLI\n\n\nGcloud CLI is the command line interface of the Google Cloud Platform.\n\n\n \n\n\n\n\n\n\nGit\n\n\nGit is a version control system mostly used for code.\n\n\nCLI, tool, versioning\n\n\n\n\n\n\nOpenShift\n\n\nOpenShift is a platform based on Kubernetes to host and manage applications in containers.\n\n\n \n\n\n\n\n\n\nPandas\n\n\nPandas is a python library for data wrangling and data cleaning.\n\n\nframework, python, data science\n\n\n\n\n\n\nPip\n\n\nPip is the official python package manager\n\n\nCLI, tool, package manager\n\n\n\n\n\n\nPoetry\n\n\nPoetry is a package builder, dependency and virtual environment manager for python.\n\n\npython, tool, CLI, package manager, virtual environments\n\n\n\n\n\n\nPowershell\n\n\nPowershell is the major command line tool for windows\n\n\nCLI, tool\n\n\n\n\n\n\nPython Design Patterns\n\n\nPython is one of the most popular programming languages.\n\n\nlanguage\n\n\n\n\n\n\nPython basics\n\n\nPython is one of the most popular programming languages.\n\n\nlanguage\n\n\n\n\n\n\nQuarto\n\n\nQuarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations.\n\n\ntool, web development\n\n\n\n\n\n\nR Shiny\n\n\nShiny is a framework to build web apps to interactively visualize data.\n\n\nR, data science, visualize\n\n\n\n\n\n\nR basics\n\n\nR is a programming language that is specialized in statistical analysis.\n\n\nlanguage, data science\n\n\n\n\n\n\nR plotting\n\n\nR has powerful builtin plotting capabilities\n\n\nR, data science, visualize\n\n\n\n\n\n\nSplunk processing language (SPL)\n\n\nThis is the language you need to use to query splunk logs.\n\n\nlanguage\n\n\n\n\n\n\nTidymodels\n\n\nTidymodels is a collection of packages for machine learning. It is part of the tidyverse.\n\n\nR, data science\n\n\n\n\n\n\nVS Code\n\n\nVisual studio code is one of the most popular code editors.\n\n\nIDE, short-cuts\n\n\n\n\n\n\nVenv\n\n\nVenv is the built-in virtual environment manager for python.\n\n\ntool, CLI, virtual environments\n\n\n\n\n\n\nruff\n\n\nA fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black\n\n\nCLI, tool, code quality\n\n\n\n\n\n\nuv\n\n\nuv is a Python package manager with additional features for managing Python versions, scripts, projects, and tools.\n\n\nCLI, tool, package manager\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "cheatsheets/Cloud & Platform/azure_ml.html",
@@ -794,6 +794,78 @@
       "Cheatsheets",
       "CLI Tools",
       "Powershell"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI Tools/docker.html",
+    "href": "cheatsheets/CLI Tools/docker.html",
+    "title": "Docker",
+    "section": "",
+    "text": "The key components are:",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI Tools",
+      "Docker"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI Tools/docker.html#dockerfile",
+    "href": "cheatsheets/CLI Tools/docker.html#dockerfile",
+    "title": "Docker",
+    "section": "Dockerfile",
+    "text": "Dockerfile\nDockerfile example:\nFROM rocker/shiny:latest\nRUN apt-get update\nRUN apt-get install -qq -y libpq-dev\nRUN install2.r ggplot2 shiny shinydashboard \\\n    shinydashboardPlus \\\n    dplyr RPostgres\nExplanation:\n\nFROM specifies the base image\nRUN executes a command in the container",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI Tools",
+      "Docker"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI Tools/docker.html#basic-docker-commands",
+    "href": "cheatsheets/CLI Tools/docker.html#basic-docker-commands",
+    "title": "Docker",
+    "section": "Basic Docker Commands",
+    "text": "Basic Docker Commands\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nStart application\ndocker run  &lt;container-name/container-id&gt;\n\n\nList containers\ndocker ps\n\n\nList docker images\ndocker images\n\n\nPull images from registry\ndocker pull\n\n\nKill container\ndocker kill  &lt;container-name/container-id&gt;\n\n\nBuild image based on Dockerfile\ndocker build &lt;dir-with-docker-file&gt;\n\n\nExecute command inside container\ndocker exec &lt;command&gt; &lt;container&gt;",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI Tools",
+      "Docker"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI Tools/docker.html#interacting-with-containers",
+    "href": "cheatsheets/CLI Tools/docker.html#interacting-with-containers",
+    "title": "Docker",
+    "section": "Interacting with Containers",
+    "text": "Interacting with Containers\nStart a container and execute bash:\ndocker run -d rocker/shiny\ndocker exec -it rocker/shiny /bin/bash\nStart R directly in a container:\ndocker exec -it rocker/shiny /usr/local/bin/R\n\nContainer Management\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nStop container\ndocker stop &lt;container-name/container-id&gt;\n\n\nRemove container\ndocker rm &lt;container-name/container-id&gt;\n\n\nRemove container and its volumes\ndocker rm -v &lt;container-name/container-id&gt;\n\n\nRestart container\ndocker restart &lt;container-name/container-id&gt;",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI Tools",
+      "Docker"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI Tools/docker.html#docker-compose",
+    "href": "cheatsheets/CLI Tools/docker.html#docker-compose",
+    "title": "Docker",
+    "section": "Docker Compose",
+    "text": "Docker Compose\nDocker Compose is a tool for defining and running multi-container Docker applications using a YAML file. Example docker-compose.yml:\nservices:\n  postgres:\n    container_name: db_container\n    build: ./postgres\n    restart: always\n    environment:\n      - POSTGRES_USER=postgres\n      - POSTGRES_PASSWORD=postgres\n    ports:\n      - \"5432:5432\"\n    volumes:\n      - \"./pgdata:/var/lib/postgresql/data\"\n  \n  shiny:\n    container_name: shiny\n    depends_on:\n      - postgres\n    build: ./shiny\n    volumes:\n      - \"./shiny-logs:/var/log/shiny-server\"\n      - \"./shiny-home:/srv/shiny-server\"\n    ports:\n      - \"3838:3838\"\nRun docker-compose:\ndocker compose up --force-recreate",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI Tools",
+      "Docker"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI Tools/docker.html#debugging-tips",
+    "href": "cheatsheets/CLI Tools/docker.html#debugging-tips",
+    "title": "Docker",
+    "section": "Debugging Tips",
+    "text": "Debugging Tips\nView container logs:\ndocker logs &lt;container-name&gt;\nPrevent container from crashing for debugging: Add to docker-compose.yml:\ncommand: \"sleep infinity\"\n\nContainer Status\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nList running containers (with grep filter)\ndocker ps \\| grep &lt;container-name&gt;\n\n\nShow all containers including stopped ones\ndocker ps -a\n\n\n\n\n\nContainer Logs:\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nView container logs\ndocker logs &lt;container-name&gt;\n\n\nFollow container logs live\ndocker logs -f &lt;container-name&gt;\n\n\nShow last N lines of logs\ndocker logs --tail=100 &lt;container-name&gt;\n\n\n\n\n\nNetwork Debugging:\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nCheck port mappings\nnetstat -tulpn | grep &lt;port-number&gt;\n\n\nTest container connectivity\ncurl -v http://localhost:&lt;port&gt;\n\n\nList all Docker networks\ndocker network ls\n\n\nInspect network settings\ndocker network inspect &lt;network-name&gt;\n\n\n\n\n\nContainer Information:\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nShow detailed container info\ndocker inspect &lt;container-name&gt;\n\n\nShow container resource usage\ndocker stats &lt;container-name&gt;\n\n\nShow processes running in container\ndocker top &lt;container-name&gt;\n\n\n\n\n\nTroubleshooting Commands:\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nCheck if container can reach internet\ndocker exec &lt;container-name&gt; ping 8.8.8.8\n\n\nGet shell access inside container\ndocker exec -it &lt;container-name&gt; /bin/bash\n\n\nCheck container logs since specific time\ndocker logs --since 30m &lt;container-name&gt;\n\n\nCheck container environment variables\ndocker exec &lt;container-name&gt; env\n\n\n\n\n\nVolume Inspection:\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nList volumes\ndocker volume ls\n\n\nInspect volume\ndocker volume inspect &lt;volume-name&gt;\n\n\nCheck volume mount points\ndocker inspect -f '{{ .Mounts }}' &lt;container-name&gt;",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI Tools",
+      "Docker"
     ]
   },
   {
