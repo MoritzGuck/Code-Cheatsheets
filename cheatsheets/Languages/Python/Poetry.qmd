@@ -1,5 +1,5 @@
 ---
-title: "Poetry"
+title: "Poetry {{< fa brands python >}}"
 description: "Poetry is a package builder, dependency and virtual environment manager for python."
 
 format: html

@@ -1,5 +1,5 @@
 ---
-title: "R Shiny"
+title: "R Shiny {{< fa brands r-project >}}"
 description: "Shiny is a framework to build web apps to interactively visualize data."
 format: html
 from: markdown+emoji

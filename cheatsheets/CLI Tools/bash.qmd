@@ -1,5 +1,5 @@
 ---
-title: "Bash"
+title: "Bash {{< fa terminal >}} "
 description: "Bash is a command line tool and language."
 format: html
 categories:

@@ -1,5 +1,5 @@
 ---
-title: "Azure ML"
+title: "Azure ML {{< fa brands microsoft >}}"
 format: html
 ---
 

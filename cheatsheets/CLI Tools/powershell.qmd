@@ -1,5 +1,5 @@
 ---
-title: "Powershell"
+title: "Powershell {{< fa brands windows >}}"
 description: "Powershell is the major command line tool for windows"
 format: html
 categories:

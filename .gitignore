@@ -406,3 +406,5 @@ _site/*
 
 
 uv.lock
+
+_extensions/*

@@ -1,5 +1,5 @@
 ---
-title: "Dplyr"
+title: "Dplyr {{< fa brands r-project >}}"
 description: "Dplyr is a data transformation library in the collection Tidyverse."
 format: html
 from: markdown+emoji

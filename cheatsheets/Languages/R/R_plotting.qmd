@@ -1,5 +1,5 @@
 ---
-title: "R plotting"
+title: "R plotting {{< fa brands r-project >}}"
 description: "R has powerful builtin plotting capabilities"
 format: html
 from: markdown+emoji

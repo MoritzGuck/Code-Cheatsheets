@@ -1,5 +1,5 @@
 ---
-title: "Git"
+title: "Git {{< fa brands git-alt >}} "
 description: "Git is a version control system mostly used for code."
 format: html
 categories:

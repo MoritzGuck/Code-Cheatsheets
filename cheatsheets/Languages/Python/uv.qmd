@@ -1,5 +1,5 @@
 ---
-title: "uv"
+title: "uv {{< fa brands python >}}"
 description: "uv is a Python package manager with additional features for managing Python versions, scripts, projects, and tools."
 
 format: html

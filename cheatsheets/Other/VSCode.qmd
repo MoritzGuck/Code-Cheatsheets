@@ -1,5 +1,5 @@
 ---
-title: "VS Code"
+title: "VS Code {{< fa brands microsoft >}}"
 description: "Visual studio code is one of the most popular code editors."
 format: html
 categories:

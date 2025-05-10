@@ -1,5 +1,5 @@
 ---
-title: "GCP: gcloud CLI"
+title: "GCP: gcloud CLI {{< fa brands google >}}"
 description: "Gcloud CLI is the command line interface of the Google Cloud Platform."
 format: html
 ---

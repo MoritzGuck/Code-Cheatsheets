@@ -1,5 +1,5 @@
 ---
-title: "ruff"
+title: "ruff {{< fa brands python >}}"
 description: "A fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black"
 format: html
 categories:

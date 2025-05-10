@@ -1,5 +1,5 @@
 ---
-title: "Conda"
+title: "Conda {{< fa brands python >}}"
 description: "Conda is a package and virtual environment manager."
 
 format: html

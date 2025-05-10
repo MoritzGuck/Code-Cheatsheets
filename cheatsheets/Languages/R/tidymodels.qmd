@@ -1,5 +1,5 @@
 ---
-title: "Tidymodels"
+title: "Tidymodels {{< fa brands r-project >}}"
 description: "Tidymodels is a collection of packages for machine learning. It is part of the tidyverse."
 format: html
 from: markdown+emoji

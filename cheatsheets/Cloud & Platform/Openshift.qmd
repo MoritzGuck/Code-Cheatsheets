@@ -1,9 +1,8 @@
 ---
-title: "OpenShift"
+title: "OpenShift "
 description: "OpenShift is a platform based on Kubernetes to host and manage applications in containers."
 format: html
 ---
-
 
 ## Core concepts
 
@@ -11,70 +10,71 @@ format: html
 
 #### Containers & pods
 
-Docker containers
-: Units for running processes. Contain the software code, all dependencies (programming libraries, operating system tools & libraries). Allows to run processes in isolation. Containers usually run single services (e.g. web server, database, ...) called micro-services.
+Containers
+: Lightweight, standalone executable packages that include everything needed to run an application. Modern containers use the Open Container Initiative (OCI) standard and aren't limited to Docker. They enable consistent deployment across different environments.
 
 Images
-: Binary file that contains instructions for building a container. Images are commonly based on other images (e.g. you application image is based on an ubuntu image). By creating multiple containers from the same image, you can use load-balancing for your processes.
+: Immutable templates used to create containers. They follow a layered architecture and can be built using various tools like Buildah, Podman, or Docker. Images are defined using Containerfiles or Dockerfiles.
 
 Image tags
-: usually contain the version number and potentially other info (e.g. OS, base-image, ...). Used to distinguish realted images in the same repository or stream.
+: Metadata identifiers for image versions, variants, and architectures. Modern practices include using content-addressable digests alongside tags for immutable references.
 
-Image registries
-: Stores images in image repositories (containing images with different tags) and deploys the images into containers.
+Container registries
+: Centralized repositories that store and distribute container images. Support features like vulnerability scanning, signing, and RBAC. Popular options include Quay.io, Docker Hub, and private registries.
 
 Pods
-: Collection of one or more containers. Containers in the same pod share the same compute resources (i.e. same cluster & local network, see below). You define, deploy and manage pods and not containers separately. A pod has an internal IP-adress. Containers within pods share their local storage and networking. You cannot change running pods; you stop them and recreate them with the modification. 
+: Smallest deployable units in Kubernetes/OpenShift. Can contain multiple containers that share network namespace, storage, and lifecycle. Pods are ephemeral and should be managed through higher-level controllers.
 
-Restart Policy
-: When containers in a pod exit (finish application task or failing), the pod can be restarted "always", "OnFailure" or "Never". If a pod fails, a new pod is created (possibly losing temporary files, etc.).
+Pod lifecycle
+: Managed through phases including Pending, Running, Succeeded, Failed, and Unknown. Containers within pods can have individual restart policies and health checks.
 
 Services
-: Load balancer that distributes and proxies connections to the pods. *Head-less services* run without load balancers.
+: Abstract way to expose applications running in pods. Types include ClusterIP, NodePort, LoadBalancer, and ExternalName. Support features like service mesh integration.
 
-Labels
-: Pods can be given labels and thus organized into groups. Services use these to select groups of pods to proxy to. 
+Labels and annotations
+: Key-value pairs for organizing and selecting Kubernetes resources. Annotations provide non-identifying metadata for automation and tooling.
 
 #### Projects & users
 
 Users
-: People or roles that can interact with the components of OpenShift. There are regular users (humans), system users (technical accounts: cluster admins, per-node users, ...) and service accounts (accounts to that are used by application processes)
+: Identity management integrated with enterprise systems (LDAP, OAuth, etc.). Supports Role-Based Access Control (RBAC) with custom roles and bindings.
 
-Kubernets namespaces
-: Logical groups of resources (nodes & services) to avoid naming collisions, organize authoriy and resource consumption. (e.g. dev-namespace, test-namespace, prod-namespace)
+Kubernetes namespaces
+: Virtual clusters within a physical cluster. Support resource quotas, network policies, and service isolation. Enable multi-tenancy and environment separation.
 
 Projects
-: A project is a kubernetes namespaces with additional features. It defines its objects (pods, services, replication controllers, ...), policy rules, resource constraints & service accounts. 
+: OpenShift's extension of namespaces with additional security controls, routing, and monitoring features. Support for project templates and operator integration.
 
 #### Builds & Deployments
 
 Builds
-: A build is the process that transforms the specifications and source code into a runnable image. These are then pushed into the image registry. Openshift uses Source-to-Image (S2I) as the tool that builds the images. Build pipelines can be constructed using Jenkins and defined in jenkins files that are referenced by the build-configuration. 
+: Pipeline-based image creation process. Supports multiple build strategies including Source-to-Image (S2I), Containerfile, and custom builds. Integration with modern CI/CD tools like Tekton.
 
 Image streams
-: give you an overview of related images like in image repositories. Deployment pipelines can watch streams to trigger new deployments, when new images arrive. 
-
-Replication controller
-: Controls the number of replicas of a pod. It makes sure that there is the specified amount of replicas running at all times. It does not autoscale on its own. Used for continuously running pods.
-
-Job
-: creates pods like a replication controller does. It is however used for one-time running pods. It tracks if the pods have run successfully. 
+: OpenShift abstraction for managing container images. Support automatic updates, rollbacks, and deployment triggers. Enable image promotion across environments.
 
 Deployments
-: The process of starting up pods with their respective images. A deployment creates a new replication controller and has it ship the pods as specified. The deploymentConfig defines the replication controller, the triggers for the deployment and lifecycle hooks. 
+: Declarative updates to applications. Use ReplicaSets (replacing older ReplicationControllers) for maintaining desired pod state. Support advanced deployment strategies like rolling, blue-green, and canary.
 
-### Hardware
+Jobs and CronJobs
+: Manage pods that run to completion. Support for parallel processing, retry policies, and scheduled execution. Integration with cluster autoscaling.
 
-Node
-: Compute hardware unit. A single machine, where the container runs on. 
+Operators
+: Software extensions to Kubernetes that use custom resources to manage applications and their components. Automate operational tasks and complex deployments.
 
-Cluster
-: Group of nodes that are orchestrated to share resources and load.
+### Infrastructure
 
-Endpoint
-: Server that backs a *service* (see above). 
+Nodes
+: Physical or virtual machines running containerized workloads. Support various runtime classes and compute profiles. Can be managed through machine sets and autoscaling.
 
-More information: 
-[OpenShift: Core Concepts](cheatsheets/Cloud/gcloud.qmd)
-[Google Cloud: What are Containers](cheatsheets/Cloud/gcloud.qmd)
-[Docker Docs: Docker overview](cheatsheets/Cloud/gcloud.qmd)
+Clusters
+: Distributed systems for container orchestration. Support hybrid and multi-cloud deployments, federation, and advanced networking models.
+
+Service mesh
+: Infrastructure layer for service-to-service communication. Provides traffic management, security, and observability features.
+
+More information:
+ 
+- [OpenShift: Core Concepts](cheatsheets/Cloud/gcloud.qmd)
+- [Google Cloud: What are Containers](cheatsheets/Cloud/gcloud.qmd)
+- [Docker Docs: Docker overview](cheatsheets/Cloud/gcloud.qmd)

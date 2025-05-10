@@ -1,5 +1,5 @@
 ---
-title: "Venv"
+title: "Venv {{< fa brands python >}}"
 description: "Venv is the built-in virtual environment manager for python."
 
 format: html

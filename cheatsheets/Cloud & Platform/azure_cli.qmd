@@ -1,5 +1,5 @@
 ---
-title: "Azure CLI"
+title: "Azure CLI {{< fa brands microsoft >}}"
 description: "Azure/az CLI is the command line interface of Azure."
 format: html
 ---

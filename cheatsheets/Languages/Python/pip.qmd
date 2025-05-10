@@ -1,5 +1,5 @@
 ---
-title: "Pip"
+title: "Pip {{< fa brands python >}}"
 description: "Pip is the official python package manager"
 
 format: html

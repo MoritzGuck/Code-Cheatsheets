@@ -1,5 +1,5 @@
 ---
-title: "Pandas"
+title: "Pandas {{< fa brands python >}}"
 description: "Pandas is a python library for data wrangling and data cleaning."
 format: html
 categories:

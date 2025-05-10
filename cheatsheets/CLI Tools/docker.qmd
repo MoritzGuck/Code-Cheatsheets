@@ -1,5 +1,5 @@
 ---
-title: "Docker"
+title: "Docker {{< fa brands docker >}}"
 description: "Docker is a platform for developing, shipping, and running applications in isolated environments."
 format: html
 categories:

@@ -1,5 +1,5 @@
 ---
-title: "Python Design Patterns"
+title: "Python Design Patterns {{< fa brands python >}}"
 description: "Python is one of the most popular programming languages."
 format: html
 categories:
