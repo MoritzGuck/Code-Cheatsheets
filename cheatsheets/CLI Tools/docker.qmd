@@ -1,13 +1,23 @@
 ---
 title: "Docker"
-description: "Docker is the most popular containerization tool."
+description: "Docker is a platform for developing, shipping, and running applications in isolated environments."
 format: html
 categories:
     - CLI
     - tool
     - container
-draft: true
+draft: false
 ---
+
+
+The key components are:
+
+- **Container**: A lightweight, standalone, executable package that includes everything needed to run a piece of software
+- **Image**: A read-only template with instructions for creating a container, built from layers
+- **Dockerfile**: A text file containing commands to build a Docker image automatically
+- **Registry**: A repository for Docker images (like Docker Hub)
+- **Volume**: A persistent storage space shared between host and container
+- **Network**: Enables containers to communicate with each other and external resources
 
 ## Dockerfile
 
@@ -30,12 +40,11 @@ Explanation:
 
 | Description | Command |
 |-------------|---------|
-| Start application | `docker run` |
+| Start application | `docker run  <container-name/container-id>` |
 | List containers | `docker ps` |
 | List docker images | `docker images` |
 | Pull images from registry | `docker pull` |
-| Run container based on image | `docker run` |
-| Kill container | `docker kill` |
+| Kill container | `docker kill  <container-name/container-id>` |
 | Build image based on Dockerfile | `docker build <dir-with-docker-file>` |
 | Execute command inside container | `docker exec <command> <container>` |
 
@@ -66,7 +75,7 @@ docker exec -it rocker/shiny /usr/local/bin/R
 
 ## Docker Compose
 
-Example docker-compose.yml:
+Docker Compose is a tool for defining and running multi-container Docker applications using a YAML file. Example docker-compose.yml:
 ```yaml
 services:
   postgres:
@@ -111,7 +120,8 @@ Add to docker-compose.yml:
 command: "sleep infinity"
 ```
 
-Container Status:
+### Container Status
+
 | Description | Command |
 |-------------|---------|
 | List running containers (with grep filter) | `docker ps \| grep <container-name>` |
@@ -120,7 +130,8 @@ Container Status:
 : {tbl-colwidths="[50,50]"}
 
 
-Container Logs:
+### Container Logs:
+
 | Description | Command |
 |-------------|---------|
 | View container logs | `docker logs <container-name>` |
@@ -130,7 +141,8 @@ Container Logs:
 : {tbl-colwidths="[50,50]"}
 
 
-Network Debugging:
+### Network Debugging:
+
 | Description | Command |
 |-------------|---------|
 | Check port mappings | `netstat -tulpn | grep <port-number>` |
@@ -141,7 +153,8 @@ Network Debugging:
 : {tbl-colwidths="[50,50]"}
 
 
-Container Information:
+### Container Information:
+
 | Description | Command |
 |-------------|---------|
 | Show detailed container info | `docker inspect <container-name>` |
@@ -151,7 +164,8 @@ Container Information:
 : {tbl-colwidths="[50,50]"}
 
 
-Troubleshooting Commands:
+### Troubleshooting Commands:
+
 | Description | Command |
 |-------------|---------|
 | Check if container can reach internet | `docker exec <container-name> ping 8.8.8.8` |
@@ -161,7 +175,8 @@ Troubleshooting Commands:
 
 : {tbl-colwidths="[50,50]"}
 
-Volume Inspection:
+### Volume Inspection:
+
 | Description | Command |
 |-------------|---------|
 | List volumes | `docker volume ls` |
