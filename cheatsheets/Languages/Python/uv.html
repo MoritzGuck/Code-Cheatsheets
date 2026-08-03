@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.30">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,10 +10,16 @@
 
 <title>uv  – Cheatsheets</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -73,16 +79,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2b3e328b71be8d25427581baeb23079b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-81e3d2b93c0d8c315401879c563ec336.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-763a601c5da9950ae6f802fb235c99a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-81e3d2b93c0d8c315401879c563ec336.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-66dcfe106fe6c06301af5a7ecbd69d8d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-c45490d6fe7f077b1ef50c39763a6ca3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-66dcfe106fe6c06301af5a7ecbd69d8d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -589,8 +595,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#concepts" id="toc-concepts" class="nav-link active" data-scroll-target="#concepts">Concepts</a></li>
   <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
   <li><a href="#python-versions" id="toc-python-versions" class="nav-link" data-scroll-target="#python-versions">Python Versions</a></li>
-  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts">Scripts</a></li>
-  <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects">Projects</a></li>
   <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools">Tools</a></li>
   </ul>
 </nav>
@@ -642,13 +646,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl>
 <dt>Install uv</dt>
 <dd>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pipx</span> install uv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Upgrade uv</dt>
-<dd>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> self update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```bash pipx install uv
 </dd>
 </dl>
+<pre><code>
+Upgrade uv
+: ```bash
+uv self update</code></pre>
 </section>
 <section id="python-versions" class="level3">
 <h3 class="anchored" data-anchor-id="python-versions">Python Versions</h3>
@@ -656,84 +660,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl>
 <dt>Install Python versions</dt>
 <dd>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python install 3.9.7</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```bash uv python install 3.9.7
 </dd>
-<dt>List available Python versions</dt>
-<dd>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
+</dl>
+<pre><code>
+List available Python versions
+: ```bash
+uv python list</code></pre>
+<dl>
 <dt>Find an installed Python version</dt>
 <dd>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python find 3.9</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```bash uv python find 3.9
 </dd>
-<dt>Pin a project to a specific Python version</dt>
-<dd>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python pin 3.9.7</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
+</dl>
+<pre><code>
+Pin a project to a specific Python version
+: ```bash
+uv python pin 3.9.7</code></pre>
+<dl>
 <dt>Uninstall a Python version</dt>
 <dd>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python uninstall 3.9.7</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```bash uv python uninstall 3.9.7
 </dd>
 </dl>
-</section>
-<section id="scripts" class="level3">
-<h3 class="anchored" data-anchor-id="scripts">Scripts</h3>
-<p>Execute and manage dependencies in standalone Python scripts. The script needs to contain a script header.</p>
-<dl>
-<dt>script header</dt>
-<dd>
-```python # /// script # dependencies = [ # “requests&lt;3”, # “rich”, # ] # ///
-</dd>
-</dl>
-<p>import requests from rich import print …</p>
 <pre><code>
-Run a script
-: ```bash
-uv run example.py</code></pre>
+### Scripts
+
+Execute and manage dependencies in standalone Python scripts. The script needs to contain a script header.
+
+script header
+: ```python
+# /// script
+# dependencies = [
+#   "requests&lt;3",
+#   "rich",
+# ]
+# ///
+
+import requests
+from rich import print
+...</code></pre>
 <dl>
-<dt>Add a dependency to a script</dt>
+<dt>Run a script</dt>
 <dd>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add <span class="at">--script</span> SomePackage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```bash uv run example.py
 </dd>
+</dl>
+<pre><code>
+Add a dependency to a script
+: ```bash
+uv add --script SomePackage</code></pre>
+<dl>
 <dt>Remove a dependency from a script</dt>
 <dd>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> remove <span class="at">--script</span> SomePackage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```bash uv remove –script SomePackage
 </dd>
 </dl>
-</section>
-<section id="projects" class="level3">
-<h3 class="anchored" data-anchor-id="projects">Projects</h3>
-<p>Create and manage depencies of whole projects with a <code>pyproject.toml</code> file.</p>
+<pre><code>
+### Projects
+
+Create and manage depencies of whole projects with a `pyproject.toml` file.
+
+Create a new project with a `pyproject.toml` file and a virtual environment
+: ```bash
+uv init</code></pre>
 <dl>
-<dt>Create a new project with a <code>pyproject.toml</code> file and a virtual environment</dt>
-<dd>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
 <dt>Add a dependency to the project</dt>
 <dd>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add SomePackage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Remove a dependency from the project</dt>
-<dd>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> remove SomePackage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Sync project dependencies with the virtual environment</dt>
-<dd>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Create a lockfile for dependencies</dt>
-<dd>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> lock</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Run a command in the project environment</dt>
-<dd>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>View the dependency tree</dt>
-<dd>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```bash uv add SomePackage
 </dd>
 </dl>
+<pre><code>
+Remove a dependency from the project
+: ```bash
+uv remove SomePackage</code></pre>
+<dl>
+<dt>Sync project dependencies with the virtual environment</dt>
+<dd>
+```bash uv sync
+</dd>
+</dl>
+<pre><code>
+Create a lockfile for dependencies
+: ```bash
+uv lock</code></pre>
+<dl>
+<dt>Run a command in the project environment</dt>
+<dd>
+```bash uv run python script.py
+</dd>
+</dl>
+<pre><code>
+View the dependency tree
+: ```bash
+uv tree</code></pre>
 </section>
 <section id="tools" class="level3">
 <h3 class="anchored" data-anchor-id="tools">Tools</h3>
@@ -741,23 +761,27 @@ uv run example.py</code></pre>
 <dl>
 <dt>Run a tool in a temporary environment</dt>
 <dd>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uvx</span> ruff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```bash uvx ruff
 </dd>
-<dt>Install a tool user-wide</dt>
-<dd>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool install black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
+</dl>
+<pre><code>
+Install a tool user-wide
+: ```bash
+uv tool install black</code></pre>
+<dl>
 <dt>Uninstall a tool</dt>
 <dd>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool uninstall black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```bash uv tool uninstall black
 </dd>
-<dt>List installed tools</dt>
-<dd>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
+</dl>
+<pre><code>
+List installed tools
+: ```bash
+uv tool list</code></pre>
+<dl>
 <dt>Update the shell to include tool executables</dt>
 <dd>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool update-shell</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool update-shell</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </dd>
 </dl>
 
@@ -829,13 +853,14 @@ uv run example.py</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

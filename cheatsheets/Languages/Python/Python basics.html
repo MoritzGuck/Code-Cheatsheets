@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.30">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,10 +10,16 @@
 
 <title>Python basics  – Cheatsheets</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -73,16 +79,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2b3e328b71be8d25427581baeb23079b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-81e3d2b93c0d8c315401879c563ec336.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-763a601c5da9950ae6f802fb235c99a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-81e3d2b93c0d8c315401879c563ec336.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-66dcfe106fe6c06301af5a7ecbd69d8d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-c45490d6fe7f077b1ef50c39763a6ca3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-66dcfe106fe6c06301af5a7ecbd69d8d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -589,13 +595,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#basics" id="toc-basics" class="nav-link active" data-scroll-target="#basics">Basics</a></li>
   <li><a href="#using-python" id="toc-using-python" class="nav-link" data-scroll-target="#using-python">Using Python</a></li>
   <li><a href="#file-system-import-input-output" id="toc-file-system-import-input-output" class="nav-link" data-scroll-target="#file-system-import-input-output">File system, Import, Input, Output</a></li>
-  <li><a href="#operations-numbers-vectors-matrices" id="toc-operations-numbers-vectors-matrices" class="nav-link" data-scroll-target="#operations-numbers-vectors-matrices">Operations, numbers, vectors, matrices</a></li>
   <li><a href="#matrices-vectors" id="toc-matrices-vectors" class="nav-link" data-scroll-target="#matrices-vectors">Matrices &amp; vectors</a></li>
   <li><a href="#selecting-elements-in-vectors" id="toc-selecting-elements-in-vectors" class="nav-link" data-scroll-target="#selecting-elements-in-vectors">Selecting elements in vectors</a></li>
-  <li><a href="#types" id="toc-types" class="nav-link" data-scroll-target="#types">Types</a></li>
-  <li><a href="#dataframes" id="toc-dataframes" class="nav-link" data-scroll-target="#dataframes">Dataframes</a></li>
   <li><a href="#categorical-values" id="toc-categorical-values" class="nav-link" data-scroll-target="#categorical-values">Categorical values</a></li>
-  <li><a href="#control-structures" id="toc-control-structures" class="nav-link" data-scroll-target="#control-structures">Control structures</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
   </ul>
 </nav>
@@ -644,7 +646,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p><strong>Run Python scripts In console / terminal:</strong></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Unix (Mac / Linux)</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">Windows</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Unix (Mac / Linux)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p><code>Py myScript.py</code></p>
@@ -741,58 +743,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl>
 <dt>Importing other scripts</dt>
 <dd>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> path.to.otherScript</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-Executes the contents of the script.
-</dd>
-<dt>Print to standard output</dt>
-<dd>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"my Output includes a </span><span class="sc">{</span>variable_1<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>variable_2<span class="sc">}</span><span class="ss">."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```python import path.to.otherScript
 </dd>
 </dl>
+<pre><code>Executes the contents of the script. 
+
+Print to standard output
+: ```python
+print(f"my Output includes a {variable_1} and {variable_2}.")</code></pre>
 <section id="logging" class="level4">
 <h4 class="anchored" data-anchor-id="logging">Logging</h4>
 <p>The built-in library is <a href="https://docs.python.org/3/library/logging.html">logging</a>, however <a href="https://github.com/Delgan/loguru">loguru</a> is easier to use: <code>pip install loguru</code>.</p>
 <dl>
 <dt>Send log-messages to log-file</dt>
 <dd>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> loguru <span class="im">import</span> logger</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>logger.add(<span class="st">"logfile.log"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>logger.debug(<span class="st">"blablabla"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">"foo bar bash"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```python from loguru import logger logger.add(“logfile.log”) logger.debug(“blablabla”) logger.info(“foo bar bash”)
 </dd>
 </dl>
+<pre><code>
+
+### Operations, numbers, vectors, matrices
+
+Assign values to a variable                       | 
+--------------------------------------------------|-----
+Assign value to variable                          | `x = 4.5 `
+Assign to multiple variables                      | `x = y = z = 4.5`
+
+:  {.borderless tbl-colwidths="[50,50]"}
+
+
+Create a list
+: ```python
+x = [1,2,3]</code></pre>
 </section>
-</section>
-<section id="operations-numbers-vectors-matrices" class="level3">
-<h3 class="anchored" data-anchor-id="operations-numbers-vectors-matrices">Operations, numbers, vectors, matrices</h3>
-<table class="table-borderless caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Assign values to a variable</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Assign value to variable</td>
-<td><code>x = 4.5</code></td>
-</tr>
-<tr class="even">
-<td>Assign to multiple variables</td>
-<td><code>x = y = z = 4.5</code></td>
-</tr>
-</tbody>
-</table>
-<dl>
-<dt>Create a list</dt>
-<dd>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl>
 </section>
 <section id="matrices-vectors" class="level3">
 <h3 class="anchored" data-anchor-id="matrices-vectors">Matrices &amp; vectors</h3>
@@ -800,15 +783,15 @@ Executes the contents of the script.
 <dl>
 <dt>Create array / vector</dt>
 <dd>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x_arr <span class="op">=</span> array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Elementwise adding, subtracting, dividing, multiplying, … vectors</dt>
-<dd>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x_arr <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y_arr <span class="op">=</span> np.array([<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>z_arr <span class="op">=</span> x_arr <span class="op">*</span> y_arr <span class="co"># or -, *, /</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```python x_arr = array([1,2,3])
 </dd>
 </dl>
+<pre><code>
+Elementwise adding, subtracting, dividing, multiplying, ... vectors
+: ```python
+x_arr = np.array([1,2,3])
+y_arr = np.array([4,5,6])
+z_arr = x_arr * y_arr # or -, *, /</code></pre>
 <table class="table-borderless caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -874,64 +857,69 @@ Executes the contents of the script.
 <dl>
 <dt>Generate sequences</dt>
 <dd>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x_arr <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">11</span>,<span class="dv">1</span>) <span class="co"># Integers from 1 to 10</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Or</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>x_arr <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">11</span>,<span class="fl">0.5</span>) <span class="co"># 1.0, 1.5, 2.0, 2.5, ... </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```python x_arr = np.arange(1,11,1) # Integers from 1 to 10 # Or x_arr = np.arange(1,11,0.5) # 1.0, 1.5, 2.0, 2.5, …
 </dd>
 </dl>
-<p>Repeat vector:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>np.tile(x_arr, reps<span class="op">=</span><span class="dv">2</span>) <span class="co"># 1, 2, 3, 1, 2, 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>
+Repeat vector:
+```python
+np.tile(x_arr, reps=2) # 1, 2, 3, 1, 2, 3</code></pre>
 <p>Repeat elements in vector:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>np.repeat(x_arr, repeats<span class="op">=</span><span class="dv">2</span>) <span class="co"># 1, 1, 2, 2, 3, 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>np.repeat(x_arr, repeats<span class="op">=</span><span class="dv">2</span>) <span class="co"># 1, 1, 2, 2, 3, 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="selecting-elements-in-vectors" class="level3">
 <h3 class="anchored" data-anchor-id="selecting-elements-in-vectors">Selecting elements in vectors</h3>
 <dl>
 <dt>Select first element in sequence</dt>
 <dd>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x_arr[<span class="dv">0</span>] <span class="co"># ! not x_arr[1] !</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Selecting first 10 elements in vector</dt>
-<dd>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x_arr[<span class="dv">0</span>:<span class="dv">10</span>] <span class="co"># ! not x_arr[0:9]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Selecting non-missing elements in vector</dt>
-<dd>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x_arr[<span class="op">~</span>np.isnan(x_arr)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Append element</dt>
-<dd>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>np.append(x_arr, values<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Insert element</dt>
-<dd>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>np.insert(x_arr, obj<span class="op">=</span><span class="dv">2</span>, values<span class="op">=</span>[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]) <span class="co"># obj=index at which to insert</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Delete element</dt>
-<dd>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>np.delete(x_arr, obj<span class="op">=-</span><span class="dv">1</span>) <span class="co"># deletes last element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Create matrix/2D-array</dt>
-<dd>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x_arr <span class="op">=</span> np.array([(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)]) </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [[1 2 3]</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  [4 5 6]]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Access matrix element</dt>
-<dd>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x_arr[<span class="dv">1</span>,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Access matrix column(s)</dt>
-<dd>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x_arr[:,<span class="dv">2</span>] <span class="co"># 3rd column</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>x_arr[:, <span class="dv">0</span>:<span class="dv">2</span>] <span class="co"># 1st &amp; 2nd column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Add rows and columns</dt>
-<dd>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>np.vstack([x_arr, y_arr]) <span class="co"># add other array as rows</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>np.hstack([x_arr, y_arr]) <span class="co"># add other array as columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```python x_arr[0] # ! not x_arr[1] !
 </dd>
 </dl>
+<pre><code>
+Selecting first 10 elements in vector
+: ```python
+x_arr[0:10] # ! not x_arr[0:9]</code></pre>
+<dl>
+<dt>Selecting non-missing elements in vector</dt>
+<dd>
+```python x_arr[~np.isnan(x_arr)]
+</dd>
+</dl>
+<pre><code>
+Append element
+: ```python
+np.append(x_arr, values=[1,2,3])</code></pre>
+<dl>
+<dt>Insert element</dt>
+<dd>
+```python np.insert(x_arr, obj=2, values=[1,2,3]) # obj=index at which to insert
+</dd>
+</dl>
+<pre><code>
+Delete element
+: ```python
+np.delete(x_arr, obj=-1) # deletes last element</code></pre>
+<dl>
+<dt>Create matrix/2D-array</dt>
+<dd>
+```python x_arr = np.array([(1,2,3),(4,5,6)]) # [[1 2 3] # [4 5 6]]
+</dd>
+</dl>
+<pre><code>
+Access matrix element
+: ```python
+x_arr[1,1]</code></pre>
+<dl>
+<dt>Access matrix column(s)</dt>
+<dd>
+```python x_arr[:,2] # 3rd column x_arr[:, 0:2] # 1st &amp; 2nd column
+</dd>
+</dl>
+<pre><code>
+Add rows and columns
+: ```python
+np.vstack([x_arr, y_arr]) # add other array as rows
+np.hstack([x_arr, y_arr]) # add other array as columns</code></pre>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -985,125 +973,70 @@ Executes the contents of the script.
 <dl>
 <dt>Assign value only to elements where condition is true</dt>
 <dd>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>x_arr[np.isnan(x_arr)] <span class="op">=</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```python x_arr[np.isnan(x_arr)] = 4
 </dd>
 </dl>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Characters</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Character string</td>
-<td><code>"..."</code></td>
-</tr>
-<tr class="even">
-<td>Escape character</td>
-<td><code>\</code></td>
-</tr>
-<tr class="odd">
-<td>New line</td>
-<td><code>\n</code></td>
-</tr>
-<tr class="even">
-<td>Tab</td>
-<td><code>\t</code></td>
-</tr>
-<tr class="odd">
-<td>length of string</td>
-<td><code>len(str)</code></td>
-</tr>
-<tr class="even">
-<td>Is seq of chars in string?</td>
-<td><code>"Halli Hallo".find("Hallo") # returns first idx: 6, if not found: -1</code></td>
-</tr>
-<tr class="odd">
-<td>combine two strings into 1</td>
-<td><code>"Halli " + "Hallo"</code></td>
-</tr>
-</tbody>
-</table>
-<p>Concatenate arguments 1 by 1 as characters: <code>" ".join(["Halli", "Hallo"])</code></p>
-<p>Import package: <code>import math</code></p>
-<table class="table-borderless caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Operations on number</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Absolute value</td>
-<td><code>abs(x)</code></td>
-</tr>
-<tr class="even">
-<td>round up to next int</td>
-<td><code>math.ceil(x)</code></td>
-</tr>
-<tr class="odd">
-<td>round down to next int</td>
-<td><code>math.floor(x)</code></td>
-</tr>
-<tr class="even">
-<td>Exponent</td>
-<td><code>x**2</code></td>
-</tr>
-<tr class="odd">
-<td>Modulus / remainder</td>
-<td><code>10 % 3 # 1</code></td>
-</tr>
-<tr class="even">
-<td>Integer division</td>
-<td><code>10 // 3 # 3</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="types" class="level3">
-<h3 class="anchored" data-anchor-id="types">Types</h3>
+<pre><code>
+Characters                 |
+---------------------------|----
+Character string           | `"..."` 
+Escape character           | `\`
+New line                   | `\n`
+Tab                        | `\t`
+length of string           | `len(str)`
+Is seq of chars in string? | `"Halli Hallo".find("Hallo") # returns first idx: 6, if not found: -1`
+combine two strings into 1 | `"Halli " + "Hallo"`
+
+:  {tbl-colwidths="[50,50]"}
+
+Concatenate arguments 1 by 1 as characters: `" ".join(["Halli", "Hallo"])`
+
+Import package: `import math`
+
+Operations on number   |    
+-----------------------|----
+Absolute value         | `abs(x)`
+round up to next int   | `math.ceil(x)`
+round down to next int | `math.floor(x)`
+Exponent               | `x**2`
+Modulus / remainder    | `10 % 3 # 1`
+Integer division       | `10 // 3 # 3`
+
+:  {.borderless tbl-colwidths="[50,50]"}
+
+
+### Types 
+
+Convert types
+: ```python
+a = int(b)
+n = float(m)
+y = complex(x)</code></pre>
 <dl>
-<dt>Convert types</dt>
-<dd>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="bu">int</span>(b)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="bu">float</span>(m)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="bu">complex</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
 <dt>Get type of variable</dt>
 <dd>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```python type(x)
 </dd>
 </dl>
-</section>
-<section id="dataframes" class="level3">
-<h3 class="anchored" data-anchor-id="dataframes">Dataframes</h3>
-<p>Contrary to arrays, the different columns of data frames can contain different data types.</p>
-<p>import package: <code>import pandas as pd</code></p>
-<dl>
-<dt>Construct data frame</dt>
-<dd>
-<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  {<span class="st">"col1"</span> : [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"col2"</span> : [<span class="fl">12.4</span>, <span class="fl">15.6</span>, <span class="fl">16.9</span>],</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"col3"</span> : [<span class="st">"green"</span>, <span class="st">"blue"</span>, <span class="st">"white"</span>]}</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#    col1  col2   col3</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 0     1  12.4  green</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1     2  15.6   blue</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2     3  16.9  white</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-</dl>
+<pre><code>
+
+### Dataframes
+
+Contrary to arrays, the different columns of data frames can contain different data types.
+
+import package: `import pandas as pd`
+
+Construct data frame
+: ```python
+df = pd.DataFrame(
+  {"col1" : [1,2,3],
+  "col2" : [12.4, 15.6, 16.9],
+  "col3" : ["green", "blue", "white"]}
+)
+#    col1  col2   col3
+# 0     1  12.4  green
+# 1     2  15.6   blue
+# 2     3  16.9  white</code></pre>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -1149,51 +1082,46 @@ Executes the contents of the script.
 <dl>
 <dt>Create factor</dt>
 <dd>
-<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"col3"</span>] <span class="op">=</span> df[<span class="st">"col3"</span>].astype(<span class="st">"category"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```python df[“col3”] = df[“col3”].astype(“category”)
 </dd>
 </dl>
-<p>This will save memory and other python libraries will know that they should treat the column as categories.</p>
-</section>
-<section id="control-structures" class="level3">
-<h3 class="anchored" data-anchor-id="control-structures">Control structures</h3>
+<pre><code>
+This will save memory and other python libraries will know that they should treat the column as categories. 
+
+### Control structures
+
+If ... else ...
+: ```python
+if x &lt; 5:
+    print("small")
+elif x &lt; 10:
+    print("medium")
+else: 
+    print("big")</code></pre>
 <dl>
-<dt>If … else …</dt>
-<dd>
-<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">5</span>:</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"small"</span>)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">&lt;</span> <span class="dv">10</span>:</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"medium"</span>)</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: </span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"big"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
 <dt>While loops</dt>
 <dd>
-<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(x <span class="op">&lt;</span> <span class="dv">10</span>):</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>For loops</dt>
-<dd>
-<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> x_list:</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```python while(x &lt; 10): x += 1 print(x)
 </dd>
 </dl>
+<pre><code>
+For loops
+: ```python
+for x in x_list:
+    print(x)</code></pre>
 </section>
 <section id="functions" class="level3">
 <h3 class="anchored" data-anchor-id="functions">Functions</h3>
 <dl>
 <dt>Create function</dt>
 <dd>
-<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_func(first_name, last_name <span class="op">=</span> <span class="st">""</span>):</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>greeting <span class="op">=</span> <span class="st">" "</span>.join([<span class="st">"Hallo"</span>, first_name, last_name])</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(greeting)</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> greeting</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Call function:</dt>
-<dd>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>my_func(<span class="st">"Donald"</span>, <span class="st">"Duck"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```python def my_func(first_name, last_name = ““): greeting =” “.join([“Hallo”, first_name, last_name]) print(greeting) return greeting
 </dd>
 </dl>
+<pre><code>
+Call function: 
+: ```python 
+my_func("Donald", "Duck")</code></pre>
 
 
 </section>
@@ -1263,13 +1191,14 @@ Executes the contents of the script.
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

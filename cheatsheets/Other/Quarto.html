@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.30">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,10 +10,16 @@
 
 <title>Quarto – Cheatsheets</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -73,16 +79,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-2b3e328b71be8d25427581baeb23079b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-81e3d2b93c0d8c315401879c563ec336.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-763a601c5da9950ae6f802fb235c99a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-81e3d2b93c0d8c315401879c563ec336.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-66dcfe106fe6c06301af5a7ecbd69d8d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-c45490d6fe7f077b1ef50c39763a6ca3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-66dcfe106fe6c06301af5a7ecbd69d8d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/kbd/kbd.js"></script>
 <link href="../../site_libs/quarto-contrib/kbd/kbd.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -591,7 +597,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#blocks" id="toc-blocks" class="nav-link active" data-scroll-target="#blocks">Blocks</a></li>
   <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables">Tables</a></li>
   <li><a href="#formatting" id="toc-formatting" class="nav-link" data-scroll-target="#formatting">Formatting</a></li>
-  <li><a href="#keyboard-shortcuts" id="toc-keyboard-shortcuts" class="nav-link" data-scroll-target="#keyboard-shortcuts">Keyboard shortcuts</a></li>
   </ul>
 </nav>
     </div>
@@ -632,29 +637,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl>
 <dt>Collapsable callout block</dt>
 <dd>
-<div class="sourceCode" id="cb1"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning collapse=true appearance="simple"}  </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">### Title </span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</dd>
-<dt>Panels</dt>
-<dd>
-<div class="sourceCode" id="cb2"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>::: {.panel-tabset}</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">### Panel heading 1</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">### Panel heading 2</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```md ::: {.callout-warning collapse=true appearance=“simple”}<br>
+### Title :::
 </dd>
 </dl>
+<pre><code>
+Panels
+: ```md
+::: {.panel-tabset}
+### Panel heading 1
+### Panel heading 2
+:::</code></pre>
 </section>
 <section id="tables" class="level2">
 <h2 class="anchored" data-anchor-id="tables">Tables</h2>
 <dl>
 <dt>Markdown table</dt>
 <dd>
-<div class="sourceCode" id="cb3"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Header col 1  | header col 2</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>--------------|-----</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>content col 1 | content col 2</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>:  {tbl-colwidths="<span class="co">[</span><span class="ot">50,50</span><span class="co">]</span>"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Header col 1  | header col 2</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>--------------|-----</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>content col 1 | content col 2</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>:  {tbl-colwidths="<span class="co">[</span><span class="ot">50,50</span><span class="co">]</span>"}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </dd>
 </dl>
 </section>
@@ -663,39 +667,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl>
 <dt>Font-color</dt>
 <dd>
-<div class="sourceCode" id="cb4"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">font</span><span class="ot"> color</span><span class="op">=</span><span class="st">"grey"</span><span class="dt">&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">font</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+```html <font color="grey"> </font>
 </dd>
 </dl>
-</section>
-<section id="keyboard-shortcuts" class="level2">
-<h2 class="anchored" data-anchor-id="keyboard-shortcuts">Keyboard shortcuts</h2>
-<dl>
-<dt>Format keyboard keys for different operating systems</dt>
-<dd>
+<pre><code>
+## Keyboard shortcuts
 
-</dd>
-</dl>
-<div class="sourceCode" id="cb5"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>{{&lt; kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L &gt;}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><kbd aria-hidden="true" data-linux="Shift-Ctrl-L" data-mac="Shift-Command-O" data-windows="Shift-Control-O"></kbd><span class="visually-hidden"></span></p>
+Format keyboard keys for different operating systems
+: 
+
+```md
+{{&lt; kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L &gt;}}</code></pre>
+<p><kbd title="linux: Shift-Ctrl-L, mac: Shift-Command-O, windows: Shift-Control-O" aria-hidden="true" data-linux="Shift-Ctrl-L" data-mac="Shift-Command-O" data-windows="Shift-Control-O"></kbd><span class="visually-hidden"></span></p>
 <dl>
 <dt>simple</dt>
 <dd>
 
 </dd>
 </dl>
-<div class="sourceCode" id="cb6"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>{{&lt; kbd Shift-Ctrl-P &gt;}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>{{&lt; kbd Shift-Ctrl-P &gt;}}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl>
 <dt>Format arrow keys</dt>
 <dd>
 
 </dd>
 </dl>
-<div class="sourceCode" id="cb7"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>{{<span class="dt">&lt;</span><span class="kw">kbd</span><span class="ot"> </span><span class="er">&amp;</span><span class="ot">uarr</span><span class="er">;</span><span class="ot"> </span><span class="dt">&gt;</span>}}</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>{{<span class="dt">&lt;</span><span class="kw">kbd</span><span class="ot"> </span><span class="er">&amp;</span><span class="ot">darr</span><span class="er">;</span><span class="ot"> </span><span class="dt">&gt;</span>}}</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>{{<span class="dt">&lt;</span><span class="kw">kbd</span><span class="ot"> </span><span class="er">&amp;</span><span class="ot">larr</span><span class="er">;</span><span class="ot"> </span><span class="dt">&gt;</span>}}</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>{{<span class="dt">&lt;</span><span class="kw">kbd</span><span class="ot"> </span><span class="er">&amp;</span><span class="ot">rarr</span><span class="er">;</span><span class="ot"> </span><span class="dt">&gt;</span>}}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><kbd aria-hidden="true">↑</kbd><span class="visually-hidden">↑</span> <kbd aria-hidden="true">↓</kbd><span class="visually-hidden">↓</span> <kbd aria-hidden="true">←</kbd><span class="visually-hidden">←</span> <kbd aria-hidden="true">→</kbd><span class="visually-hidden">→</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>{{<span class="dt">&lt;</span><span class="kw">kbd</span><span class="ot"> </span><span class="er">&amp;</span><span class="ot">uarr</span><span class="er">;</span><span class="ot"> </span><span class="dt">&gt;</span>}}</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>{{<span class="dt">&lt;</span><span class="kw">kbd</span><span class="ot"> </span><span class="er">&amp;</span><span class="ot">darr</span><span class="er">;</span><span class="ot"> </span><span class="dt">&gt;</span>}}</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>{{<span class="dt">&lt;</span><span class="kw">kbd</span><span class="ot"> </span><span class="er">&amp;</span><span class="ot">larr</span><span class="er">;</span><span class="ot"> </span><span class="dt">&gt;</span>}}</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>{{<span class="dt">&lt;</span><span class="kw">kbd</span><span class="ot"> </span><span class="er">&amp;</span><span class="ot">rarr</span><span class="er">;</span><span class="ot"> </span><span class="dt">&gt;</span>}}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><kbd title="↑" aria-hidden="true">↑</kbd><span class="visually-hidden">↑</span> <kbd title="↓" aria-hidden="true">↓</kbd><span class="visually-hidden">↓</span> <kbd title="←" aria-hidden="true">←</kbd><span class="visually-hidden">←</span> <kbd title="→" aria-hidden="true">→</kbd><span class="visually-hidden">→</span></p>
 
 
 </section>
@@ -765,13 +766,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
