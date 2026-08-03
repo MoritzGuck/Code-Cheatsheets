@@ -198,6 +198,33 @@ Used to manage services. E.g. start, stop, restart, etc.
     enabled: no
 ```
 
+### Docker containers
+
+Used to start a docker container: 
+
+```yaml
+- name: "Start myContainer"
+      community.docker.docker_container:
+        name: myContainer
+        image: ghcr.io/theUser/myContainer:latest
+        ports:
+          - "{{ myContainer_ext_port }}:{{ myContainer_int_port }}"
+        env:
+          SECRET_API_KEY="{{ vault_myContainer_api_key }}"
+        volumes:
+          - "/srv/on_server/myContainer:/inContainer/myContainer/cache"  # Cache downloaded models and voices
+        state: started
+        restart_policy: unless-stopped
+```
+
+Used to remove a docker container:
+
+```yaml
+- name: Remove existing myContainer container if present
+  community.docker.docker_container:
+    name: myContainer
+    state: absent
+```
 
 ## Variables and Facts
 
