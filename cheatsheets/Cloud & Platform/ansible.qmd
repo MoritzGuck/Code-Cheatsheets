@@ -212,7 +212,7 @@ Used to start a docker container:
         env:
           SECRET_API_KEY="{{ vault_myContainer_api_key }}"
         volumes:
-          - "/srv/on_server/myContainer:/inContainer/myContainer/cache"  # Cache downloaded models and voices
+          - "/srv/on_server/myContainer:/inContainer/myContainer/cache"
         state: started
         restart_policy: unless-stopped
 ```
