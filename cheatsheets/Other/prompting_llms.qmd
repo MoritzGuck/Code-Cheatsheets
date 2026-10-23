@@ -1,0 +1,5 @@
+---
+title: "Prompting LLMs"
+description: "How to write effective prompts for large language models."
+format: html
+---
