@@ -13,6 +13,7 @@ website:
         href: https://github.com/MoritzGuck/Code-Cheatsheets
     collapse-level: 4
   favicon: assets/favicon.png
+  llms-txt: true
 
 
 format:
