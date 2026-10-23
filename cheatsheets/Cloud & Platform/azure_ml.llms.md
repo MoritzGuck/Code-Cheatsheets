@@ -1,0 +1,13 @@
+# Azure ML 
+
+Azure ML is the machine learning service of the Azure Cloud Platform.
+
+## Experiments
+
+Delete Experiments without jobs  
+``` bash
+from azureml.core import Workspace, Experiment
+aml_workspace = Workspace.from_config()
+experiment_id = Experiment(aml_workspace, '<experiment_name>').id
+Experiment.delete(aml_workspace, experiment_id)
+```

@@ -1,0 +1,95 @@
+# Conda 
+
+tool
+
+CLI
+
+package manager
+
+virtual environments
+
+Conda is a package and virtual environment manager.
+
+## Installation
+
+[conda docs - Installation](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html)
+
+> **NOTE:**
+>
+> ``` bash
+> mkdir -p ~/miniconda3
+> wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+> bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+> rm -rf ~/miniconda3/miniconda.sh
+> ~/miniconda3/bin/conda init bash
+> ~/miniconda3/bin/conda init zsh
+> ```
+
+### List, create and delete environments
+
+List your existing environments  
+\`\`\`bash conda env list
+
+&nbsp;
+
+    Create environment
+    : ```bash
+    conda create --name env-name
+
+Create a conda env from a file:  
+\`\`\`bash conda env create -f environment.yml
+
+&nbsp;
+
+    Removing / Deleting environment
+    : ```bash
+    conda env remove -n env-name
+
+More info: [Intro to Conda virtual environments](https://towardsdatascience.com/introduction-to-conda-virtual-environments-eaea4ac84e28)
+
+### Use and manipulate environment
+
+Use environment  
+\`\`\`bash conda activate env-name
+
+&nbsp;
+
+    Check and update package versions. After activating an env:
+    : ```bash
+    python --version
+
+``` bash
+conda update python
+```
+
+Update whole environment according to your yaml-file:  
+\`\`\`bash conda env update -f my_env.yml
+
+&nbsp;
+
+    Switch back to base environment
+    : ```bash
+    conda deactivate env-name
+
+Install package: Latest version  
+\`\`\`bash conda install pandas
+
+&nbsp;
+
+    Install package: Specific version
+    : ```bash
+    conda install pandas==2.0.0
+
+Install package: From different channel  
+\`\`\`bash conda install pandas -c conda-forge -y
+
+&nbsp;
+
+    List packages in environment
+    : ```
+    conda list
+
+Export environment to yml  
+``` bash
+conda env export > environment.yml
+```

@@ -1,0 +1,95 @@
+# Tidymodels 
+
+R
+
+data science
+
+Tidymodels is a collection of packages for machine learning. It is part of the tidyverse.
+
+load packages:
+
+``` r
+library(tidymodels)
+```
+
+## Rsample (sampling & splitting)
+
+training- & test-split  
+\`\`\`R data_split \<- initial_split(dataset, prop=0.75, strata=target_col) training_set \<- data_split %\>% training() testing_set \<- data_split %\>% testing()
+
+&nbsp;
+
+    `strata` generates a stratified split with approximately the same fraction of each target class.
+
+    ## Recipes (feature enigneering)
+
+    ## Parsnip (model fitting)
+
+    General model formula
+    : ```R
+    outcome_variable ~ predictor_1 + predictor_2 + ... 
+    outcome_variable ~ . # to use all available predictors
+
+Create model object  
+\`\`\`R model \<- linear_reg() %\>% set_engine(‘lm’) %\>% set_mode(‘regression’)
+
+&nbsp;
+
+    Fit the model
+    : ```R
+    model_fit <- model %>% 
+        fit(target_col ~ ., data=train_set)
+
+Get model summary  
+\`\`\`R tidy(model_fit)
+
+&nbsp;
+
+    Returns parameter estimates, std.errors & p-values
+
+    Predict on new values
+    : ```R
+    predictions <- model_fit %>%
+        predict(new_data = test_set)
+
+## Tune & Dials (hyper-)parameter optimization)
+
+## Yardstick (performance evaluation)
+
+Requires a tibble/datset with the true and predicted outcomes.
+
+``` r
+predictions %>%
+    rmse(truth = label_col, estimate = .pred) # .pred is the standard name of the prediction col
+```
+
+| Regression quality metrics |  |
+|----|----|
+| R squared | `prediction_set %>% rsq(truth = ..., estimate = ...)` |
+| Root mean squared error | `... rmse()` |
+
+| Classification quality metrics |  |
+|----|----|
+| accuracy | `prediction_set %>% accuracy(truth = ..., estimate = ...)` |
+| balanced accuracy | `... bal_accuracy()` |
+| precision | `... precision()` |
+| recall | `... recall()` |
+| sensitivity | `... sensitivity()` |
+| specificity | `... specificity()` |
+| area under the curve | `... roc_auc()` |
+
+More metrics [here](https://yardstick.tidymodels.org/articles/metric-types.html).
+
+Streamlined approach  
+``` r
+# Fit model:
+model_last_fit <- model %>% 
+  last_fit(target_col ~ ., 
+      split = data_split)
+# Return standard quality metrics:
+model_last_fit %>%
+  collect_metrics() 
+# Return tibble with predictions and true target values:
+model_last_fit %>% 
+  collect_predictions() 
+```

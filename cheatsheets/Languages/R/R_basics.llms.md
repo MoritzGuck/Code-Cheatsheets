@@ -1,0 +1,358 @@
+# R basics 
+
+language
+
+data science
+
+R is a programming language that is specialized in statistical analysis.
+
+### Using R
+
+In console  
+
+1.  Use R in console / terminal: `R`
+
+2.  Type your code
+
+3.  Quit R in console: `q()`
+
+Run R scripts from console/terminal  
+In console / terminal: `Rscript myScript.R`
+
+| Get help with functions and features      |                      |
+|-------------------------------------------|----------------------|
+| Help section on function                  | `?functionName`      |
+| Find functions / features matching a term | `??TermOfInterest`   |
+| List arguments that the function accepts  | `args(functionName)` |
+
+### File system, Import, Input, Output
+
+| Use file system |  |
+|----|----|
+| print working directory | `getwd()` |
+| Change working directory | `setwd("path/to/dir")` |
+| List files in working directory | `dir()` |
+| Create directory | `dir.create("path/to/dir", recursive=TRUE)` |
+| Create file | `file.create("myfile.R")` |
+| Check if file exists | `file.exists("myfile.R")` |
+| Get info on file (size, time of creation) | `file.info("mytest.R")` |
+| Rename file | `file.rename("mytest.R", "mytest2.R")` |
+| Copy file | `file.copy("mytest2.R", "mytest3.R")` |
+| Construct file path from directory list | `file.path("folder", "subfolder", "file") # "folder/subfolder/file` |
+
+Importing other scripts  
+\`\`\`R source(“otherScript.R”)
+
+&nbsp;
+
+    Executes the contents of the script.
+
+    Send all standard output to a file
+    : ```R
+    sink("output.txt")
+
+Print to standard output  
+\`\`\`R print(“my Output”)
+
+&nbsp;
+
+    ### Operations, numbers, vectors, matrices
+
+    Assign values to a variable                       | 
+    --------------------------------------------------|-----
+    Assign value to variable                          | `x <- 4.5 `
+    Assign to multiple variables                      | `x <- y <- z <- 4.5`
+    Assign/change value of variable in global scope   | `x <<- "global value"`
+
+    :  {.borderless tbl-colwidths="[50,50]"}
+
+
+    Create a vector
+    : ```R
+    x <- c(10, 4.5, 12, 5)
+
+> **WARNING:**
+>
+> **!**: If you integrate vectors in your vector ( `c(10, c(11, 12), 13)` ) it will get **flattened** (like `c(10, 11, 12, 13)` ).
+
+Element-wise adding, subtracting, dividing, multiplying, … vectors  
+\`\`\`R x \<- c(1, 2) y \<- c(10, 11, 12, 13) z \<- x + y
+
+&nbsp;
+
+    ::: {.callout-warning}
+    You can make element-wise operations with vectors of different lengths, as long as the longer one is a multiple of the shorter one. **The shorter vector is repeated**. :anguished:
+    :::
+
+    Common operators on vectors |
+    ----------------------------|-----
+    maximum, minimum            | `max(x)` `min(x)`
+    Vector of min and max       | `range(x)`
+    Number of elements          | `length(x)`
+    Sum of the elements         | `sum(x)`
+    Product of the elements     | `prod(x)`
+    Mean of the elements        | `mean(x)`
+    Variance of the elements    | `var(x)`
+    Sort elements ascending     | `sort(x)`
+    Matrix multiplication       | `mat1 %*% mat2`
+    Dimension of matrix         | `dim(mat1)`
+    Number of rows              | `nrow(mat1)`
+    Number of cols              | `ncol(mat2)`
+    mode (highest count of val) | `names(sort(-table(df$col1)))[1]`
+    Percentile                  | `quantile(df$col1, c(0.75))`
+
+    :  {.borderless tbl-colwidths="[50,50]"}
+
+
+    **!**: If x is a n-by-p matrix, then `var(x)` will return a p-by-p covariance matrix.
+
+    Generate sequences
+    : ```R
+    x <- c(1:10) # Integers from 1 to 10
+    # Or
+    x <- seq(1,10, 0.5) # 1.0, 1.5, 2.0, 2.5, ... 
+
+`c(10, 1)` generates a descending sequence.
+
+Repeat vector:
+
+``` r
+x <- c(1,2,3)
+y <- rep(x, times = 5) # 1, 2, 3, 1, 2, 3, 1, ...
+```
+
+Repeat elements in vector:
+
+``` r
+x <- c(1,2,3)
+y <- rep(x, each = 2) # 1, 1, 2, 2, 3, 3
+```
+
+### Selecting elements in vectors
+
+Select first element in sequence  
+\`\`\`R x\[1\] \# ! not x\[0\] !
+
+&nbsp;
+
+    Selecting first 10 elements in vector
+    : ```R
+    x[1:10]
+
+Selecting non-missing elements in vector  
+\`\`\`R x\[!is.na(x)\]
+
+&nbsp;
+
+    Selecting all elements, except the first 10
+    : ```R
+    x[-(1:5)]
+
+Append element  
+\`\`\`R append(fruits, “apple”)
+
+&nbsp;
+
+    Insert element
+    : ```R
+    append(fruits, "apple", after = 1)
+
+Delete element  
+\`\`\`R fruits \<- fruits\[-1\] \# deletes first element
+
+&nbsp;
+
+    Create matrix
+    : ```R
+    matrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)
+    #      [,1] [,2]
+    # [1,]    1    4
+    # [2,]    2    5
+    # [3,]    3    6
+
+Access matrix element  
+\`\`\`R my_matrix\[1,1\]
+
+&nbsp;
+
+    Access matrix column(s)
+    : ```R
+    my_matrix[,2]
+    my_matrix[, c(1,2)]
+
+Add rows and columns  
+\`\`\`R my_matrix \<- rbind(my_matrix, c(7,8)) \# add row my_matrix \<- cbind(my_matrix, c(10, 11, 12, 13)) \# add column
+
+&nbsp;
+
+    You can also use these functions to concatenate matrices
+
+    Create array
+    : ```R
+    array(c(1:8), dim = c(2,2,2))
+    # , , 1
+    #
+    #      [,1] [,2]
+    # [1,]    1    3
+    # [2,]    2    4
+    # 
+    # , , 2
+    # 
+    #      [,1] [,2]
+    # [1,]    5    7
+    # [2,]    6    8
+
+| Boolean operations    |                                                 |
+|-----------------------|-------------------------------------------------|
+| create boolean vector | `y <- c(10, 12, 15) < 13 # [True, True, False]` |
+| Boolean operators     | `<, <=, >, >=, ==, !=`                          |
+| and                   | `cond1 & cond2`                                 |
+| or                    | `cond1 | cond2`                                 |
+| not                   | `!cond`                                         |
+| element in vector?    | `2 %in% c(1,2,3,4)`                             |
+| identical             | `identical(my_matrix, my_matrix2)`              |
+
+If logical vectors are used in arithmetic operations, `False` becomes `0`, `True` becomes `1`.
+
+Missing values  
+`NA` or `NaN` **!**: Operations with missing values return missing values.
+
+Checking for missing values: `is.na(x)` or `is.nan(x)` (`NaN` = Not a number)
+
+Assign value only to elements where condition is true:
+
+``` r
+x[is.na(x)] <- 0
+```
+
+| Characters                 |                           |
+|----------------------------|---------------------------|
+| Character string           | `"..."`                   |
+| Escape character           | `\`                       |
+| New line                   | `\n`                      |
+| Tab                        | `\t`                      |
+| length of string           | `nchar(str)`              |
+| Is seq of chars in string? | `grepl("Hello")`          |
+| combine two strings        | `paste("Hello", "world")` |
+
+Concatenate arguments 1 by 1 as characters: `paste(c("X", "Y", "Z"), 1:3, sep="_")`
+
+| Operations on number   |                |
+|------------------------|----------------|
+| Absolute value         | `abs(x)`       |
+| round up to next int   | `ceiling(x)`   |
+| round down to next int | `floor(x)`     |
+| Exponent               | `^`            |
+| Modulus / remainder    | `10 %% 3 # 1`  |
+| Integer division       | `10 %/% 3 # 3` |
+
+### Types
+
+Force integer creation  
+\`\`\`R x \<- 100L \# must end with L
+
+&nbsp;
+
+    Convert types
+    : ```R
+    a <- as.numeric(b)
+    n <- as.integer(m)
+    y <- as.complex(x)
+
+Get type of variable  
+\`\`\`R x \<- 10.5 class(x) \# numeric
+
+&nbsp;
+
+    ### Dataframes
+
+    Contrary to matrices, the different columns of data frames can contain different data types.
+
+    Construct data frame
+    : ```R
+    Data_Frame <- data.frame (
+      Training = c("Strength", "Stamina", "Other"),
+      Pulse = c(100, 150, 120),
+      Duration = c(60, 30, 45)
+    )
+
+| Functions on dataframes |  |
+|----|----|
+| Rename columns | `colnames(my_data) <- c("col1", "col2", "col3")` |
+| Get summary statistics on columns | `summary(my_df)` |
+| Access column | `my_df[1]` or `my_df[["col1_name"]]` or `my_df$col1_name` |
+| Add row, column | `rbind(my_df, c(7,8))`, `cbind(my_df, c(10, 11))` |
+| Remove first row, column | `my_df[-c(1), ]`, `my_df[ ,-c(1)]` |
+| Select row with max value of col1 | `rownames(df)[which.max(df$col1)]` |
+
+### Factors
+
+Factors are used to store categorical data. I.e. every data point is assigned a category or level.
+
+Create factor  
+\`\`\`R sports \<- factor(c(“football”, “tennis”, “football”, “swimming”, “swimming”))
+
+Access the categories/levels  
+\`\`\`R sports_cats \<- levels(sports)
+
+&nbsp;
+
+    Hardcoding / predefining levels
+    : ```R
+    sports <- factor(c("football", "tennis", "football", "swimming"), levels = c("football", "tennis", "swimming"))
+
+Now you cannot assign a value to the factor anymore that is not in levels.
+
+### Control structures
+
+If … else …  
+\`\`\`R if (b \> a) { … } else if { … } else { … }
+
+&nbsp;
+
+    While loops
+    : ```R
+    while(i < n+1){
+      i <- i+1
+      if (x < 0) {
+        break # exit loop prematurely
+      } else if (x == 0) {
+        next # skip to next iteration
+      }
+      ...
+    }
+
+For loops  
+\`\`\`R fruits \<- c(“banana”, “apples”, “cucumbers”) for (fruit in fruits) { print(fruit) }
+
+&nbsp;
+
+    ### Functions 
+
+    Create function
+    : ```R 
+    my_func <- function(first_name, last_name = "") {
+      print(paste("Hello", first_name, last_name))
+      return(paste(first_name, last_name))
+    }
+
+Call function:  
+\`\`\`R my_func(“gustav”)
+
+&nbsp;
+
+    ### Installing Packages
+
+    Install the package
+    : ```R
+    install.packages('packageName')
+
+Load the installed package  
+``` r
+library(packageName)
+```
+
+### Useful websites
+
+- [Best Coding Practices for R](https://bookdown.org/content/d1e53ac9-28ce-472f-bc2c-f499f18264a3/)
+- [Machine Learning Reference in R & Python](https://www.ml-reference.net/)

@@ -1,0 +1,212 @@
+# Docker 
+
+CLI
+
+tool
+
+container
+
+Docker is a platform for developing, shipping, and running applications in isolated environments.
+
+The key components are:
+
+- **Container**: A lightweight, standalone, executable package that includes everything needed to run a piece of software
+- **Image**: A read-only template with instructions for creating a container, built from layers
+- **Dockerfile**: A text file containing commands to build a Docker image automatically
+- **Registry**: A repository for Docker images (like Docker Hub)
+- **Volume**: A persistent storage space shared between host and container
+- **Network**: Enables containers to communicate with each other and external resources
+
+## Dockerfile
+
+Dockerfile example:
+
+``` dockerfile
+FROM rocker/shiny:latest # <1>
+RUN apt-get update # <2>
+RUN apt-get install -qq -y libpq-dev # <2>
+RUN install2.r ggplot2 shiny shinydashboard \
+    shinydashboardPlus \
+    dplyr RPostgres # <2>
+WORKDIR /srv/shiny-server # <3>
+COPY app/ . # <4>
+ENV R_VERSION=4.4.0 # <5>
+EXPOSE 3838 # <6>
+CMD ["R", "-e", "shiny::runApp('/srv/shiny-server', port=3838)"] # <7>
+HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || exit 1 # <8>
+```
+
+1.  `FROM` specifies the base image
+2.  `RUN` executes a command in the container
+3.  `WORKDIR` sets the working directory for all following instructions (like `cd` for the build)
+4.  `COPY` copies files from the build context (directory passed to `docker build`) into the image
+5.  `ENV` sets environment variables in the container (avoid secrets here; pass them at run time with `-e` or compose)
+6.  `EXPOSE` only documents which ports the container listens on; publishing to the host still requires `-p`
+7.  `CMD` defines the default command when a container starts; it overrides the `CMD` of the base image (here: rocker/shiny’s shiny-server)
+8.  `HEALTHCHECK` runs a command periodically (here every 30s) and marks the container `unhealthy` after repeated failures; the status shows up in `docker ps`. Requires `curl` in the image
+
+## Basic Docker Commands
+
+| Description | Command |
+|----|----|
+| Start application | `docker run <container-name/container-id>` |
+| List containers | `docker ps` |
+| List docker images | `docker images` |
+| Pull images from registry | `docker pull` |
+| Kill container | `docker kill <container-name/container-id>` |
+| Build image based on Dockerfile | `docker build <dir-with-docker-file>` |
+| Execute command inside container | `docker exec <command> <container>` |
+
+### Useful Options
+
+Options can be combined, e.g. `docker run -it --rm <image>`:
+
+| Option | Description |
+|----|----|
+| `--rm` | Automatically remove the container when it exits |
+| `-it` | Interactive mode with a TTY (`-i` + `-t`), needed for shells |
+| `-d` | Run container in the background (detached mode) |
+| `-v` | Mount a volume or host directory into the container (e.g. `-v ./app:/srv/shiny-server`) |
+| `-p` | Publish a container port to the host (e.g. `-p 3838:3838`) |
+| `-e` | Set environment variables (e.g. `-e PASSWORD=secret`) |
+| `--name` | Assign a custom name to the container (e.g. `--name shiny_dev`) |
+| `--restart` | Set restart policy (e.g. `--restart always`) |
+
+For Docker Compose equivalents (e.g. `container_name` for `--name`, `restart` for `--restart`, `ports` for `-p`, `volumes` for `-v`, `environment` for `-e`), see [Docker Compose](#docker-compose).
+
+## Interacting with Containers
+
+Start a container and execute bash:
+
+``` bash
+docker run -d rocker/shiny
+docker exec -it rocker/shiny /bin/bash
+```
+
+Start R directly in a container:
+
+``` bash
+docker exec -it rocker/shiny /usr/local/bin/R
+```
+
+### Container Management
+
+| Description | Command |
+|----|----|
+| Stop container | `docker stop <container-name/container-id>` |
+| Remove container | `docker rm <container-name/container-id>` |
+| Remove container and its volumes | `docker rm -v <container-name/container-id>` |
+| Restart container | `docker restart <container-name/container-id>` |
+
+## Docker Compose
+
+Docker Compose is a tool for defining and running multi-container Docker applications using a YAML file. Example docker-compose.yml:
+
+``` yaml
+services:
+  postgres:
+    container_name: db_container
+    build: ./postgres # <1>
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432" # <2>
+    volumes:
+      - "./pgdata:/var/lib/postgresql/data" # <3>
+  
+  shiny:
+    container_name: shiny
+    depends_on:
+      - postgres
+    build: ./shiny # <1>
+    volumes:
+      - "./shiny-logs:/var/log/shiny-server" # <3>
+      - "./shiny-home:/srv/shiny-server" # <3>
+    ports:
+      - "3838:3838" # <2>
+```
+
+1.  `build` points to the folder that contains the Dockerfile for this service; compose builds the image from it (alternative: `image:` to pull a ready-made image from a registry)
+2.  `ports` maps `host:container` — traffic on host port 3838 is forwarded to container port 3838
+3.  `volumes` maps `host-path:container-path` — a folder next to the docker-compose.yml on the host is mounted into the container (equivalent to `-v`); data survives container removal
+
+Run docker-compose:
+
+``` bash
+docker compose up --force-recreate
+```
+
+## Debugging
+
+Approach container debugging from the outside in:
+
+1.  Check the container status
+2.  Read container logs
+3.  then get a shell inside
+4.  Only inspect networks and volumes once the basics look fine.
+
+If a container crashes immediately, keep it alive first so there is something to debug.
+
+### Container Status
+
+| Description | Command |
+|----|----|
+| List running containers (with grep filter) | `docker ps | grep <container-name>` |
+| Show all containers including stopped ones | `docker ps -a` |
+
+### Container Logs
+
+View container logs:
+
+``` bash
+docker logs <container-name>
+```
+
+Options can be combined, e.g. `docker logs -f --tail=100 <container-name>`:
+
+| Option    | Description                                          |
+|-----------|------------------------------------------------------|
+| `-f`      | Follow the log output live                           |
+| `--tail`  | Show only the last N lines (e.g. `--tail=100`)       |
+| `--since` | Show logs since a specific time (e.g. `--since 30m`) |
+
+Prevent container from crashing for debugging: Add to docker-compose.yml:
+
+``` yaml
+command: "sleep infinity"
+```
+
+### Inside the Container
+
+| Description | Command |
+|----|----|
+| Get shell access inside container | `docker exec -it <container-name> /bin/bash` |
+| Check container environment variables | `docker exec <container-name> env` |
+| Check if container can reach internet | `docker exec <container-name> ping 8.8.8.8` |
+
+### Container Information
+
+| Description                         | Command                           |
+|-------------------------------------|-----------------------------------|
+| Show detailed container info        | `docker inspect <container-name>` |
+| Show container resource usage       | `docker stats <container-name>`   |
+| Show processes running in container | `docker top <container-name>`     |
+
+### Network Debugging
+
+| Description                 | Command                                 |
+|-----------------------------|-----------------------------------------|
+| Check port mappings         | `netstat -tulpn | grep <port-number>`   |
+| Test container connectivity | `curl -v http://localhost:<port>`       |
+| List all Docker networks    | `docker network ls`                     |
+| Inspect network settings    | `docker network inspect <network-name>` |
+
+### Volume Inspection
+
+| Description | Command |
+|----|----|
+| List volumes | `docker volume ls` |
+| Inspect volume | `docker volume inspect <volume-name>` |
+| Check volume mount points | `docker inspect -f '{{ .Mounts }}' <container-name>` |

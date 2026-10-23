@@ -1,0 +1,296 @@
+# Dart
+
+language
+
+Dart is a new programming language by Google, mainly used for app development.
+
+Here is a short intro to Dart.
+
+### Comments
+
+``` dart
+// This is a comment
+```
+
+### Variables
+
+Variables are constructed using `var`:
+
+``` dart
+var myVariable = 4
+```
+
+Dart is statically typed: If you assign a value with a new type to your variable, you need to cast it to that type first. If you create a variable, but don’t initialize it directly, it has the datatype “dynamic”:
+
+``` dart
+var a;
+a = 123; // this is fine
+a = "foo"; // this is fine as well
+```
+
+You can create uninitialized static typed variables, by displaying their type:
+
+``` dart
+String a;
+int b;
+dynamic c; // c is of course dynamic and not static
+```
+
+#### Null safety
+
+Since common variables can be of a certain type **and** null, you can run into trouble at runtime e.g. if a color for your app-background is not a hex-code but *null*. This will crash your app.
+
+If you want to allow null-values, you deinfe a variable with a `?`: `Color? myColor;`
+
+If you did not explicitly tell dart that your variable can be null, dart will warn you if you use it e.g. as an argument. It will also tell you to add null checks(`if (myColor == null) doSomething();`) or catch errors. A nullable variable cannot be given as an argument to a function that takes non-nullable types.
+
+Forcing a nullable value (similar to writing a null-check and throwing an exception if it fails). Only to be done if you are 100% sure the variable is not null eventhough the type is nullable:
+
+``` dart
+void setBackground(Color color){
+    /// ...
+}
+Color? myColor = getColor();  
+if (colorInCataloge == true) { // you have other way of checking that the type is not null
+    setBackground(myColor!);
+}
+```
+
+If you declare a non-nullable variable but initialize it later, the type-checke would assume that it could be none. Using the keyword `late`, you can tell the type-checker that you will initalize it with a non-null value later: `late myVariable myType;`
+
+### Constants / Final
+
+You can set your “variables” in stone during compilation using `const` keywords:
+
+``` dart
+const int myConstant = 2; // this can never change again
+```
+
+If you have a “variable” be set in stone only during run-time, you use `final`:
+
+``` dart
+final int time = currentTime; // you cannot set the current time during compilation
+```
+
+### Lists
+
+If you define collections, you can set the type of elements that they contain (e.g. widgets):
+
+``` dart
+List <Widget> myWidgetList = [];
+```
+
+### Conditionals
+
+… look like this:
+
+``` dart
+if (1==1 && myAnswer == true || !(5<2)) {
+    do_something;
+} else if (myChocolate == "black"){
+    do_something_else;
+} else {
+    do_whatever;
+}
+```
+
+### Ternary Operators
+
+To make your code more concise you can assign one of two possible values to a variable depending on a condition:
+
+``` dart
+int myAge = 17;
+str answer = myAge >= 18 ? "here is your booz" : "you are too young";
+```
+
+i.e. if the condition in front of the `?` is true, you use the first value (before `:`) otherwise the second value.
+
+### Functions
+
+#### Named function
+
+``` dart
+void myFunction(){...}
+```
+
+`void`: The type of the output of the function
+
+`myFunction`: The function name
+
+`()`: The input of the function
+
+`{...}`: The body of the function (the commands)
+
+If you want to be able to call the parameters of your function by name, you need to define them in curly brackets: `void myFunction({int n1, int n2}{}`
+
+#### Anonymous function
+
+This is often used, if you define a function on the fly as an argument for another function. Btw: You can pass functions just like any other variable.
+
+``` dart
+(){...} // lacks a name
+```
+
+#### Arrow function
+
+This is a short form of the curly-braces syntax. It returns everything behind the fat arrow:
+
+``` dart
+int multiply(int n, int m)=>n*m;
+```
+
+is the same as
+
+``` dart
+int multiply(int n, int m){
+    return n * m;
+}
+```
+
+You can also use this with a void return type.
+
+### Asynchronous code
+
+Asynchronous code contains parts, where the process has to wait (e.g. for a response from REST-API) to continue.
+
+``` dart
+void myfunction() async {
+    var response = await http.get("htttp//example.com/params")
+}
+```
+
+while it *await*s, other parts of the program can run. You need to mark functions with asynchronous code as `async`.
+
+### Isolates
+
+If you have computation-heavy code, it can make your app lag. To avoid this, you can use multi-processing: You run the computatin-heavy parts and the rest on different threads.
+
+\### Futures
+
+If you have to wait for async code, you can also use Futures in your function:
+
+``` dart
+  Future<String> getVerificationURL() {
+    return Future.value(
+        'https://example.com'); 
+  }
+```
+
+The type of the return value will be at first uncompleted (`Future`) and later completed with data or completed with error. You handle these three phases like this:
+
+``` dart
+final myFutureResult = getVerificationURL();
+myFutureResult.then((response){ // this will be executed, once the process behind the future variable is complete
+    print(response)
+}).catchError((error) {// you need this in case the response is an error.
+    print('You have an $error');
+    }
+);
+```
+
+or
+
+``` dart
+try{
+    final myFutureResult = await getVerificationURL();
+}
+catch(error){
+    print('You have an $error')
+}
+```
+
+\### Streams
+
+A stream can generate more than one method. You use a listener to catch the results of the stream.
+
+``` dart
+// Create stream
+final myStream = NumberCreator().stream;
+
+// Subscribe to stream
+final subscription = myStream.listen(
+    (result) => print('single stream response: $result'), 
+    onError: (error) => print('You have an $error'),
+    onDone: () => print('stream is done'),
+    );
+
+// control flow of data
+subscription.pause()
+subscription.resume()
+subscription.cancel()
+```
+
+Every time a new value is emitted by the stream, the listen-function is called. Normal streams are set up for single subscription. If you want to use multiple subscriptions, you use `StreamingObject().stream.asBroadcastStream;`.
+
+## Classes
+
+``` dart
+class MyClass {
+    // define some class variables / properties:
+    String myString;
+
+    // define a constructor:
+    MyClass({String myText}) { // name must be the same as class name
+        this.myString = myText; // this references object properties
+    }
+
+    void do_something() {
+        ...
+    }
+}
+```
+
+You can use syntactic sugar to make your constructor more concise:
+
+``` dart
+...
+String myString;
+MyClas(this.myString);
+...
+```
+
+### Inheritance
+
+to inherit properties and functions from other classes, we use `extends`:
+
+``` dart
+class JetPlane extends Plane{
+    ...
+}
+```
+
+### Polymorphism
+
+If you want to use some methods/properties of a class but override others, you use `@override`:
+
+``` dart
+class UFO extends Plane{
+    @override 
+    void fly(){
+        print("hover around");
+    }
+}
+```
+
+you can also add onto the methods of the other class using `super`:
+
+``` dart
+class UFO extends Plane{
+    @override
+    void accelerate(){
+        super.accelerate();
+        speed= speed+500;
+    }
+}
+```
+
+## Enums
+
+Enums are like booleans with more options. Your variable can be in one of multiple states:
+
+``` dart
+enum myEnum = {forward, parked, reverse};
+myEnum.forward
+```
+
+Beware: You cannot create enums within classes.

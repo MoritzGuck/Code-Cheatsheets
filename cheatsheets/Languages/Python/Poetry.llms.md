@@ -1,0 +1,91 @@
+# Poetry 
+
+python
+
+tool
+
+CLI
+
+package manager
+
+virtual environments
+
+Poetry is a package builder, dependency and virtual environment manager for python.
+
+## Installation
+
+``` bash
+conda install -c conda-forge poetry
+```
+
+Alternatvie installation instructions: [python-poetry.org](https://python-poetry.org/docs/#installation)
+
+## Basic usage
+
+**Set-up project**
+
+``` bash
+poetry new "my_project_name"
+```
+
+Installs poetry virtual environment and sets up the required files for poetry to work. `pyproject.toml` contains the configuration for poetry and the needed dependencies. The new folder is there for your source code.
+
+Adding / installing single dependencies  
+\`\`\`bash poetry add package_name
+
+&nbsp;
+
+    Uses pip to install the new package to your virtual environment and adds it to your dependencies list. 
+
+    Installing the dependencies from the .toml-file
+    : ```bash
+    poetry install
+
+## Running code with poetry
+
+There are two options:
+
+1.  Using poetry command
+
+: `bash poetry run python your_script.py`
+
+2.  Activating the poetry shell
+
+: `bash poetry shell`
+
+### Using Jupyter-Notebooks in VS-Code
+
+1.  List the directory of your python interpreter:
+
+``` bash
+poetry env info --path
+```
+
+2.  In python-file,
+
+    1.  on bottom right of VS-Code window click on python-version.
+
+    2.  In new dialogue “Select Interpreter”, click “+ Enter interpreter path”
+
+    3.  Paste the interpreter path into the text-box.
+
+3.  In jupyter-notebook,
+
+    1.  Select kernel
+
+    2.  Select Python environment
+
+    3.  Select the python interpreter that you just listed before.
+
+## Build and publish your package
+
+Build package  
+\`\`\`bash poetry build
+
+&nbsp;
+
+    This will package your file as sdist and wheel format. 
+
+    Publish to PyPI
+    : ```bash
+    poetry publish

@@ -1,0 +1,55 @@
+# Venv 
+
+tool
+
+CLI
+
+virtual environments
+
+Venv is the built-in virtual environment manager for python.
+
+> **WARNING:**
+>
+> Virtualenv and venv are not the same package. Venv is built into Python, while virtualenv is a third-party package that contains additional options.
+
+### Create and delete environments
+
+Create environment  
+\`\`\`bash python -m venv venv
+
+&nbsp;
+
+    Removing / Deleting environment
+    : ```bash
+    conda env remove -n env-name
+
+More info: [Intro to Conda virtual environments](https://towardsdatascience.com/introduction-to-conda-virtual-environments-eaea4ac84e28)
+
+### Use environment
+
+Use/activate environment  
+\`\`\`bash .
+
+&nbsp;
+
+    Deactive environment
+    : ```bash
+    deactivate
+
+### Install packages
+
+Install package using pip  
+\`\`\`bash pip install pandas
+
+&nbsp;
+
+    more info in [Pip](chatsheets/Languages/Python/pip.qmd)
+
+    Export packages in env to requirements.txt
+    : ```bash
+    pip freeze > requirements.txt
+
+Install packages from requirements.txt  
+``` bash
+pip install -r requirements.txt
+```

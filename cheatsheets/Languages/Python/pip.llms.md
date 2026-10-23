@@ -1,0 +1,83 @@
+# Pip 
+
+CLI
+
+tool
+
+package manager
+
+Pip is the official python package manager
+
+Installation  
+Usually pip is installed with python automatically.
+
+Upgrade pip  
+\`\`\`bash python -m pip install –upgrade pip
+
+&nbsp;
+
+    Install packages
+    : ```bash
+    pip install SomePackage            # latest version
+    pip install SomePackage==1.0.4     # specific version
+    pip install 'SomePackage>=1.0.4'   # minimum version
+
+Install from requirements file  
+\`\`\`bash pip install -r requirements.txt
+
+&nbsp;
+
+    Generate requirements file from installed packages
+    : ```bash
+    pip freeze > requirements.txt
+
+List installed packages  
+\`\`\`bash pip list
+
+&nbsp;
+
+    List outdated installed packages
+    : ```bash
+    pip list --outdated
+
+Get info on package  
+\`\`\`bash pip show SomePackage
+
+&nbsp;
+
+    Returns name, version, summary, home-page, license, dependencies, required-by and location in your file system.
+
+    ### Wheels
+
+    Wheel files (binaries) make the installation of pip packages faster.
+
+    Install wheel
+    : ```bash
+    pip install wheel
+
+Create pip wheel file from requirements  
+\`\`\`bash pip wheel –wheel-dir=/local/wheels -r requirements.txt
+
+&nbsp;
+
+    Install packages from local wheels directory
+    : ```bash
+    pip install --no-index --find-links=/local/wheels -r requirements.txt
+
+### Pipenv
+
+Pipenv is the environment manager for pip.
+
+Install pipenv  
+\`\`\`bash pip install –user –upgrade pipenv
+
+&nbsp;
+
+    Istall packages in your environment
+    : ```bash
+    pipenv install -r requirements.txt
+
+Run script in your environment  
+``` bash
+pipenv run python python_script.py
+```

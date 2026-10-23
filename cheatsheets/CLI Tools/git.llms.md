@@ -1,0 +1,171 @@
+# Git 
+
+CLI
+
+tool
+
+versioning
+
+Git is a version control system mostly used for code.
+
+## Configuration
+
+| Description | Command |
+|----|----|
+| Set username (for your commits) | `git config --global user.name "myname"` |
+| Set email (for your commits) | `git config --global user.email "my@email.com"` |
+| Enable CLI color codes | `git config --global color.ui auto` |
+
+## New repositories
+
+Download git repo from server  
+\`\`\`bash git clone url.com
+
+&nbsp;
+
+    ## Getting started
+
+
+    | Description | Command |
+    |-------------|---------|
+    | Initialize a new git repository | `git init my-repo` |
+    | Get the status of changes (staged, unstaged, untracked) | `git status` |
+    | Track files to staging | `git add .` |
+    | Remove files from staging | `git reset <file>` |
+    | Commit staged files | `git commit -m "informative commit message"` |
+    | Discard changes in a file (**!**: Your changes will be lost) | `git restore <file>` |
+    | Show commit history | `git log` |
+    | Go back to a commit | `git checkout <commit hash>` |
+    | Go back to the latest commit | `git checkout my-branch-name` |
+
+    :  {tbl-colwidths="[50,50]"}
+
+
+    ### Working with remote repositories
+
+    | Description | Command |
+    |-------------|---------|
+    | Clone a remote repository | `git clone url.com` |
+    | Push changes to remote repository | `git push` |
+    | Pull changes from remote repository | `git pull` |
+    :  {tbl-colwidths="[50,50]"}
+
+
+    ### Working with Branches
+
+    | Description | Command |
+    |-------------|---------|
+    | Create a new branch | `git branch my-branch-name` |
+    | Switch to a branch | `git checkout my-branch-name` |
+    | Create and switch to a new branch | `git checkout -b my-branch-name` or `git switch my-branch-name` |
+    | Delete a branch | `git branch -d my-branch-name` |
+    | List all branches | `git branch` |
+    | Merge a branch into the current branch | `git merge my-branch-name` |
+
+    ## Workflows
+
+    ### Fetch newest changes of your branch from remote
+
+    1. Get changes from remote repository
+    : ```
+    git fetch
+
+2.  Check what changed
+
+: `git diff my-branch-name origin/my-branch-name`
+
+3.  Merge changes from remote branch into your branch
+
+: `git pull`
+
+### Add changes from different branch to your branch
+
+1.  Get changes from remote repository
+
+: `bash git fetch`
+
+2.  Check differences to branch you want merge into yours
+
+: `bash git diff feature1..dev`
+
+3.  Merge changes from remote branch into your branch
+
+: `bash git merge origin dev`
+
+4.  Check what files are(n’t) staged for commit
+
+: `bash git status`
+
+5.  Stage all files that are tracked (not in .gitignore)
+
+: `bash git add .`
+
+    If necessary: Unstage all files (or a specific file) that are staged
+    : ```bash
+    git reset [specific-file]
+    ```
+
+6.  Commit all staged files (add to versioning history)
+
+: `bash git commit -m "[ticket-id + what you changed]"`
+
+7.  Load commits into remote git repository
+
+: `bash git push`
+
+### Managing changes
+
+See changes due to last pull request  
+\`\`\`bash git log -p -2
+
+&nbsp;
+
+    ## Pull changes into dev/test/master branch 
+
+    Pull changes into dev branch (and add your changes at the end) 
+    : ```bash
+    git fetch
+    git checkout dev
+    git pull --rebase feature1branch 
+
+Pull only specific commits into your branch  
+\`\`\`bash git cherry-pick \[commit-SHA\]
+
+&nbsp;
+
+    ## Undo and Rollback
+
+    Rollback the last commit
+    : ```bash
+    git reset head~1
+
+To provide the files from the last commit: `git reset --soft HEAD~1`
+
+Rollback to a specific commit  
+\`\`\`bash git reset \[commit-SHA\]
+
+&nbsp;
+
+    You can still see the changes from your HEAD in your files. To make the reset materialize, you need to discard these unstaged changes in git. 
+
+    Since you are now several commits behind the remote, you have to force push the changes: `git push -f origin [myBranchyBranch]`.
+
+    To create a new commit to undo earlier commits, use `git revert`.
+
+    Travel back to a specific commit
+    : ```bash
+    git checkout [commit-SHA]
+
+**Delete sensitive data from history:**  
+[docs.github.com](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#using-git-filter-repo)
+
+## Branches
+
+| Description | Command |
+|----|----|
+| List all branches and show which one you are on | `git branch -a` |
+| Create new branch and check it out | `git checkout -b [branch-name]` |
+| Change to a specific branch | `git checkout [specific-branch]` |
+| Delete a specific branch | `git branch -d [specific-branch]` |
+| Rename the current branch | `git branch -m myNewBranch` |
+| Show commit history with branch dependencies | `git log --graph --oneline` |

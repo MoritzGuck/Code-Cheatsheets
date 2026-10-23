@@ -1,0 +1,88 @@
+# ruff 
+
+CLI
+
+tool
+
+code quality
+
+A fast Python linter, that contains tons of rules from flake8, pycodestyle, pep and black
+
+## Install
+
+``` bash
+pip install ruff
+```
+
+## Configuration
+
+Create a file named `pyproject.toml` with the following content. You can find the relevant rules [here](https://beta.ruff.rs/docs/rules/).
+
+``` python
+[tool.ruff]
+target-version = "py39"
+
+# Select relevant rules
+select = [
+    "ANN", # type annotations
+    "ARG", # falke8 unused arguments
+    "B",  # flake8-bugbear
+    "COM", # flake8-commas (specifically trailing commas)
+    "C4", # flake8-comprehensions
+    "D",  # pydocstyle
+    "E",  # Error
+    "ERA", # eradicate commented out code
+    "F",  # pyflakes
+    "FIX", # flake8 fixme
+    "I",  # isort
+    "ISC", # flake8-implicit-str-concat
+    "N",  # pep8-naming
+    "NPY", # NumPy specific rules
+    "PERF", # Perflint: performance
+    "PIE", # flake8-pie 
+    "PGH",  # pygrep-hooks
+    "PTH", # flake8-use-pathlib 
+    "Q",  # flake8-quotes
+    "RUF", # Ruff specific rules
+    "S",  # bandit security checks 
+    "SIM",  # flake8-simplify
+    "UP",  # pyupgrade
+    "W",  # Warning
+    "YTT", # flake8-2020 
+]
+
+
+# Ignore the following rules
+ignore = [
+    "ANN101", # missing-type-self
+    "ANN401", # any-type type hint
+    "D100", # undocumented-public-module
+    "D101", # undocumented-public-class -> We document inits
+    "D104", # Missing docstring in public package
+    "E402", # (import violation)
+]
+
+line-length = 88  # Must agree with Black
+
+[tool.ruff.per-file-ignores]
+"path/to/python-file.py" = ["E501"] # line too long 
+"path/to_test_folder/*" = [
+    "ANN201", # Missing return type -> Tests commonly return None (overkill)
+    "ANN202", # Missing return type -> Tests commonly return None (overkill)
+    "D102", # No docstrings -> not necessary in tests
+] 
+
+# Doc-String format
+[tool.ruff.pydocstyle]
+convention = "google"  # Accepts: "google", "numpy", or "pep257".
+```
+
+## Run
+
+Check for rule violations and fix the ones that can be fixed without danger  
+
+``` bash
+ruff check . --fix
+```
+
+`.` checks in the current directory. `--fix` enables the autofix feature.

@@ -1,0 +1,147 @@
+# uv 
+
+CLI
+
+tool
+
+package manager
+
+uv is a Python package manager with additional features for managing Python versions, scripts, projects, and tools.
+
+### Concepts
+
+- **Projects**: You can manage packages project-wide using `uv` commands and the `project.toml` file.
+- **Scripts**: You can also manage packages for independent scripts using `uv` commands using the script-header in a python script.
+- **Scripts**: You can also manage packages for independent scripts using `uv` commands using the script-header in a python script.
+- **Tools**: To run packages as commandline tools, you can use special `uv` commands.
+
+### Installation
+
+Install uv  
+\`\`\`bash pipx install uv
+
+&nbsp;
+
+    Upgrade uv
+    : ```bash
+    uv self update
+
+### Python Versions
+
+Manage Python installations and versions.
+
+Install Python versions  
+\`\`\`bash uv python install 3.9.7
+
+&nbsp;
+
+    List available Python versions
+    : ```bash
+    uv python list
+
+Find an installed Python version  
+\`\`\`bash uv python find 3.9
+
+&nbsp;
+
+    Pin a project to a specific Python version
+    : ```bash
+    uv python pin 3.9.7
+
+Uninstall a Python version  
+\`\`\`bash uv python uninstall 3.9.7
+
+&nbsp;
+
+    ### Scripts
+
+    Execute and manage dependencies in standalone Python scripts. The script needs to contain a script header.
+
+    script header
+    : ```python
+    # /// script
+    # dependencies = [
+    #   "requests<3",
+    #   "rich",
+    # ]
+    # ///
+
+    import requests
+    from rich import print
+    ...
+
+Run a script  
+\`\`\`bash uv run example.py
+
+&nbsp;
+
+    Add a dependency to a script
+    : ```bash
+    uv add --script SomePackage
+
+Remove a dependency from a script  
+\`\`\`bash uv remove –script SomePackage
+
+&nbsp;
+
+    ### Projects
+
+    Create and manage depencies of whole projects with a `pyproject.toml` file.
+
+    Create a new project with a `pyproject.toml` file and a virtual environment
+    : ```bash
+    uv init
+
+Add a dependency to the project  
+\`\`\`bash uv add SomePackage
+
+&nbsp;
+
+    Remove a dependency from the project
+    : ```bash
+    uv remove SomePackage
+
+Sync project dependencies with the virtual environment  
+\`\`\`bash uv sync
+
+&nbsp;
+
+    Create a lockfile for dependencies
+    : ```bash
+    uv lock
+
+Run a command in the project environment  
+\`\`\`bash uv run python script.py
+
+&nbsp;
+
+    View the dependency tree
+    : ```bash
+    uv tree
+
+### Tools
+
+Install and manage tools from Python package indexes.
+
+Run a tool in a temporary environment  
+\`\`\`bash uvx ruff
+
+&nbsp;
+
+    Install a tool user-wide
+    : ```bash
+    uv tool install black
+
+Uninstall a tool  
+\`\`\`bash uv tool uninstall black
+
+&nbsp;
+
+    List installed tools
+    : ```bash
+    uv tool list
+
+Update the shell to include tool executables  
+``` bash
+uv tool update-shell
+```

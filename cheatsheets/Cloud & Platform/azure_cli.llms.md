@@ -1,0 +1,27 @@
+# Azure CLI 
+
+Azure/az CLI is the command line interface of Azure.
+
+## Installation Instructions
+
+Instrallation instructions can be found [here](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
+
+## General
+
+General format of the commands:
+
+``` bash
+az {command group} {command subgroup} {command} {--parameters}
+```
+
+| Common commands          |                   |
+|--------------------------|-------------------|
+| Get version of Azure CLI | `azure --version` |
+
+## Security
+
+| Service Principals |  |
+|----|----|
+| Create a service principal | `az ad sp create-for-rbac -n "api://<spName>" --role owner --scopes subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>` |
+| Get the object/app ID of your service principal | `az ad sp show --id <appId>` |
+| Assign access to keyvault secrets to service principal | `az keyvault set-policy -n <keyVaultName> --object-id <objectId> --secret-permissions get list` |
