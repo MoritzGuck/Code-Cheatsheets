@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="OpenShift is a platform based on Kubernetes to host and manage applications in containers.">
 
-<title>OpenShift – Cheatsheets</title>
+<title>Azure ML  – Cheatsheets</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,6 +25,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -256,7 +290,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud &amp; Platform/ansible.html">Cloud &amp; Platform</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud &amp; Platform/Openshift.html">OpenShift</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud and Platform/ansible.html">Cloud and Platform</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud and Platform/azure_ml.html">Azure ML {{&lt; fa brands microsoft &gt;}}</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -332,7 +366,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Cloud &amp; Platform</span></a>
+ <span class="menu-text">Cloud and Platform</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -340,31 +374,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Cloud &amp; Platform/ansible.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/Cloud and Platform/ansible.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ansible</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Cloud &amp; Platform/azure_cli.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/Cloud and Platform/azure_cli.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Azure CLI </span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Cloud &amp; Platform/azure_ml.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/Cloud and Platform/azure_ml.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Azure ML </span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Cloud &amp; Platform/gcloud.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/Cloud and Platform/gcloud.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GCP: gcloud CLI </span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Cloud &amp; Platform/Openshift.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../cheatsheets/Cloud and Platform/Openshift.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">OpenShift</span></a>
   </div>
 </li>
@@ -528,7 +562,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../cheatsheets/Other/prompting_llms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prompting Llms</span></a>
+ <span class="menu-text">Prompting LLMs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -557,11 +591,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#core-concepts" id="toc-core-concepts" class="nav-link active" data-scroll-target="#core-concepts">Core concepts</a>
-  <ul class="collapse">
-  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a></li>
-  <li><a href="#infrastructure" id="toc-infrastructure" class="nav-link" data-scroll-target="#infrastructure">Infrastructure</a></li>
-  </ul></li>
+  <li><a href="#experiments" id="toc-experiments" class="nav-link active" data-scroll-target="#experiments">Experiments</a></li>
   </ul>
 </nav>
     </div>
@@ -569,16 +599,11 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud &amp; Platform/ansible.html">Cloud &amp; Platform</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud &amp; Platform/Openshift.html">OpenShift</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud and Platform/ansible.html">Cloud and Platform</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud and Platform/azure_ml.html">Azure ML {{&lt; fa brands microsoft &gt;}}</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">OpenShift</h1>
+<h1 class="title">Azure ML <i class="fa-brands fa-microsoft" aria-label="microsoft"></i></h1>
 </div>
 
-<div>
-  <div class="description">
-    OpenShift is a platform based on Kubernetes to host and manage applications in containers.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -593,115 +618,20 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="core-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="core-concepts">Core concepts</h2>
-<section id="software" class="level3">
-<h3 class="anchored" data-anchor-id="software">Software</h3>
-<section id="containers-pods" class="level4">
-<h4 class="anchored" data-anchor-id="containers-pods">Containers &amp; pods</h4>
+<p>Azure ML is the machine learning service of the Azure Cloud Platform.</p>
+<section id="experiments" class="level2">
+<h2 class="anchored" data-anchor-id="experiments">Experiments</h2>
 <dl>
-<dt>Containers</dt>
+<dt>Delete Experiments without jobs</dt>
 <dd>
-Lightweight, standalone executable packages that include everything needed to run an application. Modern containers use the Open Container Initiative (OCI) standard and aren’t limited to Docker. They enable consistent deployment across different environments.
-</dd>
-<dt>Images</dt>
-<dd>
-Immutable templates used to create containers. They follow a layered architecture and can be built using various tools like Buildah, Podman, or Docker. Images are defined using Containerfiles or Dockerfiles.
-</dd>
-<dt>Image tags</dt>
-<dd>
-Metadata identifiers for image versions, variants, and architectures. Modern practices include using content-addressable digests alongside tags for immutable references.
-</dd>
-<dt>Container registries</dt>
-<dd>
-Centralized repositories that store and distribute container images. Support features like vulnerability scanning, signing, and RBAC. Popular options include Quay.io, Docker Hub, and private registries.
-</dd>
-<dt>Pods</dt>
-<dd>
-Smallest deployable units in Kubernetes/OpenShift. Can contain multiple containers that share network namespace, storage, and lifecycle. Pods are ephemeral and should be managed through higher-level controllers.
-</dd>
-<dt>Pod lifecycle</dt>
-<dd>
-Managed through phases including Pending, Running, Succeeded, Failed, and Unknown. Containers within pods can have individual restart policies and health checks.
-</dd>
-<dt>Services</dt>
-<dd>
-Abstract way to expose applications running in pods. Types include ClusterIP, NodePort, LoadBalancer, and ExternalName. Support features like service mesh integration.
-</dd>
-<dt>Labels and annotations</dt>
-<dd>
-Key-value pairs for organizing and selecting Kubernetes resources. Annotations provide non-identifying metadata for automation and tooling.
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">from</span> azureml.core import Workspace, Experiment</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aml_workspace</span> = Workspace.from_config<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">experiment_id</span> = Experiment<span class="er">(</span><span class="ex">aml_workspace,</span> <span class="st">'&lt;experiment_name&gt;'</span><span class="kw">)</span><span class="ex">.id</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Experiment.delete</span><span class="er">(</span><span class="ex">aml_workspace,</span> experiment_id<span class="kw">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </dd>
 </dl>
-</section>
-<section id="projects-users" class="level4">
-<h4 class="anchored" data-anchor-id="projects-users">Projects &amp; users</h4>
-<dl>
-<dt>Users</dt>
-<dd>
-Identity management integrated with enterprise systems (LDAP, OAuth, etc.). Supports Role-Based Access Control (RBAC) with custom roles and bindings.
-</dd>
-<dt>Kubernetes namespaces</dt>
-<dd>
-Virtual clusters within a physical cluster. Support resource quotas, network policies, and service isolation. Enable multi-tenancy and environment separation.
-</dd>
-<dt>Projects</dt>
-<dd>
-OpenShift’s extension of namespaces with additional security controls, routing, and monitoring features. Support for project templates and operator integration.
-</dd>
-</dl>
-</section>
-<section id="builds-deployments" class="level4">
-<h4 class="anchored" data-anchor-id="builds-deployments">Builds &amp; Deployments</h4>
-<dl>
-<dt>Builds</dt>
-<dd>
-Pipeline-based image creation process. Supports multiple build strategies including Source-to-Image (S2I), Containerfile, and custom builds. Integration with modern CI/CD tools like Tekton.
-</dd>
-<dt>Image streams</dt>
-<dd>
-OpenShift abstraction for managing container images. Support automatic updates, rollbacks, and deployment triggers. Enable image promotion across environments.
-</dd>
-<dt>Deployments</dt>
-<dd>
-Declarative updates to applications. Use ReplicaSets (replacing older ReplicationControllers) for maintaining desired pod state. Support advanced deployment strategies like rolling, blue-green, and canary.
-</dd>
-<dt>Jobs and CronJobs</dt>
-<dd>
-Manage pods that run to completion. Support for parallel processing, retry policies, and scheduled execution. Integration with cluster autoscaling.
-</dd>
-<dt>Operators</dt>
-<dd>
-Software extensions to Kubernetes that use custom resources to manage applications and their components. Automate operational tasks and complex deployments.
-</dd>
-</dl>
-</section>
-</section>
-<section id="infrastructure" class="level3">
-<h3 class="anchored" data-anchor-id="infrastructure">Infrastructure</h3>
-<dl>
-<dt>Nodes</dt>
-<dd>
-Physical or virtual machines running containerized workloads. Support various runtime classes and compute profiles. Can be managed through machine sets and autoscaling.
-</dd>
-<dt>Clusters</dt>
-<dd>
-Distributed systems for container orchestration. Support hybrid and multi-cloud deployments, federation, and advanced networking models.
-</dd>
-<dt>Service mesh</dt>
-<dd>
-Infrastructure layer for service-to-service communication. Provides traffic management, security, and observability features.
-</dd>
-</dl>
-<p>More information:</p>
-<ul>
-<li><a href="cheatsheets/Cloud/gcloud.qmd">OpenShift: Core Concepts</a></li>
-<li><a href="cheatsheets/Cloud/gcloud.qmd">Google Cloud: What are Containers</a></li>
-<li><a href="cheatsheets/Cloud/gcloud.qmd">Docker Docs: Docker overview</a></li>
-</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

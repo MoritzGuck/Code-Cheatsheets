@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Gcloud CLI is the command line interface of the Google Cloud Platform.">
+<meta name="description" content="OpenShift is a platform based on Kubernetes to host and manage applications in containers.">
 
-<title>GCP: gcloud CLI  – Cheatsheets</title>
+<title>OpenShift – Cheatsheets</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -256,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud &amp; Platform/ansible.html">Cloud &amp; Platform</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud &amp; Platform/gcloud.html">GCP: gcloud CLI {{&lt; fa brands google &gt;}}</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud and Platform/ansible.html">Cloud and Platform</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud and Platform/Openshift.html">OpenShift</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -332,7 +332,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Cloud &amp; Platform</span></a>
+ <span class="menu-text">Cloud and Platform</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -340,31 +340,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Cloud &amp; Platform/ansible.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/Cloud and Platform/ansible.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ansible</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Cloud &amp; Platform/azure_cli.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/Cloud and Platform/azure_cli.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Azure CLI </span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Cloud &amp; Platform/azure_ml.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/Cloud and Platform/azure_ml.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Azure ML </span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Cloud &amp; Platform/gcloud.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../cheatsheets/Cloud and Platform/gcloud.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GCP: gcloud CLI </span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/Cloud &amp; Platform/Openshift.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/Cloud and Platform/Openshift.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">OpenShift</span></a>
   </div>
 </li>
@@ -528,7 +528,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../cheatsheets/Other/prompting_llms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prompting Llms</span></a>
+ <span class="menu-text">Prompting LLMs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -552,21 +552,31 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#core-concepts" id="toc-core-concepts" class="nav-link active" data-scroll-target="#core-concepts">Core concepts</a>
+  <ul class="collapse">
+  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a></li>
+  <li><a href="#infrastructure" id="toc-infrastructure" class="nav-link" data-scroll-target="#infrastructure">Infrastructure</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud &amp; Platform/ansible.html">Cloud &amp; Platform</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud &amp; Platform/gcloud.html">GCP: gcloud CLI {{&lt; fa brands google &gt;}}</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud and Platform/ansible.html">Cloud and Platform</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud and Platform/Openshift.html">OpenShift</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">GCP: gcloud CLI <i class="fa-brands fa-google" aria-label="google"></i></h1>
+<h1 class="title">OpenShift</h1>
 </div>
 
 <div>
   <div class="description">
-    Gcloud CLI is the command line interface of the Google Cloud Platform.
+    OpenShift is a platform based on Kubernetes to host and manage applications in containers.
   </div>
 </div>
 
@@ -583,6 +593,32 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="core-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="core-concepts">Core concepts</h2>
+<section id="software" class="level3">
+<h3 class="anchored" data-anchor-id="software">Software</h3>
+<section id="containers-pods" class="level4">
+<h4 class="anchored" data-anchor-id="containers-pods">Containers &amp; pods</h4>
+<p>For containers, images, registries see <a href="../../cheatsheets/CLI Tools/docker.html">Docker cheatsheet</a>.</p>
+<dl>
+<dt>Pods</dt>
+<dd>
+Smallest deployable units in Kubernetes/OpenShift. Can contain multiple containers that share network namespace, storage, and lifecycle. Pods are ephemeral and should be managed through higher-level controllers.
+</dd>
+<dt>Pod lifecycle</dt>
+<dd>
+Managed through phases including Pending, Running, Succeeded, Failed, and Unknown. Pods have a restart policy; containers have individual health checks.
+</dd>
+<dt>Services</dt>
+<dd>
+Abstract way to expose applications running in pods. Types include ClusterIP, NodePort, LoadBalancer, and ExternalName. Support features like service mesh integration.
+</dd>
+<dt>Labels and annotations</dt>
+<dd>
+Key-value pairs for organizing and selecting Kubernetes resources. Annotations provide non-identifying metadata for automation and tooling.
+</dd>
+</dl>
+<p>Common commands:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -590,19 +626,244 @@ ul.task-list li input[type="checkbox"] {
 </colgroup>
 <thead>
 <tr class="header">
-<th>SSH connection</th>
-<th>&nbsp;</th>
+<th>Description</th>
+<th>Command</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>setup new ssh connection to compute instance</td>
-<td><code>gcloud compute config-ssh</code></td>
+<td>List pods in the current project</td>
+<td><code>oc get pods</code></td>
+</tr>
+<tr class="even">
+<td>Show detailed pod info (events, probes, volumes)</td>
+<td><code>oc describe pod &lt;pod-name&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>Follow pod logs</td>
+<td><code>oc logs -f &lt;pod-name&gt;</code></td>
+</tr>
+<tr class="even">
+<td>Open an interactive shell in a pod</td>
+<td><code>oc rsh &lt;pod-name&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>Execute a command in a running container</td>
+<td><code>oc exec &lt;pod-name&gt; -- &lt;command&gt;</code></td>
+</tr>
+<tr class="even">
+<td>Forward a local port to a pod</td>
+<td><code>oc port-forward &lt;pod-name&gt; &lt;local-port&gt;:&lt;container-port&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>Restart a pod (controller recreates it)</td>
+<td><code>oc delete pod &lt;pod-name&gt;</code></td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="projects-users" class="level4">
+<h4 class="anchored" data-anchor-id="projects-users">Projects &amp; users</h4>
+<dl>
+<dt>Users</dt>
+<dd>
+Identity management integrated with enterprise systems (LDAP, OAuth, etc.). Supports Role-Based Access Control (RBAC) with custom roles and bindings.
+</dd>
+<dt>Kubernetes namespaces</dt>
+<dd>
+Virtual clusters within a physical cluster. Support resource quotas, network policies, and service isolation. Enable multi-tenancy and environment separation.
+</dd>
+<dt>Projects</dt>
+<dd>
+OpenShift’s extension of namespaces with additional security controls, routing, and monitoring features. Support for project templates and operator integration.
+</dd>
+</dl>
+<p>Common commands:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Description</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Log in to a cluster</td>
+<td><code>oc login &lt;api-url&gt;</code></td>
+</tr>
+<tr class="even">
+<td>Show the current user</td>
+<td><code>oc whoami</code></td>
+</tr>
+<tr class="odd">
+<td>Show the current project</td>
+<td><code>oc project</code></td>
+</tr>
+<tr class="even">
+<td>List accessible projects</td>
+<td><code>oc projects</code></td>
+</tr>
+<tr class="odd">
+<td>Create and switch to a new project</td>
+<td><code>oc new-project &lt;name&gt;</code></td>
+</tr>
+<tr class="even">
+<td>Switch to another project</td>
+<td><code>oc project &lt;name&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>Show an overview of the current project</td>
+<td><code>oc status</code></td>
+</tr>
+<tr class="even">
+<td>Grant a user a role in the current project</td>
+<td><code>oc adm policy add-role-to-user &lt;role&gt; &lt;user&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>List your effective permissions</td>
+<td><code>oc auth can-i --list</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="builds-deployments" class="level4">
+<h4 class="anchored" data-anchor-id="builds-deployments">Builds &amp; Deployments</h4>
+<dl>
+<dt>Image streams</dt>
+<dd>
+OpenShift abstraction for managing container images. Support automatic updates, rollbacks, and deployment triggers. Enable image promotion across environments.
+</dd>
+<dt>Jobs and CronJobs</dt>
+<dd>
+Manage pods that run to completion. Support for parallel processing, retry policies, and scheduled execution. Integration with cluster autoscaling.
+</dd>
+<dt>Operators</dt>
+<dd>
+Software extensions to Kubernetes that use custom resources to manage applications and their components. Automate operational tasks and complex deployments.
+</dd>
+</dl>
+<p>Common commands:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Description</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Create an application from source code or an image</td>
+<td><code>oc new-app &lt;source-or-image&gt;</code></td>
+</tr>
+<tr class="even">
+<td>List builds</td>
+<td><code>oc get builds</code></td>
+</tr>
+<tr class="odd">
+<td>Start a build manually</td>
+<td><code>oc start-build &lt;buildconfig-name&gt;</code></td>
+</tr>
+<tr class="even">
+<td>Follow build logs</td>
+<td><code>oc logs -f bc/&lt;buildconfig-name&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>List image streams</td>
+<td><code>oc get imagestreams</code></td>
+</tr>
+<tr class="even">
+<td>Import an image into an image stream</td>
+<td><code>oc import-image &lt;imagestream-name&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>Tag an image into an image stream</td>
+<td><code>oc tag &lt;source-image&gt; &lt;target&gt;[:&lt;tag&gt;]</code></td>
+</tr>
+<tr class="even">
+<td>Watch a rollout’s progress</td>
+<td><code>oc rollout status deploy/&lt;name&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>Roll back to the previous revision</td>
+<td><code>oc rollout undo deploy/&lt;name&gt;</code></td>
+</tr>
+<tr class="even">
+<td>Scale a deployment</td>
+<td><code>oc scale deploy/&lt;name&gt; --replicas=&lt;n&gt;</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="infrastructure" class="level3">
+<h3 class="anchored" data-anchor-id="infrastructure">Infrastructure</h3>
+<dl>
+<dt>Nodes</dt>
+<dd>
+Physical or virtual machines running containerized workloads. Support various runtime classes and compute profiles. Can be managed through machine sets and autoscaling.
+</dd>
+<dt>Clusters</dt>
+<dd>
+Distributed systems for container orchestration. Support hybrid and multi-cloud deployments and advanced networking models.
+</dd>
+<dt>Service mesh</dt>
+<dd>
+Infrastructure layer for service-to-service communication. Provides traffic management, security, and observability features.
+</dd>
+</dl>
+<p>Common commands:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Description</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>List cluster nodes</td>
+<td><code>oc get nodes</code></td>
+</tr>
+<tr class="even">
+<td>Show node resource usage</td>
+<td><code>oc adm top nodes</code></td>
+</tr>
+<tr class="odd">
+<td>List machine sets</td>
+<td><code>oc get machinesets -n openshift-machine-api</code></td>
+</tr>
+<tr class="even">
+<td>Show installed cluster version and update channel</td>
+<td><code>oc get clusterversion</code></td>
+</tr>
+<tr class="odd">
+<td>List operators and their health</td>
+<td><code>oc get clusteroperators</code></td>
+</tr>
+</tbody>
+</table>
+<p>More information:</p>
+<ul>
+<li><a href="https://docs.openshift.com/container-platform/latest/architecture/architecture.html">OpenShift: Core Concepts</a></li>
+<li><a href="https://cloud.google.com/learn/what-are-containers">Google Cloud: What are Containers</a></li>
+<li><a href="https://docs.docker.com/get-started/docker-overview/">Docker Docs: Docker overview</a></li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

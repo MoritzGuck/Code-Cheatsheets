@@ -17,6 +17,12 @@ The key components are:
 - **Volume**: A persistent storage space shared between host and container
 - **Network**: Enables containers to communicate with each other and external resources
 
+Further concepts:
+
+- **Image tags**: Metadata identifiers for image versions, variants, and architectures.
+- **Builds**: Pipeline-based image creation process.
+- **Deployments**: Declarative updates to applications.
+
 ## Dockerfile
 
 Dockerfile example:

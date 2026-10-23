@@ -2,22 +2,23 @@
   {
     "listing": "/index.html",
     "items": [
-      "/cheatsheets/Cloud & Platform/ansible.html",
-      "/cheatsheets/Cloud & Platform/azure_cli.html",
-      "/cheatsheets/Cloud & Platform/azure_ml.html",
+      "/cheatsheets/Cloud and Platform/ansible.html",
+      "/cheatsheets/Cloud and Platform/azure_cli.html",
+      "/cheatsheets/Cloud and Platform/azure_ml.html",
       "/cheatsheets/CLI Tools/bash.html",
       "/cheatsheets/Languages/Python/Conda.html",
       "/cheatsheets/Languages/Dart_summary.html",
       "/cheatsheets/CLI Tools/docker.html",
       "/cheatsheets/Languages/R/dplyr.html",
       "/cheatsheets/frameworks/flutter_summary.html",
-      "/cheatsheets/Cloud & Platform/gcloud.html",
+      "/cheatsheets/Cloud and Platform/gcloud.html",
       "/cheatsheets/CLI Tools/git.html",
-      "/cheatsheets/Cloud & Platform/Openshift.html",
+      "/cheatsheets/Cloud and Platform/Openshift.html",
       "/cheatsheets/Languages/Python/Pandas.html",
       "/cheatsheets/Languages/Python/pip.html",
       "/cheatsheets/Languages/Python/Poetry.html",
       "/cheatsheets/CLI Tools/powershell.html",
+      "/cheatsheets/Other/prompting_llms.html",
       "/cheatsheets/Languages/Python/Python.html",
       "/cheatsheets/Languages/Python/Python basics.html",
       "/cheatsheets/Other/Quarto.html",
@@ -29,8 +30,7 @@
       "/cheatsheets/Other/VSCode.html",
       "/cheatsheets/Languages/Python/Venv.html",
       "/cheatsheets/Languages/Python/ruff.html",
-      "/cheatsheets/Languages/Python/uv.html",
-      "/cheatsheets/Other/prompting_llms.html"
+      "/cheatsheets/Languages/Python/uv.html"
     ]
   }
 ]
