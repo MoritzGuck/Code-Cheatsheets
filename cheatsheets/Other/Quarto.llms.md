@@ -9,17 +9,37 @@ Quarto is a publishing tool that allows you to render markdown documents into we
 ## Blocks
 
 Collapsable callout block  
-\`\`\`md ::: {.callout-warning collapse=true appearance=“simple”}\
-\### Title :::
 
 &nbsp;
 
-    Panels
-    : ```md
+    ::: {.callout-warning collapse=true appearance="simple"}  
+    ### Title 
+    Content
+    :::
+
+> **WARNING:**
+>
+> Content
+
+Panels  
+
+&nbsp;
+
     ::: {.panel-tabset}
     ### Panel heading 1
+    Content 1
+
     ### Panel heading 2
+    Content 2
     :::
+
+## Panel heading 1
+
+Content 1
+
+## Panel heading 2
+
+Content 2
 
 ## Tables
 
@@ -30,19 +50,25 @@ Markdown table
 
     :  {tbl-colwidths="[50,50]"}
 
+| Header col 1  | header col 2  |
+|---------------|---------------|
+| content col 1 | content col 2 |
+
 ## Formatting
 
 Font-color  
-\`\`\`html
+
+``` html
+<font color="grey">
+</font>
+```
+
+## Keyboard shortcuts
+
+Format keyboard keys for different operating systems  
 
 &nbsp;
 
-    ## Keyboard shortcuts
-
-    Format keyboard keys for different operating systems
-    : 
-
-    ```md
     {{< kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L >}}
 
 simple  

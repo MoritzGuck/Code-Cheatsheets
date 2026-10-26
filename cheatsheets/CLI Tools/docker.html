@@ -115,6 +115,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<meta name="mermaid-theme" content="default">
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -601,7 +605,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#container-management" id="toc-container-management" class="nav-link" data-scroll-target="#container-management">Container Management</a></li>
   </ul></li>
-  <li><a href="#docker-compose" id="toc-docker-compose" class="nav-link" data-scroll-target="#docker-compose">Docker Compose</a></li>
+  <li><a href="#docker-compose" id="toc-docker-compose" class="nav-link" data-scroll-target="#docker-compose">Docker Compose</a>
+  <ul class="collapse">
+  <li><a href="#starting-and-recreating-containers" id="toc-starting-and-recreating-containers" class="nav-link" data-scroll-target="#starting-and-recreating-containers">Starting and Recreating Containers</a></li>
+  <li><a href="#useful-compose-options" id="toc-useful-compose-options" class="nav-link" data-scroll-target="#useful-compose-options">Useful Compose Options</a></li>
+  <li><a href="#other-useful-compose-commands" id="toc-other-useful-compose-commands" class="nav-link" data-scroll-target="#other-useful-compose-commands">Other Useful Compose Commands</a></li>
+  </ul></li>
   <li><a href="#debugging" id="toc-debugging" class="nav-link" data-scroll-target="#debugging">Debugging</a>
   <ul class="collapse">
   <li><a href="#container-status" id="toc-container-status" class="nav-link" data-scroll-target="#container-status">Container Status</a></li>
@@ -649,12 +658,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>The key components are:</p>
 <ul>
-<li><strong>Container</strong>: A lightweight, standalone, executable package that includes everything needed to run a piece of software</li>
-<li><strong>Image</strong>: A read-only template with instructions for creating a container, built from layers</li>
-<li><strong>Dockerfile</strong>: A text file containing commands to build a Docker image automatically</li>
-<li><strong>Registry</strong>: A repository for Docker images (like Docker Hub)</li>
-<li><strong>Volume</strong>: A persistent storage space shared between host and container</li>
-<li><strong>Network</strong>: Enables containers to communicate with each other and external resources</li>
+<li><strong>Container</strong>: A lightweight, standalone, executable package that includes everything needed to run a piece of software. It is the running instance of an image (+writable layer).</li>
+<li><strong>Image</strong>: A read-only template with instructions for creating a container, built from layers. Layers are cached and the respective instructions don’t have to be run again.</li>
+<li><strong>Dockerfile</strong>: A text file containing commands that define how an image should be <em>built</em>. The instructions define the layers of the image.</li>
+<li><strong>Docker Compose</strong>: A tool for orchestrating multi-container applications. The compose-file defines how a container should <em>run</em>.</li>
+<li><strong>Registry</strong>: A repository for Docker images (like Docker Hub).</li>
+<li><strong>Volume</strong>: A persistent storage space shared between host and container.</li>
+<li><strong>Network</strong>: Enables containers to communicate with each other and external resources.</li>
 </ul>
 <p>Further concepts:</p>
 <ul>
@@ -662,10 +672,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Builds</strong>: Pipeline-based image creation process.</li>
 <li><strong>Deployments</strong>: Declarative updates to applications.</li>
 </ul>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    DF["📄 Dockerfile"] --&gt;|"docker build"| IMG["📦 Image (read-only layers)"]
+
+    IMG --&gt; STORE["💾 Local Image Store"]
+
+    STORE --&gt;|"docker push"| REG["🌐 Registry"]
+    REG --&gt;|"docker pull"| STORE
+
+    subgraph RUNTIME[" "]
+        direction LR
+        C["🚀 Container (shared read-only layers + writable top layer)"]
+        V["📁 Volume (persistent data)"]
+        V -.-&gt; C
+    end
+
+    STORE --&gt;|"docker compose up (or docker run)"| C
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <section id="dockerfile" class="level2">
 <h2 class="anchored" data-anchor-id="dockerfile">Dockerfile</h2>
-<p>Dockerfile example:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-1" data-llms-code-original="FROM rocker/shiny:latest # <1>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">Basic</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Staged</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><code>Dockerfile</code> example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-7" data-llms-code-original="FROM rocker/shiny:latest # <1>
 RUN apt-get update # <2>
 RUN apt-get install -qq -y libpq-dev # <2>
 RUN install2.r ggplot2 shiny shinydashboard \
@@ -676,52 +717,153 @@ COPY app/ . # <4>
 ENV R_VERSION=4.4.0 # <5>
 EXPOSE 3838 # <6>
 CMD [&quot;R&quot;, &quot;-e&quot;, &quot;shiny::runApp('/srv/shiny-server', port=3838)&quot;] # <7>
-HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || exit 1 # <8>"><pre class="sourceCode dockerfile code-annotation-code code-with-copy code-annotated"><code class="sourceCode dockerfile"><button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> rocker/shiny:latest</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update</span>
-<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> install <span class="at">-qq</span> <span class="at">-y</span> libpq-dev</span>
-<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">install2.r</span> ggplot2 shiny shinydashboard <span class="dt">\</span></span>
-<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a>    shinydashboardPlus <span class="dt">\</span></span>
-<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a>    dplyr RPostgres</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-7" class="code-annotation-target"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /srv/shiny-server</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4">4</button><span id="annotated-cell-1-8" class="code-annotation-target"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> app/ .</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="5">5</button><span id="annotated-cell-1-9" class="code-annotation-target"><a href="#annotated-cell-1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">ENV</span> R_VERSION=4.4.0</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="6">6</button><span id="annotated-cell-1-10" class="code-annotation-target"><a href="#annotated-cell-1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">EXPOSE</span> 3838</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="7">7</button><span id="annotated-cell-1-11" class="code-annotation-target"><a href="#annotated-cell-1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"R"</span>, <span class="st">"-e"</span>, <span class="st">"shiny::runApp('/srv/shiny-server', port=3838)"</span>]</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="8">8</button><span id="annotated-cell-1-12" class="code-annotation-target"><a href="#annotated-cell-1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">HEALTHCHECK</span> <span class="op">--interval=30s</span> <span class="op">--timeout=3s</span> <span class="kw">CMD</span> <span class="ex">curl</span> <span class="at">-f</span> http://localhost:3838/ <span class="kw">||</span> <span class="bu">exit</span> 1</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || exit 1 # <8>"><pre class="sourceCode dockerfile code-annotation-code code-with-copy code-annotated"><code class="sourceCode dockerfile"><button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> rocker/shiny:latest</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update</span>
+<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> install <span class="at">-qq</span> <span class="at">-y</span> libpq-dev</span>
+<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">install2.r</span> ggplot2 shiny shinydashboard <span class="dt">\</span></span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5" aria-hidden="true" tabindex="-1"></a>    shinydashboardPlus <span class="dt">\</span></span>
+<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6" aria-hidden="true" tabindex="-1"></a>    dplyr RPostgres</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3">3</button><span id="annotated-cell-7-7" class="code-annotation-target"><a href="#annotated-cell-7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /srv/shiny-server</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4">4</button><span id="annotated-cell-7-8" class="code-annotation-target"><a href="#annotated-cell-7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> app/ .</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="5">5</button><span id="annotated-cell-7-9" class="code-annotation-target"><a href="#annotated-cell-7-9" aria-hidden="true" tabindex="-1"></a><span class="kw">ENV</span> R_VERSION=4.4.0</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="6">6</button><span id="annotated-cell-7-10" class="code-annotation-target"><a href="#annotated-cell-7-10" aria-hidden="true" tabindex="-1"></a><span class="kw">EXPOSE</span> 3838</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="7">7</button><span id="annotated-cell-7-11" class="code-annotation-target"><a href="#annotated-cell-7-11" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"R"</span>, <span class="st">"-e"</span>, <span class="st">"shiny::runApp('/srv/shiny-server', port=3838)"</span>]</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="8">8</button><span id="annotated-cell-7-12" class="code-annotation-target"><a href="#annotated-cell-7-12" aria-hidden="true" tabindex="-1"></a><span class="kw">HEALTHCHECK</span> <span class="op">--interval=30s</span> <span class="op">--timeout=3s</span> <span class="kw">CMD</span> <span class="ex">curl</span> <span class="at">-f</span> http://localhost:3838/ <span class="kw">||</span> <span class="bu">exit</span> 1</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1"><code>FROM</code> specifies the base image</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="1" data-code-annotation="1"><code>FROM</code> specifies the base image</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="2,3,6" data-code-annotation="2"><code>RUN</code> executes a command in the container</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="2,3,6" data-code-annotation="2"><code>RUN</code> executes a command in the container</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="7" data-code-annotation="3"><code>WORKDIR</code> sets the working directory for all following instructions (like <code>cd</code> for the build)</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="7" data-code-annotation="3"><code>WORKDIR</code> sets the working directory for all following instructions (like <code>cd</code> for the build)</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="8" data-code-annotation="4"><code>COPY</code> copies files from the build context (directory passed to <code>docker build</code>) into the image</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="8" data-code-annotation="4"><code>COPY</code> copies files from the build context (directory passed to <code>docker build</code>) into the image</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="9" data-code-annotation="5"><code>ENV</code> sets environment variables in the container (avoid secrets here; pass them at run time with <code>-e</code> or compose)</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="9" data-code-annotation="5"><code>ENV</code> sets environment variables in the container (avoid secrets here; pass them at run time with <code>-e</code> or compose)</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="10" data-code-annotation="6"><code>EXPOSE</code> only documents which ports the container listens on; publishing to the host still requires <code>-p</code></span>
+<span data-code-cell="annotated-cell-7" data-code-lines="10" data-code-annotation="6"><code>EXPOSE</code> only documents which ports the container listens on; publishing to the host still requires <code>-p</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="11" data-code-annotation="7"><code>CMD</code> defines the default command when a container starts; it overrides the <code>CMD</code> of the base image (here: rocker/shiny’s shiny-server)</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="11" data-code-annotation="7"><code>CMD</code> defines the default command when a container starts; it overrides the <code>CMD</code> of the base image (here: rocker/shiny’s shiny-server)</span>
 </dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="8">8</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="12" data-code-annotation="8"><code>HEALTHCHECK</code> runs a command periodically (here every 30s) and marks the container <code>unhealthy</code> after repeated failures; the status shows up in <code>docker ps</code>. Requires <code>curl</code> in the image</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="12" data-code-annotation="8"><code>HEALTHCHECK</code> runs a command periodically (here every 30s) and marks the container <code>unhealthy</code> after repeated failures; the status shows up in <code>docker ps</code>. Requires <code>curl</code> in the image</span>
 </dd>
 </dl>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>Example of a multi-stage Python <code>Dockerfile</code>: install dependencies in a build stage, then copy only the virtual environment and application into the runtime image.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-8" data-llms-code-original="# ---- Build stage: install dependencies with uv ----
+FROM ghcr.io/astral-sh/uv:python3.13-bookworm-slim AS build # <1>
+
+ENV UV_COMPILE_BYTECODE=1 \
+    UV_LINK_MODE=copy # <2>
+
+WORKDIR /app
+
+COPY pyproject.toml uv.lock ./
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --locked --no-install-project --no-dev # <3>
+
+# ---- Runtime stage: slim Python, app + venv only ----
+FROM python:3.13-slim-bookworm # <4>
+
+WORKDIR /app
+
+COPY --from=build --chown=1000:1000 /app/.venv /app/.venv # <5>
+COPY --chmod=644 main.py backend.py ui.py ./ # <6>
+
+RUN groupadd --gid 1000 app &amp;&amp; useradd --uid 1000 --gid app --create-home app # <7>
+
+USER app # <8>
+
+EXPOSE 3838 # <9>
+
+CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class="sourceCode dockerfile code-annotation-code code-with-copy code-annotated"><code class="sourceCode dockerfile"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Build stage: install dependencies with uv ----</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> ghcr.io/astral-sh/uv:python3.13-bookworm-slim <span class="kw">AS</span> build</span>
+<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">ENV</span> UV_COMPILE_BYTECODE=1 <span class="op">\</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2">2</button><span id="annotated-cell-8-5" class="code-annotation-target"><a href="#annotated-cell-8-5" aria-hidden="true" tabindex="-1"></a>    UV_LINK_MODE=copy</span>
+<span id="annotated-cell-8-6"><a href="#annotated-cell-8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-8-7"><a href="#annotated-cell-8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app</span>
+<span id="annotated-cell-8-8"><a href="#annotated-cell-8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-8-9"><a href="#annotated-cell-8-9" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> pyproject.toml uv.lock ./</span>
+<span id="annotated-cell-8-10"><a href="#annotated-cell-8-10" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="op">--mount=type=cache,target=/root/.cache/uv</span> <span class="op">\</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3">3</button><span id="annotated-cell-8-11" class="code-annotation-target"><a href="#annotated-cell-8-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">uv</span> sync <span class="at">--locked</span> <span class="at">--no-install-project</span> <span class="at">--no-dev</span></span>
+<span id="annotated-cell-8-12"><a href="#annotated-cell-8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-8-13"><a href="#annotated-cell-8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Runtime stage: slim Python, app + venv only ----</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4">4</button><span id="annotated-cell-8-14" class="code-annotation-target"><a href="#annotated-cell-8-14" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> python:3.13-slim-bookworm</span>
+<span id="annotated-cell-8-15"><a href="#annotated-cell-8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-8-16"><a href="#annotated-cell-8-16" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app</span>
+<span id="annotated-cell-8-17"><a href="#annotated-cell-8-17" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="5">5</button><span id="annotated-cell-8-18" class="code-annotation-target"><a href="#annotated-cell-8-18" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> <span class="op">--from=build</span> <span class="op">--chown=1000:1000</span> /app/.venv /app/.venv</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="6">6</button><span id="annotated-cell-8-19" class="code-annotation-target"><a href="#annotated-cell-8-19" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> <span class="op">--chmod=644</span> main.py backend.py ui.py ./</span>
+<span id="annotated-cell-8-20"><a href="#annotated-cell-8-20" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="7">7</button><span id="annotated-cell-8-21" class="code-annotation-target"><a href="#annotated-cell-8-21" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">groupadd</span> <span class="at">--gid</span> 1000 app <span class="kw">&amp;&amp;</span> <span class="ex">useradd</span> <span class="at">--uid</span> 1000 <span class="at">--gid</span> app <span class="at">--create-home</span> app</span>
+<span id="annotated-cell-8-22"><a href="#annotated-cell-8-22" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="8">8</button><span id="annotated-cell-8-23" class="code-annotation-target"><a href="#annotated-cell-8-23" aria-hidden="true" tabindex="-1"></a><span class="kw">USER</span> app</span>
+<span id="annotated-cell-8-24"><a href="#annotated-cell-8-24" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="9">9</button><span id="annotated-cell-8-25" class="code-annotation-target"><a href="#annotated-cell-8-25" aria-hidden="true" tabindex="-1"></a><span class="kw">EXPOSE</span> 3838</span>
+<span id="annotated-cell-8-26"><a href="#annotated-cell-8-26" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="10">10</button><span id="annotated-cell-8-27" class="code-annotation-target"><a href="#annotated-cell-8-27" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"/app/.venv/bin/python"</span>, <span class="st">"main.py"</span>]</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="2" data-code-annotation="1">Base image with UV, python13 and slimmed down Debian OS (saves space); <code>AS build</code> lets later instructions copy files from this stage.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="5" data-code-annotation="2">Configure uv: <code>UV_COMPILE_BYTECODE=1</code> compiles installed Python files to bytecode during the build, which can improve startup time. <code>UV_LINK_MODE=copy</code> copies packages from uv’s cache into the virtual environment instead of linking them, keeping the environment independent of the cache mount.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="11" data-code-annotation="3">Install dependencies into <code>/app/.venv</code>. <code>--locked</code> to adhere to lock-file. <code>--no-install-project</code> skips installing your own project as a package; <code>--no-dev</code> excludes the <code>dev</code> dependency group. The BuildKit cache mount reuses uv downloads across builds. This cache is not included in the image.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="14" data-code-annotation="4">Start a fresh runtime stage with Python, using the same Python version and Debian release for compatibility.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="18" data-code-annotation="5">Copy the installed virtual environment from <code>build</code>, keeping its absolute path unchanged because installed scripts can reference that path. <code>--chown=1000:1000</code> assigns ownership to the numeric user and group IDs created below; those accounts do not need to exist yet.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="19" data-code-annotation="6">Copy the application scripts from the build context into <code>/app</code>. Permission mode <code>644</code> allows owner to read and write, and everyone else to read. The files remain root-owned, but the application user can read them; executable permission is unnecessary because Python runs them.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="21" data-code-annotation="7">Create the <code>app</code> group and user with fixed IDs of <code>1000</code>, plus a home directory (normally <code>/home/app</code>). This does not change ownership of <code>/app</code> itself, so write application data to an explicitly writable directory or volume.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="23" data-code-annotation="8">Run subsequent instructions and the container’s default command as the non-root <code>app</code> user, reducing privileges compared with running as root.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="25" data-code-annotation="9">Document that the application listens on port <code>3838</code>. Publish it with <code>docker run -p 3838:3838 ...</code> or Compose’s <code>ports</code>; the application must also listen on <code>0.0.0.0</code>, not just <code>127.0.0.1</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="10">10</dt>
+<dd>
+<span data-code-cell="annotated-cell-8" data-code-lines="27" data-code-annotation="10">Start <code>main.py</code> with the virtual environment’s Python interpreter. Using its absolute path avoids needing to activate the environment or modify <code>PATH</code>. The JSON (exec) form avoids an extra shell and lets Python receive container signals directly.</span>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 </section>
 <section id="basic-docker-commands" class="level2">
 <h2 class="anchored" data-anchor-id="basic-docker-commands">Basic Docker Commands</h2>
@@ -862,8 +1004,9 @@ HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || ex
 </section>
 <section id="docker-compose" class="level2">
 <h2 class="anchored" data-anchor-id="docker-compose">Docker Compose</h2>
-<p>Docker Compose is a tool for defining and running multi-container Docker applications using a YAML file. Example docker-compose.yml:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-4" data-llms-code-original="services:
+<p>Docker Compose is a tool for defining and running multi-container Docker applications using a YAML file.</p>
+<p>Example <code>docker-compose.yml</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-3" data-llms-code-original="services:
   postgres:
     container_name: db_container
     build: ./postgres # <1>
@@ -885,45 +1028,192 @@ HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || ex
       - &quot;./shiny-logs:/var/log/shiny-server&quot; # <3>
       - &quot;./shiny-home:/srv/shiny-server&quot; # <3>
     ports:
-      - &quot;3838:3838&quot; # <2>"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
-<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">postgres</span><span class="kw">:</span></span>
-<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> db_container</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-4" class="code-annotation-target"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> ./postgres</span></span>
-<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span></span>
-<span id="annotated-cell-4-6"><a href="#annotated-cell-4-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
-<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> POSTGRES_USER=postgres</span></span>
-<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> POSTGRES_PASSWORD=postgres</span></span>
-<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-10" class="code-annotation-target"><a href="#annotated-cell-4-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"5432:5432"</span></span>
-<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3">3</button><span id="annotated-cell-4-12" class="code-annotation-target"><a href="#annotated-cell-4-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"./pgdata:/var/lib/postgresql/data"</span></span>
-<span id="annotated-cell-4-13"><a href="#annotated-cell-4-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span></span>
-<span id="annotated-cell-4-14"><a href="#annotated-cell-4-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">shiny</span><span class="kw">:</span></span>
-<span id="annotated-cell-4-15"><a href="#annotated-cell-4-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> shiny</span></span>
-<span id="annotated-cell-4-16"><a href="#annotated-cell-4-16" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
-<span id="annotated-cell-4-17"><a href="#annotated-cell-4-17" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> postgres</span></span>
-<span id="annotated-cell-4-18"><a href="#annotated-cell-4-18" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> ./shiny</span></span>
-<span id="annotated-cell-4-19"><a href="#annotated-cell-4-19" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
-<span id="annotated-cell-4-20"><a href="#annotated-cell-4-20" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"./shiny-logs:/var/log/shiny-server"</span></span>
-<span id="annotated-cell-4-21"><a href="#annotated-cell-4-21" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"./shiny-home:/srv/shiny-server"</span></span>
-<span id="annotated-cell-4-22"><a href="#annotated-cell-4-22" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
-<span id="annotated-cell-4-23"><a href="#annotated-cell-4-23" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"3838:3838"</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+      - &quot;3838:3838&quot; # <2>"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">postgres</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> db_container</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> ./postgres</span></span>
+<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span></span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> POSTGRES_USER=postgres</span></span>
+<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> POSTGRES_PASSWORD=postgres</span></span>
+<span id="annotated-cell-3-9"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-10" class="code-annotation-target"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"5432:5432"</span></span>
+<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3">3</button><span id="annotated-cell-3-12" class="code-annotation-target"><a href="#annotated-cell-3-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"./pgdata:/var/lib/postgresql/data"</span></span>
+<span id="annotated-cell-3-13"><a href="#annotated-cell-3-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span></span>
+<span id="annotated-cell-3-14"><a href="#annotated-cell-3-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">shiny</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-15"><a href="#annotated-cell-3-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> shiny</span></span>
+<span id="annotated-cell-3-16"><a href="#annotated-cell-3-16" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-17"><a href="#annotated-cell-3-17" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> postgres</span></span>
+<span id="annotated-cell-3-18"><a href="#annotated-cell-3-18" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> ./shiny</span></span>
+<span id="annotated-cell-3-19"><a href="#annotated-cell-3-19" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-20"><a href="#annotated-cell-3-20" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"./shiny-logs:/var/log/shiny-server"</span></span>
+<span id="annotated-cell-3-21"><a href="#annotated-cell-3-21" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"./shiny-home:/srv/shiny-server"</span></span>
+<span id="annotated-cell-3-22"><a href="#annotated-cell-3-22" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="annotated-cell-3-23"><a href="#annotated-cell-3-23" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"3838:3838"</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="4,18" data-code-annotation="1"><code>build</code> points to the folder that contains the Dockerfile for this service; compose builds the image from it (alternative: <code>image:</code> to pull a ready-made image from a registry)</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="4,18" data-code-annotation="1"><code>build</code> points to the folder that contains the Dockerfile for this service; compose builds the image from it (alternative: <code>image:</code> to pull a ready-made image from a registry)</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="10,23" data-code-annotation="2"><code>ports</code> maps <code>host:container</code> — traffic on host port 3838 is forwarded to container port 3838</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="10,23" data-code-annotation="2"><code>ports</code> maps <code>host:container</code> — traffic on host port 3838 is forwarded to container port 3838</span>
 </dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="12,20,21" data-code-annotation="3"><code>volumes</code> maps <code>host-path:container-path</code> — a folder next to the docker-compose.yml on the host is mounted into the container (equivalent to <code>-v</code>); data survives container removal</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="12,20,21" data-code-annotation="3"><code>volumes</code> maps <code>host-path:container-path</code> — a folder next to the docker-compose.yml on the host is mounted into the container (equivalent to <code>-v</code>); data survives container removal</span>
 </dd>
 </dl>
-<p>Run docker-compose:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">--force-recreate</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="starting-and-recreating-containers" class="level3">
+<h3 class="anchored" data-anchor-id="starting-and-recreating-containers">Starting and Recreating Containers</h3>
+<p>Start all services in the background:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Normally, <code>up</code> recreates existing containers only when their configuration or image has changed. <code>--force-recreate</code> replaces them even if nothing changed.</p>
+</section>
+<section id="useful-compose-options" class="level3">
+<h3 class="anchored" data-anchor-id="useful-compose-options">Useful Compose Options</h3>
+<p>These options belong to <code>docker compose up</code> and can be combined, e.g.&nbsp;<code>docker compose up -d --build</code>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-d</code>, <code>--detach</code></td>
+<td>Run containers in the background</td>
+</tr>
+<tr class="even">
+<td><code>--build</code></td>
+<td>Build service images before starting containers; uses the build cache</td>
+</tr>
+<tr class="odd">
+<td><code>--no-build</code></td>
+<td>Do not build images; required images must already exist or be pulled</td>
+</tr>
+<tr class="even">
+<td><code>--pull always</code></td>
+<td>Pull service images from the registry before running (<code>missing</code> and <code>never</code> are other policies)</td>
+</tr>
+<tr class="odd">
+<td><code>--force-recreate</code></td>
+<td>Replace containers even if their configuration and image have not changed</td>
+</tr>
+<tr class="even">
+<td><code>--no-recreate</code></td>
+<td>Keep existing containers even if configuration or images changed; incompatible with <code>--force-recreate</code></td>
+</tr>
+<tr class="odd">
+<td><code>--no-deps</code></td>
+<td>Do not start dependencies of the selected services, e.g.&nbsp;<code>docker compose up -d --no-deps shiny</code></td>
+</tr>
+<tr class="even">
+<td><code>--wait</code></td>
+<td>Wait until services are running or healthy; implies detached mode. Define health checks to verify readiness</td>
+</tr>
+<tr class="odd">
+<td><code>--wait-timeout 60</code></td>
+<td>Limit the wait for readiness to 60 seconds</td>
+</tr>
+</tbody>
+</table>
+<p>Global options go <strong>before</strong> the subcommand:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-f &lt;file&gt;</code></td>
+<td>Select a Compose file; repeat to merge files in order, e.g.&nbsp;<code>docker compose -f compose.yaml -f compose.prod.yaml up -d</code></td>
+</tr>
+<tr class="even">
+<td><code>-p &lt;name&gt;</code></td>
+<td>Set the project name to separate application stacks</td>
+</tr>
+<tr class="odd">
+<td><code>--env-file &lt;file&gt;</code></td>
+<td>Load variables from referenced <code>xxx.env</code>-file. Variables are only used if referenced in compose file (e.g.&nbsp;<code>name: "${NAME_FROM_ENV_FILE}"</code>)</td>
+</tr>
+<tr class="even">
+<td><code>--profile &lt;name&gt;</code></td>
+<td>Enable services assigned to a profile, e.g.&nbsp;<code>docker compose --profile debug up -d</code> if these services in the compose file have a field <code>profiles: ["debug"]</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="other-useful-compose-commands" class="level3">
+<h3 class="anchored" data-anchor-id="other-useful-compose-commands">Other Useful Compose Commands</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>docker compose ps -a</code></td>
+<td>Show all service containers, including stopped ones</td>
+</tr>
+<tr class="even">
+<td><code>docker compose logs -f --tail=100</code></td>
+<td>Follow logs for all services; append a service name to filter</td>
+</tr>
+<tr class="odd">
+<td><code>docker compose exec shiny /bin/bash</code></td>
+<td>Open a shell in the running <code>shiny</code> service; use <code>/bin/sh</code> if Bash is unavailable</td>
+</tr>
+<tr class="even">
+<td><code>docker compose run --rm shiny &lt;command&gt;</code></td>
+<td>Run a one-off command in a new container and remove it afterward; service ports are not published by default</td>
+</tr>
+<tr class="odd">
+<td><code>docker compose config</code></td>
+<td>Render and validate the resolved Compose configuration</td>
+</tr>
+<tr class="even">
+<td><code>docker compose pull</code></td>
+<td>Pull service images without replacing running containers; follow with <code>up -d</code> to apply them</td>
+</tr>
+<tr class="odd">
+<td><code>docker compose build --no-cache</code></td>
+<td>Build images without cached layers; add <code>--pull</code> to also check for newer base images</td>
+</tr>
+<tr class="even">
+<td><code>docker compose stop</code></td>
+<td>Stop containers without removing them</td>
+</tr>
+<tr class="odd">
+<td><code>docker compose down</code></td>
+<td>Stop and remove service containers and project networks; keep volumes by default</td>
+</tr>
+<tr class="even">
+<td><code>docker compose down -v</code></td>
+<td>Also remove declared named volumes and attached anonymous volumes; <strong>deletes their data</strong>. External volumes and bind-mounted host files are not removed</td>
+</tr>
+</tbody>
+</table>
+<p>See the Docker CLI reference for <a href="https://docs.docker.com/reference/cli/docker/compose/up/"><code>compose up</code></a> and <a href="https://docs.docker.com/reference/cli/docker/compose/down/"><code>compose down</code></a>.</p>
+</section>
 </section>
 <section id="debugging" class="level2">
 <h2 class="anchored" data-anchor-id="debugging">Debugging</h2>
