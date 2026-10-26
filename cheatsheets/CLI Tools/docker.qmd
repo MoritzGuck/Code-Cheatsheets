@@ -13,12 +13,13 @@ code-annotations: hover
 
 The key components are:
 
-- **Container**: A lightweight, standalone, executable package that includes everything needed to run a piece of software
-- **Image**: A read-only template with instructions for creating a container, built from layers
-- **Dockerfile**: A text file containing commands to build a Docker image automatically
-- **Registry**: A repository for Docker images (like Docker Hub)
-- **Volume**: A persistent storage space shared between host and container
-- **Network**: Enables containers to communicate with each other and external resources
+- **Container**: A lightweight, standalone, executable package that includes everything needed to run a piece of software. It is the running instance of an image (+writable layer). 
+- **Image**: A read-only template with instructions for creating a container, built from layers. Layers are cached and the respective instructions don't have to be run again. 
+- **Dockerfile**: A text file containing commands that define how an image should be *built*. The instructions define the layers of the image.
+- **Docker Compose**: A tool for orchestrating multi-container applications. The compose-file defines how a container should *run*.
+- **Registry**: A repository for Docker images (like Docker Hub).
+- **Volume**: A persistent storage space shared between host and container.
+- **Network**: Enables containers to communicate with each other and external resources.
 
 Further concepts: 
 
@@ -26,9 +27,32 @@ Further concepts:
 - **Builds**: Pipeline-based image creation process.
 - **Deployments**: Declarative updates to applications.
 
+```{mermaid}
+flowchart TD
+    DF["📄 Dockerfile"] -->|"docker build"| IMG["📦 Image (read-only layers)"]
+
+    IMG --> STORE["💾 Local Image Store"]
+
+    STORE -->|"docker push"| REG["🌐 Registry"]
+    REG -->|"docker pull"| STORE
+
+    subgraph RUNTIME[" "]
+        direction LR
+        C["🚀 Container (shared read-only layers + writable top layer)"]
+        V["📁 Volume (persistent data)"]
+        V -.-> C
+    end
+
+    STORE -->|"docker compose up (or docker run)"| C
+```
+
 ## Dockerfile
 
-Dockerfile example:
+
+::: {.panel-tabset}
+### Basic
+
+`Dockerfile` example:
 ```dockerfile
 FROM rocker/shiny:latest # <1>
 RUN apt-get update # <2>
@@ -52,6 +76,54 @@ HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || ex
 6. `EXPOSE` only documents which ports the container listens on; publishing to the host still requires `-p`
 7. `CMD` defines the default command when a container starts; it overrides the `CMD` of the base image (here: rocker/shiny's shiny-server)
 8. `HEALTHCHECK` runs a command periodically (here every 30s) and marks the container `unhealthy` after repeated failures; the status shows up in `docker ps`. Requires `curl` in the image
+
+
+### Staged
+
+Example of a multi-stage Python `Dockerfile`: install dependencies in a build stage, then copy only the virtual environment and application into the runtime image.
+
+```dockerfile
+# ---- Build stage: install dependencies with uv ----
+FROM ghcr.io/astral-sh/uv:python3.13-bookworm-slim AS build # <1>
+
+ENV UV_COMPILE_BYTECODE=1 \
+    UV_LINK_MODE=copy # <2>
+
+WORKDIR /app
+
+COPY pyproject.toml uv.lock ./
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --locked --no-install-project --no-dev # <3>
+
+# ---- Runtime stage: slim Python, app + venv only ----
+FROM python:3.13-slim-bookworm # <4>
+
+WORKDIR /app
+
+COPY --from=build --chown=1000:1000 /app/.venv /app/.venv # <5>
+COPY --chmod=644 main.py backend.py ui.py ./ # <6>
+
+RUN groupadd --gid 1000 app && useradd --uid 1000 --gid app --create-home app # <7>
+
+USER app # <8>
+
+EXPOSE 3838 # <9>
+
+CMD ["/app/.venv/bin/python", "main.py"] # <10>
+```
+
+1. Base image with UV, python13 and slimmed down Debian OS (saves space); `AS build` lets later instructions copy files from this stage.
+2. Configure uv: `UV_COMPILE_BYTECODE=1` compiles installed Python files to bytecode during the build, which can improve startup time. `UV_LINK_MODE=copy` copies packages from uv's cache into the virtual environment instead of linking them, keeping the environment independent of the cache mount.
+3. Install dependencies into `/app/.venv`. `--locked` to adhere to lock-file. `--no-install-project` skips installing your own project as a package; `--no-dev` excludes the `dev` dependency group. The BuildKit cache mount reuses uv downloads across builds. This cache is not included in the image.
+4. Start a fresh runtime stage with Python, using the same Python version and Debian release for compatibility.
+5. Copy the installed virtual environment from `build`, keeping its absolute path unchanged because installed scripts can reference that path. `--chown=1000:1000` assigns ownership to the numeric user and group IDs created below; those accounts do not need to exist yet.
+6. Copy the application scripts from the build context into `/app`. Permission mode `644` allows owner to read and write, and everyone else to read. The files remain root-owned, but the application user can read them; executable permission is unnecessary because Python runs them.
+7. Create the `app` group and user with fixed IDs of `1000`, plus a home directory (normally `/home/app`). This does not change ownership of `/app` itself, so write application data to an explicitly writable directory or volume.
+8. Run subsequent instructions and the container's default command as the non-root `app` user, reducing privileges compared with running as root.
+9. Document that the application listens on port `3838`. Publish it with `docker run -p 3838:3838 ...` or Compose's `ports`; the application must also listen on `0.0.0.0`, not just `127.0.0.1`.
+10. Start `main.py` with the virtual environment's Python interpreter. Using its absolute path avoids needing to activate the environment or modify `PATH`. The JSON (exec) form avoids an extra shell and lets Python receive container signals directly.
+:::
+
 
 ## Basic Docker Commands
 
@@ -111,7 +183,9 @@ docker exec -it rocker/shiny /usr/local/bin/R
 
 ## Docker Compose
 
-Docker Compose is a tool for defining and running multi-container Docker applications using a YAML file. Example docker-compose.yml:
+Docker Compose is a tool for defining and running multi-container Docker applications using a YAML file.
+
+Example `docker-compose.yml`:
 ```yaml
 services:
   postgres:
@@ -142,10 +216,62 @@ services:
 2. `ports` maps `host:container` — traffic on host port 3838 is forwarded to container port 3838
 3. `volumes` maps `host-path:container-path` — a folder next to the docker-compose.yml on the host is mounted into the container (equivalent to `-v`); data survives container removal
 
-Run docker-compose:
+### Starting and Recreating Containers
+
+Start all services in the background:
 ```bash
-docker compose up --force-recreate
+docker compose up -d
 ```
+
+Normally, `up` recreates existing containers only when their configuration or image has changed. `--force-recreate` replaces them even if nothing changed.
+
+### Useful Compose Options
+
+These options belong to `docker compose up` and can be combined, e.g. `docker compose up -d --build`:
+
+| Option | Description |
+|--------|-------------|
+| `-d`, `--detach` | Run containers in the background |
+| `--build` | Build service images before starting containers; uses the build cache |
+| `--no-build` | Do not build images; required images must already exist or be pulled |
+| `--pull always` | Pull service images from the registry before running (`missing` and `never` are other policies) |
+| `--force-recreate` | Replace containers even if their configuration and image have not changed |
+| `--no-recreate` | Keep existing containers even if configuration or images changed; incompatible with `--force-recreate` |
+| `--no-deps` | Do not start dependencies of the selected services, e.g. `docker compose up -d --no-deps shiny` |
+| `--wait` | Wait until services are running or healthy; implies detached mode. Define health checks to verify readiness |
+| `--wait-timeout 60` | Limit the wait for readiness to 60 seconds |
+
+: {tbl-colwidths="[35,65]"}
+
+Global options go **before** the subcommand:
+
+| Option | Description |
+|--------|-------------|
+| `-f <file>` | Select a Compose file; repeat to merge files in order, e.g. `docker compose -f compose.yaml -f compose.prod.yaml up -d` |
+| `-p <name>` | Set the project name to separate application stacks |
+| `--env-file <file>` | Load variables from referenced `xxx.env`-file. Variables are only used if referenced in compose file (e.g. `name: "${NAME_FROM_ENV_FILE}"`) |
+| `--profile <name>` | Enable services assigned to a profile, e.g. `docker compose --profile debug up -d` if these services in the compose file have a field `profiles: ["debug"]` |
+
+: {tbl-colwidths="[35,65]"}
+
+### Other Useful Compose Commands
+
+| Command | Description |
+|---------|-------------|
+| `docker compose ps -a` | Show all service containers, including stopped ones |
+| `docker compose logs -f --tail=100` | Follow logs for all services; append a service name to filter |
+| `docker compose exec shiny /bin/bash` | Open a shell in the running `shiny` service; use `/bin/sh` if Bash is unavailable |
+| `docker compose run --rm shiny <command>` | Run a one-off command in a new container and remove it afterward; service ports are not published by default |
+| `docker compose config` | Render and validate the resolved Compose configuration |
+| `docker compose pull` | Pull service images without replacing running containers; follow with `up -d` to apply them |
+| `docker compose build --no-cache` | Build images without cached layers; add `--pull` to also check for newer base images |
+| `docker compose stop` | Stop containers without removing them |
+| `docker compose down` | Stop and remove service containers and project networks; keep volumes by default |
+| `docker compose down -v` | Also remove declared named volumes and attached anonymous volumes; **deletes their data**. External volumes and bind-mounted host files are not removed |
+
+: {tbl-colwidths="[50,50]"}
+
+See the Docker CLI reference for [`compose up`](https://docs.docker.com/reference/cli/docker/compose/up/) and [`compose down`](https://docs.docker.com/reference/cli/docker/compose/down/).
 
 ## Debugging
 

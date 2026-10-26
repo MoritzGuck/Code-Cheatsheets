@@ -31,6 +31,5 @@ format:
     link-external-icon: true
     link-external-newwindow: true
     link-external-filter: ^(?:http:|https:)\/\/moritzguck\.github\.io
-
-
-
+    mermaid:
+      theme: default
