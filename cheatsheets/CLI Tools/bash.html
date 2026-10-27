@@ -597,6 +597,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#files" id="toc-files" class="nav-link active" data-scroll-target="#files">Files</a>
   <ul class="collapse">
   <li><a href="#list-files" id="toc-list-files" class="nav-link" data-scroll-target="#list-files">List files</a></li>
+  <li><a href="#manipulate-files" id="toc-manipulate-files" class="nav-link" data-scroll-target="#manipulate-files">Manipulate Files</a></li>
   <li><a href="#file-permissions" id="toc-file-permissions" class="nav-link" data-scroll-target="#file-permissions">File Permissions</a></li>
   <li><a href="#control-structures" id="toc-control-structures" class="nav-link" data-scroll-target="#control-structures">Control structures</a></li>
   </ul></li>
@@ -643,28 +644,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl>
 <dt>Number of files in a provided directory</dt>
 <dd>
-```bash ls [myDirectory] | wc -l
+
 </dd>
 </dl>
-<pre><code>
-### Manipulate Files
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="pp">[</span><span class="ss">myDirectory</span><span class="pp">]</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="manipulate-files" class="level3">
+<h3 class="anchored" data-anchor-id="manipulate-files">Manipulate Files</h3>
+<dl>
+<dt>Remove directory tree with all its contents</dt>
+<dd>
 
-Remove directory tree with all its contents
-: ```bash
-rm -rf [myDirectory]</code></pre>
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> <span class="pp">[</span><span class="ss">myDirectory</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="file-permissions" class="level3">
 <h3 class="anchored" data-anchor-id="file-permissions">File Permissions</h3>
 <dl>
 <dt>Show access permissions of file in directory</dt>
 <dd>
-```bash ls -l [myDirectory]
+
 </dd>
 </dl>
-<pre><code>
-Change permissions of file
-: ```bash
-chmod u=rwx,g=rwx,o=rwx [myFile]</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> <span class="pp">[</span><span class="ss">myDirectory</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl>
+<dt>Change permissions of file</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u=rwx,g=rwx,o=rwx <span class="pp">[</span><span class="ss">myFile</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><a href="https://phoenixnap.com/kb/linux-file-permissions">Explanation</a></p>
 </section>
 <section id="control-structures" class="level3">
@@ -672,29 +682,30 @@ chmod u=rwx,g=rwx,o=rwx [myFile]</code></pre>
 <dl>
 <dt>Use commandline arguments</dt>
 <dd>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">getopts</span> <span class="op">:</span>c<span class="op">:</span>t <span class="va">flag</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="st">"</span><span class="va">${flag}</span><span class="st">"</span> <span class="kw">in</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      <span class="ss">c</span><span class="kw">)</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>          <span class="va">config</span><span class="op">=</span><span class="va">${OPTARG}</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>          <span class="ex">python3</span> file_to_be_called.py <span class="at">-c</span> <span class="va">$config</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>          <span class="cf">;;</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      <span class="ss">t</span><span class="kw">)</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>          <span class="ex">python3</span> file_to_be_called.py <span class="at">-t</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>          <span class="cf">;;</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      <span class="ss">:</span><span class="kw">)</span> </span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>          <span class="bu">echo</span> <span class="st">"No arguments passed"</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>          <span class="bu">exit</span> 1</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>          <span class="cf">;;</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>      <span class="pp">?</span><span class="kw">)</span> </span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"Please call the script like this: bash_script.sh [-c config_file]"</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">exit</span> 1</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">;;</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">esac</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-The <code>:</code> before the flag-character <code>c</code> lets you handle errors yourself (e.g.&nbsp;no arguments passed and wrong arguments passed). The <code>:</code> after the flag-character <code>c</code> indicates that a value is required after the flag.
+
 </dd>
 </dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">getopts</span> <span class="op">:</span>c<span class="op">:</span>t <span class="va">flag</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"</span><span class="va">${flag}</span><span class="st">"</span> <span class="kw">in</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="ss">c</span><span class="kw">)</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="va">config</span><span class="op">=</span><span class="va">${OPTARG}</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            <span class="ex">python3</span> file_to_be_called.py <span class="at">-c</span> <span class="va">$config</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="ss">t</span><span class="kw">)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>            <span class="ex">python3</span> file_to_be_called.py <span class="at">-t</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="ss">:</span><span class="kw">)</span> </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            <span class="bu">echo</span> <span class="st">"No arguments passed"</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            <span class="bu">exit</span> 1</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="pp">?</span><span class="kw">)</span> </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>          <span class="bu">echo</span> <span class="st">"Please call the script like this: bash_script.sh [-c config_file]"</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>          <span class="bu">exit</span> 1</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>          <span class="cf">;;</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">esac</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>:</code> before the flag-character <code>c</code> lets you handle errors yourself (e.g.&nbsp;no arguments passed and wrong arguments passed). The <code>:</code> after the flag-character <code>c</code> indicates that a value is required after the flag.</p>
 </section>
 </section>
 <section id="processes" class="level2">
@@ -702,30 +713,62 @@ The <code>:</code> before the flag-character <code>c</code> lets you handle erro
 <dl>
 <dt>List running processes</dt>
 <dd>
-```bash htop
+
 </dd>
 </dl>
-<pre><code>
-Commands                                      | 
-----------------------------------------------|---
-Help                                          | 
-Kill process                                  | &lt;kbd&gt;k&lt;/kbd&gt;
-Order processes by memory consumption         | 
-Filter processes by user                      | 
-Display files used by the selected process    | 
-Display user threads                          | 
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">htop</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Commands</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Help</td>
+<td><p><kbd title="h" aria-hidden="true">h</kbd><span class="visually-hidden">h</span></p></td>
+</tr>
+<tr class="even">
+<td>Kill process</td>
+<td><kbd>k</kbd></td>
+</tr>
+<tr class="odd">
+<td>Order processes by memory consumption</td>
+<td><p><kbd title="Shift-M" aria-hidden="true">Shift-M</kbd><span class="visually-hidden">Shift-M</span></p></td>
+</tr>
+<tr class="even">
+<td>Filter processes by user</td>
+<td><p><kbd title="U" aria-hidden="true">U</kbd><span class="visually-hidden">U</span></p></td>
+</tr>
+<tr class="odd">
+<td>Display files used by the selected process</td>
+<td><p><kbd title="L" aria-hidden="true">L</kbd><span class="visually-hidden">L</span></p></td>
+</tr>
+<tr class="even">
+<td>Display user threads</td>
+<td><p><kbd title="Shift-H" aria-hidden="true">Shift-H</kbd><span class="visually-hidden">Shift-H</span></p></td>
+</tr>
+</tbody>
+</table>
+<dl>
+<dt>Kill process</dt>
+<dd>
 
-:  {tbl-colwidths="[50,50]"}
-
-Kill process
-: ```bash
-kill -9 [process-PID]</code></pre>
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">kill</span> <span class="at">-9</span> <span class="pp">[</span><span class="ss">process</span><span class="pp">-</span><span class="ss">PID</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl>
 <dt>Info on resource usage &amp; processes on NVidia graphic cards</dt>
 <dd>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nvidia-smi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
 </dd>
 </dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nvidia-smi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>

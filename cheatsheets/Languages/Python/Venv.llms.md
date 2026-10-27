@@ -15,41 +15,51 @@ Venv is the built-in virtual environment manager for python.
 ### Create and delete environments
 
 Create environment  
-\`\`\`bash python -m venv venv
 
-&nbsp;
+``` bash
+python -m venv venv
+```
 
-    Removing / Deleting environment
-    : ```bash
-    conda env remove -n env-name
+Removing / Deleting environment  
+
+``` bash
+conda env remove -n env-name
+```
 
 More info: [Intro to Conda virtual environments](https://towardsdatascience.com/introduction-to-conda-virtual-environments-eaea4ac84e28)
 
 ### Use environment
 
 Use/activate environment  
-\`\`\`bash .
 
-&nbsp;
+``` bash
+.\venv\Scripts\activate
+```
 
-    Deactive environment
-    : ```bash
-    deactivate
+Deactive environment  
+
+``` bash
+deactivate
+```
 
 ### Install packages
 
 Install package using pip  
-\`\`\`bash pip install pandas
 
-&nbsp;
+``` bash
+pip install pandas 
+```
 
-    more info in [Pip](chatsheets/Languages/Python/pip.qmd)
+more info in [Pip](chatsheets/Languages/Python/pip.qmd)
 
-    Export packages in env to requirements.txt
-    : ```bash
-    pip freeze > requirements.txt
+Export packages in env to requirements.txt  
+
+``` bash
+pip freeze > requirements.txt
+```
 
 Install packages from requirements.txt  
+
 ``` bash
 pip install -r requirements.txt
 ```

@@ -11,52 +11,59 @@ Bash is a command line tool and language.
 ### List files
 
 Number of files in a provided directory  
-\`\`\`bash ls \[myDirectory\] \| wc -l
 
-&nbsp;
+``` bash
+ls [myDirectory] | wc -l 
+```
 
-    ### Manipulate Files
+### Manipulate Files
 
-    Remove directory tree with all its contents
-    : ```bash
-    rm -rf [myDirectory]
+Remove directory tree with all its contents  
+
+``` bash
+rm -rf [myDirectory]
+```
 
 ### File Permissions
 
 Show access permissions of file in directory  
-\`\`\`bash ls -l \[myDirectory\]
 
-&nbsp;
+``` bash
+ls -l [myDirectory]
+```
 
-    Change permissions of file
-    : ```bash
-    chmod u=rwx,g=rwx,o=rwx [myFile]
+Change permissions of file  
+
+``` bash
+chmod u=rwx,g=rwx,o=rwx [myFile]
+```
 
 [Explanation](https://phoenixnap.com/kb/linux-file-permissions)
 
 ### Control structures
 
 Use commandline arguments  
+
 ``` bash
 while getopts :c:t flag
 do
-  case "${flag}" in
-      c) 
-          config=${OPTARG}
-          python3 file_to_be_called.py -c $config
-          ;;
-      t)
-          python3 file_to_be_called.py -t
-          ;;
-      :) 
-          echo "No arguments passed"
+    case "${flag}" in
+        c) 
+            config=${OPTARG}
+            python3 file_to_be_called.py -c $config
+            ;;
+        t)
+            python3 file_to_be_called.py -t
+            ;;
+        :) 
+            echo "No arguments passed"
+            exit 1
+            ;;
+        ?) 
+          echo "Please call the script like this: bash_script.sh [-c config_file]"
           exit 1
           ;;
-      ?) 
-        echo "Please call the script like this: bash_script.sh [-c config_file]"
-        exit 1
-        ;;
-  esac
+    esac
 done
 ```
 
@@ -65,26 +72,28 @@ The `:` before the flag-character `c` lets you handle errors yourself (e.g. no 
 ## Processes
 
 List running processes  
-\`\`\`bash htop
 
-&nbsp;
+``` bash
+htop
+```
 
-    Commands                                      | 
-    ----------------------------------------------|---
-    Help                                          | 
-    Kill process                                  | <kbd>k</kbd>
-    Order processes by memory consumption         | 
-    Filter processes by user                      | 
-    Display files used by the selected process    | 
-    Display user threads                          | 
+| Commands                                   |                |
+|--------------------------------------------|----------------|
+| Help                                       | hh             |
+| Kill process                               | k              |
+| Order processes by memory consumption      | Shift-MShift-M |
+| Filter processes by user                   | UU             |
+| Display files used by the selected process | LL             |
+| Display user threads                       | Shift-HShift-H |
 
-    :  {tbl-colwidths="[50,50]"}
+Kill process  
 
-    Kill process
-    : ```bash
-    kill -9 [process-PID]
+``` bash
+kill -9 [process-PID]
+```
 
 Info on resource usage & processes on NVidia graphic cards  
+
 ``` bash
 nvidia-smi
 ```

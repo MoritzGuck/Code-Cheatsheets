@@ -593,6 +593,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#rsample-sampling-splitting" id="toc-rsample-sampling-splitting" class="nav-link active" data-scroll-target="#rsample-sampling-splitting">Rsample (sampling &amp; splitting)</a></li>
+  <li><a href="#recipes-feature-enigneering" id="toc-recipes-feature-enigneering" class="nav-link" data-scroll-target="#recipes-feature-enigneering">Recipes (feature enigneering)</a></li>
+  <li><a href="#parsnip-model-fitting" id="toc-parsnip-model-fitting" class="nav-link" data-scroll-target="#parsnip-model-fitting">Parsnip (model fitting)</a></li>
   <li><a href="#tune-dials-hyper-parameter-optimization" id="toc-tune-dials-hyper-parameter-optimization" class="nav-link" data-scroll-target="#tune-dials-hyper-parameter-optimization">Tune &amp; Dials (hyper-)parameter optimization)</a></li>
   <li><a href="#yardstick-performance-evaluation" id="toc-yardstick-performance-evaluation" class="nav-link" data-scroll-target="#yardstick-performance-evaluation">Yardstick (performance evaluation)</a></li>
   </ul>
@@ -637,43 +639,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl>
 <dt>training- &amp; test-split</dt>
 <dd>
-```R data_split &lt;- initial_split(dataset, prop=0.75, strata=target_col) training_set &lt;- data_split %&gt;% training() testing_set &lt;- data_split %&gt;% testing()
+
 </dd>
 </dl>
-<pre><code>
-`strata` generates a stratified split with approximately the same fraction of each target class.
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(dataset, <span class="at">prop=</span><span class="fl">0.75</span>, <span class="at">strata=</span>target_col)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>training_set <span class="ot">&lt;-</span> data_split <span class="sc">%&gt;%</span> <span class="fu">training</span>()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>testing_set <span class="ot">&lt;-</span> data_split <span class="sc">%&gt;%</span> <span class="fu">testing</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>strata</code> generates a stratified split with approximately the same fraction of each target class.</p>
+</section>
+<section id="recipes-feature-enigneering" class="level2">
+<h2 class="anchored" data-anchor-id="recipes-feature-enigneering">Recipes (feature enigneering)</h2>
+</section>
+<section id="parsnip-model-fitting" class="level2">
+<h2 class="anchored" data-anchor-id="parsnip-model-fitting">Parsnip (model fitting)</h2>
+<dl>
+<dt>General model formula</dt>
+<dd>
 
-## Recipes (feature enigneering)
-
-## Parsnip (model fitting)
-
-General model formula
-: ```R
-outcome_variable ~ predictor_1 + predictor_2 + ... 
-outcome_variable ~ . # to use all available predictors</code></pre>
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>outcome_variable <span class="sc">~</span> predictor_1 <span class="sc">+</span> predictor_2 <span class="sc">+</span> ... </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>outcome_variable <span class="sc">~</span> . <span class="co"># to use all available predictors</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl>
 <dt>Create model object</dt>
 <dd>
-```R model &lt;- linear_reg() %&gt;% set_engine(‘lm’) %&gt;% set_mode(‘regression’)
+
 </dd>
 </dl>
-<pre><code>
-Fit the model
-: ```R
-model_fit &lt;- model %&gt;% 
-    fit(target_col ~ ., data=train_set)</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_engine</span>(<span class="st">'lm'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_mode</span>(<span class="st">'regression'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl>
+<dt>Fit the model</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>model_fit <span class="ot">&lt;-</span> model <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fit</span>(target_col <span class="sc">~</span> ., <span class="at">data=</span>train_set)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl>
 <dt>Get model summary</dt>
 <dd>
-```R tidy(model_fit)
+
 </dd>
 </dl>
-<pre><code>Returns parameter estimates, std.errors &amp; p-values
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(model_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Returns parameter estimates, std.errors &amp; p-values</p>
+<dl>
+<dt>Predict on new values</dt>
+<dd>
 
-Predict on new values
-: ```R
-predictions &lt;- model_fit %&gt;%
-    predict(new_data = test_set)</code></pre>
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> model_fit <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">predict</span>(<span class="at">new_data =</span> test_set)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="tune-dials-hyper-parameter-optimization" class="level2">
 <h2 class="anchored" data-anchor-id="tune-dials-hyper-parameter-optimization">Tune &amp; Dials (hyper-)parameter optimization)</h2>
@@ -681,8 +700,8 @@ predictions &lt;- model_fit %&gt;%
 <section id="yardstick-performance-evaluation" class="level2">
 <h2 class="anchored" data-anchor-id="yardstick-performance-evaluation">Yardstick (performance evaluation)</h2>
 <p>Requires a tibble/datset with the true and predicted outcomes.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>predictions <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rmse</span>(<span class="at">truth =</span> label_col, <span class="at">estimate =</span> .pred) <span class="co"># .pred is the standard name of the prediction col</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>predictions <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rmse</span>(<span class="at">truth =</span> label_col, <span class="at">estimate =</span> .pred) <span class="co"># .pred is the standard name of the prediction col</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -751,18 +770,19 @@ predictions &lt;- model_fit %&gt;%
 <dl>
 <dt>Streamlined approach</dt>
 <dd>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit model:</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>model_last_fit <span class="ot">&lt;-</span> model <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">last_fit</span>(target_col <span class="sc">~</span> ., </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">split =</span> data_split)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Return standard quality metrics:</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>model_last_fit <span class="sc">%&gt;%</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect_metrics</span>() </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Return tibble with predictions and true target values:</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>model_last_fit <span class="sc">%&gt;%</span> </span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect_predictions</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
 </dd>
 </dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit model:</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>model_last_fit <span class="ot">&lt;-</span> model <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">last_fit</span>(target_col <span class="sc">~</span> ., </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">split =</span> data_split)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Return standard quality metrics:</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>model_last_fit <span class="sc">%&gt;%</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect_metrics</span>() </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Return tibble with predictions and true target values:</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>model_last_fit <span class="sc">%&gt;%</span> </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">collect_predictions</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>

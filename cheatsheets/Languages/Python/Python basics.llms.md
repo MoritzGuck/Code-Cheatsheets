@@ -50,53 +50,62 @@ import package: `import os, shutil`
 | Construct file path from directory list | `os.path.join("path", "to", "file")` |
 
 Importing other scripts  
-\`\`\`python import path.to.otherScript
 
-&nbsp;
+``` python
+import path.to.otherScript
+```
 
-    Executes the contents of the script. 
+Executes the contents of the script.
 
-    Print to standard output
-    : ```python
-    print(f"my Output includes a {variable_1} and {variable_2}.")
+Print to standard output  
+
+``` python
+print(f"my Output includes a {variable_1} and {variable_2}.")
+```
 
 #### Logging
 
 The built-in library is [logging](https://docs.python.org/3/library/logging.html), however [loguru](https://github.com/Delgan/loguru) is easier to use: `pip install loguru`.
 
 Send log-messages to log-file  
-\`\`\`python from loguru import logger logger.add(“logfile.log”) logger.debug(“blablabla”) logger.info(“foo bar bash”)
 
-&nbsp;
+``` python
+from loguru import logger
+logger.add("logfile.log")
+logger.debug("blablabla")
+logger.info("foo bar bash")
+```
 
-    ### Operations, numbers, vectors, matrices
+### Operations, numbers, vectors, matrices
 
-    Assign values to a variable                       | 
-    --------------------------------------------------|-----
-    Assign value to variable                          | `x = 4.5 `
-    Assign to multiple variables                      | `x = y = z = 4.5`
+| Assign values to a variable  |                   |
+|------------------------------|-------------------|
+| Assign value to variable     | `x = 4.5`         |
+| Assign to multiple variables | `x = y = z = 4.5` |
 
-    :  {.borderless tbl-colwidths="[50,50]"}
+Create a list  
 
-
-    Create a list
-    : ```python
-    x = [1,2,3]
+``` python
+x = [1,2,3]
+```
 
 ### Matrices & vectors
 
 import package: `import numpy as np` `import scipy as sp`
 
 Create array / vector  
-\`\`\`python x_arr = array(\[1,2,3\])
 
-&nbsp;
+``` python
+x_arr = array([1,2,3])
+```
 
-    Elementwise adding, subtracting, dividing, multiplying, ... vectors
-    : ```python
-    x_arr = np.array([1,2,3])
-    y_arr = np.array([4,5,6])
-    z_arr = x_arr * y_arr # or -, *, /
+Elementwise adding, subtracting, dividing, multiplying, … vectors  
+
+``` python
+x_arr = np.array([1,2,3])
+y_arr = np.array([4,5,6])
+z_arr = x_arr * y_arr # or -, *, /
+```
 
 | Common operators on vectors |                            |
 |-----------------------------|----------------------------|
@@ -114,13 +123,18 @@ Create array / vector
 | Percentile                  | `np.percentile(x_arr, 50)` |
 
 Generate sequences  
-\`\`\`python x_arr = np.arange(1,11,1) \# Integers from 1 to 10 \# Or x_arr = np.arange(1,11,0.5) \# 1.0, 1.5, 2.0, 2.5, …
 
-&nbsp;
+``` python
+x_arr = np.arange(1,11,1) # Integers from 1 to 10
+# Or
+x_arr = np.arange(1,11,0.5) # 1.0, 1.5, 2.0, 2.5, ... 
+```
 
-    Repeat vector:
-    ```python
-    np.tile(x_arr, reps=2) # 1, 2, 3, 1, 2, 3
+Repeat vector:
+
+``` python
+np.tile(x_arr, reps=2) # 1, 2, 3, 1, 2, 3
+```
 
 Repeat elements in vector:
 
@@ -131,50 +145,68 @@ np.repeat(x_arr, repeats=2) # 1, 1, 2, 2, 3, 3
 ### Selecting elements in vectors
 
 Select first element in sequence  
-\`\`\`python x_arr\[0\] \# ! not x_arr\[1\] !
 
-&nbsp;
+``` python
+x_arr[0] # ! not x_arr[1] !
+```
 
-    Selecting first 10 elements in vector
-    : ```python
-    x_arr[0:10] # ! not x_arr[0:9]
+Selecting first 10 elements in vector  
+
+``` python
+x_arr[0:10] # ! not x_arr[0:9]
+```
 
 Selecting non-missing elements in vector  
-\`\`\`python x_arr\[~np.isnan(x_arr)\]
 
-&nbsp;
+``` python
+x_arr[~np.isnan(x_arr)]
+```
 
-    Append element
-    : ```python
-    np.append(x_arr, values=[1,2,3])
+Append element  
+
+``` python
+np.append(x_arr, values=[1,2,3])
+```
 
 Insert element  
-\`\`\`python np.insert(x_arr, obj=2, values=\[1,2,3\]) \# obj=index at which to insert
 
-&nbsp;
+``` python
+np.insert(x_arr, obj=2, values=[1,2,3]) # obj=index at which to insert
+```
 
-    Delete element
-    : ```python
-    np.delete(x_arr, obj=-1) # deletes last element
+Delete element  
+
+``` python
+np.delete(x_arr, obj=-1) # deletes last element
+```
 
 Create matrix/2D-array  
-\`\`\`python x_arr = np.array(\[(1,2,3),(4,5,6)\]) \# \[\[1 2 3\] \# \[4 5 6\]\]
 
-&nbsp;
+``` python
+x_arr = np.array([(1,2,3),(4,5,6)]) 
+# [[1 2 3]
+#  [4 5 6]]
+```
 
-    Access matrix element
-    : ```python
-    x_arr[1,1]
+Access matrix element  
+
+``` python
+x_arr[1,1]
+```
 
 Access matrix column(s)  
-\`\`\`python x_arr\[:,2\] \# 3rd column x_arr\[:, 0:2\] \# 1st & 2nd column
 
-&nbsp;
+``` python
+x_arr[:,2] # 3rd column
+x_arr[:, 0:2] # 1st & 2nd column
+```
 
-    Add rows and columns
-    : ```python
-    np.vstack([x_arr, y_arr]) # add other array as rows
-    np.hstack([x_arr, y_arr]) # add other array as columns
+Add rows and columns  
+
+``` python
+np.vstack([x_arr, y_arr]) # add other array as rows
+np.hstack([x_arr, y_arr]) # add other array as columns
+```
 
 | Boolean operations    |                                                |
 |-----------------------|------------------------------------------------|
@@ -194,68 +226,69 @@ Missing values
 Checking for missing values: `np.isnan(x)` (`NaN` = Not a number)
 
 Assign value only to elements where condition is true  
-\`\`\`python x_arr\[np.isnan(x_arr)\] = 4
 
-&nbsp;
+``` python
+x_arr[np.isnan(x_arr)] = 4
+```
 
-    Characters                 |
-    ---------------------------|----
-    Character string           | `"..."` 
-    Escape character           | `\`
-    New line                   | `\n`
-    Tab                        | `\t`
-    length of string           | `len(str)`
-    Is seq of chars in string? | `"Halli Hallo".find("Hallo") # returns first idx: 6, if not found: -1`
-    combine two strings into 1 | `"Halli " + "Hallo"`
+| Characters |  |
+|----|----|
+| Character string | `"..."` |
+| Escape character | `\` |
+| New line | `\n` |
+| Tab | `\t` |
+| length of string | `len(str)` |
+| Is seq of chars in string? | `"Halli Hallo".find("Hallo") # returns first idx: 6, if not found: -1` |
+| combine two strings into 1 | `"Halli " + "Hallo"` |
 
-    :  {tbl-colwidths="[50,50]"}
+Concatenate arguments 1 by 1 as characters: `" ".join(["Halli", "Hallo"])`
 
-    Concatenate arguments 1 by 1 as characters: `" ".join(["Halli", "Hallo"])`
+Import package: `import math`
 
-    Import package: `import math`
+| Operations on number   |                 |
+|------------------------|-----------------|
+| Absolute value         | `abs(x)`        |
+| round up to next int   | `math.ceil(x)`  |
+| round down to next int | `math.floor(x)` |
+| Exponent               | `x**2`          |
+| Modulus / remainder    | `10 % 3 # 1`    |
+| Integer division       | `10 // 3 # 3`   |
 
-    Operations on number   |    
-    -----------------------|----
-    Absolute value         | `abs(x)`
-    round up to next int   | `math.ceil(x)`
-    round down to next int | `math.floor(x)`
-    Exponent               | `x**2`
-    Modulus / remainder    | `10 % 3 # 1`
-    Integer division       | `10 // 3 # 3`
+### Types
 
-    :  {.borderless tbl-colwidths="[50,50]"}
+Convert types  
 
-
-    ### Types 
-
-    Convert types
-    : ```python
-    a = int(b)
-    n = float(m)
-    y = complex(x)
+``` python
+a = int(b)
+n = float(m)
+y = complex(x)
+```
 
 Get type of variable  
-\`\`\`python type(x)
 
-&nbsp;
+``` python
+type(x)
+```
 
-    ### Dataframes
+### Dataframes
 
-    Contrary to arrays, the different columns of data frames can contain different data types.
+Contrary to arrays, the different columns of data frames can contain different data types.
 
-    import package: `import pandas as pd`
+import package: `import pandas as pd`
 
-    Construct data frame
-    : ```python
-    df = pd.DataFrame(
-      {"col1" : [1,2,3],
-      "col2" : [12.4, 15.6, 16.9],
-      "col3" : ["green", "blue", "white"]}
-    )
-    #    col1  col2   col3
-    # 0     1  12.4  green
-    # 1     2  15.6   blue
-    # 2     3  16.9  white
+Construct data frame  
+
+``` python
+df = pd.DataFrame(
+  {"col1" : [1,2,3],
+  "col2" : [12.4, 15.6, 16.9],
+  "col3" : ["green", "blue", "white"]}
+)
+#    col1  col2   col3
+# 0     1  12.4  green
+# 1     2  15.6   blue
+# 2     3  16.9  white
+```
 
 | Functions on dataframes |  |
 |----|----|
@@ -271,40 +304,54 @@ Get type of variable
 You can store categorical values in pandas:
 
 Create factor  
-\`\`\`python df\[“col3”\] = df\[“col3”\].astype(“category”)
 
-&nbsp;
+``` python
+df["col3"] = df["col3"].astype("category")
+```
 
-    This will save memory and other python libraries will know that they should treat the column as categories. 
+This will save memory and other python libraries will know that they should treat the column as categories.
 
-    ### Control structures
+### Control structures
 
-    If ... else ...
-    : ```python
-    if x < 5:
-        print("small")
-    elif x < 10:
-        print("medium")
-    else: 
-        print("big")
+If … else …  
+
+``` python
+if x < 5:
+    print("small")
+elif x < 10:
+    print("medium")
+else: 
+    print("big")
+```
 
 While loops  
-\`\`\`python while(x \< 10): x += 1 print(x)
 
-&nbsp;
+``` python
+while(x < 10):
+    x += 1
+    print(x)
+```
 
-    For loops
-    : ```python
-    for x in x_list:
-        print(x)
+For loops  
+
+``` python
+for x in x_list:
+    print(x)
+```
 
 ### Functions
 
 Create function  
-\`\`\`python def my_func(first_name, last_name = ““): greeting =” “.join(\[“Hallo”, first_name, last_name\]) print(greeting) return greeting
 
-&nbsp;
+``` python
+def my_func(first_name, last_name = ""):
+    greeting = " ".join(["Hallo", first_name, last_name])
+    print(greeting)
+    return greeting
+```
 
-    Call function: 
-    : ```python 
-    my_func("Donald", "Duck")
+Call function:  
+
+``` python
+my_func("Donald", "Duck")
+```

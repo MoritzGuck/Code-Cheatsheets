@@ -15,42 +15,55 @@ library(tidymodels)
 ## Rsample (sampling & splitting)
 
 training- & test-split  
-\`\`\`R data_split \<- initial_split(dataset, prop=0.75, strata=target_col) training_set \<- data_split %\>% training() testing_set \<- data_split %\>% testing()
 
-&nbsp;
+``` r
+data_split <- initial_split(dataset, prop=0.75, strata=target_col)
+training_set <- data_split %>% training()
+testing_set <- data_split %>% testing()
+```
 
-    `strata` generates a stratified split with approximately the same fraction of each target class.
+`strata` generates a stratified split with approximately the same fraction of each target class.
 
-    ## Recipes (feature enigneering)
+## Recipes (feature enigneering)
 
-    ## Parsnip (model fitting)
+## Parsnip (model fitting)
 
-    General model formula
-    : ```R
-    outcome_variable ~ predictor_1 + predictor_2 + ... 
-    outcome_variable ~ . # to use all available predictors
+General model formula  
+
+``` r
+outcome_variable ~ predictor_1 + predictor_2 + ... 
+outcome_variable ~ . # to use all available predictors
+```
 
 Create model object  
-\`\`\`R model \<- linear_reg() %\>% set_engine(‘lm’) %\>% set_mode(‘regression’)
 
-&nbsp;
+``` r
+model <- linear_reg() %>%
+    set_engine('lm') %>% 
+    set_mode('regression')
+```
 
-    Fit the model
-    : ```R
-    model_fit <- model %>% 
-        fit(target_col ~ ., data=train_set)
+Fit the model  
+
+``` r
+model_fit <- model %>% 
+    fit(target_col ~ ., data=train_set)
+```
 
 Get model summary  
-\`\`\`R tidy(model_fit)
 
-&nbsp;
+``` r
+tidy(model_fit)
+```
 
-    Returns parameter estimates, std.errors & p-values
+Returns parameter estimates, std.errors & p-values
 
-    Predict on new values
-    : ```R
-    predictions <- model_fit %>%
-        predict(new_data = test_set)
+Predict on new values  
+
+``` r
+predictions <- model_fit %>%
+    predict(new_data = test_set)
+```
 
 ## Tune & Dials (hyper-)parameter optimization)
 
@@ -81,15 +94,16 @@ predictions %>%
 More metrics [here](https://yardstick.tidymodels.org/articles/metric-types.html).
 
 Streamlined approach  
+
 ``` r
 # Fit model:
 model_last_fit <- model %>% 
-  last_fit(target_col ~ ., 
-      split = data_split)
+    last_fit(target_col ~ ., 
+        split = data_split)
 # Return standard quality metrics:
 model_last_fit %>%
-  collect_metrics() 
+    collect_metrics() 
 # Return tibble with predictions and true target values:
 model_last_fit %>% 
-  collect_predictions() 
+    collect_predictions() 
 ```

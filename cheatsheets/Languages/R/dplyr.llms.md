@@ -9,37 +9,46 @@ Dplyr is a data transformation library in the collection Tidyverse.
 ## Data Wrangling with dplyr
 
 Load dplyr  
-\`\`\`R library(dplyr)
 
-&nbsp;
+``` r
+library(dplyr)
+```
 
-    The dplyr package uses the pipe-command to pass the result of one transformation to the next:
-    ```R
-    dataset %>%
-        filter(column1 == "Value") %>%
-        arrange(column2)
+The dplyr package uses the pipe-command to pass the result of one transformation to the next:
+
+``` r
+dataset %>%
+    filter(column1 == "Value") %>%
+    arrange(column2)
+```
 
 Filter  
-\`\`\`R filter(column1 == “Value”)
 
-&nbsp;
+``` r
+filter(column1 == "Value")
+```
 
-    Order / Sort
-    : ```R
-    arrange(col1) %>% # ascending
-        arrange(desc(col2)) # descending
+Order / Sort  
+
+``` r
+arrange(col1) %>% # ascending
+    arrange(desc(col2)) # descending
+```
 
 Mutate / Change / Add columns  
-\`\`\`R mutate(resultCol = col / 1000)
 
-&nbsp;
+``` r
+mutate(resultCol = col / 1000) 
+```
 
-    ### Aggregation
+### Aggregation
 
-    Summarize / aggregate
-    : ```R
-    dataset %>%
-        summarize(medianCol1 = median(col1))
+Summarize / aggregate  
+
+``` r
+dataset %>%
+    summarize(medianCol1 = median(col1))
+```
 
 | Aggregation functions |                        |
 |-----------------------|------------------------|
@@ -70,6 +79,7 @@ dataset %>%
 ```
 
 Join tables  
+
 ``` r
 dataset_1 %>% left_join(dataset_2, by = join_by(col1 == col2), relationship = "one-to-one") 
 ... %>% right_join(...)

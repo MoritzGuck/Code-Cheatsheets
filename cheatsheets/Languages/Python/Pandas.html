@@ -592,7 +592,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-aggregation" id="toc-data-aggregation" class="nav-link active" data-scroll-target="#data-aggregation">Data Aggregation</a></li>
+  <li><a href="#reshaping-data" id="toc-reshaping-data" class="nav-link active" data-scroll-target="#reshaping-data">Reshaping data</a></li>
+  <li><a href="#slice-dataframes" id="toc-slice-dataframes" class="nav-link" data-scroll-target="#slice-dataframes">Slice DataFrames</a></li>
+  <li><a href="#data-manipulation" id="toc-data-manipulation" class="nav-link" data-scroll-target="#data-manipulation">Data Manipulation</a></li>
+  <li><a href="#data-aggregation" id="toc-data-aggregation" class="nav-link" data-scroll-target="#data-aggregation">Data Aggregation</a></li>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a></li>
   </ul>
 </nav>
     </div>
@@ -636,103 +640,142 @@ Each observation is in its own row (and preferably has an index-value). Each fea
 </dd>
 <dt>Data Frames</dt>
 <dd>
-```python my_df = pd.DataFrame(data=numpy_array, index=[0,1,2], columns=[“col1”, “col2”, “col3”])
+
 </dd>
 </dl>
-<pre><code>
-## Reshaping data
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my_df <span class="op">=</span> pd.DataFrame(data<span class="op">=</span>numpy_array, index<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>], columns<span class="op">=</span>[<span class="st">"col1"</span>, <span class="st">"col2"</span>, <span class="st">"col3"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="reshaping-data" class="level2">
+<h2 class="anchored" data-anchor-id="reshaping-data">Reshaping data</h2>
+<dl>
+<dt>From multiple columns to two columns</dt>
+<dd>
 
-From multiple columns to two columns 
-: ```python
-pd.melt(my_df)</code></pre>
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pd.melt(my_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Col1 has former column names, col2 has values</p>
 <dl>
 <dt>Spread rows into columns</dt>
 <dd>
-```python my_df.pivot(columns=‘col1’, values= ‘col2’)
+
 </dd>
 </dl>
-<pre><code>Col1's values are used as column names, col2's values are used in respective column's values.
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_df.pivot(columns<span class="op">=</span><span class="st">'col1'</span>, values<span class="op">=</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">'col2'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Col1’s values are used as column names, col2’s values are used in respective column’s values.</p>
+<dl>
+<dt>Append one dataframe to another</dt>
+<dd>
 
-Append one dataframe to another
-: ```python
-pd.concat([my_df1, my_df2]) # below / vertically
-pd.concat([my_df1, my_df2], axis=1) # to the right / horizontally</code></pre>
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pd.concat([my_df1, my_df2]) <span class="co"># below / vertically</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>pd.concat([my_df1, my_df2], axis<span class="op">=</span><span class="dv">1</span>) <span class="co"># to the right / horizontally</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl>
 <dt>Reset the index to row numbers</dt>
 <dd>
-```python my_df.reset_index()
+
 </dd>
 </dl>
-<pre><code>
-## Slice DataFrames
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>my_df.reset_index()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="slice-dataframes" class="level2">
+<h2 class="anchored" data-anchor-id="slice-dataframes">Slice DataFrames</h2>
+<dl>
+<dt>First and last rows</dt>
+<dd>
 
-First and last rows
-: ```python
-my_df.head(n=10) 
-my_df.tail(n=10)</code></pre>
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>my_df.head(n<span class="op">=</span><span class="dv">10</span>) </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>my_df.tail(n<span class="op">=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl>
 <dt>Sample several rows</dt>
 <dd>
-```python my_df.sample(n=10)
+
 </dd>
 </dl>
-<pre><code>
-Select specific rows
-: ```python
-my_df.iloc[10:20]</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>my_df.sample(n<span class="op">=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl>
+<dt>Select specific rows</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>my_df.iloc[<span class="dv">10</span>:<span class="dv">20</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl>
 <dt>Select specific columns</dt>
 <dd>
-```python my_df[“col1”] my_df[[“col1”, “col2”]]
+
 </dd>
 </dl>
-<pre><code>
-Select rows based on condition
-: ```python 
-my_df[my_df['col1'] &gt; 42]</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>my_df[<span class="st">"col1"</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>my_df[[<span class="st">"col1"</span>, <span class="st">"col2"</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl>
+<dt>Select rows based on condition</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>my_df[my_df[<span class="st">'col1'</span>] <span class="op">&gt;</span> <span class="dv">42</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl>
 <dt>Select rows based on a list of values in a column</dt>
 <dd>
-```python my_df[my_df[‘col1’].isin([‘value1’, ‘value2’])]
+
 </dd>
 </dl>
-<pre><code>
-Remove duplicate rows
-: ```python
-my_df.drop_duplicates()</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>my_df[my_df[<span class="st">'col1'</span>].isin([<span class="st">'value1'</span>, <span class="st">'value2'</span>])]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl>
+<dt>Remove duplicate rows</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>my_df.drop_duplicates()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl>
 <dt>Select rows excluding certain values in a column</dt>
 <dd>
-```python my_df[~my_df[‘col1’].isin([‘value1’, ‘value2’])]
+
 </dd>
 </dl>
-<pre><code>
-## Data Manipulation
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>my_df[<span class="op">~</span>my_df[<span class="st">'col1'</span>].isin([<span class="st">'value1'</span>, <span class="st">'value2'</span>])]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="data-manipulation" class="level2">
+<h2 class="anchored" data-anchor-id="data-manipulation">Data Manipulation</h2>
+<dl>
+<dt>Replace values in a column</dt>
+<dd>
 
-Replace values in a column
-: ```python
-my_df['col1'] = my_df['col1'].replace(['old_value1', 'old_value2'], ['new_value1', 'new_value2'])</code></pre>
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>my_df[<span class="st">'col1'</span>] <span class="op">=</span> my_df[<span class="st">'col1'</span>].replace([<span class="st">'old_value1'</span>, <span class="st">'old_value2'</span>], [<span class="st">'new_value1'</span>, <span class="st">'new_value2'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
 <section id="data-aggregation" class="level2">
 <h2 class="anchored" data-anchor-id="data-aggregation">Data Aggregation</h2>
 <dl>
 <dt>Group by a column and calculate mean of another column</dt>
 <dd>
-```python my_df.groupby(‘col1’)[‘col2’].mean()
+
 </dd>
 </dl>
-<pre><code>
-## Data Visualization
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>my_df.groupby(<span class="st">'col1'</span>)[<span class="st">'col2'</span>].mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization">Data Visualization</h2>
+<dl>
+<dt>Plot a histogram of a column</dt>
+<dd>
 
-Plot a histogram of a column
-: ```python
-my_df['col1'].plot.hist()</code></pre>
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>my_df[<span class="st">'col1'</span>].plot.hist()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl>
 <dt>Plot a scatter plot of two columns</dt>
 <dd>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>my_df.plot.scatter(x<span class="op">=</span><span class="st">'col1'</span>, y<span class="op">=</span><span class="st">'col2'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
 </dd>
 </dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>my_df.plot.scatter(x<span class="op">=</span><span class="st">'col1'</span>, y<span class="op">=</span><span class="st">'col2'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>

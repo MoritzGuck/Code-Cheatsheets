@@ -624,12 +624,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl>
 <dt>Delete Experiments without jobs</dt>
 <dd>
+
+</dd>
+</dl>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">from</span> azureml.core import Workspace, Experiment</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aml_workspace</span> = Workspace.from_config<span class="er">(</span><span class="kw">)</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">experiment_id</span> = Experiment<span class="er">(</span><span class="ex">aml_workspace,</span> <span class="st">'&lt;experiment_name&gt;'</span><span class="kw">)</span><span class="ex">.id</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Experiment.delete</span><span class="er">(</span><span class="ex">aml_workspace,</span> experiment_id<span class="kw">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</dd>
-</dl>
 
 
 </section>

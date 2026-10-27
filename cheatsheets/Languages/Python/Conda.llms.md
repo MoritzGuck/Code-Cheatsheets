@@ -28,68 +28,87 @@ Conda is a package and virtual environment manager.
 ### List, create and delete environments
 
 List your existing environments  
-\`\`\`bash conda env list
 
-&nbsp;
+``` bash
+conda env list
+```
 
-    Create environment
-    : ```bash
-    conda create --name env-name
+Create environment  
+
+``` bash
+conda create --name env-name
+```
 
 Create a conda env from a file:  
-\`\`\`bash conda env create -f environment.yml
 
-&nbsp;
+``` bash
+conda env create -f environment.yml
+```
 
-    Removing / Deleting environment
-    : ```bash
-    conda env remove -n env-name
+Removing / Deleting environment  
+
+``` bash
+conda env remove -n env-name
+```
 
 More info: [Intro to Conda virtual environments](https://towardsdatascience.com/introduction-to-conda-virtual-environments-eaea4ac84e28)
 
 ### Use and manipulate environment
 
 Use environment  
-\`\`\`bash conda activate env-name
 
-&nbsp;
+``` bash
+conda activate env-name
+```
 
-    Check and update package versions. After activating an env:
-    : ```bash
-    python --version
+Check and update package versions. After activating an env:  
+
+``` bash
+python --version
+```
 
 ``` bash
 conda update python
 ```
 
 Update whole environment according to your yaml-file:  
-\`\`\`bash conda env update -f my_env.yml
 
-&nbsp;
+``` bash
+conda env update -f my_env.yml
+```
 
-    Switch back to base environment
-    : ```bash
-    conda deactivate env-name
+Switch back to base environment  
+
+``` bash
+conda deactivate env-name
+```
 
 Install package: Latest version  
-\`\`\`bash conda install pandas
 
-&nbsp;
+``` bash
+conda install pandas 
+```
 
-    Install package: Specific version
-    : ```bash
-    conda install pandas==2.0.0
+Install package: Specific version  
+
+``` bash
+conda install pandas==2.0.0
+```
 
 Install package: From different channel  
-\`\`\`bash conda install pandas -c conda-forge -y
+
+``` bash
+conda install pandas -c conda-forge -y
+```
+
+List packages in environment  
 
 &nbsp;
 
-    List packages in environment
-    : ```
     conda list
 
 Export environment to yml  
+
 ``` bash
 conda env export > environment.yml
 ```

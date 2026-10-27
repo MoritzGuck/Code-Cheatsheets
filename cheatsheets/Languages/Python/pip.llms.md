@@ -12,72 +12,91 @@ Installation
 Usually pip is installed with python automatically.
 
 Upgrade pip  
-\`\`\`bash python -m pip install –upgrade pip
 
-&nbsp;
+``` bash
+python -m pip install --upgrade pip
+```
 
-    Install packages
-    : ```bash
-    pip install SomePackage            # latest version
-    pip install SomePackage==1.0.4     # specific version
-    pip install 'SomePackage>=1.0.4'   # minimum version
+Install packages  
+
+``` bash
+pip install SomePackage            # latest version
+pip install SomePackage==1.0.4     # specific version
+pip install 'SomePackage>=1.0.4'   # minimum version
+```
 
 Install from requirements file  
-\`\`\`bash pip install -r requirements.txt
 
-&nbsp;
+``` bash
+pip install -r requirements.txt
+```
 
-    Generate requirements file from installed packages
-    : ```bash
-    pip freeze > requirements.txt
+Generate requirements file from installed packages  
+
+``` bash
+pip freeze > requirements.txt
+```
 
 List installed packages  
-\`\`\`bash pip list
 
-&nbsp;
+``` bash
+pip list
+```
 
-    List outdated installed packages
-    : ```bash
-    pip list --outdated
+List outdated installed packages  
+
+``` bash
+pip list --outdated
+```
 
 Get info on package  
-\`\`\`bash pip show SomePackage
 
-&nbsp;
+``` bash
+pip show SomePackage
+```
 
-    Returns name, version, summary, home-page, license, dependencies, required-by and location in your file system.
+Returns name, version, summary, home-page, license, dependencies, required-by and location in your file system.
 
-    ### Wheels
+### Wheels
 
-    Wheel files (binaries) make the installation of pip packages faster.
+Wheel files (binaries) make the installation of pip packages faster.
 
-    Install wheel
-    : ```bash
-    pip install wheel
+Install wheel  
+
+``` bash
+pip install wheel
+```
 
 Create pip wheel file from requirements  
-\`\`\`bash pip wheel –wheel-dir=/local/wheels -r requirements.txt
 
-&nbsp;
+``` bash
+pip wheel --wheel-dir=/local/wheels -r requirements.txt
+```
 
-    Install packages from local wheels directory
-    : ```bash
-    pip install --no-index --find-links=/local/wheels -r requirements.txt
+Install packages from local wheels directory  
+
+``` bash
+pip install --no-index --find-links=/local/wheels -r requirements.txt
+```
 
 ### Pipenv
 
 Pipenv is the environment manager for pip.
 
 Install pipenv  
-\`\`\`bash pip install –user –upgrade pipenv
 
-&nbsp;
+``` bash
+pip install --user --upgrade pipenv
+```
 
-    Istall packages in your environment
-    : ```bash
-    pipenv install -r requirements.txt
+Istall packages in your environment  
+
+``` bash
+pipenv install -r requirements.txt
+```
 
 Run script in your environment  
+
 ``` bash
 pipenv run python python_script.py
 ```

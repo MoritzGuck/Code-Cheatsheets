@@ -31,15 +31,18 @@ poetry new "my_project_name"
 Installs poetry virtual environment and sets up the required files for poetry to work. `pyproject.toml` contains the configuration for poetry and the needed dependencies. The new folder is there for your source code.
 
 Adding / installing single dependencies  
-\`\`\`bash poetry add package_name
 
-&nbsp;
+``` bash
+poetry add package_name
+```
 
-    Uses pip to install the new package to your virtual environment and adds it to your dependencies list. 
+Uses pip to install the new package to your virtual environment and adds it to your dependencies list.
 
-    Installing the dependencies from the .toml-file
-    : ```bash
-    poetry install
+Installing the dependencies from the .toml-file  
+
+``` bash
+poetry install
+```
 
 ## Running code with poetry
 
@@ -47,11 +50,19 @@ There are two options:
 
 1.  Using poetry command
 
-: `bash poetry run python your_script.py`
+:
+
+``` bash
+poetry run python your_script.py
+```
 
 2.  Activating the poetry shell
 
-: `bash poetry shell`
+:
+
+``` bash
+poetry shell
+```
 
 ### Using Jupyter-Notebooks in VS-Code
 
@@ -80,12 +91,15 @@ poetry env info --path
 ## Build and publish your package
 
 Build package  
-\`\`\`bash poetry build
 
-&nbsp;
+``` bash
+poetry build
+```
 
-    This will package your file as sdist and wheel format. 
+This will package your file as sdist and wheel format.
 
-    Publish to PyPI
-    : ```bash
-    poetry publish
+Publish to PyPI  
+
+``` bash
+poetry publish
+```

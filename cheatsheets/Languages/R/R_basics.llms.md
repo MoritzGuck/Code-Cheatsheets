@@ -41,76 +41,81 @@ In console / terminal: `Rscript myScript.R`
 | Construct file path from directory list | `file.path("folder", "subfolder", "file") # "folder/subfolder/file` |
 
 Importing other scripts  
-\`\`\`R source(“otherScript.R”)
 
-&nbsp;
+``` r
+source("otherScript.R")
+```
 
-    Executes the contents of the script.
+Executes the contents of the script.
 
-    Send all standard output to a file
-    : ```R
-    sink("output.txt")
+Send all standard output to a file  
+
+``` r
+sink("output.txt")
+```
 
 Print to standard output  
-\`\`\`R print(“my Output”)
 
-&nbsp;
+``` r
+print("my Output")
+```
 
-    ### Operations, numbers, vectors, matrices
+### Operations, numbers, vectors, matrices
 
-    Assign values to a variable                       | 
-    --------------------------------------------------|-----
-    Assign value to variable                          | `x <- 4.5 `
-    Assign to multiple variables                      | `x <- y <- z <- 4.5`
-    Assign/change value of variable in global scope   | `x <<- "global value"`
+| Assign values to a variable                     |                        |
+|-------------------------------------------------|------------------------|
+| Assign value to variable                        | `x <- 4.5`             |
+| Assign to multiple variables                    | `x <- y <- z <- 4.5`   |
+| Assign/change value of variable in global scope | `x <<- "global value"` |
 
-    :  {.borderless tbl-colwidths="[50,50]"}
+Create a vector  
 
-
-    Create a vector
-    : ```R
-    x <- c(10, 4.5, 12, 5)
+``` r
+x <- c(10, 4.5, 12, 5)
+```
 
 > **WARNING:**
 >
 > **!**: If you integrate vectors in your vector ( `c(10, c(11, 12), 13)` ) it will get **flattened** (like `c(10, 11, 12, 13)` ).
 
 Element-wise adding, subtracting, dividing, multiplying, … vectors  
-\`\`\`R x \<- c(1, 2) y \<- c(10, 11, 12, 13) z \<- x + y
 
-&nbsp;
+``` r
+x <- c(1, 2)
+y <- c(10, 11, 12, 13)
+z <- x + y
+```
 
-    ::: {.callout-warning}
-    You can make element-wise operations with vectors of different lengths, as long as the longer one is a multiple of the shorter one. **The shorter vector is repeated**. :anguished:
-    :::
+> **WARNING:**
+>
+> You can make element-wise operations with vectors of different lengths, as long as the longer one is a multiple of the shorter one. **The shorter vector is repeated**. 😧
 
-    Common operators on vectors |
-    ----------------------------|-----
-    maximum, minimum            | `max(x)` `min(x)`
-    Vector of min and max       | `range(x)`
-    Number of elements          | `length(x)`
-    Sum of the elements         | `sum(x)`
-    Product of the elements     | `prod(x)`
-    Mean of the elements        | `mean(x)`
-    Variance of the elements    | `var(x)`
-    Sort elements ascending     | `sort(x)`
-    Matrix multiplication       | `mat1 %*% mat2`
-    Dimension of matrix         | `dim(mat1)`
-    Number of rows              | `nrow(mat1)`
-    Number of cols              | `ncol(mat2)`
-    mode (highest count of val) | `names(sort(-table(df$col1)))[1]`
-    Percentile                  | `quantile(df$col1, c(0.75))`
+| Common operators on vectors |                                   |
+|-----------------------------|-----------------------------------|
+| maximum, minimum            | `max(x)` `min(x)`                 |
+| Vector of min and max       | `range(x)`                        |
+| Number of elements          | `length(x)`                       |
+| Sum of the elements         | `sum(x)`                          |
+| Product of the elements     | `prod(x)`                         |
+| Mean of the elements        | `mean(x)`                         |
+| Variance of the elements    | `var(x)`                          |
+| Sort elements ascending     | `sort(x)`                         |
+| Matrix multiplication       | `mat1 %*% mat2`                   |
+| Dimension of matrix         | `dim(mat1)`                       |
+| Number of rows              | `nrow(mat1)`                      |
+| Number of cols              | `ncol(mat2)`                      |
+| mode (highest count of val) | `names(sort(-table(df$col1)))[1]` |
+| Percentile                  | `quantile(df$col1, c(0.75))`      |
 
-    :  {.borderless tbl-colwidths="[50,50]"}
+**!**: If x is a n-by-p matrix, then `var(x)` will return a p-by-p covariance matrix.
 
+Generate sequences  
 
-    **!**: If x is a n-by-p matrix, then `var(x)` will return a p-by-p covariance matrix.
-
-    Generate sequences
-    : ```R
-    x <- c(1:10) # Integers from 1 to 10
-    # Or
-    x <- seq(1,10, 0.5) # 1.0, 1.5, 2.0, 2.5, ... 
+``` r
+x <- c(1:10) # Integers from 1 to 10
+# Or
+x <- seq(1,10, 0.5) # 1.0, 1.5, 2.0, 2.5, ... 
+```
 
 `c(10, 1)` generates a descending sequence.
 
@@ -131,76 +136,95 @@ y <- rep(x, each = 2) # 1, 1, 2, 2, 3, 3
 ### Selecting elements in vectors
 
 Select first element in sequence  
-\`\`\`R x\[1\] \# ! not x\[0\] !
 
-&nbsp;
+``` r
+x[1] # ! not x[0] !
+```
 
-    Selecting first 10 elements in vector
-    : ```R
-    x[1:10]
+Selecting first 10 elements in vector  
+
+``` r
+x[1:10]
+```
 
 Selecting non-missing elements in vector  
-\`\`\`R x\[!is.na(x)\]
 
-&nbsp;
+``` r
+x[!is.na(x)]
+```
 
-    Selecting all elements, except the first 10
-    : ```R
-    x[-(1:5)]
+Selecting all elements, except the first 10  
+
+``` r
+x[-(1:5)]
+```
 
 Append element  
-\`\`\`R append(fruits, “apple”)
 
-&nbsp;
+``` r
+append(fruits, "apple")
+```
 
-    Insert element
-    : ```R
-    append(fruits, "apple", after = 1)
+Insert element  
+
+``` r
+append(fruits, "apple", after = 1)
+```
 
 Delete element  
-\`\`\`R fruits \<- fruits\[-1\] \# deletes first element
 
-&nbsp;
+``` r
+fruits <- fruits[-1] # deletes first element
+```
 
-    Create matrix
-    : ```R
-    matrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)
-    #      [,1] [,2]
-    # [1,]    1    4
-    # [2,]    2    5
-    # [3,]    3    6
+Create matrix  
+
+``` r
+matrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)
+#      [,1] [,2]
+# [1,]    1    4
+# [2,]    2    5
+# [3,]    3    6
+```
 
 Access matrix element  
-\`\`\`R my_matrix\[1,1\]
 
-&nbsp;
+``` r
+my_matrix[1,1]
+```
 
-    Access matrix column(s)
-    : ```R
-    my_matrix[,2]
-    my_matrix[, c(1,2)]
+Access matrix column(s)  
+
+``` r
+my_matrix[,2]
+my_matrix[, c(1,2)]
+```
 
 Add rows and columns  
-\`\`\`R my_matrix \<- rbind(my_matrix, c(7,8)) \# add row my_matrix \<- cbind(my_matrix, c(10, 11, 12, 13)) \# add column
 
-&nbsp;
+``` r
+my_matrix <- rbind(my_matrix, c(7,8)) # add row
+my_matrix <- cbind(my_matrix, c(10, 11, 12, 13)) # add column
+```
 
-    You can also use these functions to concatenate matrices
+You can also use these functions to concatenate matrices
 
-    Create array
-    : ```R
-    array(c(1:8), dim = c(2,2,2))
-    # , , 1
-    #
-    #      [,1] [,2]
-    # [1,]    1    3
-    # [2,]    2    4
-    # 
-    # , , 2
-    # 
-    #      [,1] [,2]
-    # [1,]    5    7
-    # [2,]    6    8
+Create array  
+
+``` r
+array(c(1:8), dim = c(2,2,2))
+# , , 1
+#
+#      [,1] [,2]
+# [1,]    1    3
+# [2,]    2    4
+# 
+# , , 2
+# 
+#      [,1] [,2]
+# [1,]    5    7
+# [2,]    6    8
+```
 
 | Boolean operations    |                                                 |
 |-----------------------|-------------------------------------------------|
@@ -249,32 +273,39 @@ Concatenate arguments 1 by 1 as characters: `paste(c("X", "Y", "Z"), 1:3, sep="_
 ### Types
 
 Force integer creation  
-\`\`\`R x \<- 100L \# must end with L
 
-&nbsp;
+``` r
+x <- 100L # must end with L
+```
 
-    Convert types
-    : ```R
-    a <- as.numeric(b)
-    n <- as.integer(m)
-    y <- as.complex(x)
+Convert types  
+
+``` r
+a <- as.numeric(b)
+n <- as.integer(m)
+y <- as.complex(x)
+```
 
 Get type of variable  
-\`\`\`R x \<- 10.5 class(x) \# numeric
 
-&nbsp;
+``` r
+x <- 10.5
+class(x) # numeric
+```
 
-    ### Dataframes
+### Dataframes
 
-    Contrary to matrices, the different columns of data frames can contain different data types.
+Contrary to matrices, the different columns of data frames can contain different data types.
 
-    Construct data frame
-    : ```R
-    Data_Frame <- data.frame (
-      Training = c("Strength", "Stamina", "Other"),
-      Pulse = c(100, 150, 120),
-      Duration = c(60, 30, 45)
-    )
+Construct data frame  
+
+``` r
+Data_Frame <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45)
+)
+```
 
 | Functions on dataframes |  |
 |----|----|
@@ -290,64 +321,89 @@ Get type of variable
 Factors are used to store categorical data. I.e. every data point is assigned a category or level.
 
 Create factor  
-\`\`\`R sports \<- factor(c(“football”, “tennis”, “football”, “swimming”, “swimming”))
 
-Access the categories/levels  
-\`\`\`R sports_cats \<- levels(sports)
+``` r
+sports <- factor(c("football", "tennis", "football", "swimming", "swimming"))
 
-&nbsp;
+Access the categories/levels
+:
 
-    Hardcoding / predefining levels
-    : ```R
-    sports <- factor(c("football", "tennis", "football", "swimming"), levels = c("football", "tennis", "swimming"))
+```R
+sports_cats <- levels(sports)
+```
+
+Hardcoding / predefining levels  
+
+``` r
+sports <- factor(c("football", "tennis", "football", "swimming"), levels = c("football", "tennis", "swimming"))
+```
 
 Now you cannot assign a value to the factor anymore that is not in levels.
 
 ### Control structures
 
 If … else …  
-\`\`\`R if (b \> a) { … } else if { … } else { … }
 
-&nbsp;
+``` r
+if (b > a) {
+  ...
+} else if {
+  ... 
+} else {
+  ... 
+} 
+```
 
-    While loops
-    : ```R
-    while(i < n+1){
-      i <- i+1
-      if (x < 0) {
-        break # exit loop prematurely
-      } else if (x == 0) {
-        next # skip to next iteration
-      }
-      ...
-    }
+While loops  
+
+``` r
+while(i < n+1){
+  i <- i+1
+  if (x < 0) {
+    break # exit loop prematurely
+  } else if (x == 0) {
+    next # skip to next iteration
+  }
+  ...
+}
+```
 
 For loops  
-\`\`\`R fruits \<- c(“banana”, “apples”, “cucumbers”) for (fruit in fruits) { print(fruit) }
 
-&nbsp;
+``` r
+fruits <- c("banana", "apples", "cucumbers")
+for (fruit in fruits) {
+    print(fruit)
+}
+```
 
-    ### Functions 
+### Functions
 
-    Create function
-    : ```R 
-    my_func <- function(first_name, last_name = "") {
-      print(paste("Hello", first_name, last_name))
-      return(paste(first_name, last_name))
-    }
+Create function  
+
+``` r
+my_func <- function(first_name, last_name = "") {
+  print(paste("Hello", first_name, last_name))
+  return(paste(first_name, last_name))
+}
+```
 
 Call function:  
-\`\`\`R my_func(“gustav”)
 
-&nbsp;
+``` r
+my_func("gustav") 
+```
 
-    ### Installing Packages
+### Installing Packages
 
-    Install the package
-    : ```R
-    install.packages('packageName')
+Install the package  
+
+``` r
+install.packages('packageName')
+```
 
 Load the installed package  
+
 ``` r
 library(packageName)
 ```
