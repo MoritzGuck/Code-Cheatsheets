@@ -222,13 +222,17 @@ services:
       - "./shiny-home:/srv/shiny-server" # <3>
     ports:
       - "3838:3838" # <2>
-    init: true # <4>
+    cpus: 1.5 # <4>
+    mem_limit: 2g # <4>
+    memswap_limit: 2g # <4>
+    init: true # <5>
 ```
 
 1. `build` points to the folder that contains the Dockerfile for this service; compose builds the image from it (alternative: `image:` to pull a ready-made image from a registry)
 2. `ports` maps `host:container` — traffic on host port 3838 is forwarded to container port 3838
 3. `volumes` maps `host-path:container-path` — a folder next to the docker-compose.yml on the host is mounted into the container (equivalent to `-v`); data survives container removal
-4. `init: true` For apps spawning subprocesses: Runs a lightweight init process as PID 1, forwards signals to the application and reaps exited orphaned child processes. 
+4. Resource limits the container can use: `mem_limit`: maximum RAM. `memswap_limit`: maximum RAM + swap to disk (can avoid OOM errors). 
+5. `init: true` For apps spawning subprocesses: Runs a lightweight init process as PID 1, forwards signals to the application and reaps exited orphaned child processes. 
 
 ### Starting and Recreating Containers
 
