@@ -13,39 +13,53 @@ Installation
 : Usually pip is installed with python automatically. 
 
 Upgrade pip
-: ```bash
+:
+
+```bash
 python -m pip install --upgrade pip
 ```
 
 Install packages
-: ```bash
+:
+
+```bash
 pip install SomePackage            # latest version
 pip install SomePackage==1.0.4     # specific version
 pip install 'SomePackage>=1.0.4'   # minimum version
 ```
 
 Install from requirements file
-: ```bash
+:
+
+```bash
 pip install -r requirements.txt
 ```
 
 Generate requirements file from installed packages
-: ```bash
+:
+
+```bash
 pip freeze > requirements.txt
 ```
 
 List installed packages
-: ```bash
+:
+
+```bash
 pip list
 ```
 
 List outdated installed packages
-: ```bash
+:
+
+```bash
 pip list --outdated
 ```
 
 Get info on package
-: ```bash
+:
+
+```bash
 pip show SomePackage
 ```
 
@@ -56,17 +70,23 @@ Returns name, version, summary, home-page, license, dependencies, required-by an
 Wheel files (binaries) make the installation of pip packages faster.
 
 Install wheel
-: ```bash
+:
+
+```bash
 pip install wheel
 ```
 
 Create pip wheel file from requirements
-: ```bash
+:
+
+```bash
 pip wheel --wheel-dir=/local/wheels -r requirements.txt
 ```
 
 Install packages from local wheels directory
-: ```bash
+:
+
+```bash
 pip install --no-index --find-links=/local/wheels -r requirements.txt
 ```
 
@@ -75,16 +95,22 @@ pip install --no-index --find-links=/local/wheels -r requirements.txt
 Pipenv is the environment manager for pip.
 
 Install pipenv
-: ```bash
+:
+
+```bash
 pip install --user --upgrade pipenv
 ```
 
 Istall packages in your environment
-: ```bash
+:
+
+```bash
 pipenv install -r requirements.txt
 ```
 
 Run script in your environment
-: ```bash
+:
+
+```bash
 pipenv run python python_script.py
 ```

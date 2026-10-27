@@ -11,7 +11,9 @@ categories:
 ## Data Wrangling with dplyr
 
 Load dplyr
-: ```R
+:
+
+```R
 library(dplyr)
 ``` 
 
@@ -23,25 +25,33 @@ dataset %>%
 ```
 
 Filter
-: ```R
+:
+
+```R
 filter(column1 == "Value")
 ```
 
 Order / Sort
-: ```R
+:
+
+```R
 arrange(col1) %>% # ascending
     arrange(desc(col2)) # descending
 ``` 
 
 Mutate / Change / Add columns
-: ```R
+:
+
+```R
 mutate(resultCol = col / 1000) 
 ```
 
 ### Aggregation
 
 Summarize / aggregate
-: ```R
+:
+
+```R
 dataset %>%
     summarize(medianCol1 = median(col1))
 ```
@@ -75,7 +85,9 @@ dataset %>%
 ```
 
 Join tables
-: ```R
+:
+
+```R
 dataset_1 %>% left_join(dataset_2, by = join_by(col1 == col2), relationship = "one-to-one") 
 ... %>% right_join(...)
 ... %>% inner_join(...) # only keeps matching samples

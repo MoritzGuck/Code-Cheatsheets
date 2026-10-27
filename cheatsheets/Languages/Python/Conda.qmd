@@ -33,22 +33,30 @@ rm -rf ~/miniconda3/miniconda.sh
 ### List, create and delete environments
 
 List your existing environments
-: ```bash
+:
+
+```bash
 conda env list
 ```
 
 Create environment
-: ```bash
+:
+
+```bash
 conda create --name env-name
 ```
 
 Create a conda env from a file:
-: ```bash
+:
+
+```bash
 conda env create -f environment.yml
 ```
 
 Removing / Deleting environment
-: ```bash
+:
+
+```bash
 conda env remove -n env-name
 ```
 
@@ -59,12 +67,16 @@ More info:
 ### Use and manipulate environment
 
 Use environment
-: ```bash
+:
+
+```bash
 conda activate env-name
 ```
 
 Check and update package versions. After activating an env:
-: ```bash
+:
+
+```bash
 python --version
 ```
 
@@ -73,36 +85,50 @@ conda update python
 ```
 
 Update whole environment according to your yaml-file:
-: ```bash
+:
+
+```bash
 conda env update -f my_env.yml
 ```
 
 Switch back to base environment
-: ```bash
+:
+
+```bash
 conda deactivate env-name
 ```
 
 Install package: Latest version
-: ```bash
+:
+
+```bash
 conda install pandas 
 ```
 
 Install package: Specific version
-: ```bash
+:
+
+```bash
 conda install pandas==2.0.0
 ```
 
 Install package: From different channel
-: ```bash
+:
+
+```bash
 conda install pandas -c conda-forge -y
 ```
 
 List packages in environment
-: ```
+:
+
+```
 conda list
 ```
 
 Export environment to yml
-: ```bash
+:
+
+```bash
 conda env export > environment.yml
 ```

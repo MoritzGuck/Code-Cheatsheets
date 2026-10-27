@@ -50,7 +50,9 @@ Content 2
 ## Tables
 
 Markdown table
-:   ``` md
+:
+
+    ``` md
     Header col 1  | header col 2
     --------------|-----
     content col 1 | content col 2

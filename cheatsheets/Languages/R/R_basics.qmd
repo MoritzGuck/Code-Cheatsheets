@@ -51,18 +51,24 @@ Construct file path from directory list   | `file.path("folder", "subfolder", "f
 :  {tbl-colwidths="[50,50]" }
 
 Importing other scripts
-: ```R
+:
+
+```R
 source("otherScript.R")
 ``` 
 Executes the contents of the script.
 
 Send all standard output to a file
-: ```R
+:
+
+```R
 sink("output.txt")
 ```
 
 Print to standard output
-: ```R
+:
+
+```R
 print("my Output")
 ```
 
@@ -79,7 +85,9 @@ Assign/change value of variable in global scope   | `x <<- "global value"`
 
 
 Create a vector
-: ```R
+:
+
+```R
 x <- c(10, 4.5, 12, 5)
 ```
 ::: {.callout-warning} 
@@ -87,7 +95,9 @@ x <- c(10, 4.5, 12, 5)
 :::
 
 Element-wise adding, subtracting, dividing, multiplying, ... vectors
-: ```R
+:
+
+```R
 x <- c(1, 2)
 y <- c(10, 11, 12, 13)
 z <- x + y
@@ -119,7 +129,9 @@ Percentile                  | `quantile(df$col1, c(0.75))`
 **!**: If x is a n-by-p matrix, then `var(x)` will return a p-by-p covariance matrix.
 
 Generate sequences
-: ```R
+:
+
+```R
 x <- c(1:10) # Integers from 1 to 10
 # Or
 x <- seq(1,10, 0.5) # 1.0, 1.5, 2.0, 2.5, ... 
@@ -141,42 +153,58 @@ y <- rep(x, each = 2) # 1, 1, 2, 2, 3, 3
 ### Selecting elements in vectors
 
 Select first element in sequence
-: ```R
+:
+
+```R
 x[1] # ! not x[0] !
 ``` 
 
 Selecting first 10 elements in vector
-: ```R
+:
+
+```R
 x[1:10]
 ```
 
 Selecting non-missing elements in vector
-: ```R
+:
+
+```R
 x[!is.na(x)]
 ```
 
 Selecting all elements, except the first 10
-: ```R
+:
+
+```R
 x[-(1:5)]
 ```
 
 Append element
-: ```R
+:
+
+```R
 append(fruits, "apple")
 ```
 
 Insert element
-: ```R
+:
+
+```R
 append(fruits, "apple", after = 1)
 ```
 
 Delete element
-: ```R
+:
+
+```R
 fruits <- fruits[-1] # deletes first element
 ```
 
 Create matrix
-: ```R
+:
+
+```R
 matrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)
 #      [,1] [,2]
 # [1,]    1    4
@@ -185,25 +213,33 @@ matrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)
 ```
 
 Access matrix element
-: ```R
+:
+
+```R
 my_matrix[1,1]
 ```
 
 Access matrix column(s)
-: ```R
+:
+
+```R
 my_matrix[,2]
 my_matrix[, c(1,2)]
 ```
 
 Add rows and columns
-: ```R
+:
+
+```R
 my_matrix <- rbind(my_matrix, c(7,8)) # add row
 my_matrix <- cbind(my_matrix, c(10, 11, 12, 13)) # add column
 ```
 You can also use these functions to concatenate matrices
 
 Create array
-: ```R
+:
+
+```R
 array(c(1:8), dim = c(2,2,2))
 # , , 1
 #
@@ -273,19 +309,25 @@ Integer division       | `10 %/% 3 # 3`
 ### Types 
 
 Force integer creation
-: ```R
+:
+
+```R
 x <- 100L # must end with L
 ```
 
 Convert types
-: ```R
+:
+
+```R
 a <- as.numeric(b)
 n <- as.integer(m)
 y <- as.complex(x)
 ```
 
 Get type of variable
-: ```R
+:
+
+```R
 x <- 10.5
 class(x) # numeric
 ```
@@ -296,7 +338,9 @@ class(x) # numeric
 Contrary to matrices, the different columns of data frames can contain different data types.
 
 Construct data frame
-: ```R
+:
+
+```R
 Data_Frame <- data.frame (
   Training = c("Strength", "Stamina", "Other"),
   Pulse = c(100, 150, 120),
@@ -321,16 +365,22 @@ Select row with max value of col1   | `rownames(df)[which.max(df$col1)]`
 Factors are used to store categorical data. I.e. every data point is assigned a category or level.
 
 Create factor
-: ```R
+:
+
+```R
 sports <- factor(c("football", "tennis", "football", "swimming", "swimming"))
 
 Access the categories/levels
-: ```R
+:
+
+```R
 sports_cats <- levels(sports)
 ```
 
 Hardcoding / predefining levels
-: ```R
+:
+
+```R
 sports <- factor(c("football", "tennis", "football", "swimming"), levels = c("football", "tennis", "swimming"))
 ```
 
@@ -340,7 +390,9 @@ Now you cannot assign a value to the factor anymore that is not in levels.
 ### Control structures
 
 If ... else ...
-: ```R
+:
+
+```R
 if (b > a) {
   ...
 } else if {
@@ -351,7 +403,9 @@ if (b > a) {
 ```
 
 While loops
-: ```R
+:
+
+```R
 while(i < n+1){
   i <- i+1
   if (x < 0) {
@@ -364,7 +418,9 @@ while(i < n+1){
 ```
 
 For loops
-: ```R
+:
+
+```R
 fruits <- c("banana", "apples", "cucumbers")
 for (fruit in fruits) {
     print(fruit)
@@ -374,7 +430,9 @@ for (fruit in fruits) {
 ### Functions 
 
 Create function
-: ```R 
+:
+
+```R
 my_func <- function(first_name, last_name = "") {
   print(paste("Hello", first_name, last_name))
   return(paste(first_name, last_name))
@@ -382,19 +440,25 @@ my_func <- function(first_name, last_name = "") {
 ```
 
 Call function: 
-: ```R 
+:
+
+```R
 my_func("gustav") 
 ```
 
 ### Installing Packages
 
 Install the package
-: ```R
+:
+
+```R
 install.packages('packageName')
 ```
 
 Load the installed package
-: ```R
+:
+
+```R
 library(packageName)
 ```
 

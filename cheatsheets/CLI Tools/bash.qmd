@@ -14,26 +14,34 @@ categories:
 ### List files
 
 Number of files in a provided directory
-: ```bash
+:
+
+```bash
 ls [myDirectory] | wc -l 
 ```
 
 ### Manipulate Files
 
 Remove directory tree with all its contents
-: ```bash
+:
+
+```bash
 rm -rf [myDirectory]
 ```
 
 ### File Permissions
 
 Show access permissions of file in directory
-: ```bash
+:
+
+```bash
 ls -l [myDirectory]
 ``` 
 
 Change permissions of file
-: ```bash
+:
+
+```bash
 chmod u=rwx,g=rwx,o=rwx [myFile]
 ```
 [Explanation](https://phoenixnap.com/kb/linux-file-permissions)
@@ -41,7 +49,9 @@ chmod u=rwx,g=rwx,o=rwx [myFile]
 ### Control structures
 
 Use commandline arguments
-: ```bash
+:
+
+```bash
 while getopts :c:t flag
 do
     case "${flag}" in
@@ -69,7 +79,9 @@ The `:` after the flag-character `c` indicates that a value is required after th
 ## Processes
 
 List running processes
-: ```bash
+:
+
+```bash
 htop
 ```
 
@@ -85,12 +97,16 @@ Display user threads                          | {{< kbd Shift-H >}}
 :  {tbl-colwidths="[50,50]"}
 
 Kill process
-: ```bash
+:
+
+```bash
 kill -9 [process-PID]
 ```
 
 Info on resource usage & processes on NVidia graphic cards
-: ```bash
+:
+
+```bash
 nvidia-smi
 ```
 

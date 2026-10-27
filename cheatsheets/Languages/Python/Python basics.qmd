@@ -61,13 +61,17 @@ Construct file path from directory list   | `os.path.join("path", "to", "file")`
 :  {tbl-colwidths="[50,50]" }
 
 Importing other scripts
-: ```python
+:
+
+```python
 import path.to.otherScript
 ``` 
 Executes the contents of the script. 
 
 Print to standard output
-: ```python
+:
+
+```python
 print(f"my Output includes a {variable_1} and {variable_2}.")
 ```
 
@@ -76,7 +80,9 @@ print(f"my Output includes a {variable_1} and {variable_2}.")
 The built-in library is [logging](https://docs.python.org/3/library/logging.html), however [loguru](https://github.com/Delgan/loguru) is easier to use: `pip install loguru`.
 
 Send log-messages to log-file
-: ```python
+:
+
+```python
 from loguru import logger
 logger.add("logfile.log")
 logger.debug("blablabla")
@@ -95,7 +101,9 @@ Assign to multiple variables                      | `x = y = z = 4.5`
 
 
 Create a list
-: ```python
+:
+
+```python
 x = [1,2,3]
 ```
 
@@ -106,12 +114,16 @@ import package:
 `import scipy as sp`
 
 Create array / vector
-: ```python
+:
+
+```python
 x_arr = array([1,2,3])
 ```
 
 Elementwise adding, subtracting, dividing, multiplying, ... vectors
-: ```python
+:
+
+```python
 x_arr = np.array([1,2,3])
 y_arr = np.array([4,5,6])
 z_arr = x_arr * y_arr # or -, *, /
@@ -136,7 +148,9 @@ Percentile                  | `np.percentile(x_arr, 50)`
 
 
 Generate sequences
-: ```python
+:
+
+```python
 x_arr = np.arange(1,11,1) # Integers from 1 to 10
 # Or
 x_arr = np.arange(1,11,0.5) # 1.0, 1.5, 2.0, 2.5, ... 
@@ -155,55 +169,75 @@ np.repeat(x_arr, repeats=2) # 1, 1, 2, 2, 3, 3
 ### Selecting elements in vectors
 
 Select first element in sequence
-: ```python
+:
+
+```python
 x_arr[0] # ! not x_arr[1] !
 ``` 
 
 Selecting first 10 elements in vector
-: ```python
+:
+
+```python
 x_arr[0:10] # ! not x_arr[0:9]
 ```
 
 Selecting non-missing elements in vector
-: ```python
+:
+
+```python
 x_arr[~np.isnan(x_arr)]
 ```
 
 Append element
-: ```python
+:
+
+```python
 np.append(x_arr, values=[1,2,3])
 ```
 
 Insert element
-: ```python
+:
+
+```python
 np.insert(x_arr, obj=2, values=[1,2,3]) # obj=index at which to insert
 ```
 
 Delete element
-: ```python
+:
+
+```python
 np.delete(x_arr, obj=-1) # deletes last element
 ```
 
 Create matrix/2D-array
-: ```python
+:
+
+```python
 x_arr = np.array([(1,2,3),(4,5,6)]) 
 # [[1 2 3]
 #  [4 5 6]]
 ```
 
 Access matrix element
-: ```python
+:
+
+```python
 x_arr[1,1]
 ```
 
 Access matrix column(s)
-: ```python
+:
+
+```python
 x_arr[:,2] # 3rd column
 x_arr[:, 0:2] # 1st & 2nd column
 ```
 
 Add rows and columns
-: ```python
+:
+
+```python
 np.vstack([x_arr, y_arr]) # add other array as rows
 np.hstack([x_arr, y_arr]) # add other array as columns
 ```
@@ -230,7 +264,9 @@ Missing values
 Checking for missing values: `np.isnan(x)`  (`NaN` = Not a number)
 
 Assign value only to elements where condition is true
-: ```python 
+:
+
+```python
 x_arr[np.isnan(x_arr)] = 4
 ```
 
@@ -265,14 +301,18 @@ Integer division       | `10 // 3 # 3`
 ### Types 
 
 Convert types
-: ```python
+:
+
+```python
 a = int(b)
 n = float(m)
 y = complex(x)
 ```
 
 Get type of variable
-: ```python
+:
+
+```python
 type(x)
 ```
 
@@ -284,7 +324,9 @@ Contrary to arrays, the different columns of data frames can contain different d
 import package: `import pandas as pd`
 
 Construct data frame
-: ```python
+:
+
+```python
 df = pd.DataFrame(
   {"col1" : [1,2,3],
   "col2" : [12.4, 15.6, 16.9],
@@ -313,7 +355,9 @@ Select row with max value of col1   | `df["col2"].idxmax()`
 You can store categorical values in pandas: 
 
 Create factor
-: ```python
+:
+
+```python
 df["col3"] = df["col3"].astype("category")
 ```
 
@@ -322,7 +366,9 @@ This will save memory and other python libraries will know that they should trea
 ### Control structures
 
 If ... else ...
-: ```python
+:
+
+```python
 if x < 5:
     print("small")
 elif x < 10:
@@ -332,14 +378,18 @@ else:
 ```
 
 While loops
-: ```python
+:
+
+```python
 while(x < 10):
     x += 1
     print(x)
 ```
 
 For loops
-: ```python
+:
+
+```python
 for x in x_list:
     print(x)
 ```
@@ -347,7 +397,9 @@ for x in x_list:
 ### Functions 
 
 Create function
-: ```python 
+:
+
+```python
 def my_func(first_name, last_name = ""):
     greeting = " ".join(["Hallo", first_name, last_name])
     print(greeting)
@@ -355,7 +407,9 @@ def my_func(first_name, last_name = ""):
 ```
 
 Call function: 
-: ```python 
+:
+
+```python
 my_func("Donald", "Duck")
 ```
 

@@ -30,13 +30,17 @@ Installs poetry virtual environment and sets up the required files for poetry to
 `pyproject.toml` contains the configuration for poetry and the needed dependencies. The new folder is there for your source code. 
 
 Adding / installing single dependencies
-: ```bash
+:
+
+```bash
 poetry add package_name
 ```
 Uses pip to install the new package to your virtual environment and adds it to your dependencies list. 
 
 Installing the dependencies from the .toml-file
-: ```bash
+:
+
+```bash
 poetry install
 ```
 
@@ -45,12 +49,16 @@ poetry install
 There are two options:
 
 A) Using poetry command
-: ```bash
+:
+
+```bash
 poetry run python your_script.py
 ```
 
 B) Activating the poetry shell
-: ```bash
+:
+
+```bash
 poetry shell
 ```
 
@@ -80,13 +88,17 @@ poetry env info --path
 ## Build and publish your package
 
 Build package
-: ```bash
+:
+
+```bash
 poetry build
 ```
 This will package your file as sdist and wheel format. 
 
 Publish to PyPI
-: ```bash
+:
+
+```bash
 poetry publish
 ```
 

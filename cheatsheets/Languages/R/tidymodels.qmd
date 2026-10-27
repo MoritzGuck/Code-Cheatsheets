@@ -16,7 +16,9 @@ library(tidymodels)
 ## Rsample (sampling & splitting)
 
 training- & test-split
-: ```R
+:
+
+```R
 data_split <- initial_split(dataset, prop=0.75, strata=target_col)
 training_set <- data_split %>% training()
 testing_set <- data_split %>% testing()
@@ -29,32 +31,42 @@ testing_set <- data_split %>% testing()
 ## Parsnip (model fitting)
 
 General model formula
-: ```R
+:
+
+```R
 outcome_variable ~ predictor_1 + predictor_2 + ... 
 outcome_variable ~ . # to use all available predictors
 ```
 
 Create model object
-: ```R
+:
+
+```R
 model <- linear_reg() %>%
     set_engine('lm') %>% 
     set_mode('regression')
 ```
 
 Fit the model
-: ```R
+:
+
+```R
 model_fit <- model %>% 
     fit(target_col ~ ., data=train_set)
 ```
 
 Get model summary
-: ```R
+:
+
+```R
 tidy(model_fit)
 ```
 Returns parameter estimates, std.errors & p-values
 
 Predict on new values
-: ```R
+:
+
+```R
 predictions <- model_fit %>%
     predict(new_data = test_set)
 ```
@@ -93,7 +105,9 @@ area under the curve           | `... roc_auc()`
 More metrics [here](https://yardstick.tidymodels.org/articles/metric-types.html).
 
 Streamlined approach
-: ```R
+:
+
+```R
 # Fit model:
 model_last_fit <- model %>% 
     last_fit(target_col ~ ., 

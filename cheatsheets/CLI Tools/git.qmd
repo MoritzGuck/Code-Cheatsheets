@@ -24,7 +24,9 @@ categories:
 ## New repositories
 
 Download git repo from server
-: ```bash
+:
+
+```bash
 git clone url.com
 ```
 
@@ -72,94 +74,126 @@ git clone url.com
 ### Fetch newest changes of your branch from remote
 
 1. Get changes from remote repository
-: ```
+:
+
+```
 git fetch
 ``` 
 
 2. Check what changed
-: ```
+:
+
+```
 git diff my-branch-name origin/my-branch-name
 ```
 
 3. Merge changes from remote branch into your branch
-: ```
+:
+
+```
 git pull
 ```
 
 ### Add changes from different branch to your branch
 
 1. Get changes from remote repository
-: ```bash
+:
+
+```bash
 git fetch
 ```
 
 2. Check differences to branch you want merge into yours
-: ```bash
+:
+
+```bash
 git diff feature1..dev
 ```
 
 3. Merge changes from remote branch into your branch
-: ```bash
+:
+
+```bash
 git merge origin dev
 ```
 
 4. Check what files are(n't) staged for commit
-: ```bash
+:
+
+```bash
 git status
 ```
 
 5. Stage all files that are tracked (not in .gitignore)
-: ```bash
+:
+
+```bash
 git add .
 ```
 
     If necessary: Unstage all files (or a specific file) that are staged
-    : ```bash
+    :
+
+    ```bash
     git reset [specific-file]
     ```
 
 6. Commit all staged files (add to versioning history)
-: ```bash
+:
+
+```bash
 git commit -m "[ticket-id + what you changed]"
 ```
 
 7. Load commits into remote git repository
-: ```bash
+:
+
+```bash
 git push
 ```
 
 ### Managing changes
 
 See changes due to last pull request
-: ```bash
+:
+
+```bash
 git log -p -2
 ```
 
 ## Pull changes into dev/test/master branch 
 
 Pull changes into dev branch (and add your changes at the end) 
-: ```bash
+:
+
+```bash
 git fetch
 git checkout dev
 git pull --rebase feature1branch 
 ```
 
 Pull only specific commits into your branch
-: ```bash
+:
+
+```bash
 git cherry-pick [commit-SHA]
 ```
 
 ## Undo and Rollback
 
 Rollback the last commit
-: ```bash
+:
+
+```bash
 git reset head~1
 ```
 
 To provide the files from the last commit: `git reset --soft HEAD~1`
 
 Rollback to a specific commit
-: ```bash
+:
+
+```bash
 git reset [commit-SHA]
 ```
 You can still see the changes from your HEAD in your files. To make the reset materialize, you need to discard these unstaged changes in git. 
@@ -169,7 +203,9 @@ Since you are now several commits behind the remote, you have to force push the 
 To create a new commit to undo earlier commits, use `git revert`.
 
 Travel back to a specific commit
-: ```bash
+:
+
+```bash
 git checkout [commit-SHA]
 ```
 
