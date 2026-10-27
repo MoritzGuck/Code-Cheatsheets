@@ -12,26 +12,34 @@ categories:
 ### Files 
 
 List contents of directory
-: ```Powershell
+: 
+
+```Powershell
 dir
 # or
 ls
 ```
 
 Get current working directory
-: ```powershell
+: 
+
+```powershell
 pwd
 ```
 
 Change directory
-: ```powershell
+: 
+
+```powershell
 cd
 # or
 chdir
 ```
 
 Delete file / folder
-: ```powershell
+: 
+
+```powershell
 del
 # or
 rm
@@ -40,27 +48,35 @@ rmdir
 ```
 
 Copy file
-: ```powershell
+: 
+
+```powershell
 cp
 # or
 copy
 ```
 
 Move file 
-: ```powershell
+: 
+
+```powershell
 mv
 # or
 move
 ``` 
 
 Create variables
-: ```powershell
+: 
+
+```powershell
 $myVariable = "C:\path\name\whatever"
 ```
 
 ### Processes
 
 List all running processes, ordered by cpu-usage
+:
+
 ```powershell
 Get-Process |Sort-Object cpu -Descending
 ```
@@ -68,12 +84,16 @@ Get-Process |Sort-Object cpu -Descending
 ## Python
 
 execute python program
-: ```powershell
+: 
+
+```powershell
 py path\to\file.py
 ```
 
 install package with pip
-: ```powershell
+: 
+
+```powershell
 py -m pip install pandas
 ```
 
