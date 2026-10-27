@@ -14,10 +14,10 @@ flowchart TD
     %% ---------------------------------------------
     %% Build & Image Pipeline
     %% ---------------------------------------------
-    subgraph BuildPipeline["1. Push Phase"]
+    subgraph BuildPipeline["1. 📤 Push Phase"]
         direction TB
-        Image["Container Image"]
-        Registry["Container Registry ( Quay / Docker Hub)"]
+        Image["📦 Container Image"]
+        Registry["🌐 Container Registry ( Quay / Docker Hub)"]
 
         Image -->|Pushed to| Registry
     end
@@ -25,31 +25,31 @@ flowchart TD
     %% ---------------------------------------------
     %% Deployment within Project / Namespace
     %% ---------------------------------------------
-    subgraph Project["<span style='white-space:nowrap;'>2. OS: Project &nbsp;/&nbsp; K8s: Namespace</span>"]
+    subgraph Project["<span style='white-space:nowrap;'>2. 📁 OS: Project &nbsp;/&nbsp; K8s: Namespace</span>"]
         direction TB
 
         %% Image Reference Abstraction
-        IS["OS: ImageStream & ImageStreamTag / K8s: Direct Image Reference / Container Tag"]
+        IS["🏷️ OS: ImageStream & ImageStreamTag / K8s: Direct Image Reference / Container Tag"]
 
         %% Workload Controllers
-        subgraph Workload["Workload Controllers"]
+        subgraph Workload["⚙️ Workload Controllers"]
             direction TB
-            Deploy["Deployment"]
-            RS["ReplicaSet"]
+            Deploy["📋 Deployment"]
+            RS["🔁 ReplicaSet"]
             
             Deploy -->|Manages generation of| RS
         end
 
         %% Runtime Pods
-        subgraph Pods["Runtime Layer"]
+        subgraph Pods["▶️ Runtime Layer"]
             direction LR
-            subgraph Pod1["Pod 1"]
+            subgraph Pod1["🫛 Pod 1"]
                 direction TB
-                C1["Running Container"]
+                C1["🚀 Running Container"]
             end
-            subgraph Pod2["Pod 2"]
+            subgraph Pod2["🫛 Pod 2"]
                 direction TB
-                C2["Running Container"]
+                C2["🚀 Running Container"]
             end
         end
     end
