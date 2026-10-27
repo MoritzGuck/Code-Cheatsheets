@@ -11,56 +11,77 @@ Powershell is the major command line tool for windows
 ### Files
 
 List contents of directory  
-\`\`\`Powershell dir \# or ls
 
-&nbsp;
+``` powershell
+dir
+# or
+ls
+```
 
-    Get current working directory
-    : ```powershell
-    pwd
+Get current working directory  
+
+``` powershell
+pwd
+```
 
 Change directory  
-\`\`\`powershell cd \# or chdir
 
-&nbsp;
+``` powershell
+cd
+# or
+chdir
+```
 
-    Delete file / folder
-    : ```powershell
-    del
-    # or
-    rm
-    # or
-    rmdir
+Delete file / folder  
+
+``` powershell
+del
+# or
+rm
+# or
+rmdir
+```
 
 Copy file  
-\`\`\`powershell cp \# or copy
 
-&nbsp;
+``` powershell
+cp
+# or
+copy
+```
 
-    Move file 
-    : ```powershell
-    mv
-    # or
-    move
+Move file  
+
+``` powershell
+mv
+# or
+move
+```
 
 Create variables  
-\`\`\`powershell \$myVariable = “C:”
 
-&nbsp;
+``` powershell
+$myVariable = "C:\path\name\whatever"
+```
 
-    ### Processes
+### Processes
 
-    List all running processes, ordered by cpu-usage
-    ```powershell
-    Get-Process |Sort-Object cpu -Descending
+List all running processes, ordered by cpu-usage  
+
+``` powershell
+Get-Process |Sort-Object cpu -Descending
+```
 
 ## Python
 
 execute python program  
-\`\`\`powershell py path.py
 
-&nbsp;
+``` powershell
+py path\to\file.py
+```
 
-    install package with pip
-    : ```powershell
-    py -m pip install pandas
+install package with pip  
+
+``` powershell
+py -m pip install pandas
+```
