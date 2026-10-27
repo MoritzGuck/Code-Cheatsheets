@@ -2,11 +2,79 @@
 title: "OpenShift "
 description: "OpenShift is a platform based on Kubernetes to host and manage applications in containers."
 format: html
+code-annotations: hover
 ---
 
 ## Core concepts
 
 ### Software 
+
+```{mermaid}
+flowchart TD
+    %% ---------------------------------------------
+    %% Build & Image Pipeline
+    %% ---------------------------------------------
+    subgraph BuildPipeline["1. Push Phase"]
+        direction TB
+        Image["Container Image"]
+        Registry["Container Registry ( Quay / Docker Hub)"]
+
+        Image -->|Pushed to| Registry
+    end
+
+    %% ---------------------------------------------
+    %% Deployment within Project / Namespace
+    %% ---------------------------------------------
+    subgraph Project["<span style='white-space:nowrap;'>2. OS: Project &nbsp;/&nbsp; K8s: Namespace</span>"]
+        direction TB
+
+        %% Image Reference Abstraction
+        IS["OS: ImageStream & ImageStreamTag / K8s: Direct Image Reference / Container Tag"]
+
+        %% Workload Controllers
+        subgraph Workload["Workload Controllers"]
+            direction TB
+            Deploy["Deployment"]
+            RS["ReplicaSet"]
+            
+            Deploy -->|Manages generation of| RS
+        end
+
+        %% Runtime Pods
+        subgraph Pods["Runtime Layer"]
+            direction LR
+            subgraph Pod1["Pod 1"]
+                direction TB
+                C1["Running Container"]
+            end
+            subgraph Pod2["Pod 2"]
+                direction TB
+                C2["Running Container"]
+            end
+        end
+    end
+
+    %% ---------------------------------------------
+    %% Cross-Stage Flow Connections
+    %% ---------------------------------------------
+    Registry -->|Tracks & imports metadata to| IS
+    IS -->|Injects image digest into| Deploy
+    RS -->|Spawns & maintains replicas| Pod1
+    RS -->|Spawns & maintains replicas| Pod2
+
+    %% ---------------------------------------------
+    %% Styling
+    %% ---------------------------------------------
+    classDef build fill:#f3f4f6,stroke:#4b5563,stroke-width:1px,color:#111827;
+    classDef project fill:#e0f2fe,stroke:#0369a1,stroke-width:2px,color:#082f49;
+    classDef workload fill:#ffffff,stroke:#0284c7,stroke-width:1px,color:#0f172a;
+    classDef pod fill:#f0fdf4,stroke:#16a34a,stroke-width:1px,color:#14532d;
+
+    class BuildPipeline,Code,BuildEngine,Image,Registry build;
+    class Project project;
+    class Workload,Deploy,RS,IS workload;
+    class Pods,Pod1,Pod2,C1,C2 pod;
+```
 
 #### Containers & pods
 
@@ -68,7 +136,7 @@ Common commands:
 #### Builds & Deployments
 
 Image streams
-: OpenShift abstraction for managing container images. Support automatic updates, rollbacks, and deployment triggers. Enable image promotion across environments.
+: OpenShift abstraction for managing container images. Support automatic updates, rollbacks, and deployment triggers. Enable image promotion across environments. The image stream contains Image stream tags, that reference the image digests (cryptographic reference of a container similar to git-sha).
 
 Jobs and CronJobs
 : Manage pods that run to completion. Support for parallel processing, retry policies, and scheduled execution. Integration with cluster autoscaling.
@@ -92,6 +160,219 @@ Common commands:
 | Scale a deployment | `oc scale deploy/<name> --replicas=<n>` |
 
 : {tbl-colwidths="[50,50]"}
+
+#### Minimal Helm deployment
+
+Helm packages Kubernetes resource templates into a *chart* and fills them with settings from `values.yaml` when installing or upgrading a *release*. This example runs one Shiny application pod through a Deployment, which recreates the pod if it is deleted; a separate bare `Pod` manifest is therefore unnecessary.
+
+Assume a suitable Dockerfile already exists: the image must support OpenShift's arbitrary non-root UID and the application must listen on `0.0.0.0:3838`. The cluster must be able to pull the image; a private registry additionally requires image-pull credentials. No ImageStream is required when referencing an image directly.
+
+File structure:
+
+```text
+deploy/
+├── project.yaml                 # Create separately before installing the chart
+└── shiny/                       # Helm chart
+    ├── Chart.yaml               # Chart metadata
+    ├── values.yaml              # Default settings
+    └── templates/
+        ├── deployment.yaml      # Pod template and replica management
+        ├── pvc.yaml             # Persistent application storage
+        └── service.yaml         # Stable internal network endpoint
+```
+
+##### Project
+
+`deploy/project.yaml` stays outside the chart so uninstalling the release does not delete the project:
+
+```yaml
+apiVersion: project.openshift.io/v1 # <1>
+kind: Project
+metadata:
+  name: shiny-demo # <2>
+```
+
+1. `Project` is the OpenShift equivalent of a Kubernetes namespace. It has to be created before the Helm release.
+2. `name` identifies the project and must match the namespace passed to Helm with `--namespace`.
+
+Creating a `Project` typically requires administrator rights.
+
+##### Chart metadata
+
+`deploy/shiny/Chart.yaml`:
+
+```yaml
+apiVersion: v2 # <1>
+name: shiny
+version: 0.1.0 # <2>
+```
+
+1. `apiVersion: v2` uses the chart format supported by Helm 3 and later.
+2. `version` is the chart's package version. It is independent of the application's image tag.
+
+##### Values
+
+`deploy/shiny/values.yaml`:
+
+```yaml
+image:
+  repository: quay.io/MY_COMPANY/shiny # <1>
+  tag: "1.0.0"
+replicaCount: 1 # <2>
+containerPort: 3838 # <3>
+service:
+  port: 3838 # <4>
+persistence:
+  size: 5Gi # <5>
+  mountPath: /data
+resources:
+  requests: # <6>
+    cpu: 100m
+    memory: 256Mi
+  limits: # <7>
+    cpu: "1"
+    memory: 1Gi
+```
+
+1. `image` identifies the registry image to build and push before deployment.
+2. `replicaCount` sets the number of application pods maintained by the Deployment.
+3. `containerPort` must match the actual listening port of the application and does not configure the application itself.
+4. `service.port` sets the port exposed by the internal Service. It can be different from the container port.
+5. `persistence` requests 5 GiB of storage and mounts it at `/data`, where the application must explicitly write files that should survive pod replacement.
+6. `requests` tells the scheduler to account for 0.1 CPU and 256 MiB of memory per container when placing the pod.
+7. `limits` caps CPU usage at one CPU through throttling and sets a 1 GiB memory limit, exceeding which can cause the container to be OOM-killed.
+
+These resource sizes are examples and should be adjusted to measured application needs and project quotas.
+
+##### Persistent storage
+
+`deploy/shiny/templates/pvc.yaml`:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim # <1>
+metadata:
+  name: "{{ .Release.Name }}-data" # <2>
+spec:
+  accessModes:
+    - ReadWriteOnce # <3>
+  resources:
+    requests:
+      storage: "{{ .Values.persistence.size }}" # <4>
+```
+
+1. A `PersistentVolumeClaim` (PVC) requests persistent storage from the cluster rather than using the container's ephemeral writable layer.
+2. The release-specific name connects this claim to the Deployment's volume reference.
+3. `ReadWriteOnce` permits read-write mounting on one node at a time, not necessarily by only one pod.
+4. `storage` requests the capacity configured in `values.yaml`, using the cluster's default StorageClass because `storageClassName` is omitted.
+
+This example assumes a default StorageClass with dynamic provisioning; otherwise, add `spec.storageClassName` for a suitable class or arrange a matching pre-provisioned volume with your administrator. Keep `replicaCount: 1` for this single-writer example rather than scaling multiple pods against the same claim.
+
+The mounted volume has its own permissions, replacing the image directory's permissions; the storage driver and OpenShift's allowed group settings must permit the assigned non-root user to write to it. Do not hard-code a UID or `fsGroup` outside the project's allowed ranges.
+
+::: {.callout-warning appearance="simple"}
+Data survives pod replacement, but this chart manages the PVC, so `helm uninstall` also deletes the claim and may delete the underlying storage depending on its reclaim policy; arrange backups and a deliberate retention policy for important data.
+:::
+
+##### Deployment and pods
+
+`deploy/shiny/templates/deployment.yaml`:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}" # <1>
+spec:
+  replicas: {{ .Values.replicaCount }} # <2>
+  strategy:
+    type: Recreate # <3>
+  selector:
+    matchLabels:
+      app: "{{ .Release.Name }}" # <4>
+  template: # <5>
+    metadata:
+      labels:
+        app: "{{ .Release.Name }}"
+    spec:
+      containers:
+        - name: shiny
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}" # <6>
+          ports:
+            - name: http
+              containerPort: {{ .Values.containerPort }} # <7>
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http # <8>
+          resources: # <9>
+            requests:
+              cpu: "{{ .Values.resources.requests.cpu }}"
+              memory: "{{ .Values.resources.requests.memory }}"
+            limits:
+              cpu: "{{ .Values.resources.limits.cpu }}"
+              memory: "{{ .Values.resources.limits.memory }}"
+          volumeMounts:
+            - name: data
+              mountPath: "{{ .Values.persistence.mountPath }}" # <10>
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: "{{ .Release.Name }}-data" # <11>
+```
+
+1. `.Release.Name` is supplied by Helm, so installing the release as `shiny` names the Deployment `shiny`.
+2. `.Values` reads settings from `values.yaml`, optionally overridden with Helm's `-f` or `--set` options.
+3. `Recreate` stops the old pod before creating its replacement during an update, avoiding overlapping writers and cross-node volume-attachment conflicts at the cost of downtime.
+4. `selector.matchLabels` identifies the Deployment's pods and must match the labels under `template.metadata.labels`.
+5. `template` defines the pods created by the Deployment, including their labels and container configuration.
+6. `image` references the prebuilt registry image, whose default entrypoint and command start the application.
+7. The named `http` port documents the container's listening port and lets the Service reference it by name.
+8. `readinessProbe` checks HTTP `/` and allows the pod to receive Service traffic only after the check succeeds.
+9. `resources` applies the configured requests and limits to each application container, with explicit quotes keeping resource quantities as YAML strings.
+10. `volumeMounts` exposes the pod's `data` volume at the configured path inside the container.
+11. `volumes` connects the pod's `data` volume to the PVC created by this release.
+
+No fixed `runAsUser` is set, allowing OpenShift to assign a UID permitted by the project's security policy.
+
+##### Service
+
+`deploy/shiny/templates/service.yaml`:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ .Release.Name }}" # <1>
+spec:
+  type: ClusterIP # <2>
+  selector:
+    app: "{{ .Release.Name }}" # <3>
+  ports:
+    - name: http
+      port: {{ .Values.service.port }}
+      targetPort: http # <4>
+```
+
+1. The Service uses the release name as its stable DNS name within the project.
+2. `ClusterIP` exposes the application inside the cluster rather than publishing a port on your computer or an external hostname.
+3. `selector` sends traffic to ready pods with the matching `app` label.
+4. `port` is the Service's listening port and `targetPort` forwards traffic to the pod's named `http` port.
+
+##### Deploying the chart
+
+Run these steps from the directory containing `deploy/` and your Dockerfile:
+
+1. **Build and push the image:** run `docker build -t quay.io/MY_COMPANY/shiny:1.0.0 .` followed by `docker push quay.io/MY_COMPANY/shiny:1.0.0`, using the same repository and tag as in `values.yaml`.
+2. **Log in and provision the project:** Have your admin login and run `oc apply -f deploy/project.yaml`.
+3. **Check the chart locally:** run `helm lint ./deploy/shiny` and `helm template shiny ./deploy/shiny --namespace shiny-demo` to inspect the generated manifests without deploying them.
+4. **Install or update:** run `helm upgrade --install shiny ./deploy/shiny --namespace shiny-demo --wait --timeout 5m`; Helm loads the chart's `values.yaml` automatically and waits for the workload to become ready.
+5. **Inspect the workload and storage:** run `oc get pods,services,pvc -n shiny-demo` and `oc logs -f deployment/shiny -n shiny-demo`; if storage remains `Pending` after a pod is scheduled, inspect `oc describe pvc shiny-data -n shiny-demo` for provisioning or binding errors.
+6. **Test locally:** run `oc port-forward service/shiny 3838:3838 -n shiny-demo` and open `http://localhost:3838` while the command is running.
+
+For a persistent external HTTP(S) endpoint, add an OpenShift **Route** pointing to this Service; port-forwarding is only a temporary local connection. If the application needs credentials, create a Kubernetes *Secret* in the same project outside the chart; keep actual secret values out of `values.yaml` and Git.
+
+See the [Helm chart documentation](https://helm.sh/docs/topics/charts/) for chart structure and templating.
 
 ### Infrastructure
 
