@@ -27,6 +27,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -49,9 +84,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5dfa4436f37ecde4cbafb3d326b4a924.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-59789a68a9b2a47a9bbed149d1ae16e4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-5dfa4436f37ecde4cbafb3d326b4a924.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-758df1cd8411e3347350b582a0535a05.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-729242989ef7827bafa963fc67f56815.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-758df1cd8411e3347350b582a0535a05.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -80,6 +115,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<meta name="mermaid-theme" content="default">
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -597,6 +636,81 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="core-concepts">Core concepts</h2>
 <section id="software" class="level3">
 <h3 class="anchored" data-anchor-id="software">Software</h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    %% ---------------------------------------------
+    %% Build &amp; Image Pipeline
+    %% ---------------------------------------------
+    subgraph BuildPipeline["1. Push Phase"]
+        direction TB
+        Image["Container Image"]
+        Registry["Container Registry ( Quay / Docker Hub)"]
+
+        Image --&gt;|Pushed to| Registry
+    end
+
+    %% ---------------------------------------------
+    %% Deployment within Project / Namespace
+    %% ---------------------------------------------
+    subgraph Project["&lt;span style='white-space:nowrap;'&gt;2. OS: Project &amp;nbsp;/&amp;nbsp; K8s: Namespace&lt;/span&gt;"]
+        direction TB
+
+        %% Image Reference Abstraction
+        IS["OS: ImageStream &amp; ImageStreamTag / K8s: Direct Image Reference / Container Tag"]
+
+        %% Workload Controllers
+        subgraph Workload["Workload Controllers"]
+            direction TB
+            Deploy["Deployment"]
+            RS["ReplicaSet"]
+            
+            Deploy --&gt;|Manages generation of| RS
+        end
+
+        %% Runtime Pods
+        subgraph Pods["Runtime Layer"]
+            direction LR
+            subgraph Pod1["Pod 1"]
+                direction TB
+                C1["Running Container"]
+            end
+            subgraph Pod2["Pod 2"]
+                direction TB
+                C2["Running Container"]
+            end
+        end
+    end
+
+    %% ---------------------------------------------
+    %% Cross-Stage Flow Connections
+    %% ---------------------------------------------
+    Registry --&gt;|Tracks &amp; imports metadata to| IS
+    IS --&gt;|Injects image digest into| Deploy
+    RS --&gt;|Spawns &amp; maintains replicas| Pod1
+    RS --&gt;|Spawns &amp; maintains replicas| Pod2
+
+    %% ---------------------------------------------
+    %% Styling
+    %% ---------------------------------------------
+    classDef build fill:#f3f4f6,stroke:#4b5563,stroke-width:1px,color:#111827;
+    classDef project fill:#e0f2fe,stroke:#0369a1,stroke-width:2px,color:#082f49;
+    classDef workload fill:#ffffff,stroke:#0284c7,stroke-width:1px,color:#0f172a;
+    classDef pod fill:#f0fdf4,stroke:#16a34a,stroke-width:1px,color:#14532d;
+
+    class BuildPipeline,Code,BuildEngine,Image,Registry build;
+    class Project project;
+    class Workload,Deploy,RS,IS workload;
+    class Pods,Pod1,Pod2,C1,C2 pod;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <section id="containers-pods" class="level4">
 <h4 class="anchored" data-anchor-id="containers-pods">Containers &amp; pods</h4>
 <p>For containers, images, registries see <a href="../../cheatsheets/CLI Tools/docker.html">Docker cheatsheet</a>.</p>
@@ -735,7 +849,7 @@ OpenShift’s extension of namespaces with additional security controls, routing
 <dl>
 <dt>Image streams</dt>
 <dd>
-OpenShift abstraction for managing container images. Support automatic updates, rollbacks, and deployment triggers. Enable image promotion across environments.
+OpenShift abstraction for managing container images. Support automatic updates, rollbacks, and deployment triggers. Enable image promotion across environments. The image stream contains Image stream tags, that reference the image digests (cryptographic reference of a container similar to git-sha).
 </dd>
 <dt>Jobs and CronJobs</dt>
 <dd>
@@ -801,6 +915,372 @@ Software extensions to Kubernetes that use custom resources to manage applicatio
 </tr>
 </tbody>
 </table>
+</section>
+<section id="minimal-helm-deployment" class="level4">
+<h4 class="anchored" data-anchor-id="minimal-helm-deployment">Minimal Helm deployment</h4>
+<p>Helm packages Kubernetes resource templates into a <em>chart</em> and fills them with settings from <code>values.yaml</code> when installing or upgrading a <em>release</em>. This example runs one Shiny application pod through a Deployment, which recreates the pod if it is deleted; a separate bare <code>Pod</code> manifest is therefore unnecessary.</p>
+<p>Assume a suitable Dockerfile already exists: the image must support OpenShift’s arbitrary non-root UID and the application must listen on <code>0.0.0.0:3838</code>. The cluster must be able to pull the image; a private registry additionally requires image-pull credentials. No ImageStream is required when referencing an image directly.</p>
+<p>File structure:</p>
+<pre class="text"><code>deploy/
+├── project.yaml                 # Create separately before installing the chart
+└── shiny/                       # Helm chart
+    ├── Chart.yaml               # Chart metadata
+    ├── values.yaml              # Default settings
+    └── templates/
+        ├── deployment.yaml      # Pod template and replica management
+        ├── pvc.yaml             # Persistent application storage
+        └── service.yaml         # Stable internal network endpoint</code></pre>
+<section id="project" class="level5">
+<h5 class="anchored" data-anchor-id="project">Project</h5>
+<p><code>deploy/project.yaml</code> stays outside the chart so uninstalling the release does not delete the project:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-2" data-llms-code-original="apiVersion: project.openshift.io/v1 # <1>
+kind: Project
+metadata:
+  name: shiny-demo # <2>"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apiVersion</span><span class="kw">:</span><span class="at"> project.openshift.io/v1</span></span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kind</span><span class="kw">:</span><span class="at"> Project</span></span>
+<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">metadata</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> shiny-demo</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1"><code>Project</code> is the OpenShift equivalent of a Kubernetes namespace. It has to be created before the Helm release.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="4" data-code-annotation="2"><code>name</code> identifies the project and must match the namespace passed to Helm with <code>--namespace</code>.</span>
+</dd>
+</dl>
+<p>Creating a <code>Project</code> typically requires administrator rights.</p>
+</section>
+<section id="chart-metadata" class="level5">
+<h5 class="anchored" data-anchor-id="chart-metadata">Chart metadata</h5>
+<p><code>deploy/shiny/Chart.yaml</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-3" data-llms-code-original="apiVersion: v2 # <1>
+name: shiny
+version: 0.1.0 # <2>"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apiVersion</span><span class="kw">:</span><span class="at"> v2</span></span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> shiny</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-3" class="code-annotation-target"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.1.0</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1"><code>apiVersion: v2</code> uses the chart format supported by Helm 3 and later.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="2"><code>version</code> is the chart’s package version. It is independent of the application’s image tag.</span>
+</dd>
+</dl>
+</section>
+<section id="values" class="level5">
+<h5 class="anchored" data-anchor-id="values">Values</h5>
+<p><code>deploy/shiny/values.yaml</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-4" data-llms-code-original="image:
+  repository: quay.io/MY_COMPANY/shiny # <1>
+  tag: &quot;1.0.0&quot;
+replicaCount: 1 # <2>
+containerPort: 3838 # <3>
+service:
+  port: 3838 # <4>
+persistence:
+  size: 5Gi # <5>
+  mountPath: /data
+resources:
+  requests: # <6>
+    cpu: 100m
+    memory: 256Mi
+  limits: # <7>
+    cpu: &quot;1&quot;
+    memory: 1Gi"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">repository</span><span class="kw">:</span><span class="at"> quay.io/MY_COMPANY/shiny</span></span>
+<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tag</span><span class="kw">:</span><span class="at"> </span><span class="st">"1.0.0"</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-4" class="code-annotation-target"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">replicaCount</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3">3</button><span id="annotated-cell-4-5" class="code-annotation-target"><a href="#annotated-cell-4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">containerPort</span><span class="kw">:</span><span class="at"> </span><span class="dv">3838</span></span>
+<span id="annotated-cell-4-6"><a href="#annotated-cell-4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">service</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4">4</button><span id="annotated-cell-4-7" class="code-annotation-target"><a href="#annotated-cell-4-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="dv">3838</span></span>
+<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">persistence</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="5">5</button><span id="annotated-cell-4-9" class="code-annotation-target"><a href="#annotated-cell-4-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">size</span><span class="kw">:</span><span class="at"> 5Gi</span></span>
+<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">mountPath</span><span class="kw">:</span><span class="at"> /data</span></span>
+<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">resources</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="6">6</button><span id="annotated-cell-4-12" class="code-annotation-target"><a href="#annotated-cell-4-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">requests</span><span class="kw">:</span></span>
+<span id="annotated-cell-4-13"><a href="#annotated-cell-4-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">cpu</span><span class="kw">:</span><span class="at"> 100m</span></span>
+<span id="annotated-cell-4-14"><a href="#annotated-cell-4-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">memory</span><span class="kw">:</span><span class="at"> 256Mi</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="7">7</button><span id="annotated-cell-4-15" class="code-annotation-target"><a href="#annotated-cell-4-15" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">limits</span><span class="kw">:</span></span>
+<span id="annotated-cell-4-16"><a href="#annotated-cell-4-16" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">cpu</span><span class="kw">:</span><span class="at"> </span><span class="st">"1"</span></span>
+<span id="annotated-cell-4-17"><a href="#annotated-cell-4-17" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">memory</span><span class="kw">:</span><span class="at"> 1Gi</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="1"><code>image</code> identifies the registry image to build and push before deployment.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="4" data-code-annotation="2"><code>replicaCount</code> sets the number of application pods maintained by the Deployment.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="5" data-code-annotation="3"><code>containerPort</code> must match the actual listening port of the application and does not configure the application itself.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="7" data-code-annotation="4"><code>service.port</code> sets the port exposed by the internal Service. It can be different from the container port.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="9" data-code-annotation="5"><code>persistence</code> requests 5 GiB of storage and mounts it at <code>/data</code>, where the application must explicitly write files that should survive pod replacement.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="12" data-code-annotation="6"><code>requests</code> tells the scheduler to account for 0.1 CPU and 256 MiB of memory per container when placing the pod.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="15" data-code-annotation="7"><code>limits</code> caps CPU usage at one CPU through throttling and sets a 1 GiB memory limit, exceeding which can cause the container to be OOM-killed.</span>
+</dd>
+</dl>
+<p>These resource sizes are examples and should be adjusted to measured application needs and project quotas.</p>
+</section>
+<section id="persistent-storage" class="level5">
+<h5 class="anchored" data-anchor-id="persistent-storage">Persistent storage</h5>
+<p><code>deploy/shiny/templates/pvc.yaml</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-5" data-llms-code-original="apiVersion: v1
+kind: PersistentVolumeClaim # <1>
+metadata:
+  name: &quot;{{ .Release.Name }}-data&quot; # <2>
+spec:
+  accessModes:
+    - ReadWriteOnce # <3>
+  resources:
+    requests:
+      storage: &quot;{{ .Values.persistence.size }}&quot; # <4>"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apiVersion</span><span class="kw">:</span><span class="at"> v1</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kind</span><span class="kw">:</span><span class="at"> PersistentVolumeClaim</span></span>
+<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">metadata</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2">2</button><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ .Release.Name }}-data"</span></span>
+<span id="annotated-cell-5-5"><a href="#annotated-cell-5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">spec</span><span class="kw">:</span></span>
+<span id="annotated-cell-5-6"><a href="#annotated-cell-5-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">accessModes</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="3">3</button><span id="annotated-cell-5-7" class="code-annotation-target"><a href="#annotated-cell-5-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> ReadWriteOnce</span></span>
+<span id="annotated-cell-5-8"><a href="#annotated-cell-5-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">resources</span><span class="kw">:</span></span>
+<span id="annotated-cell-5-9"><a href="#annotated-cell-5-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">requests</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="4">4</button><span id="annotated-cell-5-10" class="code-annotation-target"><a href="#annotated-cell-5-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">storage</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ .Values.persistence.size }}"</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="2" data-code-annotation="1">A <code>PersistentVolumeClaim</code> (PVC) requests persistent storage from the cluster rather than using the container’s ephemeral writable layer.</span>
+</dd>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="2">The release-specific name connects this claim to the Deployment’s volume reference.</span>
+</dd>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="7" data-code-annotation="3"><code>ReadWriteOnce</code> permits read-write mounting on one node at a time, not necessarily by only one pod.</span>
+</dd>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="10" data-code-annotation="4"><code>storage</code> requests the capacity configured in <code>values.yaml</code>, using the cluster’s default StorageClass because <code>storageClassName</code> is omitted.</span>
+</dd>
+</dl>
+<p>This example assumes a default StorageClass with dynamic provisioning; otherwise, add <code>spec.storageClassName</code> for a suitable class or arrange a matching pre-provisioned volume with your administrator. Keep <code>replicaCount: 1</code> for this single-writer example rather than scaling multiple pods against the same claim.</p>
+<p>The mounted volume has its own permissions, replacing the image directory’s permissions; the storage driver and OpenShift’s allowed group settings must permit the assigned non-root user to write to it. Do not hard-code a UID or <code>fsGroup</code> outside the project’s allowed ranges.</p>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Data survives pod replacement, but this chart manages the PVC, so <code>helm uninstall</code> also deletes the claim and may delete the underlying storage depending on its reclaim policy; arrange backups and a deliberate retention policy for important data.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="deployment-and-pods" class="level5">
+<h5 class="anchored" data-anchor-id="deployment-and-pods">Deployment and pods</h5>
+<p><code>deploy/shiny/templates/deployment.yaml</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-6" data-llms-code-original="apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: &quot;{{ .Release.Name }}&quot; # <1>
+spec:
+  replicas: {{ .Values.replicaCount }} # <2>
+  strategy:
+    type: Recreate # <3>
+  selector:
+    matchLabels:
+      app: &quot;{{ .Release.Name }}&quot; # <4>
+  template: # <5>
+    metadata:
+      labels:
+        app: &quot;{{ .Release.Name }}&quot;
+    spec:
+      containers:
+        - name: shiny
+          image: &quot;{{ .Values.image.repository }}:{{ .Values.image.tag }}&quot; # <6>
+          ports:
+            - name: http
+              containerPort: {{ .Values.containerPort }} # <7>
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http # <8>
+          resources: # <9>
+            requests:
+              cpu: &quot;{{ .Values.resources.requests.cpu }}&quot;
+              memory: &quot;{{ .Values.resources.requests.memory }}&quot;
+            limits:
+              cpu: &quot;{{ .Values.resources.limits.cpu }}&quot;
+              memory: &quot;{{ .Values.resources.limits.memory }}&quot;
+          volumeMounts:
+            - name: data
+              mountPath: &quot;{{ .Values.persistence.mountPath }}&quot; # <10>
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: &quot;{{ .Release.Name }}-data&quot; # <11>"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apiVersion</span><span class="kw">:</span><span class="at"> apps/v1</span></span>
+<span id="annotated-cell-6-2"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kind</span><span class="kw">:</span><span class="at"> Deployment</span></span>
+<span id="annotated-cell-6-3"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">metadata</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-4" class="code-annotation-target"><a href="#annotated-cell-6-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ .Release.Name }}"</span></span>
+<span id="annotated-cell-6-5"><a href="#annotated-cell-6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">spec</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-6" class="code-annotation-target"><a href="#annotated-cell-6-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">replicas</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">{ .Values.replicaCount </span><span class="kw">}</span><span class="at">}</span></span>
+<span id="annotated-cell-6-7"><a href="#annotated-cell-6-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">strategy</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-8" class="code-annotation-target"><a href="#annotated-cell-6-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> Recreate</span></span>
+<span id="annotated-cell-6-9"><a href="#annotated-cell-6-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">selector</span><span class="kw">:</span></span>
+<span id="annotated-cell-6-10"><a href="#annotated-cell-6-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">matchLabels</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-11" class="code-annotation-target"><a href="#annotated-cell-6-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">app</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ .Release.Name }}"</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="5">5</button><span id="annotated-cell-6-12" class="code-annotation-target"><a href="#annotated-cell-6-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">template</span><span class="kw">:</span></span>
+<span id="annotated-cell-6-13"><a href="#annotated-cell-6-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">metadata</span><span class="kw">:</span></span>
+<span id="annotated-cell-6-14"><a href="#annotated-cell-6-14" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">labels</span><span class="kw">:</span></span>
+<span id="annotated-cell-6-15"><a href="#annotated-cell-6-15" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">app</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ .Release.Name }}"</span></span>
+<span id="annotated-cell-6-16"><a href="#annotated-cell-6-16" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">spec</span><span class="kw">:</span></span>
+<span id="annotated-cell-6-17"><a href="#annotated-cell-6-17" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">containers</span><span class="kw">:</span></span>
+<span id="annotated-cell-6-18"><a href="#annotated-cell-6-18" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> shiny</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="6">6</button><span id="annotated-cell-6-19" class="code-annotation-target"><a href="#annotated-cell-6-19" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">image</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ .Values.image.repository }}:{{ .Values.image.tag }}"</span></span>
+<span id="annotated-cell-6-20"><a href="#annotated-cell-6-20" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="annotated-cell-6-21"><a href="#annotated-cell-6-21" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> http</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="7">7</button><span id="annotated-cell-6-22" class="code-annotation-target"><a href="#annotated-cell-6-22" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">containerPort</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">{ .Values.containerPort </span><span class="kw">}</span><span class="at">}</span></span>
+<span id="annotated-cell-6-23"><a href="#annotated-cell-6-23" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">readinessProbe</span><span class="kw">:</span></span>
+<span id="annotated-cell-6-24"><a href="#annotated-cell-6-24" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="fu">httpGet</span><span class="kw">:</span></span>
+<span id="annotated-cell-6-25"><a href="#annotated-cell-6-25" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">path</span><span class="kw">:</span><span class="at"> /</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="8">8</button><span id="annotated-cell-6-26" class="code-annotation-target"><a href="#annotated-cell-6-26" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">port</span><span class="kw">:</span><span class="at"> http</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="9">9</button><span id="annotated-cell-6-27" class="code-annotation-target"><a href="#annotated-cell-6-27" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">resources</span><span class="kw">:</span></span>
+<span id="annotated-cell-6-28"><a href="#annotated-cell-6-28" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="fu">requests</span><span class="kw">:</span></span>
+<span id="annotated-cell-6-29"><a href="#annotated-cell-6-29" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">cpu</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ .Values.resources.requests.cpu }}"</span></span>
+<span id="annotated-cell-6-30"><a href="#annotated-cell-6-30" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">memory</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ .Values.resources.requests.memory }}"</span></span>
+<span id="annotated-cell-6-31"><a href="#annotated-cell-6-31" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="fu">limits</span><span class="kw">:</span></span>
+<span id="annotated-cell-6-32"><a href="#annotated-cell-6-32" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">cpu</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ .Values.resources.limits.cpu }}"</span></span>
+<span id="annotated-cell-6-33"><a href="#annotated-cell-6-33" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">memory</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ .Values.resources.limits.memory }}"</span></span>
+<span id="annotated-cell-6-34"><a href="#annotated-cell-6-34" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">volumeMounts</span><span class="kw">:</span></span>
+<span id="annotated-cell-6-35"><a href="#annotated-cell-6-35" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> data</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="10">10</button><span id="annotated-cell-6-36" class="code-annotation-target"><a href="#annotated-cell-6-36" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">mountPath</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ .Values.persistence.mountPath }}"</span></span>
+<span id="annotated-cell-6-37"><a href="#annotated-cell-6-37" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="annotated-cell-6-38"><a href="#annotated-cell-6-38" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> data</span></span>
+<span id="annotated-cell-6-39"><a href="#annotated-cell-6-39" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">persistentVolumeClaim</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="11">11</button><span id="annotated-cell-6-40" class="code-annotation-target"><a href="#annotated-cell-6-40" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="fu">claimName</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ .Release.Name }}-data"</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="4" data-code-annotation="1"><code>.Release.Name</code> is supplied by Helm, so installing the release as <code>shiny</code> names the Deployment <code>shiny</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="6" data-code-annotation="2"><code>.Values</code> reads settings from <code>values.yaml</code>, optionally overridden with Helm’s <code>-f</code> or <code>--set</code> options.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="8" data-code-annotation="3"><code>Recreate</code> stops the old pod before creating its replacement during an update, avoiding overlapping writers and cross-node volume-attachment conflicts at the cost of downtime.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="11" data-code-annotation="4"><code>selector.matchLabels</code> identifies the Deployment’s pods and must match the labels under <code>template.metadata.labels</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="12" data-code-annotation="5"><code>template</code> defines the pods created by the Deployment, including their labels and container configuration.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="19" data-code-annotation="6"><code>image</code> references the prebuilt registry image, whose default entrypoint and command start the application.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="22" data-code-annotation="7">The named <code>http</code> port documents the container’s listening port and lets the Service reference it by name.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="8">8</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="26" data-code-annotation="8"><code>readinessProbe</code> checks HTTP <code>/</code> and allows the pod to receive Service traffic only after the check succeeds.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="27" data-code-annotation="9"><code>resources</code> applies the configured requests and limits to each application container, with explicit quotes keeping resource quantities as YAML strings.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="10">10</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="36" data-code-annotation="10"><code>volumeMounts</code> exposes the pod’s <code>data</code> volume at the configured path inside the container.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="11">11</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="40" data-code-annotation="11"><code>volumes</code> connects the pod’s <code>data</code> volume to the PVC created by this release.</span>
+</dd>
+</dl>
+<p>No fixed <code>runAsUser</code> is set, allowing OpenShift to assign a UID permitted by the project’s security policy.</p>
+</section>
+<section id="service" class="level5">
+<h5 class="anchored" data-anchor-id="service">Service</h5>
+<p><code>deploy/shiny/templates/service.yaml</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-7" data-llms-code-original="apiVersion: v1
+kind: Service
+metadata:
+  name: &quot;{{ .Release.Name }}&quot; # <1>
+spec:
+  type: ClusterIP # <2>
+  selector:
+    app: &quot;{{ .Release.Name }}&quot; # <3>
+  ports:
+    - name: http
+      port: {{ .Values.service.port }}
+      targetPort: http # <4>"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apiVersion</span><span class="kw">:</span><span class="at"> v1</span></span>
+<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kind</span><span class="kw">:</span><span class="at"> Service</span></span>
+<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">metadata</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-4" class="code-annotation-target"><a href="#annotated-cell-7-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ .Release.Name }}"</span></span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">spec</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-6" class="code-annotation-target"><a href="#annotated-cell-7-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> ClusterIP</span></span>
+<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">selector</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3">3</button><span id="annotated-cell-7-8" class="code-annotation-target"><a href="#annotated-cell-7-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">app</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ .Release.Name }}"</span></span>
+<span id="annotated-cell-7-9"><a href="#annotated-cell-7-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="annotated-cell-7-10"><a href="#annotated-cell-7-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> http</span></span>
+<span id="annotated-cell-7-11"><a href="#annotated-cell-7-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">{ .Values.service.port </span><span class="kw">}</span><span class="at">}</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4">4</button><span id="annotated-cell-7-12" class="code-annotation-target"><a href="#annotated-cell-7-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">targetPort</span><span class="kw">:</span><span class="at"> http</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="4" data-code-annotation="1">The Service uses the release name as its stable DNS name within the project.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="6" data-code-annotation="2"><code>ClusterIP</code> exposes the application inside the cluster rather than publishing a port on your computer or an external hostname.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="8" data-code-annotation="3"><code>selector</code> sends traffic to ready pods with the matching <code>app</code> label.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="12" data-code-annotation="4"><code>port</code> is the Service’s listening port and <code>targetPort</code> forwards traffic to the pod’s named <code>http</code> port.</span>
+</dd>
+</dl>
+</section>
+<section id="deploying-the-chart" class="level5">
+<h5 class="anchored" data-anchor-id="deploying-the-chart">Deploying the chart</h5>
+<p>Run these steps from the directory containing <code>deploy/</code> and your Dockerfile:</p>
+<ol type="1">
+<li><strong>Build and push the image:</strong> run <code>docker build -t quay.io/MY_COMPANY/shiny:1.0.0 .</code> followed by <code>docker push quay.io/MY_COMPANY/shiny:1.0.0</code>, using the same repository and tag as in <code>values.yaml</code>.</li>
+<li><strong>Log in and provision the project:</strong> Have your admin login and run <code>oc apply -f deploy/project.yaml</code>.</li>
+<li><strong>Check the chart locally:</strong> run <code>helm lint ./deploy/shiny</code> and <code>helm template shiny ./deploy/shiny --namespace shiny-demo</code> to inspect the generated manifests without deploying them.</li>
+<li><strong>Install or update:</strong> run <code>helm upgrade --install shiny ./deploy/shiny --namespace shiny-demo --wait --timeout 5m</code>; Helm loads the chart’s <code>values.yaml</code> automatically and waits for the workload to become ready.</li>
+<li><strong>Inspect the workload and storage:</strong> run <code>oc get pods,services,pvc -n shiny-demo</code> and <code>oc logs -f deployment/shiny -n shiny-demo</code>; if storage remains <code>Pending</code> after a pod is scheduled, inspect <code>oc describe pvc shiny-data -n shiny-demo</code> for provisioning or binding errors.</li>
+<li><strong>Test locally:</strong> run <code>oc port-forward service/shiny 3838:3838 -n shiny-demo</code> and open <code>http://localhost:3838</code> while the command is running.</li>
+</ol>
+<p>For a persistent external HTTP(S) endpoint, add an OpenShift <strong>Route</strong> pointing to this Service; port-forwarding is only a temporary local connection. If the application needs credentials, create a Kubernetes <em>Secret</em> in the same project outside the chart; keep actual secret values out of <code>values.yaml</code> and Git.</p>
+<p>See the <a href="https://helm.sh/docs/topics/charts/">Helm chart documentation</a> for chart structure and templating.</p>
+</section>
 </section>
 </section>
 <section id="infrastructure" class="level3">
@@ -1227,25 +1707,64 @@ Infrastructure layer for service-to-service communication. Provides traffic mana
           }
         };
       }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
+        const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+        for (let i=0; i<annoteTargets.length; i++) {
+          const annoteTarget = annoteTargets[i];
+          const targetCell = annoteTarget.getAttribute("data-target-cell");
+          const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+          const contentFn = () => {
+            const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            if (content) {
+              const tipContent = content.cloneNode(true);
+              tipContent.classList.add("code-annotation-tip-content");
+              return tipContent.outerHTML;
             }
-          });
+          }
+          const config = {
+            allowHTML: true,
+            content: contentFn,
+            onShow: (instance) => {
+              selectCodeLines(instance.reference);
+              instance.reference.classList.add('code-annotation-active');
+              window.tippy.hideAll();
+            },
+            onHide: (instance) => {
+              unselectCodeLines();
+              instance.reference.classList.remove('code-annotation-active');
+            },
+            maxWidth: 300,
+            delay: [50, 0],
+            duration: [200, 0],
+            offset: [5, 10],
+            arrow: true,
+            appendTo: function(el) {
+              return el.parentElement.parentElement.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'quarto',
+            placement: 'right',
+            popperOptions: {
+              modifiers: [
+              {
+                name: 'flip',
+                options: {
+                  flipVariations: false, // true by default
+                  allowedAutoPlacements: ['right'],
+                  fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                },
+              },
+              {
+                name: 'preventOverflow',
+                options: {
+                  mainAxis: false,
+                  altAxis: false
+                }
+              }
+              ]        
+            }      
+          };
+          window.tippy(annoteTarget, config); 
         }
     const findCites = (el) => {
       const parentEl = el.parentElement;

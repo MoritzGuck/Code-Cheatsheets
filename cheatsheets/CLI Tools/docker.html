@@ -84,9 +84,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5dfa4436f37ecde4cbafb3d326b4a924.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-59789a68a9b2a47a9bbed149d1ae16e4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-5dfa4436f37ecde4cbafb3d326b4a924.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-758df1cd8411e3347350b582a0535a05.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-729242989ef7827bafa963fc67f56815.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-758df1cd8411e3347350b582a0535a05.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -789,12 +789,14 @@ FROM python:3.13-slim-bookworm # <4>
 
 WORKDIR /app
 
-COPY --from=build --chown=1000:1000 /app/.venv /app/.venv # <5>
+COPY --from=build /app/.venv /app/.venv # <5>
 COPY --chmod=644 main.py backend.py ui.py ./ # <6>
 
-RUN groupadd --gid 1000 app &amp;&amp; useradd --uid 1000 --gid app --create-home app # <7>
+RUN mkdir -p /data /opt/app-home \
+    &amp;&amp; chgrp -R 0 /data /opt/app-home \
+    &amp;&amp; chmod -R g=u /data /opt/app-home # <7>
 
-USER app # <8>
+USER 1001:0 # <8>
 
 EXPOSE 3838 # <9>
 
@@ -815,16 +817,18 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
 <span id="annotated-cell-8-15"><a href="#annotated-cell-8-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="annotated-cell-8-16"><a href="#annotated-cell-8-16" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app</span>
 <span id="annotated-cell-8-17"><a href="#annotated-cell-8-17" aria-hidden="true" tabindex="-1"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="5">5</button><span id="annotated-cell-8-18" class="code-annotation-target"><a href="#annotated-cell-8-18" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> <span class="op">--from=build</span> <span class="op">--chown=1000:1000</span> /app/.venv /app/.venv</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="5">5</button><span id="annotated-cell-8-18" class="code-annotation-target"><a href="#annotated-cell-8-18" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> <span class="op">--from=build</span> /app/.venv /app/.venv</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="6">6</button><span id="annotated-cell-8-19" class="code-annotation-target"><a href="#annotated-cell-8-19" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> <span class="op">--chmod=644</span> main.py backend.py ui.py ./</span>
 <span id="annotated-cell-8-20"><a href="#annotated-cell-8-20" aria-hidden="true" tabindex="-1"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="7">7</button><span id="annotated-cell-8-21" class="code-annotation-target"><a href="#annotated-cell-8-21" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">groupadd</span> <span class="at">--gid</span> 1000 app <span class="kw">&amp;&amp;</span> <span class="ex">useradd</span> <span class="at">--uid</span> 1000 <span class="at">--gid</span> app <span class="at">--create-home</span> app</span>
-<span id="annotated-cell-8-22"><a href="#annotated-cell-8-22" aria-hidden="true" tabindex="-1"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="8">8</button><span id="annotated-cell-8-23" class="code-annotation-target"><a href="#annotated-cell-8-23" aria-hidden="true" tabindex="-1"></a><span class="kw">USER</span> app</span>
+<span id="annotated-cell-8-21"><a href="#annotated-cell-8-21" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="fu">mkdir</span> <span class="at">-p</span> /data /opt/app-home <span class="dt">\</span></span>
+<span id="annotated-cell-8-22"><a href="#annotated-cell-8-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">chgrp</span> <span class="at">-R</span> 0 /data /opt/app-home <span class="dt">\</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="7">7</button><span id="annotated-cell-8-23" class="code-annotation-target"><a href="#annotated-cell-8-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">chmod</span> <span class="at">-R</span> g=u /data /opt/app-home</span>
 <span id="annotated-cell-8-24"><a href="#annotated-cell-8-24" aria-hidden="true" tabindex="-1"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="9">9</button><span id="annotated-cell-8-25" class="code-annotation-target"><a href="#annotated-cell-8-25" aria-hidden="true" tabindex="-1"></a><span class="kw">EXPOSE</span> 3838</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="8">8</button><span id="annotated-cell-8-25" class="code-annotation-target"><a href="#annotated-cell-8-25" aria-hidden="true" tabindex="-1"></a><span class="kw">USER</span> 1001:0</span>
 <span id="annotated-cell-8-26"><a href="#annotated-cell-8-26" aria-hidden="true" tabindex="-1"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="10">10</button><span id="annotated-cell-8-27" class="code-annotation-target"><a href="#annotated-cell-8-27" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"/app/.venv/bin/python"</span>, <span class="st">"main.py"</span>]</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="9">9</button><span id="annotated-cell-8-27" class="code-annotation-target"><a href="#annotated-cell-8-27" aria-hidden="true" tabindex="-1"></a><span class="kw">EXPOSE</span> 3838</span>
+<span id="annotated-cell-8-28"><a href="#annotated-cell-8-28" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="10">10</button><span id="annotated-cell-8-29" class="code-annotation-target"><a href="#annotated-cell-8-29" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"/app/.venv/bin/python"</span>, <span class="st">"main.py"</span>]</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
@@ -844,7 +848,7 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="18" data-code-annotation="5">Copy the installed virtual environment from <code>build</code>, keeping its absolute path unchanged because installed scripts can reference that path. <code>--chown=1000:1000</code> assigns ownership to the numeric user and group IDs created below; those accounts do not need to exist yet.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="18" data-code-annotation="5">Copy the installed virtual environment from <code>build</code>, keeping its absolute path unchanged because installed scripts can reference that path.</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="6">6</dt>
 <dd>
@@ -852,19 +856,19 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="21" data-code-annotation="7">Create the <code>app</code> group and user with fixed IDs of <code>1000</code>, plus a home directory (normally <code>/home/app</code>). This does not change ownership of <code>/app</code> itself, so write application data to an explicitly writable directory or volume.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="23" data-code-annotation="7">This command creates two directories (<code>/data</code> and <code>/opt/app-home</code>), sets their group ownership to root (GID <code>0</code>), and ensures group permissions match user permissions (<code>g=u</code>).</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="23" data-code-annotation="8">Run subsequent instructions and the container’s default command as the non-root <code>app</code> user, reducing privileges compared with running as root.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="25" data-code-annotation="8">Run subsequent instructions and the container’s default command as the default non-root user (UID=<code>1001</code>), <code>0</code> sets group to root group (not the same as root permissions).</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="9">9</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="25" data-code-annotation="9">Document that the application listens on port <code>3838</code>. Publish it with <code>docker run -p 3838:3838 ...</code> or Compose’s <code>ports</code>; the application must also listen on <code>0.0.0.0</code>, not just <code>127.0.0.1</code>.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="27" data-code-annotation="9">Document that the application listens on port <code>3838</code>. Publish it with <code>docker run -p 3838:3838 ...</code> or Compose’s <code>ports</code>; the application must also listen on <code>0.0.0.0</code>, not just <code>127.0.0.1</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="10">10</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="27" data-code-annotation="10">Start <code>main.py</code> with the virtual environment’s Python interpreter. Using its absolute path avoids needing to activate the environment or modify <code>PATH</code>. The JSON (exec) form avoids an extra shell and lets Python receive container signals directly.</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="29" data-code-annotation="10">Start <code>main.py</code> with the virtual environment’s Python interpreter. Using its absolute path avoids needing to activate the environment or modify <code>PATH</code>. The JSON (exec) form avoids an extra shell and lets Python receive container signals directly.</span>
 </dd>
 </dl>
 </div>
@@ -1055,7 +1059,10 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
       - &quot;./shiny-home:/srv/shiny-server&quot; # <3>
     ports:
       - &quot;3838:3838&quot; # <2>
-    init: true # <4>"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+    cpus: 1.5 # <4>
+    mem_limit: 2g # <4>
+    memswap_limit: 2g # <4>
+    init: true # <5>"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
 <span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">postgres</span><span class="kw">:</span></span>
 <span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> db_container</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> ./postgres</span></span>
@@ -1078,7 +1085,10 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
 <span id="annotated-cell-3-21"><a href="#annotated-cell-3-21" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"./shiny-home:/srv/shiny-server"</span></span>
 <span id="annotated-cell-3-22"><a href="#annotated-cell-3-22" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
 <span id="annotated-cell-3-23"><a href="#annotated-cell-3-23" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"3838:3838"</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4">4</button><span id="annotated-cell-3-24" class="code-annotation-target"><a href="#annotated-cell-3-24" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">init</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4">4</button><span id="annotated-cell-3-24" class="code-annotation-target"><a href="#annotated-cell-3-24" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">cpus</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.5</span></span>
+<span id="annotated-cell-3-25"><a href="#annotated-cell-3-25" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">mem_limit</span><span class="kw">:</span><span class="at"> 2g</span></span>
+<span id="annotated-cell-3-26"><a href="#annotated-cell-3-26" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">memswap_limit</span><span class="kw">:</span><span class="at"> 2g</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="5">5</button><span id="annotated-cell-3-27" class="code-annotation-target"><a href="#annotated-cell-3-27" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">init</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
@@ -1094,7 +1104,11 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="24" data-code-annotation="4"><code>init: true</code> For apps spawning subprocesses: Runs a lightweight init process as PID 1, forwards signals to the application and reaps exited orphaned child processes.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="24,25,26" data-code-annotation="4">Resource limits the container can use: <code>mem_limit</code>: maximum RAM. <code>memswap_limit</code>: maximum RAM + swap to disk (can avoid OOM errors).</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="27" data-code-annotation="5"><code>init: true</code> For apps spawning subprocesses: Runs a lightweight init process as PID 1, forwards signals to the application and reaps exited orphaned child processes.</span>
 </dd>
 </dl>
 <section id="starting-and-recreating-containers" class="level3">
