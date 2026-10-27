@@ -716,8 +716,9 @@ WORKDIR /srv/shiny-server # <3>
 COPY app/ . # <4>
 ENV R_VERSION=4.4.0 # <5>
 EXPOSE 3838 # <6>
-CMD [&quot;R&quot;, &quot;-e&quot;, &quot;shiny::runApp('/srv/shiny-server', port=3838)&quot;] # <7>
-HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || exit 1 # <8>"><pre class="sourceCode dockerfile code-annotation-code code-with-copy code-annotated"><code class="sourceCode dockerfile"><button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> rocker/shiny:latest</span>
+ENTRYPOINT [&quot;R&quot;, &quot;--vanilla&quot;] # <7>
+CMD [&quot;-e&quot;, &quot;shiny::runApp('/srv/shiny-server', host='0.0.0.0', port=3838)&quot;] # <8>
+HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || exit 1 # <9>"><pre class="sourceCode dockerfile code-annotation-code code-with-copy code-annotated"><code class="sourceCode dockerfile"><button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-1" class="code-annotation-target"><a href="#annotated-cell-7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> rocker/shiny:latest</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update</span>
 <span id="annotated-cell-7-3"><a href="#annotated-cell-7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> install <span class="at">-qq</span> <span class="at">-y</span> libpq-dev</span>
 <span id="annotated-cell-7-4"><a href="#annotated-cell-7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">install2.r</span> ggplot2 shiny shinydashboard <span class="dt">\</span></span>
@@ -727,8 +728,9 @@ HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || ex
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4">4</button><span id="annotated-cell-7-8" class="code-annotation-target"><a href="#annotated-cell-7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> app/ .</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="5">5</button><span id="annotated-cell-7-9" class="code-annotation-target"><a href="#annotated-cell-7-9" aria-hidden="true" tabindex="-1"></a><span class="kw">ENV</span> R_VERSION=4.4.0</span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="6">6</button><span id="annotated-cell-7-10" class="code-annotation-target"><a href="#annotated-cell-7-10" aria-hidden="true" tabindex="-1"></a><span class="kw">EXPOSE</span> 3838</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="7">7</button><span id="annotated-cell-7-11" class="code-annotation-target"><a href="#annotated-cell-7-11" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"R"</span>, <span class="st">"-e"</span>, <span class="st">"shiny::runApp('/srv/shiny-server', port=3838)"</span>]</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="8">8</button><span id="annotated-cell-7-12" class="code-annotation-target"><a href="#annotated-cell-7-12" aria-hidden="true" tabindex="-1"></a><span class="kw">HEALTHCHECK</span> <span class="op">--interval=30s</span> <span class="op">--timeout=3s</span> <span class="kw">CMD</span> <span class="ex">curl</span> <span class="at">-f</span> http://localhost:3838/ <span class="kw">||</span> <span class="bu">exit</span> 1</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="7">7</button><span id="annotated-cell-7-11" class="code-annotation-target"><a href="#annotated-cell-7-11" aria-hidden="true" tabindex="-1"></a><span class="kw">ENTRYPOINT</span> [<span class="st">"R"</span>, <span class="st">"--vanilla"</span>]</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="8">8</button><span id="annotated-cell-7-12" class="code-annotation-target"><a href="#annotated-cell-7-12" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"-e"</span>, <span class="st">"shiny::runApp('/srv/shiny-server', host='0.0.0.0', port=3838)"</span>]</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="9">9</button><span id="annotated-cell-7-13" class="code-annotation-target"><a href="#annotated-cell-7-13" aria-hidden="true" tabindex="-1"></a><span class="kw">HEALTHCHECK</span> <span class="op">--interval=30s</span> <span class="op">--timeout=3s</span> <span class="kw">CMD</span> <span class="ex">curl</span> <span class="at">-f</span> http://localhost:3838/ <span class="kw">||</span> <span class="bu">exit</span> 1</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
@@ -756,11 +758,15 @@ HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || ex
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="11" data-code-annotation="7"><code>CMD</code> defines the default command when a container starts; it overrides the <code>CMD</code> of the base image (here: rocker/shiny’s shiny-server)</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="11" data-code-annotation="7"><code>ENTRYPOINT</code> defines the executable and fixed arguments when a container starts: here R with <code>--vanilla</code> (no saved workspace or startup profiles). The JSON (exec) form avoids an extra shell.</span>
 </dd>
 <dt data-target-cell="annotated-cell-7" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-lines="12" data-code-annotation="8"><code>HEALTHCHECK</code> runs a command periodically (here every 30s) and marks the container <code>unhealthy</code> after repeated failures; the status shows up in <code>docker ps</code>. Requires <code>curl</code> in the image</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="12" data-code-annotation="8"><code>CMD</code> supplies default arguments appended to <code>ENTRYPOINT</code>: here <code>-e</code> and the Shiny expression. Together they start the app directly in R instead of the base image’s Shiny Server. <code>host='0.0.0.0'</code> makes the app reachable through a published port. Without an <code>ENTRYPOINT</code>, <code>CMD</code> would need to specify the executable too.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="9">9</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="13" data-code-annotation="9"><code>HEALTHCHECK</code> runs a command periodically (here every 30s) and marks the container <code>unhealthy</code> after repeated failures; the status shows up in <code>docker ps</code>. Requires <code>curl</code> in the image. Its <code>CMD</code> is separate from the container’s startup <code>CMD</code> and does not use <code>ENTRYPOINT</code>.</span>
 </dd>
 </dl>
 </div>
@@ -900,8 +906,8 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
 <td><code>docker kill  &lt;container-name/container-id&gt;</code></td>
 </tr>
 <tr class="even">
-<td>Build image based on Dockerfile</td>
-<td><code>docker build &lt;dir-with-docker-file&gt;</code></td>
+<td>Build image based on Dockerfile and tag it with a name</td>
+<td><code>docker build &lt;dir-with-docker-file&gt; -t my-service-name</code></td>
 </tr>
 <tr class="odd">
 <td>Execute command inside container</td>
@@ -909,6 +915,22 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
 </tr>
 </tbody>
 </table>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Argument order matters
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Arguments after the image name <strong>replace the entire CMD</strong>. - <code>docker run -rm -p 3838:3838 my-shiny-app</code> keeps the default CMD. - <code>docker run -rm my-shiny-app -e 'seesionInfo()'</code> replaces the entire CMD but keeps the ENTRYPOINT resulting in e.g.&nbsp;<code>R --vanilla -e 'sessionInfo()'</code>.</p>
+</div>
+</div>
+</div>
 <section id="useful-options" class="level3">
 <h3 class="anchored" data-anchor-id="useful-options">Useful Options</h3>
 <p>Options can be combined, e.g.&nbsp;<code>docker run -it --rm &lt;image&gt;</code>:</p>
@@ -955,6 +977,10 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
 <tr class="even">
 <td><code>--restart</code></td>
 <td>Set restart policy (e.g.&nbsp;<code>--restart always</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>--init</code></td>
+<td>Safeguard for apps with subprocesses. Run a lightweight init process as PID 1 to forward signals and reap exited orphaned child processes.</td>
 </tr>
 </tbody>
 </table>
@@ -1028,7 +1054,8 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
       - &quot;./shiny-logs:/var/log/shiny-server&quot; # <3>
       - &quot;./shiny-home:/srv/shiny-server&quot; # <3>
     ports:
-      - &quot;3838:3838&quot; # <2>"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+      - &quot;3838:3838&quot; # <2>
+    init: true # <4>"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
 <span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">postgres</span><span class="kw">:</span></span>
 <span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> db_container</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> ./postgres</span></span>
@@ -1050,7 +1077,8 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
 <span id="annotated-cell-3-20"><a href="#annotated-cell-3-20" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"./shiny-logs:/var/log/shiny-server"</span></span>
 <span id="annotated-cell-3-21"><a href="#annotated-cell-3-21" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"./shiny-home:/srv/shiny-server"</span></span>
 <span id="annotated-cell-3-22"><a href="#annotated-cell-3-22" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
-<span id="annotated-cell-3-23"><a href="#annotated-cell-3-23" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"3838:3838"</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="annotated-cell-3-23"><a href="#annotated-cell-3-23" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"3838:3838"</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4">4</button><span id="annotated-cell-3-24" class="code-annotation-target"><a href="#annotated-cell-3-24" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">init</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
@@ -1063,6 +1091,10 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
 <span data-code-cell="annotated-cell-3" data-code-lines="12,20,21" data-code-annotation="3"><code>volumes</code> maps <code>host-path:container-path</code> — a folder next to the docker-compose.yml on the host is mounted into the container (equivalent to <code>-v</code>); data survives container removal</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="24" data-code-annotation="4"><code>init: true</code> For apps spawning subprocesses: Runs a lightweight init process as PID 1, forwards signals to the application and reaps exited orphaned child processes.</span>
 </dd>
 </dl>
 <section id="starting-and-recreating-containers" class="level3">
@@ -1281,8 +1313,9 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
 </tr>
 </tbody>
 </table>
-<p>Prevent container from crashing for debugging: Add to docker-compose.yml:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">command</span><span class="kw">:</span><span class="at"> </span><span class="st">"sleep infinity"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Prevent container from crashing for debugging: Add to the service in docker-compose.yml (clear any image entrypoint so <code>sleep</code> runs directly):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">entrypoint</span><span class="kw">:</span><span class="at"> </span><span class="kw">[]</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">command</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"sleep"</span><span class="kw">,</span><span class="at"> </span><span class="st">"infinity"</span><span class="kw">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="inside-the-container" class="level3">
 <h3 class="anchored" data-anchor-id="inside-the-container">Inside the Container</h3>
