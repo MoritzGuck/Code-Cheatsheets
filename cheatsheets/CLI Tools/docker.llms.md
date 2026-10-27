@@ -77,7 +77,7 @@ HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || ex
 
 ## Staged
 
-Example of a multi-stage Python `Dockerfile`: install dependencies in a build stage, then copy only the virtual environment and application into the runtime image.
+Example of a multi-stage Python `Dockerfile`: install dependencies in a build stage, then copy only the virtual environment and application into the runtime image. This makes the image smaller (faster deploys, less regisry storage, smaller attack surface).
 
 ``` dockerfile
 # ---- Build stage: install dependencies with uv ----
