@@ -64,8 +64,9 @@ WORKDIR /srv/shiny-server # <3>
 COPY app/ . # <4>
 ENV R_VERSION=4.4.0 # <5>
 EXPOSE 3838 # <6>
-CMD ["R", "-e", "shiny::runApp('/srv/shiny-server', port=3838)"] # <7>
-HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || exit 1 # <8>
+ENTRYPOINT ["R", "--vanilla"] # <7>
+CMD ["-e", "shiny::runApp('/srv/shiny-server', host='0.0.0.0', port=3838)"] # <8>
+HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || exit 1 # <9>
 ```
 
 1. `FROM` specifies the base image
@@ -74,8 +75,9 @@ HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || ex
 4. `COPY` copies files from the build context (directory passed to `docker build`) into the image
 5. `ENV` sets environment variables in the container (avoid secrets here; pass them at run time with `-e` or compose)
 6. `EXPOSE` only documents which ports the container listens on; publishing to the host still requires `-p`
-7. `CMD` defines the default command when a container starts; it overrides the `CMD` of the base image (here: rocker/shiny's shiny-server)
-8. `HEALTHCHECK` runs a command periodically (here every 30s) and marks the container `unhealthy` after repeated failures; the status shows up in `docker ps`. Requires `curl` in the image
+7. `ENTRYPOINT` defines the executable and fixed arguments when a container starts: here R with `--vanilla` (no saved workspace or startup profiles). The JSON (exec) form avoids an extra shell.
+8. `CMD` supplies default arguments appended to `ENTRYPOINT`: here `-e` and the Shiny expression. Together they start the app directly in R instead of the base image's Shiny Server. `host='0.0.0.0'` makes the app reachable through a published port. Without an `ENTRYPOINT`, `CMD` would need to specify the executable too.
+9. `HEALTHCHECK` runs a command periodically (here every 30s) and marks the container `unhealthy` after repeated failures; the status shows up in `docker ps`. Requires `curl` in the image. Its `CMD` is separate from the container's startup `CMD` and does not use `ENTRYPOINT`.
 
 
 ### Staged
@@ -134,10 +136,17 @@ CMD ["/app/.venv/bin/python", "main.py"] # <10>
 | List docker images | `docker images` |
 | Pull images from registry | `docker pull` |
 | Kill container | `docker kill  <container-name/container-id>` |
-| Build image based on Dockerfile | `docker build <dir-with-docker-file>` |
+| Build image based on Dockerfile and tag it with a name | `docker build <dir-with-docker-file> -t my-service-name` |
 | Execute command inside container | `docker exec <command> <container>` |
 
 : {tbl-colwidths="[50,50]"}
+
+::: {.callout-warning collapse=false appearance="simple"}  
+### Argument order matters 
+Arguments after the image name **replace the entire CMD**.
+- `docker run -rm -p 3838:3838 my-shiny-app` keeps the default CMD.
+- `docker run -rm my-shiny-app -e 'seesionInfo()'` replaces the entire CMD but keeps the ENTRYPOINT resulting in e.g. `R --vanilla -e 'sessionInfo()'`. 
+:::
 
 ### Useful Options
 
@@ -153,6 +162,7 @@ Options can be combined, e.g. `docker run -it --rm <image>`:
 | `-e` | Set environment variables (e.g. `-e PASSWORD=secret`) |
 | `--name` | Assign a custom name to the container (e.g. `--name shiny_dev`) |
 | `--restart` | Set restart policy (e.g. `--restart always`) |
+| `--init` | Safeguard for apps with subprocesses. Run a lightweight init process as PID 1 to forward signals and reap exited orphaned child processes. |
 
 : {tbl-colwidths="[50,50]"}
 
@@ -210,11 +220,13 @@ services:
       - "./shiny-home:/srv/shiny-server" # <3>
     ports:
       - "3838:3838" # <2>
+    init: true # <4>
 ```
 
 1. `build` points to the folder that contains the Dockerfile for this service; compose builds the image from it (alternative: `image:` to pull a ready-made image from a registry)
 2. `ports` maps `host:container` — traffic on host port 3838 is forwarded to container port 3838
 3. `volumes` maps `host-path:container-path` — a folder next to the docker-compose.yml on the host is mounted into the container (equivalent to `-v`); data survives container removal
+4. `init: true` For apps spawning subprocesses: Runs a lightweight init process as PID 1, forwards signals to the application and reaps exited orphaned child processes. 
 
 ### Starting and Recreating Containers
 
@@ -311,9 +323,10 @@ Options can be combined, e.g. `docker logs -f --tail=100 <container-name>`:
 : {tbl-colwidths="[50,50]"}
 
 Prevent container from crashing for debugging:
-Add to docker-compose.yml:
+Add to the service in docker-compose.yml (clear any image entrypoint so `sleep` runs directly):
 ```yaml
-command: "sleep infinity"
+entrypoint: []
+command: ["sleep", "infinity"]
 ```
 
 ### Inside the Container
