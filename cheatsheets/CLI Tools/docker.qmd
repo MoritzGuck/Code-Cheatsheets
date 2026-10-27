@@ -102,12 +102,14 @@ FROM python:3.13-slim-bookworm # <4>
 
 WORKDIR /app
 
-COPY --from=build --chown=1000:1000 /app/.venv /app/.venv # <5>
+COPY --from=build /app/.venv /app/.venv # <5>
 COPY --chmod=644 main.py backend.py ui.py ./ # <6>
 
-RUN groupadd --gid 1000 app && useradd --uid 1000 --gid app --create-home app # <7>
+RUN mkdir -p /data /opt/app-home \
+    && chgrp -R 0 /data /opt/app-home \
+    && chmod -R g=u /data /opt/app-home # <7>
 
-USER app # <8>
+USER 1001:0 # <8>
 
 EXPOSE 3838 # <9>
 
@@ -118,10 +120,10 @@ CMD ["/app/.venv/bin/python", "main.py"] # <10>
 2. Configure uv: `UV_COMPILE_BYTECODE=1` compiles installed Python files to bytecode during the build, which can improve startup time. `UV_LINK_MODE=copy` copies packages from uv's cache into the virtual environment instead of linking them, keeping the environment independent of the cache mount.
 3. Install dependencies into `/app/.venv`. `--locked` to adhere to lock-file. `--no-install-project` skips installing your own project as a package; `--no-dev` excludes the `dev` dependency group. The BuildKit cache mount reuses uv downloads across builds. This cache is not included in the image.
 4. Start a fresh runtime stage with Python, using the same Python version and Debian release for compatibility.
-5. Copy the installed virtual environment from `build`, keeping its absolute path unchanged because installed scripts can reference that path. `--chown=1000:1000` assigns ownership to the numeric user and group IDs created below; those accounts do not need to exist yet.
+5. Copy the installed virtual environment from `build`, keeping its absolute path unchanged because installed scripts can reference that path.
 6. Copy the application scripts from the build context into `/app`. Permission mode `644` allows owner to read and write, and everyone else to read. The files remain root-owned, but the application user can read them; executable permission is unnecessary because Python runs them.
-7. Create the `app` group and user with fixed IDs of `1000`, plus a home directory (normally `/home/app`). This does not change ownership of `/app` itself, so write application data to an explicitly writable directory or volume.
-8. Run subsequent instructions and the container's default command as the non-root `app` user, reducing privileges compared with running as root.
+7. This command creates two directories (`/data` and `/opt/app-home`), sets their group ownership to root (GID `0`), and ensures group permissions match user permissions (`g=u`).
+8. Run subsequent instructions and the container's default command as the default non-root user (UID=`1001`), `0` sets group to root group (not the same as root permissions).
 9. Document that the application listens on port `3838`. Publish it with `docker run -p 3838:3838 ...` or Compose's `ports`; the application must also listen on `0.0.0.0`, not just `127.0.0.1`.
 10. Start `main.py` with the virtual environment's Python interpreter. Using its absolute path avoids needing to activate the environment or modify `PATH`. The JSON (exec) form avoids an extra shell and lets Python receive container signals directly.
 :::
