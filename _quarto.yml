@@ -11,7 +11,7 @@ website:
     tools:
       - icon: github
         href: https://github.com/MoritzGuck/Code-Cheatsheets
-    collapse-level: 4
+    collapse-level: 3
   favicon: assets/favicon.png
   llms-txt: true
 
@@ -21,6 +21,7 @@ format:
     theme:
       light: cosmo
       dark: darkly
+    respect-user-color-scheme: true
     css: styles.css
     toc: true
     toc-location: right
