@@ -23,6 +23,30 @@ div.sourceCode {
   background-color: #eceff1 !important;
 }
 
+body.quarto-dark code,
+body.quarto-dark div.sourceCode,
+body.quarto-dark pre,
+body.quarto-dark pre code {
+  background-color: #2d3339 !important;
+  color: #f8f9fa;
+}
+
+body.quarto-dark .sidebar-search input,
+body.quarto-dark #quarto-search input,
+body.quarto-dark .aa-Input,
+body.quarto-dark .aa-Panel,
+body.quarto-dark .aa-List,
+body.quarto-dark .aa-Item {
+  background-color: #343a40;
+  color: #f8f9fa;
+}
+
+body.quarto-dark .sidebar-search input::placeholder,
+body.quarto-dark #quarto-search input::placeholder,
+body.quarto-dark .aa-Input::placeholder {
+  color: #adb5bd;
+}
+
 table.quarto-listing-table th a.desc:after {
  width: 0px !important;
 }
@@ -30,4 +54,3 @@ table.quarto-listing-table th a.desc:after {
 table.quarto-listing-table th a.asc:after {
   width: 0px !important;
  }
-
