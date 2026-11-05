@@ -9,10 +9,10 @@ This is a collection of my cheatsheets. Feel free to use them. If you want to ed
 | [Azure ML ](cheatsheets/Cloud%20and%20Platform/azure_ml.llms.md) |  |   |
 | [Bash ](cheatsheets/CLI%20Tools/bash.llms.md) | Bash is a command line tool and language. | CLI, tool |
 | [Conda ](cheatsheets/Languages/Python/Conda.llms.md) | Conda is a package and virtual environment manager. | tool, CLI, package manager, virtual environments |
-| [Dart](cheatsheets/Languages/Dart_summary.llms.md) | Dart is a new programming language by Google, mainly used for app development. | language |
+| [Dart](cheatsheets/Languages/Dart/Dart_summary.llms.md) | Dart is a new programming language by Google, mainly used for app development. | language |
 | [Docker ](cheatsheets/CLI%20Tools/docker.llms.md) | Docker is a platform for developing, shipping, and running applications in isolated environments. | CLI, tool, container |
 | [Dplyr ](cheatsheets/Languages/R/dplyr.llms.md) | Dplyr is a data transformation library in the collection Tidyverse. | R, data science |
-| [Flutter](cheatsheets/frameworks/flutter_summary.llms.md) | Flutter is a cross-plattform app-development framework based on dart. | app development, web development |
+| [Flutter](cheatsheets/Languages/Dart/flutter_summary.llms.md) | Flutter is a cross-plattform app-development framework based on dart. | app development, web development |
 | [GCP: gcloud CLI ](cheatsheets/Cloud%20and%20Platform/gcloud.llms.md) | Gcloud CLI is the command line interface of the Google Cloud Platform. |   |
 | [Git ](cheatsheets/CLI%20Tools/git.llms.md) | Git is a version control system mostly used for code. | CLI, tool, versioning |
 | [OpenShift](cheatsheets/Cloud%20and%20Platform/Openshift.llms.md) | OpenShift is a platform based on Kubernetes to host and manage applications in containers. |   |
