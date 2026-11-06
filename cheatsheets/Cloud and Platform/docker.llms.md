@@ -198,7 +198,7 @@ services:
     ports:
       - "5432:5432" # <2>
     volumes:
-      - "./pgdata:/var/lib/postgresql/data" # <3>
+      - "postgres_data:/var/lib/postgresql/data" # <3>
   
   shiny:
     container_name: shiny
@@ -206,21 +206,26 @@ services:
       - postgres
     build: ./shiny # <1>
     volumes:
-      - "./shiny-logs:/var/log/shiny-server" # <3>
-      - "./shiny-home:/srv/shiny-server" # <3>
+      - "./shiny-logs:/var/log/shiny-server" # <4>
+      - "./shiny-home:/srv/shiny-server" # <4>
     ports:
       - "3838:3838" # <2>
-    cpus: 1.5 # <4>
-    mem_limit: 2g # <4>
-    memswap_limit: 2g # <4>
-    init: true # <5>
+    cpus: 1.5 # <5>
+    mem_limit: 2g # <5>
+    memswap_limit: 2g # <5>
+    init: true # <6>
+
+volumes:
+  postgres_data: # <7>
 ```
 
 1.  `build` points to the folder that contains the Dockerfile for this service; compose builds the image from it (alternative: `image:` to pull a ready-made image from a registry)
 2.  `ports` maps `host:container` — traffic on host port 3838 is forwarded to container port 3838
-3.  `volumes` maps `host-path:container-path` — a folder next to the docker-compose.yml on the host is mounted into the container (equivalent to `-v`); data survives container removal
-4.  Resource limits the container can use: `mem_limit`: maximum RAM. `memswap_limit`: maximum RAM + swap to disk (can avoid OOM errors).
-5.  `init: true` For apps spawning subprocesses: Runs a lightweight init process as PID 1, forwards signals to the application and reaps exited orphaned child processes.
+3.  `volumes` here maps `volume-name:container-path`. Docker creates and manages the named volume for you. It survives the container removal. It must be declared at the bottom (7).
+4.  `volumes` here maps `host-path:container-path` — a folder next to the docker-compose.yml on the host is mounted into the container (equivalent to `-v`); data survives container removal
+5.  Resource limits the container can use: `mem_limit`: maximum RAM. `memswap_limit`: maximum RAM + swap to disk (can avoid OOM errors).
+6.  `init: true` For apps spawning subprocesses: Runs a lightweight init process as PID 1, forwards signals to the application and reaps exited orphaned child processes.
+7.  Declaration of the named volumes that are used above.
 
 ### Starting and Recreating Containers
 

@@ -302,366 +302,6 @@
     ]
   },
   {
-    "objectID": "cheatsheets/Cloud and Platform/azure_cli.html",
-    "href": "cheatsheets/Cloud and Platform/azure_cli.html",
-    "title": "Azure CLI ",
-    "section": "",
-    "text": "Instrallation instructions can be found here",
-    "crumbs": [
-      "Cheatsheets",
-      "Cloud and Platform",
-      "Azure CLI {{< fa brands microsoft >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Cloud and Platform/azure_cli.html#installation-instructions",
-    "href": "cheatsheets/Cloud and Platform/azure_cli.html#installation-instructions",
-    "title": "Azure CLI ",
-    "section": "",
-    "text": "Instrallation instructions can be found here",
-    "crumbs": [
-      "Cheatsheets",
-      "Cloud and Platform",
-      "Azure CLI {{< fa brands microsoft >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Cloud and Platform/azure_cli.html#general",
-    "href": "cheatsheets/Cloud and Platform/azure_cli.html#general",
-    "title": "Azure CLI ",
-    "section": "General",
-    "text": "General\nGeneral format of the commands:\naz {command group} {command subgroup} {command} {--parameters}\n\n\n\nCommon commands\n \n\n\n\n\nGet version of Azure CLI\nazure --version",
-    "crumbs": [
-      "Cheatsheets",
-      "Cloud and Platform",
-      "Azure CLI {{< fa brands microsoft >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Cloud and Platform/azure_cli.html#security",
-    "href": "cheatsheets/Cloud and Platform/azure_cli.html#security",
-    "title": "Azure CLI ",
-    "section": "Security",
-    "text": "Security\n\n\n\n\n\n\n\nService Principals\n\n\n\n\n\nCreate a service principal\naz ad sp create-for-rbac -n \"api://&lt;spName&gt;\" --role owner --scopes subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroup&gt;\n\n\nGet the object/app ID of your service principal\naz ad sp show --id &lt;appId&gt;\n\n\nAssign access to keyvault secrets to service principal\naz keyvault set-policy -n &lt;keyVaultName&gt; --object-id &lt;objectId&gt; --secret-permissions get list",
-    "crumbs": [
-      "Cheatsheets",
-      "Cloud and Platform",
-      "Azure CLI {{< fa brands microsoft >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/powershell.html",
-    "href": "cheatsheets/CLI Tools/powershell.html",
-    "title": "Powershell ",
-    "section": "",
-    "text": "List contents of directory\n\n\n\n\ndir\n# or\nls\n\nGet current working directory\n\n\n\n\npwd\n\nChange directory\n\n\n\n\ncd\n# or\nchdir\n\nDelete file / folder\n\n\n\n\ndel\n# or\nrm\n# or\nrmdir\n\nCopy file\n\n\n\n\ncp\n# or\ncopy\n\nMove file\n\n\n\n\nmv\n# or\nmove\n\nCreate variables\n\n\n\n\n$myVariable = \"C:\\path\\name\\whatever\"\n\n\n\n\nList all running processes, ordered by cpu-usage\n\n\n\n\nGet-Process |Sort-Object cpu -Descending",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Powershell {{< fa brands windows >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/powershell.html#basics",
-    "href": "cheatsheets/CLI Tools/powershell.html#basics",
-    "title": "Powershell ",
-    "section": "",
-    "text": "List contents of directory\n\n\n\n\ndir\n# or\nls\n\nGet current working directory\n\n\n\n\npwd\n\nChange directory\n\n\n\n\ncd\n# or\nchdir\n\nDelete file / folder\n\n\n\n\ndel\n# or\nrm\n# or\nrmdir\n\nCopy file\n\n\n\n\ncp\n# or\ncopy\n\nMove file\n\n\n\n\nmv\n# or\nmove\n\nCreate variables\n\n\n\n\n$myVariable = \"C:\\path\\name\\whatever\"\n\n\n\n\nList all running processes, ordered by cpu-usage\n\n\n\n\nGet-Process |Sort-Object cpu -Descending",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Powershell {{< fa brands windows >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/powershell.html#python",
-    "href": "cheatsheets/CLI Tools/powershell.html#python",
-    "title": "Powershell ",
-    "section": "Python",
-    "text": "Python\n\nexecute python program\n\n\n\n\npy path\\to\\file.py\n\ninstall package with pip\n\n\n\n\npy -m pip install pandas",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Powershell {{< fa brands windows >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/bash.html",
-    "href": "cheatsheets/CLI Tools/bash.html",
-    "title": "Bash ",
-    "section": "",
-    "text": "Number of files in a provided directory\n\n\n\n\nls [myDirectory] | wc -l \n\n\n\n\nRemove directory tree with all its contents\n\n\n\n\nrm -rf [myDirectory]\n\n\n\n\nShow access permissions of file in directory\n\n\n\n\nls -l [myDirectory]\n\nChange permissions of file\n\n\n\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\nUse commandline arguments\n\n\n\n\nwhile getopts :c:t flag\ndo\n    case \"${flag}\" in\n        c) \n            config=${OPTARG}\n            python3 file_to_be_called.py -c $config\n            ;;\n        t)\n            python3 file_to_be_called.py -t\n            ;;\n        :) \n            echo \"No arguments passed\"\n            exit 1\n            ;;\n        ?) \n          echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n          exit 1\n          ;;\n    esac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag.",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Bash {{< fa terminal >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/bash.html#files",
-    "href": "cheatsheets/CLI Tools/bash.html#files",
-    "title": "Bash ",
-    "section": "",
-    "text": "Number of files in a provided directory\n\n\n\n\nls [myDirectory] | wc -l \n\n\n\n\nRemove directory tree with all its contents\n\n\n\n\nrm -rf [myDirectory]\n\n\n\n\nShow access permissions of file in directory\n\n\n\n\nls -l [myDirectory]\n\nChange permissions of file\n\n\n\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\nUse commandline arguments\n\n\n\n\nwhile getopts :c:t flag\ndo\n    case \"${flag}\" in\n        c) \n            config=${OPTARG}\n            python3 file_to_be_called.py -c $config\n            ;;\n        t)\n            python3 file_to_be_called.py -t\n            ;;\n        :) \n            echo \"No arguments passed\"\n            exit 1\n            ;;\n        ?) \n          echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n          exit 1\n          ;;\n    esac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag.",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Bash {{< fa terminal >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/bash.html#processes",
-    "href": "cheatsheets/CLI Tools/bash.html#processes",
-    "title": "Bash ",
-    "section": "Processes",
-    "text": "Processes\n\nList running processes\n\n\n\n\nhtop\n\n\n\n\n\n\n\nCommands\n\n\n\n\n\nHelp\nhh\n\n\nKill process\nk\n\n\nOrder processes by memory consumption\nShift-MShift-M\n\n\nFilter processes by user\nUU\n\n\nDisplay files used by the selected process\nLL\n\n\nDisplay user threads\nShift-HShift-H\n\n\n\n\nKill process\n\n\n\n\nkill -9 [process-PID]\n\nInfo on resource usage & processes on NVidia graphic cards\n\n\n\n\nnvidia-smi",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Bash {{< fa terminal >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Other/VSCode.html",
-    "href": "cheatsheets/Other/VSCode.html",
-    "title": "VS Code ",
-    "section": "",
-    "text": "Workspace Commands\n \n\n\n\n\nCommand Palette\n\n\n\nSearch & open file\n\n\n\nToggle Sidebar\n\n\n\nSplit editor\n\n\n\nSwitch to editor split\n /  / \n\n\nSwitch to tab\n / \n\n\nClose tab\n\n\n\nReopen closed tab\n\n\n\n\n\n\n\n\n\n\n\nSwitch between Views\n\n\n\n\n\nShow File explorer\n\n\n\nShow Debug View\n\n\n\nShow Find View\n\n\n\nShow Git View\n\n\n\n\n\n\n\n\n\n\n\nCode Navigation\n \n\n\n\n\nGo to line\nCtrl-GCtrl-G / ?kbd:unknown os name: Mac ::\n\n\nGo to beginning / end of line\n \n\n\nGo to beginning / end of word\n \n\n\nGo to matching bracket\n\n\n\nGo to symbol/function\n\n\n\n\n\n\n\n\n\n\n\nCode Editing\n \n\n\n\n\nCopy line\n\n\n\nCut line\n\n\n\nDelete line\n\n\n\nOutdent line\n\n\n\nToggle comment line\n\n\n\nMove line up or down\nOption↑Option↑ / Option↓Option↓\n\n\nCopy line up or down\nOption-shift↑Option-shift↑ / Option-Shift↓Option-Shift↓\n\n\nAdd cursor below/above\n / \n\n\nFind and replace\n\n\n\n\n\n\n\n\n\n\n\nCode selection\n \n\n\n\n\nSelect line\n?kbd:unknown os name: Linux\n\n\nExpand selection\nShift-Option→Shift-Option→",
-    "crumbs": [
-      "Cheatsheets",
-      "Other",
-      "VS Code {{< fa brands microsoft >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Other/Quarto.html",
-    "href": "cheatsheets/Other/Quarto.html",
-    "title": "Quarto",
-    "section": "",
-    "text": "Collapsable callout block\n\n\n\n\n::: {.callout-warning collapse=true appearance=\"simple\"}  \n### Title \nContent\n:::\n\n\n\n\n\n\nWarningTitle\n\n\n\n\n\nContent\n\n\n\n\nPanels\n\n\n\n\n::: {.panel-tabset}\n### Panel heading 1\nContent 1\n\n### Panel heading 2\nContent 2\n:::\n\nPanel heading 1Panel heading 2\n\n\nContent 1\n\n\nContent 2",
-    "crumbs": [
-      "Cheatsheets",
-      "Other",
-      "Quarto"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Other/Quarto.html#blocks",
-    "href": "cheatsheets/Other/Quarto.html#blocks",
-    "title": "Quarto",
-    "section": "",
-    "text": "Collapsable callout block\n\n\n\n\n::: {.callout-warning collapse=true appearance=\"simple\"}  \n### Title \nContent\n:::\n\n\n\n\n\n\nWarningTitle\n\n\n\n\n\nContent\n\n\n\n\nPanels\n\n\n\n\n::: {.panel-tabset}\n### Panel heading 1\nContent 1\n\n### Panel heading 2\nContent 2\n:::\n\nPanel heading 1Panel heading 2\n\n\nContent 1\n\n\nContent 2",
-    "crumbs": [
-      "Cheatsheets",
-      "Other",
-      "Quarto"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Other/Quarto.html#tables",
-    "href": "cheatsheets/Other/Quarto.html#tables",
-    "title": "Quarto",
-    "section": "Tables",
-    "text": "Tables\n\nMarkdown table\n\nHeader col 1  | header col 2\n--------------|-----\ncontent col 1 | content col 2\n\n:  {tbl-colwidths=\"[50,50]\"}\n\n\n\n\n\n\n\nHeader col 1\nheader col 2\n\n\n\n\ncontent col 1\ncontent col 2",
-    "crumbs": [
-      "Cheatsheets",
-      "Other",
-      "Quarto"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Other/Quarto.html#formatting",
-    "href": "cheatsheets/Other/Quarto.html#formatting",
-    "title": "Quarto",
-    "section": "Formatting",
-    "text": "Formatting\n\nFont-color\n\n\n\n\n&lt;font color=\"grey\"&gt;\n&lt;/font&gt;",
-    "crumbs": [
-      "Cheatsheets",
-      "Other",
-      "Quarto"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Other/Quarto.html#keyboard-shortcuts",
-    "href": "cheatsheets/Other/Quarto.html#keyboard-shortcuts",
-    "title": "Quarto",
-    "section": "Keyboard shortcuts",
-    "text": "Keyboard shortcuts\n\nFormat keyboard keys for different operating systems\n\n\n\n\n{{&lt; kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L &gt;}}\n\n\nsimple\n\n\n\n\n{{&lt; kbd Shift-Ctrl-P &gt;}}\n\nFormat arrow keys\n\n\n\n\n{{&lt;kbd &uarr; &gt;}}\n{{&lt;kbd &darr; &gt;}}\n{{&lt;kbd &larr; &gt;}}\n{{&lt;kbd &rarr; &gt;}}\n↑↑ ↓↓ ←← →→",
-    "crumbs": [
-      "Cheatsheets",
-      "Other",
-      "Quarto"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/docker.html",
-    "href": "cheatsheets/CLI Tools/docker.html",
-    "title": "Docker ",
-    "section": "",
-    "text": "The key components are:\nFurther concepts:\nflowchart TD\n    DF[\"📄 Dockerfile\"] --&gt;|\"docker build\"| IMG[\"📦 Image (read-only layers)\"]\n\n    IMG --&gt; STORE[\"💾 Local Image Store\"]\n\n    STORE --&gt;|\"docker push\"| REG[\"🌐 Registry\"]\n    REG --&gt;|\"docker pull\"| STORE\n\n    subgraph RUNTIME[\" \"]\n        direction LR\n        C[\"🚀 Container (shared read-only layers + writable top layer)\"]\n        V[\"📁 Volume (persistent data)\"]\n        V -.-&gt; C\n    end\n\n    STORE --&gt;|\"docker compose up (or docker run)\"| C",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Docker {{< fa brands docker >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/docker.html#dockerfile",
-    "href": "cheatsheets/CLI Tools/docker.html#dockerfile",
-    "title": "Docker ",
-    "section": "Dockerfile",
-    "text": "Dockerfile\n\nBasicStaged\n\n\nDockerfile example:\n1FROM rocker/shiny:latest\n2RUN apt-get update\nRUN apt-get install -qq -y libpq-dev\nRUN install2.r ggplot2 shiny shinydashboard \\\n    shinydashboardPlus \\\n    dplyr RPostgres\n3WORKDIR /srv/shiny-server\n4COPY app/ .\n5ENV R_VERSION=4.4.0\n6EXPOSE 3838\n7ENTRYPOINT [\"R\", \"--vanilla\"]\n8CMD [\"-e\", \"shiny::runApp('/srv/shiny-server', host='0.0.0.0', port=3838)\"]\n9HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || exit 1\n\n1\n\nFROM specifies the base image\n\n2\n\nRUN executes a command in the container\n\n3\n\nWORKDIR sets the working directory for all following instructions (like cd for the build)\n\n4\n\nCOPY copies files from the build context (directory passed to docker build) into the image\n\n5\n\nENV sets environment variables in the container (avoid secrets here; pass them at run time with -e or compose)\n\n6\n\nEXPOSE only documents which ports the container listens on; publishing to the host still requires -p\n\n7\n\nENTRYPOINT defines the executable and fixed arguments when a container starts: here R with --vanilla (no saved workspace or startup profiles). The JSON (exec) form avoids an extra shell.\n\n8\n\nCMD supplies default arguments appended to ENTRYPOINT: here -e and the Shiny expression. Together they start the app directly in R instead of the base image’s Shiny Server. host='0.0.0.0' makes the app reachable through a published port. Without an ENTRYPOINT, CMD would need to specify the executable too.\n\n9\n\nHEALTHCHECK runs a command periodically (here every 30s) and marks the container unhealthy after repeated failures; the status shows up in docker ps. Requires curl in the image. Its CMD is separate from the container’s startup CMD and does not use ENTRYPOINT.\n\n\n\n\nExample of a multi-stage Python Dockerfile: install dependencies in a build stage, then copy only the virtual environment and application into the runtime image. This makes the image smaller (faster deploys, less regisry storage, smaller attack surface).\n# ---- Build stage: install dependencies with uv ----\n1FROM ghcr.io/astral-sh/uv:python3.13-bookworm-slim AS build\n\nENV UV_COMPILE_BYTECODE=1 \\\n2    UV_LINK_MODE=copy\n\nWORKDIR /app\n\nCOPY pyproject.toml uv.lock ./\nRUN --mount=type=cache,target=/root/.cache/uv \\\n3    uv sync --locked --no-install-project --no-dev\n\n# ---- Runtime stage: slim Python, app + venv only ----\n4FROM python:3.13-slim-bookworm\n\nWORKDIR /app\n\n5COPY --from=build /app/.venv /app/.venv\n6COPY --chmod=644 main.py backend.py ui.py ./\n\nRUN mkdir -p /data /opt/app-home \\\n    && chgrp -R 0 /data /opt/app-home \\\n7    && chmod -R g=u /data /opt/app-home\n\n8USER 1001:0\n\n9EXPOSE 3838\n\n10CMD [\"/app/.venv/bin/python\", \"main.py\"]\n\n1\n\nBase image with UV, python13 and slimmed down Debian OS (saves space); AS build lets later instructions copy files from this stage.\n\n2\n\nConfigure uv: UV_COMPILE_BYTECODE=1 compiles installed Python files to bytecode during the build, which can improve startup time. UV_LINK_MODE=copy copies packages from uv’s cache into the virtual environment instead of linking them, keeping the environment independent of the cache mount.\n\n3\n\nInstall dependencies into /app/.venv. --locked to adhere to lock-file. --no-install-project skips installing your own project as a package; --no-dev excludes the dev dependency group. The BuildKit cache mount reuses uv downloads across builds. This cache is not included in the image.\n\n4\n\nStart a fresh runtime stage with Python, using the same Python version and Debian release for compatibility.\n\n5\n\nCopy the installed virtual environment from build, keeping its absolute path unchanged because installed scripts can reference that path.\n\n6\n\nCopy the application scripts from the build context into /app. Permission mode 644 allows owner to read and write, and everyone else to read. The files remain root-owned, but the application user can read them; executable permission is unnecessary because Python runs them.\n\n7\n\nThis command creates two directories (/data and /opt/app-home), sets their group ownership to root (GID 0), and ensures group permissions match user permissions (g=u).\n\n8\n\nRun subsequent instructions and the container’s default command as the default non-root user (UID=1001), 0 sets group to root group (not the same as root permissions).\n\n9\n\nDocument that the application listens on port 3838. Publish it with docker run -p 3838:3838 ... or Compose’s ports; the application must also listen on 0.0.0.0, not just 127.0.0.1.\n\n10\n\nStart main.py with the virtual environment’s Python interpreter. Using its absolute path avoids needing to activate the environment or modify PATH. The JSON (exec) form avoids an extra shell and lets Python receive container signals directly.",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Docker {{< fa brands docker >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/docker.html#basic-docker-commands",
-    "href": "cheatsheets/CLI Tools/docker.html#basic-docker-commands",
-    "title": "Docker ",
-    "section": "Basic Docker Commands",
-    "text": "Basic Docker Commands\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nStart application\ndocker run  &lt;container-name/container-id&gt;\n\n\nList containers\ndocker ps\n\n\nList docker images\ndocker images\n\n\nPull images from registry\ndocker pull\n\n\nKill container\ndocker kill  &lt;container-name/container-id&gt;\n\n\nBuild image based on Dockerfile and tag it with a name\ndocker build &lt;dir-with-docker-file&gt; -t my-service-name\n\n\nExecute command inside container\ndocker exec &lt;command&gt; &lt;container&gt;\n\n\n\n\n\n\n\n\n\nWarningArgument order matters\n\n\n\n\n\nArguments after the image name replace the entire CMD. - docker run -rm -p 3838:3838 my-shiny-app keeps the default CMD. - docker run -rm my-shiny-app -e 'seesionInfo()' replaces the entire CMD but keeps the ENTRYPOINT resulting in e.g. R --vanilla -e 'sessionInfo()'.\n\n\n\n\nUseful Options\nOptions can be combined, e.g. docker run -it --rm &lt;image&gt;:\n\n\n\n\n\n\n\nOption\nDescription\n\n\n\n\n--rm\nAutomatically remove the container when it exits\n\n\n-it\nInteractive mode with a TTY (-i + -t), needed for shells\n\n\n-d\nRun container in the background (detached mode)\n\n\n-v\nMount a volume or host directory into the container (e.g. -v ./app:/srv/shiny-server)\n\n\n-p\nPublish a container port to the host (e.g. -p 3838:3838)\n\n\n-e\nSet environment variables (e.g. -e PASSWORD=secret)\n\n\n--name\nAssign a custom name to the container (e.g. --name shiny_dev)\n\n\n--restart\nSet restart policy (e.g. --restart always)\n\n\n--init\nSafeguard for apps with subprocesses. Run a lightweight init process as PID 1 to forward signals and reap exited orphaned child processes.\n\n\n\nFor Docker Compose equivalents (e.g. container_name for --name, restart for --restart, ports for -p, volumes for -v, environment for -e), see Docker Compose.",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Docker {{< fa brands docker >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/docker.html#interacting-with-containers",
-    "href": "cheatsheets/CLI Tools/docker.html#interacting-with-containers",
-    "title": "Docker ",
-    "section": "Interacting with Containers",
-    "text": "Interacting with Containers\nStart a container and execute bash:\ndocker run -d rocker/shiny\ndocker exec -it rocker/shiny /bin/bash\nStart R directly in a container:\ndocker exec -it rocker/shiny /usr/local/bin/R\n\nContainer Management\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nStop container\ndocker stop &lt;container-name/container-id&gt;\n\n\nRemove container\ndocker rm &lt;container-name/container-id&gt;\n\n\nRemove container and its volumes\ndocker rm -v &lt;container-name/container-id&gt;\n\n\nRestart container\ndocker restart &lt;container-name/container-id&gt;",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Docker {{< fa brands docker >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/docker.html#docker-compose",
-    "href": "cheatsheets/CLI Tools/docker.html#docker-compose",
-    "title": "Docker ",
-    "section": "Docker Compose",
-    "text": "Docker Compose\nDocker Compose is a tool for defining and running multi-container Docker applications using a YAML file.\nExample docker-compose.yml:\nservices:\n  postgres:\n    container_name: db_container\n1    build: ./postgres\n    restart: always\n    environment:\n      - POSTGRES_USER=postgres\n      - POSTGRES_PASSWORD=postgres\n    ports:\n2      - \"5432:5432\"\n    volumes:\n3      - \"./pgdata:/var/lib/postgresql/data\"\n  \n  shiny:\n    container_name: shiny\n    depends_on:\n      - postgres\n    build: ./shiny\n    volumes:\n      - \"./shiny-logs:/var/log/shiny-server\"\n      - \"./shiny-home:/srv/shiny-server\"\n    ports:\n      - \"3838:3838\"\n4    cpus: 1.5\n    mem_limit: 2g\n    memswap_limit: 2g\n5    init: true\n\n1\n\nbuild points to the folder that contains the Dockerfile for this service; compose builds the image from it (alternative: image: to pull a ready-made image from a registry)\n\n2\n\nports maps host:container — traffic on host port 3838 is forwarded to container port 3838\n\n3\n\nvolumes maps host-path:container-path — a folder next to the docker-compose.yml on the host is mounted into the container (equivalent to -v); data survives container removal\n\n4\n\nResource limits the container can use: mem_limit: maximum RAM. memswap_limit: maximum RAM + swap to disk (can avoid OOM errors).\n\n5\n\ninit: true For apps spawning subprocesses: Runs a lightweight init process as PID 1, forwards signals to the application and reaps exited orphaned child processes.\n\n\n\nStarting and Recreating Containers\nStart all services in the background:\ndocker compose up -d\nNormally, up recreates existing containers only when their configuration or image has changed. --force-recreate replaces them even if nothing changed.\n\n\nUseful Compose Options\nThese options belong to docker compose up and can be combined, e.g. docker compose up -d --build:\n\n\n\n\n\n\n\nOption\nDescription\n\n\n\n\n-d, --detach\nRun containers in the background\n\n\n--build\nBuild service images before starting containers; uses the build cache\n\n\n--no-build\nDo not build images; required images must already exist or be pulled\n\n\n--pull always\nPull service images from the registry before running (missing and never are other policies)\n\n\n--force-recreate\nReplace containers even if their configuration and image have not changed\n\n\n--no-recreate\nKeep existing containers even if configuration or images changed; incompatible with --force-recreate\n\n\n--no-deps\nDo not start dependencies of the selected services, e.g. docker compose up -d --no-deps shiny\n\n\n--wait\nWait until services are running or healthy; implies detached mode. Define health checks to verify readiness\n\n\n--wait-timeout 60\nLimit the wait for readiness to 60 seconds\n\n\n\nGlobal options go before the subcommand:\n\n\n\n\n\n\n\nOption\nDescription\n\n\n\n\n-f &lt;file&gt;\nSelect a Compose file; repeat to merge files in order, e.g. docker compose -f compose.yaml -f compose.prod.yaml up -d\n\n\n-p &lt;name&gt;\nSet the project name to separate application stacks\n\n\n--env-file &lt;file&gt;\nLoad variables from referenced xxx.env-file. Variables are only used if referenced in compose file (e.g. name: \"${NAME_FROM_ENV_FILE}\")\n\n\n--profile &lt;name&gt;\nEnable services assigned to a profile, e.g. docker compose --profile debug up -d if these services in the compose file have a field profiles: [\"debug\"]\n\n\n\n\n\nOther Useful Compose Commands\n\n\n\n\n\n\n\nCommand\nDescription\n\n\n\n\ndocker compose ps -a\nShow all service containers, including stopped ones\n\n\ndocker compose logs -f --tail=100\nFollow logs for all services; append a service name to filter\n\n\ndocker compose exec shiny /bin/bash\nOpen a shell in the running shiny service; use /bin/sh if Bash is unavailable\n\n\ndocker compose run --rm shiny &lt;command&gt;\nRun a one-off command in a new container and remove it afterward; service ports are not published by default\n\n\ndocker compose config\nRender and validate the resolved Compose configuration\n\n\ndocker compose pull\nPull service images without replacing running containers; follow with up -d to apply them\n\n\ndocker compose build --no-cache\nBuild images without cached layers; add --pull to also check for newer base images\n\n\ndocker compose stop\nStop containers without removing them\n\n\ndocker compose down\nStop and remove service containers and project networks; keep volumes by default\n\n\ndocker compose down -v\nAlso remove declared named volumes and attached anonymous volumes; deletes their data. External volumes and bind-mounted host files are not removed\n\n\n\nSee the Docker CLI reference for compose up and compose down.",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Docker {{< fa brands docker >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/docker.html#debugging",
-    "href": "cheatsheets/CLI Tools/docker.html#debugging",
-    "title": "Docker ",
-    "section": "Debugging",
-    "text": "Debugging\nApproach container debugging from the outside in:\n\nCheck the container status\nRead container logs\nthen get a shell inside\nOnly inspect networks and volumes once the basics look fine.\n\nIf a container crashes immediately, keep it alive first so there is something to debug.\n\nContainer Status\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nList running containers (with grep filter)\ndocker ps | grep &lt;container-name&gt;\n\n\nShow all containers including stopped ones\ndocker ps -a\n\n\n\n\n\nContainer Logs\nView container logs:\ndocker logs &lt;container-name&gt;\nOptions can be combined, e.g. docker logs -f --tail=100 &lt;container-name&gt;:\n\n\n\n\n\n\n\nOption\nDescription\n\n\n\n\n-f\nFollow the log output live\n\n\n--tail\nShow only the last N lines (e.g. --tail=100)\n\n\n--since\nShow logs since a specific time (e.g. --since 30m)\n\n\n\nPrevent container from crashing for debugging: Add to the service in docker-compose.yml (clear any image entrypoint so sleep runs directly):\nentrypoint: []\ncommand: [\"sleep\", \"infinity\"]\n\n\nInside the Container\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nGet shell access inside container\ndocker exec -it &lt;container-name&gt; /bin/bash\n\n\nCheck container environment variables\ndocker exec &lt;container-name&gt; env\n\n\nCheck if container can reach internet\ndocker exec &lt;container-name&gt; ping 8.8.8.8\n\n\n\n\n\nContainer Information\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nShow detailed container info\ndocker inspect &lt;container-name&gt;\n\n\nShow container resource usage\ndocker stats &lt;container-name&gt;\n\n\nShow processes running in container\ndocker top &lt;container-name&gt;\n\n\n\n\n\nNetwork Debugging\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nCheck port mappings\nnetstat -tulpn | grep &lt;port-number&gt;\n\n\nTest container connectivity\ncurl -v http://localhost:&lt;port&gt;\n\n\nList all Docker networks\ndocker network ls\n\n\nInspect network settings\ndocker network inspect &lt;network-name&gt;\n\n\n\n\n\nVolume Inspection\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nList volumes\ndocker volume ls\n\n\nInspect volume\ndocker volume inspect &lt;volume-name&gt;\n\n\nCheck volume mount points\ndocker inspect -f '{{ .Mounts }}' &lt;container-name&gt;",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Docker {{< fa brands docker >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/git.html",
-    "href": "cheatsheets/CLI Tools/git.html",
-    "title": "Git ",
-    "section": "",
-    "text": "Description\nCommand\n\n\n\n\nSet username (for your commits)\ngit config --global user.name \"myname\"\n\n\nSet email (for your commits)\ngit config --global user.email \"my@email.com\"\n\n\nEnable CLI color codes\ngit config --global color.ui auto",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Git {{< fa brands git-alt >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/git.html#configuration",
-    "href": "cheatsheets/CLI Tools/git.html#configuration",
-    "title": "Git ",
-    "section": "",
-    "text": "Description\nCommand\n\n\n\n\nSet username (for your commits)\ngit config --global user.name \"myname\"\n\n\nSet email (for your commits)\ngit config --global user.email \"my@email.com\"\n\n\nEnable CLI color codes\ngit config --global color.ui auto",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Git {{< fa brands git-alt >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/git.html#new-repositories",
-    "href": "cheatsheets/CLI Tools/git.html#new-repositories",
-    "title": "Git ",
-    "section": "New repositories",
-    "text": "New repositories\n\nDownload git repo from server\n\n\n\n\ngit clone url.com",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Git {{< fa brands git-alt >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/git.html#getting-started",
-    "href": "cheatsheets/CLI Tools/git.html#getting-started",
-    "title": "Git ",
-    "section": "Getting started",
-    "text": "Getting started\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nInitialize a new git repository\ngit init my-repo\n\n\nGet the status of changes (staged, unstaged, untracked)\ngit status\n\n\nTrack files to staging\ngit add .\n\n\nRemove files from staging\ngit reset &lt;file&gt;\n\n\nCommit staged files\ngit commit -m \"informative commit message\"\n\n\nDiscard changes in a file (!: Your changes will be lost)\ngit restore &lt;file&gt;\n\n\nShow commit history\ngit log\n\n\nGo back to a commit\ngit checkout &lt;commit hash&gt;\n\n\nGo back to the latest commit\ngit checkout my-branch-name\n\n\n\n\nWorking with remote repositories\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nClone a remote repository\ngit clone url.com\n\n\nPush changes to remote repository\ngit push\n\n\nPull changes from remote repository\ngit pull\n\n\n\n\n\nWorking with Branches\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nCreate a new branch\ngit branch my-branch-name\n\n\nSwitch to a branch\ngit checkout my-branch-name\n\n\nCreate and switch to a new branch\ngit checkout -b my-branch-name or git switch my-branch-name\n\n\nDelete a branch\ngit branch -d my-branch-name\n\n\nList all branches\ngit branch\n\n\nMerge a branch into the current branch\ngit merge my-branch-name",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Git {{< fa brands git-alt >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/git.html#workflows",
-    "href": "cheatsheets/CLI Tools/git.html#workflows",
-    "title": "Git ",
-    "section": "Workflows",
-    "text": "Workflows\n\nFetch newest changes of your branch from remote\n\nGet changes from remote repository\n\n:\ngit fetch\n\nCheck what changed\n\n:\ngit diff my-branch-name origin/my-branch-name\n\nMerge changes from remote branch into your branch\n\n:\ngit pull\n\n\nAdd changes from different branch to your branch\n\nGet changes from remote repository\n\n:\ngit fetch\n\nCheck differences to branch you want merge into yours\n\n:\ngit diff feature1..dev\n\nMerge changes from remote branch into your branch\n\n:\ngit merge origin dev\n\nCheck what files are(n’t) staged for commit\n\n:\ngit status\n\nStage all files that are tracked (not in .gitignore)\n\n:\ngit add .\nIf necessary: Unstage all files (or a specific file) that are staged\n:\n\n```bash\ngit reset [specific-file]\n```\n\nCommit all staged files (add to versioning history)\n\n:\ngit commit -m \"[ticket-id + what you changed]\"\n\nLoad commits into remote git repository\n\n:\ngit push\n\n\nManaging changes\n\nSee changes due to last pull request\n\n\n\n\ngit log -p -2",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Git {{< fa brands git-alt >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/git.html#pull-changes-into-devtestmaster-branch",
-    "href": "cheatsheets/CLI Tools/git.html#pull-changes-into-devtestmaster-branch",
-    "title": "Git ",
-    "section": "Pull changes into dev/test/master branch",
-    "text": "Pull changes into dev/test/master branch\n\nPull changes into dev branch (and add your changes at the end)\n\n\n\n\ngit fetch\ngit checkout dev\ngit pull --rebase feature1branch \n\nPull only specific commits into your branch\n\n\n\n\ngit cherry-pick [commit-SHA]",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Git {{< fa brands git-alt >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/git.html#undo-and-rollback",
-    "href": "cheatsheets/CLI Tools/git.html#undo-and-rollback",
-    "title": "Git ",
-    "section": "Undo and Rollback",
-    "text": "Undo and Rollback\n\nRollback the last commit\n\n\n\n\ngit reset head~1\nTo provide the files from the last commit: git reset --soft HEAD~1\n\nRollback to a specific commit\n\n\n\n\ngit reset [commit-SHA]\nYou can still see the changes from your HEAD in your files. To make the reset materialize, you need to discard these unstaged changes in git.\nSince you are now several commits behind the remote, you have to force push the changes: git push -f origin [myBranchyBranch].\nTo create a new commit to undo earlier commits, use git revert.\n\nTravel back to a specific commit\n\n\n\n\ngit checkout [commit-SHA]\n\nDelete sensitive data from history:\n\ndocs.github.com",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Git {{< fa brands git-alt >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/CLI Tools/git.html#branches",
-    "href": "cheatsheets/CLI Tools/git.html#branches",
-    "title": "Git ",
-    "section": "Branches",
-    "text": "Branches\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nList all branches and show which one you are on\ngit branch -a\n\n\nCreate new branch and check it out\ngit checkout -b [branch-name]\n\n\nChange to a specific branch\ngit checkout [specific-branch]\n\n\nDelete a specific branch\ngit branch -d [specific-branch]\n\n\nRename the current branch\ngit branch -m myNewBranch\n\n\nShow commit history with branch dependencies\ngit log --graph --oneline",
-    "crumbs": [
-      "Cheatsheets",
-      "CLI Tools",
-      "Git {{< fa brands git-alt >}}"
-    ]
-  },
-  {
     "objectID": "cheatsheets/Cloud and Platform/ansible.html",
     "href": "cheatsheets/Cloud and Platform/ansible.html",
     "title": "Ansible",
@@ -839,6 +479,366 @@
       "Cheatsheets",
       "Cloud and Platform",
       "Ansible"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Other/Quarto.html",
+    "href": "cheatsheets/Other/Quarto.html",
+    "title": "Quarto",
+    "section": "",
+    "text": "Collapsable callout block\n\n\n\n\n::: {.callout-warning collapse=true appearance=\"simple\"}  \n### Title \nContent\n:::\n\n\n\n\n\n\nWarningTitle\n\n\n\n\n\nContent\n\n\n\n\nPanels\n\n\n\n\n::: {.panel-tabset}\n### Panel heading 1\nContent 1\n\n### Panel heading 2\nContent 2\n:::\n\nPanel heading 1Panel heading 2\n\n\nContent 1\n\n\nContent 2",
+    "crumbs": [
+      "Cheatsheets",
+      "Other",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Other/Quarto.html#blocks",
+    "href": "cheatsheets/Other/Quarto.html#blocks",
+    "title": "Quarto",
+    "section": "",
+    "text": "Collapsable callout block\n\n\n\n\n::: {.callout-warning collapse=true appearance=\"simple\"}  \n### Title \nContent\n:::\n\n\n\n\n\n\nWarningTitle\n\n\n\n\n\nContent\n\n\n\n\nPanels\n\n\n\n\n::: {.panel-tabset}\n### Panel heading 1\nContent 1\n\n### Panel heading 2\nContent 2\n:::\n\nPanel heading 1Panel heading 2\n\n\nContent 1\n\n\nContent 2",
+    "crumbs": [
+      "Cheatsheets",
+      "Other",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Other/Quarto.html#tables",
+    "href": "cheatsheets/Other/Quarto.html#tables",
+    "title": "Quarto",
+    "section": "Tables",
+    "text": "Tables\n\nMarkdown table\n\nHeader col 1  | header col 2\n--------------|-----\ncontent col 1 | content col 2\n\n:  {tbl-colwidths=\"[50,50]\"}\n\n\n\n\n\n\n\nHeader col 1\nheader col 2\n\n\n\n\ncontent col 1\ncontent col 2",
+    "crumbs": [
+      "Cheatsheets",
+      "Other",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Other/Quarto.html#formatting",
+    "href": "cheatsheets/Other/Quarto.html#formatting",
+    "title": "Quarto",
+    "section": "Formatting",
+    "text": "Formatting\n\nFont-color\n\n\n\n\n&lt;font color=\"grey\"&gt;\n&lt;/font&gt;",
+    "crumbs": [
+      "Cheatsheets",
+      "Other",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Other/Quarto.html#keyboard-shortcuts",
+    "href": "cheatsheets/Other/Quarto.html#keyboard-shortcuts",
+    "title": "Quarto",
+    "section": "Keyboard shortcuts",
+    "text": "Keyboard shortcuts\n\nFormat keyboard keys for different operating systems\n\n\n\n\n{{&lt; kbd mac=Shift-Command-O win=Shift-Control-O linux=Shift-Ctrl-L &gt;}}\n\n\nsimple\n\n\n\n\n{{&lt; kbd Shift-Ctrl-P &gt;}}\n\nFormat arrow keys\n\n\n\n\n{{&lt;kbd &uarr; &gt;}}\n{{&lt;kbd &darr; &gt;}}\n{{&lt;kbd &larr; &gt;}}\n{{&lt;kbd &rarr; &gt;}}\n↑↑ ↓↓ ←← →→",
+    "crumbs": [
+      "Cheatsheets",
+      "Other",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI/powershell.html",
+    "href": "cheatsheets/CLI/powershell.html",
+    "title": "Powershell ",
+    "section": "",
+    "text": "List contents of directory\n\n\n\n\ndir\n# or\nls\n\nGet current working directory\n\n\n\n\npwd\n\nChange directory\n\n\n\n\ncd\n# or\nchdir\n\nDelete file / folder\n\n\n\n\ndel\n# or\nrm\n# or\nrmdir\n\nCopy file\n\n\n\n\ncp\n# or\ncopy\n\nMove file\n\n\n\n\nmv\n# or\nmove\n\nCreate variables\n\n\n\n\n$myVariable = \"C:\\path\\name\\whatever\"\n\n\n\n\nList all running processes, ordered by cpu-usage\n\n\n\n\nGet-Process |Sort-Object cpu -Descending",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI",
+      "Powershell {{< fa brands windows >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI/powershell.html#basics",
+    "href": "cheatsheets/CLI/powershell.html#basics",
+    "title": "Powershell ",
+    "section": "",
+    "text": "List contents of directory\n\n\n\n\ndir\n# or\nls\n\nGet current working directory\n\n\n\n\npwd\n\nChange directory\n\n\n\n\ncd\n# or\nchdir\n\nDelete file / folder\n\n\n\n\ndel\n# or\nrm\n# or\nrmdir\n\nCopy file\n\n\n\n\ncp\n# or\ncopy\n\nMove file\n\n\n\n\nmv\n# or\nmove\n\nCreate variables\n\n\n\n\n$myVariable = \"C:\\path\\name\\whatever\"\n\n\n\n\nList all running processes, ordered by cpu-usage\n\n\n\n\nGet-Process |Sort-Object cpu -Descending",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI",
+      "Powershell {{< fa brands windows >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI/powershell.html#python",
+    "href": "cheatsheets/CLI/powershell.html#python",
+    "title": "Powershell ",
+    "section": "Python",
+    "text": "Python\n\nexecute python program\n\n\n\n\npy path\\to\\file.py\n\ninstall package with pip\n\n\n\n\npy -m pip install pandas",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI",
+      "Powershell {{< fa brands windows >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI/bash.html",
+    "href": "cheatsheets/CLI/bash.html",
+    "title": "Bash ",
+    "section": "",
+    "text": "Number of files in a provided directory\n\n\n\n\nls [myDirectory] | wc -l \n\n\n\n\nRemove directory tree with all its contents\n\n\n\n\nrm -rf [myDirectory]\n\n\n\n\nShow access permissions of file in directory\n\n\n\n\nls -l [myDirectory]\n\nChange permissions of file\n\n\n\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\nUse commandline arguments\n\n\n\n\nwhile getopts :c:t flag\ndo\n    case \"${flag}\" in\n        c) \n            config=${OPTARG}\n            python3 file_to_be_called.py -c $config\n            ;;\n        t)\n            python3 file_to_be_called.py -t\n            ;;\n        :) \n            echo \"No arguments passed\"\n            exit 1\n            ;;\n        ?) \n          echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n          exit 1\n          ;;\n    esac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag.",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI",
+      "Bash {{< fa terminal >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI/bash.html#files",
+    "href": "cheatsheets/CLI/bash.html#files",
+    "title": "Bash ",
+    "section": "",
+    "text": "Number of files in a provided directory\n\n\n\n\nls [myDirectory] | wc -l \n\n\n\n\nRemove directory tree with all its contents\n\n\n\n\nrm -rf [myDirectory]\n\n\n\n\nShow access permissions of file in directory\n\n\n\n\nls -l [myDirectory]\n\nChange permissions of file\n\n\n\n\nchmod u=rwx,g=rwx,o=rwx [myFile]\nExplanation\n\n\n\n\nUse commandline arguments\n\n\n\n\nwhile getopts :c:t flag\ndo\n    case \"${flag}\" in\n        c) \n            config=${OPTARG}\n            python3 file_to_be_called.py -c $config\n            ;;\n        t)\n            python3 file_to_be_called.py -t\n            ;;\n        :) \n            echo \"No arguments passed\"\n            exit 1\n            ;;\n        ?) \n          echo \"Please call the script like this: bash_script.sh [-c config_file]\"\n          exit 1\n          ;;\n    esac\ndone\nThe : before the flag-character c lets you handle errors yourself (e.g. no arguments passed and wrong arguments passed). The : after the flag-character c indicates that a value is required after the flag.",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI",
+      "Bash {{< fa terminal >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI/bash.html#processes",
+    "href": "cheatsheets/CLI/bash.html#processes",
+    "title": "Bash ",
+    "section": "Processes",
+    "text": "Processes\n\nList running processes\n\n\n\n\nhtop\n\n\n\n\n\n\n\nCommands\n\n\n\n\n\nHelp\nhh\n\n\nKill process\nk\n\n\nOrder processes by memory consumption\nShift-MShift-M\n\n\nFilter processes by user\nUU\n\n\nDisplay files used by the selected process\nLL\n\n\nDisplay user threads\nShift-HShift-H\n\n\n\n\nKill process\n\n\n\n\nkill -9 [process-PID]\n\nInfo on resource usage & processes on NVidia graphic cards\n\n\n\n\nnvidia-smi",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI",
+      "Bash {{< fa terminal >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI/git.html",
+    "href": "cheatsheets/CLI/git.html",
+    "title": "Git ",
+    "section": "",
+    "text": "Description\nCommand\n\n\n\n\nSet username (for your commits)\ngit config --global user.name \"myname\"\n\n\nSet email (for your commits)\ngit config --global user.email \"my@email.com\"\n\n\nEnable CLI color codes\ngit config --global color.ui auto",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI",
+      "Git {{< fa brands git-alt >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI/git.html#configuration",
+    "href": "cheatsheets/CLI/git.html#configuration",
+    "title": "Git ",
+    "section": "",
+    "text": "Description\nCommand\n\n\n\n\nSet username (for your commits)\ngit config --global user.name \"myname\"\n\n\nSet email (for your commits)\ngit config --global user.email \"my@email.com\"\n\n\nEnable CLI color codes\ngit config --global color.ui auto",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI",
+      "Git {{< fa brands git-alt >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI/git.html#new-repositories",
+    "href": "cheatsheets/CLI/git.html#new-repositories",
+    "title": "Git ",
+    "section": "New repositories",
+    "text": "New repositories\n\nDownload git repo from server\n\n\n\n\ngit clone url.com",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI",
+      "Git {{< fa brands git-alt >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI/git.html#getting-started",
+    "href": "cheatsheets/CLI/git.html#getting-started",
+    "title": "Git ",
+    "section": "Getting started",
+    "text": "Getting started\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nInitialize a new git repository\ngit init my-repo\n\n\nGet the status of changes (staged, unstaged, untracked)\ngit status\n\n\nTrack files to staging\ngit add .\n\n\nRemove files from staging\ngit reset &lt;file&gt;\n\n\nCommit staged files\ngit commit -m \"informative commit message\"\n\n\nDiscard changes in a file (!: Your changes will be lost)\ngit restore &lt;file&gt;\n\n\nShow commit history\ngit log\n\n\nGo back to a commit\ngit checkout &lt;commit hash&gt;\n\n\nGo back to the latest commit\ngit checkout my-branch-name\n\n\n\n\nWorking with remote repositories\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nClone a remote repository\ngit clone url.com\n\n\nPush changes to remote repository\ngit push\n\n\nPull changes from remote repository\ngit pull\n\n\n\n\n\nWorking with Branches\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nCreate a new branch\ngit branch my-branch-name\n\n\nSwitch to a branch\ngit checkout my-branch-name\n\n\nCreate and switch to a new branch\ngit checkout -b my-branch-name or git switch my-branch-name\n\n\nDelete a branch\ngit branch -d my-branch-name\n\n\nList all branches\ngit branch\n\n\nMerge a branch into the current branch\ngit merge my-branch-name",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI",
+      "Git {{< fa brands git-alt >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI/git.html#workflows",
+    "href": "cheatsheets/CLI/git.html#workflows",
+    "title": "Git ",
+    "section": "Workflows",
+    "text": "Workflows\n\nFetch newest changes of your branch from remote\n\nGet changes from remote repository\n\n:\ngit fetch\n\nCheck what changed\n\n:\ngit diff my-branch-name origin/my-branch-name\n\nMerge changes from remote branch into your branch\n\n:\ngit pull\n\n\nAdd changes from different branch to your branch\n\nGet changes from remote repository\n\n:\ngit fetch\n\nCheck differences to branch you want merge into yours\n\n:\ngit diff feature1..dev\n\nMerge changes from remote branch into your branch\n\n:\ngit merge origin dev\n\nCheck what files are(n’t) staged for commit\n\n:\ngit status\n\nStage all files that are tracked (not in .gitignore)\n\n:\ngit add .\nIf necessary: Unstage all files (or a specific file) that are staged\n:\n\n```bash\ngit reset [specific-file]\n```\n\nCommit all staged files (add to versioning history)\n\n:\ngit commit -m \"[ticket-id + what you changed]\"\n\nLoad commits into remote git repository\n\n:\ngit push\n\n\nManaging changes\n\nSee changes due to last pull request\n\n\n\n\ngit log -p -2",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI",
+      "Git {{< fa brands git-alt >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI/git.html#pull-changes-into-devtestmaster-branch",
+    "href": "cheatsheets/CLI/git.html#pull-changes-into-devtestmaster-branch",
+    "title": "Git ",
+    "section": "Pull changes into dev/test/master branch",
+    "text": "Pull changes into dev/test/master branch\n\nPull changes into dev branch (and add your changes at the end)\n\n\n\n\ngit fetch\ngit checkout dev\ngit pull --rebase feature1branch \n\nPull only specific commits into your branch\n\n\n\n\ngit cherry-pick [commit-SHA]",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI",
+      "Git {{< fa brands git-alt >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI/git.html#undo-and-rollback",
+    "href": "cheatsheets/CLI/git.html#undo-and-rollback",
+    "title": "Git ",
+    "section": "Undo and Rollback",
+    "text": "Undo and Rollback\n\nRollback the last commit\n\n\n\n\ngit reset head~1\nTo provide the files from the last commit: git reset --soft HEAD~1\n\nRollback to a specific commit\n\n\n\n\ngit reset [commit-SHA]\nYou can still see the changes from your HEAD in your files. To make the reset materialize, you need to discard these unstaged changes in git.\nSince you are now several commits behind the remote, you have to force push the changes: git push -f origin [myBranchyBranch].\nTo create a new commit to undo earlier commits, use git revert.\n\nTravel back to a specific commit\n\n\n\n\ngit checkout [commit-SHA]\n\nDelete sensitive data from history:\n\ndocs.github.com",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI",
+      "Git {{< fa brands git-alt >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/CLI/git.html#branches",
+    "href": "cheatsheets/CLI/git.html#branches",
+    "title": "Git ",
+    "section": "Branches",
+    "text": "Branches\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nList all branches and show which one you are on\ngit branch -a\n\n\nCreate new branch and check it out\ngit checkout -b [branch-name]\n\n\nChange to a specific branch\ngit checkout [specific-branch]\n\n\nDelete a specific branch\ngit branch -d [specific-branch]\n\n\nRename the current branch\ngit branch -m myNewBranch\n\n\nShow commit history with branch dependencies\ngit log --graph --oneline",
+    "crumbs": [
+      "Cheatsheets",
+      "CLI",
+      "Git {{< fa brands git-alt >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Other/VSCode.html",
+    "href": "cheatsheets/Other/VSCode.html",
+    "title": "VS Code ",
+    "section": "",
+    "text": "Workspace Commands\n \n\n\n\n\nCommand Palette\n\n\n\nSearch & open file\n\n\n\nToggle Sidebar\n\n\n\nSplit editor\n\n\n\nSwitch to editor split\n /  / \n\n\nSwitch to tab\n / \n\n\nClose tab\n\n\n\nReopen closed tab\n\n\n\n\n\n\n\n\n\n\n\nSwitch between Views\n\n\n\n\n\nShow File explorer\n\n\n\nShow Debug View\n\n\n\nShow Find View\n\n\n\nShow Git View\n\n\n\n\n\n\n\n\n\n\n\nCode Navigation\n \n\n\n\n\nGo to line\nCtrl-GCtrl-G / ?kbd:unknown os name: Mac ::\n\n\nGo to beginning / end of line\n \n\n\nGo to beginning / end of word\n \n\n\nGo to matching bracket\n\n\n\nGo to symbol/function\n\n\n\n\n\n\n\n\n\n\n\nCode Editing\n \n\n\n\n\nCopy line\n\n\n\nCut line\n\n\n\nDelete line\n\n\n\nOutdent line\n\n\n\nToggle comment line\n\n\n\nMove line up or down\nOption↑Option↑ / Option↓Option↓\n\n\nCopy line up or down\nOption-shift↑Option-shift↑ / Option-Shift↓Option-Shift↓\n\n\nAdd cursor below/above\n / \n\n\nFind and replace\n\n\n\n\n\n\n\n\n\n\n\nCode selection\n \n\n\n\n\nSelect line\n?kbd:unknown os name: Linux\n\n\nExpand selection\nShift-Option→Shift-Option→",
+    "crumbs": [
+      "Cheatsheets",
+      "Other",
+      "VS Code {{< fa brands microsoft >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Cloud and Platform/azure_cli.html",
+    "href": "cheatsheets/Cloud and Platform/azure_cli.html",
+    "title": "Azure CLI ",
+    "section": "",
+    "text": "Instrallation instructions can be found here",
+    "crumbs": [
+      "Cheatsheets",
+      "Cloud and Platform",
+      "Azure CLI {{< fa brands microsoft >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Cloud and Platform/azure_cli.html#installation-instructions",
+    "href": "cheatsheets/Cloud and Platform/azure_cli.html#installation-instructions",
+    "title": "Azure CLI ",
+    "section": "",
+    "text": "Instrallation instructions can be found here",
+    "crumbs": [
+      "Cheatsheets",
+      "Cloud and Platform",
+      "Azure CLI {{< fa brands microsoft >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Cloud and Platform/azure_cli.html#general",
+    "href": "cheatsheets/Cloud and Platform/azure_cli.html#general",
+    "title": "Azure CLI ",
+    "section": "General",
+    "text": "General\nGeneral format of the commands:\naz {command group} {command subgroup} {command} {--parameters}\n\n\n\nCommon commands\n \n\n\n\n\nGet version of Azure CLI\nazure --version",
+    "crumbs": [
+      "Cheatsheets",
+      "Cloud and Platform",
+      "Azure CLI {{< fa brands microsoft >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Cloud and Platform/azure_cli.html#security",
+    "href": "cheatsheets/Cloud and Platform/azure_cli.html#security",
+    "title": "Azure CLI ",
+    "section": "Security",
+    "text": "Security\n\n\n\n\n\n\n\nService Principals\n\n\n\n\n\nCreate a service principal\naz ad sp create-for-rbac -n \"api://&lt;spName&gt;\" --role owner --scopes subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroup&gt;\n\n\nGet the object/app ID of your service principal\naz ad sp show --id &lt;appId&gt;\n\n\nAssign access to keyvault secrets to service principal\naz keyvault set-policy -n &lt;keyVaultName&gt; --object-id &lt;objectId&gt; --secret-permissions get list",
+    "crumbs": [
+      "Cheatsheets",
+      "Cloud and Platform",
+      "Azure CLI {{< fa brands microsoft >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Cloud and Platform/docker.html",
+    "href": "cheatsheets/Cloud and Platform/docker.html",
+    "title": "Docker ",
+    "section": "",
+    "text": "The key components are:\nFurther concepts:\nflowchart TD\n    DF[\"📄 Dockerfile\"] --&gt;|\"docker build\"| IMG[\"📦 Image (read-only layers)\"]\n\n    IMG --&gt; STORE[\"💾 Local Image Store\"]\n\n    STORE --&gt;|\"docker push\"| REG[\"🌐 Registry\"]\n    REG --&gt;|\"docker pull\"| STORE\n\n    subgraph RUNTIME[\" \"]\n        direction LR\n        C[\"🚀 Container (shared read-only layers + writable top layer)\"]\n        V[\"📁 Volume (persistent data)\"]\n        V -.-&gt; C\n    end\n\n    STORE --&gt;|\"docker compose up (or docker run)\"| C",
+    "crumbs": [
+      "Cheatsheets",
+      "Cloud and Platform",
+      "Docker {{< fa brands docker >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Cloud and Platform/docker.html#dockerfile",
+    "href": "cheatsheets/Cloud and Platform/docker.html#dockerfile",
+    "title": "Docker ",
+    "section": "Dockerfile",
+    "text": "Dockerfile\n\nBasicStaged\n\n\nDockerfile example:\n1FROM rocker/shiny:latest\n2RUN apt-get update\nRUN apt-get install -qq -y libpq-dev\nRUN install2.r ggplot2 shiny shinydashboard \\\n    shinydashboardPlus \\\n    dplyr RPostgres\n3WORKDIR /srv/shiny-server\n4COPY app/ .\n5ENV R_VERSION=4.4.0\n6EXPOSE 3838\n7ENTRYPOINT [\"R\", \"--vanilla\"]\n8CMD [\"-e\", \"shiny::runApp('/srv/shiny-server', host='0.0.0.0', port=3838)\"]\n9HEALTHCHECK --interval=30s --timeout=3s CMD curl -f http://localhost:3838/ || exit 1\n\n1\n\nFROM specifies the base image\n\n2\n\nRUN executes a command in the container\n\n3\n\nWORKDIR sets the working directory for all following instructions (like cd for the build)\n\n4\n\nCOPY copies files from the build context (directory passed to docker build) into the image\n\n5\n\nENV sets environment variables in the container (avoid secrets here; pass them at run time with -e or compose)\n\n6\n\nEXPOSE only documents which ports the container listens on; publishing to the host still requires -p\n\n7\n\nENTRYPOINT defines the executable and fixed arguments when a container starts: here R with --vanilla (no saved workspace or startup profiles). The JSON (exec) form avoids an extra shell.\n\n8\n\nCMD supplies default arguments appended to ENTRYPOINT: here -e and the Shiny expression. Together they start the app directly in R instead of the base image’s Shiny Server. host='0.0.0.0' makes the app reachable through a published port. Without an ENTRYPOINT, CMD would need to specify the executable too.\n\n9\n\nHEALTHCHECK runs a command periodically (here every 30s) and marks the container unhealthy after repeated failures; the status shows up in docker ps. Requires curl in the image. Its CMD is separate from the container’s startup CMD and does not use ENTRYPOINT.\n\n\n\n\nExample of a multi-stage Python Dockerfile: install dependencies in a build stage, then copy only the virtual environment and application into the runtime image. This makes the image smaller (faster deploys, less regisry storage, smaller attack surface).\n# ---- Build stage: install dependencies with uv ----\n1FROM ghcr.io/astral-sh/uv:python3.13-bookworm-slim AS build\n\nENV UV_COMPILE_BYTECODE=1 \\\n2    UV_LINK_MODE=copy\n\nWORKDIR /app\n\nCOPY pyproject.toml uv.lock ./\nRUN --mount=type=cache,target=/root/.cache/uv \\\n3    uv sync --locked --no-install-project --no-dev\n\n# ---- Runtime stage: slim Python, app + venv only ----\n4FROM python:3.13-slim-bookworm\n\nWORKDIR /app\n\n5COPY --from=build /app/.venv /app/.venv\n6COPY --chmod=644 main.py backend.py ui.py ./\n\nRUN mkdir -p /data /opt/app-home \\\n    && chgrp -R 0 /data /opt/app-home \\\n7    && chmod -R g=u /data /opt/app-home\n\n8USER 1001:0\n\n9EXPOSE 3838\n\n10CMD [\"/app/.venv/bin/python\", \"main.py\"]\n\n1\n\nBase image with UV, python13 and slimmed down Debian OS (saves space); AS build lets later instructions copy files from this stage.\n\n2\n\nConfigure uv: UV_COMPILE_BYTECODE=1 compiles installed Python files to bytecode during the build, which can improve startup time. UV_LINK_MODE=copy copies packages from uv’s cache into the virtual environment instead of linking them, keeping the environment independent of the cache mount.\n\n3\n\nInstall dependencies into /app/.venv. --locked to adhere to lock-file. --no-install-project skips installing your own project as a package; --no-dev excludes the dev dependency group. The BuildKit cache mount reuses uv downloads across builds. This cache is not included in the image.\n\n4\n\nStart a fresh runtime stage with Python, using the same Python version and Debian release for compatibility.\n\n5\n\nCopy the installed virtual environment from build, keeping its absolute path unchanged because installed scripts can reference that path.\n\n6\n\nCopy the application scripts from the build context into /app. Permission mode 644 allows owner to read and write, and everyone else to read. The files remain root-owned, but the application user can read them; executable permission is unnecessary because Python runs them.\n\n7\n\nThis command creates two directories (/data and /opt/app-home), sets their group ownership to root (GID 0), and ensures group permissions match user permissions (g=u).\n\n8\n\nRun subsequent instructions and the container’s default command as the default non-root user (UID=1001), 0 sets group to root group (not the same as root permissions).\n\n9\n\nDocument that the application listens on port 3838. Publish it with docker run -p 3838:3838 ... or Compose’s ports; the application must also listen on 0.0.0.0, not just 127.0.0.1.\n\n10\n\nStart main.py with the virtual environment’s Python interpreter. Using its absolute path avoids needing to activate the environment or modify PATH. The JSON (exec) form avoids an extra shell and lets Python receive container signals directly.",
+    "crumbs": [
+      "Cheatsheets",
+      "Cloud and Platform",
+      "Docker {{< fa brands docker >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Cloud and Platform/docker.html#basic-docker-commands",
+    "href": "cheatsheets/Cloud and Platform/docker.html#basic-docker-commands",
+    "title": "Docker ",
+    "section": "Basic Docker Commands",
+    "text": "Basic Docker Commands\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nStart application\ndocker run  &lt;container-name/container-id&gt;\n\n\nList containers\ndocker ps\n\n\nList docker images\ndocker images\n\n\nPull images from registry\ndocker pull\n\n\nKill container\ndocker kill  &lt;container-name/container-id&gt;\n\n\nBuild image based on Dockerfile and tag it with a name\ndocker build &lt;dir-with-docker-file&gt; -t my-service-name\n\n\nExecute command inside container\ndocker exec &lt;command&gt; &lt;container&gt;\n\n\n\n\n\n\n\n\n\nWarningArgument order matters\n\n\n\n\n\nArguments after the image name replace the entire CMD. - docker run -rm -p 3838:3838 my-shiny-app keeps the default CMD. - docker run -rm my-shiny-app -e 'seesionInfo()' replaces the entire CMD but keeps the ENTRYPOINT resulting in e.g. R --vanilla -e 'sessionInfo()'.\n\n\n\n\nUseful Options\nOptions can be combined, e.g. docker run -it --rm &lt;image&gt;:\n\n\n\n\n\n\n\nOption\nDescription\n\n\n\n\n--rm\nAutomatically remove the container when it exits\n\n\n-it\nInteractive mode with a TTY (-i + -t), needed for shells\n\n\n-d\nRun container in the background (detached mode)\n\n\n-v\nMount a volume or host directory into the container (e.g. -v ./app:/srv/shiny-server)\n\n\n-p\nPublish a container port to the host (e.g. -p 3838:3838)\n\n\n-e\nSet environment variables (e.g. -e PASSWORD=secret)\n\n\n--name\nAssign a custom name to the container (e.g. --name shiny_dev)\n\n\n--restart\nSet restart policy (e.g. --restart always)\n\n\n--init\nSafeguard for apps with subprocesses. Run a lightweight init process as PID 1 to forward signals and reap exited orphaned child processes.\n\n\n\nFor Docker Compose equivalents (e.g. container_name for --name, restart for --restart, ports for -p, volumes for -v, environment for -e), see Docker Compose.",
+    "crumbs": [
+      "Cheatsheets",
+      "Cloud and Platform",
+      "Docker {{< fa brands docker >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Cloud and Platform/docker.html#interacting-with-containers",
+    "href": "cheatsheets/Cloud and Platform/docker.html#interacting-with-containers",
+    "title": "Docker ",
+    "section": "Interacting with Containers",
+    "text": "Interacting with Containers\nStart a container and execute bash:\ndocker run -d rocker/shiny\ndocker exec -it rocker/shiny /bin/bash\nStart R directly in a container:\ndocker exec -it rocker/shiny /usr/local/bin/R\n\nContainer Management\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nStop container\ndocker stop &lt;container-name/container-id&gt;\n\n\nRemove container\ndocker rm &lt;container-name/container-id&gt;\n\n\nRemove container and its volumes\ndocker rm -v &lt;container-name/container-id&gt;\n\n\nRestart container\ndocker restart &lt;container-name/container-id&gt;",
+    "crumbs": [
+      "Cheatsheets",
+      "Cloud and Platform",
+      "Docker {{< fa brands docker >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Cloud and Platform/docker.html#docker-compose",
+    "href": "cheatsheets/Cloud and Platform/docker.html#docker-compose",
+    "title": "Docker ",
+    "section": "Docker Compose",
+    "text": "Docker Compose\nDocker Compose is a tool for defining and running multi-container Docker applications using a YAML file.\nExample docker-compose.yml:\nservices:\n  postgres:\n    container_name: db_container\n1    build: ./postgres\n    restart: always\n    environment:\n      - POSTGRES_USER=postgres\n      - POSTGRES_PASSWORD=postgres\n    ports:\n2      - \"5432:5432\"\n    volumes:\n3      - \"postgres_data:/var/lib/postgresql/data\"\n  \n  shiny:\n    container_name: shiny\n    depends_on:\n      - postgres\n    build: ./shiny\n    volumes:\n4      - \"./shiny-logs:/var/log/shiny-server\"\n      - \"./shiny-home:/srv/shiny-server\"\n    ports:\n      - \"3838:3838\"\n5    cpus: 1.5\n    mem_limit: 2g\n    memswap_limit: 2g\n6    init: true\n\nvolumes:\n7  postgres_data:\n\n1\n\nbuild points to the folder that contains the Dockerfile for this service; compose builds the image from it (alternative: image: to pull a ready-made image from a registry)\n\n2\n\nports maps host:container — traffic on host port 3838 is forwarded to container port 3838\n\n3\n\nvolumes here maps volume-name:container-path. Docker creates and manages the named volume for you. It survives the container removal. It must be declared at the bottom (7).\n\n4\n\nvolumes here maps host-path:container-path — a folder next to the docker-compose.yml on the host is mounted into the container (equivalent to -v); data survives container removal\n\n5\n\nResource limits the container can use: mem_limit: maximum RAM. memswap_limit: maximum RAM + swap to disk (can avoid OOM errors).\n\n6\n\ninit: true For apps spawning subprocesses: Runs a lightweight init process as PID 1, forwards signals to the application and reaps exited orphaned child processes.\n\n7\n\nDeclaration of the named volumes that are used above.\n\n\n\nStarting and Recreating Containers\nStart all services in the background:\ndocker compose up -d\nNormally, up recreates existing containers only when their configuration or image has changed. --force-recreate replaces them even if nothing changed.\n\n\nUseful Compose Options\nThese options belong to docker compose up and can be combined, e.g. docker compose up -d --build:\n\n\n\n\n\n\n\nOption\nDescription\n\n\n\n\n-d, --detach\nRun containers in the background\n\n\n--build\nBuild service images before starting containers; uses the build cache\n\n\n--no-build\nDo not build images; required images must already exist or be pulled\n\n\n--pull always\nPull service images from the registry before running (missing and never are other policies)\n\n\n--force-recreate\nReplace containers even if their configuration and image have not changed\n\n\n--no-recreate\nKeep existing containers even if configuration or images changed; incompatible with --force-recreate\n\n\n--no-deps\nDo not start dependencies of the selected services, e.g. docker compose up -d --no-deps shiny\n\n\n--wait\nWait until services are running or healthy; implies detached mode. Define health checks to verify readiness\n\n\n--wait-timeout 60\nLimit the wait for readiness to 60 seconds\n\n\n\nGlobal options go before the subcommand:\n\n\n\n\n\n\n\nOption\nDescription\n\n\n\n\n-f &lt;file&gt;\nSelect a Compose file; repeat to merge files in order, e.g. docker compose -f compose.yaml -f compose.prod.yaml up -d\n\n\n-p &lt;name&gt;\nSet the project name to separate application stacks\n\n\n--env-file &lt;file&gt;\nLoad variables from referenced xxx.env-file. Variables are only used if referenced in compose file (e.g. name: \"${NAME_FROM_ENV_FILE}\")\n\n\n--profile &lt;name&gt;\nEnable services assigned to a profile, e.g. docker compose --profile debug up -d if these services in the compose file have a field profiles: [\"debug\"]\n\n\n\n\n\nOther Useful Compose Commands\n\n\n\n\n\n\n\nCommand\nDescription\n\n\n\n\ndocker compose ps -a\nShow all service containers, including stopped ones\n\n\ndocker compose logs -f --tail=100\nFollow logs for all services; append a service name to filter\n\n\ndocker compose exec shiny /bin/bash\nOpen a shell in the running shiny service; use /bin/sh if Bash is unavailable\n\n\ndocker compose run --rm shiny &lt;command&gt;\nRun a one-off command in a new container and remove it afterward; service ports are not published by default\n\n\ndocker compose config\nRender and validate the resolved Compose configuration\n\n\ndocker compose pull\nPull service images without replacing running containers; follow with up -d to apply them\n\n\ndocker compose build --no-cache\nBuild images without cached layers; add --pull to also check for newer base images\n\n\ndocker compose stop\nStop containers without removing them\n\n\ndocker compose down\nStop and remove service containers and project networks; keep volumes by default\n\n\ndocker compose down -v\nAlso remove declared named volumes and attached anonymous volumes; deletes their data. External volumes and bind-mounted host files are not removed\n\n\n\nSee the Docker CLI reference for compose up and compose down.",
+    "crumbs": [
+      "Cheatsheets",
+      "Cloud and Platform",
+      "Docker {{< fa brands docker >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Cloud and Platform/docker.html#debugging",
+    "href": "cheatsheets/Cloud and Platform/docker.html#debugging",
+    "title": "Docker ",
+    "section": "Debugging",
+    "text": "Debugging\nApproach container debugging from the outside in:\n\nCheck the container status\nRead container logs\nthen get a shell inside\nOnly inspect networks and volumes once the basics look fine.\n\nIf a container crashes immediately, keep it alive first so there is something to debug.\n\nContainer Status\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nList running containers (with grep filter)\ndocker ps | grep &lt;container-name&gt;\n\n\nShow all containers including stopped ones\ndocker ps -a\n\n\n\n\n\nContainer Logs\nView container logs:\ndocker logs &lt;container-name&gt;\nOptions can be combined, e.g. docker logs -f --tail=100 &lt;container-name&gt;:\n\n\n\n\n\n\n\nOption\nDescription\n\n\n\n\n-f\nFollow the log output live\n\n\n--tail\nShow only the last N lines (e.g. --tail=100)\n\n\n--since\nShow logs since a specific time (e.g. --since 30m)\n\n\n\nPrevent container from crashing for debugging: Add to the service in docker-compose.yml (clear any image entrypoint so sleep runs directly):\nentrypoint: []\ncommand: [\"sleep\", \"infinity\"]\n\n\nInside the Container\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nGet shell access inside container\ndocker exec -it &lt;container-name&gt; /bin/bash\n\n\nCheck container environment variables\ndocker exec &lt;container-name&gt; env\n\n\nCheck if container can reach internet\ndocker exec &lt;container-name&gt; ping 8.8.8.8\n\n\n\n\n\nContainer Information\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nShow detailed container info\ndocker inspect &lt;container-name&gt;\n\n\nShow container resource usage\ndocker stats &lt;container-name&gt;\n\n\nShow processes running in container\ndocker top &lt;container-name&gt;\n\n\n\n\n\nNetwork Debugging\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nCheck port mappings\nnetstat -tulpn | grep &lt;port-number&gt;\n\n\nTest container connectivity\ncurl -v http://localhost:&lt;port&gt;\n\n\nList all Docker networks\ndocker network ls\n\n\nInspect network settings\ndocker network inspect &lt;network-name&gt;\n\n\n\n\n\nVolume Inspection\n\n\n\n\n\n\n\nDescription\nCommand\n\n\n\n\nList volumes\ndocker volume ls\n\n\nInspect volume\ndocker volume inspect &lt;volume-name&gt;\n\n\nCheck volume mount points\ndocker inspect -f '{{ .Mounts }}' &lt;container-name&gt;",
+    "crumbs": [
+      "Cheatsheets",
+      "Cloud and Platform",
+      "Docker {{< fa brands docker >}}"
     ]
   },
   {

@@ -314,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/bash.html">CLI Tools</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/docker.html">Docker {{&lt; fa brands docker &gt;}}</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud and Platform/ansible.html">Cloud and Platform</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud and Platform/docker.html">Docker {{&lt; fa brands docker &gt;}}</a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -352,30 +352,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text" id="quarto-sidebar-section-2-label">CLI Tools</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+ <span class="menu-text" id="quarto-sidebar-section-2-label">CLI</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
       <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/CLI Tools/bash.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/CLI/bash.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash </span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/CLI Tools/docker.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Docker </span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/CLI Tools/git.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/CLI/git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git </span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/CLI Tools/powershell.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/CLI/powershell.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Powershell </span></a>
   </div>
 </li>
@@ -403,6 +397,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../cheatsheets/Cloud and Platform/azure_ml.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Azure ML </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Cloud and Platform/docker.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Docker </span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -622,7 +622,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content" tabindex="-1">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/bash.html">CLI Tools</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/docker.html">Docker {{&lt; fa brands docker &gt;}}</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud and Platform/ansible.html">Cloud and Platform</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Cloud and Platform/docker.html">Docker {{&lt; fa brands docker &gt;}}</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Docker <i class="fa-brands fa-docker" aria-label="docker"></i></h1>
   <div class="quarto-categories">
@@ -1043,7 +1043,7 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
     ports:
       - &quot;5432:5432&quot; # <2>
     volumes:
-      - &quot;./pgdata:/var/lib/postgresql/data&quot; # <3>
+      - &quot;postgres_data:/var/lib/postgresql/data&quot; # <3>
   
   shiny:
     container_name: shiny
@@ -1051,14 +1051,17 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
       - postgres
     build: ./shiny # <1>
     volumes:
-      - &quot;./shiny-logs:/var/log/shiny-server&quot; # <3>
-      - &quot;./shiny-home:/srv/shiny-server&quot; # <3>
+      - &quot;./shiny-logs:/var/log/shiny-server&quot; # <4>
+      - &quot;./shiny-home:/srv/shiny-server&quot; # <4>
     ports:
       - &quot;3838:3838&quot; # <2>
-    cpus: 1.5 # <4>
-    mem_limit: 2g # <4>
-    memswap_limit: 2g # <4>
-    init: true # <5>"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+    cpus: 1.5 # <5>
+    mem_limit: 2g # <5>
+    memswap_limit: 2g # <5>
+    init: true # <6>
+
+volumes:
+  postgres_data: # <7>"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
 <span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">postgres</span><span class="kw">:</span></span>
 <span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> db_container</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> ./postgres</span></span>
@@ -1069,7 +1072,7 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
 <span id="annotated-cell-3-9"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2">2</button><span id="annotated-cell-3-10" class="code-annotation-target"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"5432:5432"</span></span>
 <span id="annotated-cell-3-11"><a href="#annotated-cell-3-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3">3</button><span id="annotated-cell-3-12" class="code-annotation-target"><a href="#annotated-cell-3-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"./pgdata:/var/lib/postgresql/data"</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3">3</button><span id="annotated-cell-3-12" class="code-annotation-target"><a href="#annotated-cell-3-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"postgres_data:/var/lib/postgresql/data"</span></span>
 <span id="annotated-cell-3-13"><a href="#annotated-cell-3-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span></span>
 <span id="annotated-cell-3-14"><a href="#annotated-cell-3-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">shiny</span><span class="kw">:</span></span>
 <span id="annotated-cell-3-15"><a href="#annotated-cell-3-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> shiny</span></span>
@@ -1077,14 +1080,17 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
 <span id="annotated-cell-3-17"><a href="#annotated-cell-3-17" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> postgres</span></span>
 <span id="annotated-cell-3-18"><a href="#annotated-cell-3-18" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> ./shiny</span></span>
 <span id="annotated-cell-3-19"><a href="#annotated-cell-3-19" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
-<span id="annotated-cell-3-20"><a href="#annotated-cell-3-20" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"./shiny-logs:/var/log/shiny-server"</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4">4</button><span id="annotated-cell-3-20" class="code-annotation-target"><a href="#annotated-cell-3-20" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"./shiny-logs:/var/log/shiny-server"</span></span>
 <span id="annotated-cell-3-21"><a href="#annotated-cell-3-21" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"./shiny-home:/srv/shiny-server"</span></span>
 <span id="annotated-cell-3-22"><a href="#annotated-cell-3-22" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
 <span id="annotated-cell-3-23"><a href="#annotated-cell-3-23" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"3838:3838"</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4">4</button><span id="annotated-cell-3-24" class="code-annotation-target"><a href="#annotated-cell-3-24" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">cpus</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.5</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="5">5</button><span id="annotated-cell-3-24" class="code-annotation-target"><a href="#annotated-cell-3-24" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">cpus</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.5</span></span>
 <span id="annotated-cell-3-25"><a href="#annotated-cell-3-25" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">mem_limit</span><span class="kw">:</span><span class="at"> 2g</span></span>
 <span id="annotated-cell-3-26"><a href="#annotated-cell-3-26" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">memswap_limit</span><span class="kw">:</span><span class="at"> 2g</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="5">5</button><span id="annotated-cell-3-27" class="code-annotation-target"><a href="#annotated-cell-3-27" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">init</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6">6</button><span id="annotated-cell-3-27" class="code-annotation-target"><a href="#annotated-cell-3-27" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">init</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="annotated-cell-3-28"><a href="#annotated-cell-3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-3-29"><a href="#annotated-cell-3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="7">7</button><span id="annotated-cell-3-30" class="code-annotation-target"><a href="#annotated-cell-3-30" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">postgres_data</span><span class="kw">:</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
@@ -1096,15 +1102,23 @@ CMD [&quot;/app/.venv/bin/python&quot;, &quot;main.py&quot;] # <10>"><pre class=
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="12,20,21" data-code-annotation="3"><code>volumes</code> maps <code>host-path:container-path</code> — a folder next to the docker-compose.yml on the host is mounted into the container (equivalent to <code>-v</code>); data survives container removal</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="12" data-code-annotation="3"><code>volumes</code> here maps <code>volume-name:container-path</code>. Docker creates and manages the named volume for you. It survives the container removal. It must be declared at the bottom (7).</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="24,25,26" data-code-annotation="4">Resource limits the container can use: <code>mem_limit</code>: maximum RAM. <code>memswap_limit</code>: maximum RAM + swap to disk (can avoid OOM errors).</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="20,21" data-code-annotation="4"><code>volumes</code> here maps <code>host-path:container-path</code> — a folder next to the docker-compose.yml on the host is mounted into the container (equivalent to <code>-v</code>); data survives container removal</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="27" data-code-annotation="5"><code>init: true</code> For apps spawning subprocesses: Runs a lightweight init process as PID 1, forwards signals to the application and reaps exited orphaned child processes.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="24,25,26" data-code-annotation="5">Resource limits the container can use: <code>mem_limit</code>: maximum RAM. <code>memswap_limit</code>: maximum RAM + swap to disk (can avoid OOM errors).</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="27" data-code-annotation="6"><code>init: true</code> For apps spawning subprocesses: Runs a lightweight init process as PID 1, forwards signals to the application and reaps exited orphaned child processes.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="7">7</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="30" data-code-annotation="7">Declaration of the named volumes that are used above.</span>
 </dd>
 </dl>
 <section id="starting-and-recreating-containers" class="level3">

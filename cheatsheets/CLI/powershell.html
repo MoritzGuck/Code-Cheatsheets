@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Bash is a command line tool and language.">
+<meta name="description" content="Powershell is the major command line tool for windows">
 
-<title>Bash  – Cheatsheets</title>
+<title>Powershell  – Cheatsheets</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -90,8 +90,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-44cce5364464b862bfafcf1ef90218b8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
-<script src="../../site_libs/quarto-contrib/kbd/kbd.js"></script>
-<link href="../../site_libs/quarto-contrib/kbd/kbd.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -312,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/bash.html">CLI Tools</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/bash.html">Bash {{&lt; fa terminal &gt;}}</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI/bash.html">CLI</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI/powershell.html">Powershell {{&lt; fa brands windows &gt;}}</a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -350,30 +348,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text" id="quarto-sidebar-section-2-label">CLI Tools</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+ <span class="menu-text" id="quarto-sidebar-section-2-label">CLI</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
       <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/CLI Tools/bash.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../cheatsheets/CLI/bash.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bash </span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/CLI Tools/docker.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Docker </span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/CLI Tools/git.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/CLI/git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git </span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/CLI Tools/powershell.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/CLI/powershell.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Powershell </span></a>
   </div>
 </li>
@@ -401,6 +393,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../cheatsheets/Cloud and Platform/azure_ml.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Azure ML </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Cloud and Platform/docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Docker </span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -589,14 +587,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#files" id="toc-files" class="nav-link active" data-scroll-target="#files">Files</a>
+  <li><a href="#basics" id="toc-basics" class="nav-link active" data-scroll-target="#basics">Basics</a>
   <ul class="collapse">
-  <li><a href="#list-files" id="toc-list-files" class="nav-link" data-scroll-target="#list-files">List files</a></li>
-  <li><a href="#manipulate-files" id="toc-manipulate-files" class="nav-link" data-scroll-target="#manipulate-files">Manipulate Files</a></li>
-  <li><a href="#file-permissions" id="toc-file-permissions" class="nav-link" data-scroll-target="#file-permissions">File Permissions</a></li>
-  <li><a href="#control-structures" id="toc-control-structures" class="nav-link" data-scroll-target="#control-structures">Control structures</a></li>
-  </ul></li>
+  <li><a href="#files" id="toc-files" class="nav-link" data-scroll-target="#files">Files</a></li>
   <li><a href="#processes" id="toc-processes" class="nav-link" data-scroll-target="#processes">Processes</a></li>
+  </ul></li>
+  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
   </ul>
 </nav>
     </div>
@@ -604,9 +600,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content" tabindex="-1">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/bash.html">CLI Tools</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/bash.html">Bash {{&lt; fa terminal &gt;}}</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI/bash.html">CLI</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI/powershell.html">Powershell {{&lt; fa brands windows &gt;}}</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Bash <i class="fa-solid fa-terminal" aria-label="terminal"></i></h1>
+<h1 class="title">Powershell <i class="fa-brands fa-windows" aria-label="windows"></i></h1>
   <div class="quarto-categories">
     <div class="quarto-category">CLI</div>
     <div class="quarto-category">tool</div>
@@ -615,7 +611,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    Bash is a command line tool and language.
+    Powershell is the major command line tool for windows
   </div>
 </div>
 
@@ -632,138 +628,99 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="files" class="level2">
-<h2 class="anchored" data-anchor-id="files">Files</h2>
-<section id="list-files" class="level3">
-<h3 class="anchored" data-anchor-id="list-files">List files</h3>
+<section id="basics" class="level2">
+<h2 class="anchored" data-anchor-id="basics">Basics</h2>
+<section id="files" class="level3">
+<h3 class="anchored" data-anchor-id="files">Files</h3>
 <dl>
-<dt>Number of files in a provided directory</dt>
+<dt>List contents of directory</dt>
 <dd>
 
 </dd>
 </dl>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="pp">[</span><span class="ss">myDirectory</span><span class="pp">]</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl>
+<dt>Get current working directory</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl>
+<dt>Change directory</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cd</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chdir</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl>
+<dt>Delete file / folder</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">del</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rmdir</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl>
+<dt>Copy file</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">copy</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl>
+<dt>Move file</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">move</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl>
+<dt>Create variables</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">$myVariable</span> <span class="op">=</span> <span class="st">"C:\path\name\whatever"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="manipulate-files" class="level3">
-<h3 class="anchored" data-anchor-id="manipulate-files">Manipulate Files</h3>
+<section id="processes" class="level3">
+<h3 class="anchored" data-anchor-id="processes">Processes</h3>
 <dl>
-<dt>Remove directory tree with all its contents</dt>
+<dt>List all running processes, ordered by cpu-usage</dt>
 <dd>
 
 </dd>
 </dl>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> <span class="pp">[</span><span class="ss">myDirectory</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="file-permissions" class="level3">
-<h3 class="anchored" data-anchor-id="file-permissions">File Permissions</h3>
-<dl>
-<dt>Show access permissions of file in directory</dt>
-<dd>
-
-</dd>
-</dl>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> <span class="pp">[</span><span class="ss">myDirectory</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<dl>
-<dt>Change permissions of file</dt>
-<dd>
-
-</dd>
-</dl>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u=rwx,g=rwx,o=rwx <span class="pp">[</span><span class="ss">myFile</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><a href="https://phoenixnap.com/kb/linux-file-permissions">Explanation</a></p>
-</section>
-<section id="control-structures" class="level3">
-<h3 class="anchored" data-anchor-id="control-structures">Control structures</h3>
-<dl>
-<dt>Use commandline arguments</dt>
-<dd>
-
-</dd>
-</dl>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">getopts</span> <span class="op">:</span>c<span class="op">:</span>t <span class="va">flag</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"</span><span class="va">${flag}</span><span class="st">"</span> <span class="kw">in</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="ss">c</span><span class="kw">)</span> </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="va">config</span><span class="op">=</span><span class="va">${OPTARG}</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            <span class="ex">python3</span> file_to_be_called.py <span class="at">-c</span> <span class="va">$config</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="ss">t</span><span class="kw">)</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>            <span class="ex">python3</span> file_to_be_called.py <span class="at">-t</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="ss">:</span><span class="kw">)</span> </span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            <span class="bu">echo</span> <span class="st">"No arguments passed"</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            <span class="bu">exit</span> 1</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="pp">?</span><span class="kw">)</span> </span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>          <span class="bu">echo</span> <span class="st">"Please call the script like this: bash_script.sh [-c config_file]"</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>          <span class="bu">exit</span> 1</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>          <span class="cf">;;</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">esac</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The <code>:</code> before the flag-character <code>c</code> lets you handle errors yourself (e.g.&nbsp;no arguments passed and wrong arguments passed). The <code>:</code> after the flag-character <code>c</code> indicates that a value is required after the flag.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Get-Process</span> <span class="op">|</span><span class="fu">Sort-Object</span> cpu <span class="op">-</span>Descending</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="processes" class="level2">
-<h2 class="anchored" data-anchor-id="processes">Processes</h2>
+<section id="python" class="level2">
+<h2 class="anchored" data-anchor-id="python">Python</h2>
 <dl>
-<dt>List running processes</dt>
+<dt>execute python program</dt>
 <dd>
 
 </dd>
 </dl>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">htop</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Commands</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Help</td>
-<td><p><kbd title="h" aria-hidden="true">h</kbd><span class="visually-hidden">h</span></p></td>
-</tr>
-<tr class="even">
-<td>Kill process</td>
-<td><kbd>k</kbd></td>
-</tr>
-<tr class="odd">
-<td>Order processes by memory consumption</td>
-<td><p><kbd title="Shift-M" aria-hidden="true">Shift-M</kbd><span class="visually-hidden">Shift-M</span></p></td>
-</tr>
-<tr class="even">
-<td>Filter processes by user</td>
-<td><p><kbd title="U" aria-hidden="true">U</kbd><span class="visually-hidden">U</span></p></td>
-</tr>
-<tr class="odd">
-<td>Display files used by the selected process</td>
-<td><p><kbd title="L" aria-hidden="true">L</kbd><span class="visually-hidden">L</span></p></td>
-</tr>
-<tr class="even">
-<td>Display user threads</td>
-<td><p><kbd title="Shift-H" aria-hidden="true">Shift-H</kbd><span class="visually-hidden">Shift-H</span></p></td>
-</tr>
-</tbody>
-</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>py path\to\file<span class="op">.</span><span class="fu">py</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl>
-<dt>Kill process</dt>
+<dt>install package with pip</dt>
 <dd>
 
 </dd>
 </dl>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">kill</span> <span class="at">-9</span> <span class="pp">[</span><span class="ss">process</span><span class="pp">-</span><span class="ss">PID</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<dl>
-<dt>Info on resource usage &amp; processes on NVidia graphic cards</dt>
-<dd>
-
-</dd>
-</dl>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nvidia-smi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>py <span class="op">-</span>m pip install pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>

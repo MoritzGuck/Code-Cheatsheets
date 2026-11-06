@@ -75,7 +75,7 @@ flowchart TD
 
 #### Containers & pods
 
-For containers, images, registries see [Docker cheatsheet](../../cheatsheets/CLI%20Tools/docker.llms.md).
+For containers, images, registries see [Docker cheatsheet](../../cheatsheets/CLI%20Tools/docker.qmd).
 
 Pods  
 Smallest deployable units in Kubernetes/OpenShift. Can contain multiple containers that share network namespace, storage, and lifecycle. Pods are ephemeral and should be managed through higher-level controllers.

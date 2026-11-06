@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Git is a version control system mostly used for code.">
+<meta name="description" content="Bash is a command line tool and language.">
 
-<title>Git  – Cheatsheets</title>
+<title>Bash  – Cheatsheets</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -90,6 +90,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-44cce5364464b862bfafcf1ef90218b8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/kbd/kbd.js"></script>
+<link href="../../site_libs/quarto-contrib/kbd/kbd.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -310,7 +312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/bash.html">CLI Tools</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/git.html">Git {{&lt; fa brands git-alt &gt;}}</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI/bash.html">CLI</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI/bash.html">Bash {{&lt; fa terminal &gt;}}</a></li></ol></nav>
         <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -348,30 +350,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text" id="quarto-sidebar-section-2-label">CLI Tools</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+ <span class="menu-text" id="quarto-sidebar-section-2-label">CLI</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
       <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/CLI Tools/bash.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/CLI/bash.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Bash </span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/CLI Tools/docker.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Docker </span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/CLI Tools/git.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../cheatsheets/CLI/git.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git </span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../cheatsheets/CLI Tools/powershell.html" class="sidebar-item-text sidebar-link">
+  <a href="../../cheatsheets/CLI/powershell.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Powershell </span></a>
   </div>
 </li>
@@ -399,6 +395,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../cheatsheets/Cloud and Platform/azure_ml.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Azure ML </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Cloud and Platform/docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Docker </span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -587,22 +589,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#configuration" id="toc-configuration" class="nav-link active" data-scroll-target="#configuration">Configuration</a></li>
-  <li><a href="#new-repositories" id="toc-new-repositories" class="nav-link" data-scroll-target="#new-repositories">New repositories</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a>
+  <li><a href="#files" id="toc-files" class="nav-link active" data-scroll-target="#files">Files</a>
   <ul class="collapse">
-  <li><a href="#working-with-remote-repositories" id="toc-working-with-remote-repositories" class="nav-link" data-scroll-target="#working-with-remote-repositories">Working with remote repositories</a></li>
-  <li><a href="#working-with-branches" id="toc-working-with-branches" class="nav-link" data-scroll-target="#working-with-branches">Working with Branches</a></li>
+  <li><a href="#list-files" id="toc-list-files" class="nav-link" data-scroll-target="#list-files">List files</a></li>
+  <li><a href="#manipulate-files" id="toc-manipulate-files" class="nav-link" data-scroll-target="#manipulate-files">Manipulate Files</a></li>
+  <li><a href="#file-permissions" id="toc-file-permissions" class="nav-link" data-scroll-target="#file-permissions">File Permissions</a></li>
+  <li><a href="#control-structures" id="toc-control-structures" class="nav-link" data-scroll-target="#control-structures">Control structures</a></li>
   </ul></li>
-  <li><a href="#workflows" id="toc-workflows" class="nav-link" data-scroll-target="#workflows">Workflows</a>
-  <ul class="collapse">
-  <li><a href="#fetch-newest-changes-of-your-branch-from-remote" id="toc-fetch-newest-changes-of-your-branch-from-remote" class="nav-link" data-scroll-target="#fetch-newest-changes-of-your-branch-from-remote">Fetch newest changes of your branch from remote</a></li>
-  <li><a href="#add-changes-from-different-branch-to-your-branch" id="toc-add-changes-from-different-branch-to-your-branch" class="nav-link" data-scroll-target="#add-changes-from-different-branch-to-your-branch">Add changes from different branch to your branch</a></li>
-  <li><a href="#managing-changes" id="toc-managing-changes" class="nav-link" data-scroll-target="#managing-changes">Managing changes</a></li>
-  </ul></li>
-  <li><a href="#pull-changes-into-devtestmaster-branch" id="toc-pull-changes-into-devtestmaster-branch" class="nav-link" data-scroll-target="#pull-changes-into-devtestmaster-branch">Pull changes into dev/test/master branch</a></li>
-  <li><a href="#undo-and-rollback" id="toc-undo-and-rollback" class="nav-link" data-scroll-target="#undo-and-rollback">Undo and Rollback</a></li>
-  <li><a href="#branches" id="toc-branches" class="nav-link" data-scroll-target="#branches">Branches</a></li>
+  <li><a href="#processes" id="toc-processes" class="nav-link" data-scroll-target="#processes">Processes</a></li>
   </ul>
 </nav>
     </div>
@@ -610,19 +604,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content" tabindex="-1">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/bash.html">CLI Tools</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI Tools/git.html">Git {{&lt; fa brands git-alt &gt;}}</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI/bash.html">CLI</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/CLI/bash.html">Bash {{&lt; fa terminal &gt;}}</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Git <i class="fa-brands fa-git-alt" aria-label="git-alt"></i></h1>
+<h1 class="title">Bash <i class="fa-solid fa-terminal" aria-label="terminal"></i></h1>
   <div class="quarto-categories">
     <div class="quarto-category">CLI</div>
     <div class="quarto-category">tool</div>
-    <div class="quarto-category">versioning</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Git is a version control system mostly used for code.
+    Bash is a command line tool and language.
   </div>
 </div>
 
@@ -639,8 +632,86 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="configuration" class="level2">
-<h2 class="anchored" data-anchor-id="configuration">Configuration</h2>
+<section id="files" class="level2">
+<h2 class="anchored" data-anchor-id="files">Files</h2>
+<section id="list-files" class="level3">
+<h3 class="anchored" data-anchor-id="list-files">List files</h3>
+<dl>
+<dt>Number of files in a provided directory</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="pp">[</span><span class="ss">myDirectory</span><span class="pp">]</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="manipulate-files" class="level3">
+<h3 class="anchored" data-anchor-id="manipulate-files">Manipulate Files</h3>
+<dl>
+<dt>Remove directory tree with all its contents</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> <span class="pp">[</span><span class="ss">myDirectory</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="file-permissions" class="level3">
+<h3 class="anchored" data-anchor-id="file-permissions">File Permissions</h3>
+<dl>
+<dt>Show access permissions of file in directory</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> <span class="pp">[</span><span class="ss">myDirectory</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl>
+<dt>Change permissions of file</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u=rwx,g=rwx,o=rwx <span class="pp">[</span><span class="ss">myFile</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><a href="https://phoenixnap.com/kb/linux-file-permissions">Explanation</a></p>
+</section>
+<section id="control-structures" class="level3">
+<h3 class="anchored" data-anchor-id="control-structures">Control structures</h3>
+<dl>
+<dt>Use commandline arguments</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">getopts</span> <span class="op">:</span>c<span class="op">:</span>t <span class="va">flag</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"</span><span class="va">${flag}</span><span class="st">"</span> <span class="kw">in</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="ss">c</span><span class="kw">)</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="va">config</span><span class="op">=</span><span class="va">${OPTARG}</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            <span class="ex">python3</span> file_to_be_called.py <span class="at">-c</span> <span class="va">$config</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="ss">t</span><span class="kw">)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>            <span class="ex">python3</span> file_to_be_called.py <span class="at">-t</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="ss">:</span><span class="kw">)</span> </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            <span class="bu">echo</span> <span class="st">"No arguments passed"</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            <span class="bu">exit</span> 1</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">;;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="pp">?</span><span class="kw">)</span> </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>          <span class="bu">echo</span> <span class="st">"Please call the script like this: bash_script.sh [-c config_file]"</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>          <span class="bu">exit</span> 1</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>          <span class="cf">;;</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">esac</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>:</code> before the flag-character <code>c</code> lets you handle errors yourself (e.g.&nbsp;no arguments passed and wrong arguments passed). The <code>:</code> after the flag-character <code>c</code> indicates that a value is required after the flag.</p>
+</section>
+</section>
+<section id="processes" class="level2">
+<h2 class="anchored" data-anchor-id="processes">Processes</h2>
+<dl>
+<dt>List running processes</dt>
+<dd>
+
+</dd>
+</dl>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">htop</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -648,327 +719,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </colgroup>
 <thead>
 <tr class="header">
-<th>Description</th>
-<th>Command</th>
+<th>Commands</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Set username (for your commits)</td>
-<td><code>git config --global user.name "myname"</code></td>
+<td>Help</td>
+<td><p><kbd title="h" aria-hidden="true">h</kbd><span class="visually-hidden">h</span></p></td>
 </tr>
 <tr class="even">
-<td>Set email (for your commits)</td>
-<td><code>git config --global user.email "my@email.com"</code></td>
+<td>Kill process</td>
+<td><kbd>k</kbd></td>
 </tr>
 <tr class="odd">
-<td>Enable CLI color codes</td>
-<td><code>git config --global color.ui auto</code></td>
+<td>Order processes by memory consumption</td>
+<td><p><kbd title="Shift-M" aria-hidden="true">Shift-M</kbd><span class="visually-hidden">Shift-M</span></p></td>
+</tr>
+<tr class="even">
+<td>Filter processes by user</td>
+<td><p><kbd title="U" aria-hidden="true">U</kbd><span class="visually-hidden">U</span></p></td>
+</tr>
+<tr class="odd">
+<td>Display files used by the selected process</td>
+<td><p><kbd title="L" aria-hidden="true">L</kbd><span class="visually-hidden">L</span></p></td>
+</tr>
+<tr class="even">
+<td>Display user threads</td>
+<td><p><kbd title="Shift-H" aria-hidden="true">Shift-H</kbd><span class="visually-hidden">Shift-H</span></p></td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="new-repositories" class="level2">
-<h2 class="anchored" data-anchor-id="new-repositories">New repositories</h2>
 <dl>
-<dt>Download git repo from server</dt>
+<dt>Kill process</dt>
 <dd>
 
 </dd>
 </dl>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone url.com</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Description</th>
-<th>Command</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Initialize a new git repository</td>
-<td><code>git init my-repo</code></td>
-</tr>
-<tr class="even">
-<td>Get the status of changes (staged, unstaged, untracked)</td>
-<td><code>git status</code></td>
-</tr>
-<tr class="odd">
-<td>Track files to staging</td>
-<td><code>git add .</code></td>
-</tr>
-<tr class="even">
-<td>Remove files from staging</td>
-<td><code>git reset &lt;file&gt;</code></td>
-</tr>
-<tr class="odd">
-<td>Commit staged files</td>
-<td><code>git commit -m "informative commit message"</code></td>
-</tr>
-<tr class="even">
-<td>Discard changes in a file (<strong>!</strong>: Your changes will be lost)</td>
-<td><code>git restore &lt;file&gt;</code></td>
-</tr>
-<tr class="odd">
-<td>Show commit history</td>
-<td><code>git log</code></td>
-</tr>
-<tr class="even">
-<td>Go back to a commit</td>
-<td><code>git checkout &lt;commit hash&gt;</code></td>
-</tr>
-<tr class="odd">
-<td>Go back to the latest commit</td>
-<td><code>git checkout my-branch-name</code></td>
-</tr>
-</tbody>
-</table>
-<section id="working-with-remote-repositories" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-remote-repositories">Working with remote repositories</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Description</th>
-<th>Command</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Clone a remote repository</td>
-<td><code>git clone url.com</code></td>
-</tr>
-<tr class="even">
-<td>Push changes to remote repository</td>
-<td><code>git push</code></td>
-</tr>
-<tr class="odd">
-<td>Pull changes from remote repository</td>
-<td><code>git pull</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="working-with-branches" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-branches">Working with Branches</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 59%">
-<col style="width: 40%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Description</th>
-<th>Command</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Create a new branch</td>
-<td><code>git branch my-branch-name</code></td>
-</tr>
-<tr class="even">
-<td>Switch to a branch</td>
-<td><code>git checkout my-branch-name</code></td>
-</tr>
-<tr class="odd">
-<td>Create and switch to a new branch</td>
-<td><code>git checkout -b my-branch-name</code> or <code>git switch my-branch-name</code></td>
-</tr>
-<tr class="even">
-<td>Delete a branch</td>
-<td><code>git branch -d my-branch-name</code></td>
-</tr>
-<tr class="odd">
-<td>List all branches</td>
-<td><code>git branch</code></td>
-</tr>
-<tr class="even">
-<td>Merge a branch into the current branch</td>
-<td><code>git merge my-branch-name</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="workflows" class="level2">
-<h2 class="anchored" data-anchor-id="workflows">Workflows</h2>
-<section id="fetch-newest-changes-of-your-branch-from-remote" class="level3">
-<h3 class="anchored" data-anchor-id="fetch-newest-changes-of-your-branch-from-remote">Fetch newest changes of your branch from remote</h3>
-<ol type="1">
-<li>Get changes from remote repository</li>
-</ol>
-<p>:</p>
-<pre><code>git fetch</code></pre>
-<ol start="2" type="1">
-<li>Check what changed</li>
-</ol>
-<p>:</p>
-<pre><code>git diff my-branch-name origin/my-branch-name</code></pre>
-<ol start="3" type="1">
-<li>Merge changes from remote branch into your branch</li>
-</ol>
-<p>:</p>
-<pre><code>git pull</code></pre>
-</section>
-<section id="add-changes-from-different-branch-to-your-branch" class="level3">
-<h3 class="anchored" data-anchor-id="add-changes-from-different-branch-to-your-branch">Add changes from different branch to your branch</h3>
-<ol type="1">
-<li>Get changes from remote repository</li>
-</ol>
-<p>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="2" type="1">
-<li>Check differences to branch you want merge into yours</li>
-</ol>
-<p>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff feature1..dev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="3" type="1">
-<li>Merge changes from remote branch into your branch</li>
-</ol>
-<p>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge origin dev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="4" type="1">
-<li>Check what files are(n’t) staged for commit</li>
-</ol>
-<p>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="5" type="1">
-<li>Stage all files that are tracked (not in .gitignore)</li>
-</ol>
-<p>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>If necessary: Unstage all files (or a specific file) that are staged
-:
-
-```bash
-git reset [specific-file]
-```</code></pre>
-<ol start="6" type="1">
-<li>Commit all staged files (add to versioning history)</li>
-</ol>
-<p>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"[ticket-id + what you changed]"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="7" type="1">
-<li>Load commits into remote git repository</li>
-</ol>
-<p>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="managing-changes" class="level3">
-<h3 class="anchored" data-anchor-id="managing-changes">Managing changes</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">kill</span> <span class="at">-9</span> <span class="pp">[</span><span class="ss">process</span><span class="pp">-</span><span class="ss">PID</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl>
-<dt>See changes due to last pull request</dt>
+<dt>Info on resource usage &amp; processes on NVidia graphic cards</dt>
 <dd>
 
 </dd>
 </dl>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">-p</span> <span class="at">-2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-</section>
-<section id="pull-changes-into-devtestmaster-branch" class="level2">
-<h2 class="anchored" data-anchor-id="pull-changes-into-devtestmaster-branch">Pull changes into dev/test/master branch</h2>
-<dl>
-<dt>Pull changes into dev branch (and add your changes at the end)</dt>
-<dd>
-
-</dd>
-</dl>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout dev</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="at">--rebase</span> feature1branch </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<dl>
-<dt>Pull only specific commits into your branch</dt>
-<dd>
-
-</dd>
-</dl>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> cherry-pick <span class="pp">[</span><span class="ss">commit</span><span class="pp">-</span><span class="ss">SHA</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="undo-and-rollback" class="level2">
-<h2 class="anchored" data-anchor-id="undo-and-rollback">Undo and Rollback</h2>
-<dl>
-<dt>Rollback the last commit</dt>
-<dd>
-
-</dd>
-</dl>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset head~1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>To provide the files from the last commit: <code>git reset --soft HEAD~1</code></p>
-<dl>
-<dt>Rollback to a specific commit</dt>
-<dd>
-
-</dd>
-</dl>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="pp">[</span><span class="ss">commit</span><span class="pp">-</span><span class="ss">SHA</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You can still see the changes from your HEAD in your files. To make the reset materialize, you need to discard these unstaged changes in git.</p>
-<p>Since you are now several commits behind the remote, you have to force push the changes: <code>git push -f origin [myBranchyBranch]</code>.</p>
-<p>To create a new commit to undo earlier commits, use <code>git revert</code>.</p>
-<dl>
-<dt>Travel back to a specific commit</dt>
-<dd>
-
-</dd>
-</dl>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="pp">[</span><span class="ss">commit</span><span class="pp">-</span><span class="ss">SHA</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<dl>
-<dt><strong>Delete sensitive data from history:</strong></dt>
-<dd>
-<a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#using-git-filter-repo">docs.github.com</a>
-</dd>
-</dl>
-</section>
-<section id="branches" class="level2">
-<h2 class="anchored" data-anchor-id="branches">Branches</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 59%">
-<col style="width: 40%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Description</th>
-<th>Command</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>List all branches and show which one you are on</td>
-<td><code>git branch -a</code></td>
-</tr>
-<tr class="even">
-<td>Create new branch and check it out</td>
-<td><code>git checkout -b [branch-name]</code></td>
-</tr>
-<tr class="odd">
-<td>Change to a specific branch</td>
-<td><code>git checkout [specific-branch]</code></td>
-</tr>
-<tr class="even">
-<td>Delete a specific branch</td>
-<td><code>git branch -d [specific-branch]</code></td>
-</tr>
-<tr class="odd">
-<td>Rename the current branch</td>
-<td><code>git branch -m myNewBranch</code></td>
-</tr>
-<tr class="even">
-<td>Show commit history with branch dependencies</td>
-<td><code>git log --graph --oneline</code></td>
-</tr>
-</tbody>
-</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nvidia-smi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
