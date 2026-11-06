@@ -1,0 +1,304 @@
+
+---
+title: "FastAPI"
+description: "FastAPI is the standard library for creating APIs for ML & AI in Python"
+format: html
+categories:
+    - web
+    - networking
+draft: true
+code-annotations: hover
+---
+
+## Overview
+
+- **FastAPI** is a Python framework for building APIs, built on Starlette.
+- **Starlette** is the web framework that provides FastAPI's routing and web functionality.
+- **Pydantic** validates and serializes data using Python type hints.
+- **ASGI** (Asynchronous Server Gateway Interface) is a standard interface between asynchronous Python web applications and servers.
+- **Uvicorn** is an ASGI server that runs FastAPI and Starlette applications and handles incoming connections.
+
+## Installation and Setup
+
+### Installation
+
+Use uv to install FastAPI with its standard dependencies, including the FastAPI CLI and Uvicorn:
+
+```bash
+uv add "fastapi[standard]"
+```
+
+### Creating an application
+
+Create `main.py` in the project root or `./app` directory:
+
+```python
+from fastapi import APIRouter, FastAPI
+
+app = FastAPI() # <1>
+
+@app.get("/") # <2>
+async def root():
+    return {"message": "Hello World"}
+
+
+router = APIRouter(prefix="/items", tags=["items"]) # <3>
+
+@router.get("/")
+async def list_items():
+    return [{"name": "Example"}]
+
+app.include_router(router) # <4>
+```
+
+1. Creates the ASGI application that receives requests.
+2. Registers a handler function for `GET /`; its return value is sent as JSON.
+3. `APIRouter` groups related routes, optionally sharing a prefix, tags, and dependencies. Routers are for larger projects and can live in separate files: see the [example file structure](https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure).
+4. `app.include_router(router)` adds the router and its endpoints to the application; the example exposes `GET /items/`.
+
+### Configure and run
+
+Add the application entrypoint to `pyproject.toml` so the FastAPI CLI knows where to find it:
+
+```toml
+[tool.fastapi]
+entrypoint = "main:app"
+```
+
+`main:app` means the object `app` in the Python module `main` (`main.py`). For an application in `app/main.py`, use `app.main:app` instead.
+
+Run from the project root:
+
+```bash
+uv run fastapi dev             # development: automatic reload, localhost only
+uv run fastapi run             # production mode: no reload, listens on 0.0.0.0
+```
+
+## Routing and Path Operations
+
+### HTTP Methods and Routes
+
+A **path operation** connects an HTTP method and a URL path to a handler function. The same path can have different handlers for different methods:
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+items = []
+
+@app.get("/items") # <1>
+async def list_items():
+    return items
+
+@app.post("/items", status_code=201) # <2>
+async def create_item():
+    new_item = {"id": len(items) + 1, "name": "Example", "price": 10.0}
+    items.append(new_item)
+    return new_item
+```
+
+1. Handle `GET /items`.
+2. Handle `POST /items`; `status_code=201` sets the success response code.
+
+Other decorators include `@app.put(...)`, `@app.patch(...)`, and `@app.delete(...)`. See [HTTP methods](http_rest.qmd#methods). FastAPI evaluates routes in declaration order: declare a fixed path like `/users/me` **before** `/users/{user_id}` so it is not captured as a user ID.
+
+### Path and Query Parameters
+
+Names in `{braces}` are taken from the path; other scalar function parameters are normally taken from the query string. Type hints control parsing and validation:
+
+```python
+from typing import Annotated
+from fastapi import FastAPI, Path, Query
+
+app = FastAPI()
+
+@app.get("/items/{item_id}")
+async def read_item(
+    item_id: Annotated[int, Path(ge=1)], # <1>
+    q: str, # <2>
+    limit: Annotated[int, Query(ge=1, le=100)] = 10, # <3>
+    details: bool = False, # <4>
+):
+    return {"item_id": item_id, "q": q, "limit": limit, "details": details}
+```
+
+1. `item_id` is a required path parameter, parsed as an integer greater than or equal to 1. `Annotated` attaches metadata (`Path(ge=1)`) to a type (`int`) for FastAPI to use.
+2. `q` is a required query parameter because it has no default.
+3. `limit` is an optional query parameter with default `10` and an allowed range of 1–100. `Path` and `Query` add validation and documentation.
+4. `details` is an optional query parameter, parsed as a boolean and defaulting to `False`.
+
+To allow an omitted query parameter to be `None`, use e.g. `q: str | None = None`.
+
+## Request Data and Validation
+
+### Pydantic Models and Request Bodies
+
+Declare a [Pydantic](pydantic.qmd) model to receive a JSON request body. FastAPI parses the JSON, validates it, and passes a model instance to the handler:
+
+```python
+from fastapi import FastAPI
+from pydantic import BaseModel, Field
+
+app = FastAPI()
+
+class Item(BaseModel):
+    name: str = Field(min_length=1, max_length=80) # <1>
+    price: float = Field(gt=0)
+    description: str | None = None # <2>
+    tags: list[str] = Field(default_factory=list) # <3>
+
+@app.post("/items", status_code=201)
+async def create_item(item: Item): # <4>
+    return item.model_dump() # <5>
+```
+
+1. Fields without defaults are required. `Field` adds validation constraints and schema metadata.
+2. Allows a string or `None`; the default `None` also allows the field to be omitted. `str | None` **without a default** would still require the field.
+3. Creates a new empty list when `tags` is omitted. Collections and nested Pydantic models are validated recursively.
+4. A Pydantic model parameter is read from the request body, not the query string.
+5. Access values with e.g. `item.name`; `model_dump()` converts the model to a dictionary.
+
+Example request body (send with `Content-Type: application/json`):
+
+```json
+{"name": "Notebook", "price": 4.5, "tags": ["office"]}
+```
+
+### Type Hints and Validation Constraints
+
+Type hints define accepted data types; `Field`, `Path`, `Query`, and `Body` add constraints and documentation:
+
+| Constraint | Meaning | Example |
+|---|---|---|
+| `gt`, `ge` | Greater than / greater than or equal to | `Field(gt=0)` |
+| `lt`, `le` | Less than / less than or equal to | `Query(le=100)` |
+| `min_length`, `max_length` | Bounds on string or collection length | `Field(min_length=1)` |
+| `pattern` | Regular expression for a string | `Query(pattern=r"^[a-z]+$")` |
+
+Validation may convert compatible inputs, such as `"4.5"` to a float. Use e.g. `Field(strict=True)` to disable coercion for a field. Invalid request data normally produces a **422** response with error details; the handler is not called.
+
+For a scalar body value, use `Body` explicitly; otherwise FastAPI normally treats a scalar as a query parameter:
+
+```python
+from typing import Annotated
+from fastapi import Body
+
+@app.put("/items/{item_id}/price")
+async def update_price(
+    item_id: int,
+    price: Annotated[float, Body(gt=0, embed=True)],
+):
+    return {"item_id": item_id, "price": price}
+```
+
+`embed=True` expects `{"price": 4.5}` rather than a bare JSON number. A single model parameter normally expects the model's fields directly; multiple body parameters are wrapped under their parameter names.
+
+### Headers and Cookies
+
+Use `Header` and `Cookie` to read these values instead of query parameters:
+
+```python
+from typing import Annotated
+from fastapi import Cookie, Header
+
+@app.get("/preferences")
+async def read_preferences(
+    user_agent: Annotated[str | None, Header()] = None, # <1>
+    theme: Annotated[str, Cookie()] = "light", # <2>
+):
+    return {"user_agent": user_agent, "theme": theme}
+```
+
+1. Reads the `User-Agent` header: `Header` converts underscores to hyphens by default, and header names are case-insensitive. Use `alias="X-Request-ID"` to specify a header name explicitly.
+2. Reads the `theme` cookie, defaulting to `"light"` if absent. Omit the default to make a header or cookie required.
+
+### Forms and File Uploads
+
+Use `Form` for form fields and `File` / `UploadFile` for uploaded files. They require `python-multipart`, already included in `fastapi[standard]`; for a minimal installation, add it with `uv add python-multipart`.
+
+```python
+from typing import Annotated
+from fastapi import File, Form, UploadFile
+
+@app.post("/uploads")
+async def upload_file(
+    file: Annotated[UploadFile, File()], # <1>
+    description: Annotated[str, Form(max_length=200)] = "", # <2>
+):
+    return {"filename": file.filename, "description": description}
+```
+
+1. `UploadFile` uses a spooled file (memory, then disk above a size threshold). Access metadata with `file.filename` and `file.content_type`; use `await file.read(size)` to read chunks, `await file.seek(0)` to rewind, and `await file.close()` to close it. `Annotated[bytes, File()]` instead loads the entire file into memory; `list[UploadFile]` accepts multiple files.
+2. Reads a form field from the same request. Forms without files normally use `application/x-www-form-urlencoded`; uploads use `multipart/form-data`.
+
+Form/file parameters cannot share the same request body with ordinary JSON body parameters. Use form fields for accompanying data rather than expecting a separate JSON body.
+
+## Responses
+
+Response Models and Serialization
+
+Status Codes, Headers, and Cookies
+
+Custom and Streaming Responses
+
+## Error Handling
+
+HTTP Exceptions and Validation Errors
+
+Custom Exception Handlers
+
+## Dependency Injection
+
+Declaring and Reusing Dependencies
+
+Dependencies with Cleanup
+
+## Security
+
+Authentication and Authorization
+
+OAuth2, Bearer Tokens, and API Keys
+
+CORS
+
+## Application Lifecycle and Configuration
+
+Lifespan Events
+
+Settings and Environment Variables
+
+Middleware
+
+## Concurrency and Background Work
+
+Synchronous and Asynchronous Endpoints
+
+Background Tasks
+
+## Real-Time Communication
+
+WebSockets
+
+Server-Sent Events
+
+## Data Persistence
+
+Database Integration and Sessions
+
+## API Documentation
+
+OpenAPI, Swagger UI, and ReDoc
+
+Metadata and Schema Customization
+
+## Testing
+
+Test Client and Async Tests
+
+Dependency Overrides
+
+## Deployment and Observability
+
+ASGI Servers and Production Configuration
+
+Logging, Tracing, and Monitoring
