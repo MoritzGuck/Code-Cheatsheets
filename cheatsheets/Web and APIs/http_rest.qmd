@@ -94,7 +94,7 @@ curl --get --data-urlencode "q=a & b" https://api.example.com/search
 ### Body
 - data vs form types
 
-### Responses
+### Responses
 
 A response contains a status code, headers, and (usually) a body. The `Content-Type` header describes the response body; `Accept` in the request can be used to declare the desired response format with relative preference (e.g. `Accept: application/json;q=1.0, text/csv;q=0.8` = "I prefer json, but can also read csv.")
 
@@ -190,25 +190,14 @@ Work through the layers: **local process → DNS → TCP connection → TLS → 
 
 ### Local processes and ports
 
-List processes with open network sockets, including listening sockets and connections (macOS / Linux with `lsof` installed)
-:
+List processes with open network sockets, including listening sockets and connections (macOS / Linux with `lsof` installed).
 
-```bash
-lsof -i -P -n # <1>
-
-lsof -nP -iTCP -sTCP:LISTEN # <2>
-
-lsof -nP -iTCP:8000 -sTCP:LISTEN # <3>
-
-ss -lntup # <4>
-```
-
-1. List open network sockets. `COMMAND` / `PID` identify the process; `NAME` shows addresses and ports. `-i` selects network sockets, `-P` keeps port numbers numeric and `-n` keeps IP addresses numeric. Omit `-P` for known service names (e.g. `https`), but these are port-label mappings, not proof of which application is running.
-2. Show TCP servers listening for connections: `-iTCP` selects TCP sockets and `-sTCP:LISTEN` filters for listening sockets.
-3. Find the process listening on TCP port `8000`; `-iTCP:8000` restricts the selection to that port.
-4. Linux alternative: show listening (`-l`) TCP (`-t`) and UDP (`-u`) sockets with numeric addresses/ports (`-n`) and process information (`-p`). UDP sockets do not have a TCP-style `LISTEN` state.
-
-Elevated privileges may be needed to see other users' processes.
+| Command | When to use it |
+|---------|----------------|
+| `lsof -i -P -n` | List open network sockets (`-i`); keep ports (`-P`) and IP addresses (`-n`) numeric. `COMMAND` / `PID` identify the process; `NAME` shows addresses and ports. Omit `-P` for service names (e.g. `https`), which are port labels, not proof of the running application |
+| `lsof -nP -iTCP -sTCP:LISTEN` | Show TCP servers listening for connections: `-iTCP` selects TCP sockets; `-sTCP:LISTEN` filters for listening sockets |
+| `lsof -nP -iTCP:8000 -sTCP:LISTEN` | Find the process listening on TCP port `8000`; `-iTCP:8000` restricts the selection to that port |
+| `ss -lntup` | Linux alternative: show listening (`-l`) TCP (`-t`) and UDP (`-u`) sockets with numeric addresses/ports (`-n`) and process information (`-p`). UDP has no TCP-style `LISTEN` state |
 
 - **Address already in use** — another process owns the port; identify it before stopping anything, or choose another port.
 - **Connection refused** — check that the server is running and listening on the expected port and interface.
