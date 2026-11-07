@@ -1,0 +1,163 @@
+
+---
+title: "Pydantic"
+description: "Pydantic is a data validation library for Python."
+format: html
+categories:
+    - web
+    - networking
+draft: false
+code-annotations: hover
+---
+
+## Overview
+
+**Pydantic v2** validates data using Python type hints and serializes it to dictionaries or JSON. [FastAPI](fastapi.qmd) uses these models for request validation, response filtering, and OpenAPI documentation.
+
+```bash
+uv add pydantic
+```
+
+## Models and constraints
+
+```python
+from typing import Literal
+from pydantic import BaseModel, ConfigDict, Field
+
+class Message(BaseModel):
+    role: Literal["system", "user", "assistant"]
+    content: str = Field(min_length=1)
+
+class ChatRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")  # reject unknown keys
+
+    messages: list[Message] = Field(min_length=1)  # nested validation
+    temperature: float = Field(default=0.7, ge=0, le=2)
+    max_tokens: int = Field(default=512, gt=0, le=4096)
+    user_id: str | None = None
+    metadata: dict[str, str] = Field(default_factory=dict)
+
+request = ChatRequest(messages=[{"role": "user", "content": "Hello"}])
+request.messages[0].content  # "Hello"; nested dict becomes a Message
+```
+
+| Declaration | Meaning |
+|---|---|
+| `name: str` | Required, cannot be `None` |
+| `name: str \| None` | Required, but accepts `None` |
+| `name: str \| None = None` | May be omitted or `None` |
+| `tags: list[str] = Field(default_factory=list)` | New empty list per instance |
+
+- **Constraints:** `gt` / `ge` / `lt` / `le` for numbers; `min_length` / `max_length` for strings and collections; `pattern` for regex matching on strings.
+- **Coercion is on by default:** an `int` field accepts `"512"`. Use `Field(strict=True)` per field or `ConfigDict(strict=True)` model-wide to disable coercion.
+- **Extra keys are ignored by default.** Use `extra="forbid"` to catch misspelled inputs.
+- **Defaults are not validated by default.** Enable `validate_default=True` in `Field` or `ConfigDict` when needed.
+
+## FastAPI request and response
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+class ChatResponse(BaseModel):
+    answer: str
+    tokens_used: int = Field(ge=0)
+
+@app.post("/chat", response_model=ChatResponse)
+async def chat(body: ChatRequest):
+    # Replace with your model call; return a model or a dict, not JSON text.
+    return ChatResponse(answer="Hello!", tokens_used=3)
+```
+
+- Invalid **request** data → automatic **422** response; no manual parsing needed.
+- `response_model` validates, documents, and filters the output to declared fields. Use separate input/output models to keep internal fields out of responses.
+- Invalid **response** data is a server bug → **500** by default, not 422.
+
+## Validate and serialize
+
+| Operation | Pydantic v2 |
+|---|---|
+| Python dict → model | `ChatRequest.model_validate(data)` |
+| JSON string/bytes → model | `ChatRequest.model_validate_json(raw)` |
+| Model → Python dict (nested models included) | `request.model_dump()` |
+| Model → JSON-compatible dict (dates, UUIDs, etc.) | `request.model_dump(mode="json")` |
+| Model → JSON string | `request.model_dump_json()` |
+| Model → JSON Schema | `ChatRequest.model_json_schema()` |
+| Only explicitly supplied fields (e.g. PATCH) | `request.model_dump(exclude_unset=True)` |
+| Omit `None` values | `request.model_dump(exclude_none=True)` |
+
+`exclude_unset=True` preserves an explicitly supplied `None`; `exclude_none=True` removes it. For PATCH, define a separate update model with omittable fields.
+
+**Aliases:** `Field(alias="maxTokens")` accepts an external key; `model_dump(by_alias=True)` emits it. **ORM objects:** use `ConfigDict(from_attributes=True)` with `model_validate(obj)`.
+
+## Custom validation
+
+Prefer type hints and `Field` constraints first. Validators must return the validated value (or `self`) and raise `ValueError` for invalid data.
+
+```python
+from pydantic import field_validator
+
+class Prompt(BaseModel):
+    text: str
+
+    @field_validator("text")  # default mode="after": runs after type validation
+    @classmethod
+    def reject_blank(cls, value: str) -> str:
+        value = value.strip()
+        if not value:
+            raise ValueError("prompt must not be blank")
+        return value
+```
+
+Use `@model_validator(mode="after")` for cross-field checks; it receives and must return `self`. Keep network calls and model inference outside validators.
+
+## Structured LLM output
+
+Reuse a model as the output contract and validate the LLM's JSON at the boundary:
+
+```python
+from pydantic import ValidationError
+
+class Classification(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    label: Literal["positive", "negative", "neutral"]
+    confidence: float = Field(ge=0, le=1)
+
+schema = Classification.model_json_schema()  # for provider schema/tool APIs
+raw = '{"label":"positive","confidence":0.95}'  # example LLM output
+try:
+    result = Classification.model_validate_json(raw)
+except ValidationError as exc:
+    errors = exc.errors()  # structured errors: loc, msg, type, etc.
+    # Reject or retry with feedback; avoid logging sensitive input.
+```
+
+Schema-valid output is **not necessarily factually correct or safe**. Providers support different JSON Schema subsets; prefer their SDK's Pydantic integration when available. `model_validate_json` expects JSON, not Markdown fences or surrounding prose.
+
+## App settings
+
+Settings live in the separate `pydantic-settings` package (`uv add pydantic-settings`):
+
+```python
+from pydantic import SecretStr
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    model_api_key: SecretStr  # reads MODEL_API_KEY from the environment
+    model_name: str = "my-model"
+
+settings = Settings()  # load once, not on every request
+# settings.model_api_key.get_secret_value() when calling the provider
+```
+
+`SecretStr` masks normal display; it does not encrypt secrets. Never return settings from an endpoint or commit `.env` files.
+
+## Avoid these traps
+
+- Old v1 examples: use `model_dump()` / `model_dump_json()` / `model_validate()` instead of `.dict()` / `.json()` / `.parse_obj()`.
+- `model_construct()` skips validation; `model_copy(update=...)` does **not** validate updates. Revalidate untrusted merged data with `Model.model_validate(...)`.
+- Validating a model does not validate later attribute assignments unless `validate_assignment=True` is configured.
+
+[Pydantic docs](https://docs.pydantic.dev/latest/) · [FastAPI request bodies](https://fastapi.tiangolo.com/tutorial/body/)
