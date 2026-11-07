@@ -12,15 +12,19 @@ This is a collection of my cheatsheets. Feel free to use them. If you want to ed
 | [Dart](cheatsheets/Languages/Dart/Dart_summary.llms.md) | Dart is a new programming language by Google, mainly used for app development. | language |
 | [Docker ](cheatsheets/Cloud%20and%20Platform/docker.llms.md) | Docker is a platform for developing, shipping, and running applications in isolated environments. | CLI, tool, container |
 | [Dplyr ](cheatsheets/Languages/R/dplyr.llms.md) | Dplyr is a data transformation library in the collection Tidyverse. | R, data science |
+| [FastAPI](cheatsheets/Web%20and%20APIs/fastapi.llms.md) | FastAPI is the standard library for creating APIs for ML & AI in Python | web, networking |
 | [Flutter](cheatsheets/Languages/Dart/flutter_summary.llms.md) | Flutter is a cross-plattform app-development framework based on dart. | app development, web development |
 | [GCP: gcloud CLI ](cheatsheets/Cloud%20and%20Platform/gcloud.llms.md) | Gcloud CLI is the command line interface of the Google Cloud Platform. |   |
 | [Git ](cheatsheets/CLI/git.llms.md) | Git is a version control system mostly used for code. | CLI, tool, versioning |
+| [HTTP & REST](cheatsheets/Web%20and%20APIs/http_rest.llms.md) | HTTP is the standard protocol to transfer information over the internet | web, networking |
 | [OpenShift](cheatsheets/Cloud%20and%20Platform/Openshift.llms.md) | OpenShift is a platform based on Kubernetes to host and manage applications in containers. |   |
 | [Pandas ](cheatsheets/Languages/Python/Pandas.llms.md) | Pandas is a python library for data wrangling and data cleaning. | framework, python, data science |
 | [Pip ](cheatsheets/Languages/Python/pip.llms.md) | Pip is the official python package manager | CLI, tool, package manager |
 | [Poetry ](cheatsheets/Languages/Python/Poetry.llms.md) | Poetry is a package builder, dependency and virtual environment manager for python. | python, tool, CLI, package manager, virtual environments |
 | [Powershell ](cheatsheets/CLI/powershell.llms.md) | Powershell is the major command line tool for windows | CLI, tool |
 | [Prompting LLMs](cheatsheets/Other/prompting_llms.llms.md) | How to write effective prompts for large language models. |   |
+| [Pydantic](cheatsheets/Web%20and%20APIs/pydantic.llms.md) | Pydantic is a data validation library for Python. | web, networking |
+| [Pytest](cheatsheets/Languages/Python/pytest.llms.md) | Pytest is a simple to use yet powerful testing library. | testing |
 | [Python Design Patterns ](cheatsheets/Languages/Python/Python.llms.md) | Python is one of the most popular programming languages. | language |
 | [Python basics ](cheatsheets/Languages/Python/Python%20basics.llms.md) | Python is one of the most popular programming languages. | language |
 | [Quarto](cheatsheets/Other/Quarto.llms.md) | Quarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations. | tool, web development |

@@ -1,0 +1,2225 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="FastAPI is the standard library for creating APIs for ML &amp; AI in Python">
+
+<title>FastAPI – Cheatsheets</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-44cce5364464b862bfafcf1ef90218b8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-eef272d260d64e09d02486f47a1e6a3a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-44cce5364464b862bfafcf1ef90218b8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
+        setTimeout(() => {
+          window.scrollTo(0, scrollY);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      refreshSafariScrollbar();
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/Web and APIs/fastapi.html">Web and APIs</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Web and APIs/fastapi.html">FastAPI</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Site">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Cheatsheets</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/MoritzGuck/Code-Cheatsheets" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Cheatsheets</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">CLI</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/CLI/bash.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bash </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/CLI/git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/CLI/powershell.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Powershell </span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Cloud and Platform</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Cloud and Platform/ansible.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ansible</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Cloud and Platform/azure_cli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Azure CLI </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Cloud and Platform/azure_ml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Azure ML </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Cloud and Platform/docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Docker </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Cloud and Platform/gcloud.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GCP: gcloud CLI </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Cloud and Platform/Openshift.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OpenShift</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-controls="quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-4-label">Languages</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-4" aria-labelledby="quarto-sidebar-section-4-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/Splunk_processing_language.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Splunk processing language (SPL)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-controls="quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-5-label">Dart</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-5" aria-labelledby="quarto-sidebar-section-5-label" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/Dart/Dart_summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dart</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/Dart/flutter_summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Flutter</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-controls="quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-6-label">Python</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-6" aria-labelledby="quarto-sidebar-section-6-label" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/Python/Conda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conda </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/Python/Pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/Python/pip.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pip </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/Python/Poetry.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Poetry </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/Python/pytest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pytest</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/Python/Python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Design Patterns </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/Python/Python basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python basics </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/Python/ruff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ruff </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/Python/uv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">uv </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/Python/Venv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Venv </span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-controls="quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-7-label">R</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-7" aria-labelledby="quarto-sidebar-section-7-label" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/R/dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dplyr </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/R/R_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R basics </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/R/R_plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R plotting </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/R/R-Shiny.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R Shiny </span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Languages/R/tidymodels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tidymodels </span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-controls="quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-8-label">Other</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-8" aria-labelledby="quarto-sidebar-section-8-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Other/prompting_llms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prompting LLMs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Other/Quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Other/VSCode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">VS Code </span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-controls="quarto-sidebar-section-9" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-9-label">Web and APIs</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-9" aria-labelledby="quarto-sidebar-section-9-label" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Web and APIs/fastapi.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">FastAPI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Web and APIs/http_rest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HTTP &amp; REST</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../cheatsheets/Web and APIs/pydantic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pydantic</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#installation-and-setup" id="toc-installation-and-setup" class="nav-link" data-scroll-target="#installation-and-setup">Installation and Setup</a>
+  <ul class="collapse">
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#creating-an-application" id="toc-creating-an-application" class="nav-link" data-scroll-target="#creating-an-application">Creating an application</a></li>
+  <li><a href="#configure-and-run" id="toc-configure-and-run" class="nav-link" data-scroll-target="#configure-and-run">Configure and run</a></li>
+  </ul></li>
+  <li><a href="#routing-and-path-operations" id="toc-routing-and-path-operations" class="nav-link" data-scroll-target="#routing-and-path-operations">Routing and Path Operations</a>
+  <ul class="collapse">
+  <li><a href="#http-methods-and-routes" id="toc-http-methods-and-routes" class="nav-link" data-scroll-target="#http-methods-and-routes">HTTP Methods and Routes</a></li>
+  </ul></li>
+  <li><a href="#handling-requests" id="toc-handling-requests" class="nav-link" data-scroll-target="#handling-requests">Handling requests</a>
+  <ul class="collapse">
+  <li><a href="#path-and-query-parameters" id="toc-path-and-query-parameters" class="nav-link" data-scroll-target="#path-and-query-parameters">Path and Query Parameters</a></li>
+  </ul></li>
+  <li><a href="#request-data-and-validation" id="toc-request-data-and-validation" class="nav-link" data-scroll-target="#request-data-and-validation">Request Data and Validation</a>
+  <ul class="collapse">
+  <li><a href="#pydantic-models-and-request-bodies" id="toc-pydantic-models-and-request-bodies" class="nav-link" data-scroll-target="#pydantic-models-and-request-bodies">Pydantic Models and Request Bodies</a></li>
+  <li><a href="#type-hints-and-validation-constraints" id="toc-type-hints-and-validation-constraints" class="nav-link" data-scroll-target="#type-hints-and-validation-constraints">Type Hints and Validation Constraints</a></li>
+  <li><a href="#headers-and-cookies" id="toc-headers-and-cookies" class="nav-link" data-scroll-target="#headers-and-cookies">Headers and Cookies</a></li>
+  <li><a href="#forms-and-file-uploads" id="toc-forms-and-file-uploads" class="nav-link" data-scroll-target="#forms-and-file-uploads">Forms and File Uploads</a></li>
+  </ul></li>
+  <li><a href="#responses" id="toc-responses" class="nav-link" data-scroll-target="#responses">Responses</a>
+  <ul class="collapse">
+  <li><a href="#response-models-and-serialization" id="toc-response-models-and-serialization" class="nav-link" data-scroll-target="#response-models-and-serialization">Response Models and Serialization</a></li>
+  <li><a href="#status-codes-headers-and-cookies" id="toc-status-codes-headers-and-cookies" class="nav-link" data-scroll-target="#status-codes-headers-and-cookies">Status Codes, Headers, and Cookies</a></li>
+  <li><a href="#custom-and-streaming-responses" id="toc-custom-and-streaming-responses" class="nav-link" data-scroll-target="#custom-and-streaming-responses">Custom and Streaming Responses</a></li>
+  </ul></li>
+  <li><a href="#error-handling" id="toc-error-handling" class="nav-link" data-scroll-target="#error-handling">Error Handling</a>
+  <ul class="collapse">
+  <li><a href="#http-exceptions-and-validation-errors" id="toc-http-exceptions-and-validation-errors" class="nav-link" data-scroll-target="#http-exceptions-and-validation-errors">HTTP Exceptions and Validation Errors</a></li>
+  <li><a href="#custom-exception-handlers" id="toc-custom-exception-handlers" class="nav-link" data-scroll-target="#custom-exception-handlers">Custom Exception Handlers</a></li>
+  </ul></li>
+  <li><a href="#dependency-injection" id="toc-dependency-injection" class="nav-link" data-scroll-target="#dependency-injection">Dependency Injection</a>
+  <ul class="collapse">
+  <li><a href="#declaring-and-reusing-dependencies" id="toc-declaring-and-reusing-dependencies" class="nav-link" data-scroll-target="#declaring-and-reusing-dependencies">Declaring and Reusing Dependencies</a></li>
+  <li><a href="#dependencies-with-cleanup" id="toc-dependencies-with-cleanup" class="nav-link" data-scroll-target="#dependencies-with-cleanup">Dependencies with Cleanup</a></li>
+  </ul></li>
+  <li><a href="#security" id="toc-security" class="nav-link" data-scroll-target="#security">Security</a>
+  <ul class="collapse">
+  <li><a href="#authentication-and-authorization" id="toc-authentication-and-authorization" class="nav-link" data-scroll-target="#authentication-and-authorization">Authentication and Authorization</a></li>
+  <li><a href="#oauth2-bearer-tokens-and-api-keys" id="toc-oauth2-bearer-tokens-and-api-keys" class="nav-link" data-scroll-target="#oauth2-bearer-tokens-and-api-keys">OAuth2, Bearer Tokens, and API Keys</a></li>
+  <li><a href="#cors" id="toc-cors" class="nav-link" data-scroll-target="#cors">CORS</a></li>
+  </ul></li>
+  <li><a href="#application-lifecycle-and-configuration" id="toc-application-lifecycle-and-configuration" class="nav-link" data-scroll-target="#application-lifecycle-and-configuration">Application Lifecycle and Configuration</a>
+  <ul class="collapse">
+  <li><a href="#lifespan-events" id="toc-lifespan-events" class="nav-link" data-scroll-target="#lifespan-events">Lifespan Events</a></li>
+  <li><a href="#settings-and-environment-variables" id="toc-settings-and-environment-variables" class="nav-link" data-scroll-target="#settings-and-environment-variables">Settings and Environment Variables</a></li>
+  <li><a href="#middleware" id="toc-middleware" class="nav-link" data-scroll-target="#middleware">Middleware</a></li>
+  </ul></li>
+  <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing">Testing</a>
+  <ul class="collapse">
+  <li><a href="#test-client-and-async-tests" id="toc-test-client-and-async-tests" class="nav-link" data-scroll-target="#test-client-and-async-tests">Test Client and Async Tests</a></li>
+  <li><a href="#dependency-overrides" id="toc-dependency-overrides" class="nav-link" data-scroll-target="#dependency-overrides">Dependency Overrides</a></li>
+  </ul></li>
+  <li><a href="#deployment-and-observability" id="toc-deployment-and-observability" class="nav-link" data-scroll-target="#deployment-and-observability">Deployment and Observability</a>
+  <ul class="collapse">
+  <li><a href="#asgi-servers-and-production-configuration" id="toc-asgi-servers-and-production-configuration" class="nav-link" data-scroll-target="#asgi-servers-and-production-configuration">ASGI Servers and Production Configuration</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item">Cheatsheets</li><li class="breadcrumb-item"><a href="../../cheatsheets/Web and APIs/fastapi.html">Web and APIs</a></li><li class="breadcrumb-item"><a href="../../cheatsheets/Web and APIs/fastapi.html">FastAPI</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">FastAPI</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">web</div>
+    <div class="quarto-category">networking</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    FastAPI is the standard library for creating APIs for ML &amp; AI in Python
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<ul>
+<li><strong>FastAPI</strong> is a Python framework for building APIs, built on Starlette.</li>
+<li><strong>Starlette</strong> is the web framework that provides FastAPI’s routing and web functionality.</li>
+<li><strong>Pydantic</strong> validates and serializes data using Python type hints.</li>
+<li><strong>ASGI</strong> (Asynchronous Server Gateway Interface) is a standard interface between asynchronous Python web applications and servers.</li>
+<li><strong>Uvicorn</strong> is an ASGI server that runs FastAPI and Starlette applications and handles incoming connections.</li>
+</ul>
+</section>
+<section id="installation-and-setup" class="level2">
+<h2 class="anchored" data-anchor-id="installation-and-setup">Installation and Setup</h2>
+<section id="installation" class="level3">
+<h3 class="anchored" data-anchor-id="installation">Installation</h3>
+<p>Use uv to install FastAPI with its standard dependencies, including the FastAPI CLI and Uvicorn:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add <span class="st">"fastapi[standard]"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="creating-an-application" class="level3">
+<h3 class="anchored" data-anchor-id="creating-an-application">Creating an application</h3>
+<p>Create <code>main.py</code> in the project root or <code>./app</code> directory:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-2" data-llms-code-original="from fastapi import FastAPI
+
+app = FastAPI() # <1>
+
+@app.get(&quot;/&quot;) # <2>
+async def root():
+    return {&quot;message&quot;: &quot;Hello World&quot;}"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()</span>
+<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/"</span>)</span>
+<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> root():</span>
+<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"message"</span>: <span class="st">"Hello World"</span>}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="1">Creates the ASGI application that receives requests.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="5" data-code-annotation="2">Registers a handler function for <code>GET /</code>; its return value is sent as JSON.</span>
+</dd>
+</dl>
+</section>
+<section id="configure-and-run" class="level3">
+<h3 class="anchored" data-anchor-id="configure-and-run">Configure and run</h3>
+<p>Add the application entrypoint to <code>pyproject.toml</code> so the FastAPI CLI knows where to find it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-3" data-llms-code-original="[tool.fastapi]
+entrypoint = &quot;main:app&quot; # <1> "><pre class="sourceCode toml code-annotation-code code-with-copy code-annotated"><code class="sourceCode toml"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[tool.fastapi]</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">entrypoint</span> <span class="op">=</span> <span class="st">"main:app"</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="1"><code>main:app</code> means the object <code>app</code> in the Python module <code>main</code> (<code>main.py</code>). For an application in <code>app/main.py</code>, use <code>app.main:app</code> instead.</span>
+</dd>
+</dl>
+<p>Run from the project root:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run fastapi dev             <span class="co"># development: automatic reload, localhost only</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run fastapi run             <span class="co"># production mode: no reload, listens on 0.0.0.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="routing-and-path-operations" class="level2">
+<h2 class="anchored" data-anchor-id="routing-and-path-operations">Routing and Path Operations</h2>
+<section id="http-methods-and-routes" class="level3">
+<h3 class="anchored" data-anchor-id="http-methods-and-routes">HTTP Methods and Routes</h3>
+<p><strong>Routes</strong>: A <strong>path operation</strong> connects an HTTP method and a URL path to a handler function. The same path can have different handlers for different methods.</p>
+<p><strong>Routers</strong>: Use <code>APIRouter</code> to group related routes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-5" data-llms-code-original="from fastapi import APIRouter, FastAPI
+
+app = FastAPI()
+router = APIRouter(prefix=&quot;/items&quot;, tags=[&quot;items&quot;]) # <1>
+items = []
+
+@router.get(&quot;/&quot;) # <2>
+async def list_items():
+    return items
+
+@router.post(&quot;/&quot;, status_code=201) # <3>
+async def create_item():
+    new_item = {&quot;id&quot;: len(items) + 1, &quot;name&quot;: &quot;Example&quot;, &quot;price&quot;: 10.0}
+    items.append(new_item)
+    return new_item
+
+app.include_router(router) # <4>"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> APIRouter, FastAPI</span>
+<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4" aria-hidden="true" tabindex="-1"></a>router <span class="op">=</span> APIRouter(prefix<span class="op">=</span><span class="st">"/items"</span>, tags<span class="op">=</span>[<span class="st">"items"</span>])</span>
+<span id="annotated-cell-5-5"><a href="#annotated-cell-5-5" aria-hidden="true" tabindex="-1"></a>items <span class="op">=</span> []</span>
+<span id="annotated-cell-5-6"><a href="#annotated-cell-5-6" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2">2</button><span id="annotated-cell-5-7" class="code-annotation-target"><a href="#annotated-cell-5-7" aria-hidden="true" tabindex="-1"></a><span class="at">@router.get</span>(<span class="st">"/"</span>)</span>
+<span id="annotated-cell-5-8"><a href="#annotated-cell-5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> list_items():</span>
+<span id="annotated-cell-5-9"><a href="#annotated-cell-5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> items</span>
+<span id="annotated-cell-5-10"><a href="#annotated-cell-5-10" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="3">3</button><span id="annotated-cell-5-11" class="code-annotation-target"><a href="#annotated-cell-5-11" aria-hidden="true" tabindex="-1"></a><span class="at">@router.post</span>(<span class="st">"/"</span>, status_code<span class="op">=</span><span class="dv">201</span>)</span>
+<span id="annotated-cell-5-12"><a href="#annotated-cell-5-12" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_item():</span>
+<span id="annotated-cell-5-13"><a href="#annotated-cell-5-13" aria-hidden="true" tabindex="-1"></a>    new_item <span class="op">=</span> {<span class="st">"id"</span>: <span class="bu">len</span>(items) <span class="op">+</span> <span class="dv">1</span>, <span class="st">"name"</span>: <span class="st">"Example"</span>, <span class="st">"price"</span>: <span class="fl">10.0</span>}</span>
+<span id="annotated-cell-5-14"><a href="#annotated-cell-5-14" aria-hidden="true" tabindex="-1"></a>    items.append(new_item)</span>
+<span id="annotated-cell-5-15"><a href="#annotated-cell-5-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> new_item</span>
+<span id="annotated-cell-5-16"><a href="#annotated-cell-5-16" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="4">4</button><span id="annotated-cell-5-17" class="code-annotation-target"><a href="#annotated-cell-5-17" aria-hidden="true" tabindex="-1"></a>app.include_router(router)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="1">Groups routes under <code>/items</code> with a shared documentation tag; routers can also share dependencies.</span>
+</dd>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="7" data-code-annotation="2">Handle <code>GET /items/</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="11" data-code-annotation="3">Handle <code>POST /items/</code>; <code>status_code=201</code> sets the success response code.</span>
+</dd>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="17" data-code-annotation="4">Registers the router’s endpoints with the application. Routers can live in separate files: see the <a href="https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure">example file structure</a>.</span>
+</dd>
+</dl>
+<p>Other decorators include <code>@router.put(...)</code>, <code>@router.patch(...)</code>, and <code>@router.delete(...)</code>; the same decorators are available directly on <code>app</code>. See <a href="../../cheatsheets/Web and APIs/http_rest.html#methods">HTTP methods</a>.</p>
+<p>FastAPI evaluates routes in declaration order: declare a fixed path like <code>/users/me</code> <strong>before</strong> <code>/users/{user_id}</code> so it is not captured as a user ID.</p>
+</section>
+</section>
+<section id="handling-requests" class="level2">
+<h2 class="anchored" data-anchor-id="handling-requests">Handling requests</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Declaration</th>
+<th>Read from</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Name appears in the route’s <code>{braces}</code></td>
+<td>Path</td>
+</tr>
+<tr class="even">
+<td>Scalar type, such as str, int, or bool</td>
+<td>Query string</td>
+</tr>
+<tr class="odd">
+<td>Pydantic model, <code>dict</code>, <code>list</code></td>
+<td>JSON body</td>
+</tr>
+</tbody>
+</table>
+<section id="path-and-query-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="path-and-query-parameters">Path and Query Parameters</h3>
+<p>Names in <code>{braces}</code> are taken from the path; other scalar function parameters are normally taken from the query string. Type hints control parsing and validation:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-6" data-llms-code-original="from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get(&quot;/items/{item_id}&quot;)
+async def read_item(
+    item_id: int, # <1>
+    q: str, # <2>
+    limit: int = 10, # <3>
+    details: bool = False, # <4>
+):
+    return {&quot;item_id&quot;: item_id, &quot;q&quot;: q, &quot;limit&quot;: limit, &quot;details&quot;: details}"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
+<span id="annotated-cell-6-2"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-6-3"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()</span>
+<span id="annotated-cell-6-4"><a href="#annotated-cell-6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-6-5"><a href="#annotated-cell-6-5" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/items/</span><span class="sc">{item_id}</span><span class="st">"</span>)</span>
+<span id="annotated-cell-6-6"><a href="#annotated-cell-6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> read_item(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-7" class="code-annotation-target"><a href="#annotated-cell-6-7" aria-hidden="true" tabindex="-1"></a>    item_id: <span class="bu">int</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-8" class="code-annotation-target"><a href="#annotated-cell-6-8" aria-hidden="true" tabindex="-1"></a>    q: <span class="bu">str</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-9" class="code-annotation-target"><a href="#annotated-cell-6-9" aria-hidden="true" tabindex="-1"></a>    limit: <span class="bu">int</span> <span class="op">=</span> <span class="dv">10</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="4">4</button><span id="annotated-cell-6-10" class="code-annotation-target"><a href="#annotated-cell-6-10" aria-hidden="true" tabindex="-1"></a>    details: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="annotated-cell-6-11"><a href="#annotated-cell-6-11" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="annotated-cell-6-12"><a href="#annotated-cell-6-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"item_id"</span>: item_id, <span class="st">"q"</span>: q, <span class="st">"limit"</span>: limit, <span class="st">"details"</span>: details}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="7" data-code-annotation="1"><code>item_id</code> is a required path parameter, parsed as an integer.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="8" data-code-annotation="2"><code>q</code> is a required query parameter because it has no default.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="9" data-code-annotation="3"><code>limit</code> is an optional query parameter, parsed as an integer and defaulting to <code>10</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-6" data-code-lines="10" data-code-annotation="4"><code>details</code> is an optional query parameter, parsed as a boolean and defaulting to <code>False</code>.</span>
+</dd>
+</dl>
+<p>To allow an omitted query parameter to be <code>None</code>, use e.g.&nbsp;<code>q: str | None = None</code>.</p>
+<p>For additional constraints on parameter values, see <a href="#type-hints-and-validation-constraints">Type Hints and Validation Constraints</a>.</p>
+</section>
+</section>
+<section id="request-data-and-validation" class="level2">
+<h2 class="anchored" data-anchor-id="request-data-and-validation">Request Data and Validation</h2>
+<section id="pydantic-models-and-request-bodies" class="level3">
+<h3 class="anchored" data-anchor-id="pydantic-models-and-request-bodies">Pydantic Models and Request Bodies</h3>
+<p>Declare a <a href="../../cheatsheets/Web and APIs/pydantic.html">Pydantic</a> model to receive a JSON request body. FastAPI parses the JSON, validates it, and passes a model instance to the handler:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-7" data-llms-code-original="from fastapi import FastAPI
+from pydantic import BaseModel, Field
+
+app = FastAPI()
+
+class Item(BaseModel):
+    name: str = Field(min_length=1, max_length=80) # <1>
+    price: float = Field(gt=0)
+    description: str | None = None # <2>
+    tags: list[str] = Field(default_factory=list) # <3>
+
+@app.post(&quot;/items&quot;, status_code=201)
+async def create_item(item: Item): # <4>
+    return item.model_dump() # <5>"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
+<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, Field</span>
+<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()</span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Item(BaseModel):</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-7" class="code-annotation-target"><a href="#annotated-cell-7-7" aria-hidden="true" tabindex="-1"></a>    name: <span class="bu">str</span> <span class="op">=</span> Field(min_length<span class="op">=</span><span class="dv">1</span>, max_length<span class="op">=</span><span class="dv">80</span>)</span>
+<span id="annotated-cell-7-8"><a href="#annotated-cell-7-8" aria-hidden="true" tabindex="-1"></a>    price: <span class="bu">float</span> <span class="op">=</span> Field(gt<span class="op">=</span><span class="dv">0</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-9" class="code-annotation-target"><a href="#annotated-cell-7-9" aria-hidden="true" tabindex="-1"></a>    description: <span class="bu">str</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="3">3</button><span id="annotated-cell-7-10" class="code-annotation-target"><a href="#annotated-cell-7-10" aria-hidden="true" tabindex="-1"></a>    tags: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> Field(default_factory<span class="op">=</span><span class="bu">list</span>)</span>
+<span id="annotated-cell-7-11"><a href="#annotated-cell-7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-7-12"><a href="#annotated-cell-7-12" aria-hidden="true" tabindex="-1"></a><span class="at">@app.post</span>(<span class="st">"/items"</span>, status_code<span class="op">=</span><span class="dv">201</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="4">4</button><span id="annotated-cell-7-13" class="code-annotation-target"><a href="#annotated-cell-7-13" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> create_item(item: Item):</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="5">5</button><span id="annotated-cell-7-14" class="code-annotation-target"><a href="#annotated-cell-7-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> item.model_dump()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="7" data-code-annotation="1">Fields without defaults are required. <code>Field</code> adds validation constraints and schema metadata.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="9" data-code-annotation="2">Allows a string or <code>None</code>; the default <code>None</code> also allows the field to be omitted. <code>str | None</code> <strong>without a default</strong> would still require the field.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="10" data-code-annotation="3">Creates a new empty list when <code>tags</code> is omitted. Collections and nested Pydantic models are validated recursively.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="13" data-code-annotation="4">A Pydantic model parameter is read from the request body, not the query string.</span>
+</dd>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-7" data-code-lines="14" data-code-annotation="5">Access values with e.g.&nbsp;<code>item.name</code>; <code>model_dump()</code> converts the model to a dictionary.</span>
+</dd>
+</dl>
+<p>Example request body (send with <code>Content-Type: application/json</code>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Notebook"</span><span class="fu">,</span> <span class="dt">"price"</span><span class="fu">:</span> <span class="fl">4.5</span><span class="fu">,</span> <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"office"</span><span class="ot">]</span><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="type-hints-and-validation-constraints" class="level3">
+<h3 class="anchored" data-anchor-id="type-hints-and-validation-constraints">Type Hints and Validation Constraints</h3>
+<p>Type hints define accepted data types; <code>Field</code> (for Pydantic), <code>Path</code>, <code>Query</code>, and <code>Body</code> add constraints and documentation. Use <code>Annotated</code> to attach type-metadata that fastAPI uses for validation:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-9" data-llms-code-original="from typing import Annotated
+from fastapi import Path, Query
+
+@app.get(&quot;/items/{item_id}&quot;)
+async def read_item(
+    item_id: Annotated[int, Path(ge=1)], # <1>
+    limit: Annotated[int, Query(ge=1, le=100)] = 10, # <2>
+):
+    return {&quot;item_id&quot;: item_id, &quot;limit&quot;: limit}"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Annotated</span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> Path, Query</span>
+<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-9-4"><a href="#annotated-cell-9-4" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/items/</span><span class="sc">{item_id}</span><span class="st">"</span>)</span>
+<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> read_item(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-6" class="code-annotation-target"><a href="#annotated-cell-9-6" aria-hidden="true" tabindex="-1"></a>    item_id: Annotated[<span class="bu">int</span>, Path(ge<span class="op">=</span><span class="dv">1</span>)],</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2">2</button><span id="annotated-cell-9-7" class="code-annotation-target"><a href="#annotated-cell-9-7" aria-hidden="true" tabindex="-1"></a>    limit: Annotated[<span class="bu">int</span>, Query(ge<span class="op">=</span><span class="dv">1</span>, le<span class="op">=</span><span class="dv">100</span>)] <span class="op">=</span> <span class="dv">10</span>,</span>
+<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="annotated-cell-9-9"><a href="#annotated-cell-9-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"item_id"</span>: item_id, <span class="st">"limit"</span>: limit}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="6" data-code-annotation="1"><code>Path(ge=1)</code> requires an integer greater than or equal to 1.</span>
+</dd>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="7" data-code-annotation="2"><code>Query(ge=1, le=100)</code> restricts the query parameter to 1–100; its default remains <code>10</code>.</span>
+</dd>
+</dl>
+<p>Common validation constraints:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Constraint</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>gt</code>, <code>ge</code></td>
+<td>Greater than / greater than or equal to</td>
+<td><code>Field(gt=0)</code></td>
+</tr>
+<tr class="even">
+<td><code>lt</code>, <code>le</code></td>
+<td>Less than / less than or equal to</td>
+<td><code>Query(le=100)</code></td>
+</tr>
+<tr class="odd">
+<td><code>min_length</code>, <code>max_length</code></td>
+<td>Bounds on string or collection length</td>
+<td><code>Field(min_length=1)</code></td>
+</tr>
+<tr class="even">
+<td><code>pattern</code></td>
+<td>Regular expression for a string</td>
+<td><code>Query(pattern=r"^[a-z]+$")</code></td>
+</tr>
+</tbody>
+</table>
+<p>For a scalar body value, use <code>Body</code> explicitly; otherwise FastAPI normally treats a scalar as a query parameter:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Single Body Parameter</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Multiple Body Parameters</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>A single scalar body parameter normally expects the model’s fields directly: <code>{"price": 4.5, "name": "notebook"}</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-28" data-llms-code-original="from typing import Annotated
+from fastapi import Body
+
+@app.put(&quot;/items/{item_id}/price&quot;)
+async def update_price(
+    item_id: int,
+    price: Annotated[float, Body(gt=0, embed=True)],  # <1>
+):
+    return {&quot;item_id&quot;: item_id, &quot;price&quot;: price}"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-28-1"><a href="#annotated-cell-28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Annotated</span>
+<span id="annotated-cell-28-2"><a href="#annotated-cell-28-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> Body</span>
+<span id="annotated-cell-28-3"><a href="#annotated-cell-28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-28-4"><a href="#annotated-cell-28-4" aria-hidden="true" tabindex="-1"></a><span class="at">@app.put</span>(<span class="st">"/items/</span><span class="sc">{item_id}</span><span class="st">/price"</span>)</span>
+<span id="annotated-cell-28-5"><a href="#annotated-cell-28-5" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> update_price(</span>
+<span id="annotated-cell-28-6"><a href="#annotated-cell-28-6" aria-hidden="true" tabindex="-1"></a>    item_id: <span class="bu">int</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-28" data-target-annotation="1">1</button><span id="annotated-cell-28-7" class="code-annotation-target"><a href="#annotated-cell-28-7" aria-hidden="true" tabindex="-1"></a>    price: Annotated[<span class="bu">float</span>, Body(gt<span class="op">=</span><span class="dv">0</span>, embed<span class="op">=</span><span class="va">True</span>)],</span>
+<span id="annotated-cell-28-8"><a href="#annotated-cell-28-8" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="annotated-cell-28-9"><a href="#annotated-cell-28-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"item_id"</span>: item_id, <span class="st">"price"</span>: price}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-28" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-28" data-code-lines="7" data-code-annotation="1"><code>embed=True</code> expects <code>{"price": 4.5}</code> rather than a bare JSON number <code>4.5</code>.</span>
+</dd>
+</dl>
+<p>Expected body: <code>{"price": 4.5}</code>.</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>Multiple body parameters are wrapped under their parameter names <code>{"price": 4.5, "item": {"name": "Notebook", "item_id": 4}}</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-29" data-llms-code-original="from typing import Annotated
+from fastapi import Body
+from pydantic import BaseModel, Field
+
+class Item(BaseModel):
+    name: str = Field(min_length=1, max_length=80) # <1>
+    price: float = Field(gt=0)
+    description: str | None = None # <2>
+    tags: list[str] = Field(default_factory=list) # <3>
+
+@app.put(&quot;/items/{item_id}/price&quot;)
+async def update_price(
+    item_id: int,
+    price: Annotated[float, Body(gt=0)],
+    item: Item,
+):
+    return {&quot;device price&quot;: item.price, &quot;total price&quot;: price}"><pre class="sourceCode python code-annotation-code code-with-copy"><code class="sourceCode python"><span id="annotated-cell-29-1"><a href="#annotated-cell-29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Annotated</span>
+<span id="annotated-cell-29-2"><a href="#annotated-cell-29-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> Body</span>
+<span id="annotated-cell-29-3"><a href="#annotated-cell-29-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, Field</span>
+<span id="annotated-cell-29-4"><a href="#annotated-cell-29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-29-5"><a href="#annotated-cell-29-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Item(BaseModel):</span>
+<span id="annotated-cell-29-6"><a href="#annotated-cell-29-6" aria-hidden="true" tabindex="-1"></a>    name: <span class="bu">str</span> <span class="op">=</span> Field(min_length<span class="op">=</span><span class="dv">1</span>, max_length<span class="op">=</span><span class="dv">80</span>)</span>
+<span id="annotated-cell-29-7"><a href="#annotated-cell-29-7" aria-hidden="true" tabindex="-1"></a>    price: <span class="bu">float</span> <span class="op">=</span> Field(gt<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="annotated-cell-29-8"><a href="#annotated-cell-29-8" aria-hidden="true" tabindex="-1"></a>    description: <span class="bu">str</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="annotated-cell-29-9"><a href="#annotated-cell-29-9" aria-hidden="true" tabindex="-1"></a>    tags: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> Field(default_factory<span class="op">=</span><span class="bu">list</span>)</span>
+<span id="annotated-cell-29-10"><a href="#annotated-cell-29-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-29-11"><a href="#annotated-cell-29-11" aria-hidden="true" tabindex="-1"></a><span class="at">@app.put</span>(<span class="st">"/items/</span><span class="sc">{item_id}</span><span class="st">/price"</span>)</span>
+<span id="annotated-cell-29-12"><a href="#annotated-cell-29-12" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> update_price(</span>
+<span id="annotated-cell-29-13"><a href="#annotated-cell-29-13" aria-hidden="true" tabindex="-1"></a>    item_id: <span class="bu">int</span>,</span>
+<span id="annotated-cell-29-14"><a href="#annotated-cell-29-14" aria-hidden="true" tabindex="-1"></a>    price: Annotated[<span class="bu">float</span>, Body(gt<span class="op">=</span><span class="dv">0</span>)],</span>
+<span id="annotated-cell-29-15"><a href="#annotated-cell-29-15" aria-hidden="true" tabindex="-1"></a>    item: Item,</span>
+<span id="annotated-cell-29-16"><a href="#annotated-cell-29-16" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="annotated-cell-29-17"><a href="#annotated-cell-29-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"device price"</span>: item.price, <span class="st">"total price"</span>: price}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Expected body: <code>{"price": 4.5, "item": {"name": "Notebook", "price": 4.5, "tags": ["portable"]}}</code>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="headers-and-cookies" class="level3">
+<h3 class="anchored" data-anchor-id="headers-and-cookies">Headers and Cookies</h3>
+<p>Use <code>Header</code> and <code>Cookie</code> to read these values instead of query parameters:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-10" data-llms-code-original="from typing import Annotated
+from fastapi import Cookie, Header
+
+@app.get(&quot;/preferences&quot;)
+async def read_preferences(
+    user_agent: Annotated[str | None, Header()] = None, # <1>
+    theme: Annotated[str, Cookie()] = &quot;light&quot;, # <2>
+):
+    return {&quot;user_agent&quot;: user_agent, &quot;theme&quot;: theme}"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Annotated</span>
+<span id="annotated-cell-10-2"><a href="#annotated-cell-10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> Cookie, Header</span>
+<span id="annotated-cell-10-3"><a href="#annotated-cell-10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/preferences"</span>)</span>
+<span id="annotated-cell-10-5"><a href="#annotated-cell-10-5" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> read_preferences(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-6" class="code-annotation-target"><a href="#annotated-cell-10-6" aria-hidden="true" tabindex="-1"></a>    user_agent: Annotated[<span class="bu">str</span> <span class="op">|</span> <span class="va">None</span>, Header()] <span class="op">=</span> <span class="va">None</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2">2</button><span id="annotated-cell-10-7" class="code-annotation-target"><a href="#annotated-cell-10-7" aria-hidden="true" tabindex="-1"></a>    theme: Annotated[<span class="bu">str</span>, Cookie()] <span class="op">=</span> <span class="st">"light"</span>,</span>
+<span id="annotated-cell-10-8"><a href="#annotated-cell-10-8" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="annotated-cell-10-9"><a href="#annotated-cell-10-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"user_agent"</span>: user_agent, <span class="st">"theme"</span>: theme}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="6" data-code-annotation="1">Reads the <code>User-Agent</code> header: <code>Header</code> converts underscores to hyphens by default, and header names are case-insensitive. Use <code>Header(alias="User-Agent")</code> to specify a header name explicitly.</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="7" data-code-annotation="2">Reads the <code>theme</code> cookie, defaulting to <code>"light"</code> if absent. Omit the default to make a header or cookie required.</span>
+</dd>
+</dl>
+</section>
+<section id="forms-and-file-uploads" class="level3">
+<h3 class="anchored" data-anchor-id="forms-and-file-uploads">Forms and File Uploads</h3>
+<p>Use <code>Form</code> for form fields and <code>File</code> / <code>UploadFile</code> for uploaded files.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-11" data-llms-code-original="from typing import Annotated
+from fastapi import File, Form, UploadFile
+
+@app.post(&quot;/uploads&quot;)
+async def upload_file(
+    file: Annotated[UploadFile, File()], # <1>
+    description: Annotated[str, Form(max_length=200)] = &quot;&quot;, # <2>
+):
+    contents = await file.read() # <3>
+    return {
+        &quot;filename&quot;: file.filename,
+        &quot;description&quot;: description,
+        &quot;size_bytes&quot;: len(contents),
+    }"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Annotated</span>
+<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> File, Form, UploadFile</span>
+<span id="annotated-cell-11-3"><a href="#annotated-cell-11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-11-4"><a href="#annotated-cell-11-4" aria-hidden="true" tabindex="-1"></a><span class="at">@app.post</span>(<span class="st">"/uploads"</span>)</span>
+<span id="annotated-cell-11-5"><a href="#annotated-cell-11-5" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> upload_file(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1">1</button><span id="annotated-cell-11-6" class="code-annotation-target"><a href="#annotated-cell-11-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>: Annotated[UploadFile, File()],</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2">2</button><span id="annotated-cell-11-7" class="code-annotation-target"><a href="#annotated-cell-11-7" aria-hidden="true" tabindex="-1"></a>    description: Annotated[<span class="bu">str</span>, Form(max_length<span class="op">=</span><span class="dv">200</span>)] <span class="op">=</span> <span class="st">""</span>,</span>
+<span id="annotated-cell-11-8"><a href="#annotated-cell-11-8" aria-hidden="true" tabindex="-1"></a>):</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="3">3</button><span id="annotated-cell-11-9" class="code-annotation-target"><a href="#annotated-cell-11-9" aria-hidden="true" tabindex="-1"></a>    contents <span class="op">=</span> <span class="cf">await</span> <span class="bu">file</span>.read()</span>
+<span id="annotated-cell-11-10"><a href="#annotated-cell-11-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="annotated-cell-11-11"><a href="#annotated-cell-11-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"filename"</span>: <span class="bu">file</span>.filename,</span>
+<span id="annotated-cell-11-12"><a href="#annotated-cell-11-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"description"</span>: description,</span>
+<span id="annotated-cell-11-13"><a href="#annotated-cell-11-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"size_bytes"</span>: <span class="bu">len</span>(contents),</span>
+<span id="annotated-cell-11-14"><a href="#annotated-cell-11-14" aria-hidden="true" tabindex="-1"></a>    }</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="6" data-code-annotation="1"><code>UploadFile</code> uses a spooled file (memory, then disk above a size threshold), so it can handle larger uploads without immediately loading them into memory. Access metadata with <code>file.filename</code> and <code>file.content_type</code>. <code>Annotated[bytes, File()]</code> instead loads the entire file into memory; <code>list[UploadFile]</code> accepts multiple files.</span>
+</dd>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="7" data-code-annotation="2">Reads a form field from the same request. Forms without files normally use <code>application/x-www-form-urlencoded</code>; uploads use <code>multipart/form-data</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="9" data-code-annotation="3">Reads the entire file contents as <code>bytes</code>, so this is suitable for small files. Decode text with <code>contents.decode("utf-8")</code>. For large files, repeatedly call <code>await file.read(size)</code> to process chunks instead of loading everything into memory. FastAPI closes files automatically at request cleanup.</span>
+</dd>
+</dl>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Form/File <strong>or</strong> JSON-Body
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Form/file parameters cannot share the same request body with ordinary JSON body parameters. Use form fields for accompanying data rather than expecting a separate JSON body.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="responses" class="level2">
+<h2 class="anchored" data-anchor-id="responses">Responses</h2>
+<section id="response-models-and-serialization" class="level3">
+<h3 class="anchored" data-anchor-id="response-models-and-serialization">Response Models and Serialization</h3>
+<p><code>response_model</code> validates, documents, and filters output to the declared fields. FastAPI serializes models, dates, and UUIDs to JSON automatically:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> UserOut(BaseModel):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    name: <span class="bu">str</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/users/me"</span>, response_model<span class="op">=</span>UserOut)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> read_user():</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"name"</span>: <span class="st">"Ada"</span>, <span class="st">"password_hash"</span>: <span class="st">"hidden"</span>}  <span class="co"># Only name is sent.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A return annotation such as <code>-&gt; UserOut</code> also use the response model (then the type of the response must be UserOut however); explicit <code>response_model</code> takes priority. Use <code>response_model_exclude_none=True</code> to omit <code>None</code> fields.</p>
+</section>
+<section id="status-codes-headers-and-cookies" class="level3">
+<h3 class="anchored" data-anchor-id="status-codes-headers-and-cookies">Status Codes, Headers, and Cookies</h3>
+<p>Set the default success status in the decorator; inject <code>Response</code> (from server) to modify headers, cookies, or <code>response.status_code</code> dynamically:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-13" data-llms-code-original="from fastapi import Response, status
+
+@app.post(&quot;/preferences&quot;, status_code=status.HTTP_201_CREATED)
+async def save_preferences(response: Response, theme: str): # <1>
+    response.headers[&quot;X-App-Version&quot;] = &quot;1&quot;
+    response.set_cookie(&quot;theme&quot;, theme, httponly=True, secure=True, samesite=&quot;lax&quot;) # <2>
+    return {&quot;saved&quot;: True}
+
+@app.delete(&quot;/preferences&quot;, status_code=status.HTTP_204_NO_CONTENT)
+async def clear_preferences():
+    response = Response(status_code=204) # <3>
+    response.delete_cookie(&quot;theme&quot;) # <4>
+    return response"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-13-1"><a href="#annotated-cell-13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> Response, status</span>
+<span id="annotated-cell-13-2"><a href="#annotated-cell-13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-13-3"><a href="#annotated-cell-13-3" aria-hidden="true" tabindex="-1"></a><span class="at">@app.post</span>(<span class="st">"/preferences"</span>, status_code<span class="op">=</span>status.HTTP_201_CREATED)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1">1</button><span id="annotated-cell-13-4" class="code-annotation-target"><a href="#annotated-cell-13-4" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> save_preferences(response: Response, theme: <span class="bu">str</span>):</span>
+<span id="annotated-cell-13-5"><a href="#annotated-cell-13-5" aria-hidden="true" tabindex="-1"></a>    response.headers[<span class="st">"X-App-Version"</span>] <span class="op">=</span> <span class="st">"1"</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2">2</button><span id="annotated-cell-13-6" class="code-annotation-target"><a href="#annotated-cell-13-6" aria-hidden="true" tabindex="-1"></a>    response.set_cookie(<span class="st">"theme"</span>, theme, httponly<span class="op">=</span><span class="va">True</span>, secure<span class="op">=</span><span class="va">True</span>, samesite<span class="op">=</span><span class="st">"lax"</span>)</span>
+<span id="annotated-cell-13-7"><a href="#annotated-cell-13-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"saved"</span>: <span class="va">True</span>}</span>
+<span id="annotated-cell-13-8"><a href="#annotated-cell-13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-13-9"><a href="#annotated-cell-13-9" aria-hidden="true" tabindex="-1"></a><span class="at">@app.delete</span>(<span class="st">"/preferences"</span>, status_code<span class="op">=</span>status.HTTP_204_NO_CONTENT)</span>
+<span id="annotated-cell-13-10"><a href="#annotated-cell-13-10" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> clear_preferences():</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="3">3</button><span id="annotated-cell-13-11" class="code-annotation-target"><a href="#annotated-cell-13-11" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> Response(status_code<span class="op">=</span><span class="dv">204</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="4">4</button><span id="annotated-cell-13-12" class="code-annotation-target"><a href="#annotated-cell-13-12" aria-hidden="true" tabindex="-1"></a>    response.delete_cookie(<span class="st">"theme"</span>)</span>
+<span id="annotated-cell-13-13"><a href="#annotated-cell-13-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="4" data-code-annotation="1"><code>Response</code> is not provided by the client, but injected from the server.</span>
+</dd>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="6" data-code-annotation="2">Cookie security flags:</span>
+</dd>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="11" data-code-annotation="3">Creates the actual response to return, rather than using an injected response.</span>
+</dd>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="12" data-code-annotation="4">Expires the browser’s cookie. If it was set with a custom <code>path</code> or <code>domain</code>, use the same values when deleting it.</span>
+</dd>
+</dl>
+</section>
+<section id="custom-and-streaming-responses" class="level3">
+<h3 class="anchored" data-anchor-id="custom-and-streaming-responses">Custom and Streaming Responses</h3>
+<p>For custom responses, use classes from <code>fastapi.responses</code>: <code>HTMLResponse</code>, <code>PlainTextResponse</code>, <code>RedirectResponse</code>, or <code>FileResponse(path, filename="download.csv")</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi.responses <span class="im">import</span> HTMLResponse, StreamingResponse</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/page"</span>, response_class<span class="op">=</span>HTMLResponse)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> page():</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"&lt;h1&gt;Hello&lt;/h1&gt;"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/stream"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> stream():</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> StreamingResponse(<span class="bu">iter</span>([<span class="st">"Hello</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">"World</span><span class="ch">\n</span><span class="st">"</span>]), media_type<span class="op">=</span><span class="st">"text/plain"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>StreamingResponse</code> accepts a sync or async iterator of chunks. Returning a <code>Response</code> directly (instead of FastAPI constructing it) bypasses response-model validation and serialization. Using <code>response_class</code> or <code>responses</code> in the decorator documents the format, but it does not restore validation.</p>
+</section>
+</section>
+<section id="error-handling" class="level2">
+<h2 class="anchored" data-anchor-id="error-handling">Error Handling</h2>
+<section id="http-exceptions-and-validation-errors" class="level3">
+<h3 class="anchored" data-anchor-id="http-exceptions-and-validation-errors">HTTP Exceptions and Validation Errors</h3>
+<p><strong>Raise</strong>, rather than return, <code>HTTPException</code> to stop a request:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> HTTPException</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/items/</span><span class="sc">{item_id}</span><span class="st">"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> read_item(item_id: <span class="bu">int</span>):</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> item_id <span class="op">!=</span> <span class="dv">1</span>:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> HTTPException(status_code<span class="op">=</span><span class="dv">404</span>, detail<span class="op">=</span><span class="st">"Item not found"</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"id"</span>: item_id}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The error body is <code>{"detail": "Item not found"}</code>. FastAPI prodcues <strong>422</strong> automatically for invalid request data and <strong>500</strong> for invalid response data.</p>
+</section>
+<section id="custom-exception-handlers" class="level3">
+<h3 class="anchored" data-anchor-id="custom-exception-handlers">Custom Exception Handlers</h3>
+<p>Register a handler for an exception class to customize errors globally:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-16" data-llms-code-original="from fastapi import Request
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
+
+@app.exception_handler(RequestValidationError)
+async def validation_error(request: Request, exc: RequestValidationError): # <1>
+    return JSONResponse(status_code=422, content={&quot;detail&quot;: &quot;Invalid request data&quot;})"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> Request</span>
+<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi.exceptions <span class="im">import</span> RequestValidationError</span>
+<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi.responses <span class="im">import</span> JSONResponse</span>
+<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-16-5"><a href="#annotated-cell-16-5" aria-hidden="true" tabindex="-1"></a><span class="at">@app.exception_handler</span>(RequestValidationError)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1">1</button><span id="annotated-cell-16-6" class="code-annotation-target"><a href="#annotated-cell-16-6" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> validation_error(request: Request, exc: RequestValidationError):</span>
+<span id="annotated-cell-16-7"><a href="#annotated-cell-16-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> JSONResponse(status_code<span class="op">=</span><span class="dv">422</span>, content<span class="op">=</span>{<span class="st">"detail"</span>: <span class="st">"Invalid request data"</span>})</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-16" data-code-lines="6" data-code-annotation="1">FastAPI requires the two arguments request (that caused the error) and exc (provides details on the error).</span>
+</dd>
+</dl>
+</section>
+</section>
+<section id="dependency-injection" class="level2">
+<h2 class="anchored" data-anchor-id="dependency-injection">Dependency Injection</h2>
+<section id="declaring-and-reusing-dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="declaring-and-reusing-dependencies">Declaring and Reusing Dependencies</h3>
+<p><code>Depends</code> calls a function and injects its result; dependencies can themselves depend on other dependencies:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-17" data-llms-code-original="from typing import Annotated
+from fastapi import Depends, Query
+
+def pagination(limit: Annotated[int, Query(ge=1, le=100)] = 10):
+    return {&quot;limit&quot;: limit}
+
+Pagination = Annotated[dict, Depends(pagination)] # <1>
+
+@app.get(&quot;/items&quot;)
+async def list_items(params: Pagination): # <2>
+    return params"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-17-1"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Annotated</span>
+<span id="annotated-cell-17-2"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> Depends, Query</span>
+<span id="annotated-cell-17-3"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-17-4"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pagination(limit: Annotated[<span class="bu">int</span>, Query(ge<span class="op">=</span><span class="dv">1</span>, le<span class="op">=</span><span class="dv">100</span>)] <span class="op">=</span> <span class="dv">10</span>):</span>
+<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"limit"</span>: limit}</span>
+<span id="annotated-cell-17-6"><a href="#annotated-cell-17-6" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-7" class="code-annotation-target"><a href="#annotated-cell-17-7" aria-hidden="true" tabindex="-1"></a>Pagination <span class="op">=</span> Annotated[<span class="bu">dict</span>, Depends(pagination)]</span>
+<span id="annotated-cell-17-8"><a href="#annotated-cell-17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-17-9"><a href="#annotated-cell-17-9" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/items"</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2">2</button><span id="annotated-cell-17-10" class="code-annotation-target"><a href="#annotated-cell-17-10" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> list_items(params: Pagination):</span>
+<span id="annotated-cell-17-11"><a href="#annotated-cell-17-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> params</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-17" data-code-lines="7" data-code-annotation="1">This is a <em>type alias</em> meaning: This value is a dictionary obtained by calling <code>pagination</code>. It does not call <code>pagination</code> directly.</span>
+</dd>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-17" data-code-lines="10" data-code-annotation="2">FastAPI calls pagination with the <code>limit</code> parameter from the query string: Query: <code>GET /items?limit=25</code>. Response: <code>{"limit": 25}</code>.</span>
+</dd>
+</dl>
+<p>Reuse the alias across endpoints. Results are cached per request by default (<code>use_cache=False</code> disables this).</p>
+</section>
+<section id="dependencies-with-cleanup" class="level3">
+<h3 class="anchored" data-anchor-id="dependencies-with-cleanup">Dependencies with Cleanup</h3>
+<p>Use a single <code>yield</code> and <code>finally</code> (or a context manager) to release resources even on errors:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-18" data-llms-code-original="from typing import Annotated, Literal, TextIO
+from fastapi import Depends
+
+def get_file(filename: str): # <1>
+    file = open(filename, encoding=&quot;utf-8&quot;)
+    try:
+        yield file
+    finally:
+        file.close()
+
+@app.get(&quot;/files/{filename}&quot;)
+def read_file(file: Annotated[TextIO, Depends(get_file)]): # <2>
+    return {&quot;contents&quot;: file.read()}"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-18-1"><a href="#annotated-cell-18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Annotated, Literal, TextIO</span>
+<span id="annotated-cell-18-2"><a href="#annotated-cell-18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> Depends</span>
+<span id="annotated-cell-18-3"><a href="#annotated-cell-18-3" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="1">1</button><span id="annotated-cell-18-4" class="code-annotation-target"><a href="#annotated-cell-18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_file(filename: <span class="bu">str</span>):</span>
+<span id="annotated-cell-18-5"><a href="#annotated-cell-18-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(filename, encoding<span class="op">=</span><span class="st">"utf-8"</span>)</span>
+<span id="annotated-cell-18-6"><a href="#annotated-cell-18-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="annotated-cell-18-7"><a href="#annotated-cell-18-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">yield</span> <span class="bu">file</span></span>
+<span id="annotated-cell-18-8"><a href="#annotated-cell-18-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">finally</span>:</span>
+<span id="annotated-cell-18-9"><a href="#annotated-cell-18-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">file</span>.close()</span>
+<span id="annotated-cell-18-10"><a href="#annotated-cell-18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-18-11"><a href="#annotated-cell-18-11" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/files/</span><span class="sc">{filename}</span><span class="st">"</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="2">2</button><span id="annotated-cell-18-12" class="code-annotation-target"><a href="#annotated-cell-18-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_file(<span class="bu">file</span>: Annotated[TextIO, Depends(get_file)]):</span>
+<span id="annotated-cell-18-13"><a href="#annotated-cell-18-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"contents"</span>: <span class="bu">file</span>.read()}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-18" data-code-lines="4" data-code-annotation="1">FastAPI reads <code>filename</code> from the route’s path, even though it is declared in the dependency.</span>
+</dd>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-18" data-code-lines="12" data-code-annotation="2">For <code>GET /files/data.txt</code>, FastAPI calls <code>get_file(filename="data.txt")</code> and injects the yielded file into <code>read_file</code>. The <code>finally</code> block closes it after use, including when the endpoint raises an exception.</span>
+</dd>
+</dl>
+<p>Cleanup normally runs <strong>after the response is sent</strong>, including streaming; <code>Depends(get_file, scope="function")</code> cleans up before sending it.</p>
+</section>
+</section>
+<section id="security" class="level2">
+<h2 class="anchored" data-anchor-id="security">Security</h2>
+<section id="authentication-and-authorization" class="level3">
+<h3 class="anchored" data-anchor-id="authentication-and-authorization">Authentication and Authorization</h3>
+<ul>
+<li><strong>Authentication</strong> verifies identity; <strong>authorization</strong> checks roles, ownership, or permissions. Enforce both in dependencies, not only in the UI.</li>
+<li>Return <strong>401</strong> for missing/invalid credentials (<code>WWW-Authenticate: Bearer</code> for bearer auth); <strong>403</strong> for insufficient permissions.</li>
+<li>Use HTTPS, hash passwords, and keep secrets outside source code. Validate JWT signatures, expiry, issuer, and audience; decoding alone is not validation.</li>
+</ul>
+</section>
+<section id="oauth2-bearer-tokens-and-api-keys" class="level3">
+<h3 class="anchored" data-anchor-id="oauth2-bearer-tokens-and-api-keys">OAuth2, Bearer Tokens, and API Keys</h3>
+<p>Security helpers from <code>fastapi.security</code> extract credentials and add OpenAPI security schemes:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Helper</th>
+<th>Credentials</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>OAuth2PasswordBearer(tokenUrl="token")</code></td>
+<td>Bearer token; documents an OAuth2 password token endpoint</td>
+</tr>
+<tr class="even">
+<td><code>HTTPBearer()</code></td>
+<td><code>Authorization: Bearer &lt;token&gt;</code> as an <code>HTTPAuthorizationCredentials</code> object</td>
+</tr>
+<tr class="odd">
+<td><code>APIKeyHeader(name="X-API-Key")</code></td>
+<td>API key from a header</td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-19" data-llms-code-original="from typing import Annotated
+from fastapi import Depends, FastAPI
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+
+app = FastAPI()
+bearer = HTTPBearer() # <1> 
+BearerCredentials = Annotated[HTTPAuthorizationCredentials, Depends(bearer)] # <2>
+
+@app.get(&quot;/auth-info&quot;)
+async def auth_info(credentials: BearerCredentials):
+    return {&quot;scheme&quot;: credentials.scheme} # <3>"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-19-1"><a href="#annotated-cell-19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Annotated</span>
+<span id="annotated-cell-19-2"><a href="#annotated-cell-19-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> Depends, FastAPI</span>
+<span id="annotated-cell-19-3"><a href="#annotated-cell-19-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi.security <span class="im">import</span> HTTPAuthorizationCredentials, HTTPBearer</span>
+<span id="annotated-cell-19-4"><a href="#annotated-cell-19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-19-5"><a href="#annotated-cell-19-5" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1">1</button><span id="annotated-cell-19-6" class="code-annotation-target"><a href="#annotated-cell-19-6" aria-hidden="true" tabindex="-1"></a>bearer <span class="op">=</span> HTTPBearer()</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="2">2</button><span id="annotated-cell-19-7" class="code-annotation-target"><a href="#annotated-cell-19-7" aria-hidden="true" tabindex="-1"></a>BearerCredentials <span class="op">=</span> Annotated[HTTPAuthorizationCredentials, Depends(bearer)]</span>
+<span id="annotated-cell-19-8"><a href="#annotated-cell-19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-19-9"><a href="#annotated-cell-19-9" aria-hidden="true" tabindex="-1"></a><span class="at">@app.get</span>(<span class="st">"/auth-info"</span>)</span>
+<span id="annotated-cell-19-10"><a href="#annotated-cell-19-10" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> auth_info(credentials: BearerCredentials):</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="3">3</button><span id="annotated-cell-19-11" class="code-annotation-target"><a href="#annotated-cell-19-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"scheme"</span>: credentials.scheme}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-19" data-code-lines="6" data-code-annotation="1"><code>HTTPBearer()</code> creates a dependency that extracts bearer credentials from the <code>Authorization</code> header and adds a bearer security scheme to OpenAPI. It rejects missing or non-bearer credentials by default, but does not validate the token itself.</span>
+</dd>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-19" data-code-lines="7" data-code-annotation="2"><code>HTTPAuthorizationCredentials</code> is the object holding the extracted authentication scheme and raw token. This alias tells FastAPI to call <code>bearer</code> and inject that object.</span>
+</dd>
+<dt data-target-cell="annotated-cell-19" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-19" data-code-lines="11" data-code-annotation="3"><code>credentials.scheme</code> contains <code>"Bearer"</code>; <code>credentials.credentials</code> contains the raw token.</span>
+</dd>
+</dl>
+<p>Client sends <code>Authorization: Bearer &lt;token&gt;</code> to this endpoint.</p>
+</section>
+<section id="cors" class="level3">
+<h3 class="anchored" data-anchor-id="cors">CORS</h3>
+<p>CORS controls which browser origins (scheme + host + port) can access the API:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi.middleware.cors <span class="im">import</span> CORSMiddleware</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>app.add_middleware(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    CORSMiddleware,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    allow_origins<span class="op">=</span>[<span class="st">"https://app.example.com"</span>],</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    allow_credentials<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    allow_methods<span class="op">=</span>[<span class="st">"GET"</span>, <span class="st">"POST"</span>],</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    allow_headers<span class="op">=</span>[<span class="st">"Authorization"</span>, <span class="st">"Content-Type"</span>],</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="application-lifecycle-and-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="application-lifecycle-and-configuration">Application Lifecycle and Configuration</h2>
+<section id="lifespan-events" class="level3">
+<h3 class="anchored" data-anchor-id="lifespan-events">Lifespan Events</h3>
+<p>Use <code>lifespan</code> for shared resources: code before <code>yield</code> runs at startup, cleanup runs at shutdown.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> contextlib <span class="im">import</span> asynccontextmanager</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> httpx <span class="im">import</span> AsyncClient</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="at">@asynccontextmanager</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> lifespan(app: FastAPI):</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">async</span> <span class="cf">with</span> AsyncClient() <span class="im">as</span> client:</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        app.state.http <span class="op">=</span> client  <span class="co"># Reuse a connection pool across requests.</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">yield</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The context manager closes the client on shutdown.</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI(lifespan<span class="op">=</span>lifespan)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Access the client through <code>request.app.state.http</code> in a handler that accepts <code>request: Request</code>. Lifespan runs separately in each worker process.</p>
+</section>
+<section id="settings-and-environment-variables" class="level3">
+<h3 class="anchored" data-anchor-id="settings-and-environment-variables">Settings and Environment Variables</h3>
+<p>Install with <code>uv add pydantic-settings</code>. Settings are typed and validated; environment variables override <code>.env</code> values, which override defaults:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-22" data-llms-code-original="from functools import lru_cache
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file=&quot;.env&quot;, env_prefix=&quot;APP_&quot;)
+    debug: bool = False
+    database_url: str  # Required: APP_DATABASE_URL.
+
+@lru_cache # <1>
+def get_settings() -> Settings:
+    return Settings()"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-22-1"><a href="#annotated-cell-22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> lru_cache</span>
+<span id="annotated-cell-22-2"><a href="#annotated-cell-22-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic_settings <span class="im">import</span> BaseSettings, SettingsConfigDict</span>
+<span id="annotated-cell-22-3"><a href="#annotated-cell-22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-22-4"><a href="#annotated-cell-22-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Settings(BaseSettings):</span>
+<span id="annotated-cell-22-5"><a href="#annotated-cell-22-5" aria-hidden="true" tabindex="-1"></a>    model_config <span class="op">=</span> SettingsConfigDict(env_file<span class="op">=</span><span class="st">".env"</span>, env_prefix<span class="op">=</span><span class="st">"APP_"</span>)</span>
+<span id="annotated-cell-22-6"><a href="#annotated-cell-22-6" aria-hidden="true" tabindex="-1"></a>    debug: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span></span>
+<span id="annotated-cell-22-7"><a href="#annotated-cell-22-7" aria-hidden="true" tabindex="-1"></a>    database_url: <span class="bu">str</span>  <span class="co"># Required: APP_DATABASE_URL.</span></span>
+<span id="annotated-cell-22-8"><a href="#annotated-cell-22-8" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="1">1</button><span id="annotated-cell-22-9" class="code-annotation-target"><a href="#annotated-cell-22-9" aria-hidden="true" tabindex="-1"></a><span class="at">@lru_cache</span></span>
+<span id="annotated-cell-22-10"><a href="#annotated-cell-22-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_settings() <span class="op">-&gt;</span> Settings:</span>
+<span id="annotated-cell-22-11"><a href="#annotated-cell-22-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Settings()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-22" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-22" data-code-lines="9" data-code-annotation="1">The cache avoids re-reading configuration on every request.</span>
+</dd>
+</dl>
+<p>Inject with <code>settings: Annotated[Settings, Depends(get_settings)]</code>. Keep <code>.env</code> and secrets out of version control; use environment injection or a secret manager in production.</p>
+</section>
+<section id="middleware" class="level3">
+<h3 class="anchored" data-anchor-id="middleware">Middleware</h3>
+<p>Middleware wraps requests and responses:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-23" data-llms-code-original="from time import perf_counter
+from fastapi import Request
+from loguru import logger
+
+@app.middleware(&quot;http&quot;) #&nbsp;<1>
+async def log_timing(request: Request, call_next): # <1>
+    start = perf_counter()
+    response = await call_next(request)
+    logger.info(&quot;Request completed in {:.6f} seconds&quot;, perf_counter() - start)
+    return response"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-23-1"><a href="#annotated-cell-23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> time <span class="im">import</span> perf_counter</span>
+<span id="annotated-cell-23-2"><a href="#annotated-cell-23-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> Request</span>
+<span id="annotated-cell-23-3"><a href="#annotated-cell-23-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> loguru <span class="im">import</span> logger</span>
+<span id="annotated-cell-23-4"><a href="#annotated-cell-23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-23-5"><a href="#annotated-cell-23-5" aria-hidden="true" tabindex="-1"></a><span class="at">@app.middleware</span>(<span class="st">"http"</span>) <span class="co">#&nbsp;&lt;1&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-23" data-target-annotation="1">1</button><span id="annotated-cell-23-6" class="code-annotation-target"><a href="#annotated-cell-23-6" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> log_timing(request: Request, call_next):</span>
+<span id="annotated-cell-23-7"><a href="#annotated-cell-23-7" aria-hidden="true" tabindex="-1"></a>    start <span class="op">=</span> perf_counter()</span>
+<span id="annotated-cell-23-8"><a href="#annotated-cell-23-8" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> <span class="cf">await</span> call_next(request)</span>
+<span id="annotated-cell-23-9"><a href="#annotated-cell-23-9" aria-hidden="true" tabindex="-1"></a>    logger.info(<span class="st">"Request completed in </span><span class="sc">{:.6f}</span><span class="st"> seconds"</span>, perf_counter() <span class="op">-</span> start)</span>
+<span id="annotated-cell-23-10"><a href="#annotated-cell-23-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-23" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-23" data-code-lines="6" data-code-annotation="1">Middleware wraps all http requests for all routes and methods - but not websocket connections.</span>
+</dd>
+</dl>
+<p>The last-added middleware runs first on requests and last on responses. Use <code>app.add_middleware(...)</code> for middleware classes, such as <a href="#cors">CORS</a>.</p>
+</section>
+</section>
+<section id="testing" class="level2">
+<h2 class="anchored" data-anchor-id="testing">Testing</h2>
+<section id="test-client-and-async-tests" class="level3">
+<h3 class="anchored" data-anchor-id="test-client-and-async-tests">Test Client and Async Tests</h3>
+<p>Install with <code>uv add --dev pytest httpx</code>. Tests call the app directly without starting a server; run with <code>uv run pytest</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi.testclient <span class="im">import</span> TestClient</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> main <span class="im">import</span> app</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_root():</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> TestClient(app) <span class="im">as</span> client:  <span class="co"># Context manager runs lifespan.</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> client.get(<span class="st">"/"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> response.status_code <span class="op">==</span> <span class="dv">200</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> response.json() <span class="op">==</span> {<span class="st">"message"</span>: <span class="st">"Hello World"</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For tests that need <code>await</code>, use HTTPX’s async client and AnyIO’s pytest plugin (AnyIO is a FastAPI dependency):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytest</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> httpx <span class="im">import</span> ASGITransport, AsyncClient</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> main <span class="im">import</span> app</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="at">@pytest.fixture</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> anyio_backend():</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"asyncio"</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="at">@pytest.mark.anyio</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> test_root_async():</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">async</span> <span class="cf">with</span> AsyncClient(</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        transport<span class="op">=</span>ASGITransport(app<span class="op">=</span>app), base_url<span class="op">=</span><span class="st">"http://test"</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    ) <span class="im">as</span> client:</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> <span class="cf">await</span> client.get(<span class="st">"/"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> response.status_code <span class="op">==</span> <span class="dv">200</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>ASGITransport</code> does <strong>not</strong> run lifespan automatically. If startup resources are required, wrap the client in <code>async with LifespanManager(app)</code> from <code>asgi-lifespan</code> (<code>uv add --dev asgi-lifespan</code>).</p>
+</section>
+<section id="dependency-overrides" class="level3">
+<h3 class="anchored" data-anchor-id="dependency-overrides">Dependency Overrides</h3>
+<p>Map the <strong>original dependency function</strong> to a replacement, e.g.&nbsp;to swap settings, authentication, or database sessions:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> main <span class="im">import</span> app, get_settings, Settings</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_with_settings():</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    app.dependency_overrides[get_settings] <span class="op">=</span> <span class="kw">lambda</span>: Settings(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        database_url<span class="op">=</span><span class="st">"sqlite://"</span>, debug<span class="op">=</span><span class="va">True</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> TestClient(app) <span class="im">as</span> client:</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">assert</span> client.get(<span class="st">"/"</span>).status_code <span class="op">==</span> <span class="dv">200</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">finally</span>:</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        app.dependency_overrides.pop(get_settings, <span class="va">None</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Only calls resolved through <code>Depends</code> are replaced, not direct function calls. Always restore overrides after tests; use an isolated test database rather than production data.</p>
+</section>
+</section>
+<section id="deployment-and-observability" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-and-observability">Deployment and Observability</h2>
+<section id="asgi-servers-and-production-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="asgi-servers-and-production-configuration">ASGI Servers and Production Configuration</h3>
+<p>Serve the ASGI app with Uvicorn (or another ASGI server, such as Hypercorn):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run uvicorn main:app <span class="at">--host</span> 0.0.0.0 <span class="at">--port</span> 8000 <span class="at">--workers</span> 4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Never use <code>--reload</code> in production; it cannot be combined with <code>--workers</code>.</li>
+<li>Workers are separate processes: memory, caches, ML models, and connection pools are duplicated. Choose the count based on memory and load; orchestrated containers often use one worker per replica.</li>
+<li>Put HTTPS termination/load balancing in front of the app and trust forwarded headers <strong>only</strong> from known proxies (<code>--proxy-headers --forwarded-allow-ips=...</code>). Use <code>--root-path /api</code> if a proxy strips that URL prefix.</li>
+<li>Configure restarts, health/readiness checks, resource limits, and graceful shutdown. Run migrations once before workers start, not independently in each worker’s lifespan.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("^(?:http:|https:)\/\/moritzguck\.github\.io");
+      const newWindowLabel = "(opens in a new tab)";
+      const newWindowNoteId = "quarto-ext-newwindow-label";
+      // Links reference one hidden label through aria-describedby, so the
+      // announcement never changes their accessible name.
+      var describeNewWindow = (link) => {
+        if (!window.document.getElementById(newWindowNoteId)) {
+          var newWindowNote = window.document.createElement("span");
+          newWindowNote.id = newWindowNoteId;
+          newWindowNote.hidden = true;
+          newWindowNote.textContent = newWindowLabel;
+          window.document.body.appendChild(newWindowNote);
+        }
+        var describedBy = (link.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+        if (!describedBy.includes(newWindowNoteId)) {
+          describedBy.push(newWindowNoteId);
+          link.setAttribute("aria-describedby", describedBy.join(" "));
+        }
+      }
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            describeNewWindow(link);
+          if (!link.classList.contains('no-external-icon')) {
+            // default icon
+            link.classList.add("external");
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+        for (let i=0; i<annoteTargets.length; i++) {
+          const annoteTarget = annoteTargets[i];
+          const targetCell = annoteTarget.getAttribute("data-target-cell");
+          const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+          const contentFn = () => {
+            const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            if (content) {
+              const tipContent = content.cloneNode(true);
+              tipContent.classList.add("code-annotation-tip-content");
+              return tipContent.outerHTML;
+            }
+          }
+          const config = {
+            allowHTML: true,
+            content: contentFn,
+            onShow: (instance) => {
+              selectCodeLines(instance.reference);
+              instance.reference.classList.add('code-annotation-active');
+              window.tippy.hideAll();
+            },
+            onHide: (instance) => {
+              unselectCodeLines();
+              instance.reference.classList.remove('code-annotation-active');
+            },
+            maxWidth: 300,
+            delay: [50, 0],
+            duration: [200, 0],
+            offset: [5, 10],
+            arrow: true,
+            appendTo: function(el) {
+              return el.parentElement.parentElement.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'quarto',
+            placement: 'right',
+            plugins: [hideOnEscAndFocusOut],
+            popperOptions: {
+              modifiers: [
+              {
+                name: 'flip',
+                options: {
+                  flipVariations: false, // true by default
+                  allowedAutoPlacements: ['right'],
+                  fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                },
+              },
+              {
+                name: 'preventOverflow',
+                options: {
+                  mainAxis: false,
+                  altAxis: false
+                }
+              }
+              ]        
+            }      
+          };
+          window.tippy(annoteTarget, config); 
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

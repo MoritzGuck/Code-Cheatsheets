@@ -1,0 +1,632 @@
+# FastAPI
+
+web
+
+networking
+
+FastAPI is the standard library for creating APIs for ML & AI in Python
+
+## Overview
+
+- **FastAPI** is a Python framework for building APIs, built on Starlette.
+- **Starlette** is the web framework that provides FastAPI’s routing and web functionality.
+- **Pydantic** validates and serializes data using Python type hints.
+- **ASGI** (Asynchronous Server Gateway Interface) is a standard interface between asynchronous Python web applications and servers.
+- **Uvicorn** is an ASGI server that runs FastAPI and Starlette applications and handles incoming connections.
+
+## Installation and Setup
+
+### Installation
+
+Use uv to install FastAPI with its standard dependencies, including the FastAPI CLI and Uvicorn:
+
+``` bash
+uv add "fastapi[standard]"
+```
+
+### Creating an application
+
+Create `main.py` in the project root or `./app` directory:
+
+``` python
+from fastapi import FastAPI
+
+app = FastAPI() # <1>
+
+@app.get("/") # <2>
+async def root():
+    return {"message": "Hello World"}
+```
+
+1.  Creates the ASGI application that receives requests.
+2.  Registers a handler function for `GET /`; its return value is sent as JSON.
+
+### Configure and run
+
+Add the application entrypoint to `pyproject.toml` so the FastAPI CLI knows where to find it:
+
+``` toml
+[tool.fastapi]
+entrypoint = "main:app" # <1> 
+```
+
+1.  `main:app` means the object `app` in the Python module `main` (`main.py`). For an application in `app/main.py`, use `app.main:app` instead.
+
+Run from the project root:
+
+``` bash
+uv run fastapi dev             # development: automatic reload, localhost only
+uv run fastapi run             # production mode: no reload, listens on 0.0.0.0
+```
+
+## Routing and Path Operations
+
+### HTTP Methods and Routes
+
+**Routes**: A **path operation** connects an HTTP method and a URL path to a handler function. The same path can have different handlers for different methods.
+
+**Routers**: Use `APIRouter` to group related routes:
+
+``` python
+from fastapi import APIRouter, FastAPI
+
+app = FastAPI()
+router = APIRouter(prefix="/items", tags=["items"]) # <1>
+items = []
+
+@router.get("/") # <2>
+async def list_items():
+    return items
+
+@router.post("/", status_code=201) # <3>
+async def create_item():
+    new_item = {"id": len(items) + 1, "name": "Example", "price": 10.0}
+    items.append(new_item)
+    return new_item
+
+app.include_router(router) # <4>
+```
+
+1.  Groups routes under `/items` with a shared documentation tag; routers can also share dependencies.
+2.  Handle `GET /items/`.
+3.  Handle `POST /items/`; `status_code=201` sets the success response code.
+4.  Registers the router’s endpoints with the application. Routers can live in separate files: see the [example file structure](https://fastapi.tiangolo.com/tutorial/bigger-applications/#an-example-file-structure).
+
+Other decorators include `@router.put(...)`, `@router.patch(...)`, and `@router.delete(...)`; the same decorators are available directly on `app`. See [HTTP methods](../../cheatsheets/Web%20and%20APIs/http_rest.llms.md#methods).
+
+FastAPI evaluates routes in declaration order: declare a fixed path like `/users/me` **before** `/users/{user_id}` so it is not captured as a user ID.
+
+## Handling requests
+
+| Declaration                            | Read from    |
+|----------------------------------------|--------------|
+| Name appears in the route’s `{braces}` | Path         |
+| Scalar type, such as str, int, or bool | Query string |
+| Pydantic model, `dict`, `list`         | JSON body    |
+
+### Path and Query Parameters
+
+Names in `{braces}` are taken from the path; other scalar function parameters are normally taken from the query string. Type hints control parsing and validation:
+
+``` python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/items/{item_id}")
+async def read_item(
+    item_id: int, # <1>
+    q: str, # <2>
+    limit: int = 10, # <3>
+    details: bool = False, # <4>
+):
+    return {"item_id": item_id, "q": q, "limit": limit, "details": details}
+```
+
+1.  `item_id` is a required path parameter, parsed as an integer.
+2.  `q` is a required query parameter because it has no default.
+3.  `limit` is an optional query parameter, parsed as an integer and defaulting to `10`.
+4.  `details` is an optional query parameter, parsed as a boolean and defaulting to `False`.
+
+To allow an omitted query parameter to be `None`, use e.g. `q: str | None = None`.
+
+For additional constraints on parameter values, see [Type Hints and Validation Constraints](#type-hints-and-validation-constraints).
+
+## Request Data and Validation
+
+### Pydantic Models and Request Bodies
+
+Declare a [Pydantic](../../cheatsheets/Web%20and%20APIs/pydantic.llms.md) model to receive a JSON request body. FastAPI parses the JSON, validates it, and passes a model instance to the handler:
+
+``` python
+from fastapi import FastAPI
+from pydantic import BaseModel, Field
+
+app = FastAPI()
+
+class Item(BaseModel):
+    name: str = Field(min_length=1, max_length=80) # <1>
+    price: float = Field(gt=0)
+    description: str | None = None # <2>
+    tags: list[str] = Field(default_factory=list) # <3>
+
+@app.post("/items", status_code=201)
+async def create_item(item: Item): # <4>
+    return item.model_dump() # <5>
+```
+
+1.  Fields without defaults are required. `Field` adds validation constraints and schema metadata.
+2.  Allows a string or `None`; the default `None` also allows the field to be omitted. `str | None` **without a default** would still require the field.
+3.  Creates a new empty list when `tags` is omitted. Collections and nested Pydantic models are validated recursively.
+4.  A Pydantic model parameter is read from the request body, not the query string.
+5.  Access values with e.g. `item.name`; `model_dump()` converts the model to a dictionary.
+
+Example request body (send with `Content-Type: application/json`):
+
+``` json
+{"name": "Notebook", "price": 4.5, "tags": ["office"]}
+```
+
+### Type Hints and Validation Constraints
+
+Type hints define accepted data types; `Field` (for Pydantic), `Path`, `Query`, and `Body` add constraints and documentation. Use `Annotated` to attach type-metadata that fastAPI uses for validation:
+
+``` python
+from typing import Annotated
+from fastapi import Path, Query
+
+@app.get("/items/{item_id}")
+async def read_item(
+    item_id: Annotated[int, Path(ge=1)], # <1>
+    limit: Annotated[int, Query(ge=1, le=100)] = 10, # <2>
+):
+    return {"item_id": item_id, "limit": limit}
+```
+
+1.  `Path(ge=1)` requires an integer greater than or equal to 1.
+2.  `Query(ge=1, le=100)` restricts the query parameter to 1–100; its default remains `10`.
+
+Common validation constraints:
+
+| Constraint | Meaning | Example |
+|----|----|----|
+| `gt`, `ge` | Greater than / greater than or equal to | `Field(gt=0)` |
+| `lt`, `le` | Less than / less than or equal to | `Query(le=100)` |
+| `min_length`, `max_length` | Bounds on string or collection length | `Field(min_length=1)` |
+| `pattern` | Regular expression for a string | `Query(pattern=r"^[a-z]+$")` |
+
+For a scalar body value, use `Body` explicitly; otherwise FastAPI normally treats a scalar as a query parameter:
+
+## Single Body Parameter
+
+A single scalar body parameter normally expects the model’s fields directly: `{"price": 4.5, "name": "notebook"}`
+
+``` python
+from typing import Annotated
+from fastapi import Body
+
+@app.put("/items/{item_id}/price")
+async def update_price(
+    item_id: int,
+    price: Annotated[float, Body(gt=0, embed=True)],  # <1>
+):
+    return {"item_id": item_id, "price": price}
+```
+
+1.  `embed=True` expects `{"price": 4.5}` rather than a bare JSON number `4.5`.
+
+Expected body: `{"price": 4.5}`.
+
+## Multiple Body Parameters
+
+Multiple body parameters are wrapped under their parameter names `{"price": 4.5, "item": {"name": "Notebook", "item_id": 4}}`.
+
+``` python
+from typing import Annotated
+from fastapi import Body
+from pydantic import BaseModel, Field
+
+class Item(BaseModel):
+    name: str = Field(min_length=1, max_length=80) # <1>
+    price: float = Field(gt=0)
+    description: str | None = None # <2>
+    tags: list[str] = Field(default_factory=list) # <3>
+
+@app.put("/items/{item_id}/price")
+async def update_price(
+    item_id: int,
+    price: Annotated[float, Body(gt=0)],
+    item: Item,
+):
+    return {"device price": item.price, "total price": price}
+```
+
+Expected body: `{"price": 4.5, "item": {"name": "Notebook", "price": 4.5, "tags": ["portable"]}}`.
+
+### Headers and Cookies
+
+Use `Header` and `Cookie` to read these values instead of query parameters:
+
+``` python
+from typing import Annotated
+from fastapi import Cookie, Header
+
+@app.get("/preferences")
+async def read_preferences(
+    user_agent: Annotated[str | None, Header()] = None, # <1>
+    theme: Annotated[str, Cookie()] = "light", # <2>
+):
+    return {"user_agent": user_agent, "theme": theme}
+```
+
+1.  Reads the `User-Agent` header: `Header` converts underscores to hyphens by default, and header names are case-insensitive. Use `Header(alias="User-Agent")` to specify a header name explicitly.
+2.  Reads the `theme` cookie, defaulting to `"light"` if absent. Omit the default to make a header or cookie required.
+
+### Forms and File Uploads
+
+Use `Form` for form fields and `File` / `UploadFile` for uploaded files.
+
+``` python
+from typing import Annotated
+from fastapi import File, Form, UploadFile
+
+@app.post("/uploads")
+async def upload_file(
+    file: Annotated[UploadFile, File()], # <1>
+    description: Annotated[str, Form(max_length=200)] = "", # <2>
+):
+    contents = await file.read() # <3>
+    return {
+        "filename": file.filename,
+        "description": description,
+        "size_bytes": len(contents),
+    }
+```
+
+1.  `UploadFile` uses a spooled file (memory, then disk above a size threshold), so it can handle larger uploads without immediately loading them into memory. Access metadata with `file.filename` and `file.content_type`. `Annotated[bytes, File()]` instead loads the entire file into memory; `list[UploadFile]` accepts multiple files.
+2.  Reads a form field from the same request. Forms without files normally use `application/x-www-form-urlencoded`; uploads use `multipart/form-data`.
+3.  Reads the entire file contents as `bytes`, so this is suitable for small files. Decode text with `contents.decode("utf-8")`. For large files, repeatedly call `await file.read(size)` to process chunks instead of loading everything into memory. FastAPI closes files automatically at request cleanup.
+
+> **WARNING:**
+>
+> Form/file parameters cannot share the same request body with ordinary JSON body parameters. Use form fields for accompanying data rather than expecting a separate JSON body.
+
+## Responses
+
+### Response Models and Serialization
+
+`response_model` validates, documents, and filters output to the declared fields. FastAPI serializes models, dates, and UUIDs to JSON automatically:
+
+``` python
+from pydantic import BaseModel
+
+class UserOut(BaseModel):
+    name: str
+
+@app.get("/users/me", response_model=UserOut)
+async def read_user():
+    return {"name": "Ada", "password_hash": "hidden"}  # Only name is sent.
+```
+
+A return annotation such as `-> UserOut` also use the response model (then the type of the response must be UserOut however); explicit `response_model` takes priority. Use `response_model_exclude_none=True` to omit `None` fields.
+
+### Status Codes, Headers, and Cookies
+
+Set the default success status in the decorator; inject `Response` (from server) to modify headers, cookies, or `response.status_code` dynamically:
+
+``` python
+from fastapi import Response, status
+
+@app.post("/preferences", status_code=status.HTTP_201_CREATED)
+async def save_preferences(response: Response, theme: str): # <1>
+    response.headers["X-App-Version"] = "1"
+    response.set_cookie("theme", theme, httponly=True, secure=True, samesite="lax") # <2>
+    return {"saved": True}
+
+@app.delete("/preferences", status_code=status.HTTP_204_NO_CONTENT)
+async def clear_preferences():
+    response = Response(status_code=204) # <3>
+    response.delete_cookie("theme") # <4>
+    return response
+```
+
+1.  `Response` is not provided by the client, but injected from the server.
+2.  Cookie security flags:
+3.  Creates the actual response to return, rather than using an injected response.
+4.  Expires the browser’s cookie. If it was set with a custom `path` or `domain`, use the same values when deleting it.
+
+### Custom and Streaming Responses
+
+For custom responses, use classes from `fastapi.responses`: `HTMLResponse`, `PlainTextResponse`, `RedirectResponse`, or `FileResponse(path, filename="download.csv")`.
+
+``` python
+from fastapi.responses import HTMLResponse, StreamingResponse
+
+@app.get("/page", response_class=HTMLResponse)
+async def page():
+    return "<h1>Hello</h1>"
+
+@app.get("/stream")
+async def stream():
+    return StreamingResponse(iter(["Hello\n", "World\n"]), media_type="text/plain")
+```
+
+`StreamingResponse` accepts a sync or async iterator of chunks. Returning a `Response` directly (instead of FastAPI constructing it) bypasses response-model validation and serialization. Using `response_class` or `responses` in the decorator documents the format, but it does not restore validation.
+
+## Error Handling
+
+### HTTP Exceptions and Validation Errors
+
+**Raise**, rather than return, `HTTPException` to stop a request:
+
+``` python
+from fastapi import HTTPException
+
+@app.get("/items/{item_id}")
+async def read_item(item_id: int):
+    if item_id != 1:
+        raise HTTPException(status_code=404, detail="Item not found")
+    return {"id": item_id}
+```
+
+The error body is `{"detail": "Item not found"}`. FastAPI prodcues **422** automatically for invalid request data and **500** for invalid response data.
+
+### Custom Exception Handlers
+
+Register a handler for an exception class to customize errors globally:
+
+``` python
+from fastapi import Request
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
+
+@app.exception_handler(RequestValidationError)
+async def validation_error(request: Request, exc: RequestValidationError): # <1>
+    return JSONResponse(status_code=422, content={"detail": "Invalid request data"})
+```
+
+1.  FastAPI requires the two arguments request (that caused the error) and exc (provides details on the error).
+
+## Dependency Injection
+
+### Declaring and Reusing Dependencies
+
+`Depends` calls a function and injects its result; dependencies can themselves depend on other dependencies:
+
+``` python
+from typing import Annotated
+from fastapi import Depends, Query
+
+def pagination(limit: Annotated[int, Query(ge=1, le=100)] = 10):
+    return {"limit": limit}
+
+Pagination = Annotated[dict, Depends(pagination)] # <1>
+
+@app.get("/items")
+async def list_items(params: Pagination): # <2>
+    return params
+```
+
+1.  This is a *type alias* meaning: This value is a dictionary obtained by calling `pagination`. It does not call `pagination` directly.
+2.  FastAPI calls pagination with the `limit` parameter from the query string: Query: `GET /items?limit=25`. Response: `{"limit": 25}`.
+
+Reuse the alias across endpoints. Results are cached per request by default (`use_cache=False` disables this).
+
+### Dependencies with Cleanup
+
+Use a single `yield` and `finally` (or a context manager) to release resources even on errors:
+
+``` python
+from typing import Annotated, Literal, TextIO
+from fastapi import Depends
+
+def get_file(filename: str): # <1>
+    file = open(filename, encoding="utf-8")
+    try:
+        yield file
+    finally:
+        file.close()
+
+@app.get("/files/{filename}")
+def read_file(file: Annotated[TextIO, Depends(get_file)]): # <2>
+    return {"contents": file.read()}
+```
+
+1.  FastAPI reads `filename` from the route’s path, even though it is declared in the dependency.
+2.  For `GET /files/data.txt`, FastAPI calls `get_file(filename="data.txt")` and injects the yielded file into `read_file`. The `finally` block closes it after use, including when the endpoint raises an exception.
+
+Cleanup normally runs **after the response is sent**, including streaming; `Depends(get_file, scope="function")` cleans up before sending it.
+
+## Security
+
+### Authentication and Authorization
+
+- **Authentication** verifies identity; **authorization** checks roles, ownership, or permissions. Enforce both in dependencies, not only in the UI.
+- Return **401** for missing/invalid credentials (`WWW-Authenticate: Bearer` for bearer auth); **403** for insufficient permissions.
+- Use HTTPS, hash passwords, and keep secrets outside source code. Validate JWT signatures, expiry, issuer, and audience; decoding alone is not validation.
+
+### OAuth2, Bearer Tokens, and API Keys
+
+Security helpers from `fastapi.security` extract credentials and add OpenAPI security schemes:
+
+| Helper | Credentials |
+|----|----|
+| `OAuth2PasswordBearer(tokenUrl="token")` | Bearer token; documents an OAuth2 password token endpoint |
+| `HTTPBearer()` | `Authorization: Bearer <token>` as an `HTTPAuthorizationCredentials` object |
+| `APIKeyHeader(name="X-API-Key")` | API key from a header |
+
+``` python
+from typing import Annotated
+from fastapi import Depends, FastAPI
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+
+app = FastAPI()
+bearer = HTTPBearer() # <1> 
+BearerCredentials = Annotated[HTTPAuthorizationCredentials, Depends(bearer)] # <2>
+
+@app.get("/auth-info")
+async def auth_info(credentials: BearerCredentials):
+    return {"scheme": credentials.scheme} # <3>
+```
+
+1.  `HTTPBearer()` creates a dependency that extracts bearer credentials from the `Authorization` header and adds a bearer security scheme to OpenAPI. It rejects missing or non-bearer credentials by default, but does not validate the token itself.
+2.  `HTTPAuthorizationCredentials` is the object holding the extracted authentication scheme and raw token. This alias tells FastAPI to call `bearer` and inject that object.
+3.  `credentials.scheme` contains `"Bearer"`; `credentials.credentials` contains the raw token.
+
+Client sends `Authorization: Bearer <token>` to this endpoint.
+
+### CORS
+
+CORS controls which browser origins (scheme + host + port) can access the API:
+
+``` python
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://app.example.com"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Authorization", "Content-Type"],
+)
+```
+
+## Application Lifecycle and Configuration
+
+### Lifespan Events
+
+Use `lifespan` for shared resources: code before `yield` runs at startup, cleanup runs at shutdown.
+
+``` python
+from contextlib import asynccontextmanager
+from fastapi import FastAPI
+from httpx import AsyncClient
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    async with AsyncClient() as client:
+        app.state.http = client  # Reuse a connection pool across requests.
+        yield
+    # The context manager closes the client on shutdown.
+
+app = FastAPI(lifespan=lifespan)
+```
+
+Access the client through `request.app.state.http` in a handler that accepts `request: Request`. Lifespan runs separately in each worker process.
+
+### Settings and Environment Variables
+
+Install with `uv add pydantic-settings`. Settings are typed and validated; environment variables override `.env` values, which override defaults:
+
+``` python
+from functools import lru_cache
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file=".env", env_prefix="APP_")
+    debug: bool = False
+    database_url: str  # Required: APP_DATABASE_URL.
+
+@lru_cache # <1>
+def get_settings() -> Settings:
+    return Settings()
+```
+
+1.  The cache avoids re-reading configuration on every request.
+
+Inject with `settings: Annotated[Settings, Depends(get_settings)]`. Keep `.env` and secrets out of version control; use environment injection or a secret manager in production.
+
+### Middleware
+
+Middleware wraps requests and responses:
+
+``` python
+from time import perf_counter
+from fastapi import Request
+from loguru import logger
+
+@app.middleware("http") # <1>
+async def log_timing(request: Request, call_next): # <1>
+    start = perf_counter()
+    response = await call_next(request)
+    logger.info("Request completed in {:.6f} seconds", perf_counter() - start)
+    return response
+```
+
+1.  Middleware wraps all http requests for all routes and methods - but not websocket connections.
+
+The last-added middleware runs first on requests and last on responses. Use `app.add_middleware(...)` for middleware classes, such as [CORS](#cors).
+
+## Testing
+
+### Test Client and Async Tests
+
+Install with `uv add --dev pytest httpx`. Tests call the app directly without starting a server; run with `uv run pytest`:
+
+``` python
+from fastapi.testclient import TestClient
+from main import app
+
+def test_root():
+    with TestClient(app) as client:  # Context manager runs lifespan.
+        response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Hello World"}
+```
+
+For tests that need `await`, use HTTPX’s async client and AnyIO’s pytest plugin (AnyIO is a FastAPI dependency):
+
+``` python
+import pytest
+from httpx import ASGITransport, AsyncClient
+from main import app
+
+@pytest.fixture
+def anyio_backend():
+    return "asyncio"
+
+@pytest.mark.anyio
+async def test_root_async():
+    async with AsyncClient(
+        transport=ASGITransport(app=app), base_url="http://test"
+    ) as client:
+        response = await client.get("/")
+    assert response.status_code == 200
+```
+
+`ASGITransport` does **not** run lifespan automatically. If startup resources are required, wrap the client in `async with LifespanManager(app)` from `asgi-lifespan` (`uv add --dev asgi-lifespan`).
+
+### Dependency Overrides
+
+Map the **original dependency function** to a replacement, e.g. to swap settings, authentication, or database sessions:
+
+``` python
+from main import app, get_settings, Settings
+
+def test_with_settings():
+    app.dependency_overrides[get_settings] = lambda: Settings(
+        database_url="sqlite://", debug=True
+    )
+    try:
+        with TestClient(app) as client:
+            assert client.get("/").status_code == 200
+    finally:
+        app.dependency_overrides.pop(get_settings, None)
+```
+
+Only calls resolved through `Depends` are replaced, not direct function calls. Always restore overrides after tests; use an isolated test database rather than production data.
+
+## Deployment and Observability
+
+### ASGI Servers and Production Configuration
+
+Serve the ASGI app with Uvicorn (or another ASGI server, such as Hypercorn):
+
+``` bash
+uv run uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
+```
+
+- Never use `--reload` in production; it cannot be combined with `--workers`.
+- Workers are separate processes: memory, caches, ML models, and connection pools are duplicated. Choose the count based on memory and load; orchestrated containers often use one worker per replica.
+- Put HTTPS termination/load balancing in front of the app and trust forwarded headers **only** from known proxies (`--proxy-headers --forwarded-allow-ips=...`). Use `--root-path /api` if a proxy strips that URL prefix.
+- Configure restarts, health/readiness checks, resource limits, and graceful shutdown. Run migrations once before workers start, not independently in each worker’s lifespan.

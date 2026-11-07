@@ -54,3 +54,7 @@ table.quarto-listing-table th a.desc:after {
 table.quarto-listing-table th a.asc:after {
   width: 0px !important;
  }
+ 
+.no-copy .code-copy-button {
+  display: none;
+}

@@ -1,0 +1,200 @@
+# Pytest
+
+testing
+
+Pytest is a simple to use yet powerful testing library.
+
+## Install & run
+
+``` bash
+uv add --dev pytest
+```
+
+``` bash
+uv run pytest                             # Run all tests
+uv run pytest tests/test_math.py::test_add  # One test
+```
+
+Add these options to `uv run pytest`; multiple options can be combined.
+
+| Option | Description |
+|----|----|
+| `-k "add and not slow"` | Select tests whose names match the expression, using `and`, `or`, and `not` to combine name filters. |
+| `-m "not integration"` | Select tests by marker expressions, here excluding tests marked `integration`. |
+| `-q` | Reduce output verbosity for a more compact test report. |
+| `-x` | Stop the test run immediately after the first failure. |
+| `--lf` | Rerun only tests that failed in the previous run, or all tests if no failures are recorded. |
+| `-s` | Disable output capturing so that output such as `print()` calls appears directly in the terminal. |
+| `--pdb` | Open Python’s interactive debugger when a test fails to inspect the failure. |
+
+Discovery: files `test_*.py` or `*_test.py`, functions `test_*`, optional classes `Test*` without `__init__`.
+
+## Best practices
+
+- **Arrange → Act → Assert**; one behavior per test, with descriptive names.
+- Test observable behavior, not implementation details; cover normal, boundary, and failure cases.
+- Keep tests independent, deterministic, and fast: no ordering dependencies, real network calls in unit tests, or arbitrary sleeps.
+- Mock external boundaries, not everything; use integration tests to verify real interactions.
+- Prefer small, explicit fixtures over hidden `autouse` setup; always clean up resources.
+- Run tests in CI. Optional: `pytest-cov` adds `--cov=myapp --cov-branch --cov-report=term-missing`; coverage reveals gaps, not correctness.
+
+## Assertions & exceptions
+
+Use plain `assert`; pytest shows the values involved when it fails.
+
+``` python
+import pytest
+
+def test_assertions():
+    assert 2 + 2 == 4
+    assert "py" in "pytest"
+    assert [1, 2] == [1, 2]          # Compare contents, not identity
+    assert None is None            # Use `is None`, not `== None`
+    assert 0.1 + 0.2 == pytest.approx(0.3)
+
+def test_invalid_input():
+    with pytest.raises(ValueError, match="invalid literal"):
+        int("hello")               # `match` is a regex
+```
+
+## Parametrization
+
+Run the same test with multiple inputs, including edge cases.
+
+``` python
+@pytest.mark.parametrize(
+    "raw, expected",
+    [("  Ada ", "ada"), ("BOB", "bob"), ("", "")],
+    ids=["whitespace", "uppercase", "empty"],
+)
+def test_normalize(raw, expected):
+    assert raw.strip().lower() == expected
+```
+
+Stack decorators for all combinations; use `pytest.param(..., marks=...)` to mark individual cases.
+
+## Fixtures: setup & cleanup
+
+Fixtures are reusable functions that prepare data or resources for tests and can clean them up afterward. Tests request fixtures by argument name. Put shared fixtures in `tests/conftest.py`; pytest discovers them automatically—no import needed.
+
+``` python
+import sqlite3
+import pytest
+
+@pytest.fixture
+def db():
+    connection = sqlite3.connect(":memory:")
+    try:
+        yield connection           # Setup before yield; cleanup after
+    finally:
+        connection.close()
+
+def test_database(db):
+    assert db.execute("SELECT 1").fetchone() == (1,)
+```
+
+Default scope is `function` (fresh per test). Other scopes: `class`, `module`, `package`, `session`. Share expensive resources carefully; avoid shared mutable state.
+
+| Built-in fixture | Use |
+|----|----|
+| `tmp_path` | Isolated temporary directory (`pathlib.Path`) |
+| `monkeypatch` | Temporarily change attributes, environment, or working directory |
+| `capsys` | Read captured stdout/stderr with `readouterr()` |
+| `caplog` | Inspect log messages with `.text` or `.records` |
+
+``` python
+def test_file(tmp_path):
+    path = tmp_path / "data.txt"
+    path.write_text("hello", encoding="utf-8")
+    assert path.read_text(encoding="utf-8") == "hello"
+
+def test_environment(monkeypatch):
+    import os
+
+    monkeypatch.setenv("APP_MODE", "test")
+    assert os.getenv("APP_MODE") == "test"  # Restored after the test
+```
+
+## Mocking
+
+Mocking temporarily replaces real objects or functions with simpler substitutes so tests can isolate behavior without relying on external systems and run faster. Install `pytest-mock` to use its `mocker` fixture:
+
+``` bash
+uv add --dev pytest-mock
+```
+
+#### Example:
+
+Application code in `config.py` imports `expanduser` to build a config path:
+
+``` python
+# config.py
+from os.path import expanduser
+from pathlib import Path
+
+def config_path():
+    return Path(expanduser("~")) / "settings.toml"
+```
+
+Tests in `tests/test_config.py` patch the imported name in `config`, not its original definition in `os.path`:
+
+``` python
+# tests/test_config.py
+import pytest
+from config import config_path
+
+def test_config_path(tmp_path, mocker): # <1>
+    # Arrange / Given: a controlled home directory
+    home = mocker.patch("config.expanduser", # <2>
+        autospec=True, # <3>
+        return_value=str(tmp_path), # <4>
+    )
+    # Act / When: build the config path
+    result = config_path()
+
+    # Assert / Then: the path uses that directory
+    assert result == tmp_path / "settings.toml"
+    home.assert_called_once_with("~") # <5>
+
+def test_config_path_failure(mocker):
+    # Arrange / Given: home directory lookup fails
+    mocker.patch("config.expanduser", autospec=True,
+        side_effect=TimeoutError("offline"), # <6>
+    )
+    # Assert / Then: expect the lookup error to propagate
+    with pytest.raises(TimeoutError, match="offline"):
+        # Act / When: build the config path
+        config_path()
+```
+
+1.  The `mocker` fixture provides patching helpers and automatically undoes patches after each test; `mocker.spy(object, "method")` instead records calls while keeping the real implementation.
+2.  Patch `config.expanduser` because `config_path` looks up that name in `config`; patching `os.path.expanduser` would not replace the reference already imported by `from os.path import expanduser`.
+3.  `autospec=True` makes the mock enforce the original function’s parameter signature, so calling the patched `expanduser` with missing or unexpected arguments raises `TypeError` instead of silently accepting an invalid call; it does not check argument types or run the real function.
+4.  `return_value` makes the patched function return the supplied value, here the test’s temporary directory instead of the real home directory.
+5.  Verify that the patched function was called exactly once with `"~"`.
+6.  `side_effect` makes the patched function raise the supplied exception to simulate a failure.
+
+## Markers & configuration
+
+``` python
+@pytest.mark.integration
+def test_external_service(): ...
+
+@pytest.mark.skip(reason="Feature not available")
+def test_future_feature(): ...
+
+@pytest.mark.xfail(reason="Known bug #123", strict=True)
+def test_known_bug():
+    assert 1 == 2                   # Unexpected pass fails the suite
+```
+
+Register custom markers in `pyproject.toml` (syntax compatible with pytest 8 and 9):
+
+``` toml
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = ["integration: tests involving external systems"]
+```
+
+[Official documentation](https://docs.pytest.org/en/stable/)
