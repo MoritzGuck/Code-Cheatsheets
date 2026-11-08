@@ -592,6 +592,32 @@ def create_dataset(dataset: list[list[int | float]]) -> dict:
 
 Scope a lock for a single object’s attributes, to avoid threads from unnecessarily blocking each other.
 
+### Background Tasks
+
+Use [BackgroundTasks](https://fastapi.tiangolo.com/tutorial/background-tasks/), if you want to send a response directly to the client (e.g. “received request. Here is your job_id.”) and run longer task in the background **after the response is sent**.
+
+``` python
+from fastapi import BackgroundTasks, FastAPI
+
+app = FastAPI()
+
+def write_log(message: str): # <1>
+    with open("events.log", "a", encoding="utf-8") as file:
+        file.write(message + "\n")
+
+@app.post("/events", status_code=202)
+async def record_event(message: str, background_tasks: BackgroundTasks): # <2>
+    background_tasks.add_task(write_log, message) # <3>
+    return {"message": "Event accepted"} # <4>
+```
+
+1.  A regular `def` task runs in a thread pool, suitable for blocking I/O. An `async def` task is also supported, but must not perform blocking work on the event loop.
+2.  FastAPI injects `BackgroundTasks` automatically; no `Depends` is needed. Here, `message` comes from the query string (e.g. `POST /events?message=Hello`).
+3.  Registers the function and its arguments. Pass `write_log`, not `write_log(message)`, so it runs later rather than immediately.
+4.  Returns **202 Accepted** without waiting for the task to finish; this does not confirm that the task succeeded.
+
+Tasks run in the same application process, not a separate worker service, and can be lost on a crash or restart. Use a job queue such as [Celery](docs.celeryq.dev) for heavy computation, retries, or durable jobs; `BackgroundTasks` does not provide job IDs or status tracking automatically.
+
 ## Testing
 
 ### Test Client and Async Tests

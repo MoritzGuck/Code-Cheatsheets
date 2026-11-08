@@ -669,6 +669,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#settings-and-environment-variables" id="toc-settings-and-environment-variables" class="nav-link" data-scroll-target="#settings-and-environment-variables">Settings and Environment Variables</a></li>
   <li><a href="#middleware" id="toc-middleware" class="nav-link" data-scroll-target="#middleware">Middleware</a></li>
   <li><a href="#thread-safety" id="toc-thread-safety" class="nav-link" data-scroll-target="#thread-safety">Thread Safety</a></li>
+  <li><a href="#background-tasks" id="toc-background-tasks" class="nav-link" data-scroll-target="#background-tasks">Background Tasks</a></li>
   </ul></li>
   <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing">Testing</a>
   <ul class="collapse">
@@ -1038,7 +1039,7 @@ async def read_item(
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>A single scalar body parameter normally expects the model’s fields directly: <code>{"price": 4.5, "name": "notebook"}</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-29" data-llms-code-original="from typing import Annotated
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-30" data-llms-code-original="from typing import Annotated
 from fastapi import Body
 
 @app.put(&quot;/items/{item_id}/price&quot;)
@@ -1046,26 +1047,26 @@ async def update_price(
     item_id: int,
     price: Annotated[float, Body(gt=0, embed=True)],  # <1>
 ):
-    return {&quot;item_id&quot;: item_id, &quot;price&quot;: price}"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-29-1"><a href="#annotated-cell-29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Annotated</span>
-<span id="annotated-cell-29-2"><a href="#annotated-cell-29-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> Body</span>
-<span id="annotated-cell-29-3"><a href="#annotated-cell-29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-29-4"><a href="#annotated-cell-29-4" aria-hidden="true" tabindex="-1"></a><span class="at">@app.put</span>(<span class="st">"/items/</span><span class="sc">{item_id}</span><span class="st">/price"</span>)</span>
-<span id="annotated-cell-29-5"><a href="#annotated-cell-29-5" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> update_price(</span>
-<span id="annotated-cell-29-6"><a href="#annotated-cell-29-6" aria-hidden="true" tabindex="-1"></a>    item_id: <span class="bu">int</span>,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-29" data-target-annotation="1">1</button><span id="annotated-cell-29-7" class="code-annotation-target"><a href="#annotated-cell-29-7" aria-hidden="true" tabindex="-1"></a>    price: Annotated[<span class="bu">float</span>, Body(gt<span class="op">=</span><span class="dv">0</span>, embed<span class="op">=</span><span class="va">True</span>)],</span>
-<span id="annotated-cell-29-8"><a href="#annotated-cell-29-8" aria-hidden="true" tabindex="-1"></a>):</span>
-<span id="annotated-cell-29-9"><a href="#annotated-cell-29-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"item_id"</span>: item_id, <span class="st">"price"</span>: price}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+    return {&quot;item_id&quot;: item_id, &quot;price&quot;: price}"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-30-1"><a href="#annotated-cell-30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Annotated</span>
+<span id="annotated-cell-30-2"><a href="#annotated-cell-30-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> Body</span>
+<span id="annotated-cell-30-3"><a href="#annotated-cell-30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-30-4"><a href="#annotated-cell-30-4" aria-hidden="true" tabindex="-1"></a><span class="at">@app.put</span>(<span class="st">"/items/</span><span class="sc">{item_id}</span><span class="st">/price"</span>)</span>
+<span id="annotated-cell-30-5"><a href="#annotated-cell-30-5" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> update_price(</span>
+<span id="annotated-cell-30-6"><a href="#annotated-cell-30-6" aria-hidden="true" tabindex="-1"></a>    item_id: <span class="bu">int</span>,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-30" data-target-annotation="1">1</button><span id="annotated-cell-30-7" class="code-annotation-target"><a href="#annotated-cell-30-7" aria-hidden="true" tabindex="-1"></a>    price: Annotated[<span class="bu">float</span>, Body(gt<span class="op">=</span><span class="dv">0</span>, embed<span class="op">=</span><span class="va">True</span>)],</span>
+<span id="annotated-cell-30-8"><a href="#annotated-cell-30-8" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="annotated-cell-30-9"><a href="#annotated-cell-30-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"item_id"</span>: item_id, <span class="st">"price"</span>: price}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-29" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-30" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-29" data-code-lines="7" data-code-annotation="1"><code>embed=True</code> expects <code>{"price": 4.5}</code> rather than a bare JSON number <code>4.5</code>.</span>
+<span data-code-cell="annotated-cell-30" data-code-lines="7" data-code-annotation="1"><code>embed=True</code> expects <code>{"price": 4.5}</code> rather than a bare JSON number <code>4.5</code>.</span>
 </dd>
 </dl>
 <p>Expected body: <code>{"price": 4.5}</code>.</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>Multiple body parameters are wrapped under their parameter names <code>{"price": 4.5, "item": {"name": "Notebook", "item_id": 4}}</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-30" data-llms-code-original="from typing import Annotated
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-31" data-llms-code-original="from typing import Annotated
 from fastapi import Body
 from pydantic import BaseModel, Field
 
@@ -1081,23 +1082,23 @@ async def update_price(
     price: Annotated[float, Body(gt=0)],
     item: Item,
 ):
-    return {&quot;device price&quot;: item.price, &quot;total price&quot;: price}"><pre class="sourceCode python code-annotation-code code-with-copy"><code class="sourceCode python"><span id="annotated-cell-30-1"><a href="#annotated-cell-30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Annotated</span>
-<span id="annotated-cell-30-2"><a href="#annotated-cell-30-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> Body</span>
-<span id="annotated-cell-30-3"><a href="#annotated-cell-30-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, Field</span>
-<span id="annotated-cell-30-4"><a href="#annotated-cell-30-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-30-5"><a href="#annotated-cell-30-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Item(BaseModel):</span>
-<span id="annotated-cell-30-6"><a href="#annotated-cell-30-6" aria-hidden="true" tabindex="-1"></a>    name: <span class="bu">str</span> <span class="op">=</span> Field(min_length<span class="op">=</span><span class="dv">1</span>, max_length<span class="op">=</span><span class="dv">80</span>)</span>
-<span id="annotated-cell-30-7"><a href="#annotated-cell-30-7" aria-hidden="true" tabindex="-1"></a>    price: <span class="bu">float</span> <span class="op">=</span> Field(gt<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="annotated-cell-30-8"><a href="#annotated-cell-30-8" aria-hidden="true" tabindex="-1"></a>    description: <span class="bu">str</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span>
-<span id="annotated-cell-30-9"><a href="#annotated-cell-30-9" aria-hidden="true" tabindex="-1"></a>    tags: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> Field(default_factory<span class="op">=</span><span class="bu">list</span>)</span>
-<span id="annotated-cell-30-10"><a href="#annotated-cell-30-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-30-11"><a href="#annotated-cell-30-11" aria-hidden="true" tabindex="-1"></a><span class="at">@app.put</span>(<span class="st">"/items/</span><span class="sc">{item_id}</span><span class="st">/price"</span>)</span>
-<span id="annotated-cell-30-12"><a href="#annotated-cell-30-12" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> update_price(</span>
-<span id="annotated-cell-30-13"><a href="#annotated-cell-30-13" aria-hidden="true" tabindex="-1"></a>    item_id: <span class="bu">int</span>,</span>
-<span id="annotated-cell-30-14"><a href="#annotated-cell-30-14" aria-hidden="true" tabindex="-1"></a>    price: Annotated[<span class="bu">float</span>, Body(gt<span class="op">=</span><span class="dv">0</span>)],</span>
-<span id="annotated-cell-30-15"><a href="#annotated-cell-30-15" aria-hidden="true" tabindex="-1"></a>    item: Item,</span>
-<span id="annotated-cell-30-16"><a href="#annotated-cell-30-16" aria-hidden="true" tabindex="-1"></a>):</span>
-<span id="annotated-cell-30-17"><a href="#annotated-cell-30-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"device price"</span>: item.price, <span class="st">"total price"</span>: price}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+    return {&quot;device price&quot;: item.price, &quot;total price&quot;: price}"><pre class="sourceCode python code-annotation-code code-with-copy"><code class="sourceCode python"><span id="annotated-cell-31-1"><a href="#annotated-cell-31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Annotated</span>
+<span id="annotated-cell-31-2"><a href="#annotated-cell-31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> Body</span>
+<span id="annotated-cell-31-3"><a href="#annotated-cell-31-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, Field</span>
+<span id="annotated-cell-31-4"><a href="#annotated-cell-31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-31-5"><a href="#annotated-cell-31-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Item(BaseModel):</span>
+<span id="annotated-cell-31-6"><a href="#annotated-cell-31-6" aria-hidden="true" tabindex="-1"></a>    name: <span class="bu">str</span> <span class="op">=</span> Field(min_length<span class="op">=</span><span class="dv">1</span>, max_length<span class="op">=</span><span class="dv">80</span>)</span>
+<span id="annotated-cell-31-7"><a href="#annotated-cell-31-7" aria-hidden="true" tabindex="-1"></a>    price: <span class="bu">float</span> <span class="op">=</span> Field(gt<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="annotated-cell-31-8"><a href="#annotated-cell-31-8" aria-hidden="true" tabindex="-1"></a>    description: <span class="bu">str</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="annotated-cell-31-9"><a href="#annotated-cell-31-9" aria-hidden="true" tabindex="-1"></a>    tags: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> Field(default_factory<span class="op">=</span><span class="bu">list</span>)</span>
+<span id="annotated-cell-31-10"><a href="#annotated-cell-31-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-31-11"><a href="#annotated-cell-31-11" aria-hidden="true" tabindex="-1"></a><span class="at">@app.put</span>(<span class="st">"/items/</span><span class="sc">{item_id}</span><span class="st">/price"</span>)</span>
+<span id="annotated-cell-31-12"><a href="#annotated-cell-31-12" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> update_price(</span>
+<span id="annotated-cell-31-13"><a href="#annotated-cell-31-13" aria-hidden="true" tabindex="-1"></a>    item_id: <span class="bu">int</span>,</span>
+<span id="annotated-cell-31-14"><a href="#annotated-cell-31-14" aria-hidden="true" tabindex="-1"></a>    price: Annotated[<span class="bu">float</span>, Body(gt<span class="op">=</span><span class="dv">0</span>)],</span>
+<span id="annotated-cell-31-15"><a href="#annotated-cell-31-15" aria-hidden="true" tabindex="-1"></a>    item: Item,</span>
+<span id="annotated-cell-31-16"><a href="#annotated-cell-31-16" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="annotated-cell-31-17"><a href="#annotated-cell-31-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"device price"</span>: item.price, <span class="st">"total price"</span>: price}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Expected body: <code>{"price": 4.5, "item": {"name": "Notebook", "price": 4.5, "tags": ["portable"]}}</code>.</p>
 </div>
 </div>
@@ -1622,6 +1623,52 @@ def create_dataset(dataset: list[list[int | float]]) -> dict:
 </dd>
 </dl>
 <p>Scope a lock for a single object’s attributes, to avoid threads from unnecessarily blocking each other.</p>
+</section>
+<section id="background-tasks" class="level3">
+<h3 class="anchored" data-anchor-id="background-tasks">Background Tasks</h3>
+<p>Use <a href="https://fastapi.tiangolo.com/tutorial/background-tasks/">BackgroundTasks</a>, if you want to send a response directly to the client (e.g.&nbsp;“received request. Here is your job_id.”) and run longer task in the background <strong>after the response is sent</strong>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-25" data-llms-code-original="from fastapi import BackgroundTasks, FastAPI
+
+app = FastAPI()
+
+def write_log(message: str): # <1>
+    with open(&quot;events.log&quot;, &quot;a&quot;, encoding=&quot;utf-8&quot;) as file:
+        file.write(message + &quot;\n&quot;)
+
+@app.post(&quot;/events&quot;, status_code=202)
+async def record_event(message: str, background_tasks: BackgroundTasks): # <2>
+    background_tasks.add_task(write_log, message) # <3>
+    return {&quot;message&quot;: &quot;Event accepted&quot;} # <4>"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-25-1"><a href="#annotated-cell-25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastapi <span class="im">import</span> BackgroundTasks, FastAPI</span>
+<span id="annotated-cell-25-2"><a href="#annotated-cell-25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-25-3"><a href="#annotated-cell-25-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastAPI()</span>
+<span id="annotated-cell-25-4"><a href="#annotated-cell-25-4" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="1">1</button><span id="annotated-cell-25-5" class="code-annotation-target"><a href="#annotated-cell-25-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> write_log(message: <span class="bu">str</span>):</span>
+<span id="annotated-cell-25-6"><a href="#annotated-cell-25-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"events.log"</span>, <span class="st">"a"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="annotated-cell-25-7"><a href="#annotated-cell-25-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">file</span>.write(message <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="annotated-cell-25-8"><a href="#annotated-cell-25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-25-9"><a href="#annotated-cell-25-9" aria-hidden="true" tabindex="-1"></a><span class="at">@app.post</span>(<span class="st">"/events"</span>, status_code<span class="op">=</span><span class="dv">202</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="2">2</button><span id="annotated-cell-25-10" class="code-annotation-target"><a href="#annotated-cell-25-10" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> record_event(message: <span class="bu">str</span>, background_tasks: BackgroundTasks):</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="3">3</button><span id="annotated-cell-25-11" class="code-annotation-target"><a href="#annotated-cell-25-11" aria-hidden="true" tabindex="-1"></a>    background_tasks.add_task(write_log, message)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="4">4</button><span id="annotated-cell-25-12" class="code-annotation-target"><a href="#annotated-cell-25-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"message"</span>: <span class="st">"Event accepted"</span>}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="5" data-code-annotation="1">A regular <code>def</code> task runs in a thread pool, suitable for blocking I/O. An <code>async def</code> task is also supported, but must not perform blocking work on the event loop.</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="10" data-code-annotation="2">FastAPI injects <code>BackgroundTasks</code> automatically; no <code>Depends</code> is needed. Here, <code>message</code> comes from the query string (e.g.&nbsp;<code>POST /events?message=Hello</code>).</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="11" data-code-annotation="3">Registers the function and its arguments. Pass <code>write_log</code>, not <code>write_log(message)</code>, so it runs later rather than immediately.</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="12" data-code-annotation="4">Returns <strong>202 Accepted</strong> without waiting for the task to finish; this does not confirm that the task succeeded.</span>
+</dd>
+</dl>
+<p>Tasks run in the same application process, not a separate worker service, and can be lost on a crash or restart. Use a job queue such as <a href="docs.celeryq.dev">Celery</a> for heavy computation, retries, or durable jobs; <code>BackgroundTasks</code> does not provide job IDs or status tracking automatically.</p>
 </section>
 </section>
 <section id="testing" class="level2">
