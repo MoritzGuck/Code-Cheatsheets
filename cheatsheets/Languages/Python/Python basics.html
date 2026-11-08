@@ -485,14 +485,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../cheatsheets/Languages/Python/Python.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Python Design Patterns </span></a>
+  <a href="../../../cheatsheets/Languages/Python/Python basics.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Python basics </span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../cheatsheets/Languages/Python/Python basics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Python basics </span></a>
+  <a href="../../../cheatsheets/Languages/Python/Python_design_patterns.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Design Patterns </span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -786,6 +786,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dd>
 </dl>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"my Output includes a </span><span class="sc">{</span>variable_1<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>variable_2<span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>####&nbsp;Input/Output</p>
+<p>The built-in <a href="https://docs.python.org/3/library/io.html">io</a> library provides file-like streams for text (<code>str</code>) and binary data (<code>bytes</code>). Import it with <code>import io</code>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operation</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Create an in-memory text stream</td>
+<td><code>stream = io.StringIO("Hello\nWorld")</code></td>
+</tr>
+<tr class="even">
+<td>Create an in-memory binary stream</td>
+<td><code>stream = io.BytesIO(b"Hello")</code></td>
+</tr>
+<tr class="odd">
+<td>Open a text file</td>
+<td><code>stream = open("file.txt", "r", encoding="utf-8")</code></td>
+</tr>
+<tr class="even">
+<td>Open a binary file</td>
+<td><code>stream = open("file.bin", "rb")</code></td>
+</tr>
+<tr class="odd">
+<td>Wrap a binary stream as text</td>
+<td><code>text = io.TextIOWrapper(binary_stream, encoding="utf-8")</code></td>
+</tr>
+<tr class="even">
+<td>Read remaining contents / up to n items</td>
+<td><code>stream.read()</code> / <code>stream.read(n)</code> (characters for text, bytes for binary)</td>
+</tr>
+<tr class="odd">
+<td>Read one line / remaining lines as a list</td>
+<td><code>stream.readline()</code> / <code>stream.readlines()</code></td>
+</tr>
+<tr class="even">
+<td>Write text / bytes to a writable stream</td>
+<td><code>stream.write("Hello")</code> / <code>stream.write(b"Hello")</code></td>
+</tr>
+<tr class="odd">
+<td>Rewind / get current position</td>
+<td><code>stream.seek(0)</code> / <code>stream.tell()</code></td>
+</tr>
+<tr class="even">
+<td>Flush buffered output / close stream</td>
+<td><code>stream.flush()</code> / <code>stream.close()</code></td>
+</tr>
+</tbody>
+</table>
+<p>Prefer <code>with open(...) as stream:</code> (or <code>with io.StringIO() as stream:</code>) to close streams automatically. For files, use mode <code>"w"</code> to write (overwriting existing contents) or <code>"a"</code> to append; add <code>"b"</code> for binary data.</p>
 <section id="logging" class="level4">
 <h4 class="anchored" data-anchor-id="logging">Logging</h4>
 <p>The built-in library is <a href="https://docs.python.org/3/library/logging.html">logging</a>, however <a href="https://github.com/Delgan/loguru">loguru</a> is easier to use: <code>pip install loguru</code>.</p>

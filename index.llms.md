@@ -25,7 +25,7 @@ This is a collection of my cheatsheets. Feel free to use them. If you want to ed
 | [Prompting LLMs](cheatsheets/Other/prompting_llms.llms.md) | How to write effective prompts for large language models. |   |
 | [Pydantic](cheatsheets/Web%20and%20APIs/pydantic.llms.md) | Pydantic is a data validation library for Python. | web, networking |
 | [Pytest](cheatsheets/Languages/Python/pytest.llms.md) | Pytest is a simple to use yet powerful testing library. | testing |
-| [Python Design Patterns ](cheatsheets/Languages/Python/Python.llms.md) | Python is one of the most popular programming languages. | language |
+| [Python Design Patterns ](cheatsheets/Languages/Python/Python_design_patterns.llms.md) | Python is one of the most popular programming languages. | language |
 | [Python basics ](cheatsheets/Languages/Python/Python%20basics.llms.md) | Python is one of the most popular programming languages. | language |
 | [Quarto](cheatsheets/Other/Quarto.llms.md) | Quarto is a publishing tool that allows you to render markdown documents into websites, documents and presentations. | tool, web development |
 | [R Shiny ](cheatsheets/Languages/R/R-Shiny.llms.md) | Shiny is a framework to build web apps to interactively visualize data. | R, data science, visualize |

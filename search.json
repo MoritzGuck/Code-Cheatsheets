@@ -85,42 +85,185 @@
     ]
   },
   {
-    "objectID": "cheatsheets/Languages/Python/Python.html",
-    "href": "cheatsheets/Languages/Python/Python.html",
-    "title": "Python Design Patterns ",
+    "objectID": "cheatsheets/Languages/Python/Pandas.html",
+    "href": "cheatsheets/Languages/Python/Pandas.html",
+    "title": "Pandas ",
     "section": "",
-    "text": "Use case\n\nYou have different classes that create objects that do the same kind of work (e.g. Logistic company has trucks, ships, planes that all transport goods). Explanation: refactoring.guru\n\nWhat it does for you\n\nCreate objects and methods without having to specify the class or name of method (This is handled by factory object).\n\nBlueprint\n\n\n\n\n\nGithub.com/ArjanCodes\nrefactoring.guru",
+    "text": "Basic concept\n\nEach observation is in its own row (and preferably has an index-value). Each feature/variable is in its own column and has a unique name.\n\nData Frames",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Python Design Patterns {{< fa brands python >}}"
+      "Pandas {{< fa brands python >}}"
     ]
   },
   {
-    "objectID": "cheatsheets/Languages/Python/Python.html#design-patterns",
-    "href": "cheatsheets/Languages/Python/Python.html#design-patterns",
-    "title": "Python Design Patterns ",
-    "section": "",
-    "text": "Use case\n\nYou have different classes that create objects that do the same kind of work (e.g. Logistic company has trucks, ships, planes that all transport goods). Explanation: refactoring.guru\n\nWhat it does for you\n\nCreate objects and methods without having to specify the class or name of method (This is handled by factory object).\n\nBlueprint\n\n\n\n\n\nGithub.com/ArjanCodes\nrefactoring.guru",
+    "objectID": "cheatsheets/Languages/Python/Pandas.html#reshaping-data",
+    "href": "cheatsheets/Languages/Python/Pandas.html#reshaping-data",
+    "title": "Pandas ",
+    "section": "Reshaping data",
+    "text": "Reshaping data\n\nFrom multiple columns to two columns\n\n\n\n\npd.melt(my_df)\nCol1 has former column names, col2 has values\n\nSpread rows into columns\n\n\n\n\nmy_df.pivot(columns='col1', values=\n'col2')\nCol1’s values are used as column names, col2’s values are used in respective column’s values.\n\nAppend one dataframe to another\n\n\n\n\npd.concat([my_df1, my_df2]) # below / vertically\npd.concat([my_df1, my_df2], axis=1) # to the right / horizontally\n\nReset the index to row numbers\n\n\n\n\nmy_df.reset_index()",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Python Design Patterns {{< fa brands python >}}"
+      "Pandas {{< fa brands python >}}"
     ]
   },
   {
-    "objectID": "cheatsheets/Languages/Python/Venv.html",
-    "href": "cheatsheets/Languages/Python/Venv.html",
-    "title": "Venv ",
-    "section": "",
-    "text": "Warning\n\n\n\nVirtualenv and venv are not the same package. Venv is built into Python, while virtualenv is a third-party package that contains additional options.\n\n\n\nCreate and delete environments\n\nCreate environment\n\n\n\n\npython -m venv venv\n\nRemoving / Deleting environment\n\n\n\n\nconda env remove -n env-name\nMore info: Intro to Conda virtual environments\n\n\nUse environment\n\nUse/activate environment\n\n\n\n\n.\\venv\\Scripts\\activate\n\nDeactive environment\n\n\n\n\ndeactivate\n\n\nInstall packages\n\nInstall package using pip\n\n\n\n\npip install pandas \nmore info in Pip\n\nExport packages in env to requirements.txt\n\n\n\n\npip freeze &gt; requirements.txt\n\nInstall packages from requirements.txt\n\n\n\n\npip install -r requirements.txt",
+    "objectID": "cheatsheets/Languages/Python/Pandas.html#slice-dataframes",
+    "href": "cheatsheets/Languages/Python/Pandas.html#slice-dataframes",
+    "title": "Pandas ",
+    "section": "Slice DataFrames",
+    "text": "Slice DataFrames\n\nFirst and last rows\n\n\n\n\nmy_df.head(n=10) \nmy_df.tail(n=10)\n\nSample several rows\n\n\n\n\nmy_df.sample(n=10)\n\nSelect specific rows\n\n\n\n\nmy_df.iloc[10:20]\n\nSelect specific columns\n\n\n\n\nmy_df[\"col1\"]\nmy_df[[\"col1\", \"col2\"]]\n\nSelect rows based on condition\n\n\n\n\nmy_df[my_df['col1'] &gt; 42]\n\nSelect rows based on a list of values in a column\n\n\n\n\nmy_df[my_df['col1'].isin(['value1', 'value2'])]\n\nRemove duplicate rows\n\n\n\n\nmy_df.drop_duplicates()\n\nSelect rows excluding certain values in a column\n\n\n\n\nmy_df[~my_df['col1'].isin(['value1', 'value2'])]",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Venv {{< fa brands python >}}"
+      "Pandas {{< fa brands python >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Languages/Python/Pandas.html#data-manipulation",
+    "href": "cheatsheets/Languages/Python/Pandas.html#data-manipulation",
+    "title": "Pandas ",
+    "section": "Data Manipulation",
+    "text": "Data Manipulation\n\nReplace values in a column\n\n\n\n\nmy_df['col1'] = my_df['col1'].replace(['old_value1', 'old_value2'], ['new_value1', 'new_value2'])",
+    "crumbs": [
+      "Cheatsheets",
+      "Languages",
+      "Python",
+      "Pandas {{< fa brands python >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Languages/Python/Pandas.html#data-aggregation",
+    "href": "cheatsheets/Languages/Python/Pandas.html#data-aggregation",
+    "title": "Pandas ",
+    "section": "Data Aggregation",
+    "text": "Data Aggregation\n\nGroup by a column and calculate mean of another column\n\n\n\n\nmy_df.groupby('col1')['col2'].mean()",
+    "crumbs": [
+      "Cheatsheets",
+      "Languages",
+      "Python",
+      "Pandas {{< fa brands python >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Languages/Python/Pandas.html#data-visualization",
+    "href": "cheatsheets/Languages/Python/Pandas.html#data-visualization",
+    "title": "Pandas ",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\nPlot a histogram of a column\n\n\n\n\nmy_df['col1'].plot.hist()\n\nPlot a scatter plot of two columns\n\n\n\n\nmy_df.plot.scatter(x='col1', y='col2')",
+    "crumbs": [
+      "Cheatsheets",
+      "Languages",
+      "Python",
+      "Pandas {{< fa brands python >}}"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Languages/Python/pytest.html",
+    "href": "cheatsheets/Languages/Python/pytest.html",
+    "title": "Pytest",
+    "section": "",
+    "text": "uv add --dev pytest\nuv run pytest                             # Run all tests\nuv run pytest tests/test_math.py::test_add  # One test\nAdd these options to uv run pytest; multiple options can be combined.\n\n\n\n\n\n\n\nOption\nDescription\n\n\n\n\n-k \"add and not slow\"\nSelect tests whose names match the expression, using and, or, and not to combine name filters.\n\n\n-m \"not integration\"\nSelect tests by marker expressions, here excluding tests marked integration.\n\n\n-q\nReduce output verbosity for a more compact test report.\n\n\n-x\nStop the test run immediately after the first failure.\n\n\n--lf\nRerun only tests that failed in the previous run, or all tests if no failures are recorded.\n\n\n-s\nDisable output capturing so that output such as print() calls appears directly in the terminal.\n\n\n--pdb\nOpen Python’s interactive debugger when a test fails to inspect the failure.\n\n\n\nDiscovery: files test_*.py or *_test.py, functions test_*, optional classes Test* without __init__.",
+    "crumbs": [
+      "Cheatsheets",
+      "Languages",
+      "Python",
+      "Pytest"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Languages/Python/pytest.html#install-run",
+    "href": "cheatsheets/Languages/Python/pytest.html#install-run",
+    "title": "Pytest",
+    "section": "",
+    "text": "uv add --dev pytest\nuv run pytest                             # Run all tests\nuv run pytest tests/test_math.py::test_add  # One test\nAdd these options to uv run pytest; multiple options can be combined.\n\n\n\n\n\n\n\nOption\nDescription\n\n\n\n\n-k \"add and not slow\"\nSelect tests whose names match the expression, using and, or, and not to combine name filters.\n\n\n-m \"not integration\"\nSelect tests by marker expressions, here excluding tests marked integration.\n\n\n-q\nReduce output verbosity for a more compact test report.\n\n\n-x\nStop the test run immediately after the first failure.\n\n\n--lf\nRerun only tests that failed in the previous run, or all tests if no failures are recorded.\n\n\n-s\nDisable output capturing so that output such as print() calls appears directly in the terminal.\n\n\n--pdb\nOpen Python’s interactive debugger when a test fails to inspect the failure.\n\n\n\nDiscovery: files test_*.py or *_test.py, functions test_*, optional classes Test* without __init__.",
+    "crumbs": [
+      "Cheatsheets",
+      "Languages",
+      "Python",
+      "Pytest"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Languages/Python/pytest.html#best-practices",
+    "href": "cheatsheets/Languages/Python/pytest.html#best-practices",
+    "title": "Pytest",
+    "section": "Best practices",
+    "text": "Best practices\n\nArrange → Act → Assert; one behavior per test, with descriptive names.\nTest observable behavior, not implementation details; cover normal, boundary, and failure cases.\nKeep tests independent, deterministic, and fast: no ordering dependencies, real network calls in unit tests, or arbitrary sleeps.\nMock external boundaries, not everything; use integration tests to verify real interactions.\nPrefer small, explicit fixtures over hidden autouse setup; always clean up resources.\nRun tests in CI. Optional: pytest-cov adds --cov=myapp --cov-branch --cov-report=term-missing; coverage reveals gaps, not correctness.",
+    "crumbs": [
+      "Cheatsheets",
+      "Languages",
+      "Python",
+      "Pytest"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Languages/Python/pytest.html#assertions-exceptions",
+    "href": "cheatsheets/Languages/Python/pytest.html#assertions-exceptions",
+    "title": "Pytest",
+    "section": "Assertions & exceptions",
+    "text": "Assertions & exceptions\nUse plain assert; pytest shows the values involved when it fails.\nimport pytest\n\ndef test_assertions():\n    assert 2 + 2 == 4\n    assert \"py\" in \"pytest\"\n    assert [1, 2] == [1, 2]          # Compare contents, not identity\n    assert None is None            # Use `is None`, not `== None`\n    assert 0.1 + 0.2 == pytest.approx(0.3)\n\ndef test_invalid_input():\n    with pytest.raises(ValueError, match=\"invalid literal\"):\n        int(\"hello\")               # `match` is a regex",
+    "crumbs": [
+      "Cheatsheets",
+      "Languages",
+      "Python",
+      "Pytest"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Languages/Python/pytest.html#parametrization",
+    "href": "cheatsheets/Languages/Python/pytest.html#parametrization",
+    "title": "Pytest",
+    "section": "Parametrization",
+    "text": "Parametrization\nRun the same test with multiple inputs, including edge cases.\n@pytest.mark.parametrize(\n    \"raw, expected\",\n    [(\"  Ada \", \"ada\"), (\"BOB\", \"bob\"), (\"\", \"\")],\n    ids=[\"whitespace\", \"uppercase\", \"empty\"],\n)\ndef test_normalize(raw, expected):\n    assert raw.strip().lower() == expected\nStack decorators for all combinations; use pytest.param(..., marks=...) to mark individual cases.",
+    "crumbs": [
+      "Cheatsheets",
+      "Languages",
+      "Python",
+      "Pytest"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Languages/Python/pytest.html#fixtures-setup-cleanup",
+    "href": "cheatsheets/Languages/Python/pytest.html#fixtures-setup-cleanup",
+    "title": "Pytest",
+    "section": "Fixtures: setup & cleanup",
+    "text": "Fixtures: setup & cleanup\nFixtures are reusable functions that prepare data or resources for tests and can clean them up afterward. Tests request fixtures by argument name. Put shared fixtures in tests/conftest.py; pytest discovers them automatically—no import needed.\nimport sqlite3\nimport pytest\n\n@pytest.fixture\ndef db():\n    connection = sqlite3.connect(\":memory:\")\n    try:\n        yield connection           # Setup before yield; cleanup after\n    finally:\n        connection.close()\n\ndef test_database(db):\n    assert db.execute(\"SELECT 1\").fetchone() == (1,)\nDefault scope is function (fresh per test). Other scopes: class, module, package, session. Share expensive resources carefully; avoid shared mutable state.\n\n\n\n\n\n\n\nBuilt-in fixture\nUse\n\n\n\n\ntmp_path\nIsolated temporary directory (pathlib.Path)\n\n\nmonkeypatch\nTemporarily change attributes, environment, or working directory\n\n\ncapsys\nRead captured stdout/stderr with readouterr()\n\n\ncaplog\nInspect log messages with .text or .records\n\n\n\ndef test_file(tmp_path):\n    path = tmp_path / \"data.txt\"\n    path.write_text(\"hello\", encoding=\"utf-8\")\n    assert path.read_text(encoding=\"utf-8\") == \"hello\"\n\ndef test_environment(monkeypatch):\n    import os\n\n    monkeypatch.setenv(\"APP_MODE\", \"test\")\n    assert os.getenv(\"APP_MODE\") == \"test\"  # Restored after the test",
+    "crumbs": [
+      "Cheatsheets",
+      "Languages",
+      "Python",
+      "Pytest"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Languages/Python/pytest.html#mocking",
+    "href": "cheatsheets/Languages/Python/pytest.html#mocking",
+    "title": "Pytest",
+    "section": "Mocking",
+    "text": "Mocking\nMocking temporarily replaces real objects or functions with simpler substitutes so tests can isolate behavior without relying on external systems and run faster. Install pytest-mock to use its mocker fixture:\nuv add --dev pytest-mock\n\nExample:\nApplication code in config.py imports expanduser to build a config path:\n# config.py\nfrom os.path import expanduser\nfrom pathlib import Path\n\ndef config_path():\n    return Path(expanduser(\"~\")) / \"settings.toml\"\nTests in tests/test_config.py patch the imported name in config, not its original definition in os.path:\n# tests/test_config.py\nimport pytest\nfrom config import config_path\n\n1def test_config_path(tmp_path, mocker):\n    # Arrange / Given: a controlled home directory\n2    home = mocker.patch(\"config.expanduser\",\n3        autospec=True,\n4        return_value=str(tmp_path),\n    )\n    # Act / When: build the config path\n    result = config_path()\n\n    # Assert / Then: the path uses that directory\n    assert result == tmp_path / \"settings.toml\"\n5    home.assert_called_once_with(\"~\")\n\ndef test_config_path_failure(mocker):\n    # Arrange / Given: home directory lookup fails\n    mocker.patch(\"config.expanduser\", autospec=True,\n6        side_effect=TimeoutError(\"offline\"),\n    )\n    # Assert / Then: expect the lookup error to propagate\n    with pytest.raises(TimeoutError, match=\"offline\"):\n        # Act / When: build the config path\n        config_path()\n\n1\n\nThe mocker fixture provides patching helpers and automatically undoes patches after each test; mocker.spy(object, \"method\") instead records calls while keeping the real implementation.\n\n2\n\nPatch config.expanduser because config_path looks up that name in config; patching os.path.expanduser would not replace the reference already imported by from os.path import expanduser.\n\n3\n\nautospec=True makes the mock enforce the original function’s parameter signature, so calling the patched expanduser with missing or unexpected arguments raises TypeError instead of silently accepting an invalid call; it does not check argument types or run the real function.\n\n4\n\nreturn_value makes the patched function return the supplied value, here the test’s temporary directory instead of the real home directory.\n\n5\n\nVerify that the patched function was called exactly once with \"~\".\n\n6\n\nside_effect makes the patched function raise the supplied exception to simulate a failure.",
+    "crumbs": [
+      "Cheatsheets",
+      "Languages",
+      "Python",
+      "Pytest"
+    ]
+  },
+  {
+    "objectID": "cheatsheets/Languages/Python/pytest.html#markers-configuration",
+    "href": "cheatsheets/Languages/Python/pytest.html#markers-configuration",
+    "title": "Pytest",
+    "section": "Markers & configuration",
+    "text": "Markers & configuration\n@pytest.mark.integration\ndef test_external_service(): ...\n\n@pytest.mark.skip(reason=\"Feature not available\")\ndef test_future_feature(): ...\n\n@pytest.mark.xfail(reason=\"Known bug #123\", strict=True)\ndef test_known_bug():\n    assert 1 == 2                   # Unexpected pass fails the suite\nRegister custom markers in pyproject.toml (syntax compatible with pytest 8 and 9):\n[tool.pytest.ini_options]\ntestpaths = [\"tests\"]\naddopts = \"-ra --strict-markers\"\nmarkers = [\"integration: tests involving external systems\"]\nOfficial documentation",
+    "crumbs": [
+      "Cheatsheets",
+      "Languages",
+      "Python",
+      "Pytest"
     ]
   },
   {
@@ -1555,185 +1698,42 @@
     ]
   },
   {
-    "objectID": "cheatsheets/Languages/Python/pytest.html",
-    "href": "cheatsheets/Languages/Python/pytest.html",
-    "title": "Pytest",
+    "objectID": "cheatsheets/Languages/Python/Python_design_patterns.html",
+    "href": "cheatsheets/Languages/Python/Python_design_patterns.html",
+    "title": "Python Design Patterns ",
     "section": "",
-    "text": "uv add --dev pytest\nuv run pytest                             # Run all tests\nuv run pytest tests/test_math.py::test_add  # One test\nAdd these options to uv run pytest; multiple options can be combined.\n\n\n\n\n\n\n\nOption\nDescription\n\n\n\n\n-k \"add and not slow\"\nSelect tests whose names match the expression, using and, or, and not to combine name filters.\n\n\n-m \"not integration\"\nSelect tests by marker expressions, here excluding tests marked integration.\n\n\n-q\nReduce output verbosity for a more compact test report.\n\n\n-x\nStop the test run immediately after the first failure.\n\n\n--lf\nRerun only tests that failed in the previous run, or all tests if no failures are recorded.\n\n\n-s\nDisable output capturing so that output such as print() calls appears directly in the terminal.\n\n\n--pdb\nOpen Python’s interactive debugger when a test fails to inspect the failure.\n\n\n\nDiscovery: files test_*.py or *_test.py, functions test_*, optional classes Test* without __init__.",
+    "text": "Use case\n\nYou have different classes that create objects that do the same kind of work (e.g. Logistic company has trucks, ships, planes that all transport goods). Explanation: refactoring.guru\n\nWhat it does for you\n\nCreate objects and methods without having to specify the class or name of method (This is handled by factory object).\n\nBlueprint\n\n\n\n\n\nGithub.com/ArjanCodes\nrefactoring.guru",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Pytest"
+      "Python Design Patterns {{< fa brands python >}}"
     ]
   },
   {
-    "objectID": "cheatsheets/Languages/Python/pytest.html#install-run",
-    "href": "cheatsheets/Languages/Python/pytest.html#install-run",
-    "title": "Pytest",
+    "objectID": "cheatsheets/Languages/Python/Python_design_patterns.html#design-patterns",
+    "href": "cheatsheets/Languages/Python/Python_design_patterns.html#design-patterns",
+    "title": "Python Design Patterns ",
     "section": "",
-    "text": "uv add --dev pytest\nuv run pytest                             # Run all tests\nuv run pytest tests/test_math.py::test_add  # One test\nAdd these options to uv run pytest; multiple options can be combined.\n\n\n\n\n\n\n\nOption\nDescription\n\n\n\n\n-k \"add and not slow\"\nSelect tests whose names match the expression, using and, or, and not to combine name filters.\n\n\n-m \"not integration\"\nSelect tests by marker expressions, here excluding tests marked integration.\n\n\n-q\nReduce output verbosity for a more compact test report.\n\n\n-x\nStop the test run immediately after the first failure.\n\n\n--lf\nRerun only tests that failed in the previous run, or all tests if no failures are recorded.\n\n\n-s\nDisable output capturing so that output such as print() calls appears directly in the terminal.\n\n\n--pdb\nOpen Python’s interactive debugger when a test fails to inspect the failure.\n\n\n\nDiscovery: files test_*.py or *_test.py, functions test_*, optional classes Test* without __init__.",
+    "text": "Use case\n\nYou have different classes that create objects that do the same kind of work (e.g. Logistic company has trucks, ships, planes that all transport goods). Explanation: refactoring.guru\n\nWhat it does for you\n\nCreate objects and methods without having to specify the class or name of method (This is handled by factory object).\n\nBlueprint\n\n\n\n\n\nGithub.com/ArjanCodes\nrefactoring.guru",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Pytest"
+      "Python Design Patterns {{< fa brands python >}}"
     ]
   },
   {
-    "objectID": "cheatsheets/Languages/Python/pytest.html#best-practices",
-    "href": "cheatsheets/Languages/Python/pytest.html#best-practices",
-    "title": "Pytest",
-    "section": "Best practices",
-    "text": "Best practices\n\nArrange → Act → Assert; one behavior per test, with descriptive names.\nTest observable behavior, not implementation details; cover normal, boundary, and failure cases.\nKeep tests independent, deterministic, and fast: no ordering dependencies, real network calls in unit tests, or arbitrary sleeps.\nMock external boundaries, not everything; use integration tests to verify real interactions.\nPrefer small, explicit fixtures over hidden autouse setup; always clean up resources.\nRun tests in CI. Optional: pytest-cov adds --cov=myapp --cov-branch --cov-report=term-missing; coverage reveals gaps, not correctness.",
-    "crumbs": [
-      "Cheatsheets",
-      "Languages",
-      "Python",
-      "Pytest"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Languages/Python/pytest.html#assertions-exceptions",
-    "href": "cheatsheets/Languages/Python/pytest.html#assertions-exceptions",
-    "title": "Pytest",
-    "section": "Assertions & exceptions",
-    "text": "Assertions & exceptions\nUse plain assert; pytest shows the values involved when it fails.\nimport pytest\n\ndef test_assertions():\n    assert 2 + 2 == 4\n    assert \"py\" in \"pytest\"\n    assert [1, 2] == [1, 2]          # Compare contents, not identity\n    assert None is None            # Use `is None`, not `== None`\n    assert 0.1 + 0.2 == pytest.approx(0.3)\n\ndef test_invalid_input():\n    with pytest.raises(ValueError, match=\"invalid literal\"):\n        int(\"hello\")               # `match` is a regex",
-    "crumbs": [
-      "Cheatsheets",
-      "Languages",
-      "Python",
-      "Pytest"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Languages/Python/pytest.html#parametrization",
-    "href": "cheatsheets/Languages/Python/pytest.html#parametrization",
-    "title": "Pytest",
-    "section": "Parametrization",
-    "text": "Parametrization\nRun the same test with multiple inputs, including edge cases.\n@pytest.mark.parametrize(\n    \"raw, expected\",\n    [(\"  Ada \", \"ada\"), (\"BOB\", \"bob\"), (\"\", \"\")],\n    ids=[\"whitespace\", \"uppercase\", \"empty\"],\n)\ndef test_normalize(raw, expected):\n    assert raw.strip().lower() == expected\nStack decorators for all combinations; use pytest.param(..., marks=...) to mark individual cases.",
-    "crumbs": [
-      "Cheatsheets",
-      "Languages",
-      "Python",
-      "Pytest"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Languages/Python/pytest.html#fixtures-setup-cleanup",
-    "href": "cheatsheets/Languages/Python/pytest.html#fixtures-setup-cleanup",
-    "title": "Pytest",
-    "section": "Fixtures: setup & cleanup",
-    "text": "Fixtures: setup & cleanup\nFixtures are reusable functions that prepare data or resources for tests and can clean them up afterward. Tests request fixtures by argument name. Put shared fixtures in tests/conftest.py; pytest discovers them automatically—no import needed.\nimport sqlite3\nimport pytest\n\n@pytest.fixture\ndef db():\n    connection = sqlite3.connect(\":memory:\")\n    try:\n        yield connection           # Setup before yield; cleanup after\n    finally:\n        connection.close()\n\ndef test_database(db):\n    assert db.execute(\"SELECT 1\").fetchone() == (1,)\nDefault scope is function (fresh per test). Other scopes: class, module, package, session. Share expensive resources carefully; avoid shared mutable state.\n\n\n\n\n\n\n\nBuilt-in fixture\nUse\n\n\n\n\ntmp_path\nIsolated temporary directory (pathlib.Path)\n\n\nmonkeypatch\nTemporarily change attributes, environment, or working directory\n\n\ncapsys\nRead captured stdout/stderr with readouterr()\n\n\ncaplog\nInspect log messages with .text or .records\n\n\n\ndef test_file(tmp_path):\n    path = tmp_path / \"data.txt\"\n    path.write_text(\"hello\", encoding=\"utf-8\")\n    assert path.read_text(encoding=\"utf-8\") == \"hello\"\n\ndef test_environment(monkeypatch):\n    import os\n\n    monkeypatch.setenv(\"APP_MODE\", \"test\")\n    assert os.getenv(\"APP_MODE\") == \"test\"  # Restored after the test",
-    "crumbs": [
-      "Cheatsheets",
-      "Languages",
-      "Python",
-      "Pytest"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Languages/Python/pytest.html#mocking",
-    "href": "cheatsheets/Languages/Python/pytest.html#mocking",
-    "title": "Pytest",
-    "section": "Mocking",
-    "text": "Mocking\nMocking temporarily replaces real objects or functions with simpler substitutes so tests can isolate behavior without relying on external systems and run faster. Install pytest-mock to use its mocker fixture:\nuv add --dev pytest-mock\n\nExample:\nApplication code in config.py imports expanduser to build a config path:\n# config.py\nfrom os.path import expanduser\nfrom pathlib import Path\n\ndef config_path():\n    return Path(expanduser(\"~\")) / \"settings.toml\"\nTests in tests/test_config.py patch the imported name in config, not its original definition in os.path:\n# tests/test_config.py\nimport pytest\nfrom config import config_path\n\n1def test_config_path(tmp_path, mocker):\n    # Arrange / Given: a controlled home directory\n2    home = mocker.patch(\"config.expanduser\",\n3        autospec=True,\n4        return_value=str(tmp_path),\n    )\n    # Act / When: build the config path\n    result = config_path()\n\n    # Assert / Then: the path uses that directory\n    assert result == tmp_path / \"settings.toml\"\n5    home.assert_called_once_with(\"~\")\n\ndef test_config_path_failure(mocker):\n    # Arrange / Given: home directory lookup fails\n    mocker.patch(\"config.expanduser\", autospec=True,\n6        side_effect=TimeoutError(\"offline\"),\n    )\n    # Assert / Then: expect the lookup error to propagate\n    with pytest.raises(TimeoutError, match=\"offline\"):\n        # Act / When: build the config path\n        config_path()\n\n1\n\nThe mocker fixture provides patching helpers and automatically undoes patches after each test; mocker.spy(object, \"method\") instead records calls while keeping the real implementation.\n\n2\n\nPatch config.expanduser because config_path looks up that name in config; patching os.path.expanduser would not replace the reference already imported by from os.path import expanduser.\n\n3\n\nautospec=True makes the mock enforce the original function’s parameter signature, so calling the patched expanduser with missing or unexpected arguments raises TypeError instead of silently accepting an invalid call; it does not check argument types or run the real function.\n\n4\n\nreturn_value makes the patched function return the supplied value, here the test’s temporary directory instead of the real home directory.\n\n5\n\nVerify that the patched function was called exactly once with \"~\".\n\n6\n\nside_effect makes the patched function raise the supplied exception to simulate a failure.",
-    "crumbs": [
-      "Cheatsheets",
-      "Languages",
-      "Python",
-      "Pytest"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Languages/Python/pytest.html#markers-configuration",
-    "href": "cheatsheets/Languages/Python/pytest.html#markers-configuration",
-    "title": "Pytest",
-    "section": "Markers & configuration",
-    "text": "Markers & configuration\n@pytest.mark.integration\ndef test_external_service(): ...\n\n@pytest.mark.skip(reason=\"Feature not available\")\ndef test_future_feature(): ...\n\n@pytest.mark.xfail(reason=\"Known bug #123\", strict=True)\ndef test_known_bug():\n    assert 1 == 2                   # Unexpected pass fails the suite\nRegister custom markers in pyproject.toml (syntax compatible with pytest 8 and 9):\n[tool.pytest.ini_options]\ntestpaths = [\"tests\"]\naddopts = \"-ra --strict-markers\"\nmarkers = [\"integration: tests involving external systems\"]\nOfficial documentation",
-    "crumbs": [
-      "Cheatsheets",
-      "Languages",
-      "Python",
-      "Pytest"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Languages/Python/Pandas.html",
-    "href": "cheatsheets/Languages/Python/Pandas.html",
-    "title": "Pandas ",
+    "objectID": "cheatsheets/Languages/Python/Venv.html",
+    "href": "cheatsheets/Languages/Python/Venv.html",
+    "title": "Venv ",
     "section": "",
-    "text": "Basic concept\n\nEach observation is in its own row (and preferably has an index-value). Each feature/variable is in its own column and has a unique name.\n\nData Frames",
+    "text": "Warning\n\n\n\nVirtualenv and venv are not the same package. Venv is built into Python, while virtualenv is a third-party package that contains additional options.\n\n\n\nCreate and delete environments\n\nCreate environment\n\n\n\n\npython -m venv venv\n\nRemoving / Deleting environment\n\n\n\n\nconda env remove -n env-name\nMore info: Intro to Conda virtual environments\n\n\nUse environment\n\nUse/activate environment\n\n\n\n\n.\\venv\\Scripts\\activate\n\nDeactive environment\n\n\n\n\ndeactivate\n\n\nInstall packages\n\nInstall package using pip\n\n\n\n\npip install pandas \nmore info in Pip\n\nExport packages in env to requirements.txt\n\n\n\n\npip freeze &gt; requirements.txt\n\nInstall packages from requirements.txt\n\n\n\n\npip install -r requirements.txt",
     "crumbs": [
       "Cheatsheets",
       "Languages",
       "Python",
-      "Pandas {{< fa brands python >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Languages/Python/Pandas.html#reshaping-data",
-    "href": "cheatsheets/Languages/Python/Pandas.html#reshaping-data",
-    "title": "Pandas ",
-    "section": "Reshaping data",
-    "text": "Reshaping data\n\nFrom multiple columns to two columns\n\n\n\n\npd.melt(my_df)\nCol1 has former column names, col2 has values\n\nSpread rows into columns\n\n\n\n\nmy_df.pivot(columns='col1', values=\n'col2')\nCol1’s values are used as column names, col2’s values are used in respective column’s values.\n\nAppend one dataframe to another\n\n\n\n\npd.concat([my_df1, my_df2]) # below / vertically\npd.concat([my_df1, my_df2], axis=1) # to the right / horizontally\n\nReset the index to row numbers\n\n\n\n\nmy_df.reset_index()",
-    "crumbs": [
-      "Cheatsheets",
-      "Languages",
-      "Python",
-      "Pandas {{< fa brands python >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Languages/Python/Pandas.html#slice-dataframes",
-    "href": "cheatsheets/Languages/Python/Pandas.html#slice-dataframes",
-    "title": "Pandas ",
-    "section": "Slice DataFrames",
-    "text": "Slice DataFrames\n\nFirst and last rows\n\n\n\n\nmy_df.head(n=10) \nmy_df.tail(n=10)\n\nSample several rows\n\n\n\n\nmy_df.sample(n=10)\n\nSelect specific rows\n\n\n\n\nmy_df.iloc[10:20]\n\nSelect specific columns\n\n\n\n\nmy_df[\"col1\"]\nmy_df[[\"col1\", \"col2\"]]\n\nSelect rows based on condition\n\n\n\n\nmy_df[my_df['col1'] &gt; 42]\n\nSelect rows based on a list of values in a column\n\n\n\n\nmy_df[my_df['col1'].isin(['value1', 'value2'])]\n\nRemove duplicate rows\n\n\n\n\nmy_df.drop_duplicates()\n\nSelect rows excluding certain values in a column\n\n\n\n\nmy_df[~my_df['col1'].isin(['value1', 'value2'])]",
-    "crumbs": [
-      "Cheatsheets",
-      "Languages",
-      "Python",
-      "Pandas {{< fa brands python >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Languages/Python/Pandas.html#data-manipulation",
-    "href": "cheatsheets/Languages/Python/Pandas.html#data-manipulation",
-    "title": "Pandas ",
-    "section": "Data Manipulation",
-    "text": "Data Manipulation\n\nReplace values in a column\n\n\n\n\nmy_df['col1'] = my_df['col1'].replace(['old_value1', 'old_value2'], ['new_value1', 'new_value2'])",
-    "crumbs": [
-      "Cheatsheets",
-      "Languages",
-      "Python",
-      "Pandas {{< fa brands python >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Languages/Python/Pandas.html#data-aggregation",
-    "href": "cheatsheets/Languages/Python/Pandas.html#data-aggregation",
-    "title": "Pandas ",
-    "section": "Data Aggregation",
-    "text": "Data Aggregation\n\nGroup by a column and calculate mean of another column\n\n\n\n\nmy_df.groupby('col1')['col2'].mean()",
-    "crumbs": [
-      "Cheatsheets",
-      "Languages",
-      "Python",
-      "Pandas {{< fa brands python >}}"
-    ]
-  },
-  {
-    "objectID": "cheatsheets/Languages/Python/Pandas.html#data-visualization",
-    "href": "cheatsheets/Languages/Python/Pandas.html#data-visualization",
-    "title": "Pandas ",
-    "section": "Data Visualization",
-    "text": "Data Visualization\n\nPlot a histogram of a column\n\n\n\n\nmy_df['col1'].plot.hist()\n\nPlot a scatter plot of two columns\n\n\n\n\nmy_df.plot.scatter(x='col1', y='col2')",
-    "crumbs": [
-      "Cheatsheets",
-      "Languages",
-      "Python",
-      "Pandas {{< fa brands python >}}"
+      "Venv {{< fa brands python >}}"
     ]
   },
   {
@@ -1754,7 +1754,7 @@
     "href": "cheatsheets/Languages/Python/Python basics.html",
     "title": "Python basics ",
     "section": "",
-    "text": "Basics\n\n\nUsing Python\nIn console:\n\nUse Python in console / terminal: Python\nType your code\nQuit Python in console: quit()\n\nRun Python scripts In console / terminal:\n\nWindowsUnix (Mac / Linux)\n\n\nPy myScript.py\n\n\nPython myScript.py\n\n\n\n\n\n\n\n\n\n\nGet help with functions and features\n\n\n\n\n\nHelp menu for python\nhelp()\n\n\nHelp section on function\nhelp(\"func\") or help(package.func)\n\n\nFunctions in library\ndir(\"package\")\n\n\n\n\n\nFile system, Import, Input, Output\nimport package: import os, shutil\n\n\n\n\n\n\n\nUse file system\n\n\n\n\n\nprint working directory\nos.getcwd()\n\n\nChange working directory\nos.chdir(\"path/to/dir\")\n\n\nList files in working directory\nos.listdir()\n\n\nCreate directory\nos.mkdir(\"dir_name\")\n\n\nremove directory\nos.rmdir(\"dir_name\")\n\n\nCreate file\nwith open(\"./filename\", \"w\"): pass\n\n\nGet info on file (size, time of creation)\nos.path.isfile(\"filename\")\n\n\nRename file\nos.rename()\n\n\nCopy file\nshutil.copy(\"source_filename\", \"dest_filename\")\n\n\nConstruct file path from directory list\nos.path.join(\"path\", \"to\", \"file\")\n\n\n\n\nImporting other scripts\n\n\n\n\nimport path.to.otherScript\nExecutes the contents of the script.\n\nPrint to standard output\n\n\n\n\nprint(f\"my Output includes a {variable_1} and {variable_2}.\")\n\nLogging\nThe built-in library is logging, however loguru is easier to use: pip install loguru.\n\nSend log-messages to log-file\n\n\n\n\nfrom loguru import logger\nlogger.add(\"logfile.log\")\nlogger.debug(\"blablabla\")\nlogger.info(\"foo bar bash\")\n\n\n\nOperations, numbers, vectors, matrices\n\n\n\n\n\n\n\nAssign values to a variable\n\n\n\n\n\nAssign value to variable\nx = 4.5\n\n\nAssign to multiple variables\nx = y = z = 4.5\n\n\n\n\nCreate a list\n\n\n\n\nx = [1,2,3]\n\n\nMatrices & vectors\nimport package: import numpy as np import scipy as sp\n\nCreate array / vector\n\n\n\n\nx_arr = array([1,2,3])\n\nElementwise adding, subtracting, dividing, multiplying, … vectors\n\n\n\n\nx_arr = np.array([1,2,3])\ny_arr = np.array([4,5,6])\nz_arr = x_arr * y_arr # or -, *, /\n\n\n\n\n\n\n\nCommon operators on vectors\n\n\n\n\n\nmaximum, minimum\nmax(x) min(x)\n\n\nNumber of rows & columns\nx_arr.shape\n\n\nSum of the elements\nx_arr.sum()\n\n\nProduct of the elements\nx_arr.prod()\n\n\nMean of the elements\nx_arr.mean()\n\n\nVariance of the elements\nx_arr.var()\n\n\nSort elements ascending\nnp.sort(x_arr)\n\n\nSort elements descending\nnp.sort(x_arr)[::-1]\n\n\nMatrix multiplication\nnp.matmul(x_arr, y_arr)\n\n\nDimension of matrix\nx_arr.shape\n\n\nmode (highest count of val)\nsp.stats.mode(x_arr)\n\n\nPercentile\nnp.percentile(x_arr, 50)\n\n\n\n\nGenerate sequences\n\n\n\n\nx_arr = np.arange(1,11,1) # Integers from 1 to 10\n# Or\nx_arr = np.arange(1,11,0.5) # 1.0, 1.5, 2.0, 2.5, ... \nRepeat vector:\nnp.tile(x_arr, reps=2) # 1, 2, 3, 1, 2, 3\nRepeat elements in vector:\nnp.repeat(x_arr, repeats=2) # 1, 1, 2, 2, 3, 3\n\n\nSelecting elements in vectors\n\nSelect first element in sequence\n\n\n\n\nx_arr[0] # ! not x_arr[1] !\n\nSelecting first 10 elements in vector\n\n\n\n\nx_arr[0:10] # ! not x_arr[0:9]\n\nSelecting non-missing elements in vector\n\n\n\n\nx_arr[~np.isnan(x_arr)]\n\nAppend element\n\n\n\n\nnp.append(x_arr, values=[1,2,3])\n\nInsert element\n\n\n\n\nnp.insert(x_arr, obj=2, values=[1,2,3]) # obj=index at which to insert\n\nDelete element\n\n\n\n\nnp.delete(x_arr, obj=-1) # deletes last element\n\nCreate matrix/2D-array\n\n\n\n\nx_arr = np.array([(1,2,3),(4,5,6)]) \n# [[1 2 3]\n#  [4 5 6]]\n\nAccess matrix element\n\n\n\n\nx_arr[1,1]\n\nAccess matrix column(s)\n\n\n\n\nx_arr[:,2] # 3rd column\nx_arr[:, 0:2] # 1st & 2nd column\n\nAdd rows and columns\n\n\n\n\nnp.vstack([x_arr, y_arr]) # add other array as rows\nnp.hstack([x_arr, y_arr]) # add other array as columns\n\n\n\n\n\n\n\nBoolean operations\n\n\n\n\n\ncreate boolean vector\nx_arr &lt; 3 # [True, True, False]\n\n\nBoolean operators\n&lt;, &lt;=, &gt;, &gt;=, ==, !=\n\n\nand\ncond1 and cond2\n\n\nor\ncond1 or cond2\n\n\nnot\nnot cond\n\n\nelement in vector?\nx in [2,3,4]\n\n\nidentical\nnp.array_equal(x_arr, y_arr, equal_nan=True)\n\n\n\nIf logical vectors are used in arithmetic operations, False becomes 0, True becomes 1.\n\nMissing values\n\nnan !: Operations with missing values return missing values. (nan + 1 is still nan)\n\n\nChecking for missing values: np.isnan(x) (NaN = Not a number)\n\nAssign value only to elements where condition is true\n\n\n\n\nx_arr[np.isnan(x_arr)] = 4\n\n\n\n\n\n\n\nCharacters\n\n\n\n\n\nCharacter string\n\"...\"\n\n\nEscape character\n\\\n\n\nNew line\n\\n\n\n\nTab\n\\t\n\n\nlength of string\nlen(str)\n\n\nIs seq of chars in string?\n\"Halli Hallo\".find(\"Hallo\") # returns first idx: 6, if not found: -1\n\n\ncombine two strings into 1\n\"Halli \" + \"Hallo\"\n\n\n\nConcatenate arguments 1 by 1 as characters: \" \".join([\"Halli\", \"Hallo\"])\nImport package: import math\n\n\n\n\n\n\n\nOperations on number\n\n\n\n\n\nAbsolute value\nabs(x)\n\n\nround up to next int\nmath.ceil(x)\n\n\nround down to next int\nmath.floor(x)\n\n\nExponent\nx**2\n\n\nModulus / remainder\n10 % 3 # 1\n\n\nInteger division\n10 // 3 # 3\n\n\n\n\n\nTypes\n\nConvert types\n\n\n\n\na = int(b)\nn = float(m)\ny = complex(x)\n\nGet type of variable\n\n\n\n\ntype(x)\n\n\nDataframes\nContrary to arrays, the different columns of data frames can contain different data types.\nimport package: import pandas as pd\n\nConstruct data frame\n\n\n\n\ndf = pd.DataFrame(\n  {\"col1\" : [1,2,3],\n  \"col2\" : [12.4, 15.6, 16.9],\n  \"col3\" : [\"green\", \"blue\", \"white\"]}\n)\n#    col1  col2   col3\n# 0     1  12.4  green\n# 1     2  15.6   blue\n# 2     3  16.9  white\n\n\n\n\n\n\n\nFunctions on dataframes\n\n\n\n\n\nRename columns\ndf.columns = [\"rank\", \"result\", \"team\"]\n\n\nGet summary statistics on columns\ndf.describe()\n\n\nAccess column\ndf.iloc[:,1] or df[\"col1_name\"] or df.col1_name\n\n\nAdd row, column\ndf.loc[len(df)] = [4, 12.0, \"black\"], df[\"new_col\"] = [\"val1\", \"val2\", \"val3\"]\n\n\nRemove first row, column\ndf.iloc[1:], df.iloc[:,1:]\n\n\nSelect row with max value of col1\ndf[\"col2\"].idxmax()\n\n\n\n\n\nCategorical values\nYou can store categorical values in pandas:\n\nCreate factor\n\n\n\n\ndf[\"col3\"] = df[\"col3\"].astype(\"category\")\nThis will save memory and other python libraries will know that they should treat the column as categories.\n\n\nControl structures\n\nIf … else …\n\n\n\n\nif x &lt; 5:\n    print(\"small\")\nelif x &lt; 10:\n    print(\"medium\")\nelse: \n    print(\"big\")\n\nWhile loops\n\n\n\n\nwhile(x &lt; 10):\n    x += 1\n    print(x)\n\nFor loops\n\n\n\n\nfor x in x_list:\n    print(x)\n\n\nFunctions\n\nCreate function\n\n\n\n\ndef my_func(first_name, last_name = \"\"):\n    greeting = \" \".join([\"Hallo\", first_name, last_name])\n    print(greeting)\n    return greeting\n\nCall function:\n\n\n\n\nmy_func(\"Donald\", \"Duck\")",
+    "text": "Basics\n\n\nUsing Python\nIn console:\n\nUse Python in console / terminal: Python\nType your code\nQuit Python in console: quit()\n\nRun Python scripts In console / terminal:\n\nWindowsUnix (Mac / Linux)\n\n\nPy myScript.py\n\n\nPython myScript.py\n\n\n\n\n\n\n\n\n\n\nGet help with functions and features\n\n\n\n\n\nHelp menu for python\nhelp()\n\n\nHelp section on function\nhelp(\"func\") or help(package.func)\n\n\nFunctions in library\ndir(\"package\")\n\n\n\n\n\nFile system, Import, Input, Output\nimport package: import os, shutil\n\n\n\n\n\n\n\nUse file system\n\n\n\n\n\nprint working directory\nos.getcwd()\n\n\nChange working directory\nos.chdir(\"path/to/dir\")\n\n\nList files in working directory\nos.listdir()\n\n\nCreate directory\nos.mkdir(\"dir_name\")\n\n\nremove directory\nos.rmdir(\"dir_name\")\n\n\nCreate file\nwith open(\"./filename\", \"w\"): pass\n\n\nGet info on file (size, time of creation)\nos.path.isfile(\"filename\")\n\n\nRename file\nos.rename()\n\n\nCopy file\nshutil.copy(\"source_filename\", \"dest_filename\")\n\n\nConstruct file path from directory list\nos.path.join(\"path\", \"to\", \"file\")\n\n\n\n\nImporting other scripts\n\n\n\n\nimport path.to.otherScript\nExecutes the contents of the script.\n\nPrint to standard output\n\n\n\n\nprint(f\"my Output includes a {variable_1} and {variable_2}.\")\n#### Input/Output\nThe built-in io library provides file-like streams for text (str) and binary data (bytes). Import it with import io.\n\n\n\n\n\n\n\nOperation\nCommand\n\n\n\n\nCreate an in-memory text stream\nstream = io.StringIO(\"Hello\\nWorld\")\n\n\nCreate an in-memory binary stream\nstream = io.BytesIO(b\"Hello\")\n\n\nOpen a text file\nstream = open(\"file.txt\", \"r\", encoding=\"utf-8\")\n\n\nOpen a binary file\nstream = open(\"file.bin\", \"rb\")\n\n\nWrap a binary stream as text\ntext = io.TextIOWrapper(binary_stream, encoding=\"utf-8\")\n\n\nRead remaining contents / up to n items\nstream.read() / stream.read(n) (characters for text, bytes for binary)\n\n\nRead one line / remaining lines as a list\nstream.readline() / stream.readlines()\n\n\nWrite text / bytes to a writable stream\nstream.write(\"Hello\") / stream.write(b\"Hello\")\n\n\nRewind / get current position\nstream.seek(0) / stream.tell()\n\n\nFlush buffered output / close stream\nstream.flush() / stream.close()\n\n\n\nPrefer with open(...) as stream: (or with io.StringIO() as stream:) to close streams automatically. For files, use mode \"w\" to write (overwriting existing contents) or \"a\" to append; add \"b\" for binary data.\n\nLogging\nThe built-in library is logging, however loguru is easier to use: pip install loguru.\n\nSend log-messages to log-file\n\n\n\n\nfrom loguru import logger\nlogger.add(\"logfile.log\")\nlogger.debug(\"blablabla\")\nlogger.info(\"foo bar bash\")\n\n\n\nOperations, numbers, vectors, matrices\n\n\n\n\n\n\n\nAssign values to a variable\n\n\n\n\n\nAssign value to variable\nx = 4.5\n\n\nAssign to multiple variables\nx = y = z = 4.5\n\n\n\n\nCreate a list\n\n\n\n\nx = [1,2,3]\n\n\nMatrices & vectors\nimport package: import numpy as np import scipy as sp\n\nCreate array / vector\n\n\n\n\nx_arr = array([1,2,3])\n\nElementwise adding, subtracting, dividing, multiplying, … vectors\n\n\n\n\nx_arr = np.array([1,2,3])\ny_arr = np.array([4,5,6])\nz_arr = x_arr * y_arr # or -, *, /\n\n\n\n\n\n\n\nCommon operators on vectors\n\n\n\n\n\nmaximum, minimum\nmax(x) min(x)\n\n\nNumber of rows & columns\nx_arr.shape\n\n\nSum of the elements\nx_arr.sum()\n\n\nProduct of the elements\nx_arr.prod()\n\n\nMean of the elements\nx_arr.mean()\n\n\nVariance of the elements\nx_arr.var()\n\n\nSort elements ascending\nnp.sort(x_arr)\n\n\nSort elements descending\nnp.sort(x_arr)[::-1]\n\n\nMatrix multiplication\nnp.matmul(x_arr, y_arr)\n\n\nDimension of matrix\nx_arr.shape\n\n\nmode (highest count of val)\nsp.stats.mode(x_arr)\n\n\nPercentile\nnp.percentile(x_arr, 50)\n\n\n\n\nGenerate sequences\n\n\n\n\nx_arr = np.arange(1,11,1) # Integers from 1 to 10\n# Or\nx_arr = np.arange(1,11,0.5) # 1.0, 1.5, 2.0, 2.5, ... \nRepeat vector:\nnp.tile(x_arr, reps=2) # 1, 2, 3, 1, 2, 3\nRepeat elements in vector:\nnp.repeat(x_arr, repeats=2) # 1, 1, 2, 2, 3, 3\n\n\nSelecting elements in vectors\n\nSelect first element in sequence\n\n\n\n\nx_arr[0] # ! not x_arr[1] !\n\nSelecting first 10 elements in vector\n\n\n\n\nx_arr[0:10] # ! not x_arr[0:9]\n\nSelecting non-missing elements in vector\n\n\n\n\nx_arr[~np.isnan(x_arr)]\n\nAppend element\n\n\n\n\nnp.append(x_arr, values=[1,2,3])\n\nInsert element\n\n\n\n\nnp.insert(x_arr, obj=2, values=[1,2,3]) # obj=index at which to insert\n\nDelete element\n\n\n\n\nnp.delete(x_arr, obj=-1) # deletes last element\n\nCreate matrix/2D-array\n\n\n\n\nx_arr = np.array([(1,2,3),(4,5,6)]) \n# [[1 2 3]\n#  [4 5 6]]\n\nAccess matrix element\n\n\n\n\nx_arr[1,1]\n\nAccess matrix column(s)\n\n\n\n\nx_arr[:,2] # 3rd column\nx_arr[:, 0:2] # 1st & 2nd column\n\nAdd rows and columns\n\n\n\n\nnp.vstack([x_arr, y_arr]) # add other array as rows\nnp.hstack([x_arr, y_arr]) # add other array as columns\n\n\n\n\n\n\n\nBoolean operations\n\n\n\n\n\ncreate boolean vector\nx_arr &lt; 3 # [True, True, False]\n\n\nBoolean operators\n&lt;, &lt;=, &gt;, &gt;=, ==, !=\n\n\nand\ncond1 and cond2\n\n\nor\ncond1 or cond2\n\n\nnot\nnot cond\n\n\nelement in vector?\nx in [2,3,4]\n\n\nidentical\nnp.array_equal(x_arr, y_arr, equal_nan=True)\n\n\n\nIf logical vectors are used in arithmetic operations, False becomes 0, True becomes 1.\n\nMissing values\n\nnan !: Operations with missing values return missing values. (nan + 1 is still nan)\n\n\nChecking for missing values: np.isnan(x) (NaN = Not a number)\n\nAssign value only to elements where condition is true\n\n\n\n\nx_arr[np.isnan(x_arr)] = 4\n\n\n\n\n\n\n\nCharacters\n\n\n\n\n\nCharacter string\n\"...\"\n\n\nEscape character\n\\\n\n\nNew line\n\\n\n\n\nTab\n\\t\n\n\nlength of string\nlen(str)\n\n\nIs seq of chars in string?\n\"Halli Hallo\".find(\"Hallo\") # returns first idx: 6, if not found: -1\n\n\ncombine two strings into 1\n\"Halli \" + \"Hallo\"\n\n\n\nConcatenate arguments 1 by 1 as characters: \" \".join([\"Halli\", \"Hallo\"])\nImport package: import math\n\n\n\n\n\n\n\nOperations on number\n\n\n\n\n\nAbsolute value\nabs(x)\n\n\nround up to next int\nmath.ceil(x)\n\n\nround down to next int\nmath.floor(x)\n\n\nExponent\nx**2\n\n\nModulus / remainder\n10 % 3 # 1\n\n\nInteger division\n10 // 3 # 3\n\n\n\n\n\nTypes\n\nConvert types\n\n\n\n\na = int(b)\nn = float(m)\ny = complex(x)\n\nGet type of variable\n\n\n\n\ntype(x)\n\n\nDataframes\nContrary to arrays, the different columns of data frames can contain different data types.\nimport package: import pandas as pd\n\nConstruct data frame\n\n\n\n\ndf = pd.DataFrame(\n  {\"col1\" : [1,2,3],\n  \"col2\" : [12.4, 15.6, 16.9],\n  \"col3\" : [\"green\", \"blue\", \"white\"]}\n)\n#    col1  col2   col3\n# 0     1  12.4  green\n# 1     2  15.6   blue\n# 2     3  16.9  white\n\n\n\n\n\n\n\nFunctions on dataframes\n\n\n\n\n\nRename columns\ndf.columns = [\"rank\", \"result\", \"team\"]\n\n\nGet summary statistics on columns\ndf.describe()\n\n\nAccess column\ndf.iloc[:,1] or df[\"col1_name\"] or df.col1_name\n\n\nAdd row, column\ndf.loc[len(df)] = [4, 12.0, \"black\"], df[\"new_col\"] = [\"val1\", \"val2\", \"val3\"]\n\n\nRemove first row, column\ndf.iloc[1:], df.iloc[:,1:]\n\n\nSelect row with max value of col1\ndf[\"col2\"].idxmax()\n\n\n\n\n\nCategorical values\nYou can store categorical values in pandas:\n\nCreate factor\n\n\n\n\ndf[\"col3\"] = df[\"col3\"].astype(\"category\")\nThis will save memory and other python libraries will know that they should treat the column as categories.\n\n\nControl structures\n\nIf … else …\n\n\n\n\nif x &lt; 5:\n    print(\"small\")\nelif x &lt; 10:\n    print(\"medium\")\nelse: \n    print(\"big\")\n\nWhile loops\n\n\n\n\nwhile(x &lt; 10):\n    x += 1\n    print(x)\n\nFor loops\n\n\n\n\nfor x in x_list:\n    print(x)\n\n\nFunctions\n\nCreate function\n\n\n\n\ndef my_func(first_name, last_name = \"\"):\n    greeting = \" \".join([\"Hallo\", first_name, last_name])\n    print(greeting)\n    return greeting\n\nCall function:\n\n\n\n\nmy_func(\"Donald\", \"Duck\")",
     "crumbs": [
       "Cheatsheets",
       "Languages",
