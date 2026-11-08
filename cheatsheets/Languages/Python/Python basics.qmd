@@ -75,6 +75,27 @@ Print to standard output
 print(f"my Output includes a {variable_1} and {variable_2}.")
 ```
 
+#### Input/Output
+
+The built-in [io](https://docs.python.org/3/library/io.html) library provides file-like streams for text (`str`) and binary data (`bytes`). Import it with `import io`.
+
+Operation                                 | Command
+------------------------------------------|------
+Create an in-memory text stream           | `stream = io.StringIO("Hello\nWorld")`
+Create an in-memory binary stream         | `stream = io.BytesIO(b"Hello")`
+Open a text file                          | `stream = open("file.txt", "r", encoding="utf-8")`
+Open a binary file                        | `stream = open("file.bin", "rb")`
+Wrap a binary stream as text              | `text = io.TextIOWrapper(binary_stream, encoding="utf-8")`
+Read remaining contents / up to n items    | `stream.read()` / `stream.read(n)` (characters for text, bytes for binary)
+Read one line / remaining lines as a list  | `stream.readline()` / `stream.readlines()`
+Write text / bytes to a writable stream   | `stream.write("Hello")` / `stream.write(b"Hello")`
+Rewind / get current position             | `stream.seek(0)` / `stream.tell()`
+Flush buffered output / close stream      | `stream.flush()` / `stream.close()`
+
+:  {tbl-colwidths="[50,50]" }
+
+Prefer `with open(...) as stream:` (or `with io.StringIO() as stream:`) to close streams automatically. For files, use mode `"w"` to write (overwriting existing contents) or `"a"` to append; add `"b"` for binary data.
+
 #### Logging
 
 The built-in library is [logging](https://docs.python.org/3/library/logging.html), however [loguru](https://github.com/Delgan/loguru) is easier to use: `pip install loguru`.
@@ -412,4 +433,3 @@ Call function:
 ```python
 my_func("Donald", "Duck")
 ```
-
