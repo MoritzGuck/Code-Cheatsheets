@@ -619,7 +619,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#reshaping-data" id="toc-reshaping-data" class="nav-link active" data-scroll-target="#reshaping-data">Reshaping data</a></li>
+  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link active" data-scroll-target="#data-analysis">Data Analysis</a></li>
+  <li><a href="#reshaping-data" id="toc-reshaping-data" class="nav-link" data-scroll-target="#reshaping-data">Reshaping data</a></li>
   <li><a href="#slice-dataframes" id="toc-slice-dataframes" class="nav-link" data-scroll-target="#slice-dataframes">Slice DataFrames</a></li>
   <li><a href="#data-manipulation" id="toc-data-manipulation" class="nav-link" data-scroll-target="#data-manipulation">Data Manipulation</a></li>
   <li><a href="#data-aggregation" id="toc-data-aggregation" class="nav-link" data-scroll-target="#data-aggregation">Data Aggregation</a></li>
@@ -671,6 +672,140 @@ Each observation is in its own row (and preferably has an index-value). Each fea
 </dd>
 </dl>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my_df <span class="op">=</span> pd.DataFrame(data<span class="op">=</span>numpy_array, index<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>], columns<span class="op">=</span>[<span class="st">"col1"</span>, <span class="st">"col2"</span>, <span class="st">"col3"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="data-analysis">Data Analysis</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 61%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>command</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>df.shape</code></td>
+<td>returns number of rows and columns/shape of the dataframe</td>
+</tr>
+<tr class="even">
+<td><code>len(df)</code></td>
+<td>returns the number of rows</td>
+</tr>
+<tr class="odd">
+<td><code>df.size</code></td>
+<td>returns the total number of cells, including missing values</td>
+</tr>
+<tr class="even">
+<td><code>df.columns</code></td>
+<td>returns column names</td>
+</tr>
+<tr class="odd">
+<td><code>df.index</code></td>
+<td>returns row index labels</td>
+</tr>
+<tr class="even">
+<td><code>df.dtypes</code></td>
+<td>returns the data type of each column</td>
+</tr>
+<tr class="odd">
+<td><code>df.info()</code></td>
+<td>prints a summary of columns, non-null counts, data types, and memory usage</td>
+</tr>
+<tr class="even">
+<td><code>df.head()</code></td>
+<td>shows the first 5 rows</td>
+</tr>
+<tr class="odd">
+<td><code>df.tail()</code></td>
+<td>shows the last 5 rows</td>
+</tr>
+<tr class="even">
+<td><code>df.describe()</code></td>
+<td>returns summary statistics for numeric columns by default</td>
+</tr>
+<tr class="odd">
+<td><code>df.describe(include='all')</code></td>
+<td>returns summary statistics for all column types</td>
+</tr>
+<tr class="even">
+<td><code>df.count()</code></td>
+<td>counts non-missing values in each column</td>
+</tr>
+<tr class="odd">
+<td><code>df.isna().sum()</code></td>
+<td>counts missing values in each column</td>
+</tr>
+<tr class="even">
+<td><code>df.duplicated().sum()</code></td>
+<td>counts duplicate rows, excluding the first occurrence</td>
+</tr>
+<tr class="odd">
+<td><code>df.nunique()</code></td>
+<td>counts distinct non-missing values in each column</td>
+</tr>
+<tr class="even">
+<td><code>df['col1'].unique()</code></td>
+<td>returns unique values in a column, including missing values</td>
+</tr>
+<tr class="odd">
+<td><code>df['col1'].value_counts()</code></td>
+<td>counts occurrences of each value, excluding missing values</td>
+</tr>
+<tr class="even">
+<td><code>df['col1'].value_counts(normalize=True)</code></td>
+<td>returns relative frequencies of non-missing values</td>
+</tr>
+<tr class="odd">
+<td><code>df['col1'].value_counts(dropna=False)</code></td>
+<td>counts occurrences of each value, including missing values</td>
+</tr>
+<tr class="even">
+<td><code>df['col1'].sum()</code></td>
+<td>returns the sum of a numeric column</td>
+</tr>
+<tr class="odd">
+<td><code>df['col1'].mean()</code></td>
+<td>returns the mean of a numeric column</td>
+</tr>
+<tr class="even">
+<td><code>df['col1'].median()</code></td>
+<td>returns the median of a numeric column</td>
+</tr>
+<tr class="odd">
+<td><code>df['col1'].min()</code></td>
+<td>returns the minimum value in a column</td>
+</tr>
+<tr class="even">
+<td><code>df['col1'].max()</code></td>
+<td>returns the maximum value in a column</td>
+</tr>
+<tr class="odd">
+<td><code>df['col1'].std()</code></td>
+<td>returns the sample standard deviation of a numeric column</td>
+</tr>
+<tr class="even">
+<td><code>df['col1'].quantile(0.25)</code></td>
+<td>returns the 25th percentile of a numeric column</td>
+</tr>
+<tr class="odd">
+<td><code>df.corr(numeric_only=True)</code></td>
+<td>returns pairwise Pearson correlations between numeric columns</td>
+</tr>
+<tr class="even">
+<td><code>df.sort_values('col1', ascending=False)</code></td>
+<td>returns rows sorted by a column in descending order</td>
+</tr>
+<tr class="odd">
+<td><code>df.nlargest(5, 'col1')</code></td>
+<td>returns rows with the 5 largest values in a numeric column</td>
+</tr>
+</tbody>
+</table>
+<p>Numeric summary methods above skip missing values by default.</p>
+</section>
 <section id="reshaping-data" class="level2">
 <h2 class="anchored" data-anchor-id="reshaping-data">Reshaping data</h2>
 <dl>

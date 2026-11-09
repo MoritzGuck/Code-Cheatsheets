@@ -98,6 +98,19 @@
     ]
   },
   {
+    "objectID": "cheatsheets/Languages/Python/Pandas.html#data-analysis",
+    "href": "cheatsheets/Languages/Python/Pandas.html#data-analysis",
+    "title": "Pandas ",
+    "section": "Data Analysis",
+    "text": "Data Analysis\n\n\n\n\n\n\n\ncommand\ndescription\n\n\n\n\ndf.shape\nreturns number of rows and columns/shape of the dataframe\n\n\nlen(df)\nreturns the number of rows\n\n\ndf.size\nreturns the total number of cells, including missing values\n\n\ndf.columns\nreturns column names\n\n\ndf.index\nreturns row index labels\n\n\ndf.dtypes\nreturns the data type of each column\n\n\ndf.info()\nprints a summary of columns, non-null counts, data types, and memory usage\n\n\ndf.head()\nshows the first 5 rows\n\n\ndf.tail()\nshows the last 5 rows\n\n\ndf.describe()\nreturns summary statistics for numeric columns by default\n\n\ndf.describe(include='all')\nreturns summary statistics for all column types\n\n\ndf.count()\ncounts non-missing values in each column\n\n\ndf.isna().sum()\ncounts missing values in each column\n\n\ndf.duplicated().sum()\ncounts duplicate rows, excluding the first occurrence\n\n\ndf.nunique()\ncounts distinct non-missing values in each column\n\n\ndf['col1'].unique()\nreturns unique values in a column, including missing values\n\n\ndf['col1'].value_counts()\ncounts occurrences of each value, excluding missing values\n\n\ndf['col1'].value_counts(normalize=True)\nreturns relative frequencies of non-missing values\n\n\ndf['col1'].value_counts(dropna=False)\ncounts occurrences of each value, including missing values\n\n\ndf['col1'].sum()\nreturns the sum of a numeric column\n\n\ndf['col1'].mean()\nreturns the mean of a numeric column\n\n\ndf['col1'].median()\nreturns the median of a numeric column\n\n\ndf['col1'].min()\nreturns the minimum value in a column\n\n\ndf['col1'].max()\nreturns the maximum value in a column\n\n\ndf['col1'].std()\nreturns the sample standard deviation of a numeric column\n\n\ndf['col1'].quantile(0.25)\nreturns the 25th percentile of a numeric column\n\n\ndf.corr(numeric_only=True)\nreturns pairwise Pearson correlations between numeric columns\n\n\ndf.sort_values('col1', ascending=False)\nreturns rows sorted by a column in descending order\n\n\ndf.nlargest(5, 'col1')\nreturns rows with the 5 largest values in a numeric column\n\n\n\nNumeric summary methods above skip missing values by default.",
+    "crumbs": [
+      "Cheatsheets",
+      "Languages",
+      "Python",
+      "Pandas {{< fa brands python >}}"
+    ]
+  },
+  {
     "objectID": "cheatsheets/Languages/Python/Pandas.html#reshaping-data",
     "href": "cheatsheets/Languages/Python/Pandas.html#reshaping-data",
     "title": "Pandas ",

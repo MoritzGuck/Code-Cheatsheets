@@ -8,7 +8,7 @@ Ansible is a task and infrastructure automation tool. It is agentless.
 
 Published
 
-November 8, 2026
+November 9, 2026
 
 ## Basic Concepts
 

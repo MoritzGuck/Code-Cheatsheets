@@ -17,6 +17,42 @@ Data Frames
 my_df = pd.DataFrame(data=numpy_array, index=[0,1,2], columns=["col1", "col2", "col3"])
 ```
 
+## Data Analysis
+
+| command | description |
+|----|----|
+| `df.shape` | returns number of rows and columns/shape of the dataframe |
+| `len(df)` | returns the number of rows |
+| `df.size` | returns the total number of cells, including missing values |
+| `df.columns` | returns column names |
+| `df.index` | returns row index labels |
+| `df.dtypes` | returns the data type of each column |
+| `df.info()` | prints a summary of columns, non-null counts, data types, and memory usage |
+| `df.head()` | shows the first 5 rows |
+| `df.tail()` | shows the last 5 rows |
+| `df.describe()` | returns summary statistics for numeric columns by default |
+| `df.describe(include='all')` | returns summary statistics for all column types |
+| `df.count()` | counts non-missing values in each column |
+| `df.isna().sum()` | counts missing values in each column |
+| `df.duplicated().sum()` | counts duplicate rows, excluding the first occurrence |
+| `df.nunique()` | counts distinct non-missing values in each column |
+| `df['col1'].unique()` | returns unique values in a column, including missing values |
+| `df['col1'].value_counts()` | counts occurrences of each value, excluding missing values |
+| `df['col1'].value_counts(normalize=True)` | returns relative frequencies of non-missing values |
+| `df['col1'].value_counts(dropna=False)` | counts occurrences of each value, including missing values |
+| `df['col1'].sum()` | returns the sum of a numeric column |
+| `df['col1'].mean()` | returns the mean of a numeric column |
+| `df['col1'].median()` | returns the median of a numeric column |
+| `df['col1'].min()` | returns the minimum value in a column |
+| `df['col1'].max()` | returns the maximum value in a column |
+| `df['col1'].std()` | returns the sample standard deviation of a numeric column |
+| `df['col1'].quantile(0.25)` | returns the 25th percentile of a numeric column |
+| `df.corr(numeric_only=True)` | returns pairwise Pearson correlations between numeric columns |
+| `df.sort_values('col1', ascending=False)` | returns rows sorted by a column in descending order |
+| `df.nlargest(5, 'col1')` | returns rows with the 5 largest values in a numeric column |
+
+Numeric summary methods above skip missing values by default.
+
 ## Reshaping data
 
 From multiple columns to two columns  
